@@ -16,5 +16,6 @@ git remote add origin https://github.com/user/repo_name.git
 sudo usermod -a -G groupnames username
 ```
 `-a` - <em>append</em> groups to group user belongs to (instead of overwrite).  
+`groupnames` - a comma-separated (no spaces!) list of group names to add user to.  
 User <em>must</em> log out and back in for group membership updates to be applied.  
 [Reference](http://askubuntu.com/a/79566)
