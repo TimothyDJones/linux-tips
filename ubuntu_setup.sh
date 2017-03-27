@@ -64,4 +64,9 @@ php -r "unlink('/tmp/composer-setup.php');"
 rm -f /tmp/composer-setup.php
 sudo chmod +x /usr/local/composer
 
-
+# Install latest PhpMyAdmin version via Composer
+cd /var/www/html
+sudo php /usr/local/composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json --no-dev
+sudo chown -R www-data:www-data /var/www/html/phpmyadmin
+xdg-open http://localhost/phpmyadmin/setup
+cd $HOME
