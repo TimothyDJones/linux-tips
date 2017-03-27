@@ -4,7 +4,7 @@
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get autoremove -f -y
-sudo apt-get install -y build-essential dtrx curl wget
+sudo apt-get install -y build-essential dtrx curl wget check-install
 
 # Allow current user to run 'sudo' without password
 # https://phpraxis.wordpress.com/2016/09/27/enable-sudo-without-password-in-ubuntudebian/
@@ -86,3 +86,16 @@ source $HOME/.bashrc	# Enable bash-it configuration immediately.
 rm -f /tmp/bash-it.zip
 rm -rf $HOME/bash-it
 
+# Install LilyTerm terminal
+# Ubuntu does not have recent version in packages, so we build from source,
+# which requires installation of GTK+2 and other libraries.
+sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev libvte-dev
+cd $HOME/Downloads
+wget -O lilyterm.tar.gz http://lilyterm.luna.com.tw/file/lilyterm-0.9.9.4.tar.gz
+dtrx -n $HOME/Downloads/lilyterm.tar.gz
+cd $HOME/Downloads/lilyterm/lilyterm-0.9.9.4
+./configure
+make
+sudo make install
+cd $HOME
+rm -rf $HOME/Downloads/lilyterm*
