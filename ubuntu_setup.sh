@@ -71,3 +71,14 @@ sudo php /usr/local/composer create-project phpmyadmin/phpmyadmin --repository-u
 sudo chown -R www-data:www-data /var/www/html/phpmyadmin
 xdg-open http://localhost/phpmyadmin/setup
 cd $HOME
+
+# Install bash-it script
+cd $HOME
+wget -O /tmp/bash-it.zip https://github.com/Bash-it/bash-it/archive/master.zip
+dtrx -n /tmp/bash-it.zip
+mv ./bash-it/bash-it-master $HOME/.bash-it
+$HOME/.bash-it/install.sh --silent
+source $HOME/.bashrc	# Enable bash-it configuration immediately.
+rm -f /tmp/bash-it.zip
+rm -rf $HOME/bash-it
+
