@@ -41,6 +41,10 @@ sudo apt-get install -y php5.6-bcmath php5.6-bz2 php5.6-cli php5.6-common php5.6
 libapache2-mod-php5.6 libapache2-mod-xsendfile \
 mysql-server mysql-workbench
 
+# Enable 'modrewrite' Apache module
+sudo a2enmod rewrite
+sudo service apache2 restart  ## Alternate command is 'sudo apachectl restart'
+
 # Add current user to 'www-data' group
 sudo usermod -a -G www-data ${USER}
 
