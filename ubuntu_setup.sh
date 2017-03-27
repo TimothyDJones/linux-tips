@@ -65,6 +65,7 @@ rm -f /tmp/composer-setup.php
 sudo chmod +x /usr/local/composer
 
 # Install latest PhpMyAdmin version via Composer
+# https://docs.phpmyadmin.net/en/latest/setup.html#composer
 cd /var/www/html
 sudo php /usr/local/composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json --no-dev
 sudo chown -R www-data:www-data /var/www/html/phpmyadmin
