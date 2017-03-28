@@ -104,9 +104,15 @@ rm -rf $HOME/Downloads/lilyterm*
 
 # Install Stacer Linux monitoring tool
 # Must download specific version, because unable to get 'latest' from Sourceforge to work.
-curl -o stacer.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/stacer/v1.0.6/Stacer_1.0.6_amd64.deb
+cd $HOME/Downloads
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	curl -o stacer.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/stacer/v1.0.6/Stacer_1.0.6_amd64.deb
+else    # Otherwise use version for 32-bit kernel
+	curl -o stacer.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/stacer/v1.0.6/Stacer_1.0.6_i386.deb
+fi
 sudo gdebi -n stacer.deb   # '-n' is non-interactive mode for gdebi
 rm -f stacer.deb
+cd $HOME
 
 
 # Install DBeaver Java database utility
