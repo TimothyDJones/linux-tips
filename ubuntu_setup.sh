@@ -99,3 +99,11 @@ make
 sudo make install
 cd $HOME
 rm -rf $HOME/Downloads/lilyterm*
+
+
+# Install Stacer Linux monitoring tool
+# Must download specific version, because unable to get 'latest' from Sourceforge to work.
+curl -o stacer.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/stacer/v1.0.6/Stacer_1.0.6_amd64.deb
+sudo gdebi -n stacer.deb   # '-n' is non-interactive mode for gdebi
+rm -f stacer.deb
+
