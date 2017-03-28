@@ -36,8 +36,8 @@ sudo apt-get install -y vim vim-gtk3 vim-common \
 
 # Install PHP 5.6, Apache 2, and MySQL Server
 export DEBIAN_FRONTEND=noninteractive
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password mysql_password'
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password mysql_password'
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'  # Set MySQL password to 'root'.
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 sudo apt-get install -y php5.6-bcmath php5.6-bz2 php5.6-cli php5.6-common php5.6-curl php5.6-gd php5.6-json php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-readline php5.6-sqlite3 php5.6-xml php5.6-xsl php5.6-zip php-xdebug \
 libapache2-mod-php5.6 libapache2-mod-xsendfile \
 mysql-server mysql-workbench
