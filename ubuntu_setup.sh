@@ -67,7 +67,8 @@ php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
 sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 php -r "unlink('/tmp/composer-setup.php');"
 rm -f /tmp/composer-setup.php
-sudo chmod +x /usr/local/composer
+sudo chmod +x /usr/local/bin/composer
+sudo chown -R $USER:$USER $HOME/.composer
 
 # Install latest PhpMyAdmin version via Composer
 # https://docs.phpmyadmin.net/en/latest/setup.html#composer
