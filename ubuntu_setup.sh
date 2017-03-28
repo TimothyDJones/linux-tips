@@ -4,7 +4,7 @@
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get autoremove -f -y
-sudo apt-get install -y build-essential dtrx curl wget check-install
+sudo apt-get install -y build-essential dtrx curl wget check-install gdebi
 
 # Allow current user to run 'sudo' without password
 # https://phpraxis.wordpress.com/2016/09/27/enable-sudo-without-password-in-ubuntudebian/
