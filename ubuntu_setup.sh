@@ -5,7 +5,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get autoremove -f -y
 sudo apt-get install -y build-essential dtrx curl wget check-install gdebi \
-	openjdk-8-jre
+	openjdk-8-jre python-software-properties software-properties-common
 
 # Allow current user to run 'sudo' without password
 # https://phpraxis.wordpress.com/2016/09/27/enable-sudo-without-password-in-ubuntudebian/
