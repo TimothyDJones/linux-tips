@@ -146,3 +146,9 @@ source $HOME/.bashrc
 rm -rf linuxbrew*
 cd $HOME
 brew update    # Update the Linuxbrew "formulae" (packages).
+
+# Install Atom editor via PPA
+sudo add-apt-repository -y ppa:webupd8team/atom
+sudo apt-get update -y
+sudo apt-get install -y atom
+
