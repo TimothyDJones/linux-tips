@@ -124,4 +124,5 @@ else    # Otherwise use version for 32-bit kernel
 fi
 sudo gdebi -n dbeaver.deb
 rm -f dbeaver.deb
+sudo apt-get install -y libmysql-java   # Install MySQL JDBC driver
 cd $HOME
