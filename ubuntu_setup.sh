@@ -62,6 +62,9 @@ EOL
 sudo mv /tmp/phpinfo.php /var/www/html
 sudo chown www-data:www-data /var/www/html/phpinfo.php
 
+# Disable XDebug on CLI to prevent warnings when installing/running Composer
+sudo phpdismod -s cli xdebug
+
 # Install PHP Composer as global utility
 php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
 sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
