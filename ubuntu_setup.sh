@@ -130,3 +130,19 @@ sudo gdebi -n dbeaver.deb
 rm -f dbeaver.deb
 sudo apt-get install -y libmysql-java   # Install MySQL JDBC driver
 cd $HOME
+
+# Install Linux Brew (similar to MacOS X "Home Brew")
+# Ruby *should* already be installed; it gets installed when Vim is installed. But we will install the dependencies, just in case.
+# Linux Brew is installed as *user* (not global) application.
+sudo apt-get install -y build-essential curl git python-setuptools ruby
+cd $HOME/Downloads
+wget -O linuxbrew.zip https://github.com/Linuxbrew/brew/archive/master.zip
+dtrx -n linuxbrew.zip
+mv $HOME/Downloads/linuxbrew/brew-master $HOME/.linuxbrew
+echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >> $HOME/.bashrc
+echo 'export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"' >> $HOME/.bashrc
+echo 'export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"' >> $HOME/.bashrc
+source $HOME/.bashrc
+rm -rf linuxbrew*
+cd $HOME
+brew update    # Update the Linuxbrew "formulae" (packages).
