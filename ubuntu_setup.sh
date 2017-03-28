@@ -64,7 +64,7 @@ sudo chown www-data:www-data /var/www/html/phpinfo.php
 
 # Install PHP Composer as global utility
 php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
-sudo php /tmp/composer-setup.php --install-dir=/usr/local --filename=composer
+sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 php -r "unlink('/tmp/composer-setup.php');"
 rm -f /tmp/composer-setup.php
 sudo chmod +x /usr/local/composer
