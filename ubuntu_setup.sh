@@ -160,6 +160,11 @@ sudo add-apt-repository -y ppa:webupd8team/atom
 sudo apt-get update -y
 sudo apt-get install -y atom
 
+# Install Cudatext editor from Sourceforge
+curl -o /tmp/cudatext.deb -J -L https://cytranet.dl.sourceforge.net/project/cudatext/release/Linux/cudatext_1.7.8.0-1_gtk2_amd64.deb
+sudo gdebi -n /tmp/cudatext.deb
+rm -f /tmp/cudatext.deb
+
 # Enable GetDeb repository for your version of Ubuntu
 source /etc/os-release   # This config file contains Ubuntu version details.
 DEB_STRING='deb http://archive.getdeb.net/ubuntu '${UBUNTU_CODENAME}'-getdeb apps'
