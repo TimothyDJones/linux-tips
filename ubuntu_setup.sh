@@ -126,23 +126,14 @@ cd $HOME
 # Install Stacer Linux monitoring tool
 # Must download specific version, because unable to get 'latest' from Sourceforge to work.
 cd $HOME/Downloads
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	curl -o stacer.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/stacer/v1.0.6/Stacer_1.0.6_amd64.deb
-else    # Otherwise use version for 32-bit kernel
-	curl -o stacer.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/stacer/v1.0.6/Stacer_1.0.6_i386.deb
-fi
+curl -o stacer.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/stacer/v1.0.6/Stacer_1.0.6_${KERNEL_TYPE}.deb
 sudo gdebi -n stacer.deb   # '-n' is non-interactive mode for gdebi
 rm -f stacer.deb
 cd $HOME
 
-
 # Install DBeaver Java database utility
 cd $HOME/Downloads
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	curl -o dbeaver.deb -J -L http://dbeaver.jkiss.org/files/dbeaver-ce_latest_amd64.deb
-else    # Otherwise use version for 32-bit kernel
-	curl -o dbeaver.deb -J -L http://dbeaver.jkiss.org/files/dbeaver-ce_latest_i386.deb
-fi
+curl -o dbeaver.deb -J -L http://dbeaver.jkiss.org/files/dbeaver-ce_latest_${KERNEL_TYPE}.deb
 sudo gdebi -n dbeaver.deb
 rm -f dbeaver.deb
 sudo apt-get install -y libmysql-java   # Install MySQL JDBC driver
