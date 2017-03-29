@@ -152,3 +152,9 @@ sudo add-apt-repository -y ppa:webupd8team/atom
 sudo apt-get update -y
 sudo apt-get install -y atom
 
+# Enable GetDeb repository for your version of Ubuntu
+source /etc/os-release   # This config file contains Ubuntu version details.
+DEB_STRING='deb http://archive.getdeb.net/ubuntu '${UBUNTU_CODENAME}'-getdeb apps'
+sudo echo $DEB_STRING > /etc/apt/sources.list.d/getdeb.list
+wget -q -O- http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
+sudo apt-get update -y
