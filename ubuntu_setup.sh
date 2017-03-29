@@ -1,5 +1,13 @@
 #!/bin/sh
 
+# Determine if this is 32-bit or 64-bit version of kernel.
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	KERNEL_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	KERNEL_TYPE=i386
+fi
+
+
 # Add some necessary non-default packages
 sudo apt-get update -y
 sudo apt-get upgrade -y
