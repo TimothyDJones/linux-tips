@@ -177,6 +177,14 @@ sudo echo $DEB_STRING > /etc/apt/sources.list.d/getdeb.list
 wget -q -O- http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
 sudo apt-get update -y
 
+# Install Albert application launcher from PPA.
+# http://sourcedigit.com/22129-linux-quick-launcher-ubuntu-albert-best-linux-launcher/
+sudo add-apt-repository -y ppa:nilarimogard/webupd8
+sudo apt-get update -y
+sudo apt-get install -y albert
+ln -s /usr/share/applications/albert.desktop $HOME/.config/autostart/  # Create link to autostart Albert on startup
+
+
 # Install KSnip screenshot utility from Sourceforge
 sudo apt-get install -y cmake qt4-default   # Install required packages
 curl -o /tmp/ksnip.tar.gz -J -L https://superb-dca2.dl.sourceforge.net/project/ksnip/ksnip-1.3.0.tar.gz
