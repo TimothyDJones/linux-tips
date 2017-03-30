@@ -209,3 +209,15 @@ mkdir build && cd build
 cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/otter-browser*
+
+# Install MyNotes simple "sticky notes" tool
+sudo apt-get install -y python3-tk tk-tktray  python3-pip python3-setuptools python3-wheel  # python3-ewmh
+sudo -H pip3 install --upgrade pip  # Upgrade to latest version of pip for Python 3
+sudo -H pip3 install ewmh
+curl -o /tmp/mynotes.tar.gz -J -L https://iweb.dl.sourceforge.net/project/my-notes/1.0.0/mynotes-1.0.0.tar.gz
+cd /tmp
+dtrx -n /tmp/mynotes.tar.gz
+cd /tmp/mynotes/mynotes-1.0.0
+sudo -H python3 setup.py install
+cd $HOME
+rm -rf /tmp/mynotes*
