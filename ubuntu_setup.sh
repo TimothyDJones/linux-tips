@@ -112,6 +112,7 @@ make
 sudo make install
 cd $HOME
 rm -rf $HOME/Downloads/lilyterm*
+ln -s /usr/local/share/applications/lilyterm.desktop $HOME/.config/autostart/
 
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
