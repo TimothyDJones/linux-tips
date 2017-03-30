@@ -236,3 +236,12 @@ PLANK_EXE=/usr/bin/plank
 if [ ! -f "$PLANK_EXE" ]; then
 	sudo apt-get install -y plank
 fi
+
+# Install FUSE driver for Google Drive from PPA and mount local folder to your account.
+# http://www.techrepublic.com/article/how-to-mount-your-google-drive-on-linux-with-google-drive-ocamlfuse/
+sudo add-apt-repository -y ppa:alessandro-strada/ppa
+sudo apt-get update -y
+sudo apt-get install -y google-drive-ocamlfuse
+google-drive-ocamlfuse   # This will launch browser window prompting you to allow access to Google Drive.
+mkdir $HOME/google-drive   # Create directory to use as mount point for Google Drive.
+google-drive-ocamlfuse $HOME/google-drive  # Mount Google Drive to folder.
