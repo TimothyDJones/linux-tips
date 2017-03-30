@@ -160,6 +160,11 @@ sudo add-apt-repository -y ppa:webupd8team/atom
 sudo apt-get update -y
 sudo apt-get install -y atom
 
+# Install Vivaldi web browser (stable version)
+wget -O /tmp/vivaldi.deb https://downloads.vivaldi.com/stable/vivaldi-stable_1.8.770.50-1_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/vivaldi.deb
+rm -f /tmp/vivaldi.deb
+
 # Install Cudatext editor from Sourceforge
 curl -o /tmp/cudatext.deb -J -L https://cytranet.dl.sourceforge.net/project/cudatext/release/Linux/cudatext_1.7.8.0-1_gtk2_amd64.deb
 sudo gdebi -n /tmp/cudatext.deb
