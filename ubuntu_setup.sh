@@ -171,3 +171,15 @@ DEB_STRING='deb http://archive.getdeb.net/ubuntu '${UBUNTU_CODENAME}'-getdeb app
 sudo echo $DEB_STRING > /etc/apt/sources.list.d/getdeb.list
 wget -q -O- http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
 sudo apt-get update -y
+
+# Install KSnip screenshot utility from Sourceforge
+sudo apt-get install -y cmake qt4-default   # Install required packages
+curl -o /tmp/ksnip.tar.gz -J -L https://superb-dca2.dl.sourceforge.net/project/ksnip/ksnip-1.3.0.tar.gz
+cd /tmp
+dtrx -n /tmp/ksnip.tar.gz
+cd /tmp/ksnip/ksnip-1.3.0
+mkdir build && cd build
+cmake .. && make && sudo make install
+cd $HOME
+rm -rf /tmp/ksnip*
+
