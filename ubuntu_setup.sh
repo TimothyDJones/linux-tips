@@ -221,3 +221,9 @@ cd /tmp/mynotes/mynotes-1.0.0
 sudo -H python3 setup.py install
 cd $HOME
 rm -rf /tmp/mynotes*
+
+# Install Plank dock, if not installed.
+PLANK_EXE=/usr/bin/plank
+if [ ! -f "$PLANK_EXE" ]; then
+	sudo apt-get install -y plank
+fi
