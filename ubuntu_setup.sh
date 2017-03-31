@@ -167,7 +167,7 @@ sudo gdebi -n /tmp/vivaldi.deb
 rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
-curl -o /tmp/cudatext.deb -J -L https://cytranet.dl.sourceforge.net/project/cudatext/release/Linux/cudatext_1.7.8.0-1_gtk2_amd64.deb
+curl -o /tmp/cudatext.deb -J -L https://cytranet.dl.sourceforge.net/project/cudatext/release/Linux/cudatext_1.7.9.0-1_gtk2_amd64.deb
 sudo gdebi -n /tmp/cudatext.deb
 rm -f /tmp/cudatext.deb
 
