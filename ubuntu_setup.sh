@@ -245,3 +245,14 @@ sudo apt-get install -y google-drive-ocamlfuse
 google-drive-ocamlfuse   # This will launch browser window prompting you to allow access to Google Drive.
 mkdir $HOME/google-drive   # Create directory to use as mount point for Google Drive.
 google-drive-ocamlfuse $HOME/google-drive  # Mount Google Drive to folder.
+
+
+# Install tke text editor
+sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
+curl -o /tmp/tke.tgz -J -L https://iweb.dl.sourceforge.net/project/tke/2.9/tke-2.9.tgz
+cd /tmp
+dtrx -n /tmp/tke.tgz
+cd /tmp/tke/tke-2.9
+sudo tclsh8.6 install.tcl
+cd $HOME
+rm -rf /tmp/tke*
