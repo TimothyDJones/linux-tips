@@ -249,10 +249,10 @@ google-drive-ocamlfuse $HOME/google-drive  # Mount Google Drive to folder.
 
 # Install tke text editor
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
-curl -o /tmp/tke.tgz -J -L https://iweb.dl.sourceforge.net/project/tke/2.9/tke-2.9.tgz
+curl -o /tmp/tke.tgz -J -L https://iweb.dl.sourceforge.net/project/tke/3.0/tke-3.0.tgz
 cd /tmp
 dtrx -n /tmp/tke.tgz
-cd /tmp/tke/tke-2.9
+cd /tmp/tke/tke-3.0
 sudo tclsh8.6 install.tcl
 cd $HOME
 rm -rf /tmp/tke*
