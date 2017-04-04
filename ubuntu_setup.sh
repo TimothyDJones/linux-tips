@@ -197,6 +197,13 @@ cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/ksnip*
 
+# Install CopyQ clipboard manager from Sourceforge
+source /etc/os-release
+curl -o /tmp/copyq.deb -J -L https://ayera.dl.sourceforge.net/project/copyq/copyq-3.0.0/Linux/copyq_3.0.0_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/copyq.deb
+ln -s /usr/local/share/applications/copyq.desktop $HOME/.config/autostart/  # Configure CopyQ to autostart on system launch
+rm -f /tmp/copyq.deb
+
 # Install Steel Bank Common Lisp (SBLC) from Sourceforge
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/sblc.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/sbcl/sbcl/1.3.16/sbcl-1.3.16-source.tar.bz2
