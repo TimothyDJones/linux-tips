@@ -256,3 +256,32 @@ cd /tmp/tke/tke-3.0
 sudo tclsh8.6 install.tcl
 cd $HOME
 rm -rf /tmp/tke*
+
+# Install Goto shell utility
+wget -O /tmp/goto.zip https://github.com/Fakerr/goto/archive/master.zip
+cd /tmp
+dtrx -n /tmp/goto.zip
+cd /tmp/goto/goto-master
+mv goto.sh $HOME/.local/
+echo "if [[ -s "${HOME}/.local/goto.sh" ]]; then" >> $HOME/.bashrc
+echo "    source ${HOME}/.local/goto.sh" >> $HOME/.bashrc
+echo "fi" >> $HOME/.bashrc
+source $HOME/.local/goto.sh
+cd $HOME
+rm -rf /tmp/goto*
+
+# Install Free42 HP-42S calculator simulator
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	FREE42_FILE_NAME=Free42Linux-64bit.tgz
+else    # Otherwise use version for 32-bit kernel
+	FREE42_FILE_NAME=Free42Linux-32bit.tgz
+fi
+wget -O /tmp/Free42Linux.tgz http://thomasokken.com/free42/download/${FREE42_FILE_NAME}
+cd /tmp
+dtrx -n /tmp/Free42Linux.tgz
+cd /tmp/Free42Linux
+sudo mv /tmp/Free42Linux/free42* /usr/local/bin
+sudo ln -s /usr/local/bin/free42dec /usr/local/bin/free42
+cd $HOME
+rm -rf /temp/Free42*
+
