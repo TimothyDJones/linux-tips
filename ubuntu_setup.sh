@@ -292,3 +292,13 @@ sudo ln -s /usr/local/bin/free42dec /usr/local/bin/free42
 cd $HOME
 rm -rf /temp/Free42*
 
+# Modify keyboard mapping to swap Caps Lock and (Right) Control keys
+# See https://github.com/501st-alpha1/scott-script/blob/master/newsystem
+echo "! Swap Caps Lock and (Right) Control
+remove Lock = Caps_Lock
+remove Control = Control_R
+keysym Control_R = Caps_Lock
+keysym Caps_Lock = Control_R
+add Lock = Caps_Lock
+add Control = Control_R
+" > $HOME/.xmodmap
