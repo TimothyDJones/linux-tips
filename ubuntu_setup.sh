@@ -303,3 +303,13 @@ keysym Caps_Lock = Control_R
 add Lock = Caps_Lock
 add Control = Control_R
 " > $HOME/.xmodmap
+
+# Install JOE (Joe's Own Editor) from source
+curl -o /tmp/joe.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/joe-editor/JOE%20sources/joe-4.4/joe-4.4.tar.gz
+cd /tmp
+dtrx -n /tmp/joe.tar.gz
+cd /tmp/joe/joe-4.4
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/joe*
+
