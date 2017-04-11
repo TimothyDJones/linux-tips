@@ -313,3 +313,13 @@ cd /tmp/joe/joe-4.4
 cd $HOME
 rm -rf /tmp/joe*
 
+# Install KeePassXC password manager from source
+curl -o /tmp/keepassxc.tar.xz -J -L https://github.com/keepassxreboot/keepassxc/releases/download/2.1.4/keepassxc-2.1.4-src.tar.xz
+cd /tmp
+dtrx -n /tmp/keepassxc.tar.xz
+cd /tmp/keepassxc/keepassxc-2.1.4
+sudo apt-get install -y libgcrypt20-dev libcrypto++-dev libxi-dev libmicrohttpd-dev libxtst-dev qttools5-dev-tools
+mkdir build && cd build
+cmake .. -DWITH_TESTS=OFF && make && sudo make install
+cd $HOME
+rm -rf /tmp/keepassxc*
