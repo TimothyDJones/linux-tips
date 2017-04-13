@@ -354,3 +354,10 @@ sudo chmod -R 777 /var/www/html/miniflux/data
 xdg-open "http://localhost/miniflux"  # Open main page in default browser
 cd $HOME
 rm -rf /tmp/miniflux*
+
+# Install QGIS (a.k.a. Quantum GIS) from Ubuntu PPA
+# (Used PPA, because unable to install from QGIS official packages.)
+sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
+sudo apt-get update
+sudo apt-get install -y qgis python-qgis qgis-provider-grass postgis
+sudo apt-get autoremove -y -f
