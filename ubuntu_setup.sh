@@ -323,3 +323,22 @@ mkdir build && cd build
 cmake .. -DWITH_TESTS=OFF && make && sudo make install
 cd $HOME
 rm -rf /tmp/keepassxc*
+
+# Install NewBreeze file manager
+# Install from packages for 64-bit Linux
+if $(uname -m | grep '64'); then 
+	curl -o /tmp/NewBreeze.deb -J -L https://marcusbritanicus.github.io/NewBreeze/debs/newbreeze_3.0.0a_amd64.deb
+	curl -o /tmp/NewBreeze-plugins.deb -J -L https://marcusbritanicus.github.io/NewBreeze/debs/newbreeze-plugins_3.0.0a_amd64.deb
+	sudo gdebi -n /tmp/NewBreeze.deb
+	sudo gdebi -n /tmp/NewBreeze-plugins.deb
+else # Install from source for 32-bit Linux
+	sudo apt-get install -y libmagic-dev zlib1g-dev liblzma-dev libbz2-dev libarchive-dev xdg-utils libpoppler-qt5-dev libsource-highlight-dev libpoppler-qt5-dev libdjvulibre-dev
+	curl -o /tmp/NewBreeze.txz -J -L https://github.com/marcusbritanicus/NewBreeze/releases/download/v3-prealpha/NewBreeze3.txz
+	cd /tmp
+	dtrx -n NewBreeze.txz
+	cd /tmp/NewBreeze/NewBreeze3
+	qmake && make && sudo make install
+fi
+cd $HOME
+rm -rf /tmp/NewBreeze*
+
