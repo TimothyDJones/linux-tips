@@ -342,3 +342,15 @@ fi
 cd $HOME
 rm -rf /tmp/NewBreeze*
 
+# Install Miniflux browser-based RSS reader
+# Requires PHP and SQLite.
+curl -o /tmp/miniflux.tar.gz -J -L https://github.com/miniflux/miniflux/archive/v1.2.2.tar.gz
+cd /tmp
+dtrx -n /tmp/miniflux.tar.gz
+cd /tmp/miniflux
+sudo mv /tmp/miniflux/miniflux-1.2.2 /var/www/html/miniflux
+sudo chown -R www-data:www-data /var/www/html
+sudo chmod -R 777 /var/www/html/miniflux/data
+xdg-open "http://localhost/miniflux"  # Open main page in default browser
+cd $HOME
+rm -rf /tmp/miniflux*
