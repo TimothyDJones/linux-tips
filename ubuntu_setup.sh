@@ -85,9 +85,9 @@ sudo chown -R $USER:$USER $HOME/.composer
 # Install latest PhpMyAdmin version via Composer
 # https://docs.phpmyadmin.net/en/latest/setup.html#composer
 cd /var/www/html
-sudo php /usr/local/composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json --no-dev
+sudo php /usr/local/bin/composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json --no-dev
 sudo chown -R www-data:www-data /var/www/html/phpmyadmin
-xdg-open http://localhost/phpmyadmin/setup
+xdg-open http://localhost/phpmyadmin/setup &
 cd $HOME
 
 # Install bash-it script
