@@ -376,3 +376,14 @@ sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
 sudo apt-get update
 sudo apt-get install -y qgis python-qgis qgis-provider-grass postgis
 sudo apt-get autoremove -y -f
+
+# Install Playbox games from Sourceforge
+curl -o /tmp/playbox.zip -J -L https://pilotfiber.dl.sourceforge.net/project/playbox/6/playbox-1.6.3.linux.gtk.x86_64.zip
+cd /tmp
+dtrx -n /tmp/playbox.zip
+cd /tmp/playbox
+sudo mv ./playbox /opt
+sudo ln -s /opt/playbox/playbox /usr/local/bin/playbox
+cd $HOME
+rm -rf /tmp/playbox*
+
