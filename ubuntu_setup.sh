@@ -257,6 +257,18 @@ google-drive-ocamlfuse   # This will launch browser window prompting you to allo
 mkdir $HOME/google-drive   # Create directory to use as mount point for Google Drive.
 google-drive-ocamlfuse $HOME/google-drive  # Mount Google Drive to folder.
 
+# Install MuPDF PDF viewer from source.
+# Install pre-requisite development packages.
+sudo apt-get install -y libjbig2dec0-dev libfreetype6-dev libftgl-dev libjpeg-dev libopenjp2-7-dev zlib1g-dev xserver-xorg-dev mesa-common-dev libgl1-mesa-dev libxcursor-dev libxrandr-dev libxinerama-dev
+curl -o /tmp/mupdf.tar.gz -J -L http://mupdf.com/downloads/mupdf-1.11-source.tar.gz
+cd /tmp
+dtrx -n /tmp/mupdf.tar.gz
+cd /tmp/mupdf/mupdf-1.11-source
+make
+sudo make prefix=/usr/local install
+sudo ln -s /usr/local/bin/mupdf-gl /usr/local/bin/mupdf
+cd $HOME
+rm -rf /tmp/mupdf*
 
 # Install tke text editor
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
