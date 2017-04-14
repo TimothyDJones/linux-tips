@@ -61,6 +61,9 @@ sudo usermod -a -G www-data ${USER}
 # Change owner of /var/www/html directory to www-data
 sudo chown -R www-data:www-data /var/www/html
 
+# Enable PHP 5.6 as default version of PHP (if PHP 7.0+ gets installed, as well).
+sudo a2dismod php7.0 ; sudo a2enmod php5.6 ; sudo service apache2 restart ; echo 1 | sudo update-alternatives --config php
+
 # Create simple 'phpinfo' script in main web server directory
 # Note: Must create file in /tmp and then move because 'sudo cat...' is allowed.
 sudo cat > /tmp/phpinfo.php << EOL
