@@ -387,3 +387,17 @@ sudo ln -s /opt/playbox/playbox /usr/local/bin/playbox
 cd $HOME
 rm -rf /tmp/playbox*
 
+# Install WP-34s calculator from Sourceforge
+if $(uname -m | grep '64'); then
+	curl -o /tmp/wp-34s-emulator.tgz -J -L https://cytranet.dl.sourceforge.net/project/wp34s/emulator/wp-34s-emulator-linux64.tgz
+else
+	curl -o /tmp/wp-34s-emulator.tgz -J -L https://cytranet.dl.sourceforge.net/project/wp34s/emulator/wp-34s-emulator-linux.tgz
+fi
+cd /tmp
+dtrx -n /tmp/wp-34s-emulator.tgz
+cd /tmp/wp-34s-emulator
+sudo mv wp-34s /opt
+sudo ln -s /opt/wp-34s/WP-34s /usr/local/bin/wp34s
+cd $HOME
+rm -rf /tmp/wp-34s-emulator*
+
