@@ -398,6 +398,21 @@ dtrx -n /tmp/wp-34s-emulator.tgz
 cd /tmp/wp-34s-emulator
 sudo mv wp-34s /opt
 sudo ln -s /opt/wp-34s/WP-34s /usr/local/bin/wp34s
+# Create icon in menus
+cat > /tmp/wp34s.desktop << EOF
+[Desktop Entry]
+Name=WP-34s
+Comment=RPN (postfix) Scientific Calculator
+GenericName=Calculator
+Exec=/opt/wp-34s/WP-34s
+Icon=/opt/wp-34s/wp34s-logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;Development
+Keywords=calculator;rpn;
+EOF
+sudo mv /tmp/wp34s.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/wp-34s-emulator*
 
