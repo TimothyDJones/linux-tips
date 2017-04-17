@@ -401,3 +401,11 @@ sudo ln -s /opt/wp-34s/WP-34s /usr/local/bin/wp34s
 cd $HOME
 rm -rf /tmp/wp-34s-emulator*
 
+# Install YouTube-DL-PyTK video downloader from Sourceforge
+curl -o /tmp/youtube-dl-pytk.tar -J -L https://superb-sea2.dl.sourceforge.net/project/youtube-dl-gtk/17.4.16/YouTube-DL-PyTK_17.4.16.tar
+cd /tmp
+dtrx -n /tmp/youtube-dl-pytk.tar
+cd /tmp/youtube-dl-pytk/YouTube-DL-PyTK
+sudo ./install.sh
+cd $HOME
+rm -rf /tmp/youtube-dl-pytk*
