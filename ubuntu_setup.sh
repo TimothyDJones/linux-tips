@@ -437,3 +437,18 @@ sudo ln -s /usr/local/bin/wcd.exe /usr/bin/wcd.exe	 # Create link so that shell 
 sudo make install-profile DOTWCD=1     # Set up shell integration and store configuration files under $HOME/.wcd.
 cd $HOME
 rm -rf /tmp/wcd*
+
+# Install BeeBEEP LAN messenger from Sourceforge
+APP_NAME=beebeep
+APP_VERSION=3.0.9
+DL_BASE_FILE_NAME=beebeep-${APP_VERSION}-qt4-${KERNEL_VERSION}
+sudo apt-get install -y qt4-default libqt4-xml libxcb-screensaver0 libavahi-compat-libdnssd1 libphonon4 libhunspell-dev phonon-backend-gstreamer
+curl -o /tmp/${APP_NAME}.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/beebeep/Linux/${DL_FILE_NAME}.tar.gz
+cd /tmp
+dtrx -n ${APP_NAME}.tar.gz
+cd /tmp/${APP_NAME}
+mv ${DL_BASE_FILE_NAME} ${APP_NAME}
+sudo mv ${APP_NAME} /opt
+sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
+cd $HOME
+
