@@ -452,3 +452,15 @@ sudo mv ${APP_NAME} /opt
 sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
 cd $HOME
 
+# Install tmux terminal multiplexer from source
+APP_NAME=tmux
+APP_VERSION=2.4
+sudo apt-get install -y libevent-dev libncurses5-dev
+curl -o /tmp/${APP_NAME}.tar.gz -J -L https://github.com/tmux/tmux/releases/download/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.tar.gz
+cd /tmp
+dtrx -n ${APP_NAME}.tar.gz
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/tmux*
+
