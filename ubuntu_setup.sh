@@ -464,3 +464,13 @@ cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 cd $HOME
 rm -rf /tmp/tmux*
 
+# Install Ranger CLI file manager from source
+APP_NAME=ranger
+APP_VERSION=1.8.1
+curl -o /tmp/${APP_NAME}.tar.gz -J -L http://nongnu.org/ranger/ranger-stable.tar.gz
+cd /tmp
+dtrx -n ${APP_NAME}.tar.gz
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
