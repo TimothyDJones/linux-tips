@@ -474,3 +474,12 @@ cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Coypu To Do list
+APP_NAME=coypu
+APP_VERSION=1.3.0
+curl -o /tmp/${APP_NAME}.deb -J -L https://download.coypu.co/download/linux_deb
+cd /tmp
+sudo gdebi -n coypu.deb
+cd $HOME
+rm -f /tmp/coypu*
