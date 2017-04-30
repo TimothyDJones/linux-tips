@@ -305,6 +305,20 @@ dtrx -n /tmp/Free42Linux.tgz
 cd /tmp/Free42Linux
 sudo mv /tmp/Free42Linux/free42* /usr/local/bin
 sudo ln -s /usr/local/bin/free42dec /usr/local/bin/free42
+# Create icon in menus
+cat > /tmp/free42.desktop << EOF
+[Desktop Entry]
+Name=Free42
+Comment=RPN (postfix) Scientific Calculator
+GenericName=Calculator
+Exec=/usr/local/bin/free42
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;Development
+Keywords=calculator;rpn;
+EOF
+sudo mv /tmp/free42.desktop /usr/share/applications/
 cd $HOME
 rm -rf /temp/Free42*
 
