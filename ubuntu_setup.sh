@@ -220,11 +220,13 @@ cd $HOME
 rm -rf /tmp/sbcl*
 
 # Install Otter Browser from Sourceforge (from source)
+APP_NAME=otter-browser
+APP_VERSION=175
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev   # Qt5 development packages needed to build from source
-curl -o /tmp/otter-browser.tar.gz -J -L https://iweb.dl.sourceforge.net/project/otter-browser/otter-browser-weekly172/otter-browser-0.9.91-dev172.tar.bz2
+curl -o /tmp/${APP_NAME}.tar.gz -J -L https://iweb.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-weekly${APP_VERSION}/otter-browser-0.9.91-dev${APP_VERSION}.tar.bz2
 cd /tmp
-dtrx -n /tmp/otter-browser.tar.gz
-cd /tmp/otter-browser/otter-browser-0.9.91-dev172
+dtrx -n /tmp/${APP_NAME}.tar.gz
+cd /tmp/otter-browser/${APP_NAME}-0.9.91-dev${APP_VERSION}
 mkdir build && cd build
 cmake .. && make && sudo make install
 cd $HOME
