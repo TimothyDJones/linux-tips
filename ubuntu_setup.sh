@@ -307,6 +307,20 @@ dtrx -n /tmp/Free42Linux.tgz
 cd /tmp/Free42Linux
 sudo mv /tmp/Free42Linux/free42* /usr/local/bin
 sudo ln -s /usr/local/bin/free42dec /usr/local/bin/free42
+# Create icon in menus
+cat > /tmp/free42.desktop << EOF
+[Desktop Entry]
+Name=Free42
+Comment=RPN (postfix) Scientific Calculator
+GenericName=Calculator
+Exec=/usr/local/bin/free42
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;Development
+Keywords=calculator;rpn;
+EOF
+sudo mv /tmp/free42.desktop /usr/share/applications/
 cd $HOME
 rm -rf /temp/Free42*
 
@@ -476,3 +490,12 @@ cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Coypu To Do list
+APP_NAME=coypu
+APP_VERSION=1.3.0
+curl -o /tmp/${APP_NAME}.deb -J -L https://download.coypu.co/download/linux_deb
+cd /tmp
+sudo gdebi -n coypu.deb
+cd $HOME
+rm -f /tmp/coypu*
