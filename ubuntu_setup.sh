@@ -499,3 +499,33 @@ cd /tmp
 sudo gdebi -n coypu.deb
 cd $HOME
 rm -f /tmp/coypu*
+
+# Install Leanote Desktop app
+APP_NAME=leanote-desktop
+APP_VERSION=2.5
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+curl -o /tmp/${APP_NAME}.zip -J -L https://superb-dca2.dl.sourceforge.net/project/${APP_NAME}-app/${APP_VERSION}/${APP_NAME}-linux-${ARCH_TYPE}-v${APP_VERSION}.zip
+cd /tmp
+dtrx -n ${APP_NAME}.zip
+# cd /tmp/${APP_NAME}/${APP_NAME}-linux-${ARCH_TYPE}-v${APP_VERSION}
+sudo mv ${APP_NAME} /opt
+sudo ln -s /opt/${APP_NAME}/Leanote /usr/local/bin/leanote
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Leanote
+Comment=Full-featured PIM built with Electron/Atom
+GenericName=PIM
+Exec=/opt/${APP_NAME}/Leanote
+Icon=/opt/${APP_NAME}/leanote.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;
+Keywords=pim;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
