@@ -531,3 +531,60 @@ Categories=Utility;
 Keywords=pim;
 EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+
+# Install QXmlEdit from source via Sourceforge
+APP_NAME=qxmledit
+APP_VERSION=0.9.7
+curl -o /tmp/${APP_NAME}.tgz -J -L https://superb-sea2.dl.sourceforge.net/project/qxmledit/files/QXmlEdit-${APP_VERSION}/${APP_NAME}-${APP_VERSION}-src.tgz
+cd /tmp
+dtrx -n ${APP_NAME}.tgz
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}/
+qmake && make && sudo make install
+# Create icon in menus
+cat > /tmp/qxmledit.desktop << EOF
+[Desktop Entry]
+Name=QXmlEdit
+Comment=XML Viewer and Editor
+GenericName=XML Editor
+Exec=/opt/wp-34s/WP-34s
+Icon=/opt/wp-34s/wp34s-logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;Development
+Keywords=calculator;rpn;
+EOF
+sudo mv /tmp/wp34s.desktop /usr/share/applications/
+
+# Install Digital Clock 4 from Sourceforge
+APP_NAME=digital_clock_4
+APP_VERSION=4.5.5
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+curl -o /tmp/${APP_NAME}.tar.xz -J -L https://superb-sea2.dl.sourceforge.net/project/digitalclock4/files/${APP_VERSION}/${APP_NAME}_${ARCH_TYPE}.tar.xz
+cd /tmp
+dtrx -n ${APP_NAME}.tar.xz
+cd ${APP_NAME}
+mv "Digital\ Clock\ 4" ${APP_NAME}
+sudo mv ${APP_NAME} /opt
+sudo ln -s /opt/${APP_NAME}/digital_clock.sh /usr/local/bin/digital_clock
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Digital Clock 4
+Comment=Nice desktop digital clock
+GenericName=Clock
+Exec=/opt/${APP_NAME}/digital_clock.sh
+Icon=/opt/${APP_NAME}/digital_clock.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;Clock;
+Keywords=clock;time;date;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+ln -s /usr/local/share/applications/digital_clock.desktop $HOME/.config/autostart/
+
