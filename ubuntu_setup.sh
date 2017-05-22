@@ -596,3 +596,15 @@ sudo gdebi -n /tmp/${APP_NAME}.deb   # '-n' is non-interactive mode for gdebi
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
+# Install Jailer Java database utility
+APP_NAME=jailer
+APP_VERSION=7.0.1
+curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
+cd /tmp
+dtrx -n ${APP_NAME}.zip
+sudo mv ${APP_NAME} /opt
+# sudo ln -s /opt/${APP_NAME}/${APP_NAME}.sh /usr/local/bin/${APP_NAME}
+echo "export PATH=$PATH:/opt/${APP_NAME}" >> $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
