@@ -576,3 +576,19 @@ echo "export PATH=$PATH:/opt/${APP_NAME}" >> $HOME/.bashrc
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
+# Install ZinjaI C++ IDE
+APP_NAME=zinjai
+APP_VERSION=20161214
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=l64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=l32
+fi
+sudo apt-get install -y gdb
+curl -o /tmp/${APP_NAME}.tgz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}-${ARCH_TYPE}-${APP_VERSION}.tgz
+dtrx -n ${APP_NAME}.tgz
+sudo mv ${APP_NAME} /opt
+# sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
+/opt/${APP_NAME}/${APP_NAME} &
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
