@@ -338,13 +338,15 @@ add Control = Control_R
 " > $HOME/.xmodmap
 
 # Install JOE (Joe's Own Editor) from source
-curl -o /tmp/joe.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/joe-editor/JOE%20sources/joe-4.4/joe-4.4.tar.gz
+APP_NAME=joe
+APP_VERSION=4.4
+curl -o /tmp/${APP_NAME}.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}-editor/JOE%20sources/${APP_NAME}-${APP_VERSION}/${APP_NAME}-${APP_VERSION}.tar.gz
 cd /tmp
-dtrx -n /tmp/joe.tar.gz
-cd /tmp/joe/joe-4.4
+dtrx -n /tmp/${APP_NAME}.tar.gz
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
-rm -rf /tmp/joe*
+rm -rf /tmp/${APP_NAME}*
 
 # Install KeePassXC password manager from source
 curl -o /tmp/keepassxc.tar.xz -J -L https://github.com/keepassxreboot/keepassxc/releases/download/2.1.4/keepassxc-2.1.4-src.tar.xz
