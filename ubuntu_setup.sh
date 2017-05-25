@@ -602,3 +602,34 @@ curl -o /tmp/${APP_NAME}.deb -J -L https://pilotfiber.dl.sourceforge.net/project
 sudo gdebi -n /tmp/${APP_NAME}.deb
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Sorter utility for automatic file organization by type
+APP_NAME=sorter
+APP_VERSION=2.0.1
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	curl -o /tmp/${APP_NAME}.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/file-${APP_NAME}/v${APP_VERSION}/Sorter_${APP_VERSION}_Ubuntu16.04_x64.tar.gz
+	dtrx -n ${APP_NAME}.tar.gz
+	cd /tmp/${APP_NAME}
+	curl -o ./${APP_NAME}.png -J -L https://sourceforge.net/p/file-sorter/code/ci/master/tree/assets/icon.png?format=raw
+	sudo mv ${APP_NAME} /opt
+	sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
+	# Create icon in menus
+	cat > /tmp/${APP_NAME}.desktop << EOF
+	[Desktop Entry]
+	Name=${APP_NAME}
+	Comment=Utility to automatically sort files by type
+	GenericName=${APP_NAME}
+	Exec=/opt/${APP_NAME}/${APP_NAME}
+	Icon=/opt/${APP_NAME}/${APP_NAME}.png
+	Type=Application
+	StartupNotify=true
+	Terminal=false
+	Categories=Utility;
+	Keywords=file_management;
+	EOF
+	sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+	cd $HOME
+	rm -rf /tmp/${APP_NAME}*
+else    # Otherwise use version for 32-bit kernel
+	echo "Sorry...  No 32-bit version of '${APP_NAME}' available."
+fi
