@@ -671,3 +671,29 @@ if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 else    # Otherwise use version for 32-bit kernel
 	echo "Sorry...  No 32-bit version of '${APP_NAME}' available."
 fi
+
+# Install xosview X11 performance meter
+APP_NAME=xosview
+APP_VERSION=2-2.2.1
+curl -o /tmp/${APP_NAME}.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}${APP_VERSION}.tar.gz
+cd /tmp
+dtrx -n ${APP_NAME}.tar.gz
+cd /tmp/${APP_NAME}/${APP_NAME}${APP_VERSION}
+./configure && make && sudo make install
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=xosview2
+Comment=X11 Performance Meter
+GenericName=X11 Performance Meter
+Exec=/usr/local/bin/xosview2
+#Icon=/opt/wp-34s/wp34s-logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;Development
+Keywords=meter;monitor;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+ln -s /usr/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Create link to autostart xosview on startup
+
