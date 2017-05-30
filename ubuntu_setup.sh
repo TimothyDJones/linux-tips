@@ -204,11 +204,13 @@ cd $HOME
 rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Sourceforge
+APP_NAME=copyq
+APP_VERSION=3.0.2
 source /etc/os-release
-curl -o /tmp/copyq.deb -J -L https://ayera.dl.sourceforge.net/project/copyq/copyq-3.0.0/Linux/copyq_3.0.0_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/copyq.deb
-ln -s /usr/local/share/applications/copyq.desktop $HOME/.config/autostart/  # Configure CopyQ to autostart on system launch
-rm -f /tmp/copyq.deb
+curl -o /tmp/${APP_NAME}.deb -J -L https://ayera.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-${APP_VERSION}/Linux/${APP_NAME}_${APP_VERSION}_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/${APP_NAME}.deb
+sudo ln -s /usr/local/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Configure CopyQ to autostart on system launch
+rm -f /tmp/${APP_NAME}*
 
 # Install Steel Bank Common Lisp (SBLC) from Sourceforge
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
@@ -592,6 +594,42 @@ dtrx -n ${APP_NAME}.tgz
 sudo mv ${APP_NAME} /opt
 # sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
 /opt/${APP_NAME}/${APP_NAME} &
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install PhpWiki
+# Reference:  https://hostpresto.com/community/tutorials/install-and-configure-phpwiki-on-ubuntu-16-04/
+APP_NAME=phpwiki
+APP_VERSION=1.5.5
+DB_NAME=phpwikidb
+DB_USER=phpwiki
+DB_PASSWORD=phpwiki
+curl -o /tmp/${APP_NAME}.zip -J -L https://versaweb.dl.sourceforge.net/project/${APP_NAME}/PhpWiki%201.5%20%28current%29/${APP_NAME}-${APP_VERSION}.zip
+cd /tmp
+dtrx -n ${APP_NAME}.zip
+cd ${APP_NAME}
+mv ${APP_NAME}-${APP_VERSION} ${APP_NAME}
+sudo mv ${APP_NAME} /var/www/html
+sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
+# sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+# Create configuration file for PhpWiki
+cat > ./config.ini << EOF
+WIKI_NAME = phpWiki
+ADMIN_USER = admin
+ADMIN_PASSWD = admin
+ENCRYPTED_PASSWD = false
+ENABLE_REVERSE_DNS = true
+ZIPDUMP_AUTH = false
+ENABLE_RAW_HTML = true
+ENABLE_RAW_HTML_LOCKEDONLY = true
+
+
+EOF
+xdg-open http://localhost/${APP_NAME}/setup &
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
