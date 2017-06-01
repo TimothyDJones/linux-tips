@@ -716,7 +716,7 @@ EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 ln -s /usr/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Create link to autostart xosview on startup
 
-# Install xosview X11 performance meter
+# Install File Rally MRU list utility for all folders
 APP_NAME=FileRally
 APP_VERSION=v1.3
 curl -o /tmp/${APP_NAME,,}.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME,,}/${APP_NAME}.${APP_VERSION}.tar.gz
