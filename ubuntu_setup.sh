@@ -118,6 +118,25 @@ cd $HOME
 rm -rf $HOME/Downloads/lilyterm*
 ln -s /usr/local/share/applications/lilyterm.desktop $HOME/.config/autostart/
 
+# Install Google Go language
+APP_NAME=go
+APP_VERSION=1.8.3
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=386
+fi
+curl -o /tmp/${APP_NAME}.tar.gz -J -L https://storage.googleapis.com/golang/${APP_NAME}${APP_VERSION}.linux-${ARCH_TYPE}.tar.gz
+sudo tar -C /usr/local -xzf /tmp/${APP_NAME}.tar.gz
+# Add Go application to $PATH and $GOPATH env variable
+echo 'export PATH="$PATH:/usr/local/go/bin"' >> $HOME/.bashrc
+echo 'export GOPATH=$HOME/projects/go' >> $HOME/.bashrc
+echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> $HOME/.bashrc
+source $HOME/.bashrc
+mkdir -p $HOME/projects/go
+rm -rf /tmp/go*
+cd $HOME
+
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
 cd /var/tmp
