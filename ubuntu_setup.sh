@@ -716,3 +716,28 @@ EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 ln -s /usr/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Create link to autostart xosview on startup
 
+# Install xosview X11 performance meter
+APP_NAME=FileRally
+APP_VERSION=v1.3
+curl -o /tmp/${APP_NAME,,}.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME,,}/${APP_NAME}.${APP_VERSION}.tar.gz
+cd /tmp
+dtrx -n ${APP_NAME,,}.tar.gz
+sudo mv ${APP_NAME,,} /opt
+# Create icon in menus
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=MRU list of all folders
+GenericName=MRU list of all folders
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar
+Icon=/opt/${APP_NAME,,}/${APP_NAME}Icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;Development
+Keywords=mru;monitor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+ln -s /usr/share/applications/${APP_NAME,,}.desktop $HOME/.config/autostart/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
