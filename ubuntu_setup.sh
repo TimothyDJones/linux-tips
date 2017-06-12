@@ -149,10 +149,12 @@ cd $HOME
 
 # Install Stacer Linux monitoring tool
 # Must download specific version, because unable to get 'latest' from Sourceforge to work.
-cd $HOME/Downloads
-curl -o stacer.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/stacer/v1.0.6/Stacer_1.0.6_${KERNEL_TYPE}.deb
-sudo gdebi -n stacer.deb   # '-n' is non-interactive mode for gdebi
-rm -f stacer.deb
+APP_NAME=stacer
+APP_VERSION=1.0.7
+cd /tmp
+curl -o /tmp/${APP_NAME}.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.deb
+sudo gdebi -n ${APP_NAME}.deb   # '-n' is non-interactive mode for gdebi
+rm -f ${APP_NAME}.deb
 cd $HOME
 
 # Install DBeaver Java database utility
@@ -741,3 +743,9 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 ln -s /usr/share/applications/${APP_NAME,,}.desktop $HOME/.config/autostart/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Madedit-Mod text editor from Sourceforge
+APP_NAME=madedit-mod
+APP_VERSION=0.4.8
+source /etc/os-release   # This config file contains Ubuntu version details.
+
