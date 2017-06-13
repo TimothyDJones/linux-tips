@@ -749,3 +749,11 @@ APP_NAME=madedit-mod
 APP_VERSION=0.4.8
 source /etc/os-release   # This config file contains Ubuntu version details.
 
+# Install IT-Edit (Integrated Terminal Editor)
+APP_NAME=it-edit
+APP_VERSION=3.0
+curl -o /tmp/${APP_NAME}.deb -J -L http://www.open-source-projects.net/Downloads/${APP_NAME}-${APP_VERSION}_noarch.deb
+cd /tmp
+sudo gdebi -n /tmp/${APP_NAME}.deb
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
