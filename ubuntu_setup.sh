@@ -137,6 +137,38 @@ mkdir -p $HOME/projects/go
 rm -rf /tmp/go*
 cd $HOME
 
+# Install Lite IDE for Go language development
+APP_NAME=liteide
+APP_VERSION=x32-2
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux32
+fi
+curl -o /tmp/${APP_NAME}.tar.bz2 -J -L https://superb-dca2.dl.sourceforge.net/project/${APP_NAME}/X32/${APP_NAME}${APP_VERSION}.${ARCH_TYPE}-qt4.tar.bz2
+curl -o /tmp/${APP_NAME}-system.tar.bz2 -J -L https://superb-dca2.dl.sourceforge.net/project/${APP_NAME}/X32/${APP_NAME}${APP_VERSION}.${ARCH_TYPE}-qt4-system.tar.bz2
+cd /tmp
+dtrx -n ${APP_NAME}.tar.bz2
+sudo mv ${APP_NAME} /opt
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=LiteIDE
+Comment=IDE for editing and building projects written in the Go programming language
+GenericName=LiteIDE
+Exec=/opt/${APP_NAME}/bin/${APP_NAME}
+Icon=/opt/${APP_NAME}/share/${APP_NAME}/welcome/images/liteide128.xpm
+Type=Application
+StartupNotify=false
+Terminal=false
+Categories=Development;
+Keywords=golang;go;ide;programming;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME}/bin/${APP_NAME} /usr/local/bin/${APP_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
 cd /var/tmp
