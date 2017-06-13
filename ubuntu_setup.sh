@@ -784,8 +784,41 @@ source /etc/os-release   # This config file contains Ubuntu version details.
 # Install IT-Edit (Integrated Terminal Editor)
 APP_NAME=it-edit
 APP_VERSION=3.0
+# Enable GNOME 3 PPAs to get latest versions of dependent packages: 
+sudo add-apt-repository -y ppa:gnome3-team/gnome3-staging
+sudo add-apt-repository -y ppa:gnome3-team/gnome3
+sudo apt-get update && sudo apt-get upgrade -y
 curl -o /tmp/${APP_NAME}.deb -J -L http://www.open-source-projects.net/Downloads/${APP_NAME}-${APP_VERSION}_noarch.deb
 cd /tmp
 sudo gdebi -n /tmp/${APP_NAME}.deb
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Chirp Twitter client (64-bit ONLY)
+APP_NAME=chirp
+curl -o /tmp/${APP_NAME}.zip -J -L https://file-fevwnujbqw.now.sh/Chirp-linux-x64.zip
+cd /tmp
+dtrx -n ${APP_NAME}.zip
+cd /tmp/${APP_NAME}
+mv Chirp-linux-x64 ${APP_NAME}
+sudo mv ${APP_NAME} /opt
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Chirp
+Comment=Twitter client
+GenericName=Twitter client
+Exec=/opt/${APP_NAME}/Chirp
+Icon=/opt/${APP_NAME}/resources/app/icon/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Network;
+Keywords=twitter;messenger;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME}/Chirp /usr/local/bin/chirp
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+
