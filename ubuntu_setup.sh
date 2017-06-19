@@ -515,7 +515,7 @@ rm -rf /tmp/wcd*
 
 # Install BeeBEEP LAN messenger from Sourceforge
 APP_NAME=beebeep
-APP_VERSION=3.0.9
+APP_VERSION=4.0.0
 DL_BASE_FILE_NAME=beebeep-${APP_VERSION}-qt4-${KERNEL_VERSION}
 sudo apt-get install -y qt4-default libqt4-xml libxcb-screensaver0 libavahi-compat-libdnssd1 libphonon4 libhunspell-dev phonon-backend-gstreamer
 curl -o /tmp/${APP_NAME}.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/beebeep/Linux/${DL_FILE_NAME}.tar.gz
