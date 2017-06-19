@@ -829,3 +829,9 @@ cd /tmp
 sudo gdebi -n ${APP_NAME}.deb
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install QuiteRSS RSS reader from PPA
+APP_NAME=quiterss
+sudo apt-add-repository -y ppa:quiterss/quiterss
+sudo apt-get update
+sudo apt-get install -y quiterss
