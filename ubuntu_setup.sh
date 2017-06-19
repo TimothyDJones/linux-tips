@@ -835,3 +835,12 @@ APP_NAME=quiterss
 sudo apt-add-repository -y ppa:quiterss/quiterss
 sudo apt-get update
 sudo apt-get install -y quiterss
+
+# Install Makagiga PIM
+APP_NAME=makagiga
+APP_VERSION=5.8.2
+curl -o /tmp/${APP_NAME}.deb -J -L https://gigenet.dl.sourceforge.net/project/${APP_NAME}/Makagiga%205.x/${APP_VERSION}/${APP_NAME}_${APP_VERSION}-1_all.deb
+cd /tmp
+sudo gdebi -n ${APP_NAME}.deb
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
