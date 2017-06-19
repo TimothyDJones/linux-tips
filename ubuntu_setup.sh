@@ -821,4 +821,11 @@ sudo ln -s /opt/${APP_NAME}/Chirp /usr/local/bin/chirp
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-
+# Install Peg Solitaire game
+APP_NAME=peg-solitaire
+APP_VERSION=2.2-1
+curl -o /tmp/${APP_NAME}.deb -J -L https://pilotfiber.dl.sourceforge.net/project/peg-solitaire/version%202.2%20%28June%2C%202017%29/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.deb
+cd /tmp
+sudo gdebi -n ${APP_NAME}.deb
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
