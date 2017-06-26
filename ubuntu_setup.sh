@@ -844,3 +844,11 @@ cd /tmp
 sudo gdebi -n ${APP_NAME}.deb
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Eternal Terminal SSH client via PPA
+# Install dependencies
+sudo apt-get install -y libboost-dev libsodium-dev libncurses5-dev libprotobuf-dev protobuf-compiler cmake libgoogle-glog-dev libgflags-dev unzip wget
+sudo apt-add-repository -y ppa:jgmath2000/et
+sudo apt-get update
+sudo apt-get install -y et
+
