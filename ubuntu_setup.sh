@@ -852,3 +852,11 @@ sudo apt-add-repository -y ppa:jgmath2000/et
 sudo apt-get update
 sudo apt-get install -y et
 
+# Install Gantt Project project management tool
+APP_NAME=ganttproject
+APP_VERSION=2.8.5-r2179-1
+curl -o /tmp/${APP_NAME}.deb -J -L https://dl.ganttproject.biz/${APP_NAME}-2.8.5/${APP_NAME}_${APP_VERSION}_all.deb
+cd /tmp
+sudo gdebi -n ${APP_NAME}.deb
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
