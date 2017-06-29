@@ -860,3 +860,21 @@ cd /tmp
 sudo gdebi -n ${APP_NAME}.deb
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install HTTP Test Tool
+APP_NAME=httest
+APP_VERSION_MAJOR=2.4
+APP_VERSION_MINOR=20
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/project/htt/htt${APP_VERSION_MAJOR}/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_EXT}
+
+# Install ubunsys installer/tweaker
+APP_NAME=ubunsys
+APP_VERSION=2017.06.15
+APP_EXT=deb
+source /etc/os-release   # This config file contains Ubuntu version details.
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_${VERSION_ID}.${APP_EXT}
+cd /tmp
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
