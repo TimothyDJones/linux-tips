@@ -878,3 +878,8 @@ cd /tmp
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Jarun utilities from PPA: googler, Buku, and nnn
+sudo add-apt-repository -y ppa:twodopeshaggy/jarun
+sudo apt-get update
+sudo apt-get install -y buku nnn googler
