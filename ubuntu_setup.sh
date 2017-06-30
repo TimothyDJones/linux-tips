@@ -883,3 +883,15 @@ rm -rf /tmp/${APP_NAME}*
 sudo add-apt-repository -y ppa:twodopeshaggy/jarun
 sudo apt-get update
 sudo apt-get install -y buku nnn googler
+
+# Install bvi plus hex editor from source
+APP_NAME=bviplus
+APP_VERSION=1.0
+APP_EXT=tgz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://managedway.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
