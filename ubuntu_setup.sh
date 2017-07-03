@@ -926,3 +926,21 @@ make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
+# Install Bash Snippets (tiny shell scripts for various functions, such as
+# weather, stock prices, etc.)
+APP_NAME=Bash-Snippets
+APP_VERSION=1.7.0
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://codeload.github.com/alexanderepstein/${APP_NAME,,}/${APP_EXT}/v${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+sudo ./install.sh currency
+sudo ./install.sh stocks
+sudo ./install.sh weather
+sudo ./install.sh crypt
+sudo ./install.sh geo
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+
