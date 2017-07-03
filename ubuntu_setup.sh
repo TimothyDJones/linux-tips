@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Determine if this is 32-bit or 64-bit version of kernel.
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
