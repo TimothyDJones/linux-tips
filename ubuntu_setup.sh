@@ -909,3 +909,20 @@ sudo gdebi -n libpasastro.deb
 sudo gdebi -n ${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/libpasastro.* /tmp/${APP_NAME}*
+
+# Install Qt Bitcoin Trader from source
+APP_NAME=QtBitcoinTrader
+APP_VERSION=1.40.00
+APP_EXT=tar.gz
+# Install package dependencies
+sudo apt-get install -y g++ libssl-dev libglu1-mesa-dev qt5-qmake qtscript5-dev qtmultimedia5-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://svwh.dl.sourceforge.net/project/bitcointrader/SRC/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+export QT_SELECT=5		# Set Qt version 5 as active
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}/src
+qmake QtBitcoinTrader_Desktop.pro
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
