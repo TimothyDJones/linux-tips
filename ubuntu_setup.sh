@@ -943,4 +943,34 @@ sudo ./install.sh geo
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-
+# Install Tagstoo file tag manager
+APP_NAME=Tagstoo
+APP_VERSION=1.5.1
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux32
+fi
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/project/${APP_NAME,,}/${APP_NAME}%20${APP_VERSION}%20${ARCH_TYPE}/${APP_NAME}_${APP_VERSION}_${ARCH_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+sudo mv ${APP_NAME} /opt
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Tagstoo
+Comment=File tag manager
+GenericName=Tagstoo
+Exec=/opt/${APP_NAME}/${APP_NAME}
+#Icon=/opt/${APP_NAME}/share/${APP_NAME}/welcome/images/liteide128.xpm
+Type=Application
+StartupNotify=false
+Terminal=false
+Categories=Accessories;System;
+Keywords=tag;tagging;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
