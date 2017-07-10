@@ -974,3 +974,16 @@ sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Shiki shell-based Wikipedia reader
+APP_NAME=shiki
+APP_VERSION=1.1
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/jorvi/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+sudo mv ${APP_NAME}.sh /usr/local/bin
+echo 'source "/usr/local/bin/${APP_NAME}.sh"' >> $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
