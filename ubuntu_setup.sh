@@ -1007,3 +1007,39 @@ cd /tmp/${APP_NAME}/${APP_NAME}-gtk-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install PuTTY SSH client from source.
+# http://www.chiark.greenend.org.uk/~sgtatham/putty/
+APP_NAME=putty
+APP_VERSION=0.70
+APP_EXT=tar.gz
+# Install dependencies
+sudo apt-get install -y libxml2-dev libgtk-3-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://the.earth.li/~sgtatham/${APP_NAME}/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+# Build and copy PNG icons
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}/icons
+make
+sudo cp *-16*.png /usr/local/share/icons/hicolor/16x16/apps
+sudo cp *-32*.png /usr/local/share/icons/hicolor/32x32/apps
+sudo cp *-48*.png /usr/local/share/icons/hicolor/48x48/apps
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=PuTTY
+Comment=Popular SSH client
+GenericName=PuTTY
+Exec=putty
+Icon=/usr/local/share/icons/hicolor/32x32/apps/putty-32.png
+Type=Application
+StartupNotify=false
+Terminal=false
+Categories=Accessories;System;
+Keywords=ssh;terminal;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
