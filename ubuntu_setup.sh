@@ -987,3 +987,23 @@ sudo mv ${APP_NAME}.sh /usr/local/bin
 echo 'source "/usr/local/bin/${APP_NAME}.sh"' >> $HOME/.bashrc
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Qalculate desktop calculator application from source
+# http://qalculate.github.io/
+APP_NAME=qalculate
+APP_VERSION=0.9.12
+APP_EXT=tar.gz
+# Install dependencies
+sudo apt-get install -y libcln-dev gnuplot-x11 gvfs libxml2-dev libgtk-3-dev
+curl -o /tmp/lib${APP_NAME}.${APP_EXT} -J -L http://cfhcable.dl.sourceforge.net/project/${APP_NAME}/lib${APP_NAME}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L http://cfhcable.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-gtk-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n lib${APP_NAME}.${APP_EXT}
+cd /tmp/lib${APP_NAME}/lib${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-gtk-${APP_VERSION}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
