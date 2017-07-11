@@ -290,16 +290,17 @@ cd $HOME
 rm -rf /tmp/otter-browser*
 
 # Install MyNotes simple "sticky notes" tool
-sudo apt-get install -y python3-tk tk-tktray  python3-pip python3-setuptools python3-wheel  # python3-ewmh
-sudo -H pip3 install --upgrade pip  # Upgrade to latest version of pip for Python 3
-sudo -H pip3 install ewmh
-curl -o /tmp/mynotes.tar.gz -J -L https://iweb.dl.sourceforge.net/project/my-notes/1.0.0/mynotes-1.0.0.tar.gz
-cd /tmp
-dtrx -n /tmp/mynotes.tar.gz
-cd /tmp/mynotes/mynotes-1.0.0
-sudo -H python3 setup.py install
+APP_NAME=mynotes
+APP_VERSION=2.1.0
+APP_EXT=deb
+# Install python-ewmh package from Zesty Zebra distribution.
+curl -o /tmp/python3-ewmh_0.1.5-1_all.deb -J -L http://ftp.osuosl.org/pub/ubuntu/pool/universe/p/python-ewmh/python3-ewmh_0.1.5-1_all.deb
+sudo gdebi -n /tmp/python3-ewmh_0.1.5-1_all.deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://phoenixnap.dl.sourceforge.net/project/my-notes/${APP_VERSION}/${APP_NAME}_${APP_VERSION}-1_all.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/mynotes*
+rm -rf /tmp/python3-ewmh*
+rm -rf /tmp/${APP_NAME}*
 
 # Install Plank dock, if not installed.
 PLANK_EXE=/usr/bin/plank
