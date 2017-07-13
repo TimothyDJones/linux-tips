@@ -93,6 +93,13 @@ sudo chown -R www-data:www-data /var/www/html/phpmyadmin
 xdg-open http://localhost/phpmyadmin/setup &
 cd $HOME
 
+# Install apt-fast script for speeding up apt-get by downloading
+# packages in parallel.
+# https://github.com/ilikenwf/apt-fast
+sudo add-apt-repository -y ppa:saiarcot895/myppa
+sudo apt-get update
+sudo apt-get -y install apt-fast
+
 # Install bash-it script
 cd $HOME
 wget -O /tmp/bash-it.zip https://github.com/Bash-it/bash-it/archive/master.zip
@@ -1044,3 +1051,6 @@ EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Calibre ebook reader and converter
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
