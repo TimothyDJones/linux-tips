@@ -1087,3 +1087,13 @@ cd /tmp
 sudo gdebi -n ${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Qiks LAN messenger from Debian package
+APP_NAME=qiks
+APP_VERSION=1.0
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L http://cfhcable.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+sudo gdebi -n ${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
