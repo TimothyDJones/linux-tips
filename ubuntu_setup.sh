@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Determine if this is 32-bit or 64-bit version of kernel.
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
@@ -93,6 +93,13 @@ sudo chown -R www-data:www-data /var/www/html/phpmyadmin
 xdg-open http://localhost/phpmyadmin/setup &
 cd $HOME
 
+# Install apt-fast script for speeding up apt-get by downloading
+# packages in parallel.
+# https://github.com/ilikenwf/apt-fast
+sudo add-apt-repository -y ppa:saiarcot895/myppa
+sudo apt-get update
+sudo apt-get -y install apt-fast
+
 # Install bash-it script
 cd $HOME
 wget -O /tmp/bash-it.zip https://github.com/Bash-it/bash-it/archive/master.zip
@@ -118,10 +125,61 @@ cd $HOME
 rm -rf $HOME/Downloads/lilyterm*
 ln -s /usr/local/share/applications/lilyterm.desktop $HOME/.config/autostart/
 
+# Install Google Go language
+APP_NAME=go
+APP_VERSION=1.8.3
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=386
+fi
+curl -o /tmp/${APP_NAME}.tar.gz -J -L https://storage.googleapis.com/golang/${APP_NAME}${APP_VERSION}.linux-${ARCH_TYPE}.tar.gz
+sudo tar -C /usr/local -xzf /tmp/${APP_NAME}.tar.gz
+# Add Go application to $PATH and $GOPATH env variable
+echo 'export PATH="$PATH:/usr/local/go/bin"' >> $HOME/.bashrc
+echo 'export GOPATH=$HOME/projects/go' >> $HOME/.bashrc
+echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> $HOME/.bashrc
+source $HOME/.bashrc
+mkdir -p $HOME/projects/go
+rm -rf /tmp/go*
+cd $HOME
+
+# Install Lite IDE for Go language development
+APP_NAME=liteide
+APP_VERSION=x32.1
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux32
+fi
+curl -o /tmp/${APP_NAME}.tar.bz2 -J -L https://superb-dca2.dl.sourceforge.net/project/${APP_NAME}/X32.1/${APP_NAME}${APP_VERSION}.${ARCH_TYPE}-qt4.tar.bz2
+curl -o /tmp/${APP_NAME}-system.tar.bz2 -J -L https://superb-dca2.dl.sourceforge.net/project/${APP_NAME}/X32.1/${APP_NAME}${APP_VERSION}.${ARCH_TYPE}-qt4-system.tar.bz2
+cd /tmp
+dtrx -n ${APP_NAME}.tar.bz2
+sudo mv ${APP_NAME} /opt
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=LiteIDE
+Comment=IDE for editing and building projects written in the Go programming language
+GenericName=LiteIDE
+Exec=/opt/${APP_NAME}/bin/${APP_NAME}
+Icon=/opt/${APP_NAME}/share/${APP_NAME}/welcome/images/liteide128.xpm
+Type=Application
+StartupNotify=false
+Terminal=false
+Categories=Development;
+Keywords=golang;go;ide;programming;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME}/bin/${APP_NAME} /usr/local/bin/${APP_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
 cd /var/tmp
-curl -o firejail.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://superb-sea2.dl.sourceforge.net/project/firejail/firejail/firejail_0.9.44.8_1_${KERNEL_TYPE}.deb
+curl -o firejail.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://superb-sea2.dl.sourceforge.net/project/firejail/firejail/firejail_0.9.48_1_${KERNEL_TYPE}.deb
 curl -o firetools.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://cytranet.dl.sourceforge.net/project/firejail/firetools/firetools_0.9.46_1_${KERNEL_TYPE}.deb
 sudo gdebi -n firejail.deb   # '-n' is non-interactive mode for gdebi
 sudo gdebi -n firetools.deb   # '-n' is non-interactive mode for gdebi
@@ -130,10 +188,12 @@ cd $HOME
 
 # Install Stacer Linux monitoring tool
 # Must download specific version, because unable to get 'latest' from Sourceforge to work.
-cd $HOME/Downloads
-curl -o stacer.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/stacer/v1.0.6/Stacer_1.0.6_${KERNEL_TYPE}.deb
-sudo gdebi -n stacer.deb   # '-n' is non-interactive mode for gdebi
-rm -f stacer.deb
+APP_NAME=stacer
+APP_VERSION=1.0.7
+cd /tmp
+curl -o /tmp/${APP_NAME}.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.deb
+sudo gdebi -n ${APP_NAME}.deb   # '-n' is non-interactive mode for gdebi
+rm -f ${APP_NAME}.deb
 cd $HOME
 
 # Install DBeaver Java database utility
@@ -171,7 +231,9 @@ sudo gdebi -n /tmp/vivaldi.deb
 rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
-curl -o /tmp/cudatext.deb -J -L https://cytranet.dl.sourceforge.net/project/cudatext/release/Linux/cudatext_1.8.1.0-1_gtk2_amd64.deb
+APP_NAME=cudatext
+APP_VERSION=1.11.0.0-1
+curl -o /tmp/${APP_NAME}.deb -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_amd64.deb
 sudo gdebi -n /tmp/cudatext.deb
 rm -f /tmp/cudatext.deb
 
@@ -202,11 +264,13 @@ cd $HOME
 rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Sourceforge
+APP_NAME=copyq
+APP_VERSION=3.0.2
 source /etc/os-release
-curl -o /tmp/copyq.deb -J -L https://ayera.dl.sourceforge.net/project/copyq/copyq-3.0.0/Linux/copyq_3.0.0_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/copyq.deb
-ln -s /usr/local/share/applications/copyq.desktop $HOME/.config/autostart/  # Configure CopyQ to autostart on system launch
-rm -f /tmp/copyq.deb
+curl -o /tmp/${APP_NAME}.deb -J -L https://ayera.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-${APP_VERSION}/Linux/${APP_NAME}_${APP_VERSION}_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/${APP_NAME}.deb
+sudo ln -s /usr/local/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Configure CopyQ to autostart on system launch
+rm -f /tmp/${APP_NAME}*
 
 # Install Steel Bank Common Lisp (SBLC) from Sourceforge
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
@@ -220,27 +284,30 @@ cd $HOME
 rm -rf /tmp/sbcl*
 
 # Install Otter Browser from Sourceforge (from source)
+APP_NAME=otter-browser
+APP_VERSION=175
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev   # Qt5 development packages needed to build from source
-curl -o /tmp/otter-browser.tar.gz -J -L https://iweb.dl.sourceforge.net/project/otter-browser/otter-browser-weekly172/otter-browser-0.9.91-dev172.tar.bz2
+curl -o /tmp/${APP_NAME}.tar.gz -J -L https://iweb.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-weekly${APP_VERSION}/otter-browser-0.9.91-dev${APP_VERSION}.tar.bz2
 cd /tmp
-dtrx -n /tmp/otter-browser.tar.gz
-cd /tmp/otter-browser/otter-browser-0.9.91-dev172
+dtrx -n /tmp/${APP_NAME}.tar.gz
+cd /tmp/otter-browser/${APP_NAME}-0.9.91-dev${APP_VERSION}
 mkdir build && cd build
 cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/otter-browser*
 
 # Install MyNotes simple "sticky notes" tool
-sudo apt-get install -y python3-tk tk-tktray  python3-pip python3-setuptools python3-wheel  # python3-ewmh
-sudo -H pip3 install --upgrade pip  # Upgrade to latest version of pip for Python 3
-sudo -H pip3 install ewmh
-curl -o /tmp/mynotes.tar.gz -J -L https://iweb.dl.sourceforge.net/project/my-notes/1.0.0/mynotes-1.0.0.tar.gz
-cd /tmp
-dtrx -n /tmp/mynotes.tar.gz
-cd /tmp/mynotes/mynotes-1.0.0
-sudo -H python3 setup.py install
+APP_NAME=mynotes
+APP_VERSION=2.1.0
+APP_EXT=deb
+# Install python-ewmh package from Zesty Zebra distribution.
+curl -o /tmp/python3-ewmh_0.1.5-1_all.deb -J -L http://ftp.osuosl.org/pub/ubuntu/pool/universe/p/python-ewmh/python3-ewmh_0.1.5-1_all.deb
+sudo gdebi -n /tmp/python3-ewmh_0.1.5-1_all.deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://phoenixnap.dl.sourceforge.net/project/my-notes/${APP_VERSION}/${APP_NAME}_${APP_VERSION}-1_all.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/mynotes*
+rm -rf /tmp/python3-ewmh*
+rm -rf /tmp/${APP_NAME}*
 
 # Install Plank dock, if not installed.
 PLANK_EXE=/usr/bin/plank
@@ -334,13 +401,15 @@ add Control = Control_R
 " > $HOME/.xmodmap
 
 # Install JOE (Joe's Own Editor) from source
-curl -o /tmp/joe.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/joe-editor/JOE%20sources/joe-4.4/joe-4.4.tar.gz
+APP_NAME=joe
+APP_VERSION=4.4
+curl -o /tmp/${APP_NAME}.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}-editor/JOE%20sources/${APP_NAME}-${APP_VERSION}/${APP_NAME}-${APP_VERSION}.tar.gz
 cd /tmp
-dtrx -n /tmp/joe.tar.gz
-cd /tmp/joe/joe-4.4
+dtrx -n /tmp/${APP_NAME}.tar.gz
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
-rm -rf /tmp/joe*
+rm -rf /tmp/${APP_NAME}*
 
 # Install KeePassXC password manager from source
 curl -o /tmp/keepassxc.tar.xz -J -L https://github.com/keepassxreboot/keepassxc/releases/download/2.1.4/keepassxc-2.1.4-src.tar.xz
@@ -454,7 +523,7 @@ rm -rf /tmp/wcd*
 
 # Install BeeBEEP LAN messenger from Sourceforge
 APP_NAME=beebeep
-APP_VERSION=3.0.9
+APP_VERSION=4.0.0
 DL_BASE_FILE_NAME=beebeep-${APP_VERSION}-qt4-${KERNEL_VERSION}
 sudo apt-get install -y qt4-default libqt4-xml libxcb-screensaver0 libavahi-compat-libdnssd1 libphonon4 libhunspell-dev phonon-backend-gstreamer
 curl -o /tmp/${APP_NAME}.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/beebeep/Linux/${DL_FILE_NAME}.tar.gz
@@ -506,6 +575,495 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/pr
 cd /tmp
 dtrx -n ${APP_NAME}.${APP_EXT}
 cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+make && make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+
+# Install Leanote Desktop app
+APP_NAME=leanote-desktop
+APP_VERSION=2.5
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+curl -o /tmp/${APP_NAME}.zip -J -L https://superb-dca2.dl.sourceforge.net/project/${APP_NAME}-app/${APP_VERSION}/${APP_NAME}-linux-${ARCH_TYPE}-v${APP_VERSION}.zip
+cd /tmp
+dtrx -n ${APP_NAME}.zip
+# cd /tmp/${APP_NAME}/${APP_NAME}-linux-${ARCH_TYPE}-v${APP_VERSION}
+sudo mv ${APP_NAME} /opt
+sudo ln -s /opt/${APP_NAME}/Leanote /usr/local/bin/leanote
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Leanote
+Comment=Full-featured PIM built with Electron/Atom
+GenericName=PIM
+Exec=/opt/${APP_NAME}/Leanote
+Icon=/opt/${APP_NAME}/leanote.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;
+Keywords=pim;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+
+# Install QXmlEdit from source via Sourceforge
+APP_NAME=qxmledit
+APP_VERSION=0.9.7
+curl -o /tmp/${APP_NAME}.tgz -J -L https://superb-sea2.dl.sourceforge.net/project/qxmledit/files/QXmlEdit-${APP_VERSION}/${APP_NAME}-${APP_VERSION}-src.tgz
+cd /tmp
+dtrx -n ${APP_NAME}.tgz
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}/
+qmake && make && sudo make install
+# Create icon in menus
+cat > /tmp/qxmledit.desktop << EOF
+[Desktop Entry]
+Name=QXmlEdit
+Comment=XML Viewer and Editor
+GenericName=XML Editor
+Exec=/opt/wp-34s/WP-34s
+Icon=/opt/wp-34s/wp34s-logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;Development
+Keywords=calculator;rpn;
+EOF
+sudo mv /tmp/wp34s.desktop /usr/share/applications/
+
+# Install Idiomind flash card utility
+APP_NAME=idiomind
+APP_VERSION=0.2.9
+curl -o /tmp/${APP_NAME}.deb -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/${APP_VERSION}/${APP_NAME}_${APP_VERSION}_all.deb
+sudo gdebi -n /tmp/${APP_NAME}.deb   # '-n' is non-interactive mode for gdebi
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Jailer Java database utility
+APP_NAME=jailer
+APP_VERSION=7.0.1
+curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
+cd /tmp
+dtrx -n ${APP_NAME}.zip
+sudo mv ${APP_NAME} /opt
+# sudo ln -s /opt/${APP_NAME}/${APP_NAME}.sh /usr/local/bin/${APP_NAME}
+echo "export PATH=$PATH:/opt/${APP_NAME}" >> $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install ZinjaI C++ IDE
+APP_NAME=zinjai
+APP_VERSION=20161214
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=l64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=l32
+fi
+sudo apt-get install -y gdb
+curl -o /tmp/${APP_NAME}.tgz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}-${ARCH_TYPE}-${APP_VERSION}.tgz
+dtrx -n ${APP_NAME}.tgz
+sudo mv ${APP_NAME} /opt
+# sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
+/opt/${APP_NAME}/${APP_NAME} &
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install PhpWiki
+# Reference:  https://hostpresto.com/community/tutorials/install-and-configure-phpwiki-on-ubuntu-16-04/
+APP_NAME=phpwiki
+APP_VERSION=1.5.5
+DB_NAME=phpwikidb
+DB_USER=phpwiki
+DB_PASSWORD=phpwiki
+curl -o /tmp/${APP_NAME}.zip -J -L https://versaweb.dl.sourceforge.net/project/${APP_NAME}/PhpWiki%201.5%20%28current%29/${APP_NAME}-${APP_VERSION}.zip
+cd /tmp
+dtrx -n ${APP_NAME}.zip
+cd ${APP_NAME}
+mv ${APP_NAME}-${APP_VERSION} ${APP_NAME}
+sudo mv ${APP_NAME} /var/www/html
+sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
+# sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+# Create configuration file for PhpWiki
+cat > ./config.ini << EOF
+WIKI_NAME = phpWiki
+ADMIN_USER = admin
+ADMIN_PASSWD = admin
+ENCRYPTED_PASSWD = false
+ENABLE_REVERSE_DNS = true
+ZIPDUMP_AUTH = false
+ENABLE_RAW_HTML = true
+ENABLE_RAW_HTML_LOCKEDONLY = true
+
+
+EOF
+xdg-open http://localhost/${APP_NAME}/setup &
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install PWman shell-based password manager
+APP_NAME=pwman
+APP_VERSION=0.4.5
+curl -o /tmp/${APP_NAME}.deb -J -L https://pilotfiber.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}_${APP_VERSION}-1_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/${APP_NAME}.deb
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Sorter utility for automatic file organization by type
+APP_NAME=sorter
+APP_VERSION=2.0.1
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	curl -o /tmp/${APP_NAME}.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/file-${APP_NAME}/v${APP_VERSION}/Sorter_${APP_VERSION}_Ubuntu16.04_x64.tar.gz
+	dtrx -n ${APP_NAME}.tar.gz
+	cd /tmp/${APP_NAME}
+	curl -o ./${APP_NAME}.png -J -L https://sourceforge.net/p/file-sorter/code/ci/master/tree/assets/icon.png?format=raw
+	sudo mv ${APP_NAME} /opt
+	sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
+	# Create icon in menus
+	cat > /tmp/${APP_NAME}.desktop << EOF
+	[Desktop Entry]
+	Name=${APP_NAME}
+	Comment=Utility to automatically sort files by type
+	GenericName=${APP_NAME}
+	Exec=/opt/${APP_NAME}/${APP_NAME}
+	Icon=/opt/${APP_NAME}/${APP_NAME}.png
+	Type=Application
+	StartupNotify=true
+	Terminal=false
+	Categories=Utility;
+	Keywords=file_management;
+	EOF
+	sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+	cd $HOME
+	rm -rf /tmp/${APP_NAME}*
+else    # Otherwise use version for 32-bit kernel
+	echo "Sorry...  No 32-bit version of '${APP_NAME}' available."
+fi
+
+# Install xosview X11 performance meter
+APP_NAME=xosview
+APP_VERSION=2-2.2.1
+curl -o /tmp/${APP_NAME}.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}${APP_VERSION}.tar.gz
+cd /tmp
+dtrx -n ${APP_NAME}.tar.gz
+cd /tmp/${APP_NAME}/${APP_NAME}${APP_VERSION}
+./configure && make && sudo make install
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=xosview2
+Comment=X11 Performance Meter
+GenericName=X11 Performance Meter
+Exec=/usr/local/bin/xosview2
+#Icon=/opt/wp-34s/wp34s-logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;Development
+Keywords=meter;monitor;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+ln -s /usr/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Create link to autostart xosview on startup
+
+# Install File Rally MRU list utility for all folders
+APP_NAME=FileRally
+APP_VERSION=v1.3
+curl -o /tmp/${APP_NAME,,}.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME,,}/${APP_NAME}.${APP_VERSION}.tar.gz
+cd /tmp
+dtrx -n ${APP_NAME,,}.tar.gz
+sudo mv ${APP_NAME,,} /opt
+# Create icon in menus
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=MRU list of all folders
+GenericName=MRU list of all folders
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar
+Icon=/opt/${APP_NAME,,}/${APP_NAME}Icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;Development
+Keywords=mru;monitor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+ln -s /usr/share/applications/${APP_NAME,,}.desktop $HOME/.config/autostart/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Madedit-Mod text editor from Sourceforge
+APP_NAME=madedit-mod
+APP_VERSION=0.4.8
+source /etc/os-release   # This config file contains Ubuntu version details.
+
+# Install IT-Edit (Integrated Terminal Editor)
+APP_NAME=it-edit
+APP_VERSION=3.0
+# Enable GNOME 3 PPAs to get latest versions of dependent packages: 
+sudo add-apt-repository -y ppa:gnome3-team/gnome3-staging
+sudo add-apt-repository -y ppa:gnome3-team/gnome3
+sudo apt-get update && sudo apt-get upgrade -y
+curl -o /tmp/${APP_NAME}.deb -J -L http://www.open-source-projects.net/Downloads/${APP_NAME}-${APP_VERSION}_noarch.deb
+cd /tmp
+sudo gdebi -n /tmp/${APP_NAME}.deb
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Chirp Twitter client (64-bit ONLY)
+APP_NAME=chirp
+curl -o /tmp/${APP_NAME}.zip -J -L https://file-fevwnujbqw.now.sh/Chirp-linux-x64.zip
+cd /tmp
+dtrx -n ${APP_NAME}.zip
+cd /tmp/${APP_NAME}
+mv Chirp-linux-x64 ${APP_NAME}
+sudo mv ${APP_NAME} /opt
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Chirp
+Comment=Twitter client
+GenericName=Twitter client
+Exec=/opt/${APP_NAME}/Chirp
+Icon=/opt/${APP_NAME}/resources/app/icon/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Network;
+Keywords=twitter;messenger;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME}/Chirp /usr/local/bin/chirp
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Peg Solitaire game
+APP_NAME=peg-solitaire
+APP_VERSION=2.2-1
+curl -o /tmp/${APP_NAME}.deb -J -L https://pilotfiber.dl.sourceforge.net/project/peg-solitaire/version%202.2%20%28June%2C%202017%29/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.deb
+cd /tmp
+sudo gdebi -n ${APP_NAME}.deb
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install QuiteRSS RSS reader from PPA
+APP_NAME=quiterss
+sudo apt-add-repository -y ppa:quiterss/quiterss
+sudo apt-get update
+sudo apt-get install -y quiterss
+
+# Install Makagiga PIM
+APP_NAME=makagiga
+APP_VERSION=5.8.2
+curl -o /tmp/${APP_NAME}.deb -J -L https://gigenet.dl.sourceforge.net/project/${APP_NAME}/Makagiga%205.x/${APP_VERSION}/${APP_NAME}_${APP_VERSION}-1_all.deb
+cd /tmp
+sudo gdebi -n ${APP_NAME}.deb
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Eternal Terminal SSH client via PPA
+# Install dependencies
+sudo apt-get install -y libboost-dev libsodium-dev libncurses5-dev libprotobuf-dev protobuf-compiler cmake libgoogle-glog-dev libgflags-dev unzip wget
+sudo apt-add-repository -y ppa:jgmath2000/et
+sudo apt-get update
+sudo apt-get install -y et
+
+# Install Gantt Project project management tool
+APP_NAME=ganttproject
+APP_VERSION=2.8.5-r2179-1
+curl -o /tmp/${APP_NAME}.deb -J -L https://dl.ganttproject.biz/${APP_NAME}-2.8.5/${APP_NAME}_${APP_VERSION}_all.deb
+cd /tmp
+sudo gdebi -n ${APP_NAME}.deb
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install HTTP Test Tool
+APP_NAME=httest
+APP_VERSION_MAJOR=2.4
+APP_VERSION_MINOR=20
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/project/htt/htt${APP_VERSION_MAJOR}/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_EXT}
+
+# Install ubunsys installer/tweaker
+APP_NAME=ubunsys
+APP_VERSION=2017.06.15
+APP_EXT=deb
+source /etc/os-release   # This config file contains Ubuntu version details.
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_${VERSION_ID}.${APP_EXT}
+cd /tmp
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Jarun utilities from PPA: googler, Buku, and nnn
+sudo add-apt-repository -y ppa:twodopeshaggy/jarun
+sudo apt-get update
+sudo apt-get install -y buku nnn googler
+
+# Install bvi plus hex editor from source
+APP_NAME=bviplus
+APP_VERSION=1.0
+APP_EXT=tgz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://managedway.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 make && sudo make install
 cd $HOME
-rm -rf ${APP_NAME}*
+rm -rf /tmp/${APP_NAME}*
+
+# Install Skychart planetarium package from Sourceforge
+APP_NAME=skychart
+APP_VERSION_MAJOR=4.1
+APP_VERSION_MINOR=3607
+APP_EXT=deb
+# libpasastro (Pascal astronomical library) is dependency for Skychart.
+curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-19/libpasastro_1.1-19_${KERNEL_TYPE}.deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/${APP_NAME}/0-beta/2017-06-26/${APP_NAME}_${APP_VERSION_MAJOR}-${APP_VERSION_MINOR}_${KERNEL_TYPE}.deb
+cd /tmp
+sudo gdebi -n libpasastro.deb
+sudo gdebi -n ${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/libpasastro.* /tmp/${APP_NAME}*
+
+# Install Qt Bitcoin Trader from source
+APP_NAME=QtBitcoinTrader
+APP_VERSION=1.40.00
+APP_EXT=tar.gz
+# Install package dependencies
+sudo apt-get install -y g++ libssl-dev libglu1-mesa-dev qt5-qmake qtscript5-dev qtmultimedia5-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://svwh.dl.sourceforge.net/project/bitcointrader/SRC/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+export QT_SELECT=5		# Set Qt version 5 as active
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}/src
+qmake QtBitcoinTrader_Desktop.pro
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Bash Snippets (tiny shell scripts for various functions, such as
+# weather, stock prices, etc.)
+APP_NAME=Bash-Snippets
+APP_VERSION=1.7.0
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://codeload.github.com/alexanderepstein/${APP_NAME,,}/${APP_EXT}/v${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+sudo ./install.sh currency
+sudo ./install.sh stocks
+sudo ./install.sh weather
+sudo ./install.sh crypt
+sudo ./install.sh geo
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Tagstoo file tag manager
+APP_NAME=Tagstoo
+APP_VERSION=1.5.1
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux32
+fi
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/project/${APP_NAME,,}/${APP_NAME}%20${APP_VERSION}%20${ARCH_TYPE}/${APP_NAME}_${APP_VERSION}_${ARCH_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+sudo mv ${APP_NAME} /opt
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Tagstoo
+Comment=File tag manager
+GenericName=Tagstoo
+Exec=/opt/${APP_NAME}/${APP_NAME}
+#Icon=/opt/${APP_NAME}/share/${APP_NAME}/welcome/images/liteide128.xpm
+Type=Application
+StartupNotify=false
+Terminal=false
+Categories=Accessories;System;
+Keywords=tag;tagging;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Shiki shell-based Wikipedia reader
+APP_NAME=shiki
+APP_VERSION=1.1
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/jorvi/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+sudo mv ${APP_NAME}.sh /usr/local/bin
+echo 'source "/usr/local/bin/${APP_NAME}.sh"' >> $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Qalculate desktop calculator application from source
+# http://qalculate.github.io/
+APP_NAME=qalculate
+APP_VERSION=0.9.12
+APP_EXT=tar.gz
+# Install dependencies
+sudo apt-get install -y libcln-dev gnuplot-x11 gvfs libxml2-dev libgtk-3-dev
+curl -o /tmp/lib${APP_NAME}.${APP_EXT} -J -L http://cfhcable.dl.sourceforge.net/project/${APP_NAME}/lib${APP_NAME}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L http://cfhcable.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-gtk-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n lib${APP_NAME}.${APP_EXT}
+cd /tmp/lib${APP_NAME}/lib${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-gtk-${APP_VERSION}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install PuTTY SSH client from source.
+# http://www.chiark.greenend.org.uk/~sgtatham/putty/
+APP_NAME=putty
+APP_VERSION=0.70
+APP_EXT=tar.gz
+# Install dependencies
+sudo apt-get install -y libxml2-dev libgtk-3-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://the.earth.li/~sgtatham/${APP_NAME}/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+# Build and copy PNG icons
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}/icons
+make
+sudo cp *-16*.png /usr/local/share/icons/hicolor/16x16/apps
+sudo cp *-32*.png /usr/local/share/icons/hicolor/32x32/apps
+sudo cp *-48*.png /usr/local/share/icons/hicolor/48x48/apps
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=PuTTY
+Comment=Popular SSH client
+GenericName=PuTTY
+Exec=putty
+Icon=/usr/local/share/icons/hicolor/32x32/apps/putty-32.png
+Type=Application
+StartupNotify=false
+Terminal=false
+Categories=Accessories;System;
+Keywords=ssh;terminal;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Calibre ebook reader and converter
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
