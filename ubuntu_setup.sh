@@ -1077,3 +1077,13 @@ cd /tmp
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install XML Tree Editor from Debian package
+APP_NAME=xmltreeedit
+APP_VERSION=0.1.0.30
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L http://cfhcable.dl.sourceforge.net/project/xmltreeeditor/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+cd /tmp
+sudo gdebi -n ${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
