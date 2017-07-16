@@ -497,3 +497,15 @@ cd /tmp
 sudo gdebi -n coypu.deb
 cd $HOME
 rm -f /tmp/coypu*
+
+# Install calc shell calculator from source
+APP_NAME=calc
+APP_VERSION=2.12.6.0
+APP_EXT=tar.bz2
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+make && sudo make install
+cd $HOME
+rm -rf ${APP_NAME}*
