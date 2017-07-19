@@ -1121,3 +1121,14 @@ cd /tmp
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Tad Data Viewer from package (64-bit only)
+APP_NAME=tad
+APP_VERSION=0.8.5
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/antonycourtney/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_amd64.${APP_EXT}
+	sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+	cd $HOME
+	rm -rf /tmp/${APP_NAME}*
+fi
