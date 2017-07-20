@@ -1132,3 +1132,43 @@ if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	cd $HOME
 	rm -rf /tmp/${APP_NAME}*
 fi
+
+# Install AVFS virtual file system
+APP_NAME=avfs
+APP_VERSION=1.0.5
+APP_EXT=tar.bz2
+sudo apt-get install -y libfuse-dev libarchive-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/avf/${APP_NAME}/1.0.5/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./configure && make && make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Worker File Manager (For AVFS support install AVFS above.)
+APP_NAME=worker
+APP_VERSION=3.11.0
+APP_EXT=tar.bz2
+sudo apt-get install -y liblua5.3-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/workerfm/workerfm/3.11.0/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./configure && make && make install
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Worker File Manager
+Comment=Simple canonical file manager
+GenericName=Worker
+Exec=worker
+Icon=/usr/local/share/pixmaps/WorkerIcon.xpm
+Type=Application
+StartupNotify=false
+Terminal=false
+Categories=Accessories;System;
+Keywords=file manager;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
