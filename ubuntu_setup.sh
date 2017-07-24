@@ -1172,3 +1172,19 @@ EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Neofetch shell script system information tool
+APP_NAME=neofetch
+APP_VERSION=3.2.0
+APP_EXT=tar.gz
+# Install dependencies
+sudo apt-get install -y imagemagick curl 
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/dylanaraps/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+sudo make PREFIX=/usr/local install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+
