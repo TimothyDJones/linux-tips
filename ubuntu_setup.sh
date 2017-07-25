@@ -1225,3 +1225,18 @@ sudo cp /opt/${APP_NAME}/digital_clock.desktop /usr/share/applications/
 sudo ln -s /opt/${APP_NAME}/digital_clock /usr/local/bin/digital_clock
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Oprofile task/process profiler from source
+APP_NAME=oprofile
+APP_VERSION=1.2.0
+APP_EXT=tar.gz
+sudo apt-get install -y libpopt-dev binutils-dev libiberty-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://sourceforge.net/projects/${APP_NAME}/files/latest/download
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+sudo addgroup oprofile
+sudo /usr/sbin/useradd -p $(openssl passwd -1 oprofile) oprofile  # Add special account for profiler.
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
