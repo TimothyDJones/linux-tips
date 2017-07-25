@@ -1187,4 +1187,22 @@ sudo make PREFIX=/usr/local install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-
+# Install Digital Clock 4
+APP_NAME=digital_clock_4
+APP_VERSION=4.5.5
+APP_EXT=tar.xz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://iweb.dl.sourceforge.net/project/digitalclock4/${APP_VERSION}/${APP_NAME}-linux_${ARCH_TYPE}.tar.xz
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}
+mv Digital\ Clock\ 4/ ${APP_NAME}
+sudo mv ${APP_NAME} /opt
+sudo cp /opt/${APP_NAME}/digital_clock.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME}/digital_clock /usr/local/bin/digital_clock
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
