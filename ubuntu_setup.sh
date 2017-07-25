@@ -966,7 +966,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Tagstoo file tag manager
 APP_NAME=Tagstoo
-APP_VERSION=1.6.0
+APP_VERSION=1.7.0
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
@@ -1189,5 +1189,19 @@ APP_VERSION=1.3.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://pilotfiber.dl.sourceforge.net/project/${APP_NAME}/${APP_VERSION}/linux/${APP_NAME}_${APP_VERSION}-1qt5_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Neofetch shell script system information tool
+APP_NAME=neofetch
+APP_VERSION=3.2.0
+APP_EXT=tar.gz
+# Install dependencies
+sudo apt-get install -y imagemagick curl 
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/dylanaraps/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+sudo make PREFIX=/usr/local install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
