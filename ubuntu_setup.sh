@@ -1241,3 +1241,16 @@ sudo /usr/sbin/useradd -p $(openssl passwd -1 oprofile) oprofile  # Add special 
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
+# Install HTTraQt web scraper tool from source
+APP_NAME=httraqt
+APP_VERSION=1.4.9
+APP_EXT=tar.gz
+sudo apt-get install -y libhttrack-dev  # Install HTTrack dependency
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://sourceforge.net/projects/${APP_NAME}/files/latest/download
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./clean.sh
+mkdir -p build && cd build && cmake .. && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
