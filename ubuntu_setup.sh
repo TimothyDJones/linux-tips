@@ -885,7 +885,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install HTTP Test Tool
 APP_NAME=httest
 APP_VERSION_MAJOR=2.4
-APP_VERSION_MINOR=20
+APP_VERSION_MINOR=21
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/project/htt/htt${APP_VERSION_MAJOR}/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_EXT}
 
@@ -1240,3 +1240,4 @@ sudo addgroup oprofile
 sudo /usr/sbin/useradd -p $(openssl passwd -1 oprofile) oprofile  # Add special account for profiler.
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
