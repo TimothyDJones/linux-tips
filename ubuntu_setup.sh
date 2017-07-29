@@ -1285,7 +1285,7 @@ sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-Install BoostNote notepad/PIM from package
+# Install BoostNote notepad/PIM from package
 APP_NAME=boostnote
 APP_VERSION=0.8.12
 APP_EXT=deb
@@ -1293,3 +1293,8 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/BoostIO/boost-relea
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install QOwnNotes notepad/PIM from PPA repository
+sudo add-apt-repository -y ppa:pbek/qownnotes
+sudo apt-get update -y
+sudo apt-get install -y qownnotes
