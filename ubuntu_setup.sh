@@ -1298,3 +1298,31 @@ rm -rf /tmp/${APP_NAME}*
 sudo add-apt-repository -y ppa:pbek/qownnotes
 sudo apt-get update -y
 sudo apt-get install -y qownnotes
+
+# Install Red Notebook notepad/PIM from source
+APP_NAME=rednotebook
+APP_VERSION=2.1
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+sudo pip3 install .
+sudo cp ./rednotebook/images/rednotebook-icon/rn-48.png /usr/local/share/pixmaps/rednotebook-48.png
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Red Notebook
+Comment=Basic notepad/PIM with Markdown support
+GenericName=Notebook
+Exec=rednotebook
+Icon=/usr/local/share/pixmaps/rednotebook-48.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Office;
+Keywords=Journal;Diary;Notes;Notebook;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
