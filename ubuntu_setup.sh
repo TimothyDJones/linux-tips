@@ -338,14 +338,17 @@ cd $HOME
 rm -rf /tmp/mupdf*
 
 # Install tke text editor
+APP_NAME=tke
+APP_VERSION=3.2
+APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
-curl -o /tmp/tke.tgz -J -L https://iweb.dl.sourceforge.net/project/tke/3.0/tke-3.0.tgz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://iweb.dl.sourceforge.net/project/${APP_NAME}/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/tke.tgz
-cd /tmp/tke/tke-3.0
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 sudo tclsh8.6 install.tcl
 cd $HOME
-rm -rf /tmp/tke*
+rm -rf /tmp/${APP_NAME}*
 
 # Install Goto shell utility
 wget -O /tmp/goto.zip https://github.com/Fakerr/goto/archive/master.zip
