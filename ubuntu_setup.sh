@@ -338,14 +338,17 @@ cd $HOME
 rm -rf /tmp/mupdf*
 
 # Install tke text editor
+APP_NAME=tke
+APP_VERSION=3.2
+APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
-curl -o /tmp/tke.tgz -J -L https://iweb.dl.sourceforge.net/project/tke/3.0/tke-3.0.tgz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://iweb.dl.sourceforge.net/project/${APP_NAME}/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/tke.tgz
-cd /tmp/tke/tke-3.0
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 sudo tclsh8.6 install.tcl
 cd $HOME
-rm -rf /tmp/tke*
+rm -rf /tmp/${APP_NAME}*
 
 # Install Goto shell utility
 wget -O /tmp/goto.zip https://github.com/Fakerr/goto/archive/master.zip
@@ -1293,3 +1296,46 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${AP
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf ${APP_NAME)*
+
+# Install BoostNote notepad/PIM from package
+APP_NAME=boostnote
+APP_VERSION=0.8.12
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/BoostIO/boost-releases/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install QOwnNotes notepad/PIM from PPA repository
+sudo add-apt-repository -y ppa:pbek/qownnotes
+sudo apt-get update -y
+sudo apt-get install -y qownnotes
+
+# Install Red Notebook notepad/PIM from source
+APP_NAME=rednotebook
+APP_VERSION=2.1
+APP_EXT=tar.gz
+sudo apt-get install -y python3-enchant gir1.2-webkit2-4.0 python3-pip python3-yaml  # Install dependencies
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+sudo pip3 install .
+sudo cp ./rednotebook/images/rednotebook-icon/rn-48.png /usr/local/share/pixmaps/rednotebook-48.png
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Red Notebook
+Comment=Basic notepad/PIM with Markdown support
+GenericName=Notebook
+Exec=rednotebook
+Icon=/usr/local/share/pixmaps/rednotebook-48.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Office;
+Keywords=Journal;Diary;Notes;Notebook;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
