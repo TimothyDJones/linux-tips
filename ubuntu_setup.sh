@@ -1284,3 +1284,12 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://pilotfiber.dl.sourceforge.net/
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install FastoNoSql GUI for NoSQL DBs from package
+APP_NAME=fastonosql
+APP_VERSION=1.6.0
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-x86_64.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf ${APP_NAME)*
