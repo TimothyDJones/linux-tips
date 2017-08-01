@@ -1348,3 +1348,19 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${AP
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf ${APP_NAME)*
+
+# Install SysCheck system profiler utility
+APP_NAME=SysCheck
+APP_VERSION=1.1.11
+APP_EXT=zip
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/syschecksoftware/${APP_NAME}-v${APP_VERSION}-lite.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}
+mv ${APP_NAME}-v${APP_VERSION}-lite ${APP_NAME,,} 
+sudo mv ${APP_NAME,,} /opt
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+
