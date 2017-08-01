@@ -751,7 +751,7 @@ fi
 
 # Install xosview X11 performance meter
 APP_NAME=xosview
-APP_VERSION=2-2.2.1
+APP_VERSION=2-2.2.2
 curl -o /tmp/${APP_NAME}.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}${APP_VERSION}.tar.gz
 cd /tmp
 dtrx -n ${APP_NAME}.tar.gz
