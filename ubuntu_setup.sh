@@ -274,10 +274,10 @@ rm -f /tmp/${APP_NAME}*
 
 # Install Steel Bank Common Lisp (SBLC) from Sourceforge
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
-curl -o /tmp/sblc.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/sbcl/sbcl/1.3.16/sbcl-1.3.16-source.tar.bz2
+curl -o /tmp/sblc.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/sbcl/sbcl/1.3.20/sbcl-1.3.20-source.tar.bz2
 cd /tmp
 dtrx -n /tmp/sbcl.tar.gz
-cd /tmp/sbcl/sbcl-1.3.16
+cd /tmp/sbcl/sbcl-1.3.20
 sh make.sh
 INSTALL_DIR=/usr/local sudo sh install.sh
 cd $HOME
