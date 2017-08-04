@@ -1379,3 +1379,15 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/supe
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf ${APP_NAME)*
+
+# Install exa, a replacement for 'ls' command
+APP_NAME=exa
+APP_VERSION=0.7.0
+APP_EXT=zip
+sudo apt-get install -y libhttp-parser2.1
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/ogham/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}-linux-x86_64-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+sudo mv /tmp/${APP_NAME}/${APP_NAME}-linux-x86_64 /usr/local/bin/exa
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
