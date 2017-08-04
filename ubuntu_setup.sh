@@ -1384,6 +1384,8 @@ rm -rf ${APP_NAME)*
 APP_NAME=exa
 APP_VERSION=0.7.0
 APP_EXT=zip
+# Dependency on libhttp-parser2.1 below is needed due to problem noted
+# on Github:  https://github.com/ogham/exa/issues/194
 sudo apt-get install -y libhttp-parser2.1
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/ogham/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}-linux-x86_64-${APP_VERSION}.${APP_EXT}
 cd /tmp
