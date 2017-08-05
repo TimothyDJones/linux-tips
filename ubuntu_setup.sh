@@ -232,10 +232,11 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.11.0.0-1
-curl -o /tmp/${APP_NAME}.deb -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_amd64.deb
-sudo gdebi -n /tmp/cudatext.deb
-rm -f /tmp/cudatext.deb
+APP_VERSION=1.14.4.0-1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+rm -f /tmp/${APP_NAME}*
 
 # Enable GetDeb repository for your version of Ubuntu
 source /etc/os-release   # This config file contains Ubuntu version details.
@@ -274,10 +275,10 @@ rm -f /tmp/${APP_NAME}*
 
 # Install Steel Bank Common Lisp (SBLC) from Sourceforge
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
-curl -o /tmp/sblc.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/sbcl/sbcl/1.3.16/sbcl-1.3.16-source.tar.bz2
+curl -o /tmp/sblc.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/sbcl/sbcl/1.3.20/sbcl-1.3.20-source.tar.bz2
 cd /tmp
 dtrx -n /tmp/sbcl.tar.gz
-cd /tmp/sbcl/sbcl-1.3.16
+cd /tmp/sbcl/sbcl-1.3.20
 sh make.sh
 INSTALL_DIR=/usr/local sudo sh install.sh
 cd $HOME
@@ -751,7 +752,7 @@ fi
 
 # Install xosview X11 performance meter
 APP_NAME=xosview
-APP_VERSION=2-2.2.1
+APP_VERSION=2-2.2.2
 curl -o /tmp/${APP_NAME}.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}${APP_VERSION}.tar.gz
 cd /tmp
 dtrx -n ${APP_NAME}.tar.gz
@@ -894,7 +895,7 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/proje
 
 # Install ubunsys installer/tweaker
 APP_NAME=ubunsys
-APP_VERSION=2017.07.25
+APP_VERSION=2017.07.30
 APP_EXT=deb
 source /etc/os-release   # This config file contains Ubuntu version details.
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_${VERSION_ID}.${APP_EXT}
@@ -1288,6 +1289,15 @@ sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
+# Install FastoNoSql GUI for NoSQL DBs from package
+APP_NAME=fastonosql
+APP_VERSION=1.6.0
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-x86_64.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf ${APP_NAME)*
+
 # Install BoostNote notepad/PIM from package
 APP_NAME=boostnote
 APP_VERSION=0.8.12
@@ -1304,7 +1314,7 @@ sudo apt-get install -y qownnotes
 
 # Install Red Notebook notepad/PIM from source
 APP_NAME=rednotebook
-APP_VERSION=2.1
+APP_VERSION=2.1.2
 APP_EXT=tar.gz
 sudo apt-get install -y python3-enchant gir1.2-webkit2-4.0 python3-pip python3-yaml  # Install dependencies
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -1328,5 +1338,58 @@ Categories=Accessories;Office;
 Keywords=Journal;Diary;Notes;Notebook;
 EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install LIOS (Linux Intelligent OCR Solution) from package
+APP_NAME=lios
+APP_VERSION=2.5
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf ${APP_NAME)*
+
+# Install SysCheck system profiler utility
+APP_NAME=SysCheck
+APP_VERSION=1.1.11
+APP_EXT=zip
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/syschecksoftware/${APP_NAME}-v${APP_VERSION}-lite.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}
+mv ${APP_NAME}-v${APP_VERSION}-lite ${APP_NAME,,} 
+sudo mv ${APP_NAME,,} /opt
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install GeoServer Java-based mapping/GIS server
+APP_NAME=geoserver
+APP_VERSION=2.11.2
+APP_EXT=zip
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-bin.${APP_EXT}
+cd /tmp
+
+# Install Super Productivity To Do List and task manager from package
+APP_NAME=superProductivity
+APP_VERSION=latest
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/super-productivity/${APP_NAME}_${APP_VERSION}_amd64.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf ${APP_NAME)*
+
+# Install exa, a replacement for 'ls' command
+APP_NAME=exa
+APP_VERSION=0.7.0
+APP_EXT=zip
+# Dependency on libhttp-parser2.1 below is needed due to problem noted
+# on Github:  https://github.com/ogham/exa/issues/194
+sudo apt-get install -y libhttp-parser2.1
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/ogham/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}-linux-x86_64-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+sudo mv /tmp/${APP_NAME}/${APP_NAME}-linux-x86_64 /usr/local/bin/exa
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
