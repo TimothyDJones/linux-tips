@@ -1407,3 +1407,17 @@ mkdir build && cd build
 cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Psi XMPP messenger from source
+APP_NAME=psi
+APP_VERSION=1.2
+APP_EXT=tar.xz
+sudo apt-get install -y libqca2-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./configure --prefix=/usr/local/psi && make && sudo make install
+sudo ln -s /usr/local/psi/bin/psi /usr/local/bin/psi
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
