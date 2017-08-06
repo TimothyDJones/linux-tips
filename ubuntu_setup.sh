@@ -1399,7 +1399,7 @@ APP_NAME=klatexformula
 APP_VERSION=4.0.0
 APP_EXT=tar.bz2
 sudo apt-get install -y libqt5x11extras5-dev qttools5-dev qttools5-dev-tools
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/super-productivity/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME}.${APP_EXT}
 cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
