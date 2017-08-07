@@ -1421,3 +1421,15 @@ cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 sudo ln -s /usr/local/psi/bin/psi /usr/local/bin/psi
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Read the Bible from source
+APP_NAME=Bible
+APP_VERSION=6.2.3
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/readthebible/${APP_NAME}${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+sudo mv ${APP_NAME} /opt
+sudo ln -s /opt/${APP_NAME}/Bible6 /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
