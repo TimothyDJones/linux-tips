@@ -1433,3 +1433,16 @@ sudo mv ${APP_NAME} /opt
 sudo ln -s /opt/${APP_NAME}/Bible6 /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Sidu database web GUI
+APP_NAME=sidu
+APP_VERSION=55
+APP_EXT=zip
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}
+sudo mv ${APP_NAME}${APP_VERSION} /var/www/html/${APP_NAME}
+sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
