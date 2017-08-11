@@ -1446,3 +1446,9 @@ sudo mv ${APP_NAME}${APP_VERSION} /var/www/html/${APP_NAME}
 sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Tilix (formerly Terminix) terminal emulator from PPA
+# https://gnunn1.github.io/tilix-web/ 
+sudo add-apt-repository -y ppa:webupd8team/terminix
+sudo apt-get update
+sudo apt-get install -y 
