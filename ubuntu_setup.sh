@@ -226,7 +226,7 @@ sudo apt-get update -y
 sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version)
-wget -O /tmp/vivaldi.deb https://downloads.vivaldi.com/stable/vivaldi-stable_1.8.770.50-1_${KERNEL_TYPE}.deb
+wget -O /tmp/vivaldi.deb https://downloads.vivaldi.com/stable/vivaldi-stable_1.11.917.39-1_${KERNEL_TYPE}.deb
 sudo gdebi -n /tmp/vivaldi.deb
 rm -f /tmp/vivaldi.deb
 
