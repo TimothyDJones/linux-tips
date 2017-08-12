@@ -1452,3 +1452,15 @@ rm -rf /tmp/${APP_NAME}*
 sudo add-apt-repository -y ppa:webupd8team/terminix
 sudo apt-get update
 sudo apt-get install -y tilix
+
+# Install Visual Studio Code editor from package
+# https://code.visualstudio.com/docs/setup/linux
+curl -o /tmp/vscode.deb -J -L https://go.microsoft.com/fwlink/?LinkID=760868
+sudo gdebi -n /tmp/vscode.deb
+cd $HOME
+rm -rf /tmp/vscode*
+
+https://code.visualstudio.com/docs/?dv=linux64_deb
+
+
+javascript:void(0)
