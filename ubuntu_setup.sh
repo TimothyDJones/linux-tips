@@ -1451,4 +1451,4 @@ rm -rf /tmp/${APP_NAME}*
 # https://gnunn1.github.io/tilix-web/ 
 sudo add-apt-repository -y ppa:webupd8team/terminix
 sudo apt-get update
-sudo apt-get install -y 
+sudo apt-get install -y tilix
