@@ -1460,7 +1460,29 @@ sudo gdebi -n /tmp/vscode.deb
 cd $HOME
 rm -rf /tmp/vscode*
 
-https://code.visualstudio.com/docs/?dv=linux64_deb
-
-
-javascript:void(0)
+# Install LTerm terminal emulator from source
+APP_NAME=lterm
+APP_VERSION=1.5.0
+APP_EXT=tar.gz
+sudo apt-get install -y libvte-2.91-dev libssl-dev libssh-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=LTerm
+Comment=Terminal Emulator
+GenericName=Terminal Emulator
+Exec=${APP_NAME}
+Icon=/usr/local/share/${APP_NAME}/img/main_icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=Terminal;Shell;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
