@@ -1304,16 +1304,7 @@ APP_VERSION=0.8.12
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/BoostIO/boost-releases/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/${APP_NAME}*
-
-# Install QOwnNotes notepad/PIM from PPA repository
-sudo add-apt-repository -y ppa:pbek/qownnotes
-sudo apt-get update -y
-sudo apt-get install -y qownnotes
-
-# Install Red Notebook notepad/PIM from source
-APP_NAME=rednotebook
+cd $HOMEk
 APP_VERSION=2.1.5
 APP_EXT=tar.gz
 sudo apt-get install -y python3-enchant gir1.2-webkit2-4.0 python3-pip python3-yaml  # Install dependencies
@@ -1486,3 +1477,13 @@ EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Add debrepo repository to available repositories
+source /etc/os-release   # This config file contains Ubuntu version details.
+DEB_STRING='deb http://downloads.sourceforge.net/project/debrepo '${UBUNTU_CODENAME}' main'
+echo $DEB_STRING >> /tmp/debrepo.list
+DEB_STRING='deb-src http://downloads.sourceforge.net/project/debrepo '${UBUNTU_CODENAME}' main'
+sudo echo $DEB_STRING >> /tmp/debrepo.list
+sudo mv /tmp/debrepo.list /etc/apt/sources.list.d
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 172E9B0B
+sudo apt-get update -y
