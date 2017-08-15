@@ -1487,3 +1487,43 @@ sudo echo $DEB_STRING >> /tmp/debrepo.list
 sudo mv /tmp/debrepo.list /etc/apt/sources.list.d
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 172E9B0B
 sudo apt-get update -y
+
+# Install TUTOS project management tool
+APP_NAME=TUTOS
+APP_VERSION=1.12.20160813
+APP_EXT=tar.bz2
+DB_NAME=tutosdb
+DB_USER=tutos
+DB_PASSWORD=tutos
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-php-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /usr/share
+sudo cp /usr/share/${APP_NAME,,}/php/config_default.pinc /usr/share/${APP_NAME,,}/php/config.php
+sudo cp /usr/share/${APP_NAME,,}/apache.conf /etc/apache2/sites-available/tutos.conf
+sudo a2ensite tutos.conf
+sudo service apache2 restart
+sudo chown -R www-data:www-data /usr/share/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+
+# Install Webtareas project management tool
+APP_NAME=webTareas
+APP_VERSION=1.12p3
+APP_EXT=zip
+DB_NAME=webtareas
+DB_USER=webtareas
+DB_PASSWORD=webtareas
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /var/www/html
+sudo chown -R www-data:www-data /var/www/html/${APP_NAME,,}
+sudo chmod -R +w /var/www/html/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/webtareas/installation/setup.php &
