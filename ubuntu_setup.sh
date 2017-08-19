@@ -1536,3 +1536,44 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo sh /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Turtl secure, encrypted Evernote alternative
+APP_NAME=turtl
+APP_VERSION=0.6.4
+APP_EXT=tar.bz2
+# Determine if this is 32-bit or 64-bit version of kernel.
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	KERNEL_ARCH=64
+else    # Otherwise use version for 32-bit kernel
+	KERNEL_ARCH=32
+fi
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://turtlapp.com/releases/desktop/${APP_NAME}-linux${KERNEL_ARCH}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+sudo sh /tmp/${APP_NAME}/${APP_NAME}-linux${KERNEL_ARCH}/install.sh
+sudo chmod -R 777 /opt/turtl/turtl
+sudo ln -s /opt/turtl/turtl/turtl /usr/local/bin/turtl
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install WebCollab web-based project management tool
+APP_NAME=webcollab
+APP_VERSION=3.45
+APP_EXT=tar.gz
+DB_NAME=webcollab
+DB_USER=webcollab
+DB_PASSWORD=webcollab
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+sudo mv ${APP_NAME}-${APP_VERSION} ${APP_NAME}
+sudo mv ${APP_NAME} /var/www/html
+sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
+sudo chmod 666 /var/www/html/${APP_NAME}/config/config.php
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+mysql --host=localhost --user=webcollab --password=webcollab webcollab < /var/www/html/${APP_NAME}/db/schema_mysql_innodb.sql
+xdg-open http://localhost/${APP_NAME}/setup.php &
