@@ -661,16 +661,32 @@ rm -rf /tmp/${APP_NAME}*
 # Install ZinjaI C++ IDE
 APP_NAME=zinjai
 APP_VERSION=20170607
+APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=l64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=l32
 fi
 sudo apt-get install -y gdb
-curl -o /tmp/${APP_NAME}.tgz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}-${ARCH_TYPE}-${APP_VERSION}.tgz
-dtrx -n ${APP_NAME}.tgz
+curl -o /tmp/${APP_NAME}.tgz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}-${ARCH_TYPE}-${APP_VERSION}.${APP_EXT}
+dtrx -n ${APP_NAME}.${APP_EXT}
 sudo mv ${APP_NAME} /opt
 # sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
+# Create icon in menus
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=ZinjaI
+Comment=C++ IDE
+GenericName=C++ IDE
+Exec=/opt/${APP_NAME}/${APP_NAME}
+Icon=/opt/${APP_NAME}/imgs/zinjai.xpm
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development
+Keywords=ide;programming;cpp;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 /opt/${APP_NAME}/${APP_NAME} &
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
