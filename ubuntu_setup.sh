@@ -189,7 +189,7 @@ cd $HOME
 # Install Stacer Linux monitoring tool
 # Must download specific version, because unable to get 'latest' from Sourceforge to work.
 APP_NAME=stacer
-APP_VERSION=1.0.7
+APP_VERSION=1.0.8
 cd /tmp
 curl -o /tmp/${APP_NAME}.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.deb
 sudo gdebi -n ${APP_NAME}.deb   # '-n' is non-interactive mode for gdebi
