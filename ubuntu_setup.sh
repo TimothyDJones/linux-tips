@@ -1593,3 +1593,13 @@ mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIE
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 mysql --host=localhost --user=webcollab --password=webcollab webcollab < /var/www/html/${APP_NAME}/db/schema_mysql_innodb.sql
 xdg-open http://localhost/${APP_NAME}/setup.php &
+
+# Install kgclock desktop clock
+APP_NAME=kgclock
+APP_VERSION=1.2-1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+kgclock &
