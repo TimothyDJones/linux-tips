@@ -189,7 +189,7 @@ cd $HOME
 # Install Stacer Linux monitoring tool
 # Must download specific version, because unable to get 'latest' from Sourceforge to work.
 APP_NAME=stacer
-APP_VERSION=1.0.7
+APP_VERSION=1.0.8
 cd /tmp
 curl -o /tmp/${APP_NAME}.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.deb
 sudo gdebi -n ${APP_NAME}.deb   # '-n' is non-interactive mode for gdebi
@@ -648,7 +648,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.0.1
+APP_VERSION=7.3.1
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1602,3 +1602,13 @@ DB_NAME=projeqtor
 DB_USER=projeqtor
 DB_PASSWORD=projeqtor
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/projectorria/${APP_NAME}V${APP_VERSION}.${APP_EXT}
+
+# Install kgclock desktop clock
+APP_NAME=kgclock
+APP_VERSION=1.2-1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+kgclock &
