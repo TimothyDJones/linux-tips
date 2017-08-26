@@ -1593,3 +1593,12 @@ mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIE
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 mysql --host=localhost --user=webcollab --password=webcollab webcollab < /var/www/html/${APP_NAME}/db/schema_mysql_innodb.sql
 xdg-open http://localhost/${APP_NAME}/setup.php &
+
+# Install ProjeQtor web-based project management tool
+APP_NAME=projeqtor
+APP_VERSION=6.3.3
+APP_EXT=zip
+DB_NAME=projeqtor
+DB_USER=projeqtor
+DB_PASSWORD=projeqtor
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/projectorria/${APP_NAME}V${APP_VERSION}.${APP_EXT}
