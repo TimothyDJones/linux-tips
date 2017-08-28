@@ -1631,3 +1631,12 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/urlg
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Akiee Markdown-based task manager/to do list application
+APP_NAME=akiee
+APP_VERSION=0.0.4
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/rockiger/${APP_NAME}-release/raw/linux-release/dist/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
