@@ -1655,3 +1655,17 @@ rm -rf /tmp/${APP_NAME}*
 sudo add-apt-repository -y ppa:unit193/crosswire
 sudo apt-get update -y
 sudo apt-get install -y xiphos
+
+# Installer Roamer text-based file manager
+APP_NAME=roamer
+APP_VERSION=0.2.0
+APP_ACCT=abaldwin88
+APP_EXT=tar.gz
+https://codeload.github.com/abaldwin88/roamer/zip/v0.2.0
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -Lk https://github.com/${APP_ACCT}/${APP_NAME}/tarball/v${APP_VERSION}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/*${APP_NAME}*
+sudo python3 setup.py install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
