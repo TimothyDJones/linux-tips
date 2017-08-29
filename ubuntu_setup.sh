@@ -519,17 +519,20 @@ cd $HOME
 rm -rf /tmp/youtube-dl-pytk*
 
 # Install WCD chdir utility from source
+APP_NAME=wcd
+APP_VERSION=6.0.1
+APP_EXT=tar.gz
 sudo apt-get install -y libncursesw5-dev groff sed build-essential ghostscript po4a
-curl -o /tmp/wcd.tar.gz -J -L https://iweb.dl.sourceforge.net/project/wcd/wcd/6.0.0/wcd-6.0.0.tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/wcd.tar.gz
-cd /tmp/wcd/wcd-6.0.0/src
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}/src
 make all CURSES=ncursesw
 sudo make PREFIX=/usr/local strip install
-sudo ln -s /usr/local/bin/wcd.exe /usr/bin/wcd.exe	 # Create link so that shell integration works properly.
+sudo ln -s /usr/local/bin/${APP_NAME}.exe /usr/bin/${APP_NAME}.exe	 # Create link so that shell integration works properly.
 sudo make install-profile DOTWCD=1     # Set up shell integration and store configuration files under $HOME/.wcd.
 cd $HOME
-rm -rf /tmp/wcd*
+rm -rf /tmp/${APP_NAME}*
 
 # Install BeeBEEP LAN messenger from Sourceforge
 APP_NAME=beebeep
