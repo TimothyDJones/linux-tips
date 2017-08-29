@@ -1,11 +1,17 @@
 #!/bin/bash
 
-# Determine if this is 32-bit or 64-bit version of kernel.
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	KERNEL_TYPE=amd64
-else    # Otherwise use version for 32-bit kernel
-	KERNEL_TYPE=i386
-fi
+function getKernelType() {
+	local KERNEL_TYPE
+
+	# Determine if this is 32-bit or 64-bit version of kernel.
+	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
+		KERNEL_TYPE=amd64
+	else    # Otherwise use version for 32-bit kernel
+		KERNEL_TYPE=i386
+	fi
+
+	echo ${KERNEL_TYPE}
+}
 
 
 # Add some necessary non-default packages
@@ -1636,7 +1642,13 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=akiee
 APP_VERSION=0.0.4
 APP_EXT=deb
+KERNEL_TYPE=$(getKernelType)
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/rockiger/${APP_NAME}-release/raw/linux-release/dist/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Xiphos Bible study tool from PPA
+sudo add-apt-repository -y ppa:unit193/crosswire
+sudo apt-get update -y
+sudo apt-get install -y xiphos
