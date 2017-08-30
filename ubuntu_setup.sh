@@ -1682,3 +1682,21 @@ rm -rf /tmp/${APP_NAME}*
 sudo add-apt-repository -y ppa:pbek/qownnotes
 sudo apt-get update -y
 sudo apt-get install -y qownnotes
+
+# Install Tiki Wiki CMS/groupware
+APP_NAME=tiki
+APP_VERSION=17.0
+APP_EXT=tar.gz
+DB_NAME=tikiwiki
+DB_USER=tikiwiki
+DB_PASSWORD=tikiwiki
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/tikiwiki/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+sudo mv /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION} /var/www/html/${APP_NAME}
+sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/tiki-install.php &
