@@ -1677,3 +1677,8 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hype
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install QOwnNotes from PPA
+sudo add-apt-repository -y ppa:pbek/qownnotes
+sudo apt-get update -y
+sudo apt-get install -y qownnotes
