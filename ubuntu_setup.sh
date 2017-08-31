@@ -1700,3 +1700,29 @@ mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/tiki-install.php &
+
+# Install EU-Commander Tcl/Tk file manager
+APP_NAME=eu-comm
+APP_VERSION=0.119
+APP_EXT=tar.gz
+sudo apt-get install -y bwidget tk-table tcl8.6
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eu-commander/${APP_NAME}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+sudo mv ${APP_NAME} /opt
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=EU-Commander
+Comment=Tcl/Tk File Manager
+GenericName=File Manager
+Exec=tclsh8.6 /opt/${APP_NAME}/${APP_NAME}.tcl
+Icon=/opt/${APP_NAME}/themes/default/wicon.xbm
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=File;Manager;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
