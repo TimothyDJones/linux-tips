@@ -1743,3 +1743,37 @@ cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Eric Python IDE
+APP_NAME=eric
+APP_VERSION=6-17.09
+APP_EXT=tar.gz
+sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
+
+# Install Finanx 12c HP-12c financial calculator emulator
+APP_NAME=finanx
+APP_VERSION=12c-0.2.0
+APP_EXT=zip
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/finanx/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+mv /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION} /tmp/${APP_NAME}/${APP_NAME}
+cd /tmp/${APP_NAME}
+sudo mv ${APP_NAME} /opt
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Finanx 12c
+Comment=HP-12c Financial Calculator Emulator
+GenericName=Financial Calculator
+Exec=/opt/${APP_NAME}/${APP_NAME}.sh
+#Icon=/opt/${APP_NAME}/themes/default/wicon.xbm
+Type=Application
+StartupNotify=true
+Terminal=true
+Categories=Accessories;System;
+Keywords=Finance;Calculator;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
