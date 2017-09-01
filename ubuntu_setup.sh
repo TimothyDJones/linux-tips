@@ -1726,3 +1726,16 @@ EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Wcalc CLI calculator from source
+APP_NAME=wcalc
+APP_VERSION=2.5
+APP_EXT=tar.bz2
+sudo apt-get install -y libmpfr-dev libgmp-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/w-calc/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
