@@ -346,7 +346,7 @@ rm -rf /tmp/mupdf*
 
 # Install tke text editor
 APP_NAME=tke
-APP_VERSION=3.2
+APP_VERSION=3.3
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://iweb.dl.sourceforge.net/project/${APP_NAME}/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
