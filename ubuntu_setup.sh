@@ -1777,3 +1777,22 @@ EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install PivotX weblog platform
+APP_NAME=pivotx
+APP_VERSION=2.3.11
+APP_EXT=zip
+DB_NAME=pivotx
+DB_USER=pivotx
+DB_PASSWORD=pivotx
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/pivot-weblog/${APP_NAME}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /var/www/html
+sudo chown -R www-data:www-data /var/www/html/${APP_NAME,,}
+sudo chmod -R 777 /var/www/html/${APP_NAME,,}/images/ /var/www/html/${APP_NAME,,}/pivotx/db/ /var/www/html/${APP_NAME,,}/pivotx/templates
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/index.php &
