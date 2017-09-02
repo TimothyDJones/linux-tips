@@ -1,11 +1,17 @@
 #!/bin/bash
 
-# Determine if this is 32-bit or 64-bit version of kernel.
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	KERNEL_TYPE=amd64
-else    # Otherwise use version for 32-bit kernel
-	KERNEL_TYPE=i386
-fi
+function getKernelType() {
+	local KERNEL_TYPE
+
+	# Determine if this is 32-bit or 64-bit version of kernel.
+	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
+		KERNEL_TYPE=amd64
+	else    # Otherwise use version for 32-bit kernel
+		KERNEL_TYPE=i386
+	fi
+
+	echo ${KERNEL_TYPE}
+}
 
 
 # Add some necessary non-default packages
@@ -513,17 +519,20 @@ cd $HOME
 rm -rf /tmp/youtube-dl-pytk*
 
 # Install WCD chdir utility from source
+APP_NAME=wcd
+APP_VERSION=6.0.1
+APP_EXT=tar.gz
 sudo apt-get install -y libncursesw5-dev groff sed build-essential ghostscript po4a
-curl -o /tmp/wcd.tar.gz -J -L https://iweb.dl.sourceforge.net/project/wcd/wcd/6.0.0/wcd-6.0.0.tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/wcd.tar.gz
-cd /tmp/wcd/wcd-6.0.0/src
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}/src
 make all CURSES=ncursesw
 sudo make PREFIX=/usr/local strip install
-sudo ln -s /usr/local/bin/wcd.exe /usr/bin/wcd.exe	 # Create link so that shell integration works properly.
+sudo ln -s /usr/local/bin/${APP_NAME}.exe /usr/bin/${APP_NAME}.exe	 # Create link so that shell integration works properly.
 sudo make install-profile DOTWCD=1     # Set up shell integration and store configuration files under $HOME/.wcd.
 cd $HOME
-rm -rf /tmp/wcd*
+rm -rf /tmp/${APP_NAME}*
 
 # Install BeeBEEP LAN messenger from Sourceforge
 APP_NAME=beebeep
@@ -819,8 +828,12 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Madedit-Mod text editor from Sourceforge
 APP_NAME=madedit-mod
-APP_VERSION=0.4.8
-source /etc/os-release   # This config file contains Ubuntu version details.
+APP_VERSION=0.4.9-1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/madedit-mod/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_ubuntu16.04.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
 
 # Install IT-Edit (Integrated Terminal Editor)
 APP_NAME=it-edit
@@ -1596,7 +1609,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=6.3.3
+APP_VERSION=6.3.4
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -1621,3 +1634,146 @@ sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 kgclock &
+
+# Install uGet GUI download manager
+APP_NAME=uget
+APP_VERSION=2.0.10
+APP_EXT=deb
+source /etc/os-release   # This config file contains Ubuntu version details.
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/urlget/${APP_NAME}_${APP_VERSION}-0ubuntu0+1~${UBUNTU_CODENAME}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Akiee Markdown-based task manager/to do list application
+APP_NAME=akiee
+APP_VERSION=0.0.4
+APP_EXT=deb
+KERNEL_TYPE=$(getKernelType)
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/rockiger/${APP_NAME}-release/raw/linux-release/dist/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Xiphos Bible study tool from PPA
+sudo add-apt-repository -y ppa:unit193/crosswire
+sudo apt-get update -y
+sudo apt-get install -y xiphos
+
+# Install Roamer text-based file manager
+APP_NAME=roamer
+APP_VERSION=0.2.0
+APP_ACCT=abaldwin88
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -Lk https://github.com/${APP_ACCT}/${APP_NAME}/tarball/v${APP_VERSION}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/*${APP_NAME}*
+sudo python3 setup.py install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Hyper JS/HTML/CSS Terminal 
+APP_NAME=hyper
+APP_VERSION=1.4.0
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hyper.mirror/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install QOwnNotes from PPA
+sudo add-apt-repository -y ppa:pbek/qownnotes
+sudo apt-get update -y
+sudo apt-get install -y qownnotes
+
+# Install Tiki Wiki CMS/groupware
+APP_NAME=tiki
+APP_VERSION=17.0
+APP_EXT=tar.gz
+DB_NAME=tikiwiki
+DB_USER=tikiwiki
+DB_PASSWORD=tikiwiki
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/tikiwiki/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+sudo mv /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION} /var/www/html/${APP_NAME}
+sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/tiki-install.php &
+
+# Install EU-Commander Tcl/Tk file manager
+APP_NAME=eu-comm
+APP_VERSION=0.119
+APP_EXT=tar.gz
+sudo apt-get install -y bwidget tk-table tcl8.6
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eu-commander/${APP_NAME}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+sudo mv ${APP_NAME} /opt
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=EU-Commander
+Comment=Tcl/Tk File Manager
+GenericName=File Manager
+Exec=tclsh8.6 /opt/${APP_NAME}/${APP_NAME}.tcl
+Icon=/opt/${APP_NAME}/themes/default/wicon.xbm
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=File;Manager;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Wcalc CLI calculator from source
+APP_NAME=wcalc
+APP_VERSION=2.5
+APP_EXT=tar.bz2
+sudo apt-get install -y libmpfr-dev libgmp-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/w-calc/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Eric Python IDE
+APP_NAME=eric
+APP_VERSION=6-17.09
+APP_EXT=tar.gz
+sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
+
+# Install Finanx 12c HP-12c financial calculator emulator
+APP_NAME=finanx
+APP_VERSION=12c-0.2.0
+APP_EXT=zip
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/finanx/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+mv /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION} /tmp/${APP_NAME}/${APP_NAME}
+cd /tmp/${APP_NAME}
+sudo mv ${APP_NAME} /opt
+cat > /tmp/${APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=Finanx 12c
+Comment=HP-12c Financial Calculator Emulator
+GenericName=Financial Calculator
+Exec=/opt/${APP_NAME}/${APP_NAME}.sh
+#Icon=/opt/${APP_NAME}/themes/default/wicon.xbm
+Type=Application
+StartupNotify=true
+Terminal=true
+Categories=Accessories;System;
+Keywords=Finance;Calculator;
+EOF
+sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
