@@ -1856,3 +1856,22 @@ Keywords=File;Manager;
 EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 sudo ln -s /opt/${APP_NAME}/${APP_NAME}.sh /usr/local/bin/${APP_NAME}
+
+# Install Feng Office
+APP_NAME=fengoffice
+APP_VERSION=3.5.1.5
+APP_EXT=zip
+DB_NAME=fengoffice
+DB_USER=fengoffice
+DB_PASSWORD=fengoffice
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/opengoo/${APP_NAME}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /var/www/html
+sudo chown -R www-data:www-data /var/www/html/${APP_NAME,,}
+sudo chmod -R 777 /var/www/html/${APP_NAME,,}/cache/ /var/www/html/${APP_NAME,,}/config/ /var/www/html/${APP_NAME,,}/tmp/ /var/www/html/${APP_NAME,,}/upload/
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/public/install &
