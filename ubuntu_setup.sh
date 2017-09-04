@@ -1819,3 +1819,14 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${AP
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install HyperJump Bash bookmark tool
+APP_NAME=hyperjump
+APP_VERSION=
+APP_EXT=
+sudo apt-get install -y dialog
+curl -o /tmp/${APP_NAME} -J -L https://github.com/x0054/${APP_NAME}/raw/master/${APP_NAME}
+mv /tmp/${APP_NAME} $HOME/bin/${APP_NAME}
+echo '## Load HyperJump Bash bookmark tool' >> $HOME/.bashrc
+echo 'source $HOME/bin/'${APP_NAME} >> $HOME/.bashrc
+source $HOME/bin/${APP_NAME}	# Activate HyperJump immediately
