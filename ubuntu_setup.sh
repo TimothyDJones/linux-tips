@@ -1800,7 +1800,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Swiss File Knife (SFK) shell file utility
 APP_NAME=sfk
-APP_VERSION=187
+APP_VERSION=188
 APP_EXT=exe
 	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 		ARCH_TYPE=linux-64
@@ -1875,3 +1875,5 @@ mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/public/install &
+
+
