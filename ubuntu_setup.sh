@@ -280,15 +280,18 @@ sudo ln -s /usr/local/share/applications/${APP_NAME}.desktop $HOME/.config/autos
 rm -f /tmp/${APP_NAME}*
 
 # Install Steel Bank Common Lisp (SBLC) from Sourceforge
+APP_NAME=sbcl
+APP_VERSION=1.3.21
+APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
-curl -o /tmp/sblc.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/sbcl/sbcl/1.3.20/sbcl-1.3.20-source.tar.bz2
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/sbcl.tar.gz
-cd /tmp/sbcl/sbcl-1.3.20
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 sh make.sh
 INSTALL_DIR=/usr/local sudo sh install.sh
 cd $HOME
-rm -rf /tmp/sbcl*
+rm -rf /tmp/${APP_NAME}*
 
 # Install Otter Browser from Sourceforge (from source)
 APP_NAME=otter-browser
