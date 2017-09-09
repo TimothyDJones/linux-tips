@@ -314,7 +314,7 @@ APP_EXT=deb
 # Install python-ewmh package from Zesty Zebra distribution.
 curl -o /tmp/python3-ewmh_0.1.5-1_all.deb -J -L http://ftp.osuosl.org/pub/ubuntu/pool/universe/p/python-ewmh/python3-ewmh_0.1.5-1_all.deb
 sudo gdebi -n /tmp/python3-ewmh_0.1.5-1_all.deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://phoenixnap.dl.sourceforge.net/project/my-notes/${APP_VERSION}/${APP_NAME}_${APP_VERSION}-1_all.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/my-notes/${APP_NAME}_${APP_VERSION}-1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/python3-ewmh*
