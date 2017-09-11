@@ -1896,3 +1896,32 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${AP
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Franz messenger consolidator tool
+APP_NAME=Franz
+APP_VERSION=4.0.4
+APP_EXT=tgz
+	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
+		ARCH_TYPE=x64
+	else    # Otherwise use version for 32-bit kernel
+		ARCH_TYPE=ia32
+	fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/meetfranz/franz-app/releases/download/${APP_VERSION}/${APP_NAME}-linux-${ARCH_TYPE}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv franz /opt
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=Franz
+Comment=Cross-platform message consolidation tool
+GenericName=Messenger
+Exec=/opt/${APP_NAME,,}/${APP_NAME}
+#Icon=/opt/${APP_NAME}/themes/default/wicon.xbm
+Type=Application
+StartupNotify=true
+Terminal=true
+Categories=Accessories;Internet;
+Keywords=Messenger;Chat;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
