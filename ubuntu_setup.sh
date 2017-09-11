@@ -1908,7 +1908,7 @@ APP_EXT=tgz
 	fi
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/meetfranz/franz-app/releases/download/${APP_VERSION}/${APP_NAME}-linux-${ARCH_TYPE}-${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx /tmp/${APP_NAME,,}.${APP_EXT}
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 sudo mv franz /opt
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
@@ -1925,3 +1925,33 @@ Keywords=Messenger;Chat;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Sciter Notes notepad utility
+APP_NAME=sciter-notes
+APP_VERSION=N/A
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://notes.sciter.com/distributions/${APP_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+mv bin.gtk ${APP_NAME,,}
+sudo mv ${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=Sciter Notes
+Comment=Cross-platform notepad with capability to sync among devices
+GenericName=Notepad
+Exec=/opt/${APP_NAME,,}/notes
+#Icon=/opt/${APP_NAME}/themes/default/wicon.xbm
+Type=Application
+StartupNotify=true
+Terminal=true
+Categories=Accessories;System;
+Keywords=Notepad;Collaboration;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME,,}/notes /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
