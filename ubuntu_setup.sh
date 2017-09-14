@@ -1984,3 +1984,15 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 #sudo ln -s /opt/${APP_NAME,,}/notes /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install bed (Binary Editor) from source
+APP_NAME=bed
+APP_VERSION=2.27.2
+APP_EXT=tgz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/binaryeditor/${APP_NAME}-${APP_VERSION}.src.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
