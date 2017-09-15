@@ -2009,3 +2009,30 @@ cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Group-Office web-based office suite (manual installation)
+APP_NAME=groupoffice
+APP_VERSION=6.2.59
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME}
+DB_USER=${APP_NAME}
+DB_PASSWORD=${APP_NAME}
+sudo apt-get install -y libwbxml2-utils tnef
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/group-office/${APP_NAME}-com-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+mv ${APP_NAME}-com-${APP_VERSION} ${APP_NAME}
+sudo mv ${APP_NAME} /var/www/html
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+sudo touch /var/www/html/${APP_NAME}/config.php
+sudo mkdir -p /home/${APP_NAME}
+sudo mkdir -p /tmp/${APP_NAME}
+sudo chmod -R 0777 /home/${APP_NAME} /tmp/${APP_NAME}
+sudo chown -R www-data:www-data /var/www/html/${APP_NAME} /home/${APP_NAME} /tmp/${APP_NAME}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/ &
