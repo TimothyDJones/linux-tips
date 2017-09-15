@@ -13,6 +13,9 @@ function getKernelType() {
 	echo ${KERNEL_TYPE}
 }
 
+# Set some parameters for general use
+WWW_HOME=/var/www/html
+
 
 # Add some necessary non-default packages
 sudo apt-get update -y
@@ -65,7 +68,7 @@ sudo service apache2 restart  ## Alternate command is 'sudo apachectl restart'
 sudo usermod -a -G www-data ${USER}
 
 # Change owner of /var/www/html directory to www-data
-sudo chown -R www-data:www-data /var/www/html
+sudo chown -R www-data:www-data ${WWW_HOME}
 
 # Enable PHP 5.6 as default version of PHP (if PHP 7.0+ gets installed, as well).
 sudo a2dismod php7.0 ; sudo a2enmod php5.6 ; sudo service apache2 restart ; echo 1 | sudo update-alternatives --config php
@@ -77,8 +80,8 @@ sudo cat > /tmp/phpinfo.php << EOL
 	phpinfo();
 ?>
 EOL
-sudo mv /tmp/phpinfo.php /var/www/html
-sudo chown www-data:www-data /var/www/html/phpinfo.php
+sudo mv /tmp/phpinfo.php ${WWW_HOME}
+sudo chown www-data:www-data ${WWW_HOME}/phpinfo.php
 
 # Disable XDebug on CLI to prevent warnings when installing/running Composer
 sudo phpdismod -s cli xdebug
@@ -93,9 +96,9 @@ sudo chown -R $USER:$USER $HOME/.composer
 
 # Install latest PhpMyAdmin version via Composer
 # https://docs.phpmyadmin.net/en/latest/setup.html#composer
-cd /var/www/html
+cd ${WWW_HOME}
 sudo php /usr/local/bin/composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json --no-dev
-sudo chown -R www-data:www-data /var/www/html/phpmyadmin
+sudo chown -R www-data:www-data ${WWW_HOME}/phpmyadmin
 xdg-open http://localhost/phpmyadmin/setup &
 cd $HOME
 
@@ -460,9 +463,9 @@ curl -o /tmp/miniflux.tar.gz -J -L https://github.com/miniflux/miniflux/archive/
 cd /tmp
 dtrx -n /tmp/miniflux.tar.gz
 cd /tmp/miniflux
-sudo mv /tmp/miniflux/miniflux-1.2.2 /var/www/html/miniflux
-sudo chown -R www-data:www-data /var/www/html
-sudo chmod -R 777 /var/www/html/miniflux/data
+sudo mv /tmp/miniflux/miniflux-1.2.2 ${WWW_HOME}/miniflux
+sudo chown -R www-data:www-data ${WWW_HOME}
+sudo chmod -R 777 ${WWW_HOME}/miniflux/data
 xdg-open "http://localhost/miniflux"  # Open main page in default browser
 cd $HOME
 rm -rf /tmp/miniflux*
@@ -716,8 +719,8 @@ cd /tmp
 dtrx -n ${APP_NAME}.zip
 cd ${APP_NAME}
 mv ${APP_NAME}-${APP_VERSION} ${APP_NAME}
-sudo mv ${APP_NAME} /var/www/html
-sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
+sudo mv ${APP_NAME} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
 # sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
 # Create database
 mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
@@ -1466,8 +1469,8 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${AP
 cd /tmp
 dtrx -n /tmp/${APP_NAME}.${APP_EXT}
 cd /tmp/${APP_NAME}
-sudo mv ${APP_NAME}${APP_VERSION} /var/www/html/${APP_NAME}
-sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
+sudo mv ${APP_NAME}${APP_VERSION} ${WWW_HOME}/${APP_NAME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
@@ -1552,9 +1555,9 @@ DB_PASSWORD=webtareas
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-v${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,} /var/www/html
-sudo chown -R www-data:www-data /var/www/html/${APP_NAME,,}
-sudo chmod -R +w /var/www/html/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R +w ${WWW_HOME}/${APP_NAME,,}
 # Create database
 mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
@@ -1601,14 +1604,14 @@ cd /tmp
 dtrx -n ${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}
 sudo mv ${APP_NAME}-${APP_VERSION} ${APP_NAME}
-sudo mv ${APP_NAME} /var/www/html
-sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
-sudo chmod 666 /var/www/html/${APP_NAME}/config/config.php
+sudo mv ${APP_NAME} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
+sudo chmod 666 ${WWW_HOME}/${APP_NAME}/config/config.php
 # Create database
 mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
-mysql --host=localhost --user=webcollab --password=webcollab webcollab < /var/www/html/${APP_NAME}/db/schema_mysql_innodb.sql
+mysql --host=localhost --user=webcollab --password=webcollab webcollab < ${WWW_HOME}/${APP_NAME}/db/schema_mysql_innodb.sql
 xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
@@ -1621,8 +1624,8 @@ DB_PASSWORD=projeqtor
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/projectorria/${APP_NAME}V${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n ${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,} /var/www/html
-sudo chown -R www-data:www-data /var/www/html/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
 # Create database
 mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
@@ -1701,8 +1704,8 @@ DB_PASSWORD=tikiwiki
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/tikiwiki/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n ${APP_NAME}.${APP_EXT}
-sudo mv /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION} /var/www/html/${APP_NAME}
-sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
+sudo mv /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION} ${WWW_HOME}/${APP_NAME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
 # Create database
 mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
@@ -1792,9 +1795,9 @@ DB_PASSWORD=pivotx
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/pivot-weblog/${APP_NAME}_${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n ${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,} /var/www/html
-sudo chown -R www-data:www-data /var/www/html/${APP_NAME,,}
-sudo chmod -R 777 /var/www/html/${APP_NAME,,}/images/ /var/www/html/${APP_NAME,,}/pivotx/db/ /var/www/html/${APP_NAME,,}/pivotx/templates
+sudo mv /tmp/${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R 777 ${WWW_HOME}/${APP_NAME,,}/images/ ${WWW_HOME}/${APP_NAME,,}/pivotx/db/ ${WWW_HOME}/${APP_NAME,,}/pivotx/templates
 # Create database
 mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
@@ -1870,9 +1873,9 @@ DB_PASSWORD=fengoffice
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/opengoo/${APP_NAME}_${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n ${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,} /var/www/html
-sudo chown -R www-data:www-data /var/www/html/${APP_NAME,,}
-sudo chmod -R 777 /var/www/html/${APP_NAME,,}/cache/ /var/www/html/${APP_NAME,,}/config/ /var/www/html/${APP_NAME,,}/tmp/ /var/www/html/${APP_NAME,,}/upload/
+sudo mv /tmp/${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R 777 ${WWW_HOME}/${APP_NAME,,}/cache/ ${WWW_HOME}/${APP_NAME,,}/config/ ${WWW_HOME}/${APP_NAME,,}/tmp/ ${WWW_HOME}/${APP_NAME,,}/upload/
 # Create database
 mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
@@ -2023,14 +2026,14 @@ cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}
 mv ${APP_NAME}-com-${APP_VERSION} ${APP_NAME}
-sudo mv ${APP_NAME} /var/www/html
+sudo mv ${APP_NAME} ${WWW_HOME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
-sudo touch /var/www/html/${APP_NAME}/config.php
+sudo touch ${WWW_HOME}/${APP_NAME}/config.php
 sudo mkdir -p /home/${APP_NAME}
 sudo mkdir -p /tmp/${APP_NAME}
 sudo chmod -R 0777 /home/${APP_NAME} /tmp/${APP_NAME}
-sudo chown -R www-data:www-data /var/www/html/${APP_NAME} /home/${APP_NAME} /tmp/${APP_NAME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME} /home/${APP_NAME} /tmp/${APP_NAME}
 # Create database
 mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
@@ -2049,8 +2052,8 @@ cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}
 mv ${APP_NAME}pms ${APP_NAME}
-sudo mv ${APP_NAME} /var/www/html
-sudo chown -R www-data:www-data /var/www/html/${APP_NAME}
+sudo mv ${APP_NAME} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
 # Create database
 mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
