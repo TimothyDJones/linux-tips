@@ -13,6 +13,26 @@ function getKernelType() {
 	echo ${KERNEL_TYPE}
 }
 
+## Create a MySQL database.
+## $1 (first parameter) is the database name (also used for username and password)
+## Assumes that root username and password are root/root.
+function mySqlCreateDatabase() {
+	if [ "$1" != "" ]
+	then
+		local DB_NAME=( $1 )
+		local DB_USER=( $1 )
+		local DB_PASSWORD=( $1 )
+
+		mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+		mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+		mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+
+		echo "Database '" ${DB_NAME} "' created!"
+	else
+		echo "No database name specified!"
+	fi
+}
+
 # Set some parameters for general use
 WWW_HOME=/var/www/html
 
