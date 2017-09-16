@@ -2110,3 +2110,16 @@ cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install CuteMarkEd Qt Markdown editor from source
+APP_NAME=CuteMarkEd
+APP_VERSION=0.11.3
+APP_EXT=tar.gz
+sudo apt-get install -y libqt5webkit5-dev qttools5-dev-tools qt5-default discount libmarkdown2-dev libhunspell-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/cloose/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+qmake && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
