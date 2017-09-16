@@ -71,6 +71,16 @@ sudo apt-get install -y vim vim-gtk3 vim-common \
 	git \
 	nodejs
 
+# Install MongoDB from official repository
+# https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+APP_NAME=mongodb
+APP_VERSION=3.4
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+source /etc/lsb-release
+echo "deb [ arch="${KERNEL_TYPE}" ] http://repo.mongodb.org/apt/ubuntu "${DISTRIB_CODENAME}"/mongodb-org/"${APP_VERSION}" multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${APP_VERSION}.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+sudo service mongod start
 
 # Install PHP 5.6, Apache 2, and MySQL Server
 export DEBIAN_FRONTEND=noninteractive
