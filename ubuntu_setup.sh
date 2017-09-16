@@ -705,6 +705,7 @@ else    # Otherwise use version for 32-bit kernel
 fi
 sudo apt-get install -y gdb
 curl -o /tmp/${APP_NAME}.tgz -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${ARCH_TYPE}-${APP_VERSION}.${APP_EXT}
+cd /tmp
 dtrx -n ${APP_NAME}.${APP_EXT}
 sudo mv ${APP_NAME} /opt
 # sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
@@ -2081,3 +2082,16 @@ mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 xdg-open http://localhost/${APP_NAME,,}/www/index.php &
+
+# Install Brackets text editor from package
+APP_NAME=Brackets
+APP_VERSION=release-1.11-prerelease-2
+APP_EXT=deb
+	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
+		ARCH_TYPE=64-bit
+	else    # Otherwise use version for 32-bit kernel
+		ARCH_TYPE=32-bit
+	fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${APP_NAME}.Release.${APP_VERSION}.${ARCH_TYPE}.${APP_EXT}
+cd /tmp
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
