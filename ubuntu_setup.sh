@@ -2095,3 +2095,18 @@ APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${APP_NAME}.Release.${APP_VERSION}.${ARCH_TYPE}.${APP_EXT}
 cd /tmp
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Worker File Manager from source
+APP_NAME=worker
+APP_VERSION=3.12.0
+APP_EXT=tar.bz2
+sudo apt-get install -y libdbus-glib-1-dev libmagic-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}fm/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
