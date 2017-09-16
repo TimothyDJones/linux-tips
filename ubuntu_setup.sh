@@ -696,7 +696,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZinjaI C++ IDE
 APP_NAME=zinjai
-APP_VERSION=20170607
+APP_VERSION=20170910
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=l64
@@ -704,7 +704,7 @@ else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=l32
 fi
 sudo apt-get install -y gdb
-curl -o /tmp/${APP_NAME}.tgz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}-${ARCH_TYPE}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.tgz -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${ARCH_TYPE}-${APP_VERSION}.${APP_EXT}
 dtrx -n ${APP_NAME}.${APP_EXT}
 sudo mv ${APP_NAME} /opt
 # sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
