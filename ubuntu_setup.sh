@@ -2123,3 +2123,36 @@ cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
 qmake && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Scilab math toolkit
+APP_NAME=scilab
+APP_VERSION=6.0.0
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i686
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.scilab.org/download/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.bin.linux-${ARCH_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+mv ${APP_NAME}-${APP_VERSION} ${APP_NAME}
+sudo mv ${APP_NAME} /opt
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=Scilab
+Comment=Cross-platform IDE for math
+GenericName=Scilab
+Exec=/opt/${APP_NAME,,}/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME}/share/icons/hicolor/32x32/apps/scilab.png
+Type=Application
+StartupNotify=true
+Terminal=true
+Categories=Programming;Development;Science
+Keywords=Math;Programming;Data;Science
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME,,}/bin/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
