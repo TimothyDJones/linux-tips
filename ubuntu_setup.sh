@@ -2177,3 +2177,16 @@ cd /tmp
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install XSchem circuit schematic editor from source
+APP_NAME=xschem
+APP_VERSION=2.1.12
+APP_EXT=tar.gz
+sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}/src
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
