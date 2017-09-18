@@ -2241,3 +2241,15 @@ mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 xdg-open http://localhost/${APP_NAME,,}/install.php &
+
+# Install Doogie Chromium-based browser with tree-style pages
+APP_NAME=doogie
+APP_VERSION=0.6.0
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/cretz/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}-${APP_VERSION}-linux64.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME} /opt
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
