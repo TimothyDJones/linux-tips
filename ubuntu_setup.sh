@@ -2202,3 +2202,18 @@ cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Griffon multi-language IDE from source
+APP_NAME=griffon
+APP_VERSION=1.8.4
+APP_EXT=tar.gz
+sudo apt-get install -y vte-2.91-dev webkitgtk-3.0-dev gtksourceview-3.0-dev libgtk-3-dev libnotify-dev scons
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/griffonide/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+sudo ./install-griffon
+sudo cp ./pixmaps/griffon_icon.png /usr/share/pixmaps
+sudo cp ./${APP_NAME}.desktop /usr/local/share/applications
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}
