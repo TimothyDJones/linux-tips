@@ -2217,3 +2217,27 @@ sudo cp ./pixmaps/griffon_icon.png /usr/share/pixmaps
 sudo cp ./${APP_NAME}.desktop /usr/local/share/applications
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}
+
+# Install Collabtive project management suite (manual installation)
+APP_NAME=Collabtive
+APP_VERSION=3.0.2
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+#cd /tmp/${APP_NAME,,}
+#mv ${APP_NAME}-${APP_VERSION} ${APP_NAME,,}
+mkdir -p ./${APP_NAME,,}/templates_c
+chmod 777 ./${APP_NAME,,}/config/standard/config.php ./${APP_NAME,,}/files ./${APP_NAME,,}/templates_c ./${APP_NAME,,}/templates
+sudo mv ${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+xdg-open http://localhost/${APP_NAME,,}/install.php &
