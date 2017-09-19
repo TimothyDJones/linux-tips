@@ -2220,7 +2220,7 @@ sudo rm -rf /tmp/${APP_NAME,,}
 
 # Install Collabtive project management suite (manual installation)
 APP_NAME=Collabtive
-APP_VERSION=3.0.2
+APP_VERSION=31
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
