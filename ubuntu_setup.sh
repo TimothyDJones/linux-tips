@@ -2299,3 +2299,27 @@ cd /tmp
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Agilefant Web-Based Project Management Tool (manual installation)
+# https://github.com/Agilefant/agilefant/wiki/Agilefant-installation-guide
+APP_NAME=agilefant
+APP_VERSION=3.5.4
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+sudo apt-get install -y tomcat8 tomcat8-admin
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+#cd /tmp/${APP_NAME,,}
+#mv ${APP_NAME}-${APP_VERSION} ${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,}.war /var/lib/tomcat8/webapps
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+sudo service tomcat8 restart
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+xdg-open http://localhost:8080/${APP_NAME,,}/ &
