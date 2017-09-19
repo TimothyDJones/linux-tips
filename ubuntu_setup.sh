@@ -2275,3 +2275,17 @@ mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 xdg-open http://localhost/${APP_NAME,,}/install/index.php &
+
+# Install DK Tools system utility from source
+APP_NAME=dktools
+APP_VERSION=4.9.1
+APP_EXT=tar.gz
+KERNEL_TYPE=getKernelType()
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+sudo dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo chown -R ${USER}:${USER} /tmp/${APP_NAME,,}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
