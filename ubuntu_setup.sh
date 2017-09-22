@@ -2399,3 +2399,30 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install CopyMastro file move/copy utility
+APP_NAME=CopyMastro
+APP_VERSION=2.1.4
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-qt5-${KERNEL_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+mv ${APP_NAME,,}* ${APP_NAME,,}
+sudo mv ${APP_NAME,,} /opt
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=File copy/move utility
+GenericName=${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME}
+Icon=/opt/${APP_NAME,,}/${APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=Copy;File;Utilities;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
