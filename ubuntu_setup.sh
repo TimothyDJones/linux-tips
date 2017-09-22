@@ -2368,3 +2368,34 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Upterm terminal/shell built with Electron (AppImage)
+APP_NAME=upterm
+APP_VERSION=0.4.1
+APP_EXT=AppImage
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/railsware/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}-${APP_VERSION}-${ARCH_TYPE}-linux.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME}
+sudo mv /tmp/${APP_NAME}.${APP_EXT} /opt/${APP_NAME}
+sudo chmod +x /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=Upterm
+Comment=Electron-based terminal/shell
+GenericName=Beige UML
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;Accessories;System
+Keywords=Terminal;Shell;IDE
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
