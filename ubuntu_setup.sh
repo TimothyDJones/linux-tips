@@ -2426,3 +2426,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Printed Circuit Board Layout Tool
+APP_NAME=pcb
+APP_VERSION=4.0.2
+APP_EXT=tar.gz
+sudo apt-get install -y intltool libgtkglext1-dev libgd-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
