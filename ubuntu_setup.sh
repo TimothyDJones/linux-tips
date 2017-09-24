@@ -449,7 +449,7 @@ add Control = Control_R
 
 # Install JOE (Joe's Own Editor) from source
 APP_NAME=joe
-APP_VERSION=4.4
+APP_VERSION=4.5
 curl -o /tmp/${APP_NAME}.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}-editor/JOE%20sources/${APP_NAME}-${APP_VERSION}/${APP_NAME}-${APP_VERSION}.tar.gz
 cd /tmp
 dtrx -n /tmp/${APP_NAME}.tar.gz
@@ -2500,3 +2500,4 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
