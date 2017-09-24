@@ -2451,3 +2451,52 @@ sudo mv /tmp/${APP_NAME,,}.${APP_EXT} /opt/${APP_NAME,,}
 sudo chmod +x /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Agora Project groupware application (manual installation)
+APP_NAME=agora_project
+APP_VERSION=3.3.3
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/agora-project/${APP_NAME}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+#cd /tmp/${APP_NAME,,}
+#mv ${APP_NAME}-${APP_VERSION} ${APP_NAME,,}
+sudo mv ${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+
+# Install Strong Java Chess Engine (SJCE) graphical chess tool
+APP_NAME=SJCE
+APP_VERSION=22-09-17
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L  https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_bin.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+#cd /tmp/${APP_NAME,,}
+#mv ${APP_NAME}_${APP_VERSION}_bin ${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_bin /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=Strong Java Chess Engine (SJCE)
+Comment=Java-based graphical chess tool
+GenericName=SJCE
+Exec=/opt/${APP_NAME,,}/${APP_NAME}_run_linux.sh
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Education;
+Keywords=Chess;Java;Games;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
