@@ -2544,3 +2544,28 @@ cd /tmp/${APP_NAME,,}/${APP_NAME,,}-r${APP_VERSION}
 ./config.sh && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Tiny Scan Java-based disk usage utility
+APP_NAME=TinyScan
+APP_VERSION=7.3
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Java-based disk usage utility
+GenericName=${APP_NAME}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Accessories;
+Keywords=Disk;System;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
