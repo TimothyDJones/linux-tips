@@ -2501,3 +2501,22 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
+# Install EGroupware PHP-based groupware from package
+APP_NAME=egroupware
+APP_VERSION=
+APP_EXT=
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+source /etc/lsb-release
+wget -nv https://download.opensuse.org/repositories/server:eGroupWare/xUbuntu_${DISTRIB_RELEASE}/Release.key -O /tmp/Release.key
+sudo apt-key add - < /tmp/Release.key
+sudo apt-get update
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/server:/eGroupWare/xUbuntu_"${DISTRIB_RELEASE}"/ /' > /etc/apt/sources.list.d/egroupware-epl.list"
+sudo apt-get update
+sudo apt-get install -y ${APP_NAME}-epl
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/index.php &
