@@ -2520,3 +2520,14 @@ mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/index.php &
+
+# Install clib package manager for C language from Github source
+APP_NAME=clib
+APP_VERSION=
+APP_EXT=
+sudo apt-get install -y libcurl4-gnutls-dev -qq
+git clone https://github.com/clibs/${APP_NAME}.git /tmp/${APP_NAME}
+cd /tmp/${APP_NAME}
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
