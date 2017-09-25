@@ -2095,7 +2095,7 @@ xdg-open http://localhost/${APP_NAME,,}/www/index.php &
 
 # Install Brackets text editor from package
 APP_NAME=Brackets
-APP_VERSION=release-1.11-prerelease-2
+APP_VERSION=release-1.11
 APP_EXT=deb
 	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 		ARCH_TYPE=64-bit
