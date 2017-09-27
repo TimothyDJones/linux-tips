@@ -2569,3 +2569,31 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Shufti simple PyQt image viewer from source
+APP_NAME=shufti
+APP_VERSION=2.3
+APP_EXT=tar.gz
+sudo apt install -y python-pyqt5 python-pyqt5.qtsql -qq
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/danboid/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+#cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Simple PyQt image viewer
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME}/${APP_NAME}.py
+Icon=/opt/${APP_NAME}/${APP_NAME}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Accessories;Graphics;
+Keywords=Graphics;Image;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME}/${APP_NAME}.py /usr/local/bin/${APP_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
