@@ -2597,3 +2597,12 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 sudo ln -s /opt/${APP_NAME}/${APP_NAME}.py /usr/local/bin/${APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Monitorix system monitoring utility from package
+APP_NAME=monitorix
+APP_VERSION=3.9.0
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.{APP_NAME,,}.org/{APP_NAME,,}_{APP_VERSION}-izzy1_all.deb
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
