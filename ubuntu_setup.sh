@@ -2641,3 +2641,29 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Treeline tree-structured notepad
+APP_NAME=TreeLine
+APP_VERSION=2.1.2
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}
+sudo python3 /tmp/${APP_NAME,,}/${APP_NAME}/install.py
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Java-based mind mapping application
+GenericName=${APP_NAME}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/treeline/toolbar/32x32/treelogo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Office;
+Keywords=Notes;Productivity;Notepad;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
