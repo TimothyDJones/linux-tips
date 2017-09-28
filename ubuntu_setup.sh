@@ -2616,3 +2616,28 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Freemind Java-based mind mapping application
+APP_NAME=freemind
+APP_VERSION=1.1.0_Beta_2
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-bin-max-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=FreeMind
+Comment=Java-based mind mapping application
+GenericName=FreeMind
+Exec=sh /opt/${APP_NAME,,}/${APP_NAME,,}.sh
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Graphics;Office;
+Keywords=Mind;Mapping;Productivity;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
