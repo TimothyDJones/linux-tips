@@ -328,7 +328,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Otter Browser from Sourceforge (from source)
 APP_NAME=otter-browser
-APP_VERSION=192
+APP_VERSION=195
 APP_EXT=tar.bz2
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev   # Qt5 development packages needed to build from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-0.9.91-dev${APP_VERSION}.${APP_EXT}
