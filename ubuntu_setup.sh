@@ -2690,3 +2690,30 @@ sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION} /opt/${APP_NAME,,}
 sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Bishop Java-based chess application
+APP_NAME=bishop
+APP_VERSION=1_0_0
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}chess/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=Bishop Chess
+Comment=Java-based chess game
+GenericName=Chess
+Exec=sh /opt/${APP_NAME,,}/${APP_NAME,,}.sh
+Icon=/opt/${APP_NAME,,}/graphics/icon/icon_48.png
+Path=/opt/${APP_NAME,,}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;
+Keywords=Games;Chess;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,}.sh /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
