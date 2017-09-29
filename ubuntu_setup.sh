@@ -2501,3 +2501,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
+# Install Stellarium astronomy utility from PPA
+sudo apt-add-repository -y ppa:stellarium/stellarium-releases
+sudo apt-get update
+sudo apt-get install -y stellarium
