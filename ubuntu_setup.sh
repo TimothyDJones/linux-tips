@@ -1440,7 +1440,7 @@ rm -rf ${APP_NAME)*
 
 # Install exa, a replacement for 'ls' command
 APP_NAME=exa
-APP_VERSION=0.7.0
+APP_VERSION=0.8.0
 APP_EXT=zip
 # Dependency on libhttp-parser2.1 below is needed due to problem noted
 # on Github:  https://github.com/ogham/exa/issues/194
