@@ -219,7 +219,7 @@ rm -rf /tmp/${APP_NAME}*
 # in isolated memory space.
 cd /var/tmp
 curl -o firejail.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://superb-sea2.dl.sourceforge.net/project/firejail/firejail/firejail_0.9.50_1_${KERNEL_TYPE}.deb
-curl -o firetools.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://cytranet.dl.sourceforge.net/project/firejail/firetools/firetools_0.9.46_1_${KERNEL_TYPE}.deb
+curl -o firetools.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://cytranet.dl.sourceforge.net/project/firejail/firetools/firetools_0.9.50_1_${KERNEL_TYPE}.deb
 sudo gdebi -n firejail.deb   # '-n' is non-interactive mode for gdebi
 sudo gdebi -n firetools.deb   # '-n' is non-interactive mode for gdebi
 rm -f firejail.deb firetools.deb
