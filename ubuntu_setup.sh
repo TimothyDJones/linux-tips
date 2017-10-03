@@ -2834,3 +2834,12 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 sudo ln -s /opt/${APP_NAME,,}/${APP_NAME}.app/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Nightcode Clojure/Clojurescript IDE from package
+APP_NAME=Nightcode
+APP_VERSION=2.4.0
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/oakes/${APP_NAME}/releases/download/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
