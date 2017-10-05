@@ -991,7 +991,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Sourceforge
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1
-APP_VERSION_MINOR=3657
+APP_VERSION_MINOR=3666
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-19/libpasastro_1.1-19_${KERNEL_TYPE}.deb
@@ -2840,6 +2840,15 @@ APP_NAME=Nightcode
 APP_VERSION=2.4.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/oakes/${APP_NAME}/releases/download/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Dropbox online storage utility from package
+APP_NAME=dropbox
+APP_VERSION=2.10.0
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://linux.dropbox.com/packages/ubuntu/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
