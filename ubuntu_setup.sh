@@ -2921,3 +2921,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install OCS Store application installer from package
+APP_NAME=ocsstore
+APP_VERSION=2.2.1
+APP_EXT=deb
+sudo apt-get install -y libclang1 libgtk-3-0
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://dl.opendesktop.org/api/files/download/id/1506729421/${APP_NAME}_${APP_VERSION}-0ubuntu1_amd64.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
