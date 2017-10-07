@@ -1784,10 +1784,16 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE
 APP_NAME=eric
-APP_VERSION=6-17.09
+APP_VERSION=6-17.10
 APP_EXT=tar.gz
-sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci
+sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}${APP_VERSION}
+sudo python3 ./install.py
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
 
 # Install Finanx 12c HP-12c financial calculator emulator
 APP_NAME=finanx
