@@ -1406,7 +1406,7 @@ APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
-rm -rf ${APP_NAME)*
+rm -rf ${APP_NAME}*
 
 # Install SysCheck system profiler utility
 APP_NAME=SysCheck
@@ -1436,7 +1436,7 @@ APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/super-productivity/${APP_NAME}_${APP_VERSION}_amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
-rm -rf ${APP_NAME)*
+rm -rf ${APP_NAME}*
 
 # Install exa, a replacement for 'ls' command
 APP_NAME=exa
