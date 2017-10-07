@@ -1363,7 +1363,7 @@ APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-x86_64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
-rm -rf ${APP_NAME)*
+rm -rf ${APP_NAME}*
 
 # Install BoostNote notepad/PIM from package
 APP_NAME=boostnote
