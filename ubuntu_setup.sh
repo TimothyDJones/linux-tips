@@ -2892,3 +2892,32 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+
+# Install Clevit "smart" text editor
+APP_NAME=Clevit
+APP_VERSION=1.3.4.1
+APP_EXT=tar.gz
+sudo apt-get install -y build-essential make cmake qtdeclarative5-dev qml-module-qtquick-controls qt5-default
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}%20v${APP_VERSION}.${APP_EXT}
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/TigaxMT-Clevit-d44c1d3
+qmake && make && sudo make install
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /usr/share/icons/hicolor/scalable/apps/icon.png /usr/share/icons/hicolor/scalable/apps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment="Smart" text editor
+GenericName=${APP_NAME}
+Exec=/usr/bin/${APP_NAME}
+Icon=/usr/share/icons/hicolor/scalable/apps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;Accessories;
+Keywords=Editor;Text;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
