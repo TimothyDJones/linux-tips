@@ -2953,3 +2953,15 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/minbrowser/${APP_
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install gFileFinder file search GUI utility from source
+APP_NAME=gFileFinder
+APP_VERSION=0.2
+APP_EXT=tar.gz
+sudo apt-get install -y libgtk-3-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/gff${APP_VERSION}-src.${APP_EXT}
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/gff
+make && sudo mv src/gff /usr/local/bin
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
