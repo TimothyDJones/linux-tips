@@ -2983,3 +2983,26 @@ rm -rf /tmp/${APP_NAME,,}
 sudo add-apt-repository -y ppa:godehardt/ppa
 sudo apt-get update -y
 sudo apt-get install -y glosung
+
+# Install PHP Address Book web-based address book
+# https://sourceforge.net/projects/php-addressbook/
+APP_NAME=php-addressbook
+APP_VERSION=9.0.0.0
+APP_EXT=zip
+DB_NAME=phpaddressbook
+DB_USER=phpaddressbook
+DB_PASSWORD=phpaddressbook
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/addressbook.v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+#cd /tmp/${APP_NAME,,}
+#mv ${APP_NAME}-${APP_VERSION} ${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}/addressbook ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+xdg-open http://localhost/${APP_NAME,,}/index.php &
