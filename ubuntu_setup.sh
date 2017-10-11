@@ -383,7 +383,7 @@ rm -rf /tmp/mupdf*
 
 # Install tke text editor
 APP_NAME=tke
-APP_VERSION=3.3
+APP_VERSION=3.4
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -2958,7 +2958,19 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=gFileFinder
 APP_VERSION=0.2
 APP_EXT=tar.gz
-sudo apt-get install -y libgtk-3-dev
+sudo apt-get install -y libgtk-3-dev libxcb-ewmh-dev libxcb1-dev xcb-proto xcb-util-image xcb-util-wm xcb-util-xrm
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/gff${APP_VERSION}-src.${APP_EXT}
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/gff
+make && sudo mv src/gff /usr/local/bin
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Polybar status bar from source
+APP_NAME=polybar
+APP_VERSION=3.0.5
+APP_EXT=tar.gz
+sudo apt-get install -y libcairo2-dev libx11-xcb-dev 
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/gff${APP_VERSION}-src.${APP_EXT}
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}/gff
