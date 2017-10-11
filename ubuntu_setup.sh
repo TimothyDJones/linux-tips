@@ -2977,3 +2977,9 @@ cd /tmp/${APP_NAME,,}/gff
 make && sudo mv src/gff /usr/local/bin
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install GLosung daily Bible verse tool from PPA
+# http://www.godehardt.org/losung.html
+sudo add-apt-repository -y ppa:godehardt/ppa
+sudo apt-get update -y
+sudo apt-get install -y glosung
