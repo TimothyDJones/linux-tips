@@ -2987,12 +2987,12 @@ sudo apt-get install -y glosung
 # Install PHP Address Book web-based address book
 # https://sourceforge.net/projects/php-addressbook/
 APP_NAME=php-addressbook
-APP_VERSION=9.0.0.0
+APP_VERSION=9.0.0.1
 APP_EXT=zip
 DB_NAME=phpaddressbook
 DB_USER=phpaddressbook
 DB_PASSWORD=phpaddressbook
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/addressbook.v${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/addressbookv${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 #cd /tmp/${APP_NAME,,}
