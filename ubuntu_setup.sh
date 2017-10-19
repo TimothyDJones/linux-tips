@@ -152,16 +152,18 @@ rm -rf $HOME/bash-it
 # Install LilyTerm terminal
 # Ubuntu does not have recent version in packages, so we build from source,
 # which requires installation of GTK+2 and other libraries.
+APP_NAME=lilyterm
+APP_VERSION=0.9.9.4
+APP_EXT=tar.gz
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev libvte-dev
 cd $HOME/Downloads
-wget -O lilyterm.tar.gz http://lilyterm.luna.com.tw/file/lilyterm-0.9.9.4.tar.gz
-dtrx -n $HOME/Downloads/lilyterm.tar.gz
-cd $HOME/Downloads/lilyterm/lilyterm-0.9.9.4
-./configure
-make
-sudo make install
+wget -O /tmp/${APP_NAME}.${APP_EXT} http://lilyterm.luna.com.tw/file/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
 cd $HOME
-rm -rf $HOME/Downloads/lilyterm*
+rm -rf /tmp/${APP_NAME}*
 ln -s /usr/local/share/applications/lilyterm.desktop $HOME/.config/autostart/
 
 # Install Google Go language
