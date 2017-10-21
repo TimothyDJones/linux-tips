@@ -305,9 +305,9 @@ rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Sourceforge
 APP_NAME=copyq
-APP_VERSION=3.0.2
+APP_VERSION=3.0.3
 source /etc/os-release
-curl -o /tmp/${APP_NAME}.deb -J -L https://ayera.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-${APP_VERSION}/Linux/${APP_NAME}_${APP_VERSION}_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
+curl -o /tmp/${APP_NAME}.deb -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}/Linux/${APP_NAME}_${APP_VERSION}_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
 sudo gdebi -n /tmp/${APP_NAME}.deb
 sudo ln -s /usr/local/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Configure CopyQ to autostart on system launch
 rm -f /tmp/${APP_NAME}*
