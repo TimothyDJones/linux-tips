@@ -152,16 +152,18 @@ rm -rf $HOME/bash-it
 # Install LilyTerm terminal
 # Ubuntu does not have recent version in packages, so we build from source,
 # which requires installation of GTK+2 and other libraries.
+APP_NAME=lilyterm
+APP_VERSION=0.9.9.4
+APP_EXT=tar.gz
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev libvte-dev
 cd $HOME/Downloads
-wget -O lilyterm.tar.gz http://lilyterm.luna.com.tw/file/lilyterm-0.9.9.4.tar.gz
-dtrx -n $HOME/Downloads/lilyterm.tar.gz
-cd $HOME/Downloads/lilyterm/lilyterm-0.9.9.4
-./configure
-make
-sudo make install
+wget -O /tmp/${APP_NAME}.${APP_EXT} http://lilyterm.luna.com.tw/file/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
 cd $HOME
-rm -rf $HOME/Downloads/lilyterm*
+rm -rf /tmp/${APP_NAME}*
 ln -s /usr/local/share/applications/lilyterm.desktop $HOME/.config/autostart/
 
 # Install Google Go language
@@ -271,7 +273,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.22.0.0-1
+APP_VERSION=1.22.4.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -698,7 +700,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.5
+APP_VERSION=7.5.3
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -710,7 +712,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZinjaI C++ IDE
 APP_NAME=zinjai
-APP_VERSION=20171002
+APP_VERSION=20171016
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=l64
@@ -2056,7 +2058,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=groupoffice
-APP_VERSION=6.2.63
+APP_VERSION=6.2.65
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME}
 DB_USER=${APP_NAME}
@@ -2288,7 +2290,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 
 # Install DK Tools system utility from source
 APP_NAME=dktools
-APP_VERSION=4.9.6
+APP_VERSION=4.9.7
 APP_EXT=tar.gz
 KERNEL_TYPE=getKernelType()
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -3050,3 +3052,12 @@ mkdir build && cd build
 cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install ForeverNote open-source Evernote web client from package
+APP_NAME=ForeverNote
+APP_VERSION=1.3
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
