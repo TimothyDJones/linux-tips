@@ -3074,3 +3074,12 @@ cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Delta Hex Editor Java-based hexadecimal editor from package
+APP_NAME=deltahex-editor
+APP_VERSION=0.1.3
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/deltahex/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
