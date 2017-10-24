@@ -3101,3 +3101,19 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Geoserver as stand-alone binary
+# http://docs.geoserver.org/latest/en/user/installation/linux.html
+APP_NAME=geoserver
+APP_VERSION=2.12.0
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-bin.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION} /opt/${APP_NAME,,}
+sudo chown -R $USER /opt/${APP_NAME,,}
+echo "export GEOSERVER_HOME=/opt/"${APP_NAME,,} >> $HOME/.profile
+source $HOME/.profile
+sudo ln -s /opt/${APP_NAME,,}/bin/startup.sh /usr/local/bin/geoserver
+sh /opt/${APP_NAME,,}/bin/startup.sh
+xdg-open http://localhost:8080/geoserver &
