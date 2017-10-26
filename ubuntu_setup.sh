@@ -168,7 +168,7 @@ ln -s /usr/local/share/applications/lilyterm.desktop $HOME/.config/autostart/
 
 # Install Google Go language
 APP_NAME=go
-APP_VERSION=1.9.1
+APP_VERSION=1.9.2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
 else    # Otherwise use version for 32-bit kernel
