@@ -3151,3 +3151,16 @@ mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 xdg-open http://localhost/${APP_NAME,,}/index.php &
+
+# Install Pentobi Blokus-style board game from source
+APP_NAME=pentobi
+APP_VERSION=14.0
+APP_EXT=tar.xz
+sudo apt-get install -y g++ make cmake qttools5-dev qttools5-dev-tools libqt5svg5-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+cmake -DCMAKE_BUILD_TYPE=Release . && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
