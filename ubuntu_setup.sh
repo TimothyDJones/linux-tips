@@ -3117,3 +3117,37 @@ source $HOME/.profile
 sudo ln -s /opt/${APP_NAME,,}/bin/startup.sh /usr/local/bin/geoserver
 sh /opt/${APP_NAME,,}/bin/startup.sh
 xdg-open http://localhost:8080/geoserver &
+
+# Install TeamPass PHP-based collaborative password manager
+# https://github.com/nilsteampassnet/TeamPass
+APP_NAME=TeamPass
+APP_VERSION=2.1.27.9
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+sudo apt-get install -y php5.6-mcrypt php5.6-mbstring php5.6-iconv php5.6-xml php5.6-gd openssl
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://codeload.github.com/nilsteampassnet/${APP_NAME}/${APP_EXT}/${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+mv ${APP_NAME}-${APP_VERSION} ${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R 0777 ${WWW_HOME}/${APP_NAME,,}/includes/config
+sudo chmod -R 0777 ${WWW_HOME}/${APP_NAME,,}/includes/avatars
+sudo chmod -R 0777 ${WWW_HOME}/${APP_NAME,,}/includes/libraries/csrfp/libs
+sudo chmod -R 0777 ${WWW_HOME}/${APP_NAME,,}/includes/libraries/csrfp/log
+sudo chmod -R 0777 ${WWW_HOME}/${APP_NAME,,}/includes/libraries/csrfp/js
+sudo chmod -R 0777 ${WWW_HOME}/${APP_NAME,,}/backups
+sudo chmod -R 0777 ${WWW_HOME}/${APP_NAME,,}/files
+sudo chmod -R 0777 ${WWW_HOME}/${APP_NAME,,}/install
+sudo chmod -R 0777 ${WWW_HOME}/${APP_NAME,,}/upload
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "grant all privileges on ${DB_NAME}.* to teampass_admin@'%' identified by 'PASSWORD';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+xdg-open http://localhost/${APP_NAME,,}/index.php &
