@@ -3189,3 +3189,20 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install cppcrypto multi-algorithm C++ crypto library including digest and cryptor utilities from source
+APP_NAME=cppcrypto
+APP_VERSION=0.17
+APP_EXT=zip
+sudo apt-get install -y g++ make yasm
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-src.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}
+make && sudo make install
+cd ../cryptor
+make && sudo make install
+cd ../digest
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
