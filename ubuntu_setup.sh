@@ -3164,3 +3164,28 @@ cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 cmake -DCMAKE_BUILD_TYPE=Release . && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install FeedTurtle Java-based RSS news aggregator client
+APP_NAME=FeedTurtle
+APP_VERSION=X.3
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME}${APP_VERSION} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Java-based RSS news aggregator
+GenericName=${APP_NAME}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.jar
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;Networking;
+Keywords=RSS;News;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
