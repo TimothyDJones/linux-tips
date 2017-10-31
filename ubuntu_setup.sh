@@ -3219,3 +3219,14 @@ cd /tmp/${APP_NAME}
 ./build.sh && sudo cp easy-editor start-project video2yuv.sh yuv2mp4.sh /usr/local/bin && cp ctrlview.jpg $HOME
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install djvu2pdf tool to convert Djvu files to PDF files from package
+# http://0x2a.at/s/projects/djvu2pdf
+APP_NAME=djvu2pdf
+APP_VERSION=0.9.2-1
+APP_EXT=deb
+sudo apt-get install -y djvulibre-bin ghostscript
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://0x2a.at/site/projects/${APP_NAME}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
