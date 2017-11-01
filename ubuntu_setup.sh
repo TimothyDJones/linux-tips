@@ -3340,3 +3340,15 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Mind Map Architect mind mapping tool from package
+APP_NAME=mmarchitect
+APP_VERSION=0.5.0
+APP_EXT=deb
+# Install libgee2 dependency from Ubuntu 14.04
+curl -o /tmp/libgee2.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgee/libgee2_0.6.8-1ubuntu1_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/libgee2.deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
