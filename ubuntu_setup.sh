@@ -3420,3 +3420,49 @@ sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,}-cli /usr/local/bin/${APP_NAME,,}
 sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,}-qt /usr/local/bin/${APP_NAME,,}-qt
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Open Limbas PHP database utility
+APP_NAME=openlimbas
+APP_VERSION=3.3.16.342
+APP_EXT=tar.gz
+DB_NAME=limbas
+DB_USER=limbas
+DB_PASSWORD=limbas
+source /etc/lsb-release
+sudo apt-get install -y unixodbc php5.6-odbc
+curl -o /tmp/mysql-odbc-driver.tar.gz -J -L https://cdn.mysql.com//Downloads/Connector-ODBC/5.3/mysql-connector-odbc-5.3.9-linux-ubuntu16.04-x86-64bit.tar.gz
+cd /tmp
+dtrx -n /tmp/mysql-odbc-driver.tar.gz
+cd /tmp/mysql-odbc-driver/mysql-connector-odbc-5.3.9-linux-ubuntu16.04-x86-64bit
+sudo mv ./bin/myodbc-install /usr/local/bin
+sudo mv ./lib/* /usr/lib/x86_64-linux-gnu/odbc/
+cat > /tmp/odbcinst.ini << EOF
+[MySQL]
+Description = ODBC for MySQL
+Driver = /usr/lib/x86_64-linux-gnu/odbc/libmyodbc5a.so
+Setup = /usr/lib/x86_64-linux-gnu/odbc/libodbcmyS.so
+FileUsage = 1
+EOF
+cat > /tmp/odbc.ini << EOF
+[${APP_NAME}]
+Description = MySQL Connection to OpenLimbas Database
+Driver = MySQL
+Database = ${DB_NAME}
+Server = localhost
+Port = 3306
+User = ${DB_USER}
+Password = ${DB_PASSWORD}
+Socket = /var/run/mysqld/mysqld.sock
+EOF
+sudo mv -f /tmp/odbc* /etc
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/limbas/${APP_NAME}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+sudo mv /tmp/${APP_NAME} ${WWW_HOME}/${APP_NAME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
+sudo chmod -R a+w /var/www/html/${APP_NAME}/dependent
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
