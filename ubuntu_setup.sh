@@ -3466,3 +3466,22 @@ mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
+
+# Install Admidio organizational management tool
+APP_NAME=admidio
+APP_VERSION=3.2.12
+APP_EXT=zip
+DB_NAME=admidio
+DB_USER=admidio
+DB_PASSWORD=admidio
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+sudo mv /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION} ${WWW_HOME}/${APP_NAME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
+sudo chmod -R 777 ${WWW_HOME}/${APP_NAME}/adm_my_files
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/index.php &
