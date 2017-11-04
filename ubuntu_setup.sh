@@ -3516,3 +3516,12 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install WingIDE 101 Python editor/IDE from package
+APP_NAME=WingIDE-101
+APP_VERSION=6.0.8
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://wingware.com/pub/${APP_NAME,,}/${APP_VERSION}/${APP_NAME,,}-6_${APP_VERSION}-1_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
