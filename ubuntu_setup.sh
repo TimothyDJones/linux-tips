@@ -3534,3 +3534,30 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://builds.insomnia.rest/downloa
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install XnViewMP image viewer/converter from package
+APP_NAME=XnViewMP
+APP_VERSION=0.88
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://download.xnview.com/${APP_NAME}-linux-${ARCH_TYPE}.deb
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install QupZilla Qt5-based minimalistic web browser from source
+APP_NAME=QupZilla
+APP_VERSION=2.2.1
+APP_EXT=tar.xz
+sudo apt-get install -y qt5-default qtwebengine5-dev qtwebengine5-dev-tools libqt5x11extras5-dev qttools5-dev-tools libxcb-util0-dev libssl-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+qmake && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
