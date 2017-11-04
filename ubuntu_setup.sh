@@ -3561,3 +3561,16 @@ cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
 qmake && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Simple-Arc-Clock Qt5-based desktop clock from source
+APP_NAME=Simple-Arc-Clock
+APP_VERSION=1.2
+APP_EXT=tar.gz
+sudo apt-get install -y qt5-default qtwebengine5-dev qtwebengine5-dev-tools libqt5x11extras5-dev qttools5-dev-tools libxcb-util0-dev libssl-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://github.com/phobi4n/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+qmake && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
