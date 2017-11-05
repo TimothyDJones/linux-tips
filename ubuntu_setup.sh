@@ -3597,3 +3597,26 @@ cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
 sudo python3 setup.py install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Electric Sheep screensaver from source
+APP_NAME=flam3
+APP_VERSION=3.1.1
+APP_EXT=tar.gz
+sudo apt-get install -y libxml2-dev libjpeg8-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/scottdraves/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+./configure && make && sudo make install
+
+APP_NAME=electricsheep
+APP_VERSION=master
+APP_EXT=tar.gz
+sudo apt-get install -y subversion autoconf libtool libgtk2.0-dev libgl1-mesa-dev libavcodec-dev libavformat-dev libswscale-dev liblua5.1-0-dev libcurl4-openssl-dev libxml2-dev libjpeg8-dev libgtop2-dev libboost-dev libboost-filesystem-dev libboost-thread-dev libtinyxml-dev freeglut3-dev glee-dev libwxgtk3.0-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://codeload.github.com/scottdraves/${APP_NAME}/${APP_EXT}/${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}/client_generic
+./autogen.sh && ./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
