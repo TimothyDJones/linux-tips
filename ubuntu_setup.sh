@@ -3583,3 +3583,17 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://pseudopolis.eu/wiki/pino/pro
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Meteo-Qt Qt5-based weather utility from source
+APP_NAME=Meteo-Qt
+APP_VERSION=0.9.7
+APP_EXT=tar.gz
+sudo apt-get install -y python3-pyqt5 python3-sip python3-lxml
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://github.com/dglent/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+https://github.com/dglent/meteo-qt/archive/v0.9.7.tar.gz
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+sudo python3 setup.py install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
