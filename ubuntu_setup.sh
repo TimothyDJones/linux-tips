@@ -3620,3 +3620,11 @@ cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}/client_generic
 ./autogen.sh && ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Leiningen and Clojure from script
+APP_NAME=lein
+APP_VERSION=
+APP_EXT=
+curl -o /tmp/${APP_NAME,,} -J -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
