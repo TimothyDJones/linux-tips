@@ -3455,6 +3455,8 @@ Password = ${DB_PASSWORD}
 Socket = /var/run/mysqld/mysqld.sock
 EOF
 sudo mv -f /tmp/odbc* /etc
+# Add link to MySQL daemon socket for use by ODBC
+sudo ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/limbas/${APP_NAME}_${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n ${APP_NAME}.${APP_EXT}
