@@ -186,36 +186,40 @@ rm -rf /tmp/go*
 cd $HOME
 
 # Install Lite IDE for Go language development
-APP_NAME=liteide
-APP_VERSION=x32.2
+APP_NAME=LiteIDE
+APP_VERSION=x33
+APP_EXT=tar.bz2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=linux32
 fi
-curl -o /tmp/${APP_NAME}.tar.bz2 -J -L https://superb-dca2.dl.sourceforge.net/project/${APP_NAME}/X32.2/${APP_NAME}${APP_VERSION}.${ARCH_TYPE}-qt4.tar.bz2
-curl -o /tmp/${APP_NAME}-system.tar.bz2 -J -L https://superb-dca2.dl.sourceforge.net/project/${APP_NAME}/X32.2/${APP_NAME}${APP_VERSION}.${ARCH_TYPE}-qt4-system.tar.bz2
+sudo apt-get install -y qt4-default
+curl -o /tmp/libpng12-0.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_${KERNEL_TYPE}.deb
+sudo gdebi -n libpng12-0.deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-qt4.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}-system.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-qt4-system.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.tar.bz2
-sudo mv ${APP_NAME} /opt
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv ${APP_NAME,,} /opt
 # Create icon in menus
-cat > /tmp/${APP_NAME}.desktop << EOF
+cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
-Name=LiteIDE
+Name=${APP_NAME}
 Comment=IDE for editing and building projects written in the Go programming language
-GenericName=LiteIDE
-Exec=/opt/${APP_NAME}/bin/${APP_NAME}
-Icon=/opt/${APP_NAME}/share/${APP_NAME}/welcome/images/liteide128.xpm
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/share/${APP_NAME,,}/welcome/images/liteide128.xpm
 Type=Application
 StartupNotify=false
 Terminal=false
-Categories=Development;
+Categories=Development;Programming;
 Keywords=golang;go;ide;programming;
 EOF
-sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
-sudo ln -s /opt/${APP_NAME}/bin/${APP_NAME} /usr/local/bin/${APP_NAME}
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME,,}/bin/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
