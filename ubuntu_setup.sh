@@ -186,36 +186,40 @@ rm -rf /tmp/go*
 cd $HOME
 
 # Install Lite IDE for Go language development
-APP_NAME=liteide
-APP_VERSION=x32.2
+APP_NAME=LiteIDE
+APP_VERSION=x33
+APP_EXT=tar.bz2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=linux32
 fi
-curl -o /tmp/${APP_NAME}.tar.bz2 -J -L https://superb-dca2.dl.sourceforge.net/project/${APP_NAME}/X32.2/${APP_NAME}${APP_VERSION}.${ARCH_TYPE}-qt4.tar.bz2
-curl -o /tmp/${APP_NAME}-system.tar.bz2 -J -L https://superb-dca2.dl.sourceforge.net/project/${APP_NAME}/X32.2/${APP_NAME}${APP_VERSION}.${ARCH_TYPE}-qt4-system.tar.bz2
+sudo apt-get install -y qt4-default
+curl -o /tmp/libpng12-0.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_${KERNEL_TYPE}.deb
+sudo gdebi -n libpng12-0.deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-qt4.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}-system.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-qt4-system.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.tar.bz2
-sudo mv ${APP_NAME} /opt
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv ${APP_NAME,,} /opt
 # Create icon in menus
-cat > /tmp/${APP_NAME}.desktop << EOF
+cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
-Name=LiteIDE
+Name=${APP_NAME}
 Comment=IDE for editing and building projects written in the Go programming language
-GenericName=LiteIDE
-Exec=/opt/${APP_NAME}/bin/${APP_NAME}
-Icon=/opt/${APP_NAME}/share/${APP_NAME}/welcome/images/liteide128.xpm
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/share/${APP_NAME,,}/welcome/images/liteide128.xpm
 Type=Application
 StartupNotify=false
 Terminal=false
-Categories=Development;
+Categories=Development;Programming;
 Keywords=golang;go;ide;programming;
 EOF
-sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
-sudo ln -s /opt/${APP_NAME}/bin/${APP_NAME} /usr/local/bin/${APP_NAME}
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME,,}/bin/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
@@ -968,7 +972,7 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/proje
 
 # Install ubunsys installer/tweaker
 APP_NAME=ubunsys
-APP_VERSION=2017.11.01
+APP_VERSION=2017.11.04
 APP_EXT=deb
 source /etc/os-release   # This config file contains Ubuntu version details.
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_${VERSION_ID}.${APP_EXT}
@@ -1653,7 +1657,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=6.4.2
+APP_VERSION=6.4.4
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2004,7 +2008,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Leo editor/IDE/PIM
 APP_NAME=Leo
-APP_VERSION=5.6b1
+APP_VERSION=5.6
 APP_EXT=zip
 sudo apt-get install -y python3-pyqt5
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -2737,7 +2741,7 @@ sudo apt-get install -y smuxi
 
 # Install Textadept minimalist cross-platform text editor
 APP_NAME=textadept
-APP_VERSION=9.5
+APP_VERSION=9.6
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -2817,7 +2821,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=171002
+APP_VERSION=171104
 APP_EXT=tar.bz2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -3468,3 +3472,165 @@ mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
+
+# Install Admidio organizational management tool
+APP_NAME=admidio
+APP_VERSION=3.2.12
+APP_EXT=zip
+DB_NAME=admidio
+DB_USER=admidio
+DB_PASSWORD=admidio
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME}.${APP_EXT}
+sudo mv /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION} ${WWW_HOME}/${APP_NAME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
+sudo chmod -R 777 ${WWW_HOME}/${APP_NAME}/adm_my_files
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+
+# Install Shiba JavaScript/Electron Markdown editor with preview from package
+APP_NAME=Shiba
+APP_VERSION=1.1.0
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/rhysd/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}-linux-${ARCH_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME}-linux-${ARCH_TYPE} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=JavaScript/Electron Markdown editor with preview
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${APP_NAME}
+Icon=/opt/${APP_NAME,,}/resources/app/resources/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Editors;Office;Development;
+Keywords=Markdown;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install WingIDE 101 Python editor/IDE from package
+APP_NAME=WingIDE-101
+APP_VERSION=6.0.8
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://wingware.com/pub/${APP_NAME,,}/${APP_VERSION}/${APP_NAME,,}-6_${APP_VERSION}-1_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Insomnia REST client from package
+APP_NAME=insomnia
+APP_VERSION=5.10.1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://builds.insomnia.rest/downloads/ubuntu/latest
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install XnViewMP image viewer/converter from package
+APP_NAME=XnViewMP
+APP_VERSION=0.88
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://download.xnview.com/${APP_NAME}-linux-${ARCH_TYPE}.deb
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install QupZilla Qt5-based minimalistic web browser from source
+APP_NAME=QupZilla
+APP_VERSION=2.2.1
+APP_EXT=tar.xz
+sudo apt-get install -y qt5-default qtwebengine5-dev qtwebengine5-dev-tools libqt5x11extras5-dev qttools5-dev-tools libxcb-util0-dev libssl-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+qmake && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Simple-Arc-Clock Qt5-based desktop clock from source
+APP_NAME=Simple-Arc-Clock
+APP_VERSION=1.2
+APP_EXT=tar.gz
+sudo apt-get install -y qt5-default qtwebengine5-dev qtwebengine5-dev-tools libqt5x11extras5-dev qttools5-dev-tools libxcb-util0-dev libssl-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://github.com/phobi4n/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+qmake && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Shallot Python-based file manager from package
+APP_NAME=shallot
+APP_VERSION=1.0.2957
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://pseudopolis.eu/wiki/pino/projs/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Meteo-Qt Qt5-based weather utility from source
+APP_NAME=Meteo-Qt
+APP_VERSION=0.9.7
+APP_EXT=tar.gz
+sudo apt-get install -y python3-pyqt5 python3-sip python3-lxml
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://github.com/dglent/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+https://github.com/dglent/meteo-qt/archive/v0.9.7.tar.gz
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+sudo python3 setup.py install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Electric Sheep screensaver from source
+APP_NAME=flam3
+APP_VERSION=3.1.1
+APP_EXT=tar.gz
+sudo apt-get install -y libxml2-dev libjpeg8-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/scottdraves/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+./configure && make && sudo make install
+
+APP_NAME=electricsheep
+APP_VERSION=master
+APP_EXT=tar.gz
+sudo apt-get install -y subversion autoconf libtool libgtk2.0-dev libgl1-mesa-dev libavcodec-dev libavformat-dev libswscale-dev liblua5.1-0-dev libcurl4-openssl-dev libxml2-dev libjpeg8-dev libgtop2-dev libboost-dev libboost-filesystem-dev libboost-thread-dev libtinyxml-dev freeglut3-dev glee-dev libwxgtk3.0-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://codeload.github.com/scottdraves/${APP_NAME}/${APP_EXT}/${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}/client_generic
+./autogen.sh && ./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Leiningen and Clojure from script
+APP_NAME=lein
+APP_VERSION=
+APP_EXT=
+curl -o /tmp/${APP_NAME,,} -J -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
