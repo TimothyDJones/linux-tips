@@ -3634,3 +3634,20 @@ APP_EXT=
 curl -o /tmp/${APP_NAME,,} -J -L https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+
+# Install RSS Guard RSS reader/aggregator from source
+# Note:  For Ubuntu 16.04, we must use version 3.2.4
+#        for compatibility with Qt version 5.5.1
+#        from the package repository.
+APP_NAME=rssguard
+APP_VERSION=3.2.4
+APP_EXT=tar.gz
+sudo apt-get install -y qttools5-dev qttools5-dev-tools cmake
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://codeload.github.com/martinrotter/${APP_NAME}/${APP_EXT}/${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+mkdir -p build && cd build
+cmake .. && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
