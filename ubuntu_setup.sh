@@ -3676,3 +3676,29 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install MedleyText notepad/snippet manager built with Electron (AppImage)
+APP_NAME=MedleyText
+APP_VERSION=latest
+APP_EXT=AppImage
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://s3.amazonaws.com/${APP_NAME,,}/releases/medley-latest.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Electron-based notepad/snippet manager
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;Accessories;System
+Keywords=Notepad;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
