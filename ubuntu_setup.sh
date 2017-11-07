@@ -465,17 +465,22 @@ cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
 # Install KeePassXC password manager from source
-curl -o /tmp/keepassxc.tar.xz -J -L https://github.com/keepassxreboot/keepassxc/releases/download/2.1.4/keepassxc-2.1.4-src.tar.xz
+APP_NAME=keepassxc
+APP_VERSION=2.2.2
+APP_EXT=tar.xz
+curl -o /tmp/libgcrypt20-dev.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20-dev_1.7.8-2ubuntu1_amd64.deb
+curl -o /tmp/libgcrypt20.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20_1.7.8-2ubuntu1_amd64.deb
+sudo gdebi -n /tmp/libgcrypt20.deb
+sudo gdebi -n /tmp/libgcrypt20-dev.deb
+sudo apt-get install -y libcrypto++-dev libxi-dev libmicrohttpd-dev libxtst-dev qttools5-dev-tools cmake
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/keepassxreboot/${APP_NAME}/releases/download/${APP_VERSION}/${APP_NAME}-${APP_VERSION}-src.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/keepassxc.tar.xz
-cd /tmp/keepassxc/keepassxc-2.1.4
-sudo apt-get install -y libgcrypt20-dev libcrypto++-dev libxi-dev libmicrohttpd-dev libxtst-dev qttools5-dev-tools
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 mkdir build && cd build
 cmake .. -DWITH_TESTS=OFF && make && sudo make install
 cd $HOME
-rm -rf /tmp/keepassxc*
-
-https://github.com/marcusbritanicus/NewBreeze/releases/download/v3-alpha2/newbreeze-common_3.0.0_amd64.deb
+rm -rf /tmp/${APP_NAME}*
 
 # Install NewBreeze file manager
 # Install from packages for 64-bit Linux
