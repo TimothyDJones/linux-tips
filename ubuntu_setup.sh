@@ -1289,7 +1289,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Digital Clock 4
 APP_NAME=digital_clock_4
-APP_VERSION=4.5.7
+APP_VERSION=4.6.0
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
