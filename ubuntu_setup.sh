@@ -3651,3 +3651,12 @@ mkdir -p build && cd build
 cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Moka Video Convert ffmpeg front-end from package
+APP_NAME=moka-vc
+APP_VERSION=1.0.41-1_Fix
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/moka-video-converter_${APP_VERSION}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
