@@ -3720,8 +3720,18 @@ sudo apt-get install -y qttools5-dev qttools5-dev-tools cmake
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/rs${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
-mkdir -p build && cd build
-cmake .. && make && sudo make install
+cd /tmp/${APP_NAME,,}/rslid
+sudo mkdir -p /opt/${APP_NAME}
+sudo mv ./puzzles /opt/${APP_NAME}
+sudo mv ./data /opt/${APP_NAME}
+sudo mv ./include /opt/${APP_NAME}
+sudo mv ./*.txt ./*.md /opt/${APP_NAME}
+sudo mkdir -p /opt/${APP_NAME}/libs/gnu
+sudo mv ./libs/gnu/* /opt/${APP_NAME}/libs/gnu
+sudo mkdir -p /opt/${APP_NAME}/bin/gnu
+sudo mv ./bin/gnu/* /opt/${APP_NAME}/bin/gnu
+sudo mkdir -p /opt/${APP_NAME}/src
+sudo mv *.cc *.cpp *.h *.hpp /opt/${APP_NAME}/src
+sudo ln -s /opt/${APP_NAME}/bin/gnu/rufaslid /usr/local/bin/rufaslider
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
