@@ -3735,3 +3735,27 @@ sudo mv *.cc *.cpp *.h *.hpp /opt/${APP_NAME}/src
 sudo ln -s /opt/${APP_NAME}/bin/gnu/rufaslid /usr/local/bin/rufaslider
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install GEOrgET (GoogleEarth Organiser, Editor & Toolkit) map editing tool
+APP_NAME=GEOrgET
+APP_VERSION=1.5.beta
+APP_EXT=7z
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod a+x ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+# Populate data from scripts
+mysql -h localhost -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/timezone_regions.sql
+mysql -h localhost -u root -proot ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/timezones.sql  # Root permission required to create procedure.
+mysql -h localhost -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/cities.sql
+xdg-open http://localhost/${APP_NAME,,}/${APP_NAME,,}.php &
