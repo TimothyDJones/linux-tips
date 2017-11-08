@@ -2094,12 +2094,12 @@ xdg-open http://localhost/${APP_NAME,,}/ &
 
 # Install ZenTao project management suite (manual installation)
 APP_NAME=zentao
-APP_VERSION=9.5
+APP_VERSION=9.6_stable_1
 APP_EXT=zip
 DB_NAME=${APP_NAME}
 DB_USER=${APP_NAME}
 DB_PASSWORD=${APP_NAME}
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/ZenTaoPMS.${APP_VERSION}.stable.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/ZenTaoPMS_${APP_VERSION}_all.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}
