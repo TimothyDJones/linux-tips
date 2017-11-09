@@ -3539,7 +3539,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Insomnia REST client from package
 APP_NAME=insomnia
-APP_VERSION=5.10.1
+APP_VERSION=5.11.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://builds.insomnia.rest/downloads/ubuntu/latest
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -3759,3 +3759,6 @@ mysql -h localhost -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP
 mysql -h localhost -u root -proot ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/timezones.sql  # Root permission required to create procedure.
 mysql -h localhost -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/cities.sql
 xdg-open http://localhost/${APP_NAME,,}/${APP_NAME,,}.php &
+
+
+libqt5qml5 qtquick1-5-dev qtquick1-5-dev-tools libqt5svg5-dev qtmultimedia5-dev 
