@@ -3760,5 +3760,12 @@ mysql -h localhost -u root -proot ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/timezon
 mysql -h localhost -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/cities.sql
 xdg-open http://localhost/${APP_NAME,,}/${APP_NAME,,}.php &
 
-
-libqt5qml5 qtquick1-5-dev qtquick1-5-dev-tools libqt5svg5-dev qtmultimedia5-dev 
+# Install Software Process Dashboard Java-based project management tool
+APP_NAME=processdash
+APP_VERSION=2-4
+APP_EXT=jar
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/pdash-install-main-${APP_VERSION}.${APP_EXT}
+sudo java -jar /tmp/${APP_NAME,,}.${APP_EXT} &
+sudo cp /opt/*.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
