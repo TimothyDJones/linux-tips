@@ -3610,6 +3610,7 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install Electric Sheep screensaver from source
+# https://blog.openbloc.fr/compiling-electric-sheep-on-ubuntu-linux-17-10/
 APP_NAME=flam3
 APP_VERSION=3.1.1
 APP_EXT=tar.gz
