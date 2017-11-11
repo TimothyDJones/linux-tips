@@ -3805,3 +3805,39 @@ cd /tmp/crystal_facet
 sudo cp -r * /
 cd $HOME
 rm -rf /tmp/${APP_NAME,,} /tmp/crystal_facet*
+
+# Install Java Fabled Lands role-playing game
+APP_NAME=JaFL
+APP_VERSION=106
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/flapp/${APP_NAME}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv ${APP_NAME,,} /opt
+sudo chmod a+w /opt/${APP_NAME,,}/user.ini
+cat > /tmp/${APP_NAME,,} << EOF
+# /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:$PATH; export PATH
+java -jar ./flands.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=Java Fabled Lands
+Comment=Java remake of 'Fabled Lands' RPG
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/flands.jar
+Icon=/opt/${APP_NAME,,}/icon.jpg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Games;RPG;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
