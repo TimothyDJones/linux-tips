@@ -3841,3 +3841,40 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install JFileProcessor Java-based file manager
+APP_NAME=JFileProcessor
+APP_VERSION=1.5.3
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/stant/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+mv jFileProcessor ${APP_NAME,,}
+sudo mv ${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,} << EOF
+# /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:$PATH; export PATH
+java -jar ./${APP_NAME}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Java file manager
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar
+#Icon=/opt/${APP_NAME,,}/icon.jpg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=File;Manager;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
