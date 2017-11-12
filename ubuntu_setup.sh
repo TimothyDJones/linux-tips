@@ -3890,3 +3890,16 @@ cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
 ./release-linux
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Mooedit text editor from source
+APP_NAME=medit
+APP_VERSION=1.2.92-devel
+APP_EXT=tar.bz2
+sudo apt-get install -y libgtk2.0-dev libxml2-dev python2.7-dev python-gtk2-dev intltool
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/mooedit/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
