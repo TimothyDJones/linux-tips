@@ -4018,3 +4018,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Shaarli PHP-based databaseless bookmark manager
+APP_NAME=Shaarli
+APP_VERSION=0.9.2
+APP_EXT=tar.gz
+sudo apt-get install -y qttools5-dev qttools5-dev-tools cmake
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://codeload.github.com/${APP_NAME,,}/${APP_NAME}/${APP_EXT}/v${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+mv ${APP_NAME}-${APP_VERSION} ${APP_NAME,,}
+sudo mv ${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+cd ${WWW_HOME}/${APP_NAME,,}
+sudo composer update
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
