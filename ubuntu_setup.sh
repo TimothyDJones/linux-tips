@@ -4036,3 +4036,8 @@ sudo composer update
 xdg-open http://localhost/${APP_NAME,,}/index.php &
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install KiCad electronic design automation suite from PPA
+sudo add-apt-repository -y ppa:js-reynaud/kicad-4
+sudo apt update
+sudo apt install -y kicad
