@@ -4041,3 +4041,8 @@ rm -rf /tmp/${APP_NAME,,}
 sudo add-apt-repository -y ppa:js-reynaud/kicad-4
 sudo apt update
 sudo apt install -y kicad
+
+# Install OpenShot video editor from PPA
+sudo add-apt-repository -y ppa:openshot.developers/ppa
+sudo apt-get update
+sudo apt-get install -y openshot-qt
