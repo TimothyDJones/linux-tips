@@ -4046,3 +4046,31 @@ sudo apt install -y kicad
 sudo add-apt-repository -y ppa:openshot.developers/ppa
 sudo apt-get update
 sudo apt-get install -y openshot-qt
+
+# Install View Your Mind (VYM) Qt mind-mapping tool from source
+APP_NAME=vym
+APP_VERSION=2.6.0
+APP_EXT=tar.bz2
+sudo apt-get install -y python3-tk
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+qmake && make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=Vym (View Your Mind)
+Comment=Mind-mapping tool
+GenericName=Vym
+Path=/usr/local/${APP_NAME,,}
+Exec=/usr/local/${APP_NAME,,}/${APP_NAME,,}
+Icon=/usr/local/${APP_NAME,,}/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Accessories;
+Keywords=Mind-mapping;Diagrams;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
