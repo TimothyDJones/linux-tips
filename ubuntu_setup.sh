@@ -4074,3 +4074,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install GtkHash GUI tool for calculating file hashes/checksums from source
+APP_NAME=gtkhash
+APP_VERSION=1.1.1
+APP_EXT=tar.xz
+sudo apt-get install -y libgcrypt20-dev libb2-dev libssl-dev libcrypto++-dev libmbedtls-dev libmhash-dev nettle-dev intltool
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+./configure --enable-libcrypto --enable-linux-crypto --enable-mbedtls --enable-mhash --enable-nettle --with-gtk=2.0
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
