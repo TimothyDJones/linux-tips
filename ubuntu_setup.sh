@@ -1233,7 +1233,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Worker File Manager (For AVFS support install AVFS above.)
 APP_NAME=worker
-APP_VERSION=3.12.0
+APP_VERSION=3.13.0
 APP_EXT=tar.bz2
 sudo apt-get install -y liblua5.3-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/workerfm/workerfm/3.11.0/${APP_NAME}-${APP_VERSION}.${APP_EXT}
