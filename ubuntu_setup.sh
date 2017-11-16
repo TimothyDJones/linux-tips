@@ -971,9 +971,22 @@ rm -rf /tmp/${APP_NAME}*
 # Install HTTP Test Tool
 APP_NAME=httest
 APP_VERSION_MAJOR=2.4
-APP_VERSION_MINOR=21
+APP_VERSION_MINOR=22
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/project/htt/htt${APP_VERSION_MAJOR}/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_EXT}
+sudo apt-get install -y libapr1-dev libaprutil1-dev libpcre3-dev help2man
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/htt/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}
+# Due to path for PCRE header file on Ubuntu,
+# we have to update the source files for the #include
+# directory for the header file.
+cd src
+sed -i 's@<pcre/pcre.h>@<pcre.h>@g' *
+cd ..
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
 
 # Install ubunsys installer/tweaker
 APP_NAME=ubunsys
