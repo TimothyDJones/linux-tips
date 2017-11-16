@@ -277,7 +277,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.24.0.0-1
+APP_VERSION=1.24.1.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -968,7 +968,7 @@ sudo gdebi -n ${APP_NAME}.deb
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install HTTP Test Tool
+# Install HTTP Test Tool (httest) from source
 APP_NAME=httest
 APP_VERSION_MAJOR=2.4
 APP_VERSION_MINOR=22
