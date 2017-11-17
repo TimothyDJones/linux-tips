@@ -30,3 +30,11 @@ keysym Caps_Lock = Control_R
 add Lock = Caps_Lock
 add Control = Control_R
 ```
+
+## Install packages required to build application from source
+If you want to build an application from source for a new version of an application that has a Ubuntu/Debian package, you can use the `build-dep` utility to install the required dependencies in one go.
+```bash
+sudo apt-get build-dep PKG_NAME
+```
+where `PKG_NAME` is the package name, such as `vim-common`.
+[Reference](https://wiki.debian.org/BuildingTutorial#Get_the_build_dependencies)
