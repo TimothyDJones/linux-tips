@@ -4111,3 +4111,40 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install ChessPDFBrowser for working with chess PDF books and PGNs
+APP_NAME=ChessPDFBrowser
+APP_VERSION=20171115
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}1/${APP_VERSION}.${APP_NAME}.v1.0.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+mv ${APP_VERSION}.${APP_NAME}.v1.0 ${APP_NAME,,}
+sudo mv ${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+# /bin/sh
+cd /opt/${APP_NAME,,}/_binary
+PATH=/opt/${APP_NAME,,}/_binary:$PATH; export PATH
+java -jar ./ChessPDFbrowser.v1.0.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Tool to work with chess PDF books and PGNs
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}/_binary
+Exec=java -jar /opt/${APP_NAME,,}/_binary/ChessPDFbrowser.v1.0.jar
+#Icon=/opt/${APP_NAME,,}/lib/ico-gvSIG.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Chess;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
