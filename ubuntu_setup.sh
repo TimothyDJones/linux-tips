@@ -4148,3 +4148,39 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install JStock stock market tool for 28 countries
+APP_NAME=JStock
+APP_VERSION=1.0.7.30
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/yccheok/${APP_NAME,,}/releases/download/release_1-0-7-30/${APP_NAME,,}-${APP_VERSION}-bin.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp
+sudo mv ${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,} << EOF
+# /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:$PATH; export PATH
+java -jar ./${APP_NAME,,}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Stock market tool for 28 countries
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+#Icon=/opt/${APP_NAME,,}/lib/ico-gvSIG.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Accessories;
+Keywords=Finance;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
