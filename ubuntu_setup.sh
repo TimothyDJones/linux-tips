@@ -4244,3 +4244,31 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install GNU nano text editor from source
+APP_NAME=nano
+APP_VERSION=2.9.0
+APP_EXT=tar.xz
+sudo apt-get install -y libncurses5-dev libncursesw5-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://nano-editor.org/dist/v2.9/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Terminal-based minimal text editor
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME}
+#Icon=/opt/${APP_NAME,,}/lib/ico-gvSIG.png
+Type=Application
+StartupNotify=true
+Terminal=true
+Categories=Programming;Development;Accessories;
+Keywords=Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
