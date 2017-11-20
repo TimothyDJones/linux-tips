@@ -4202,3 +4202,45 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install SimulIDE electronic circuit simulator
+APP_NAME=SimulIDE
+APP_VERSION=0.1.5
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=Lin64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=Lin32
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}-${ARCH_TYPE}-RC3.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp
+mv ${APP_NAME}_${APP_VERSION}-${ARCH_TYPE}-RC3 ${APP_NAME,,}
+sudo mv ${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+# /bin/sh
+cd /opt/${APP_NAME,,}/bin
+PATH=/opt/${APP_NAME,,}/bin:$PATH; export PATH
+./${APP_NAME}_${APP_VERSION}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Electronic circuit emulator
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}/bin
+Exec=/opt/${APP_NAME,,}/bin/${APP_NAME}_${APP_VERSION}
+#Icon=/opt/${APP_NAME,,}/lib/ico-gvSIG.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Science;Electronics;
+Keywords=Electronics;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
