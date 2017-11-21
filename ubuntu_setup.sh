@@ -4281,3 +4281,7 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Xiki shell enhancement
+sudo apt-get install -y emacs
+curl -L https://xiki.com/install_xsh -o ~/install_xsh; sudo bash ~/install_xsh
