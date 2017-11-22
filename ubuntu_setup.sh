@@ -4285,3 +4285,28 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Xiki shell enhancement
 sudo apt-get install -y emacs
 curl -L https://xiki.com/install_xsh -o ~/install_xsh; sudo bash ~/install_xsh
+
+# Install Incremental Scenario Testing Tool (ISTT) web-based test scenario management tool
+APP_NAME=istt
+APP_VERSION=v1.1.1
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod a+x ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
+# Update default password in configuration file
+UPDATE_STRING=s/Teleca01/${APP_NAME}/g
+sudo sed -i ${UPDATE_STRING} ${WWW_HOME}/${APP_NAME,,}/include/defines.php
+# Update time zone in configuration file
+sudo sed -i 's@Europe/Berlin@Americas/Chicago@g' ${WWW_HOME}/${APP_NAME,,}/include/defines.php
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/index.php &
