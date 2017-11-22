@@ -971,7 +971,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install HTTP Test Tool (httest) from source
 APP_NAME=httest
 APP_VERSION_MAJOR=2.4
-APP_VERSION_MINOR=22
+APP_VERSION_MINOR=23
 APP_EXT=tar.gz
 sudo apt-get install -y libapr1-dev libaprutil1-dev libpcre3-dev help2man
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/htt/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_EXT}
