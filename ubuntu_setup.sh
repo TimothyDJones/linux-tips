@@ -4310,3 +4310,40 @@ mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/index.php &
+
+# Install HOFAT (Hash Of File And Text) Java-based hash calculator
+APP_NAME=HOFAT
+APP_VERSION=21.11.17
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_bin.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+mv ${APP_NAME,,}_${APP_VERSION}_bin ${APP_NAME,,}
+sudo mv ${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+# /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:$PATH; export PATH
+java -jar ./${APP_NAME,,}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Java-based file/text hash calculator
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+#Icon=/opt/${APP_NAME,,}/lib/ico-gvSIG.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Accessories;
+Keywords=Security;Hash;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
