@@ -4366,15 +4366,15 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/gkarsay/${APP_NAM
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
-./configure && make && sudo make install
+autoreconf && ./configure --prefix=/usr --disable-introspection && make && sudo make install
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=GTK audio player for transcription
 GenericName=${APP_NAME}
-Path=/usr/local/bin
-Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/local/share/icons/hicolor/48x48/apps/com.github.gkarsay.parlatype.png
+Path=/usr/bin
+Exec=/usr/bin/${APP_NAME,,}
+Icon=/usr/share/icons/hicolor/48x48/apps/com.github.gkarsay.parlatype.png
 Type=Application
 StartupNotify=true
 Terminal=true
