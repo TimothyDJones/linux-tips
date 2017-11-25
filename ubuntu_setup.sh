@@ -3752,7 +3752,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install GEOrgET (GoogleEarth Organiser, Editor & Toolkit) map editing tool
 APP_NAME=GEOrgET
-APP_VERSION=1.5.beta
+APP_VERSION=1.5.0
 APP_EXT=7z
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
