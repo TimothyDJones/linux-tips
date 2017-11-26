@@ -4511,3 +4511,31 @@ cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 cmake ./ -DCMAKE_INSTALL_PREFIX=/usr && make && sudo make install INSTALL_ROOT=/usr
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Dextrous Text Editor (DTE) console text editor from source
+APP_NAME=DTE
+APP_VERSION=1.5
+APP_EXT=tar.gz
+sudo apt-get install -y make gcc libncurses5-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/craigbarnes/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+make -j8 && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Console text editor
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=/opt/${APP_NAME,,}/lib/ico-gvSIG.png
+Type=Application
+StartupNotify=true
+Terminal=true
+Categories=System;Accessories;Programming;Development;
+Keywords=Editor;Text;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
