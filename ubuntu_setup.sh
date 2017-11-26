@@ -376,16 +376,33 @@ google-drive-ocamlfuse $HOME/google-drive  # Mount Google Drive to folder.
 
 # Install MuPDF PDF viewer from source.
 # Install pre-requisite development packages.
+APP_NAME=MuPDF
+APP_VERSION=1.12-rc1
+APP_EXT=tar.xz
 sudo apt-get install -y libjbig2dec0-dev libfreetype6-dev libftgl-dev libjpeg-dev libopenjp2-7-dev zlib1g-dev xserver-xorg-dev mesa-common-dev libgl1-mesa-dev libxcursor-dev libxrandr-dev libxinerama-dev
-curl -o /tmp/mupdf.tar.gz -J -L http://mupdf.com/downloads/mupdf-1.11-source.tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://mupdf.com/downloads/${APP_NAME,,}-${APP_VERSION}-source.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/mupdf.tar.gz
-cd /tmp/mupdf/mupdf-1.11-source
-make
-sudo make prefix=/usr/local install
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-source
+make && sudo make prefix=/usr/local install
+# Create icon in menus
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Minimalist PDF reader/viewer
+GenericName=PDF Reader
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}-gl
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;Office;
+Keywords=PDF;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 sudo ln -s /usr/local/bin/mupdf-gl /usr/local/bin/mupdf
 cd $HOME
-rm -rf /tmp/mupdf*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install tke text editor
 APP_NAME=tke
