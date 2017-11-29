@@ -4590,3 +4590,18 @@ sudo chmod +x /tmp/${APP_NAME,,}.${APP_EXT}
 /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install cpu-stat command-line CPU usage statistics tool from source
+# http://blog.davidecoppola.com/2016/12/released-cpu-stat-command-line-cpu-usage-statistics-for-linux/
+APP_NAME=cpu-stat
+APP_VERSION=0.01.02
+APP_EXT=tar.gz
+sudo apt-get install -y scons
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/vivaladav/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+scons mode=release
+sudo scons mode=release install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
