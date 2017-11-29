@@ -4227,13 +4227,14 @@ rm -rf /tmp/${APP_NAME,,}
 # Install SimulIDE electronic circuit simulator
 APP_NAME=SimulIDE
 APP_VERSION=0.1.5
+APP_MINOR_VERSION=SR1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=Lin64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=Lin32
 fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}-${ARCH_TYPE}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}-${ARCH_TYPE}-${APP_MINOR_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp
@@ -4587,5 +4588,33 @@ APP_EXT=sh
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://bitbucket.org/plas/${APP_NAME,,}/downloads/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 sudo chmod +x /tmp/${APP_NAME,,}.${APP_EXT}
 /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Noora Python administration GUI for MySQL/Oracle databases from source
+APP_NAME=Noora
+APP_VERSION=1.0.3
+APP_EXT=tar.gz
+sudo apt-get install -y python3-setuptools python3-pip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+make -j8 && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Console text editor
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=/opt/${APP_NAME,,}/lib/ico-gvSIG.png
+Type=Application
+StartupNotify=true
+Terminal=true
+Categories=System;Accessories;Programming;Development;
+Keywords=Editor;Text;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
