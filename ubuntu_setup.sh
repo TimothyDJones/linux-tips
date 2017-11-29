@@ -4268,7 +4268,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install GNU nano text editor from source
 APP_NAME=nano
-APP_VERSION=2.9.0
+APP_VERSION=2.9.1
 APP_EXT=tar.xz
 sudo apt-get install -y libncurses5-dev libncursesw5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://nano-editor.org/dist/v2.9/${APP_NAME}-${APP_VERSION}.${APP_EXT}
