@@ -4605,3 +4605,16 @@ scons mode=release
 sudo scons mode=release install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Qt-based Torrent File Editor from source
+APP_NAME=torrent-file-editor
+APP_VERSION=0.3.8
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+mkdir - p build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DQT5_BUILD=ON .. && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
