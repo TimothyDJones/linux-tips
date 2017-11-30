@@ -4618,3 +4618,14 @@ mkdir - p build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DQT5_BUILD=ON .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install OGapp Qt-based notepad from source
+APP_NAME=OGapp
+APP_VERSION=N/A
+APP_EXT=N/A
+git clone https://git.code.sf.net/p/${APP_NAME,,}/code /tmp/${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+qmake && make && sudo make install
+sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
