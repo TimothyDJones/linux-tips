@@ -726,7 +726,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.5.7
+APP_VERSION=7.5.8
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
