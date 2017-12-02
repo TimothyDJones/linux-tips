@@ -4574,7 +4574,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install EncNotex encrypted notepad from package
 APP_NAME=EncNotex
-APP_VERSION=1.4.2.0
+APP_VERSION=1.4.3.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sites.google.com/site/${APP_NAME,,}/download/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
