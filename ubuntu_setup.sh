@@ -277,7 +277,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.24.5.0-1
+APP_VERSION=1.26.0.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -320,7 +320,7 @@ rm -f /tmp/${APP_NAME}*
 
 # Install Steel Bank Common Lisp (SBLC) from Sourceforge
 APP_NAME=sbcl
-APP_VERSION=1.4.1
+APP_VERSION=1.4.2
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -664,7 +664,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Leanote Desktop app
 APP_NAME=leanote-desktop
-APP_VERSION=2.5
+APP_VERSION=2.6
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
 else    # Otherwise use version for 32-bit kernel
@@ -726,7 +726,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.5.7
+APP_VERSION=7.5.8
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1517,7 +1517,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Psi XMPP messenger from source
 APP_NAME=psi
-APP_VERSION=1.2
+APP_VERSION=1.3
 APP_EXT=tar.xz
 sudo apt-get install -y libqca2-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -2101,7 +2101,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=groupoffice
-APP_VERSION=6.2.73
+APP_VERSION=6.2.74
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME}
 DB_USER=${APP_NAME}
@@ -2235,7 +2235,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
 APP_NAME=xschem
-APP_VERSION=2.3.5
+APP_VERSION=2.3.6
 APP_EXT=tar.gz
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -4227,13 +4227,14 @@ rm -rf /tmp/${APP_NAME,,}
 # Install SimulIDE electronic circuit simulator
 APP_NAME=SimulIDE
 APP_VERSION=0.1.5
+APP_MINOR_VERSION=SR1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=Lin64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=Lin32
 fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}-${ARCH_TYPE}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}-${ARCH_TYPE}-${APP_MINOR_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp
@@ -4268,7 +4269,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install GNU nano text editor from source
 APP_NAME=nano
-APP_VERSION=2.9.0
+APP_VERSION=2.9.1
 APP_EXT=tar.xz
 sudo apt-get install -y libncurses5-dev libncursesw5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://nano-editor.org/dist/v2.9/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -4334,7 +4335,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install HOFAT (Hash Of File And Text) Java-based hash calculator
 APP_NAME=HOFAT
-APP_VERSION=21.11.17
+APP_VERSION=01-12-17
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_bin.${APP_EXT}
 cd /tmp
@@ -4568,5 +4569,63 @@ APP_VERSION=2.1.1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install EncNotex encrypted notepad from package
+APP_NAME=EncNotex
+APP_VERSION=1.4.2.0
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sites.google.com/site/${APP_NAME,,}/download/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Thonny minimalist Python IDE/editor from package
+APP_NAME=Thonny
+APP_VERSION=2.1.13
+APP_EXT=sh
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://bitbucket.org/plas/${APP_NAME,,}/downloads/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+sudo chmod +x /tmp/${APP_NAME,,}.${APP_EXT}
+/tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install cpu-stat command-line CPU usage statistics tool from source
+# http://blog.davidecoppola.com/2016/12/released-cpu-stat-command-line-cpu-usage-statistics-for-linux/
+APP_NAME=cpu-stat
+APP_VERSION=0.01.02
+APP_EXT=tar.gz
+sudo apt-get install -y scons
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/vivaladav/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+scons mode=release
+sudo scons mode=release install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Qt-based Torrent File Editor from source
+APP_NAME=torrent-file-editor
+APP_VERSION=0.3.8
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+mkdir - p build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DQT5_BUILD=ON .. && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install OGapp Qt-based notepad from source
+APP_NAME=OGapp
+APP_VERSION=N/A
+APP_EXT=N/A
+git clone https://git.code.sf.net/p/${APP_NAME,,}/code /tmp/${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+qmake && make && sudo make install
+sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
