@@ -4629,3 +4629,32 @@ qmake && make && sudo make install
 sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install MLTerm multi-language terminal emulator from source
+APP_NAME=MLTerm
+APP_VERSION=3.8.4
+APP_EXT=tar.gz
+sudo apt-get install -y libfribidi-dev libssh2-1-dev libvte-dev libgdk-pixbuf2.0-dev 
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+./configure && make && sudo make install
+sudo cp ./doc/icon/mlterm_48x48.xpm /usr/local/share/icons/hicolor/48x48
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Multi-language terminal emulator
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/hicolor/48x48/mlterm_48x48.xpm
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Accessories;
+Keywords=Terminal;Shell;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
