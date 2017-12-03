@@ -4658,3 +4658,27 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install util-linux general system utilites from source
+APP_NAME=util-linux
+APP_VERSION=2.31
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/karelzak/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+./autogen.sh && ./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Linux Process Explorer GUI process viewer/manager from package
+APP_NAME=procexp
+APP_VERSION=1.7.289
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}-0ubuntu1_all.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}.${APP_EXT}.1
+sudo cp -R * /
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
