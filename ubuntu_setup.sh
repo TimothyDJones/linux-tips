@@ -4682,3 +4682,23 @@ cd /tmp/${APP_NAME,,}.${APP_EXT}.1
 sudo cp -R * /
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install MantisBT web-based bug tracking tool
+APP_NAME=mantisbt
+APP_VERSION=2.9.0
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+mv ${APP_NAME,,}-${APP_VERSION} ${APP_NAME,,}
+sudo mv ${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/admin/install.php &
