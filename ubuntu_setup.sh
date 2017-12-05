@@ -3352,8 +3352,9 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install CherryTree hierarchical notepad/text editor from package
+# https://www.giuspen.com/cherrytree/
 APP_NAME=cherrytree
-APP_VERSION=0.38.3-0
+APP_VERSION=0.38.4-0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.giuspen.com/software/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
