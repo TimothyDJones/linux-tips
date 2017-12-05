@@ -4083,7 +4083,7 @@ sudo apt-get install -y openshot-qt
 
 # Install View Your Mind (VYM) Qt mind-mapping tool from source
 APP_NAME=vym
-APP_VERSION=2.6.0
+APP_VERSION=2.6.11
 APP_EXT=tar.bz2
 sudo apt-get install -y python3-tk
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
