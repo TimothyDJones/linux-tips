@@ -4739,3 +4739,42 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install EJE (Everyone's Java Editor) minimalist Java IDE
+APP_NAME=EJE
+APP_GUI_NAME="EJE (Everyone's Java Editor)"
+APP_VERSION=3.5
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME} /opt
+sudo chmod a+x /opt/${APP_NAME}/${APP_NAME,,}.sh
+sudo chmod -R a+w /opt/${APP_NAME}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+# /bin/sh
+cd /opt/${APP_NAME}
+PATH=/opt/${APP_NAME}:$PATH; export PATH
+sh /opt/${APP_NAME}/${APP_NAME,,}.sh
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_GUI_NAME}
+Comment=Minimalist editor/IDE for Java programming
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME}
+Exec=sh /opt/${APP_NAME}/${APP_NAME,,}.sh
+Icon=/opt/${APP_NAME}/resources/images/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Programming;Java;Editor;IDE;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
