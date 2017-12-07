@@ -4816,3 +4816,37 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Domination (Risk-style world conquest) Java-based game
+APP_NAME=Domination
+APP_GUI_NAME="Risk-style world conquest game built with Java"
+APP_VERSION=1.1.1.7
+APP_EXT=jar
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_install_${APP_VERSION}.${APP_EXT}
+sudo java -jar /tmp/${APP_NAME,,}.${APP_EXT}
+cat > /tmp/${APP_NAME,,} << EOF
+# /bin/sh
+cd /usr/local/${APP_NAME}
+PATH=/usr/local/${APP_NAME}:$PATH; export PATH
+/usr/local/${APP_NAME}/SwingGUI.sh
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/${APP_NAME}
+Exec=/usr/local/${APP_NAME}/SwingGUI.sh
+Icon=/usr/local/${APP_NAME}/resources/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;
+Keywords=Games;Java;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
