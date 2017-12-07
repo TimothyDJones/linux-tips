@@ -4850,3 +4850,33 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Snd open-source sound editor from source
+APP_NAME=Snd
+APP_GUI_NAME="Popular open-source audio file editor"
+APP_VERSION=17.9
+APP_EXT=tar.gz
+sudo apt-get install -y libasound2-dev wavpack
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+./configure && make && sudo make install
+sudo cp /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}/pix/s.png /usr/local/share/snd
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/snd/s.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Audio;Multimedia;
+Keywords=Audio;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
