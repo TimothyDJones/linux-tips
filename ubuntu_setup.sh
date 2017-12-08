@@ -4891,7 +4891,6 @@ if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=linux_386
 fi
-sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${APP_NAME,,}_${ARCH_TYPE}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4956,5 +4955,20 @@ Categories=Accessories;System;
 Keywords=File;Management;Java;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install PDF Studio Viewer Java-based PDF viewer
+APP_NAME=PDFStudioViewer
+APP_GUI_NAME="PDF Studio Viewer"
+APP_VERSION=v12_0_5
+APP_EXT=sh
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/pdf-studio-viewer/${APP_NAME}_${APP_VERSION}_${ARCH_TYPE}.${APP_EXT}
+sudo sh /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
