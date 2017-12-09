@@ -235,11 +235,11 @@ cd $HOME
 # Must download specific version, because unable to get 'latest' from Sourceforge to work.
 APP_NAME=stacer
 APP_VERSION=1.0.8
-cd /tmp
-curl -o /tmp/${APP_NAME}.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://pilotfiber.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.deb
-sudo gdebi -n ${APP_NAME}.deb   # '-n' is non-interactive mode for gdebi
-rm -f ${APP_NAME}.deb
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
 cd $HOME
+rm -rf /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility
 cd $HOME/Downloads
@@ -277,7 +277,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.26.0.0-1
+APP_VERSION=1.28.0.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1036,7 +1036,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Sourceforge
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1
-APP_VERSION_MINOR=3693
+APP_VERSION_MINOR=3700
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-20_${KERNEL_TYPE}.deb
@@ -1696,7 +1696,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=6.4.4
+APP_VERSION=6.5.0
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -1762,7 +1762,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Hyper JS/HTML/CSS Terminal 
 APP_NAME=hyper
-APP_VERSION=2.0.4
+APP_VERSION=2.0.0-canary.8
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hyper.mirror/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1892,7 +1892,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Swiss File Knife (SFK) shell file utility
 APP_NAME=sfk
-APP_VERSION=188
+APP_VERSION=189
 APP_EXT=exe
 	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 		ARCH_TYPE=linux-64
@@ -3352,8 +3352,9 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install CherryTree hierarchical notepad/text editor from package
+# https://www.giuspen.com/cherrytree/
 APP_NAME=cherrytree
-APP_VERSION=0.38.3-0
+APP_VERSION=0.38.4-0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.giuspen.com/software/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4083,7 +4084,7 @@ sudo apt-get install -y openshot-qt
 
 # Install View Your Mind (VYM) Qt mind-mapping tool from source
 APP_NAME=vym
-APP_VERSION=2.6.0
+APP_VERSION=2.6.11
 APP_EXT=tar.bz2
 sudo apt-get install -y python3-tk
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -4680,5 +4681,294 @@ cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}.${APP_EXT}.1
 sudo cp -R * /
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install MantisBT web-based bug tracking tool
+APP_NAME=mantisbt
+APP_VERSION=2.9.0
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+mv ${APP_NAME,,}-${APP_VERSION} ${APP_NAME,,}
+sudo mv ${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/admin/install.php &
+
+# Install VBox Raw Disk GUI Java-based VBox disk editing/resizing GUI
+APP_NAME=vboxrawdiskgui
+APP_GUI_NAME="VBox Raw Disk GUI"
+APP_VERSION=v2.7
+APP_EXT=jar
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/VBox%20Raw%20Disk%20GUI%20${APP_VERSION}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod -R a+r /opt/${APP_NAME,,}
+sudo chmod -R a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+# /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_GUI_NAME}
+Comment=Java-based VBox disk editing/resizing GUI
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+#Icon=/opt/${APP_NAME,,}/Docs/jehep.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Utilities;
+Keywords=Virtualization;Java;Disk;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install EJE (Everyone's Java Editor) minimalist Java IDE
+APP_NAME=EJE
+APP_GUI_NAME="EJE (Everyone's Java Editor)"
+APP_VERSION=3.5
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME} /opt
+sudo chmod a+x /opt/${APP_NAME}/${APP_NAME,,}.sh
+sudo chmod -R a+w /opt/${APP_NAME}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+# /bin/sh
+cd /opt/${APP_NAME}
+PATH=/opt/${APP_NAME}:$PATH; export PATH
+sh /opt/${APP_NAME}/${APP_NAME,,}.sh
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_GUI_NAME}
+Comment=Minimalist editor/IDE for Java programming
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME}
+Exec=sh /opt/${APP_NAME}/${APP_NAME,,}.sh
+Icon=/opt/${APP_NAME}/resources/images/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Programming;Java;Editor;IDE;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Java YouTube Video Downloader (ytd2)
+APP_NAME=ytd2
+APP_GUI_NAME="Java YouTube Video Downloader (ytd2)"
+APP_VERSION=V20170914
+APP_EXT=jar
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/run_${APP_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chown -R root:root /opt/${APP_NAME,,}
+sudo chmod -R a+r /opt/${APP_NAME}
+cat > /tmp/${APP_NAME,,} << EOF
+# /bin/sh
+cd /opt/${APP_NAME}
+PATH=/opt/${APP_NAME}:$PATH; export PATH
+java -jar /opt/${APP_NAME}/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_GUI_NAME}
+Comment=Java-based GUI YouTube Video Downloader
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME}
+Exec=java -jar /opt/${APP_NAME}/${APP_NAME,,}.${APP_EXT}
+#Icon=/opt/${APP_NAME}/resources/images/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Video;Internet;Multimedia;
+Keywords=Video;Downloader;Java;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Domination (Risk-style world conquest) Java-based game
+APP_NAME=Domination
+APP_GUI_NAME="Risk-style world conquest game built with Java"
+APP_VERSION=1.1.1.7
+APP_EXT=jar
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_install_${APP_VERSION}.${APP_EXT}
+sudo java -jar /tmp/${APP_NAME,,}.${APP_EXT}
+cat > /tmp/${APP_NAME,,} << EOF
+# /bin/sh
+cd /usr/local/${APP_NAME}
+PATH=/usr/local/${APP_NAME}:$PATH; export PATH
+/usr/local/${APP_NAME}/SwingGUI.sh
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/${APP_NAME}
+Exec=/usr/local/${APP_NAME}/SwingGUI.sh
+Icon=/usr/local/${APP_NAME}/resources/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;
+Keywords=Games;Java;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Snd open-source sound editor from source
+APP_NAME=Snd
+APP_GUI_NAME="Popular open-source audio file editor"
+APP_VERSION=17.9
+APP_EXT=tar.gz
+sudo apt-get install -y libasound2-dev wavpack
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+./configure && make && sudo make install
+sudo cp /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}/pix/s.png /usr/local/share/snd
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/snd/s.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Audio;Multimedia;
+Keywords=Audio;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install pgweb cross-platform client for PostgreSQL databases 
+APP_NAME=pgweb
+APP_GUI_NAME="Cross-platform client for PostgreSQL databases"
+APP_VERSION=0.9.11
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux_amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux_386
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${APP_NAME,,}_${ARCH_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}_${ARCH_TYPE} & 
+xdg-open http://localhost:8081/ &
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=/usr/local/share/snd/s.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Database;PostgreSQL;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Fileaxy Java-based file de-duplication, organization, and bulk previewing tool
+APP_NAME=Fileaxy
+APP_GUI_NAME="Java-based file de-duplication, organization, and bulk previewing tool"
+APP_VERSION=122
+APP_EXT=jar
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+#Icon=/usr/local/${APP_NAME}/resources/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=File;Management;Java;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install PDF Studio Viewer Java-based PDF viewer
+APP_NAME=PDFStudioViewer
+APP_GUI_NAME="PDF Studio Viewer"
+APP_VERSION=v12_0_5
+APP_EXT=sh
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/pdf-studio-viewer/${APP_NAME}_${APP_VERSION}_${ARCH_TYPE}.${APP_EXT}
+sudo sh /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
