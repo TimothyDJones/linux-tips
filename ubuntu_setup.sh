@@ -1007,7 +1007,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ubunsys installer/tweaker
 APP_NAME=ubunsys
-APP_VERSION=2017.11.26
+APP_VERSION=2017.12.10
 APP_EXT=deb
 source /etc/os-release   # This config file contains Ubuntu version details.
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_${VERSION_ID}.${APP_EXT}
