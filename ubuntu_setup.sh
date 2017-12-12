@@ -223,12 +223,18 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
-cd /var/tmp
-curl -o firejail.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://superb-sea2.dl.sourceforge.net/project/firejail/firejail/firejail_0.9.50_1_${KERNEL_TYPE}.deb
-curl -o firetools.deb -A "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" -J -L https://cytranet.dl.sourceforge.net/project/firejail/firetools/firetools_0.9.50_1_${KERNEL_TYPE}.deb
-sudo gdebi -n firejail.deb   # '-n' is non-interactive mode for gdebi
-sudo gdebi -n firetools.deb   # '-n' is non-interactive mode for gdebi
-rm -f firejail.deb firetools.deb
+APP_NAME=firejail
+APP_VERSION=0.9.52_1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
+rm -f /tmp/${APP_NAME}.${APP_EXT}
+APP_NAME=firetools
+APP_VERSION=0.9.50_1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/firejail/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
+rm -f /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 
 # Install Stacer Linux monitoring tool
