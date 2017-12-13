@@ -4987,3 +4987,24 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install phpCollab web-based collaboration and project management tool
+# http://www.phpcollab.com/
+APP_NAME=phpCollab
+APP_VERSION=v2.6
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+sudo mv ${APP_NAME,,} ${WWW_HOME}
+sudo cp ${WWW_HOME}/${APP_NAME,,}/includes/settings_blank.php ${WWW_HOME}/${APP_NAME,,}/includes/settings.php
+sudo chmod -R 777 ${WWW_HOME}/${APP_NAME,,}/includes/settings.php ${WWW_HOME}/${APP_NAME,,}/files ${WWW_HOME}/${APP_NAME,,}/logos_clients
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/installation/setup.php &
