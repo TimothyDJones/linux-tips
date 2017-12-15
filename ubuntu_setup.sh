@@ -5029,3 +5029,17 @@ cd /tmp/${APP_NAME}-Cardsets-2.0
 sudo cp -R /tmp/${APP_NAME}-Cardsets-2.0/* /usr/local/share/${APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}*
+
+# Install Workrave repetitive-strain injury (RSI) prevention/recovery tool from source.
+APP_NAME=Workrave
+APP_GUI_NAME="Utility to remind you to take breaks when working at keyboard."
+APP_VERSION=1.10.1
+APP_EXT=tar.gz
+sudo apt-get install -y libx11-dev libxtst-dev pkg-config libsm-dev libice-dev libglib2.0-dev python-cheetah libgtk2.0-dev libglibmm-2.4-dev libgtkmm-2.4-dev libsigc++-2.0-dev intltool libxss-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+./configure --prefix=/usr/local && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}*
