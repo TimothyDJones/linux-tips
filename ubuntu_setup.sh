@@ -5052,3 +5052,47 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Gambit Qt5 chess game from source
+APP_NAME=Gambit
+APP_GUI_NAME="Cross-platform Qt5 chess game."
+APP_VERSION=1.0.4
+APP_EXT=tar.xz
+sudo apt-get install -y qtbase5-dev cmake make gcc g++
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}chess/${APP_NAME}-${APP_VERSION}-src.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-src
+cd ./engine/gupta && make release
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-src
+sh clean_all.sh
+. ./setup_env.sh
+c
+b
+sudo cp -R gambitchess ./data ./nls ./web ./doc ./artwork ./engine /opt/gambit
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}chess
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}chess
+Icon=/opt/${APP_NAME,,}/data/icons/gambit/gambit-48.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Chess;Games;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
