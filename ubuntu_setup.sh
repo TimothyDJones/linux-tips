@@ -5110,5 +5110,9 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/xd
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 sudo sh /tmp/${APP_NAME,,}/install.sh
+# Remove built-in JRE and use system JRE instead.
+sudo rm -rf /opt/xdman/jre
+sudo mkdir -p /opt/xdman/jre/bin
+sudo ln -s /usr/bin/java /opt/xdman/jre/bin/java
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
