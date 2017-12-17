@@ -305,11 +305,14 @@ ln -s /usr/share/applications/albert.desktop $HOME/.config/autostart/  # Create 
 
 
 # Install KSnip screenshot utility from Sourceforge
-sudo apt-get install -y cmake qt4-default   # Install required packages
-curl -o /tmp/ksnip.tar.gz -J -L https://superb-dca2.dl.sourceforge.net/project/ksnip/ksnip-1.3.0.tar.gz
+APP_NAME=KSnip
+APP_VERSION=1.4.0
+APP_EXT=tar.gz
+sudo apt-get install -y cmake extra-cmake-modules libqt5x11extras5-dev # Install required packages
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/ksnip.tar.gz
-cd /tmp/ksnip/ksnip-1.3.0
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
 mkdir build && cd build
 cmake .. && make && sudo make install
 cd $HOME
