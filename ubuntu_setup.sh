@@ -4335,7 +4335,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install HOFAT (Hash Of File And Text) Java-based hash calculator
 APP_NAME=HOFAT
-APP_VERSION=01-12-17
+APP_VERSION=18-12-17
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_bin.${APP_EXT}
 cd /tmp
