@@ -5125,3 +5125,13 @@ mkdir -p release && cd release
 ../configure --with-x --with-readline=yes --disable-debug && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}*
+
+# Install QDVDAuthor Qt-based DVD authoring tool from package
+APP_NAME=qdvdauthor
+APP_VERSION=2.3.1-8
+APP_EXT=deb
+source /etc/lsb-release
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/tkb/x${DISTRIB_ID}_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
