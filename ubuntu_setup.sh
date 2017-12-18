@@ -702,28 +702,18 @@ EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 
 # Install QXmlEdit from source via Sourceforge
-APP_NAME=qxmledit
-APP_VERSION=0.9.7
-curl -o /tmp/${APP_NAME}.tgz -J -L https://superb-sea2.dl.sourceforge.net/project/qxmledit/files/QXmlEdit-${APP_VERSION}/${APP_NAME}-${APP_VERSION}-src.tgz
+APP_NAME=QXmlEdit
+APP_VERSION=0.9.9
+APP_EXT=tgz
+sudo apt-get install -y libqt5xmlpatterns5-dev libqt5svg5-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.tgz
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}/
-qmake && make && sudo make install
-# Create icon in menus
-cat > /tmp/qxmledit.desktop << EOF
-[Desktop Entry]
-Name=QXmlEdit
-Comment=XML Viewer and Editor
-GenericName=XML Editor
-Exec=/opt/wp-34s/WP-34s
-Icon=/opt/wp-34s/wp34s-logo.png
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Utility;Development
-Keywords=calculator;rpn;
-EOF
-sudo mv /tmp/wp34s.desktop /usr/share/applications/
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME}.desktop /usr/share/applications/${APP_NAME}.desktop
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Idiomind flash card utility
 APP_NAME=idiomind
