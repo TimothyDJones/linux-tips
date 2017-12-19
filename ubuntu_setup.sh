@@ -898,9 +898,9 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Madedit-Mod text editor from Sourceforge
 APP_NAME=madedit-mod
-APP_VERSION=0.4.10-1
+APP_VERSION=0.4.11-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/madedit-mod/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_ubuntu16.04.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu16.04.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
