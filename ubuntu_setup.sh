@@ -5276,3 +5276,19 @@ cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
 make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install OutWiker tree-style notepad/personal wiki from package
+APP_NAME=OutWiker
+APP_GUI_NAME="Cross-platform tree-style notepad/personal wiki."
+APP_VERSION=2.1.0.834
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i386
+	APP_VERSION=2.1.0.832   # Last version with builds for x86.
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/Jenyay/${APP_NAME,,}/releases/download/unstable_${APP_VERSION}/${APP_NAME,,}-${APP_VERSION}_${ARCH_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
