@@ -5253,3 +5253,12 @@ Keywords=PDF;Viewer;Reader;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
+
+# Install FinalCrypt Java-based file encryption utility from package
+APP_NAME=FinalCrypt
+APP_VERSION=Linux_x86_64_Debian_Based
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
