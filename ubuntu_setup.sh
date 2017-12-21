@@ -139,6 +139,11 @@ sudo add-apt-repository -y ppa:saiarcot895/myppa
 sudo apt-get update
 sudo apt-get -y install apt-fast
 
+# Install Flatpak sandboxed installer utility from PPA
+sudo add-apt-repository -y ppa:alexlarsson/flatpak
+sudo apt-get update -y
+sudo apt-get install -y flatpak
+
 # Install bash-it script
 cd $HOME
 wget -O /tmp/bash-it.zip https://github.com/Bash-it/bash-it/archive/master.zip
