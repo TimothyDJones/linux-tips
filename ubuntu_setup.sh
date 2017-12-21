@@ -5292,3 +5292,34 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/Jenyay/${APP_NAME
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Clevit Qt-based 'smart' text editor with built-in encryption from source
+APP_NAME=Clevit
+APP_GUI_NAME="Cross-platform Qt-based 'smart' text editor with built-in encryption."
+APP_VERSION=1.4.0
+APP_EXT=tar.gz
+sudo apt-get install -y build-essential libssl-dev make cmake qtdeclarative5-dev qml-module-qtquick-controls qt5-default openssl
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/TigaxMT/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+qmake && make && sudo make install
+sudo cp /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}/src/icons/icon.png /usr/share/icons/hicolor/scalable/apps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/bin
+Exec=/usr/bin/${APP_NAME}
+Icon=/usr/share/icons/hicolor/scalable/apps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Programming;Development;
+Keywords=Text;Editor;Encryption;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
