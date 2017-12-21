@@ -3623,7 +3623,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shallot Python-based file manager from package
 APP_NAME=shallot
-APP_VERSION=1.0.2959
+APP_VERSION=1.0.3044
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://pseudopolis.eu/wiki/pino/projs/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
