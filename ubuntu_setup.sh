@@ -2396,7 +2396,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Only Office Desktop Editor from package
 APP_NAME=onlyoffice-desktopeditors
-APP_VERSION=4.4
+APP_VERSION=4.8
 APP_EXT=deb
 source /etc/lsb-release
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sourceforge.net/projects/teamlab/files/ONLYOFFICE_DesktopEditors/v${APP_VERSION}/ubuntu/${DISTRIB_RELEASE:0:2}/${APP_NAME}_${KERNEL_TYPE}.${APP_EXT}
