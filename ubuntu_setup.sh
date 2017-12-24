@@ -5478,3 +5478,12 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Sigil cross-platform ebook (EPUB) editor/creator from PPA
+APP_NAME=Sigil
+APP_GUI_NAME="Cross-platform ebook (EPUB) editor/creator."
+APP_VERSION=0.9.9
+APP_EXT=deb
+sudo apt-add-repository -y ppa:ubuntuhandbook1/sigil
+sudo apt-get update -y
+sudo apt-get install -y sigil
