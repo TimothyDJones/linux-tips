@@ -5430,3 +5430,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install TeamSQL MySQL/PostgreSQL client from package
+APP_NAME=TeamSQL
+APP_GUI_NAME="Cross-platform MySQL/PostgreSQL client."
+APP_VERSION=latest
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://teamsql.io/latest/linux
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
