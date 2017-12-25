@@ -5496,3 +5496,12 @@ APP_EXT=deb
 sudo apt-add-repository -y ppa:mati75/spacefm
 sudo apt-get update -y
 sudo apt-get install -y spacefm udevil
+
+# Install TexStudio LaTeX GUI editor from PPA
+APP_NAME=TexStudio
+APP_GUI_NAME="LaTeX GUI Editor."
+APP_VERSION=
+APP_EXT=deb
+sudo apt-add-repository -y ppa:sunderme/texstudio
+sudo apt-get update -y
+sudo apt-get install -y texstudio
