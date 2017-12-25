@@ -5487,3 +5487,12 @@ APP_EXT=deb
 sudo apt-add-repository -y ppa:ubuntuhandbook1/sigil
 sudo apt-get update -y
 sudo apt-get install -y sigil
+
+# Install SpaceFM file manager from PPA
+APP_NAME=SpaceFM
+APP_GUI_NAME="GTK canonical file manager for Linux."
+APP_VERSION=
+APP_EXT=deb
+sudo apt-add-repository -y ppa:mati75/spacefm
+sudo apt-get update -y
+sudo apt-get install -y spacefm udevil
