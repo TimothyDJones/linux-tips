@@ -4,6 +4,9 @@ set number
 " Change color of line numbers for easier reading
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
+" Highlight matching parentheses
+highlight MatchParen ctermbg=4
+
 " Enable <backspace>
 set backspace=2
 
@@ -56,4 +59,14 @@ nnoremap JJJJ <Nop>
 set incsearch
 set hlsearch
 
+" Show status line and format contents
+set laststatus=2
+set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%1,%v][%p%%]
 
+" Create blank lines and stay in NORMAL mode
+nnoremap <silent> zj o<Esc>
+nnoremap <silent> zk O<Esc>
+
+" Center window vertically on line of 'next' search result
+map N Nzz
+map n nzz
