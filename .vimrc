@@ -19,7 +19,7 @@ set shiftwidth=4
 set softtabstop=4
 
 " Enable auto-indent
-set autoindent
+set autoindent smartindent
 
 " Disable Vi compatibility to allow Vim advanced features
 set nocompatible
@@ -75,3 +75,12 @@ map n nzz
 set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
+
+" Change to directory contain file when editing
+set autochdir
+
+" Set 1000 commands to undo
+set undolevels=1000
+
+" Keep at least 4 lines above and below the current line
+set scrolloff=4
