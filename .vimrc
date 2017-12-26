@@ -70,3 +70,8 @@ nnoremap <silent> zk O<Esc>
 " Center window vertically on line of 'next' search result
 map N Nzz
 map n nzz
+
+" Put all backup and temporary files in same directory
+set backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/tmp
