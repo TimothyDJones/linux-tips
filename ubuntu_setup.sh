@@ -5505,3 +5505,13 @@ APP_EXT=deb
 sudo apt-add-repository -y ppa:sunderme/texstudio
 sudo apt-get update -y
 sudo apt-get install -y texstudio
+
+# Install Falcon Electron-based cross-platform SQL client from package
+APP_NAME=falcon-sql-client
+APP_GUI_NAME="Electron-based cross-platform SQL client."
+APP_VERSION=2.4.0
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/plotly/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
