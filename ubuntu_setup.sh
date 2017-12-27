@@ -43,7 +43,7 @@ sudo apt-get upgrade -y
 sudo apt-get autoremove -f -y
 sudo apt-get install -y build-essential dtrx curl wget checkinstall gdebi \
 	openjdk-8-jre python-software-properties software-properties-common \
-	mc python3-pip mycli
+	mc python3-pip
 
 # Allow current user to run 'sudo' without password
 # https://phpraxis.wordpress.com/2016/09/27/enable-sudo-without-password-in-ubuntudebian/
@@ -88,7 +88,7 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 sudo apt-get install -y php5.6-bcmath php5.6-bz2 php5.6-cli php5.6-common php5.6-curl php5.6-gd php5.6-json php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-readline php5.6-sqlite3 php5.6-xml php5.6-xsl php5.6-zip php-xdebug \
 libapache2-mod-php5.6 libapache2-mod-xsendfile \
-mysql-server mysql-workbench
+mysql-server mysql-workbench mycli
 
 # Enable 'modrewrite' Apache module
 sudo a2enmod rewrite
