@@ -17,6 +17,7 @@ set smarttab
 " Set tab stops to 4 spaces/characters
 set shiftwidth=4
 set softtabstop=4
+set shiftround          " Automatically round indents to multiple of 'shiftwidth'
 
 " Enable auto-indent
 set autoindent smartindent
@@ -58,6 +59,7 @@ nnoremap JJJJ <Nop>
 " Enable incremental search and search highlighting
 set incsearch
 set hlsearch
+map - :nohlsearch<CR>   " Turn off search highlight with '-'
 
 " Show status line and format contents
 set laststatus=2
@@ -84,3 +86,21 @@ set undolevels=1000
 
 " Keep at least 4 lines above and below the current line
 set scrolloff=4
+
+" Make cursor behave as expected for long lines
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+" Switch to COMMAND mode from INSERT mode by entering 'ii'
+imap ii <C-[>
+
+" Remap <Ctrl>+<Space> to word completion
+noremap! <Nul> <C-n>
+
+" Shortcuts for switching between buffers in INSERT mode
+map <C-j> :bprev<CR>
+map <C-k> :bnext<CR>
+
+" Highlight the word under cursor
+highlight flicker cterm=bold ctermfg=white
+au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/').'\>/'
