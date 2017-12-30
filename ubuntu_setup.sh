@@ -4494,7 +4494,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Quickcal minimalist arithmetic and statistical calculator from package
 APP_NAME=Quickcal
-APP_VERSION=1.0
+APP_VERSION=2.1-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -5556,14 +5556,5 @@ Categories=Multimedia;Video;
 Keywords=FFMpeg;Video;Editor;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-cd $HOME
-sudo rm -rf /tmp/${APP_NAME,,}*
-
-# Install FinalCrypt Java-based file encryption utility from package
-APP_NAME=FinalCrypt
-APP_VERSION=Linux_x86_64_Debian_Based
-APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
