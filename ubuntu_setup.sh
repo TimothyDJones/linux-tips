@@ -5558,3 +5558,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Tea Ebook reader from package
+APP_NAME=tea-ebook
+APP_GUI_NAME="Cross-platform Ebook (PDF and EPUB) reader."
+APP_VERSION=N/A
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux32
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://app.${APP_NAME,,}.com/download/${ARCH_TYPE}/${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
