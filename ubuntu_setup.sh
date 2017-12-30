@@ -709,7 +709,7 @@ sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 
 # Install QXmlEdit from source via Sourceforge
 APP_NAME=QXmlEdit
-APP_VERSION=0.9.9
+APP_VERSION=0.9.9.1
 APP_EXT=tgz
 sudo apt-get install -y libqt5xmlpatterns5-dev libqt5svg5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
