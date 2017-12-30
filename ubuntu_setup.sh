@@ -3883,7 +3883,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JFileProcessor Java-based file manager
 APP_NAME=JFileProcessor
-APP_VERSION=1.5.4
+APP_VERSION=1.5.10
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/stant/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
