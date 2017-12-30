@@ -5573,3 +5573,13 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://app.${APP_NAME,,}.com/downlo
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install PhotoFlare cross-platform Qt-based image viewer/editor from package
+APP_NAME=PhotoFlare
+APP_GUI_NAME="Cross-platform Qt-based image viewer/editor."
+APP_VERSION=1.5
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://launchpad.net/photofiltre-lx/trunk/v${APP_VERSION}/+download/${APP_NAME}_CE_${APP_VERSION}_amd64.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
