@@ -5143,7 +5143,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install wxHexEditor hexadecimal editor from package
 APP_NAME=wxHexEditor
 APP_GUI_NAME="wxWidgets-based hexadecimal editor."
-APP_VERSION=0.23
+APP_VERSION=0.24
 APP_EXT=tar.bz2
 sudo apt-get install -y qtbase5-dev cmake make gcc g++
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-v${APP_VERSION}-Linux_x86_64.${APP_EXT}
