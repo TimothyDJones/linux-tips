@@ -1536,9 +1536,9 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Read the Bible from source
 APP_NAME=Bible
-APP_VERSION=6.2.3
-APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/readthebible/${APP_NAME}${APP_VERSION}.${APP_EXT}
+APP_VERSION=6.3.6
+APP_EXT=tar.xz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/readthebible/${APP_NAME}${APP_VERSION}-64bit.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME}.${APP_EXT}
 sudo mv ${APP_NAME} /opt
