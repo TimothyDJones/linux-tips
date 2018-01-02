@@ -5754,3 +5754,14 @@ sudo gdebi -n /tmp/${APP_NAME,,}/${APP_NAME,,}-dev_${APP_VERSION}_${KERNEL_TYPE}
 sudo gdebi -n /tmp/${APP_NAME,,}/${APP_NAME,,}-headers_${APP_VERSION}_all.deb
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install news-indictor open-source Python desktop news notification tool from source
+# Requires that NEWS_API_KEY environment variable be set to API key from https://newsapi.org/ (i.e., via $HOME/.profile).
+APP_NAME=news-indicator
+APP_GUI_NAME="Open-sourcePython desktop news notification tool."
+APP_VERSION=master
+APP_EXT=zip
+sudo apt-get install -y python3-setuptools
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/0dysseas/${APP_NAME,,}/archive/${APP_VERSION}.zip
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+sudo python3 ./setup.py install
