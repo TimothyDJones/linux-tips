@@ -104,3 +104,9 @@ map <C-k> :bnext<CR>
 " Highlight the word under cursor
 highlight flicker cterm=bold ctermfg=white
 au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/').'\>/'
+
+" Allow saving file owned by root if Vim not opened using sudo
+" Tip:  We use the 'w!!' command to follow pattern from shell of '!!' to
+"       re-run previous command with sudo.
+" https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
+cmap w!! w !sudo tee > /dev/null %
