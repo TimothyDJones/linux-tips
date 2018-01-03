@@ -12,6 +12,10 @@ set colorcolumn=80
 " Change color of line numbers for easier reading
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
+" Highlight EOL, extends, precedes and special characters like non-breaking spaces, <Tab>, trailing spaces, etc.
+highlight NonText ctermfg=LightGrey guifg=LightGrey
+highlight SpecialKey ctermfg=LightGrey guifg=LightGrey
+
 " Highlight matching parentheses
 highlight MatchParen ctermbg=4
 
