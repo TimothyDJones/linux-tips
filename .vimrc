@@ -71,7 +71,13 @@ map - :nohlsearch<CR>   " Turn off search highlight with '-'
 
 " Show status line and format contents
 set laststatus=2
-set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%1\ %v][%p%%]
+" set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%1\ %v][%p%%]
+set statusline=%<%f\                      " Filename
+set statusline+=%w%h%m%r                  " Options
+set statusline+=\ [%{&ff}/%Y]             " filetype
+set statusline+=\ [%{getcwd()}]           " current directory
+set statusline+=\ [A=\%03.3b/H=\%02.2B]   " ASCII / Hex value of character at cursor
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%   " Right aligned file position info
 
 " Create blank lines and stay in NORMAL mode
 nnoremap <silent> zj o<Esc>
