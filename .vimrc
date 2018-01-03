@@ -4,6 +4,7 @@ set number
 " Wrap text after 80 characters and highlight column 80
 set textwidth=80
 set colorcolumn=80
+highlight ctermbg=DarkGrey guibg=DarkGrey
 
 " Change color of line numbers for easier reading
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
