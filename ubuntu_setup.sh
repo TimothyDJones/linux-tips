@@ -5765,3 +5765,20 @@ sudo apt-get install -y python3-setuptools
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/0dysseas/${APP_NAME,,}/archive/${APP_VERSION}.zip
 cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
 sudo python3 ./setup.py install
+
+# Install hstr (a.k.a. 'hh') shell command history suggestion menu utility from PPA
+sudo apt-add-repository -y ppa:ultradvorka/ppa
+sudo apt-get update
+sudo apt-get install -y hh
+# Create 'hh' configuration file and call it from $HOME/.bashrc
+cat >> $HOME/.config/hh_config << EOF
+bind '"\e\C-r":"\C-ahh -- \C-j"'  # Bind 'hh' to <Ctrl>+<Alt>+R keyboard shortcut
+export HH_CONFIG=hicolor   # Enable more colors for 'hh'
+export HISTFILESIZE=10000
+export HISTSIZE=${HISTFILESIZE}
+export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"  # Sync .bash_history with in-memory history
+shopt -s histappend   # Force in-memory history to be appended to (instead of overwritten) .bash_history
+export HISTCONTROL=ignorespace   # Add leading space(s) to exclude/ignore command in history
+EOF
+echo 'source $HOME/.config/hh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
