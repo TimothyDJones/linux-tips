@@ -61,6 +61,20 @@ sudo apt-add-repository -y ppa:ondrej/php
 # Add Vim 8.x package repository
 # https://itsfoss.com/vim-8-release-install/
 sudo apt-add-repository -y ppa:jonathonf/vim
+# Add some settings to .bashrc to use Vim instead of Vi
+cat >> $HOME/.config/vim_sh_config << EOF
+# Enable 256 color support in terminal
+export TERM=xterm-256color
+# Use Vim instead of Vi, particularly for Git
+export VISUAL=vim
+export EDITOR=vim
+# Make 'vi' a function that calls Vim
+vi() {
+    vim "$@"
+}
+EOF
+echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
 
 # Add NodeJS package repository
 # https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
