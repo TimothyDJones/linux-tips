@@ -1,10 +1,13 @@
+" Enable 256 colors
+set t_Co=256
+
 " Show line numbers
 set number
 
 " Wrap text after 80 characters and highlight column 80
 set textwidth=80
+highlight ColorColumn ctermbg=LightGrey guibg=LightGrey
 set colorcolumn=80
-highlight ctermbg=DarkGrey guibg=DarkGrey
 
 " Change color of line numbers for easier reading
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
@@ -68,7 +71,7 @@ map - :nohlsearch<CR>   " Turn off search highlight with '-'
 
 " Show status line and format contents
 set laststatus=2
-set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%1,%v][%p%%]
+set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%1\ %v][%p%%]
 
 " Create blank lines and stay in NORMAL mode
 nnoremap <silent> zj o<Esc>
