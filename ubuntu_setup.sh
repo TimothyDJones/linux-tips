@@ -5796,3 +5796,34 @@ export HISTCONTROL=ignorespace   # Add leading space(s) to exclude/ignore comman
 EOF
 echo 'source $HOME/.config/hh_config' >> $HOME/.bashrc
 source $HOME/.bashrc	# Reload Bash configuration
+
+# Install bin64ed Qt-based Base64 file encoder/decoder from source
+APP_NAME=bin64ed
+APP_GUI_NAME="Cross-platform Qt-based Base64 file encoder/decoder."
+APP_VERSION=2.0
+APP_EXT=tar.bz2
+sudo apt-get install -y qt5-default qt5-qmake
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/base64-binary/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+qtchooser -run-tool=qmake -qt=5 && make
+sudo cp /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin  # No 'install' target for make
+sudo cp /tmp/${APP_NAME,,}/images/info_icon.png /usr/local/share/pixmaps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Accessories;System;
+Keywords=Base64;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
