@@ -5842,3 +5842,19 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/riksweeney/${APP_
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Universal Media Server (UMS) from package
+APP_NAME=UMS
+APP_VERSION=7.0.0-rc2
+APP_EXT=tgz
+sudo apt-get install -y mediainfo openjdk-8-jre dcraw vlc
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/unimediaserver/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+sudo mv ${APP_NAME,,}-${APP_VERSION} /opt/${APP_NAME,,}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME}.sh /usr/local/bin/${APP_NAME,,}
+ln -s /opt/${APP_NAME,,}/${APP_NAME}.sh $HOME/.config/autostart
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}
