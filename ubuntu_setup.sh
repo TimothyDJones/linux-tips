@@ -5858,3 +5858,34 @@ sudo ln -s /opt/${APP_NAME,,}/${APP_NAME}.sh /usr/local/bin/${APP_NAME,,}
 ln -s /opt/${APP_NAME,,}/${APP_NAME}.sh $HOME/.config/autostart
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}
+
+# Install PacmaniaQt Qt-based, C++ classic Pacman game from source
+APP_NAME=PacmaniaQt
+APP_GUI_NAME="Cross-platform Qt-based, C++ classic Pacman game."
+APP_VERSION=v.1.0.0
+APP_EXT=zip
+sudo apt-get install -y qt5-default qt5-qmake qtmultimedia5-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_Sources.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_Sources
+qtchooser -run-tool=qmake -qt=5 && make
+sudo cp /tmp/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_Sources/${APP_NAME,,} /usr/local/bin  # No 'install' target for make
+sudo cp /tmp/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_Sources/resources/images/pac_map.png /usr/local/share/pixmaps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Pacman;Arcade;Games;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
