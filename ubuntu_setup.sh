@@ -5899,3 +5899,13 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/z-------------/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Mozilla Rust programming language via installation shell script
+# https://www.rust-lang.org/en-US/install.html
+sudo apt-get install -y curl
+curl -o /tmp/rustup-init.sh https://sh.rustup.rs -sSf
+sh /tmp/rustup-init.sh -y
+echo 'export PATH="$PATH:$HOME/.cargo/bin"' >> $HOME/.profile
+source $HOME/.profile
+cd $HOME
+sudo rm -rf /tmp/rust*
