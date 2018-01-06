@@ -5909,3 +5909,18 @@ echo 'export PATH="$PATH:$HOME/.cargo/bin"' >> $HOME/.profile
 source $HOME/.profile
 cd $HOME
 sudo rm -rf /tmp/rust*
+
+# Install Norqualizer command-line audio normalizer/equalizer from source
+APP_NAME=Norqualizer
+APP_GUI_NAME="Cross-platform command-line audio normalizer/equalizer."
+APP_VERSION=130
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+gcc norqualizer.c -o norqualizer
+chmod a+x norqualizall
+sudo cp norqualizall norqualizer /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
