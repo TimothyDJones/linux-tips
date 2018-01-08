@@ -6006,3 +6006,35 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install QVGE (Qt Visual Graph Editor) Qt-based 2-D visual graph editor from source
+APP_NAME=QVGE
+APP_GUI_NAME="Cross-platform Qt-based 2-D visual graph editor."
+APP_VERSION=N/A
+APP_EXT=git
+sudo apt-get install -y qt5-qmake qt5-default libqt5x11extras5-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+git clone https://git.code.sf.net/p/${APP_NAME,,}/code ${APP_NAME,,}
+cd /tmp/${APP_NAME,,}/code
+qtchooser -run-tool=qmake -qt=5 && make 
+sudo mkdir -p /usr/local/share/pixmaps
+sudo cp ./src/Icons/AppIcon.png /usr/local/share/pixmaps/${APP_NAME,,}.png
+sudo cp ./bin/${APP_NAME,,} /usr/local/bin
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Education;Accessories;
+Keywords=Graphics;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
