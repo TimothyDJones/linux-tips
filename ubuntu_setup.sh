@@ -6013,7 +6013,6 @@ APP_GUI_NAME="Cross-platform Qt-based 2-D visual graph editor."
 APP_VERSION=N/A
 APP_EXT=git
 sudo apt-get install -y qt5-qmake qt5-default libqt5x11extras5-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 git clone https://git.code.sf.net/p/${APP_NAME,,}/code ${APP_NAME,,}
 cd /tmp/${APP_NAME,,}/code
