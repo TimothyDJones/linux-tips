@@ -2,7 +2,7 @@
 set t_Co=256
 
 " Show line numbers
-set number
+set number relativenumber
 
 " Wrap text after 80 characters and highlight column 80
 set textwidth=80
@@ -128,3 +128,7 @@ au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/')
 "       re-run previous command with sudo.
 " https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
+
+" Toggle between regular and relative line numbering when in INSERT mode.
+au InsertEnter * :set norelativenumber
+au InsertLeave * :set relativenumber
