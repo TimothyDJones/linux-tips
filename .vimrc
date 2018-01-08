@@ -132,3 +132,6 @@ cmap w!! w !sudo tee > /dev/null %
 " Toggle between regular and relative line numbering when in INSERT mode.
 au InsertEnter * :set norelativenumber
 au InsertLeave * :set relativenumber
+
+" Disable auto-indent for top-level HTML tags.
+let g:html_indent_autotags = "html,head,body"
