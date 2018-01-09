@@ -6084,3 +6084,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Flameshot Qt-based GUI/CLI screenshot capture tool from source
+APP_NAME=Flameshot
+APP_GUI_NAME="Qt-based GUI/CLI screenshot capture tool."
+APP_VERSION=0.5.0
+APP_EXT=tar.gz
+sudo apt-get install -y qt5-qmake qt5-default qttools5-dev-tools
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/lupoDharkael/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
