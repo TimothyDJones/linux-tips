@@ -6156,3 +6156,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Block Attack SDL Tetris clone from source
+APP_NAME=BlockAttack
+APP_GUI_NAME="SDL Tetris clone."
+APP_VERSION=2.1.2
+APP_EXT=tar.gz
+sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libphysfs-dev libboost-dev libboost-program-options-dev libutfcpp-dev cmake
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/Block%20Attack%20-%20Rise%20of%20the%20Blocks%20${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}*
+./packdata.sh
+cmake -DCMAKE_BUILD_TYPE=Release . && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
