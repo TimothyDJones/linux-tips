@@ -6128,3 +6128,31 @@ sudo cp doc/mlr.1 /usr/share/man/man1
 sudo cp c/mlr c/mlrg c/mlrp c/parsing/lemon /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Easy Beginner's Environment for Qt (qtebe) simplified Qt-based C++ development environment from source
+APP_NAME=qtebe
+APP_GUI_NAME="Simplified Qt-based C++ development environment."
+APP_VERSION=N/A
+APP_EXT=sh
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/install_ebe.sh
+cd /tmp
+sh /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p /usr/local/share/icons
+sudo cp /tmp/ebe/icons/48/ebe.png /usr/local/share/icons
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=ebe
+Icon=/usr/local/share/icons/ebe.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;Education;Other;
+Keywords=C++;IDE;Programming;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
