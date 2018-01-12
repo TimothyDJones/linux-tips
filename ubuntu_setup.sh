@@ -6259,3 +6259,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install FeedReader RSS news reader/aggregator from package
+APP_NAME=FeedReader
+APP_GUI_NAME="RSS news reader/aggregator."
+APP_VERSION=1.6.2~ubuntu0.4.1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://launchpad.net/~eviltwin1/+archive/ubuntu/${APP_NAME,,}-stable/+files/${APP_NAME,,}_${APP_VERSION}_${ARCH_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
