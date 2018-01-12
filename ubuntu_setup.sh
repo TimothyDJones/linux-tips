@@ -6218,3 +6218,44 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/BiglySoftware/${A
 sudo sh /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Java-- minimalist Eclipse-based IDE for learning Java programming
+APP_NAME=JavaMM
+APP_GUI_NAME="Minimalist Eclipse-based IDE for learning Java programming."
+APP_VERSION=1.9.0-v20180112-1030
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-ide-${APP_VERSION}-linux.gtk.${ARCH_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:$PATH; export PATH
+/opt/${APP_NAME,,}/eclipse
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=Java-- IDE (Eclipse)
+Comment=${APP_GUI_NAME}
+GenericName=Java-- IDE (Eclipse)
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/eclipse
+Icon=/opt/${APP_NAME,,}/icon.xpm
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;Education;
+Keywords=Java;Eclipse;IDE;Programming;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
