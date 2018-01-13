@@ -502,9 +502,10 @@ add Control = Control_R
 # Install JOE (Joe's Own Editor) text editor from source
 APP_NAME=joe
 APP_VERSION=4.6
-curl -o /tmp/${APP_NAME}.tar.gz -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}-editor/JOE%20sources/${APP_NAME}-${APP_VERSION}/${APP_NAME}-${APP_VERSION}.tar.gz
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-editor/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.tar.gz
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
 cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
