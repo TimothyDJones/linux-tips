@@ -3836,7 +3836,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JSoko Java-based Sokoban puzzle game from package
 APP_NAME=JSoko
-APP_VERSION=1.80
+APP_VERSION=1.81
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}applet/${APP_NAME}_${APP_VERSION}_linux.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
