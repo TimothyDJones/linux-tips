@@ -980,12 +980,12 @@ sudo apt-add-repository -y ppa:quiterss/quiterss
 sudo apt-get update
 sudo apt-get install -y quiterss
 
-# Install Makagiga PIM
+# Install Makagiga Java-based PIM/RSS feed reader
 APP_NAME=makagiga
-APP_VERSION=5.8.2
-curl -o /tmp/${APP_NAME}.deb -J -L https://gigenet.dl.sourceforge.net/project/${APP_NAME}/Makagiga%205.x/${APP_VERSION}/${APP_NAME}_${APP_VERSION}-1_all.deb
-cd /tmp
-sudo gdebi -n ${APP_NAME}.deb
+APP_VERSION=5.8.3-1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_all.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
