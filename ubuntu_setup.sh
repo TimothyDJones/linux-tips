@@ -6391,3 +6391,46 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Galaxy Forces V2 2D multiplayer (and single-player versus AI) space shooter game 
+APP_NAME=GalaxyV2
+APP_GUI_NAME="2D multiplayer (and single-player versus AI) space shooter game."
+APP_VERSION=1.85
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_linux_bin.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_linux_bin/* /opt/${APP_NAME,,}
+sudo ln -s /opt/${APP_NAME,,}/${ARCH_TYPE}/libportaudio.so /opt/${APP_NAME,,}/${ARCH_TYPE}/libportaudio.so.2
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}/${ARCH_TYPE}
+PATH=/opt/${APP_NAME,,}/${ARCH_TYPE}:$PATH; export PATH
+/opt/${APP_NAME,,}/${ARCH_TYPE}/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}/${ARCH_TYPE}
+Exec=/opt/${APP_NAME,,}/${ARCH_TYPE}/${APP_NAME,,}
+#Icon=/opt/${APP_NAME,,}/graphics/crossword.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;Education;
+Keywords=Arcade;Retro;2D;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
