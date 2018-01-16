@@ -6443,3 +6443,40 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/Originate/${APP_N
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install SMath Studio WYSIWYG math editor
+APP_NAME=SMathStudio
+APP_GUI_NAME="WYSIWYG math editor."
+APP_VERSION=0_98_6588
+APP_EXT=tar.gz
+sudo apt-get install -y mono-runtime libmono-system-windows-forms4.0-cil
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} --referer https://en.smath.info/view/SMathStudio/summary -J -L https://smath.info/file/v4yoT/${APP_NAME}Desktop.${APP_VERSION}.Mono.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}/${ARCH_TYPE}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME}_Desktop.exe
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME}_Desktop.exe
+#Icon=/opt/${APP_NAME,,}/graphics/crossword.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Math;Science;Education;
+Keywords=Calculator;Math;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
