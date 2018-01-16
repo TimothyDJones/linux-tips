@@ -3074,7 +3074,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Qutebrowser keyboard-focused minimalist web browser from package
 APP_NAME=qutebrowser
-APP_VERSION=1.0.0
+APP_VERSION=1.0.4
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}-1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
