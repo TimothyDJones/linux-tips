@@ -3617,7 +3617,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install QupZilla Qt5-based minimalistic web browser from source
 APP_NAME=QupZilla
-APP_VERSION=2.2.1
+APP_VERSION=2.2.4
 APP_EXT=tar.xz
 sudo apt-get install -y qt5-default qtwebengine5-dev qtwebengine5-dev-tools libqt5x11extras5-dev qttools5-dev-tools libxcb-util0-dev libssl-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
