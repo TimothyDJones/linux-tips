@@ -6480,3 +6480,33 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Qt-TaskManager Qt-based to do list/time management tool from source
+APP_NAME=Qt-TaskManager
+APP_GUI_NAME="Qt-based to do list/time management tool."
+APP_VERSION=N/A
+APP_EXT=N/A
+sudo apt-get install -y qt5-default
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} --referer https://en.smath.info/view/SMathStudio/summary -J -L https://smath.info/file/v4yoT/${APP_NAME}Desktop.${APP_VERSION}.Mono.${APP_EXT}
+cd /tmp
+git clone https://git.code.sf.net/p/${APP_NAME,,}/code ${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
+sudo cp /tmp/${APP_NAME,,}/Icons/calendar.png /usr/share/pixmaps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/bin
+Exec=/usr/bin/${APP_NAME,,}
+Icon=/usr/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;
+Keywords=ToDo;Time;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
