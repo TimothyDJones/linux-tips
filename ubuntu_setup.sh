@@ -6523,3 +6523,22 @@ cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
 make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install bed cross-platform binary/hex data editor from package
+APP_NAME=bed
+APP_GUI_NAME="Cross-platform binary/hex data editor."
+APP_VERSION=3.0.0
+APP_EXT=deb
+source /etc/lsb-release
+# If our version of Ubuntu is *before* 17.04 (Zesty Zapus),
+# then we need to install a couple of dependency packages.
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ze|ar|bi)$ ]]; then
+	curl -o /tmp/libhyperscan4.deb -J -L http://ubuntu.mirrors.tds.net/ubuntu/pool/universe/h/hyperscan/libhyperscan4_4.6.0-1_${KERNEL_TYPE}.deb
+	sudo gdebi -n /tmp/libhyperscan4.deb
+	curl -o /tmp/libre2-3.deb -J -L http://ubuntu.mirrors.tds.net/ubuntu/pool/universe/r/re2/libre2-3_20170101+dfsg-1_amd64.deb
+	sudo gdebi -n /tmp/libre2-3.deb
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/binaryeditor/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
