@@ -6542,3 +6542,16 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/bi
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install QDirStat Qt-based GUI for viewing directory statistics from source
+APP_NAME=QDirStat
+APP_GUI_NAME="Qt-based GUI for viewing directory statistics."
+APP_VERSION=1.4
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/shundhammer/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
