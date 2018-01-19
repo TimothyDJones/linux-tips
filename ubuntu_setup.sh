@@ -6487,7 +6487,6 @@ APP_GUI_NAME="Qt-based to do list/time management tool."
 APP_VERSION=N/A
 APP_EXT=N/A
 sudo apt-get install -y qt5-default
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} --referer https://en.smath.info/view/SMathStudio/summary -J -L https://smath.info/file/v4yoT/${APP_NAME}Desktop.${APP_VERSION}.Mono.${APP_EXT}
 cd /tmp
 git clone https://git.code.sf.net/p/${APP_NAME,,}/code ${APP_NAME,,}
 cd /tmp/${APP_NAME,,}
