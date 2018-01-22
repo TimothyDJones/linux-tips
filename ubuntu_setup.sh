@@ -176,12 +176,14 @@ APP_NAME=LilyTerm
 APP_VERSION=0.9.9.4
 APP_EXT=tar.gz
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev libvte-dev
-cd $HOME/Downloads
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/Tetralet/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
 ./configure && make && sudo make install
+if [[ ! -d "$HOME/.config/autostart" ]]; then
+	mkdir -p $HOME/.config/autostart
+fi
 ln -s /usr/local/share/applications/lilyterm.desktop $HOME/.config/autostart/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
