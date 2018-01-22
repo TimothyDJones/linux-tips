@@ -6567,3 +6567,35 @@ dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 sudo mv ${APP_NAME,,} /usr/local/bin
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install IDLE SDL-based minimal Apple Lisa emulator from source
+APP_NAME=IDLE
+APP_GUI_NAME="SDL-based minimal Apple Lisa emulator."
+APP_VERSION=N/A
+APP_EXT=N/A
+sudo apt-get install -y libsdl-dev git-svn
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/shundhammer/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+git svn clone https://svn.code.sf.net/p/idle-lisa-emu/code/ ${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+cp Makefile.unixsdl Makefile
+make
+sudo cp /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo cp /tmp/${APP_NAME,,}/lisa.ico /usr/share/icons/lisa_idle.ico
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/share/icons/lisa_idle.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Emulation;Games;Programming;
+Keywords=Retro;Lisa;Mac;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
