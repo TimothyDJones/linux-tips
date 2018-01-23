@@ -6652,3 +6652,16 @@ sed -i~ '1iQT += core gui widgets printsupport' /tmp/${APP_NAME,,}/${APP_NAME,,}
 qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install NotePuppy Qt-based minimalist text editor from source
+APP_NAME=NotePuppy
+APP_GUI_NAME="Qt-based minimalist text editor."
+APP_VERSION=N/A
+APP_EXT=N/A
+sudo apt-get install -y git-svn
+cd /tmp
+git svn clone https://svn.code.sf.net/p/${APP_NAME,,}/code/ ${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
