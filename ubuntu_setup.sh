@@ -6637,3 +6637,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install CalcuDoku Qt-based KenKen puzzle game from source
+APP_NAME=CalcuDoku
+APP_GUI_NAME="Qt-based KenKen puzzle game."
+APP_VERSION=N/A
+APP_EXT=N/A
+sudo apt-get install -y git-svn
+cd /tmp
+git svn clone https://svn.code.sf.net/p/${APP_NAME,,}/code/ ${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+# Need to insert "QT" module directive into Qt configuration file
+sed -i~ '1iQT += core gui widgets printsupport' /tmp/${APP_NAME,,}/${APP_NAME,,}.pro
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
