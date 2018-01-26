@@ -6665,3 +6665,13 @@ cd /tmp/${APP_NAME,,}
 qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install WebTorrent Desktop cross-platform Electron-based torrent streaming client from package
+APP_NAME=WebTorrent-Desktop
+APP_GUI_NAME="Cross-platform Electron-based torrent streaming client."
+APP_VERSION=0.19.0-1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
