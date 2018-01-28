@@ -2726,7 +2726,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Treeline tree-structured notepad
 APP_NAME=TreeLine
-APP_VERSION=2.1.2
+APP_VERSION=2.9.0
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -6675,3 +6675,12 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Amp Rust-based command-line text editor from source
+APP_NAME=Amp
+APP_GUI_NAME="Cross-platform Rust-based command-line text editor."
+APP_VERSION=0.3.2
+APP_EXT=N/A
+sudo apt-get install -y zlib1g-dev openssl libxcb1-dev cmake pkg-config
+curl https://sh.rustup.rs -sSf | sh
+cargo install --git https://github.com/jmacdonald/amp/ --tag 0.3.2
