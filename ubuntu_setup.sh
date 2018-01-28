@@ -379,7 +379,7 @@ rm -rf /tmp/otter-browser*
 
 # Install MyNotes simple "sticky notes" tool
 APP_NAME=mynotes
-APP_VERSION=2.2.1
+APP_VERSION=2.3.1
 APP_EXT=deb
 # Install python-ewmh package from Zesty Zebra distribution.
 curl -o /tmp/python3-ewmh_0.1.5-1_all.deb -J -L http://ftp.osuosl.org/pub/ubuntu/pool/universe/p/python-ewmh/python3-ewmh_0.1.5-1_all.deb
