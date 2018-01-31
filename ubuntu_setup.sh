@@ -2070,22 +2070,31 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Leo editor/IDE/PIM
 APP_NAME=Leo
-APP_VERSION=5.6
+APP_VERSION=5.7b1
 APP_EXT=zip
 sudo apt-get install -y python3-pyqt5
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}
-mv ${APP_NAME}-5.6 ${APP_NAME,,}
+mv ${APP_NAME}-${APP_VERSION} ${APP_NAME,,}
 sudo mv ${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:$PATH; export PATH
+python3 /opt/${APP_NAME,,}/launchLeo.py
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=Leo Editor
 Comment=Cross-platform text edtior/IDE/PIM
 GenericName=IDE
 Exec=python3 /opt/${APP_NAME,,}/launchLeo.py
-Icon=/opt/${APP_NAME}/${APP_NAME}/Icons/LeoApp.ico
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}/Icons/LeoApp.ico
 Type=Application
 StartupNotify=true
 Terminal=true
@@ -2093,7 +2102,6 @@ Categories=Programming;Development;
 Keywords=Editor;IDE;Python;PIM
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-#sudo ln -s /opt/${APP_NAME,,}/notes /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
