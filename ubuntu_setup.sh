@@ -6693,3 +6693,46 @@ APP_EXT=N/A
 sudo apt-get install -y zlib1g-dev openssl libxcb1-dev cmake pkg-config
 curl https://sh.rustup.rs -sSf | sh
 cargo install --git https://github.com/jmacdonald/amp/ --tag 0.3.2
+
+# Install Fractalscope Qt-based fractal explorer from source
+APP_NAME=Fractalscope
+APP_GUI_NAME="Cross-platform Qt-based fractal explorer."
+APP_VERSION=1.1.0
+APP_EXT=tar.gz
+sudo apt-get install -y qt5-default yasm
+# Install MPIR (Multiple Precision Integers and Rationals) LGPL C library
+curl -o /tmp/mpir.tar.bz2 -J -L http://mpir.org/mpir-3.0.0.tar.bz2
+cd /tmp && dtrx -n /tmp/mpir.tar.bz2 && cd /tmp/mpir/mpir-3.0.0
+./configure --enable-gmpcompat && make && sudo make install
+# Install GNU MPFR (multiple-precision floating-point computations with correct rounding) C Library
+curl -o /tmp/mpfr.tar.xz -J -L http://www.mpfr.org/mpfr-current/mpfr-4.0.0.tar.xz
+cd /tmp && dtrx -n /tmp/mpfr.tar.xz && cd /tmp/mpfr/mpfr-4.0.0
+./configure --with-gmp-include=/usr/local/include --with-gmp-lib=/usr/local/lib && make && make check && sudo make install
+# Install MPFR C++ library
+curl -o /tmp/mpfrc++.zip -J -L http://www.holoborodko.com/pavel/wp-content/plugins/download-monitor/download.php?id=4
+cd /tmp && dtrx -n /tmp/mpfrc++.zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-source/${APP_NAME}
+cp /tmp/mpfrc++/mpreal.h /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-source/${APP_NAME}/gmp
+qtchooser -run-tool=qmake -qt=5 CONFIG+=release Fractalscope.pro && make
+sudo cp ./Fractalscope /usr/local/bin
+sudo cp ./resources/icons/48x48/application.png /usr/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME}
+Icon=/usr/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;Science;
+Keywords=Math;Visualization;Fractals;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
