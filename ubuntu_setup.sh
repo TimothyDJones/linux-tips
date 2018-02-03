@@ -6748,3 +6748,44 @@ dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}/linux_deb/${APP_NAME,,}*.deb
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Pioneer space adventure game from package
+APP_NAME=Pioneer
+APP_GUI_NAME="Cross-platform space adventure game."
+APP_VERSION=20180203
+APP_EXT=tar.bz2
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux32
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/pioneerspacesim/${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/data/icons/logo.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Adventure;Space;Games;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
