@@ -6736,3 +6736,15 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install QFutureBuilder Qt-based goal-tracking tool from package
+APP_NAME=QFutureBuilder
+APP_GUI_NAME="Cross-platform Qt-based goal-tracking tool."
+APP_VERSION=N/A
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/futurbuilder/linux_deb.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}/linux_deb/${APP_NAME,,}*.deb
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
