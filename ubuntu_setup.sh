@@ -365,17 +365,17 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Otter Browser from Sourceforge (from source)
 APP_NAME=otter-browser
-APP_VERSION=0.9.94
+APP_VERSION=0.9.95
 APP_EXT=tar.bz2
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev   # Qt5 development packages needed to build from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/otter-browser/${APP_NAME}-${APP_VERSION}
+cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 mkdir build && cd build
 cmake .. && make && sudo make install
 cd $HOME
-rm -rf /tmp/otter-browser*
+rm -rf /tmp/${APP_NAME}*
 
 # Install MyNotes simple "sticky notes" tool
 APP_NAME=mynotes
