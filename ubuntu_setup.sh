@@ -6794,7 +6794,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install mgrep multi-line grep utility
 APP_NAME=mgrep
-APP_VERSION=1.1.1
+APP_VERSION=1.1.2
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/multiline-grep/${APP_NAME,,}-${APP_VERSION}-static.${APP_EXT}
 cd /tmp
