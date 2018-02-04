@@ -6802,3 +6802,41 @@ dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 sudo mv ${APP_NAME,,} /usr/local/bin
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Impressive PDF slide show presenter from source
+APP_NAME=Impressive
+APP_GUI_NAME="PDF slide show presenter."
+APP_VERSION=0.12.0
+APP_EXT=tar.gz
+sudo apt-get install -y python-pygame python-imaging pdftk mupdf-tools xdg-utils mplayer ffmpeg
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+python /opt/${APP_NAME,,}/${APP_NAME,,}.py \$1
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python /opt/${APP_NAME,,}/${APP_NAME,,}.py \$1
+#Icon=/opt/${APP_NAME,,}/data/icons/logo.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Office;
+Keywords=PDF;Presentation;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
