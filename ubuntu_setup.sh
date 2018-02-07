@@ -6850,3 +6850,24 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install UNA social-media community management web-based tool (PHP/MySQL)
+APP_NAME=UNA
+APP_VERSION=9.0.0-RC5
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/una-io/${APP_NAME}-v.${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME}-v.${APP_VERSION}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R 777 ${WWW_HOME}/${APP_NAME,,}/storage ${WWW_HOME}/${APP_NAME,,}/tmp ${WWW_HOME}/${APP_NAME,,}/logs ${WWW_HOME}/${APP_NAME,,}/cache ${WWW_HOME}/${APP_NAME,,}/cache_public ${WWW_HOME}/${APP_NAME,,}/plugins_public ${WWW_HOME}/${APP_NAME,,}/inc
+sudo chmod a+x ${WWW_HOME}/${APP_NAME,,}/plugins/ffmpeg/ffmpeg.exe
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/install &
