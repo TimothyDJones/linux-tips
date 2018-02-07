@@ -6840,3 +6840,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Open-Numismat cross-platform PyQt-based coin-collection management tool from package
+APP_NAME=Open-Numismat
+APP_GUI_NAME="Cross-platform PyQt-based coin-collection management tool."
+APP_VERSION=1.4.9
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_all.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
