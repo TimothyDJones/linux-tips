@@ -6022,13 +6022,13 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install QVGE (Qt Visual Graph Editor) Qt-based 2-D visual graph editor from source
 APP_NAME=QVGE
 APP_GUI_NAME="Cross-platform Qt-based 2-D visual graph editor."
-APP_VERSION=N/A
-APP_EXT=git
+APP_VERSION=0.4.0
+APP_EXT=7z
 sudo apt-get install -y qt5-qmake qt5-default libqt5x11extras5-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
 cd /tmp
-git clone https://git.code.sf.net/p/${APP_NAME,,}/code ${APP_NAME,,}
-cd /tmp/${APP_NAME,,}/code
-qtchooser -run-tool=qmake -qt=5 && make 
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src/code
 sudo mkdir -p /usr/local/share/pixmaps
 sudo cp ./src/Icons/AppIcon.png /usr/local/share/pixmaps/${APP_NAME,,}.png
 sudo cp ./bin/${APP_NAME,,} /usr/local/bin
@@ -6952,4 +6952,4 @@ Keywords=Graphics;Animation;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}*
+rm -rf /tmp/${APP_NAME,,}*qtchooser -run-tool=qmake -qt=5 ${APP_NAME,,}app.pro && make 
