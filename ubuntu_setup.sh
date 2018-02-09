@@ -6952,4 +6952,19 @@ Keywords=Graphics;Animation;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}*qtchooser -run-tool=qmake -qt=5 ${APP_NAME,,}app.pro && make 
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Abricotine cross-platform Electron-based Markdown editor with inline preview from package
+APP_NAME=Abricotine
+APP_GUI_NAME="Cross-platform Electron-based Markdown editor with inline preview."
+APP_VERSION=0.6.0
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/brrd/${APP_NAME}/releases/download/${APP_VERSION}/${APP_NAME}-${APP_VERSION}-ubuntu-debian-${ARCH_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
