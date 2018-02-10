@@ -7003,3 +7003,33 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/brrd/${APP_NAME}/
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install INSTEAD Interactive Fiction interpreter/player from source
+APP_NAME=INSTEAD
+APP_GUI_NAME="Interactive Fiction interpreter/player."
+APP_VERSION=3.2.0
+APP_EXT=tar.gz
+sudo apt-get install -y liblua5.1-dev libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev libsdl2-mixer-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+export PREFIX=/usr/local && ./configure.sh && make && sudo make install 
+sudo rm -rf /usr/local/share/applications/instead.desktop
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/sdl-instead
+Icon=/usr/local/share/pixmaps/sdl_instead.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Games;Adventure;Text;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
