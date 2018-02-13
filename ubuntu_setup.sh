@@ -5993,7 +5993,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Searchmonkey GUI desktop search client from source
 APP_NAME=Searchmonkey
 APP_GUI_NAME="GUI desktop search client."
-APP_VERSION=0.8.2
+APP_VERSION=0.8.3
 APP_EXT=tar.gz
 sudo apt-get install -y autoconf automake
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
