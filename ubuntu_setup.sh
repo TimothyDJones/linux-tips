@@ -2070,7 +2070,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Leo editor/IDE/PIM
 APP_NAME=Leo
-APP_VERSION=5.7b1
+APP_VERSION=5.7b2
 APP_EXT=zip
 sudo apt-get install -y python3-pyqt5
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
