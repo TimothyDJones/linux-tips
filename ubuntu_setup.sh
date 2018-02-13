@@ -7069,3 +7069,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install phpSysInfo web-based Linux system information utility
+APP_NAME=phpSysInfo
+APP_VERSION=3.2.10
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}/* ${WWW_HOME}/${APP_NAME,,}
+sudo cp ${WWW_HOME}/${APP_NAME,,}/phpsysinfo.ini.new ${WWW_HOME}/${APP_NAME,,}/phpsysinfo.ini
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod a+x ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
+xdg-open http://localhost/${APP_NAME,,}/index.php &
