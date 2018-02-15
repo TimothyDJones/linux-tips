@@ -7087,3 +7087,13 @@ sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
 sudo chmod a+x ${WWW_HOME}/${APP_NAME,,}
 sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
 xdg-open http://localhost/${APP_NAME,,}/index.php &
+
+# Install PICSimLab wxWidgets-based real-time PIC and Arduino microcontroller simulator laboratory from package
+APP_NAME=PICSimLab
+APP_GUI_NAME="Cross-platform real-time PIC and Arduino microcontroller simulator laboratory."
+APP_VERSION=0.7
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/picsim/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
