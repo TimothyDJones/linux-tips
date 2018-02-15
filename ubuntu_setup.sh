@@ -7097,3 +7097,30 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/pi
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install x-whnb self-contained web-based hierarchical notebook (similar to Cherrytree)
+APP_NAME=x-whnb
+APP_GUI_NAME="Self-contained web-based hierarchical notebook (similar to Cherrytree)."
+APP_VERSION=v0.2
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sourceforge.net/projects/${APP_NAME,,}/files/${APP_VERSION}/${APP_NAME,,}.deploy.${APP_EXT}/download
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+sudo cp /tmp/${APP_NAME,,}/deploy/${APP_NAME,,}.deploy.html ${WWW_HOME}/${APP_NAME,,}.html
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}.html
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=${WWW_HOME}
+Exec=xdg-open http://localhost/${APP_NAME,,}.html
+#Icon=/opt/${APP_NAME,,}/big/back.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Internet;
+Keywords=Productivity;Notepad;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+xdg-open http://localhost/${APP_NAME,,}.html &
