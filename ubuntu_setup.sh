@@ -748,7 +748,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.6.1
+APP_VERSION=7.6.2
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1002,7 +1002,7 @@ sudo apt-get install -y et
 # Install Gantt Project project management tool
 APP_NAME=ganttproject
 APP_VERSION=2.8.6-r2231-1
-curl -o /tmp/${APP_NAME}.deb -J -L https://dl.ganttproject.biz/${APP_NAME}-2.8.5/${APP_NAME}_${APP_VERSION}_all.deb
+curl -o /tmp/${APP_NAME}.deb -J -L https://dl.ganttproject.biz/${APP_NAME}-2.8.6/${APP_NAME}_${APP_VERSION}_all.deb
 cd /tmp
 sudo gdebi -n ${APP_NAME}.deb
 cd $HOME
@@ -1059,7 +1059,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Sourceforge
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1
-APP_VERSION_MINOR=3727
+APP_VERSION_MINOR=3730
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-20_${KERNEL_TYPE}.deb
@@ -2070,7 +2070,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Leo editor/IDE/PIM
 APP_NAME=Leo
-APP_VERSION=5.7b1
+APP_VERSION=5.7b2
 APP_EXT=zip
 sudo apt-get install -y python3-pyqt5
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -2364,7 +2364,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 
 # Install DK Tools system utility from source
 APP_NAME=dktools
-APP_VERSION=4.11.3
+APP_VERSION=4.11.4
 APP_EXT=tar.gz
 KERNEL_TYPE=getKernelType()
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -3546,7 +3546,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 
 # Install Admidio organizational management tool
 APP_NAME=admidio
-APP_VERSION=3.2.14
+APP_VERSION=3.3-Beta.1
 APP_EXT=zip
 DB_NAME=admidio
 DB_USER=admidio
@@ -4884,7 +4884,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=18.0
+APP_VERSION=18.1
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -5993,7 +5993,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Searchmonkey GUI desktop search client from source
 APP_NAME=Searchmonkey
 APP_GUI_NAME="GUI desktop search client."
-APP_VERSION=0.8.2
+APP_VERSION=0.8.3
 APP_EXT=tar.gz
 sudo apt-get install -y autoconf automake
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -6875,7 +6875,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1010
+APP_VERSION=V1110
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_Src.${APP_EXT}
@@ -7029,6 +7029,170 @@ StartupNotify=true
 Terminal=false
 Categories=Games;Entertainment;
 Keywords=Games;Adventure;Text;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+
+# Install PyPref Python-based Russian card game Preferans
+APP_NAME=PyPref
+APP_GUI_NAME="Python-based Russian card game Preferans."
+APP_VERSION=2.1
+APP_EXT=zip
+sudo apt-get install -y python-tk
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/python-pref/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+python2 /opt/${APP_NAME,,}/${APP_NAME,,}.pyw
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python2 /opt/${APP_NAME,,}/${APP_NAME,,}.pyw
+Icon=/opt/${APP_NAME,,}/big/back.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Games;Cards;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install phpSysInfo web-based Linux system information utility
+APP_NAME=phpSysInfo
+APP_VERSION=3.2.10
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}/* ${WWW_HOME}/${APP_NAME,,}
+sudo cp ${WWW_HOME}/${APP_NAME,,}/phpsysinfo.ini.new ${WWW_HOME}/${APP_NAME,,}/phpsysinfo.ini
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod a+x ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+
+# Install PICSimLab wxWidgets-based real-time PIC and Arduino microcontroller simulator laboratory from package
+APP_NAME=PICSimLab
+APP_GUI_NAME="Cross-platform real-time PIC and Arduino microcontroller simulator laboratory."
+APP_VERSION=0.7
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/picsim/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install x-whnb self-contained web-based hierarchical notebook (similar to Cherrytree)
+APP_NAME=x-whnb
+APP_GUI_NAME="Self-contained web-based hierarchical notebook (similar to Cherrytree)."
+APP_VERSION=v0.2
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sourceforge.net/projects/${APP_NAME,,}/files/${APP_VERSION}/${APP_NAME,,}.deploy.${APP_EXT}/download
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+sudo cp /tmp/${APP_NAME,,}/deploy/${APP_NAME,,}.deploy.html ${WWW_HOME}/${APP_NAME,,}.html
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}.html
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=${WWW_HOME}
+Exec=xdg-open http://localhost/${APP_NAME,,}.html
+#Icon=/opt/${APP_NAME,,}/big/back.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Internet;
+Keywords=Productivity;Notepad;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+xdg-open http://localhost/${APP_NAME,,}.html &
+
+# Install Text Trix Java-based minimalist text editor with HTML and RTF support
+APP_NAME=TextTrix
+APP_GUI_NAME="Java-based cross-platform minimalist text editor with HTML and RTF support."
+APP_VERSION=1.0.2
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar
+Icon=/opt/${APP_NAME,,}/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Programming;Development;
+Keywords=Editor;Text;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install JSound Java-based audio player and editor
+APP_NAME=JSound
+APP_GUI_NAME="Java-based audio player and editor."
+APP_VERSION=4.0
+APP_EXT=zip
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/jortegasound/${APP_NAME,,}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}/bin
+PATH=/opt/${APP_NAME,,}/bin:\$PATH; export PATH
+/opt/${APP_NAME,,}/bin/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}/bin
+Exec=/opt/${APP_NAME,,}/bin/${APP_NAME,,}
+#Icon=/opt/${APP_NAME,,}/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Multimedia;Audio;
+Keywords=Audio;Player;Editor;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
