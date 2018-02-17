@@ -135,3 +135,10 @@ au InsertLeave * :set relativenumber
 
 " Disable auto-indent for top-level HTML tags.
 let g:html_indent_autotags = "html,head,body"
+
+" <Alt> + arrow navigation
+" https://github.com/pyk/dotfiles/blob/master/vim/.vimrc
+nmap <silent> <A-Up>    : wincmd k<CR>
+nmap <silent> <A-Down>  : wincmd j<CR>
+nmap <silent> <A-Left>  : wincmd h<CR>
+nmap <silent> <A-Right> : wincmd l<CR>
