@@ -209,8 +209,8 @@ cd $HOME
 
 # Install Lite IDE for Go language development
 APP_NAME=LiteIDE
-APP_VERSION=x33.1
-APP_EXT=tar.bz2
+APP_VERSION=x33.2
+APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
 else    # Otherwise use version for 32-bit kernel
@@ -224,6 +224,15 @@ curl -o /tmp/${APP_NAME,,}-system.${APP_EXT} -J -L https://downloads.sourceforge
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 sudo mv ${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}/bin
+PATH=/opt/${APP_NAME,,}/bin:\$PATH; export PATH
+/opt/${APP_NAME,,}/bin/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 # Create icon in menus
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
