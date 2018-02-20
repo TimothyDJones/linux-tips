@@ -7206,3 +7206,30 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install viewPDF Qt-based PDF viewer/editor
+APP_NAME=viewPdf
+APP_GUI_NAME="Qt-based PDF viewer/editor."
+APP_VERSION=0.2.2
+APP_EXT=N/A
+sudo apt-get install -y libpoppler-qt5-1
+curl -o /tmp/${APP_NAME,,} -J -L https://sourceforge.net/projects/${APP_NAME,,}/files/${APP_NAME}${APP_VERSION}/download
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=/opt/${APP_NAME,,}/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Office;
+Keywords=PDF;Viewer;Reader;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
