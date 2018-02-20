@@ -7233,3 +7233,29 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install QFlashCards Qt-based flash card editor/viewer
+APP_NAME=QFlashCards
+APP_GUI_NAME="Qt-based flash card editor/viewer."
+APP_VERSION=1.0
+APP_EXT=N/A
+curl -o /tmp/${APP_NAME,,} -J -L https://sourceforge.net/projects/${APP_NAME,,}/files/v${APP_VERSION}/${APP_NAME}/download
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=/opt/${APP_NAME,,}/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Education;
+Keywords=Flashcards;Viewer;Reader;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
