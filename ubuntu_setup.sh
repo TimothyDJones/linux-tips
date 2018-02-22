@@ -1756,10 +1756,10 @@ kgclock &
 
 # Install uGet GUI download manager
 APP_NAME=uget
-APP_VERSION=2.0.10
+APP_VERSION=2.2.0
 APP_EXT=deb
 source /etc/os-release   # This config file contains Ubuntu version details.
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/urlget/${APP_NAME}_${APP_VERSION}-0ubuntu0+1~${UBUNTU_CODENAME}_${KERNEL_TYPE}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/urlget/${APP_NAME}_${APP_VERSION}-0ubuntu0~${UBUNTU_CODENAME}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
