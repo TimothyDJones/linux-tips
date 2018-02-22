@@ -314,7 +314,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.40.0.0-1
+APP_VERSION=1.42.0.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1728,7 +1728,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=6.5.5
+APP_VERSION=6.5.6
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -6031,7 +6031,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install QVGE (Qt Visual Graph Editor) Qt-based 2-D visual graph editor from source
 APP_NAME=QVGE
 APP_GUI_NAME="Cross-platform Qt-based 2-D visual graph editor."
-APP_VERSION=0.4.0
+APP_VERSION=0.4.1
 APP_EXT=7z
 sudo apt-get install -y qt5-qmake qt5-default libqt5x11extras5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
@@ -6884,7 +6884,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1110
+APP_VERSION=V1160
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_Src.${APP_EXT}
@@ -7216,3 +7216,56 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install viewPDF Qt-based PDF viewer/editor
+APP_NAME=viewPdf
+APP_GUI_NAME="Qt-based PDF viewer/editor."
+APP_VERSION=0.2.2
+APP_EXT=N/A
+sudo apt-get install -y libpoppler-qt5-1
+curl -o /tmp/${APP_NAME,,} -J -L https://sourceforge.net/projects/${APP_NAME,,}/files/${APP_NAME}${APP_VERSION}/download
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=/opt/${APP_NAME,,}/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Office;
+Keywords=PDF;Viewer;Reader;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install QFlashCards Qt-based flash card editor/viewer
+APP_NAME=QFlashCards
+APP_GUI_NAME="Qt-based flash card editor/viewer."
+APP_VERSION=1.0
+APP_EXT=N/A
+curl -o /tmp/${APP_NAME,,} -J -L https://sourceforge.net/projects/${APP_NAME,,}/files/v${APP_VERSION}/${APP_NAME}/download
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=/opt/${APP_NAME,,}/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Education;
+Keywords=Flashcards;Viewer;Reader;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
