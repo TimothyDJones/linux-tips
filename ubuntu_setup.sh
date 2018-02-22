@@ -5707,7 +5707,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Zeal Qt-based offline API documentation browser from source
 APP_NAME=Zeal
 APP_GUI_NAME="Cross-platform Qt-based offline API documentation browser."
-APP_VERSION=0.5.0
+APP_VERSION=0.6.0
 APP_EXT=tar.gz
 sudo apt-get install -y libarchive-dev libqt5webkit5-dev extra-cmake-modules libqt5x11extras5-dev libx11-xcb-dev libxcb-keysyms1-dev libsqlite3-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/zealdocs/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
