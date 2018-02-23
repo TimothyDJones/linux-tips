@@ -2542,7 +2542,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Agora Project groupware application (manual installation)
 APP_NAME=agora_project
-APP_VERSION=3.3.5
+APP_VERSION=3.4.1
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
