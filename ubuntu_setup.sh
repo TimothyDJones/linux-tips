@@ -6372,7 +6372,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Nathansoftware ConnectFour Java-based puzzle game
 APP_NAME=ConnectFour
 APP_GUI_NAME="ConnectFour Java-based puzzle game."
-APP_VERSION=1.0.0
+APP_VERSION=1.1.0
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/nathansoftware-games/${APP_NAME}-${APP_VERSION}-JAR.${APP_EXT}
 cd /tmp
