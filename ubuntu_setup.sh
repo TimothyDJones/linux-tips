@@ -7240,7 +7240,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install QFlashCards Qt-based flash card editor/viewer
 APP_NAME=QFlashCards
 APP_GUI_NAME="Qt-based flash card editor/viewer."
-APP_VERSION=1.0
+APP_VERSION=1.2
 APP_EXT=N/A
 curl -o /tmp/${APP_NAME,,} -J -L https://sourceforge.net/projects/${APP_NAME,,}/files/v${APP_VERSION}/${APP_NAME}/download
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
