@@ -7308,3 +7308,41 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install 16p Mahjong Python/Pygame tile puzzle game
+APP_NAME=16mj
+APP_GUI_NAME="Mahjong Python/Pygame tile puzzle game."
+APP_VERSION=027
+APP_EXT=tar.gz
+sudo pip3 install pygame
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/mahjong-16p/${APP_NAME,,}_py${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME,,}_py/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+python3 /opt/${APP_NAME,,}/p${APP_NAME,,}.py
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python3 /opt/${APP_NAME,,}/p${APP_NAME,,}.py
+Icon=/opt/${APP_NAME,,}/Image/Mjt7.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Entertainment;Games;
+Keywords=Mahjong;Puzzle;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
