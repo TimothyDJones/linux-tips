@@ -540,25 +540,19 @@ cmake .. -DWITH_TESTS=OFF && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install NewBreeze file manager
-# Install from packages for 64-bit Linux
-if $(uname -m | grep '64'); then 
-	curl -o /tmp/NewBreeze-common.deb -J -L https://github.com/marcusbritanicus/NewBreeze/releases/download/v3-alpha2/newbreeze-common_3.0.0_amd64.deb
-	curl -o /tmp/NewBreeze.deb -J -L https://github.com/marcusbritanicus/NewBreeze/releases/download/v3-alpha2/newbreeze_3.0.0_amd64.deb
-	curl -o /tmp/NewBreeze-plugins.deb -J -L https://github.com/marcusbritanicus/NewBreeze/releases/download/v3-alpha2/newbreeze-plugins_3.0.0a_amd64.deb
-	sudo gdebi -n /tmp/NewBreeze-common.deb
-	sudo gdebi -n /tmp/NewBreeze.deb
-	sudo gdebi -n /tmp/NewBreeze-plugins.deb
-else # Install from source for 32-bit Linux
-	sudo apt-get install -y libmagic-dev zlib1g-dev liblzma-dev libbz2-dev libarchive-dev xdg-utils libpoppler-qt5-dev libsource-highlight-dev libpoppler-qt5-dev libdjvulibre-dev
-	curl -o /tmp/NewBreeze.tar.gz -J -L https://sourceforge.net/projects/newbreeze/files/v3-alpha2/NewBreeze%20v3%20Alpha%202.tar.gz/download
-	cd /tmp
-	dtrx -n NewBreeze.tar.gz
-	cd /tmp/NewBreeze/*NewBreeze*
-	qmake && make && sudo make install
+# Install NewBreeze file manager from source
+APP_NAME=NewBreeze
+APP_VERSION=v3-beta2
+APP_EXT=tar.gz
+sudo apt-get install -y libmagic-dev zlib1g-dev liblzma-dev libbz2-dev libarchive-dev xdg-utils libpoppler-qt5-dev libsource-highlight-dev libpoppler-qt5-dev libdjvulibre-dev
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/marcusbritanicus/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME}/*${APP_NAME}*
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 fi
 cd $HOME
-rm -rf /tmp/NewBreeze*
+rm -rf /tmp/${APP_NAME}*
 
 # Install Miniflux browser-based RSS reader
 # Requires PHP and SQLite.
