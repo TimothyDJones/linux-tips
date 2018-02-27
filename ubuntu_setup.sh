@@ -82,7 +82,7 @@ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
 # Install NodeJS, Vim 8, and Git
 sudo apt-get install -y vim vim-gtk3 vim-common \
-	git \
+	git git-svn \
 	nodejs
 
 # Install MongoDB from official repository
