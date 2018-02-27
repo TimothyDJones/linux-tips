@@ -550,7 +550,6 @@ cd /tmp
 dtrx -n /tmp/${APP_NAME}.${APP_EXT}
 cd /tmp/${APP_NAME}/*${APP_NAME}*
 qtchooser -run-tool=qmake -qt=5 && make && sudo make install
-fi
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
@@ -7306,7 +7305,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install 16p Mahjong Python/Pygame tile puzzle game
 APP_NAME=16mj
 APP_GUI_NAME="Mahjong Python/Pygame tile puzzle game."
-APP_VERSION=027
+APP_VERSION=027c
 APP_EXT=tar.gz
 sudo pip3 install pygame
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/mahjong-16p/${APP_NAME,,}_py${APP_VERSION}.${APP_EXT}
