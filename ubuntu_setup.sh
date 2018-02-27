@@ -6684,11 +6684,11 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Amp Rust-based command-line text editor from source
 APP_NAME=Amp
 APP_GUI_NAME="Cross-platform Rust-based command-line text editor."
-APP_VERSION=0.3.2
+APP_VERSION=0.3.4
 APP_EXT=N/A
 sudo apt-get install -y zlib1g-dev openssl libxcb1-dev cmake pkg-config
 curl https://sh.rustup.rs -sSf | sh
-cargo install --git https://github.com/jmacdonald/amp/ --tag 0.3.2
+cargo install --git https://github.com/jmacdonald/${APP_NAME,,}/ --tag ${APP_VERSION}
 
 # Install Fractalscope Qt-based fractal explorer from source
 APP_NAME=Fractalscope
@@ -7350,6 +7350,23 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/sc
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}/scintilla/gtk
+make
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}/gtk
+make && sudo make install
+sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Unix ODBC Qt-based GUI utilities from source
+APP_NAME=UnixODBC-GUI-Qt
+APP_GUI_NAME="nix ODBC Qt-based GUI utilities."
+APP_VERSION=N/A
+APP_EXT=N/A
+sudo apt-get install -y git-svn unixodbc unixodbc-dev
+cd /tmp
+git svn clone https://svn.code.sf.net/p/${APP_NAME,,}/code/trunk ${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+qtchooser -run-tool=qmake -qt=5
 make
 cd /tmp/${APP_NAME,,}/${APP_NAME,,}/gtk
 make && sudo make install
