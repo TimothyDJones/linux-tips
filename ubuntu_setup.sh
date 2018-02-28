@@ -7357,19 +7357,18 @@ sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Unix ODBC Qt-based GUI utilities from source
-APP_NAME=UnixODBC-GUI-Qt
-APP_GUI_NAME="nix ODBC Qt-based GUI utilities."
-APP_VERSION=N/A
-APP_EXT=N/A
+# Install pgFormatter PostgreSQL and other DB SQL syntax beautifier from source
+APP_NAME=pgFormatter
+APP_GUI_NAME="PostgreSQL and other DB SQL syntax beautifier."
+APP_VERSION=3.0
+APP_EXT=tar.gz
 sudo apt-get install -y git-svn unixodbc unixodbc-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
-git svn clone https://svn.code.sf.net/p/${APP_NAME,,}/code/trunk ${APP_NAME,,}
-cd /tmp/${APP_NAME,,}
-qtchooser -run-tool=qmake -qt=5
-make
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}/gtk
-make && sudo make install
-sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+sudo mkdir /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}/* /opt/${APP_NAME,,}
+sudo ln -s /opt/${APP_NAME,,}/pg_format /usr/local/bin/pgformat
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
