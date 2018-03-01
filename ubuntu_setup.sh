@@ -7405,3 +7405,14 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} --referer https://www.${APP_NAME,,}.com/do
 sudo sh /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install InfiniTex Electron-based LaTeX source and WYSIWYG editor from package
+APP_NAME=InfiniTex
+APP_GUI_NAME="Electron-based LaTeX source and WYSIWYG editor."
+APP_VERSION=0.9.2
+APP_EXT=deb
+sudo apt-get install -y git-svn unixodbc unixodbc-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/fetacore/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_amd64.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
