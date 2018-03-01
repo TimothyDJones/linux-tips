@@ -6453,7 +6453,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install SMath Studio WYSIWYG math editor
 APP_NAME=SMathStudio
 APP_GUI_NAME="WYSIWYG math editor."
-APP_VERSION=0_98_6588
+APP_VERSION=0_99_6622
 APP_EXT=tar.gz
 sudo apt-get install -y mono-runtime libmono-system-windows-forms4.0-cil
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} --referer https://en.smath.info/view/SMathStudio/summary -J -L https://smath.info/file/v4yoT/${APP_NAME}Desktop.${APP_VERSION}.Mono.${APP_EXT}
