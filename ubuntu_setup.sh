@@ -7388,3 +7388,20 @@ sudo ln -s /opt/${APP_NAME,,}/client /usr/local/bin/hydrus_client
 sudo ln -s /opt/${APP_NAME,,}/server /usr/local/bin/hydrus_server
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Visual Paradigm Community Edition Eclipse-based UML and architecture diagramming tool from package
+APP_NAME=Visual-Paradigm
+APP_GUI_NAME="Eclipse-based UML and architecture diagramming tool."
+APP_MAJOR_VERSION=15.0
+APP_MINOR_VERSION=20180228
+APP_EXT=sh
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=Linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=Linux32
+fi
+sudo apt-get install -y git-svn unixodbc unixodbc-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} --referer https://www.${APP_NAME,,}.com/download/community.jsp -J -L https://usa6.${APP_NAME,,}.com/${APP_NAME,,}/vpce${APP_MAJOR_VERSION}/${APP_MINOR_VERSION}/Visual_Paradigm_CE_${APP_MAJOR_VERSION//./_}_${APP_MINOR_VERSION}_Linux64.${APP_EXT}
+sudo sh /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
