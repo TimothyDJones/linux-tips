@@ -7429,3 +7429,15 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Bitwarden Electron-based desktop/online password manager from package
+APP_NAME=Bitwarden
+APP_GUI_NAME="Electron-based desktop/online password manager."
+APP_VERSION=1.0.5
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/desktop/releases/download/v1.0.5/${APP_NAME}-${APP_VERSION}-amd64.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+
