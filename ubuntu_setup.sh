@@ -5900,12 +5900,12 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install Cumulonimbus Electron-based podcast player and organizer from package
-APP_NAME=Cumulonimbus
+# Install CPod (formerly Cumulonimbus) Electron-based podcast player and organizer from package
+APP_NAME=CPod
 APP_GUI_NAME="Cross-platform Electron-based podcast player and organizer."
-APP_VERSION=1.9.3
+APP_VERSION=1.17.1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/z-------------/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/z-------------/cumulonimbus/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
