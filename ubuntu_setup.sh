@@ -7419,3 +7419,13 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/fetacore/${APP_NA
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Zettlr Electron-based Markdown editor with built-in preview from package
+APP_NAME=Zettlr
+APP_GUI_NAME="Electron-based Markdown editor with built-in preview."
+APP_VERSION=0.12.0
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}-linux-x64-${APP_VERSION}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
