@@ -3603,7 +3603,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Insomnia REST client from package
 APP_NAME=insomnia
-APP_VERSION=5.14.8
+APP_VERSION=5.14.9
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://builds.insomnia.rest/downloads/ubuntu/latest
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
