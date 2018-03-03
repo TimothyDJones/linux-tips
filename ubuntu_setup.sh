@@ -7449,3 +7449,13 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://www.syntevo.com/downloads/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install QMPlay2 Qt-based multimedia player from package
+APP_NAME=QMPlay2
+APP_GUI_NAME="Qt-based multimedia player."
+APP_VERSION=18.03.02
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/zaps166/${APP_NAME}/releases/download/${APP_VERSION}/${APP_NAME,,}-ubuntu-amd64-${APP_VERSION}-1.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
