@@ -7503,3 +7503,13 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/standardnotes/des
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Monte Note Electron-based Markdown notepad from package
+APP_NAME=Monte-Note
+APP_GUI_NAME="Electron-based Markdown notepad."
+APP_VERSION=0.1.0b
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/urbanogardun/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
