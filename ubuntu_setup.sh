@@ -7449,3 +7449,41 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://www.syntevo.com/downloads/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+
+
+
+
+# Install i-doit web-based CMDB and IT Documentation Repository
+APP_NAME=i-doit
+APP_VERSION=1.10.1
+APP_EXT=zip
+DB_NAME=${APP_NAME//-/}
+DB_USER=${APP_NAME//-/}
+DB_PASSWORD=${APP_NAME//-/}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME//-/}-open-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod a+x ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
+sudo find . -type d -name \* -exec chmod 775 {} \;
+sudo find . -type f -exec chmod 664 {} \;
+sudo chmod 774 controller 
+sudo chmod 774 tenants 
+sudo chmod 774 import 
+sudo chmod 774 updatecheck 
+sudo chmod 774 *.sh 
+sudo chmod 774 setup/*.sh
+sudo cp /etc/php/5.6/apache2/php.ini /tmp/php.ini && sudo chown ${USER}:${USER} /tmp/php.ini
+echo '^M' >> /tmp/php.ini
+echo 'max_input_vars = 10000' >> /tmp/php.ini
+sed -i.bak 's@post_max_size = 8M@post_max_size = 128M@g' /tmp/php.ini
+sudo cp /tmp/php.ini /etc/php/5.6/apache2/php.ini && sudo chown root:root /etc/php/5.6/apache2/php.ini
+sudo service apache2 restart
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/index.php &
