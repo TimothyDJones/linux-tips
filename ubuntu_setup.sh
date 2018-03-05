@@ -314,7 +314,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.43.0.2-1
+APP_VERSION=1.44.0.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2886,14 +2886,14 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=180102
+APP_VERSION=180302
 APP_EXT=tar.bz2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=i386
 fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/mltframework/${APP_NAME,,}/releases/download/v18.03/${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 sudo mv /tmp/${APP_NAME,,}/${APP_NAME} /opt/${APP_NAME,,}
@@ -3603,7 +3603,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Insomnia REST client from package
 APP_NAME=insomnia
-APP_VERSION=5.14.8
+APP_VERSION=5.14.9
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://builds.insomnia.rest/downloads/ubuntu/latest
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4594,7 +4594,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Dooble web browser from package
 APP_NAME=Dooble
-APP_VERSION=2.1.6
+APP_VERSION=2.1.7
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -7450,10 +7450,6 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-
-
-
-
 # Install i-doit web-based CMDB and IT Documentation Repository
 APP_NAME=i-doit
 APP_VERSION=1.10.1
@@ -7487,3 +7483,23 @@ mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/index.php &
+
+# Install QMPlay2 Qt-based multimedia player from package
+APP_NAME=QMPlay2
+APP_GUI_NAME="Qt-based multimedia player."
+APP_VERSION=18.03.02
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/zaps166/${APP_NAME}/releases/download/${APP_VERSION}/${APP_NAME,,}-ubuntu-amd64-${APP_VERSION}-1.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Standard Notes Electron-based secure notepad from package
+APP_NAME=Standard-Notes
+APP_GUI_NAME="Electron-based secure notepad."
+APP_VERSION=2.1.21
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/standardnotes/desktop/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
