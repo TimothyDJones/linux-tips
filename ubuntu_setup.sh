@@ -7538,3 +7538,47 @@ sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Simutron AVR/Arduino simulator GUI/IDE from package
+APP_NAME=Simutron
+APP_GUI_NAME="Cross-platform AVR/Arduino simulator GUI/IDE."
+APP_VERSION=1.0.1-SR1
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=Linux-x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=Lin32
+fi
+sudo apt-get install -y qt5-default cutecom gtkwave libelf1
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+LD_LIBRARY_PATH=/opt/${APP_NAME,,}/lib:\$LD_LIBRARY_PATH; export LD_LIBRARY_PATH
+/opt/${APP_NAME,,}/bin/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Electronics;Education;Other;
+Keywords=Electronics;Microcontroller;AVR;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
