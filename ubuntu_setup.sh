@@ -7513,3 +7513,28 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/urbanogardun/${AP
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Java_console cross-platform Java shell from source
+APP_NAME=Java_console
+APP_GUI_NAME="Cross-platform Java shell."
+APP_VERSION=2.1.0
+APP_EXT=tar.gz
+sudo apt-get install -y openjdk-8-jdk
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/javaconsole222/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}
+./compile.sh
+cd /tmp/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME} /opt
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME}
+PATH=/opt/${APP_NAME}:\$PATH; export PATH
+java -jar /opt/${APP_NAME}/${APP_NAME}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
