@@ -7582,3 +7582,40 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install SC Calculator cross-platform scientific calculator implemented in C++, Java, and JavaScript from package
+APP_NAME=SCCalculator
+APP_GUI_NAME="Cross-platform scientific calculator implemented in C++, Java, and JavaScript."
+APP_VERSION=1.13
+APP_EXT=zip
+sudo apt-get install -y qt5-default cutecom gtkwave libelf1
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/calculator${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/java/calculator.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}/java
+Exec=java -jar /opt/${APP_NAME,,}/java/calculator.jar
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Programming;Math;Science;Other;
+Keywords=Math;Calculator;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
