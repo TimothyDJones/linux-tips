@@ -7656,3 +7656,33 @@ mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/index.php &
+
+# Install gpsim cross-platform simulator for Microchip's PIC microcontrollers from source
+APP_NAME=gpsim
+APP_GUI_NAME="Cross-platform simulator for Microchip's PIC microcontrollers."
+APP_VERSION=0.30.0
+APP_EXT=tar.gz
+sudo apt-get install -y libreadline-dev libpopt-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+./configure && make && sudo make install
+sudo cp /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}/doc/metadata/${APP_NAME,,}.png /usr/local/share/icons
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Math;Science;Other;Engineering;
+Keywords=Microcontroller;Electronics;Simulation;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
