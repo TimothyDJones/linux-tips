@@ -219,7 +219,7 @@ fi
 sudo apt-get install -y qt4-default
 curl -o /tmp/libpng12-0.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_${KERNEL_TYPE}.deb
 sudo gdebi -n libpng12-0.deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-qt4.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-qt5.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}-system.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-qt4-system.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
