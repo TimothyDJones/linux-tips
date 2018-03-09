@@ -7686,3 +7686,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Pidgin cross-platform, multi-service instant messenger (IM) utility from source
+APP_NAME=Pidgin
+APP_GUI_NAME="Cross-platform , multi-service instant messenger (IM) utility."
+APP_VERSION=2.13.0
+APP_EXT=tar.bz2
+# Remove if installed from package
+sudo apt-get remove pidgin*
+sudo apt-get install -y libxss-dev intltool libgtkspell-dev libxml2-dev libidn1*-dev libavahi-glib-dev libavahi-client-dev libdbus-glib-1-dev libnm-glib-dev libgnutls28-dev libnss3-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+./configure --disable-gstreamer --disable-vv --disable-meanwhile --disable-perl --disable-tcl && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
