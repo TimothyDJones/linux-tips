@@ -7702,3 +7702,40 @@ cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
 ./configure --disable-gstreamer --disable-vv --disable-meanwhile --disable-perl --disable-tcl && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install ZimmerSCP Java-based, cross-platform, 3-pane SCP (Secure Copy) utility from package
+APP_NAME=ZimmerSCP
+APP_GUI_NAME="Java-based, cross-platform, 3-pane SCP (Secure Copy) utility."
+APP_VERSION=1.7
+APP_EXT=zip
+sudo apt-get install -y qt5-default cutecom gtkwave libelf1
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./_}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mv /tmp/${APP_NAME,,} /opt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}logo.jpg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Network;Accessories;
+Keywords=SCP;FTP;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
