@@ -7034,7 +7034,7 @@ cd $HOME
 # Install PyPref Python-based Russian card game Preferans
 APP_NAME=PyPref
 APP_GUI_NAME="Python-based Russian card game Preferans."
-APP_VERSION=2.2
+APP_VERSION=2.3
 APP_EXT=zip
 sudo apt-get install -y python-tk
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/python-pref/${APP_NAME}-${APP_VERSION}.${APP_EXT}
