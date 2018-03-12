@@ -271,7 +271,7 @@ cd $HOME
 # Install Stacer Linux monitoring tool
 # Must download specific version, because unable to get 'latest' from Sourceforge to work.
 APP_NAME=stacer
-APP_VERSION=1.0.8
+APP_VERSION=1.0.9
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
@@ -1923,7 +1923,7 @@ sudo mv /tmp/${APP_NAME} /usr/local/bin
 
 # Install Freeplane mind-mapping tool from package
 APP_NAME=freeplane
-APP_VERSION=1.6.13
+APP_VERSION=1.6.14
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}~upstream-1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -3544,7 +3544,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 
 # Install Admidio organizational management tool
 APP_NAME=admidio
-APP_VERSION=3.3-Beta.1
+APP_VERSION=3.3-Beta.3
 APP_EXT=zip
 DB_NAME=admidio
 DB_USER=admidio
@@ -7236,7 +7236,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install QFlashCards Qt-based flash card editor/viewer
 APP_NAME=QFlashCards
 APP_GUI_NAME="Qt-based flash card editor/viewer."
-APP_VERSION=1.2
+APP_VERSION=1.4
 APP_EXT=N/A
 curl -o /tmp/${APP_NAME,,} -J -L https://sourceforge.net/projects/${APP_NAME,,}/files/v${APP_VERSION}/${APP_NAME}/download
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
@@ -7737,6 +7737,32 @@ Categories=Network;Accessories;
 Keywords=SCP;FTP;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Joy of Text (JOT) minimalist text editor from package
+APP_NAME=JOT
+APP_GUI_NAME="Cross-platform minimalist text editor."
+APP_VERSION=2.3
+APP_EXT=tz
+sudo ln -s /lib/x86_64-linux-gnu/libncurses.so.5 /lib/x86_64-linux-gnu/libncurses.so.6
+sudo ln -s /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libtinfo.so.6
+sudo ln -s /lib/x86_64-linux-gnu/libncursesw.so.5 /lib/x86_64-linux-gnu/libncursesw.so.6
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/joyoftext/${APP_NAME,,}_v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/v${APP_VERSION}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}/bin/lin64:\$PATH; export PATH
+JOT_HOME=/opt/${APP_NAME,,}; export JOT_HOME
+/opt/${APP_NAME,,}/bin/lin64/jot "$@"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
