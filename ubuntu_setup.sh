@@ -7517,7 +7517,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Java_console cross-platform Java shell from source
 APP_NAME=Java_console
 APP_GUI_NAME="Cross-platform Java shell."
-APP_VERSION=2.1.0
+APP_VERSION=2.1.1
 APP_EXT=tar.gz
 sudo apt-get install -y openjdk-8-jdk
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/javaconsole222/${APP_NAME}-${APP_VERSION}.${APP_EXT}
