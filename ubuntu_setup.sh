@@ -7788,3 +7788,16 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 sudo ln -s /usr/local/bin/${APP_NAME,,} /usr/local/bin/w2l
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install RHash cross-platform, shell-based tool for calculating and verifying various hash sums for files from source
+APP_NAME=RHash
+APP_GUI_NAME="Cross-platform, shell-based tool for calculating and verifying various hash sums for files."
+APP_VERSION=1.3.6
+APP_EXT=tar.gz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
