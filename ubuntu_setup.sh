@@ -6020,7 +6020,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install QVGE (Qt Visual Graph Editor) Qt-based 2-D visual graph editor from source
 APP_NAME=QVGE
 APP_GUI_NAME="Cross-platform Qt-based 2-D visual graph editor."
-APP_VERSION=0.4.1
+APP_VERSION=0.4.2
 APP_EXT=7z
 sudo apt-get install -y qt5-qmake qt5-default libqt5x11extras5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
