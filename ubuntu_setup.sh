@@ -210,17 +210,18 @@ cd $HOME
 # Install Lite IDE for Go language development
 APP_NAME=LiteIDE
 APP_VERSION=x33.2
+QT_VERSION=qt5.5.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=linux32
 fi
-sudo apt-get install -y qt4-default
+sudo apt-get install -y qt5-default
 curl -o /tmp/libpng12-0.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_${KERNEL_TYPE}.deb
-sudo gdebi -n libpng12-0.deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-qt5.${APP_EXT}
-curl -o /tmp/${APP_NAME,,}-system.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-qt4-system.${APP_EXT}
+sudo gdebi -n /tmp/libpng12-0.deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-${QT_VERSION}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}-system.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-${QT_VERSION}-system.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 sudo mv ${APP_NAME,,} /opt
