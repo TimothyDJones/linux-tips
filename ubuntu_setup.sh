@@ -7801,3 +7801,13 @@ cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install MarkText Electron-based Markdown editor from Snap package
+APP_NAME=MarkText
+APP_GUI_NAME="Cross-platform, Electron-based Markdown editor."
+APP_VERSION=0.6.14
+APP_EXT=snap
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo snap install --dangerous /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
