@@ -7856,3 +7856,33 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sites.google.com/site/zankur
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Still Yet Another Sokoban cross-platform puzzle game from source
+APP_NAME=Sokoban
+APP_GUI_NAME="Cross-platform puzzle game."
+APP_VERSION=2.0.2
+APP_EXT=zip
+sudo apt-get install -y libsdl1.2-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/sya-${APP_NAME,,}/${APP_NAME,,}-source-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+make && sudo make install
+sudo cp ./data/sokoban/icon/application_icon.ico /usr/local/share/icons/${APP_NAME,,}.ico
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/syasokoban
+Icon=/usr/local/share/icons/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Sokoban;Puzzle
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
