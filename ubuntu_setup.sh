@@ -7846,3 +7846,13 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://download2.${APP_NAME,,}.com/
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install ZPlayer cross-platform Java-based audio player from package
+APP_NAME=ZPlayer
+APP_GUI_NAME="Cross-platform Java-based audio player."
+APP_VERSION=3.5.1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sites.google.com/site/zankuroplayer/${APP_NAME,,}.deb
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
