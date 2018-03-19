@@ -3331,9 +3331,10 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Tuitter JavaScript/Electron Twitter client from package
+# Install Tuitter Electron-based, cross-platform minimalist Twitter client from package
 APP_NAME=Tui
-APP_VERSION=0.4.15
+APP_GUI_NAME="Electron-based, cross-platform minimalist Twitter client."
+APP_VERSION=0.4.17
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -3347,7 +3348,7 @@ sudo mv /tmp/${APP_NAME,,}/${APP_NAME}-linux-${ARCH_TYPE} /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=JavaScript/Electron Twitter Client
+Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Exec=/opt/${APP_NAME,,}/${APP_NAME}
 Icon=/opt/${APP_NAME,,}/resources/app/resources/icon.png
