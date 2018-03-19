@@ -7896,3 +7896,46 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Typora cross-platform, Electron-based Markdown editor/notepad with code syntax support from package
+APP_NAME=Typora
+APP_GUI_NAME="Cross-platform, Electron-based Markdown editor/notepad with code syntax support."
+APP_VERSION=N/A
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+sudo apt-get install -y libsdl1.2-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://${APP_NAME,,}.io/linux/${APP_NAME}-linux-${ARCH_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME}-linux-${ARCH_TYPE}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME}
+Icon=/opt/${APP_NAME,,}/resources/app/asserts/icon/icon_32x32@2x.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Development;Programming;
+Keywords=Notepad;Editor;Markdown
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
