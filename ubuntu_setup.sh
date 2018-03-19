@@ -352,7 +352,7 @@ rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Sourceforge
 APP_NAME=copyq
-APP_VERSION=3.0.3
+APP_VERSION=3.3.0
 source /etc/os-release
 curl -o /tmp/${APP_NAME}.deb -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}/Linux/${APP_NAME}_${APP_VERSION}_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
 sudo gdebi -n /tmp/${APP_NAME}.deb
@@ -1350,7 +1350,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Digital Clock 4
 APP_NAME=digital_clock_4
-APP_VERSION=4.7.1
+APP_VERSION=4.7.2
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -3324,7 +3324,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Buttercup JavaScript/Electron desktop password manager from package
 APP_NAME=buttercup-desktop
-APP_VERSION=1.5.1
+APP_VERSION=1.6.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/buttercup/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -3653,7 +3653,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shallot Python-based file manager from package
 APP_NAME=shallot
-APP_VERSION=1.0.3106
+APP_VERSION=1.1.3239
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://pseudopolis.eu/wiki/pino/projs/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4883,7 +4883,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=18.1
+APP_VERSION=18.2
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -7810,5 +7810,79 @@ APP_VERSION=0.6.14
 APP_EXT=snap
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo snap install --dangerous /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install CryptMount encrypted file system mounting tool from package
+APP_NAME=CryptMount
+APP_GUI_NAME="Encrypted file system mounting tool."
+APP_VERSION=5.3-1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install fmedia cross-platform fast media player/recorder/converter from package
+APP_NAME=fmedia
+APP_GUI_NAME="Cross-platform fast media player/recorder/converter."
+APP_VERSION=0.34.1
+APP_EXT=tar.xz
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://${APP_NAME,,}.firmdev.com/${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME,,}-0/* /opt/${APP_NAME,,}
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Tixati cross-platform BitTorrent P2P file sharing client from package
+APP_NAME=Tixati
+APP_GUI_NAME="Cross-platform BitTorrent P2P file sharing client."
+APP_VERSION=2.57-1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://download2.${APP_NAME,,}.com/download/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install ZPlayer cross-platform Java-based audio player from package
+APP_NAME=ZPlayer
+APP_GUI_NAME="Cross-platform Java-based audio player."
+APP_VERSION=3.5.1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sites.google.com/site/zankuroplayer/${APP_NAME,,}.deb
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Still Yet Another Sokoban cross-platform puzzle game from source
+APP_NAME=Sokoban
+APP_GUI_NAME="Cross-platform puzzle game."
+APP_VERSION=2.0.2
+APP_EXT=zip
+sudo apt-get install -y libsdl1.2-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/sya-${APP_NAME,,}/${APP_NAME,,}-source-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+make && sudo make install
+sudo cp ./data/sokoban/icon/application_icon.ico /usr/local/share/icons/${APP_NAME,,}.ico
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/syasokoban
+Icon=/usr/local/share/icons/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Sokoban;Puzzle
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
