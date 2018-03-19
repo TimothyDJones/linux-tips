@@ -7939,3 +7939,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Notepadqq simple text editor similar to Notepad++ from package
+APP_NAME=Notepadqq
+APP_GUI_NAME="Simple text editor similar to Notepad++."
+APP_VERSION=1.2.0-1
+APP_EXT=deb
+source /etc/lsb-release
+# If our version of Ubuntu is *after* 17.04 (Zesty Zapus),
+# then we use the 17.04 package from PPA.
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ar|bi)$ ]]; then
+	DISTRIB_CODENAME=zesty
+fi
+curl -o /tmp/${APP_NAME,,}-common.${APP_EXT} -J -L https://launchpad.net/~${APP_NAME,,}-team/+archive/ubuntu/${APP_NAME,,}/+files/${APP_NAME,,}-common_${APP_VERSION}~${DISTRIB_CODENAME}1_all.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://launchpad.net/~${APP_NAME,,}-team/+archive/ubuntu/${APP_NAME,,}/+files/${APP_NAME,,}_${APP_VERSION}~${DISTRIB_CODENAME}1_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}-common.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
