@@ -7886,3 +7886,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install LPub3D cross-platform LDraw editor for LEGO style digital building instructions from package
+APP_NAME=LPub3D
+APP_GUI_NAME="Cross-platform LDraw editor for LEGO style digital building instructions."
+APP_VERSION=2.2.0.0.795_20180316-xenial
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
