@@ -8016,3 +8016,38 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+
+
+# Install QtChess cross-platform, peer-to-peer Qt/OpenGL chess program from source
+APP_NAME=QtChess
+APP_GUI_NAME="Cross-platform , peer-to-peer Qt/OpenGL chess program."
+APP_VERSION=master
+APP_EXT=zip
+sudo apt-get install -y qt5-default
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+qtchooser -run-tool=qmake -qt=5 ${APP_NAME,,}.pro && make
+# No target for 'make install', so must copy files explicitly
+sudo cp ./${APP_NAME} /usr/local/bin
+sudo cp ./Images/chess.ico /usr/local/share/icons/${APP_NAME,,}.ico
+sudo ln -s -f /usr/local/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Chess
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
