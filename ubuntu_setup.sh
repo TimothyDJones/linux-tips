@@ -2128,7 +2128,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=groupoffice
-APP_VERSION=6.2.86
+APP_VERSION=6.2.88
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME}
 DB_USER=${APP_NAME}
@@ -8016,8 +8016,6 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
-
-
 
 # Install QtChess cross-platform, peer-to-peer Qt/OpenGL chess program from source
 APP_NAME=QtChess
