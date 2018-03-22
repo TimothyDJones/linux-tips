@@ -8049,3 +8049,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install BlueJ educational Java IDE from package
+APP_NAME=BlueJ
+APP_GUI_NAME="Cross-platform educational Java IDE."
+APP_VERSION=4.1.2
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.${APP_NAME,,}.org/download/files/${APP_NAME}-linux-${APP_VERSION//./}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
