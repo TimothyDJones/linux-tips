@@ -315,7 +315,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.45.2.0-1
+APP_VERSION=1.46.0.2-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -375,7 +375,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Otter Browser from Sourceforge (from source)
 APP_NAME=otter-browser
-APP_VERSION=0.9.96
+APP_VERSION=0.9.97-dev220
 APP_EXT=tar.bz2
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev   # Qt5 development packages needed to build from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -1715,7 +1715,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=6.5.7
+APP_VERSION=7.0.0
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2115,7 +2115,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Saga GIS application from source
 APP_NAME=saga
-APP_VERSION=6.2.0
+APP_VERSION=6.3.0
 APP_EXT=tar.gz
 sudo apt-get install -y libwxgtk3.0-dev python-wxgtk3.0 postgresql-server-dev-all libgdal-dev libpqxx-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/saga-gis/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -2947,7 +2947,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2017.18
+APP_VERSION=1.2018.2
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -3331,9 +3331,10 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Tuitter JavaScript/Electron Twitter client from package
+# Install Tuitter Electron-based, cross-platform minimalist Twitter client from package
 APP_NAME=Tui
-APP_VERSION=0.4.15
+APP_GUI_NAME="Electron-based, cross-platform minimalist Twitter client."
+APP_VERSION=0.4.17
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -3347,7 +3348,7 @@ sudo mv /tmp/${APP_NAME,,}/${APP_NAME}-linux-${ARCH_TYPE} /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=JavaScript/Electron Twitter Client
+Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Exec=/opt/${APP_NAME,,}/${APP_NAME}
 Icon=/opt/${APP_NAME,,}/resources/app/resources/icon.png
@@ -3469,7 +3470,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Kid3 audio tag editor
 APP_NAME=Kid3
-APP_VERSION=3.5.1
+APP_VERSION=3.6.0
 APP_EXT=tgz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-Linux.${APP_EXT}
 cd /tmp
@@ -4595,7 +4596,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Dooble web browser from package
 APP_NAME=Dooble
-APP_VERSION=2.1.7
+APP_VERSION=2.1.9
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -5157,7 +5158,7 @@ rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}*
 
 # Install QDVDAuthor Qt-based DVD authoring tool from package
 APP_NAME=qdvdauthor
-APP_VERSION=2.3.1-8
+APP_VERSION=2.3.1-9
 APP_EXT=deb
 source /etc/lsb-release
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/tkb/x${DISTRIB_ID}_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
@@ -7035,7 +7036,7 @@ cd $HOME
 # Install PyPref Python-based Russian card game Preferans
 APP_NAME=PyPref
 APP_GUI_NAME="Python-based Russian card game Preferans."
-APP_VERSION=2.31
+APP_VERSION=2.33
 APP_EXT=zip
 sudo apt-get install -y python-tk
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/python-pref/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -7882,6 +7883,170 @@ StartupNotify=true
 Terminal=false
 Categories=Games;Entertainment;
 Keywords=Sokoban;Puzzle
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install LPub3D cross-platform LDraw editor for LEGO style digital building instructions from package
+APP_NAME=LPub3D
+APP_GUI_NAME="Cross-platform LDraw editor for LEGO style digital building instructions."
+APP_VERSION=2.2.0.0.795_20180316-xenial
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Typora cross-platform, Electron-based Markdown editor/notepad with code syntax support from package
+APP_NAME=Typora
+APP_GUI_NAME="Cross-platform, Electron-based Markdown editor/notepad with code syntax support."
+APP_VERSION=N/A
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+sudo apt-get install -y libsdl1.2-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://${APP_NAME,,}.io/linux/${APP_NAME}-linux-${ARCH_TYPE}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME}-linux-${ARCH_TYPE}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME}
+Icon=/opt/${APP_NAME,,}/resources/app/asserts/icon/icon_32x32@2x.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Development;Programming;
+Keywords=Notepad;Editor;Markdown
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Notepadqq simple text editor similar to Notepad++ from package
+APP_NAME=Notepadqq
+APP_GUI_NAME="Simple text editor similar to Notepad++."
+APP_VERSION=1.2.0-1
+APP_EXT=deb
+source /etc/lsb-release
+# If our version of Ubuntu is *after* 17.04 (Zesty Zapus),
+# then we use the 17.04 package from PPA.
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ar|bi)$ ]]; then
+	DISTRIB_CODENAME=zesty
+fi
+curl -o /tmp/${APP_NAME,,}-common.${APP_EXT} -J -L https://launchpad.net/~${APP_NAME,,}-team/+archive/ubuntu/${APP_NAME,,}/+files/${APP_NAME,,}-common_${APP_VERSION}~${DISTRIB_CODENAME}1_all.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://launchpad.net/~${APP_NAME,,}-team/+archive/ubuntu/${APP_NAME,,}/+files/${APP_NAME,,}_${APP_VERSION}~${DISTRIB_CODENAME}1_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}-common.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install CWED minimalist web-based C/C++ IDE
+APP_NAME=CWED
+APP_GUI_NAME="Minimalist web-based C/C++ IDE."
+APP_VERSION=N/A
+APP_EXT=tar
+sudo apt-get install -y build-essential gdb make
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}
+sudo ./setcwmod.sh
+sudo ./install.sh
+cd /tmp
+sudo mv ${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=${WWW_HOME}/${APP_NAME,,}
+Exec=xdg-open http://localhost/cwed/
+Icon=${WWW_HOME}/${APP_NAME,,}/res/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;Development;Programming;
+Keywords=C;C++;Programming;IDE;Editor
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+xdg-open http://localhost/cwed/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Grisbi cross-platform, GTK+ 3-based personal finance tool from source
+APP_NAME=Grisbi
+APP_GUI_NAME="Cross-platform, GTK+ 3-based personal finance tool from source."
+APP_VERSION=1.1.91
+APP_EXT=tar.bz2
+sudo apt-get install -y libgtk-3-dev libgsf-1-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install jdbsee cross-platform command-line utility for database actions via JDBC from package
+APP_NAME=jdbsee
+APP_GUI_NAME="Cross-platform command-line utility for database actions via JDBC."
+APP_VERSION=0.1.0-1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+
+
+# Install QtChess cross-platform, peer-to-peer Qt/OpenGL chess program from source
+APP_NAME=QtChess
+APP_GUI_NAME="Cross-platform , peer-to-peer Qt/OpenGL chess program."
+APP_VERSION=master
+APP_EXT=zip
+sudo apt-get install -y qt5-default
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+qtchooser -run-tool=qmake -qt=5 ${APP_NAME,,}.pro && make
+# No target for 'make install', so must copy files explicitly
+sudo cp ./${APP_NAME} /usr/local/bin
+sudo cp ./Images/chess.ico /usr/local/share/icons/${APP_NAME,,}.ico
+sudo ln -s -f /usr/local/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Chess
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
