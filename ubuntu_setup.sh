@@ -8099,3 +8099,29 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/onivim/${APP_NAME
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Rodent applications, including Rodent File Manager, from source
+APP_NAME=xffm
+APP_GUI_NAME="Rodent applications, including Rodent File Manager."
+APP_VERSION=5.3.16.3
+APP_EXT=tar.bz2
+sudo apt-get install -y libzip-dev librsvg2-dev libmagic-dev
+cd /tmp
+FILE_NAME=libtubo0-5.0.15
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT} && cd /tmp/${FILE_NAME}
+./configure && make && sudo make install && cd /tmp
+FILE_NAME=libdbh2-5.0.22
+curl -o /tmp/${FILE_NAME}.tar.gz -J -L https://downloads.sourceforge.net/dbh/${FILE_NAME}.tar.gz
+dtrx -n /tmp/${FILE_NAME}.tar.gz && cd /tmp/${FILE_NAME}
+./configure && make && sudo make install && cd /tmp
+FILE_NAME=librfm5-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT} && cd /tmp/${FILE_NAME}
+./configure && make && sudo make install && cd /tmp
+FILE_NAME=rodent-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT} && cd /tmp/${FILE_NAME}
+./configure && make && sudo make install && cd /tmp
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
