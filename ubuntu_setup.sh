@@ -6957,7 +6957,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install TraySearch Java-based cross-platform quick search utility
 APP_NAME=TraySearch
 APP_GUI_NAME="Java-based cross-platform quick search utility."
-APP_VERSION=4.1.0
+APP_VERSION=5.0
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
