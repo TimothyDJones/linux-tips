@@ -8059,3 +8059,20 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.${APP_NAME,,}.org/downloa
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Microsoft PowerShell cross-platform shell and scripting environment from package
+# https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
+APP_NAME=PowerShell
+APP_GUI_NAME="Cross-platform shell and scripting environment."
+APP_VERSION=6.0.2
+APP_EXT=deb
+source /etc/lsb-release
+# PowerShell is only supported on LTS releases 
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ze|xe|tr)$ ]]; then
+	curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}-1.ubuntu.${DISTRIB_RELEASE}_amd64.${APP_EXT}
+	sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+else
+	echo "Your version (" ${DISTRIB_RELEASE} ") of Ubuntu does not support installing PowerShell from package."
+fi
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
