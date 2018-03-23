@@ -8072,7 +8072,15 @@ if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ze|xe|tr)$ ]]; then
 	curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}-1.ubuntu.${DISTRIB_RELEASE}_amd64.${APP_EXT}
 	sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 else
-	echo "Your version (" ${DISTRIB_RELEASE} ") of Ubuntu does not support installing PowerShell from package."
+	echo "Your version (" ${DISTRIB_RELEASE} ") of Ubuntu does not support installing PowerShell from package.  We will install from binary distribution."
+	sudo apt-get install -y libunwind8 libicu*
+	curl -o /tmp/${APP_NAME,,}.tar.gz https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}-${APP_VERSION}-linux-x64.tar.gz
+	cd /tmp
+	dtrx -n /tmp/${APP_NAME,,}.tar.gz
+	sudo mv /tmp/${APP_NAME,,} /opt
+	sudo chmod +x /opt/${APP_NAME,,}/pwsh
+	sudo ln -s /opt/${APP_NAME,,}/pwsh /usr/local/bin/pwsh
+	sudo ln -s /opt/${APP_NAME,,}/pwsh /usr/local/bin/powershell
 fi
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
