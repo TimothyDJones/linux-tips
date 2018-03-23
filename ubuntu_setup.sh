@@ -7996,7 +7996,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Grisbi cross-platform, GTK+ 3-based personal finance tool from source
 APP_NAME=Grisbi
 APP_GUI_NAME="Cross-platform, GTK+ 3-based personal finance tool from source."
-APP_VERSION=1.1.91
+APP_VERSION=1.1.92
 APP_EXT=tar.bz2
 sudo apt-get install -y libgtk-3-dev libgsf-1-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
