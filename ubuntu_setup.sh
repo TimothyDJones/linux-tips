@@ -8084,3 +8084,18 @@ else
 fi
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Oni cross-platform GUI text editor based on Neovim and React/Redux from package
+APP_NAME=Oni
+APP_GUI_NAME="Cross-GUI text editor based on Neovim and React/Redux."
+APP_VERSION=0.3.1
+APP_EXT=deb
+# Neovim must be installed to use Oni
+sudo apt-get install -y python-dev python-pip python3-dev python3-pip
+sudo add-apt-repository -y ppa:neovim-ppa/stable
+sudo apt-get -y update
+sudo apt-get install -y neovim
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/onivim/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME}-${APP_VERSION}-amd64-linux.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
