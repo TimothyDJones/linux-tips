@@ -1715,7 +1715,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.0.0
+APP_VERSION=7.0.1
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2128,7 +2128,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=groupoffice
-APP_VERSION=6.2.86
+APP_VERSION=6.2.88
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME}
 DB_USER=${APP_NAME}
@@ -6957,7 +6957,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install TraySearch Java-based cross-platform quick search utility
 APP_NAME=TraySearch
 APP_GUI_NAME="Java-based cross-platform quick search utility."
-APP_VERSION=4.1.0
+APP_VERSION=5.0
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -7996,7 +7996,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Grisbi cross-platform, GTK+ 3-based personal finance tool from source
 APP_NAME=Grisbi
 APP_GUI_NAME="Cross-platform, GTK+ 3-based personal finance tool from source."
-APP_VERSION=1.1.91
+APP_VERSION=1.1.92
 APP_EXT=tar.bz2
 sudo apt-get install -y libgtk-3-dev libgsf-1-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -8016,8 +8016,6 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
-
-
 
 # Install QtChess cross-platform, peer-to-peer Qt/OpenGL chess program from source
 APP_NAME=QtChess
@@ -8051,3 +8049,90 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install BlueJ educational Java IDE from package
+APP_NAME=BlueJ
+APP_GUI_NAME="Cross-platform educational Java IDE."
+APP_VERSION=4.1.2
+APP_EXT=deb
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.${APP_NAME,,}.org/download/files/${APP_NAME}-linux-${APP_VERSION//./}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Microsoft PowerShell cross-platform shell and scripting environment from package
+# https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
+APP_NAME=PowerShell
+APP_GUI_NAME="Cross-platform shell and scripting environment."
+APP_VERSION=6.0.2
+APP_EXT=deb
+source /etc/lsb-release
+# PowerShell is only supported on LTS releases 
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ze|xe|tr)$ ]]; then
+	curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}-1.ubuntu.${DISTRIB_RELEASE}_amd64.${APP_EXT}
+	sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+else
+	echo "Your version (" ${DISTRIB_RELEASE} ") of Ubuntu does not support installing PowerShell from package.  We will install from binary distribution."
+	sudo apt-get install -y libunwind8 libicu*
+	curl -o /tmp/${APP_NAME,,}.tar.gz https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}-${APP_VERSION}-linux-x64.tar.gz
+	cd /tmp
+	dtrx -n /tmp/${APP_NAME,,}.tar.gz
+	sudo mv /tmp/${APP_NAME,,} /opt
+	sudo chmod +x /opt/${APP_NAME,,}/pwsh
+	sudo ln -s /opt/${APP_NAME,,}/pwsh /usr/local/bin/pwsh
+	sudo ln -s /opt/${APP_NAME,,}/pwsh /usr/local/bin/powershell
+fi
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Oni cross-platform GUI text editor based on Neovim and React/Redux from package
+APP_NAME=Oni
+APP_GUI_NAME="Cross-GUI text editor based on Neovim and React/Redux."
+APP_VERSION=0.3.1
+APP_EXT=deb
+# Neovim must be installed to use Oni
+sudo apt-get install -y python-dev python-pip python3-dev python3-pip
+sudo add-apt-repository -y ppa:neovim-ppa/stable
+sudo apt-get -y update
+sudo apt-get install -y neovim
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/onivim/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME}-${APP_VERSION}-amd64-linux.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Rodent applications, including Rodent File Manager, from source
+APP_NAME=xffm
+APP_GUI_NAME="Rodent applications, including Rodent File Manager."
+APP_VERSION=5.3.16.3
+APP_EXT=tar.bz2
+sudo apt-get install -y libzip-dev librsvg2-dev libmagic-dev
+cd /tmp
+FILE_NAME=libtubo0-5.0.15
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT} && cd /tmp/${FILE_NAME}
+./configure && make && sudo make install && cd /tmp
+FILE_NAME=libdbh2-5.0.22
+curl -o /tmp/${FILE_NAME}.tar.gz -J -L https://downloads.sourceforge.net/dbh/${FILE_NAME}.tar.gz
+dtrx -n /tmp/${FILE_NAME}.tar.gz && cd /tmp/${FILE_NAME}
+./configure && make && sudo make install && cd /tmp
+FILE_NAME=librfm5-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT} && cd /tmp/${FILE_NAME}
+./configure && make && sudo make install && cd /tmp
+FILE_NAME=rodent-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT} && cd /tmp/${FILE_NAME}
+./configure && make && sudo make install && cd /tmp
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Remote Operation On Files (ROOF) FTP client from package
+APP_NAME=ROOF
+APP_GUI_NAME="Cross-platform educational Java IDE."
+APP_VERSION=2.2.27
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
