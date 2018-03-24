@@ -7836,7 +7836,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install MarkText Electron-based Markdown editor from Snap package
 APP_NAME=MarkText
 APP_GUI_NAME="Cross-platform, Electron-based Markdown editor."
-APP_VERSION=0.6.14
+APP_VERSION=0.8.12
 APP_EXT=snap
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo snap install --dangerous /tmp/${APP_NAME,,}.${APP_EXT}
@@ -8161,6 +8161,17 @@ APP_GUI_NAME="Cross-platform educational Java IDE."
 APP_VERSION=2.2.27
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install jGameBase Java version of GameBase emulator frontend and database utility from package
+APP_NAME=jGameBase
+APP_GUI_NAME="Java version of GameBase emulator frontend and database utility."
+APP_VERSION=0.68.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
