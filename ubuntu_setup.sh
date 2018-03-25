@@ -8207,3 +8207,16 @@ cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
 qtchooser -run-tool=qmake -qt=5 ${APP_NAME,,}.pro && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install FreeMAN extensible, cross-platform, Electron-based file manager for power users from package
+APP_NAME=FreeMAN
+APP_GUI_NAME="Extensible, cross-platform, Electron-based file manager for power users."
+APP_VERSION=0.8.0
+APP_EXT=snap
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/matthew-matvei/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
+sudo snap install --dangerous /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+
+
