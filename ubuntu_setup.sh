@@ -8277,3 +8277,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Yoda Python-based personal assistant to terminal from source
+APP_NAME=Yoda
+APP_GUI_NAME="Python-based personal assistant to terminal."
+APP_VERSION=0.2.0
+APP_EXT=tar.gz
+sudo apt-get install -y python-setuptools python-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/yoda-pa/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+sudo python2 ./setup.py install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
