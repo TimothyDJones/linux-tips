@@ -8361,3 +8361,16 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://${APP_NAME,,}.org/freshmeat/${
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install LaTeX2RTF cross-platform utility to convert LaTeX files to RTF from package
+APP_NAME=LaTeX2RTF
+APP_GUI_NAME="Cross-platform utility to convert LaTeX files to RTF."
+APP_VERSION=2.3.17
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT} && cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
