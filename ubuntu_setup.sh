@@ -8374,3 +8374,18 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT} && cd /tmp/${FILE_NAME}
 make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Mnemosyne cross-platform Python/Qt-based flashcard program from source
+APP_NAME=Mnemosyne
+APP_GUI_NAME="Cross-platform Python/Qt-based flashcard program."
+APP_VERSION=2.6
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y python3-pip python3-pyqt5 python3-matplotlib python3-virtualenv python3-setuptools python3-wheel python3-webob python3-willow python3-pyqt5.qtwebengine python3-pyqt5.qtwebkit python3-pyqt5.qtsql python3-opengl
+sudo pip3 install cheroot
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-proj/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT} && cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
