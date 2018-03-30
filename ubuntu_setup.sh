@@ -8405,3 +8405,34 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install 8Bit Banditos HTML5/JavaScript retro arcade game from source
+APP_NAME=8BitBanditos
+APP_GUI_NAME="8bit Banditos HTML5/JavaScript retro arcade game."
+APP_VERSION=1.4
+APP_EXT=7z
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/banditos/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/banditos
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}/* ${WWW_HOME}/banditos
+sudo chmod -R 777 ${WWW_HOME}/banditos
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=${WWW_HOME}/banditos
+Exec=xdg-open ${WWW_HOME}/banditos/index.html
+Icon=${WWW_HOME}/banditos/images/invader_bonus_48_24_1_1.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Arcade;Retro;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+xdg-open ${WWW_HOME}/banditos/index.html
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
