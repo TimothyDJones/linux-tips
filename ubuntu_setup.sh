@@ -8436,3 +8436,57 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 xdg-open ${WWW_HOME}/banditos/index.html
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install PHP Server Monitor web site and service monitoring platform
+APP_NAME=PHPServerMon
+APP_GUI_NAME="Web site and service monitoring platform."
+APP_VERSION=3.2.2
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+cd ${WWW_HOME}/${APP_NAME,,}
+sudo php ./composer.phar install
+sudo php ./composer.phar update
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+# Create configuration file and copy to installation directory.
+cat > /tmp/config.php << EOF
+<?php
+define('PSM_DB_HOST', 'localhost');
+define('PSM_DB_PORT', '3306');
+define('PSM_DB_NAME', '${DB_NAME}');
+define('PSM_DB_USER', '${DB_USER}');
+define('PSM_DB_PASS', '${DB_PASSWORD}');
+define('PSM_DB_PREFIX', 'psm_');
+define('PSM_BASE_URL', 'http://localhost/${APP_NAME,,}');
+EOF
+sudo mv /tmp/config.php ${WWW_HOME}/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=${WWW_HOME}/${APP_NAME,,}
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php
+Icon=${WWW_HOME}/${APP_NAME,,}/favicon.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Accessories;
+Keywords=Monitoring;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
