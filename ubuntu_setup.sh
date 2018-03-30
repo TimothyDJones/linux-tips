@@ -6143,7 +6143,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Dibuja lightweight image editor similar to MS Paint from source
 APP_NAME=Dibuja
 APP_GUI_NAME="Lightweight image editor similar to MS Paint."
-APP_VERSION=0.6.0
+APP_VERSION=0.8.0
 APP_EXT=tar.gz
 sudo apt-get install -y intltool libgtk2.0-dev libbabl-dev libgegl-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://launchpad.net/${APP_NAME,,}/trunk/${APP_VERSION}/+download/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
