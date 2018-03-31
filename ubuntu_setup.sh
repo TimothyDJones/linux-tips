@@ -8508,3 +8508,20 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo sh /tmp/${FILE_NAME}/${FILE_NAME}-console-${ARCH_TYPE}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Pinky Bar window manager-independent status bar system information utility from source
+APP_NAME=Pinky-Bar
+APP_GUI_NAME="Window manager-independent status bar system information utility."
+APP_VERSION=N/A
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}
+sudo apt-get install -y pciutils libpci-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+perl set.pl "debian" && autoreconf --install --force
+./configure --prefix=$HOME/.cache --without-x11 --without-colours && make && 
+make install && mkdir -p $HOME/.pinky
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
