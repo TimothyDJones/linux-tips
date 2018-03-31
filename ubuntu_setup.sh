@@ -8490,3 +8490,21 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 xdg-open http://localhost/${APP_NAME,,}/index.php &
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install VeraCrypt cross-platform disk encryption utility from package
+APP_NAME=VeraCrypt
+APP_GUI_NAME="Cross-platform disk encryption utility."
+APP_VERSION=1.22
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-setup
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo sh /tmp/${FILE_NAME}/${FILE_NAME}-console-${ARCH_TYPE}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
