@@ -8587,3 +8587,17 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install fileobj Python-based ncurses hex editor with Vi keybindings from source
+APP_NAME=fileobj
+APP_GUI_NAME="Python-based ncurses hex editor."
+APP_VERSION=0.7.62
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kusumi/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo python3 ./setup.py install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
