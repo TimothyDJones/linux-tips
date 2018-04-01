@@ -2453,7 +2453,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Upterm terminal/shell built with Electron (AppImage)
 APP_NAME=upterm
-APP_VERSION=0.4.1
+APP_VERSION=0.4.3
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
