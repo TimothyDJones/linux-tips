@@ -525,7 +525,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install KeePassXC password manager from source
 APP_NAME=keepassxc
-APP_VERSION=2.3.0
+APP_VERSION=2.3.1
 APP_EXT=tar.xz
 curl -o /tmp/libgcrypt20-dev.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20-dev_1.7.8-2ubuntu1_amd64.deb
 curl -o /tmp/libgcrypt20.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20_1.7.8-2ubuntu1_amd64.deb
