@@ -2861,7 +2861,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install myNetPCB PCB layout and schematic capture tool
 APP_NAME=myNetPCB
-APP_VERSION=7_573
+APP_VERSION=7_574
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}.${APP_EXT}
 cd /tmp
