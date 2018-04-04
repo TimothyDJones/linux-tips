@@ -387,15 +387,26 @@ cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install MyNotes simple "sticky notes" tool
-APP_NAME=mynotes
-APP_VERSION=2.3.1
-APP_EXT=deb
-# Install python-ewmh package from Zesty Zebra distribution.
-curl -o /tmp/python3-ewmh_0.1.5-1_all.deb -J -L http://ftp.osuosl.org/pub/ubuntu/pool/universe/p/python-ewmh/python3-ewmh_0.1.5-1_all.deb
-sudo gdebi -n /tmp/python3-ewmh_0.1.5-1_all.deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/my-notes/${APP_NAME}_${APP_VERSION}-1_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+# Install MyNotes simple Python-based "sticky notes" tool from source
+APP_NAME=MyNotes
+APP_VERSION=2.3.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y python3-tk tk-tktray python3-pil python3-pil.imagetk
+source /etc/lsb-release
+# If our version of Ubuntu is *after* 17.04 (Zesty Zapus),
+# then we use Python 3 EWMH package from distribution repository.
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ar|bi)$ ]]; then
+	sudo apt-get install -y python3-ewmh
+else
+	# Install python-ewmh package from Zesty Zebra distribution.
+	curl -o /tmp/python3-ewmh_0.1.5-1_all.deb -J -L http://ftp.osuosl.org/pub/ubuntu/pool/universe/p/python-ewmh/python3-ewmh_0.1.5-1_all.deb
+	sudo gdebi -n /tmp/python3-ewmh_0.1.5-1_all.deb
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/my-notes/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/*${APP_NAME}*
 cd $HOME
 rm -rf /tmp/python3-ewmh*
 rm -rf /tmp/${APP_NAME}*
