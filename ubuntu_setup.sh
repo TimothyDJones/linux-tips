@@ -8630,15 +8630,13 @@ APP_GUI_NAME="Python and C/C++ Wx-based terminal emulator."
 APP_VERSION=N/A
 APP_EXT=N/A
 FILE_NAME=N/A
-sudo apt-get install -y libwxbase3.0-dev pybind11-dev libfontconfig1-dev libglew-dev libglfw-dev cmake libwxgtk3.0-dev
+sudo apt-get install -y libwxbase3.0-dev pybind11-dev libfontconfig1-dev libglew-dev libglfw*-dev cmake libwxgtk3.0-dev
 cd /tmp
-git clone https://github.com/stonewell/wxglterm
-cd /tmp/wxglterm
-mkdir build && cd build
+git clone https://github.com/stonewell/${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+mkdir -p build && cd build
 cmake .. -DPYTHON_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DBUILD_WXWIDGETS_UI=ON -DBUILD_OPENGL_UI=ON
-
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jliljebl/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
