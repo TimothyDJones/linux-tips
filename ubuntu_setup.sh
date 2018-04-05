@@ -8694,3 +8694,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install MultiBootUSB utility for creating bootable USB/Flash drive with multiple live Linux distributions from package
+APP_NAME=MultiBootUSB
+APP_GUI_NAME="Utility for creating bootable USB/Flash drive with multiple live Linux distributions."
+APP_VERSION=9.2.0-1
+APP_EXT=deb
+FILE_NAME=python3-${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
