@@ -8719,3 +8719,18 @@ cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
 qtchooser -run-tool=qmake -qt=5 ${APP_NAME,,}.pro && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install EtherApe GTK-based GUI network monitoring tool from source
+APP_NAME=EtherApe
+APP_GUI_NAME="GTK-based GUI network monitoring tool."
+APP_VERSION=0.9.17
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libglade2-dev libgnomecanvas2-dev libpcap-dev itstool libpopt-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
