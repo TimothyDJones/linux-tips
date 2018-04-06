@@ -8050,7 +8050,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install jdbsee cross-platform command-line utility for database actions via JDBC from package
 APP_NAME=jdbsee
 APP_GUI_NAME="Cross-platform command-line utility for database actions via JDBC."
-APP_VERSION=0.4.0-1
+APP_VERSION=0.4.1-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
