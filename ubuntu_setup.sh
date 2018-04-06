@@ -774,7 +774,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZinjaI C++ IDE
 APP_NAME=zinjai
-APP_VERSION=20180221
+APP_VERSION=20180406
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=l64
