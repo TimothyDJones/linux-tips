@@ -315,7 +315,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.47.5.0-1
+APP_VERSION=1.48.0.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -352,7 +352,7 @@ rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Sourceforge
 APP_NAME=copyq
-APP_VERSION=3.3.0
+APP_VERSION=3.3.1
 source /etc/os-release
 curl -o /tmp/${APP_NAME}.deb -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}/Linux/${APP_NAME}_${APP_VERSION}_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
 sudo gdebi -n /tmp/${APP_NAME}.deb
@@ -387,15 +387,26 @@ cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install MyNotes simple "sticky notes" tool
-APP_NAME=mynotes
-APP_VERSION=2.3.1
-APP_EXT=deb
-# Install python-ewmh package from Zesty Zebra distribution.
-curl -o /tmp/python3-ewmh_0.1.5-1_all.deb -J -L http://ftp.osuosl.org/pub/ubuntu/pool/universe/p/python-ewmh/python3-ewmh_0.1.5-1_all.deb
-sudo gdebi -n /tmp/python3-ewmh_0.1.5-1_all.deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/my-notes/${APP_NAME}_${APP_VERSION}-1_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+# Install MyNotes simple Python-based "sticky notes" tool from source
+APP_NAME=MyNotes
+APP_VERSION=2.3.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y python3-tk tk-tktray python3-pil python3-pil.imagetk
+source /etc/lsb-release
+# If our version of Ubuntu is *after* 17.04 (Zesty Zapus),
+# then we use Python 3 EWMH package from distribution repository.
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ar|bi)$ ]]; then
+	sudo apt-get install -y python3-ewmh
+else
+	# Install python-ewmh package from Zesty Zebra distribution.
+	curl -o /tmp/python3-ewmh_0.1.5-1_all.deb -J -L http://ftp.osuosl.org/pub/ubuntu/pool/universe/p/python-ewmh/python3-ewmh_0.1.5-1_all.deb
+	sudo gdebi -n /tmp/python3-ewmh_0.1.5-1_all.deb
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/my-notes/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/*${APP_NAME}*
 cd $HOME
 rm -rf /tmp/python3-ewmh*
 rm -rf /tmp/${APP_NAME}*
@@ -751,7 +762,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.6.6
+APP_VERSION=7.6.7
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -763,7 +774,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZinjaI C++ IDE
 APP_NAME=zinjai
-APP_VERSION=20180221
+APP_VERSION=20180406
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=l64
@@ -1499,7 +1510,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Super Productivity To Do List and task manager from package
 APP_NAME=superProductivity
-APP_VERSION=1.10.3
+APP_VERSION=1.10.9
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/super-productivity/${APP_NAME}_${APP_VERSION}_amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2861,7 +2872,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install myNetPCB PCB layout and schematic capture tool
 APP_NAME=myNetPCB
-APP_VERSION=7_573
+APP_VERSION=7_574
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -4596,7 +4607,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Dooble web browser from package
 APP_NAME=Dooble
-APP_VERSION=2.1.9
+APP_VERSION=2.1.9.1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -6314,7 +6325,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install DB Tarzan Java-based database client from package
 APP_NAME=DBTarzan
 APP_GUI_NAME="Java-based database client."
-APP_VERSION=1.09
+APP_VERSION=1.10
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -6904,7 +6915,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1210
+APP_VERSION=V1220
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_Src.${APP_EXT}
@@ -6986,7 +6997,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install TraySearch Java-based cross-platform quick search utility
 APP_NAME=TraySearch
 APP_GUI_NAME="Java-based cross-platform quick search utility."
-APP_VERSION=5.0
+APP_VERSION=5.1.0
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -7130,7 +7141,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install x-whnb self-contained web-based hierarchical notebook (similar to Cherrytree)
 APP_NAME=x-whnb
 APP_GUI_NAME="Self-contained web-based hierarchical notebook (similar to Cherrytree)."
-APP_VERSION=v0.4
+APP_VERSION=v0.4.1
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sourceforge.net/projects/${APP_NAME,,}/files/${APP_VERSION}/${APP_NAME,,}.deploy.${APP_EXT}/download
 cd /tmp
@@ -7293,7 +7304,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Flare SDL-based 2-D adventure RPG from source
 APP_NAME=Flare
 APP_GUI_NAME="SDL-based 2-D adventure RPG."
-APP_VERSION=1.0.1
+APP_VERSION=1.02
 APP_EXT=tar.gz
 sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev cmake
 curl -o /tmp/${APP_NAME,,}-engine.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-game/${APP_NAME,,}-engine-v${APP_VERSION}.${APP_EXT}
@@ -8039,7 +8050,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install jdbsee cross-platform command-line utility for database actions via JDBC from package
 APP_NAME=jdbsee
 APP_GUI_NAME="Cross-platform command-line utility for database actions via JDBC."
-APP_VERSION=0.3.0-1
+APP_VERSION=0.4.1-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -8599,5 +8610,127 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 sudo python3 ./setup.py install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Flowblade multitrack non-linear video editor for Linux from package
+APP_NAME=Flowblade
+APP_GUI_NAME="Multitrack non-linear video editor for Linux."
+APP_VERSION=1.16
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.0-1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jliljebl/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install wxglterm Python and C/C++ Wx-based terminal emulator from source
+APP_NAME=wxglterm
+APP_GUI_NAME="Python and C/C++ Wx-based terminal emulator."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo apt-get install -y libwxbase3.0-dev pybind11-dev libfontconfig1-dev libglew-dev libglfw*-dev cmake libwxgtk3.0-dev
+cd /tmp
+git clone https://github.com/stonewell/${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+mkdir -p build && cd build
+cmake .. -DPYTHON_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DBUILD_WXWIDGETS_UI=ON -DBUILD_OPENGL_UI=ON
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Gocho LAN file-sharing application with node auto-discovery from package
+APP_NAME=Gocho
+APP_GUI_NAME="LAN file-sharing application with node auto-discovery."
+APP_VERSION=0.1.0
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=386
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/donkeysharp/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install LumberJack4Logs Java-based log file viewer with support for customer parser plugins from package
+APP_NAME=LumberJack4Logs
+APP_GUI_NAME="Java-based log file viewer with support for customer parser plugins."
+APP_VERSION=20180404_2317
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME} /opt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME}
+PATH=/opt/${APP_NAME}:\$PATH; export PATH
+sh /opt/${APP_NAME}/start_${APP_NAME,,}.sh
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME}
+Exec=sh /opt/${APP_NAME}/start_${APP_NAME,,}.sh
+Icon=/opt/${APP_NAME}/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;System;
+Keywords=Logs;System;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install MultiBootUSB utility for creating bootable USB/Flash drive with multiple live Linux distributions from package
+APP_NAME=MultiBootUSB
+APP_GUI_NAME="Utility for creating bootable USB/Flash drive with multiple live Linux distributions."
+APP_VERSION=9.2.0-1
+APP_EXT=deb
+FILE_NAME=python3-${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Miam-Player cross-platform Qt-based audio player from source
+APP_NAME=Miam-Player
+APP_GUI_NAME="Cross-platform Qt-based audio player."
+APP_VERSION=0.8.0
+APP_EXT=tar.gz
+sudo apt-get install -y build-essential qt5-qmake qttools5-dev qttools5-dev-tools libqtav-dev libtag1-dev libqt5multimedia5 qtmultimedia5-dev libqt5x11extras5-dev
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/MBach/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+qtchooser -run-tool=qmake -qt=5 ${APP_NAME,,}.pro && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install EtherApe GTK-based GUI network monitoring tool from source
+APP_NAME=EtherApe
+APP_GUI_NAME="GTK-based GUI network monitoring tool."
+APP_VERSION=0.9.17
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libglade2-dev libgnomecanvas2-dev libpcap-dev itstool libpopt-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
