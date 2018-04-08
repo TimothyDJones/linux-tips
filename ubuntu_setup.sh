@@ -8777,3 +8777,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install rpCalc cross-platform, Python/Qt RPN calculator from source
+APP_NAME=rpCalc
+APP_GUI_NAME="Cross-platform, Python/Qt RPN calculator."
+APP_VERSION=0.8.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y python3-pyqt5
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}
+sudo python3 ./install.py
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
