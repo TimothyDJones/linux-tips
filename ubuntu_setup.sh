@@ -1599,7 +1599,7 @@ rm -rf /tmp/vscode*
 
 # Install LTerm terminal emulator from source
 APP_NAME=lterm
-APP_VERSION=1.5.0
+APP_VERSION=1.5.1
 APP_EXT=tar.gz
 sudo apt-get install -y libvte-2.91-dev libssl-dev libssh-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
