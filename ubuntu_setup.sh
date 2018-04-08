@@ -389,7 +389,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install MyNotes simple Python-based "sticky notes" tool from source
 APP_NAME=MyNotes
-APP_VERSION=2.3.2
+APP_VERSION=2.3.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y python3-tk tk-tktray python3-pil python3-pil.imagetk
