@@ -8803,3 +8803,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download3.operacdn.com/pub/${
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install smenu interactive shell script menu tool from source
+APP_NAME=smenu
+APP_GUI_NAME="Interactive shell script menu tool."
+APP_VERSION=0.9.12
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libtinfo-dev lib64tinfo5 libncurses5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/p-gen/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./build.sh && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
