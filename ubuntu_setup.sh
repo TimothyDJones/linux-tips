@@ -7141,20 +7141,21 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install x-whnb self-contained web-based hierarchical notebook (similar to Cherrytree)
 APP_NAME=x-whnb
 APP_GUI_NAME="Self-contained web-based hierarchical notebook (similar to Cherrytree)."
-APP_VERSION=v0.4.1
+APP_VERSION=v0.5.0
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sourceforge.net/projects/${APP_NAME,,}/files/${APP_VERSION}/${APP_NAME,,}.deploy.${APP_EXT}/download
+FILE_NAME=${APP_NAME,,}.${APP_VERSION//./}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME,,}.${APP_EXT}
-sudo cp /tmp/${APP_NAME,,}/deploy/${APP_NAME,,}.deploy.html ${WWW_HOME}/${APP_NAME,,}.html
-sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}.html
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=${WWW_HOME}
-Exec=xdg-open http://localhost/${APP_NAME,,}.html
+Exec=xdg-open http://localhost/${APP_NAME,,}/${APP_NAME,,}.html
 #Icon=/opt/${APP_NAME,,}/big/back.gif
 Type=Application
 StartupNotify=true
@@ -7163,7 +7164,7 @@ Categories=Accessories;Internet;
 Keywords=Productivity;Notepad;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-xdg-open http://localhost/${APP_NAME,,}.html &
+xdg-open http://localhost/${APP_NAME,,}/${APP_NAME,,}.html &
 
 # Install Text Trix Java-based minimalist text editor with HTML and RTF support
 APP_NAME=TextTrix
