@@ -4496,7 +4496,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install DataMelt Java-based scientific computation and visualization environment
 # http://jwork.org/dmelt/
 APP_NAME=dmelt
-APP_VERSION=2.1
+APP_VERSION=2.2
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}.${APP_EXT}
 cd /tmp
