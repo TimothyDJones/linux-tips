@@ -8818,3 +8818,14 @@ cd /tmp/${FILE_NAME}
 ./build.sh && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install DeaDBeeF minimalist audio player from package
+APP_NAME=DeaDBeeF
+APP_GUI_NAME="Minimalist audio player."
+APP_VERSION=0.7.2-2
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-static_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
