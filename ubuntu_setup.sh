@@ -1510,7 +1510,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Super Productivity To Do List and task manager from package
 APP_NAME=superProductivity
-APP_VERSION=1.10.9
+APP_VERSION=1.10.12
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/super-productivity/${APP_NAME}_${APP_VERSION}_amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -6498,10 +6498,10 @@ rm -rf /tmp/${APP_NAME,,}
 # Install SMath Studio WYSIWYG math editor
 APP_NAME=SMathStudio
 APP_GUI_NAME="WYSIWYG math editor."
-APP_VERSION=0_99_6622
+APP_VERSION=0.99.6671
 APP_EXT=tar.gz
 sudo apt-get install -y mono-runtime libmono-system-windows-forms4.0-cil
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} --referer https://en.smath.info/view/SMathStudio/summary -J -L https://smath.info/file/v4yoT/${APP_NAME}Desktop.${APP_VERSION}.Mono.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} --referer https://en.smath.info/view/SMathStudio/summary -J -L https://smath.info/file/v4yoT/${APP_NAME}Desktop.${APP_VERSION//./_}.Mono.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 sudo mv /tmp/${APP_NAME,,} /opt
@@ -7868,7 +7868,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install fmedia cross-platform fast media player/recorder/converter from package
 APP_NAME=fmedia
 APP_GUI_NAME="Cross-platform fast media player/recorder/converter."
-APP_VERSION=0.34.1
+APP_VERSION=0.35
 APP_EXT=tar.xz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://${APP_NAME,,}.firmdev.com/${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}.${APP_EXT}
 cd /tmp
@@ -8223,7 +8223,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install FreeMAN extensible, cross-platform, Electron-based file manager for power users from package
 APP_NAME=FreeMAN
 APP_GUI_NAME="Extensible, cross-platform, Electron-based file manager for power users."
-APP_VERSION=0.8.0
+APP_VERSION=0.8.1
 APP_EXT=snap
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/matthew-matvei/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
 sudo snap install --dangerous /tmp/${APP_NAME,,}.${APP_EXT}
@@ -8828,5 +8828,63 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-static_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install ghostwriter Qt-based, cross-platform Markdown editor with built-in preview from source
+APP_NAME=ghostwriter
+APP_GUI_NAME="Qt-based, cross-platform Markdown editor."
+APP_VERSION=1.6.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y qt5-default hunspell libhunspell-dev libqt5webkit5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wereturtle/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+qtchooser -run-tool=qmake -qt=5 ghostwriter.pro && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Extraterm Electron-based, cross-platform terminal emulator from package
+APP_NAME=Extraterm
+APP_GUI_NAME="Electron-based, cross-platform terminal emulator."
+APP_VERSION=0.33.0
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sedwards2009/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/resources/app/${APP_NAME,,}/resources/logo/${APP_NAME,,}_small_logo.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;TerminalEmulator;
+Keywords=Terminal;Shell;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
