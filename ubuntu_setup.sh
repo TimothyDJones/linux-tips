@@ -762,7 +762,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.6.7
+APP_VERSION=7.6.8
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1073,7 +1073,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Sourceforge
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3686
+APP_VERSION_MINOR=3691
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-20_${KERNEL_TYPE}.deb
@@ -1431,7 +1431,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZenTao project management tool from package
 APP_NAME=ZenTaoPMS
-APP_VERSION=9.8.2
+APP_VERSION=9.8.3
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${APP_NAME}_${APP_VERSION}_1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1726,7 +1726,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.0.2
+APP_VERSION=7.0.3
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2009,7 +2009,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install jEdit Java text editor from package
 APP_NAME=jedit
-APP_VERSION=5.4.0
+APP_VERSION=5.5.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2371,7 +2371,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 
 # Install DK Tools system utility from source
 APP_NAME=dktools
-APP_VERSION=4.11.4
+APP_VERSION=4.12.0
 APP_EXT=tar.gz
 KERNEL_TYPE=getKernelType()
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -4496,7 +4496,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install DataMelt Java-based scientific computation and visualization environment
 # http://jwork.org/dmelt/
 APP_NAME=dmelt
-APP_VERSION=2.1
+APP_VERSION=2.2
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}.${APP_EXT}
 cd /tmp
@@ -7141,20 +7141,21 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install x-whnb self-contained web-based hierarchical notebook (similar to Cherrytree)
 APP_NAME=x-whnb
 APP_GUI_NAME="Self-contained web-based hierarchical notebook (similar to Cherrytree)."
-APP_VERSION=v0.4.1
+APP_VERSION=v0.5.0
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sourceforge.net/projects/${APP_NAME,,}/files/${APP_VERSION}/${APP_NAME,,}.deploy.${APP_EXT}/download
+FILE_NAME=${APP_NAME,,}.${APP_VERSION//./}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME,,}.${APP_EXT}
-sudo cp /tmp/${APP_NAME,,}/deploy/${APP_NAME,,}.deploy.html ${WWW_HOME}/${APP_NAME,,}.html
-sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}.html
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=${WWW_HOME}
-Exec=xdg-open http://localhost/${APP_NAME,,}.html
+Exec=xdg-open http://localhost/${APP_NAME,,}/${APP_NAME,,}.html
 #Icon=/opt/${APP_NAME,,}/big/back.gif
 Type=Application
 StartupNotify=true
@@ -7163,7 +7164,7 @@ Categories=Accessories;Internet;
 Keywords=Productivity;Notepad;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-xdg-open http://localhost/${APP_NAME,,}.html &
+xdg-open http://localhost/${APP_NAME,,}/${APP_NAME,,}.html &
 
 # Install Text Trix Java-based minimalist text editor with HTML and RTF support
 APP_NAME=TextTrix
@@ -7388,10 +7389,10 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=403
+APP_VERSION=4.0.4
 APP_EXT=tgz
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${APP_NAME,,}${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}/scintilla/gtk
@@ -8800,6 +8801,32 @@ APP_VERSION=52.0.2871.40
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download3.operacdn.com/pub/${APP_NAME,,}/desktop/${APP_VERSION}/linux/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install smenu interactive shell script menu tool from source
+APP_NAME=smenu
+APP_GUI_NAME="Interactive shell script menu tool."
+APP_VERSION=0.9.12
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libtinfo-dev lib64tinfo5 libncurses5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/p-gen/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./build.sh && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install DeaDBeeF minimalist audio player from package
+APP_NAME=DeaDBeeF
+APP_GUI_NAME="Minimalist audio player."
+APP_VERSION=0.7.2-2
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-static_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
