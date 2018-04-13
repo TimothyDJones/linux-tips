@@ -8912,3 +8912,29 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rvpanoz/${APP_NAME
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install giv (Gtk+ Image Viewer) Gtk-based image and vector viewer from source
+APP_NAME=giv
+APP_GUI_NAME="Gtk-based image and vector viewer."
+APP_VERSION=0.9.30
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtk-3-dev
+# Install CFITSIO FITS File Subroutine Library <https://heasarc.gsfc.nasa.gov/fitsio/fitsio.html>
+TEMP_FILE=cfitsio3440
+curl -o /tmp/${TEMP_FILE}.${APP_EXT} -J -L http://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/${TEMP_FILE}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${TEMP_FILE}.${APP_EXT}
+cd /tmp/${TEMP_FILE}/cfitsio
+./configure && make
+UPDATE_STRING=s@/tmp/${TEMP_FILE}/cfitsio@/usr@g
+sudo sed -i ${UPDATE_STRING} ./lib/pkgconfig/cfitsio.pc
+sudo cp -R ./lib/* /usr/lib
+sudo cp fitsio.h fitsio2.h longnam.h drvrsmem.h /usr/include
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOMlE
+rm -rf /tmp/${APP_NAME,,}
