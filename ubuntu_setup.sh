@@ -8938,3 +8938,15 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOMlE
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Umbrella Note Electron-based minimalist notepad/journal utility from package
+# https://github.com/arpban/umbrella-note
+APP_NAME=Umbrella-Note
+APP_GUI_NAME="Electron-based minimalist notepad/journal utility."
+APP_VERSION=2.0.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://umbrellanote.com/updates/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
