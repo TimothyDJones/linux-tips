@@ -1922,14 +1922,14 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Swiss File Knife (SFK) shell file utility
 APP_NAME=sfk
-APP_VERSION=190
+APP_VERSION=1.9.1
 APP_EXT=exe
 	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 		ARCH_TYPE=linux-64
 	else    # Otherwise use version for 32-bit kernel
 		ARCH_TYPE=linux
 	fi
-curl -o /tmp/${APP_NAME} -J -L https://downloads.sourceforge.net/swissfileknife/${APP_NAME}${APP_VERSION}-${ARCH_TYPE}.${APP_EXT}
+curl -o /tmp/${APP_NAME} -J -L https://downloads.sourceforge.net/swissfileknife/${APP_NAME}${APP_VERSION//./}-${ARCH_TYPE}.${APP_EXT}
 sudo chmod a+x /tmp/${APP_NAME}
 sudo mv /tmp/${APP_NAME} /usr/local/bin
 
