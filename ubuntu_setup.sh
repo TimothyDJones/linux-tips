@@ -8980,3 +8980,22 @@ cd /tmp/${FILE_NAME}
 meson --prefix=/usr/local build && cd build && sudo ninja install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Etcher cross-platform Electron-based tool to copy OS images to USB drives from package
+APP_NAME=Etcher
+APP_GUI_NAME="Cross-platform Electron-based tool to copy OS images to USB drives."
+APP_VERSION=1.4.1
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+FILE_NAME=${APP_NAME,,}-electron-${APP_VERSION}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/resin-io/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}-electron-${APP_VERSION}*.AppImage /usr/local/bin
+/usr/local/bin/${FILE_NAME}/${APP_NAME,,}-electron-${APP_VERSION}*.AppImage &
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
