@@ -8965,3 +8965,18 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install && sudo ldconfig
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install GetIt GTK+-3-based HTTP request tool from source
+APP_NAME=GetIt
+APP_GUI_NAME="GTK+-3-based HTTP request tool."
+APP_VERSION=4.0.9
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtk-3-dev libgtksourceview-3.0-dev libsoup2.4-dev libnotify-dev libglib2.0-dev json-glib-tools libjson-glib-dev gettext libwebkitgtk-dev meson
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bartkessels/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+meson --prefix=/usr/local build && cd build && sudo ninja install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
