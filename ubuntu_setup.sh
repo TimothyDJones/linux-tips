@@ -762,7 +762,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.6.8
+APP_VERSION=7.7.1
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1726,7 +1726,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.0.3
+APP_VERSION=7.0.4
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -3335,7 +3335,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Buttercup JavaScript/Electron desktop password manager from package
 APP_NAME=buttercup-desktop
-APP_VERSION=1.6.0
+APP_VERSION=1.6.1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/buttercup/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -3557,7 +3557,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 
 # Install Admidio organizational management tool
 APP_NAME=admidio
-APP_VERSION=3.3.0
+APP_VERSION=3.3-Beta.4
 APP_EXT=zip
 DB_NAME=admidio
 DB_USER=admidio
@@ -8950,3 +8950,88 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://umbrellanote.com/updates/${FI
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install LiVES non-linear video editor from source
+APP_NAME=LiVES
+APP_GUI_NAME="Non-linear video editor."
+APP_VERSION=2.8.9
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y imagemagick mplayer libjpeg62-dev sox libmjpegtools-dev lame ffmpeg libgtk-3-dev libgdk-pixbuf2.0-dev libjack-dev libpulse-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install && sudo ldconfig
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install GetIt GTK+-3-based HTTP request tool from source
+APP_NAME=GetIt
+APP_GUI_NAME="GTK+-3-based HTTP request tool."
+APP_VERSION=4.0.9
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtk-3-dev libgtksourceview-3.0-dev libsoup2.4-dev libnotify-dev libglib2.0-dev json-glib-tools libjson-glib-dev gettext libwebkitgtk-dev meson
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bartkessels/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+meson --prefix=/usr/local build && cd build && sudo ninja install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Etcher cross-platform Electron-based tool to copy OS images to USB drives from package
+APP_NAME=Etcher
+APP_GUI_NAME="Cross-platform Electron-based tool to copy OS images to USB drives."
+APP_VERSION=1.4.1
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+FILE_NAME=${APP_NAME,,}-electron-${APP_VERSION}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/resin-io/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}-electron-${APP_VERSION}*.AppImage /usr/local/bin
+/usr/local/bin/${FILE_NAME}/${APP_NAME,,}-electron-${APP_VERSION}*.AppImage &
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install 2D Java Chess Java chess game from package
+APP_NAME=Java-Chess-2D
+APP_GUI_NAME="Java chess game."
+APP_VERSION=N/A
+APP_EXT=jar
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/2D%20Java%20Chess.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Games;Chess;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
