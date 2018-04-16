@@ -997,12 +997,42 @@ sudo apt-add-repository -y ppa:quiterss/quiterss
 sudo apt-get update
 sudo apt-get install -y quiterss
 
-# Install Makagiga Java-based PIM/RSS feed reader
-APP_NAME=makagiga
-APP_VERSION=5.8.3-1
-APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+# Install Makagiga Java-based PIM/RSS feed reader from package
+APP_NAME=Makagiga
+APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
+APP_VERSION=6.0
+APP_EXT=7z
+FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
+sudo rm -rf /opt/${APP_NAME,,}/java-windows* /opt/${APP_NAME,,}/*.exe /opt/${APP_NAME,,}/*.bat
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}.sh
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}.sh
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Office;Internet;
+Keywords=PIM;RSS;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
