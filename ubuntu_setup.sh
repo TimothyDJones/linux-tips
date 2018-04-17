@@ -9066,31 +9066,22 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Chronometer GUI stopwatch application from package
-APP_NAME=Chrono
-APP_GUI_NAME="GUI stopwatch application."
-APP_VERSION=N/A
-APP_EXT=tar.xz
-FILE_NAME=${APP_NAME,,}_gui
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${FILE_NAME//_/-}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}_linux /usr/local/bin/${APP_NAME,,}
-sudo cp /tmp/${FILE_NAME}/source/graphics/${APP_NAME,,}_icon.png /usr/local/share/pixmaps/${APP_NAME,,}_icon.png
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=/usr/local/bin
-Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/local/share/pixmaps/${APP_NAME,,}_icon.png
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Accessories;
-Keywords=Clock;Stopwatch;
+# Install QCalc Java-based command-line high-precision calculator from package
+APP_NAME=QCalc
+APP_GUI_NAME="Java-based command-line high-precision calculator."
+APP_VERSION=1.1-beta
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}-uni
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/paroxayte/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}.${APP_EXT}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /usr/local/bin
+PATH=/usr/local/bin:\$PATH; export PATH
+java -jar /usr/local/bin/${APP_NAME,,}.${APP_EXT} "\$1"
+cd $HOME
 EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
