@@ -91,6 +91,10 @@ APP_NAME=mongodb
 APP_VERSION=3.4
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 source /etc/lsb-release
+# If Ubuntu version is above 16.04 (Xenial), then we use 16.04.
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ya|ze|ar|bi)$ ]]; then
+	DISTRIB_CODENAME=xenial
+fi
 echo "deb [ arch="${KERNEL_TYPE}" ] http://repo.mongodb.org/apt/ubuntu "${DISTRIB_CODENAME}"/mongodb-org/"${APP_VERSION}" multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${APP_VERSION}.list
 sudo apt-get update
 sudo apt-get install -y mongodb-org
