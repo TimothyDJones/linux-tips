@@ -1045,10 +1045,11 @@ sudo apt-get install -y et
 
 # Install Gantt Project project management tool
 APP_NAME=ganttproject
-APP_VERSION=2.8.6-r2231-1
-curl -o /tmp/${APP_NAME}.deb -J -L https://dl.ganttproject.biz/${APP_NAME}-2.8.6/${APP_NAME}_${APP_VERSION}_all.deb
+APP_VERSION=2.8.7-r2256-1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
 cd /tmp
-sudo gdebi -n ${APP_NAME}.deb
+sudo gdebi -n ${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
