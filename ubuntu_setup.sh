@@ -9086,3 +9086,13 @@ sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install tkdiff Tcl-based text file difference viewer/editor from source
+APP_NAME=tkdiff
+APP_GUI_NAME="Tcl-based text file difference viewer/editor."
+APP_VERSION=4.3devel
+APP_EXT=N/A
+sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib
+git svn clone https://svn.code.sf.net/p/${APP_NAME,,}/code/branches/v${APP_VERSION}/ /tmp/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,} /opt
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
