@@ -9096,3 +9096,23 @@ sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib
 git svn clone https://svn.code.sf.net/p/${APP_NAME,,}/code/branches/v${APP_VERSION}/ /tmp/${APP_NAME,,}
 sudo mv /tmp/${APP_NAME,,} /opt
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+
+# Install FreeBASIC cross-platform BASIC compiler, with syntax similar MS-QuickBASIC and advanced features from package
+APP_NAME=FreeBASIC
+APP_GUI_NAME="Cross-platform BASIC compiler, with syntax similar MS-QuickBASIC and advanced features."
+APP_VERSION=1.05.0
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-${ARCH_TYPE}
+sudo apt-get install -y gcc libncurses5-dev libffi-dev libgl1-mesa-dev libx11-dev libxext-dev libxrender-dev libxrandr-dev libxpm-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/fbc/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo ./install.sh -i /usr/local
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
