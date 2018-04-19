@@ -9120,3 +9120,16 @@ cd /tmp/${FILE_NAME}
 sudo ./install.sh -i /usr/local
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install LNAV log file viewer/searcher with syntax highlighting from package
+APP_NAME=LNAV
+APP_GUI_NAME="Log file viewer/searcher with syntax highlighting."
+APP_VERSION=0.8.3a
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-64bit
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tstack/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
