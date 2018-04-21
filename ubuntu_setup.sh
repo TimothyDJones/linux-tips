@@ -91,6 +91,10 @@ APP_NAME=mongodb
 APP_VERSION=3.4
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 source /etc/lsb-release
+# If Ubuntu version is above 16.04 (Xenial), then we use 16.04.
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ya|ze|ar|bi)$ ]]; then
+	DISTRIB_CODENAME=xenial
+fi
 echo "deb [ arch="${KERNEL_TYPE}" ] http://repo.mongodb.org/apt/ubuntu "${DISTRIB_CODENAME}"/mongodb-org/"${APP_VERSION}" multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${APP_VERSION}.list
 sudo apt-get update
 sudo apt-get install -y mongodb-org
@@ -315,7 +319,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.49.0.1-1
+APP_VERSION=1.50.0.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -375,7 +379,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Otter Browser from Sourceforge (from source)
 APP_NAME=otter-browser
-APP_VERSION=0.9.98-weekly223
+APP_VERSION=0.9.98-dev224
 APP_EXT=tar.bz2
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev   # Qt5 development packages needed to build from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -935,7 +939,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Madedit-Mod text editor from Sourceforge
 APP_NAME=madedit-mod
-APP_VERSION=0.4.11-1
+APP_VERSION=0.4.12-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu16.04.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -997,12 +1001,42 @@ sudo apt-add-repository -y ppa:quiterss/quiterss
 sudo apt-get update
 sudo apt-get install -y quiterss
 
-# Install Makagiga Java-based PIM/RSS feed reader
-APP_NAME=makagiga
-APP_VERSION=5.8.3-1
-APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+# Install Makagiga Java-based PIM/RSS feed reader from package
+APP_NAME=Makagiga
+APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
+APP_VERSION=6.0
+APP_EXT=7z
+FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
+sudo rm -rf /opt/${APP_NAME,,}/java-windows* /opt/${APP_NAME,,}/*.exe /opt/${APP_NAME,,}/*.bat
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}.sh
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}.sh
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Office;Internet;
+Keywords=PIM;RSS;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
@@ -1015,10 +1049,11 @@ sudo apt-get install -y et
 
 # Install Gantt Project project management tool
 APP_NAME=ganttproject
-APP_VERSION=2.8.6-r2231-1
-curl -o /tmp/${APP_NAME}.deb -J -L https://dl.ganttproject.biz/${APP_NAME}-2.8.6/${APP_NAME}_${APP_VERSION}_all.deb
+APP_VERSION=2.8.7-r2256-1
+APP_EXT=deb
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
 cd /tmp
-sudo gdebi -n ${APP_NAME}.deb
+sudo gdebi -n ${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
@@ -1792,7 +1827,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Hyper JS/HTML/CSS Terminal 
 APP_NAME=hyper
-APP_VERSION=2.0.0-canary.8
+APP_VERSION=2.0.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hyper.mirror/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2273,7 +2308,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
 APP_NAME=xschem
-APP_VERSION=2.4.4
+APP_VERSION=2.4.5
 APP_EXT=tar.gz
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -2371,7 +2406,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 
 # Install DK Tools system utility from source
 APP_NAME=dktools
-APP_VERSION=4.12.0
+APP_VERSION=4.13.0
 APP_EXT=tar.gz
 KERNEL_TYPE=getKernelType()
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -5047,8 +5082,8 @@ xdg-open http://localhost/${APP_NAME,,}/installation/setup.php &
 # Install PySolFC Python-based Solitaire card game
 APP_NAME=PySolFC
 APP_GUI_NAME="Python-based Solitaire card game"
-APP_VERSION=2.1.3
-APP_EXT=tar.bz2
+APP_VERSION=2.2.0
+APP_EXT=tar.xz
 sudo apt-get install -y python3-pip
 sudo pip3 install random2 sgmllib3k
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -7305,7 +7340,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Flare SDL-based 2-D adventure RPG from source
 APP_NAME=Flare
 APP_GUI_NAME="SDL-based 2-D adventure RPG."
-APP_VERSION=1.02
+APP_VERSION=1.04
 APP_EXT=tar.gz
 sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev cmake
 curl -o /tmp/${APP_NAME,,}-engine.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-game/${APP_NAME,,}-engine-v${APP_VERSION}.${APP_EXT}
@@ -9035,3 +9070,66 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install QCalc Java-based command-line high-precision calculator from package
+APP_NAME=QCalc
+APP_GUI_NAME="Java-based command-line high-precision calculator."
+APP_VERSION=1.1-beta
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}-uni
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/paroxayte/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}.${APP_EXT}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /usr/local/bin
+PATH=/usr/local/bin:\$PATH; export PATH
+java -jar /usr/local/bin/${APP_NAME,,}.${APP_EXT} "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install tkdiff Tcl-based text file difference viewer/editor from source
+APP_NAME=tkdiff
+APP_GUI_NAME="Tcl-based text file difference viewer/editor."
+APP_VERSION=4.3devel
+APP_EXT=N/A
+sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib
+git svn clone https://svn.code.sf.net/p/${APP_NAME,,}/code/branches/v${APP_VERSION}/ /tmp/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,} /opt
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+
+# Install FreeBASIC cross-platform BASIC compiler, with syntax similar MS-QuickBASIC and advanced features from package
+APP_NAME=FreeBASIC
+APP_GUI_NAME="Cross-platform BASIC compiler, with syntax similar MS-QuickBASIC and advanced features."
+APP_VERSION=1.05.0
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-${ARCH_TYPE}
+sudo apt-get install -y gcc libncurses5-dev libffi-dev libgl1-mesa-dev libx11-dev libxext-dev libxrender-dev libxrandr-dev libxpm-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/fbc/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo ./install.sh -i /usr/local
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install LNAV log file viewer/searcher with syntax highlighting from package
+APP_NAME=LNAV
+APP_GUI_NAME="Log file viewer/searcher with syntax highlighting."
+APP_VERSION=0.8.3a
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-64bit
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tstack/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
