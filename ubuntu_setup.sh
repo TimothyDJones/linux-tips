@@ -9182,3 +9182,16 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install CoolReader cross-platform eBook reader supporting FB2, TXT, RTF, DOC, TCR, HTML, EPUB, CHM, PDB, and MOBI formats from package
+APP_NAME=CoolReader
+APP_GUI_NAME="Cross-platform eBook reader supporting FB2, TXT, RTF, DOC, TCR, HTML, EPUB, CHM, PDB, and MOBI formats."
+APP_VERSION=3.0.56-7
+APP_EXT=deb
+FILE_NAME=cr3_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/libpng12-0.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/libpng12-0.deb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/crengine/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
