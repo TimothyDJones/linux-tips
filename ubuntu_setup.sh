@@ -8342,9 +8342,19 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Pinguy ISO Builder live CD creator for Ubuntu-based distributions from package
 APP_NAME=PinguyBuilder
 APP_GUI_NAME="Live CD creator for Ubuntu-based distributions."
-APP_VERSION=18.4-1
+APP_VERSION=N/A
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all-test
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ze|ar|bi)$ ]]; then  # 17.04, 17.10, 18.04
+	APP_VERSION=5.0-6_all
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya)$ ]]; then  # 16.04, 16.10
+	APP_VERSION=4.3-8_all-beta
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (vi|wi)$ ]]; then  # 15.04, 15.10
+	APP_VERSION=15.10
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut)$ ]]; then  # 14.04, 14.10
+	APP_VERSION=3.3-7_all
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/pinguy-os/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
