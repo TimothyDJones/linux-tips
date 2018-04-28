@@ -3544,7 +3544,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Open Limbas PHP database utility
 APP_NAME=openlimbas
-APP_VERSION=3.4.12.495
+APP_VERSION=3.4.12.496
 APP_EXT=tar.gz
 DB_NAME=limbas
 DB_USER=limbas
