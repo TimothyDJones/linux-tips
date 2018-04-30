@@ -3283,7 +3283,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install FeedTurtle Java-based RSS news aggregator client
 APP_NAME=FeedTurtle
-APP_VERSION=X.5
+APP_VERSION=X.6
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}${APP_VERSION}.${APP_EXT}
 cd /tmp
