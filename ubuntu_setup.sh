@@ -379,7 +379,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Otter Browser from Sourceforge (from source)
 APP_NAME=otter-browser
-APP_VERSION=0.9.98-dev224
+APP_VERSION=0.9.98-dev225
 APP_EXT=tar.bz2
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev   # Qt5 development packages needed to build from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -766,7 +766,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.7.1
+APP_VERSION=7.8.1
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -3283,7 +3283,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install FeedTurtle Java-based RSS news aggregator client
 APP_NAME=FeedTurtle
-APP_VERSION=X.5
+APP_VERSION=X.6
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -3325,7 +3325,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Video Easy Editor minimal video editor from source
 APP_NAME=video-easy-editor
-APP_VERSION=130
+APP_VERSION=170
 APP_EXT=tar.gz
 sudo apt-get install -y pkg-config libopencv-dev ffmpeg libpulse-dev libgtk2.0-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/easy-editor-${APP_VERSION}.${APP_EXT}
@@ -3544,7 +3544,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Open Limbas PHP database utility
 APP_NAME=openlimbas
-APP_VERSION=3.4.12.495
+APP_VERSION=3.4.12.496
 APP_EXT=tar.gz
 DB_NAME=limbas
 DB_USER=limbas
@@ -8268,7 +8268,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PAGE drag-and-drop GUI generator for Python and Tkinter from source
 APP_NAME=PAGE
 APP_GUI_NAME="Drag-and-drop GUI generator for Python and Tkinter."
-APP_VERSION=4.12
+APP_VERSION=4.13
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -8346,7 +8346,7 @@ APP_VERSION=N/A
 APP_EXT=deb
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ze|ar|bi)$ ]]; then  # 17.04, 17.10, 18.04
-	APP_VERSION=5.0-6_all
+	APP_VERSION=5.0-8_all
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya)$ ]]; then  # 16.04, 16.10
 	APP_VERSION=4.3-8_all-beta
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (vi|wi)$ ]]; then  # 15.04, 15.10
