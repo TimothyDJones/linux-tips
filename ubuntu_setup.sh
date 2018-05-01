@@ -9237,3 +9237,42 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/web
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install XiX Music Player cross-platform audio player from package
+APP_NAME="XiX Music Player"
+APP_GUI_NAME="Cross-platformaudio player."
+APP_VERSION=N/A
+APP_EXT=zip
+# FILE_NAME="$(echo -e "${APP_NAME}" | tr -d '[:space:]')"_x64
+FILE_NAME=${APP_NAME// /}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/xixmusicplayer/${FILE_NAME}_x64.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME// /} /opt
+cat > /tmp/${FILE_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${FILE_NAME}
+PATH=/opt/${FILE_NAME}:\$PATH; export PATH
+LD_LIBRARY_PATH=/opt/${FILE_NAME}/lib:\$LD_LIBRARY_PATH; export LD_LIBRARY_PATH
+/opt/${FILE_NAME}/${FILE_NAME} "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${FILE_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME,,}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${FILE_NAME}
+Exec=/usr/local/bin/${FILE_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Audio;Multimedia
+Keywords=Audio;Music
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
