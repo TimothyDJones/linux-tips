@@ -9299,3 +9299,41 @@ sh ./sys/unix/setup.sh ./sys/unix/hints/linux
 make all && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Digital Logic Design (DLD) Java-based digital circuit designer and simulator from package
+APP_NAME="Digital Logic Design"
+APP_GUI_NAME="Java-based digital circuit designer and simulator."
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=DLD
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/digitalcircuitdesign/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${FILE_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${FILE_NAME,,}
+cat > /tmp/${FILE_NAME,,}/${FILE_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${FILE_NAME,,}
+PATH=/opt/${FILE_NAME,,}:\$PATH; export PATH
+java -jar /opt/${FILE_NAME,,}/${FILE_NAME}.jar "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${FILE_NAME,,}/${FILE_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME,,}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${FILE_NAME,,}
+Exec=java -jar /opt/${FILE_NAME,,}/${FILE_NAME}.jar "\$1"
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Electronics;Education;Engineering;
+Keywords=Electronics;Simulation;
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
