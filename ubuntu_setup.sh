@@ -9276,3 +9276,26 @@ EOF
 sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${FILE_NAME}*
+
+# Install Nethack text-based RPG from source
+# Build instructions based on http://jes.st/2015/compiling-playing-nethack-360-on-ubuntu/
+APP_NAME=Nethack
+APP_GUI_NAME="Text-based RPG."
+APP_VERSION=3.6.1
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION//./}-src
+sudo apt-get install -y flex bison build-essential libncurses5-dev checkinstall
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
+sed -i 's@/* #define LINUX */@#define LINUX@g' ./include/unixconf.h
+# Enable Status Hilites
+sed -i 's@/* #define STATUS_VIA_WINDOWPORT */@#define STATUS_VIA_WINDOWPORT@g' ./include/config.h
+sed -i 's@/* #define STATUS_HILITES */@#define STATUS_HILITES@g' ./include/config.h
+curl -o ./sys/unix/hints/linux -J -L https://gist.githubusercontent.com/jesstelford/67eceb7a7fa08405f6b7/raw/4579ba467ad6120a48e2e4b572c83b48dcdbc636/Makefile
+# Generate Makefile
+sh ./sys/unix/setup.sh ./sys/unix/hints/linux
+make all && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
