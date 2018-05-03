@@ -887,11 +887,11 @@ fi
 
 # Install xosview X11 performance meter
 APP_NAME=xosview
-APP_VERSION=2-2.2.3
+APP_VERSION=2-2.3.0
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://superb-sea2.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.${APP_EXT}
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
 cd /tmp/${APP_NAME}/${APP_NAME}${APP_VERSION}
 ./configure && make && sudo make install
 # Create icon in menus
