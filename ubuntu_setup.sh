@@ -3211,7 +3211,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Voya Media audio/video/image player from package
 APP_NAME=voyamedia
-APP_VERSION=2.9-5
+APP_VERSION=3.0-5
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-free-${APP_VERSION}.noarch.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
