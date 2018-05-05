@@ -319,7 +319,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.51.0.2-1
+APP_VERSION=1.51.2.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -365,7 +365,7 @@ rm -f /tmp/${APP_NAME}*
 
 # Install Steel Bank Common Lisp (SBLC) from Sourceforge
 APP_NAME=sbcl
-APP_VERSION=1.4.6
+APP_VERSION=1.4.7
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -379,7 +379,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Otter Browser from Sourceforge (from source)
 APP_NAME=otter-browser
-APP_VERSION=0.9.98-dev225
+APP_VERSION=0.9.98
 APP_EXT=tar.bz2
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev   # Qt5 development packages needed to build from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -744,7 +744,7 @@ sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 
 # Install QXmlEdit from source via Sourceforge
 APP_NAME=QXmlEdit
-APP_VERSION=0.9.9.2
+APP_VERSION=0.9.10
 APP_EXT=tgz
 sudo apt-get install -y libqt5xmlpatterns5-dev libqt5svg5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
@@ -887,11 +887,11 @@ fi
 
 # Install xosview X11 performance meter
 APP_NAME=xosview
-APP_VERSION=2-2.2.3
+APP_VERSION=2-2.3.0
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://superb-sea2.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.${APP_EXT}
+dtrx -n /tmp/${APP_NAME}.${APP_EXT}
 cd /tmp/${APP_NAME}/${APP_NAME}${APP_VERSION}
 ./configure && make && sudo make install
 # Create icon in menus
@@ -1545,7 +1545,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Super Productivity To Do List and task manager from package
 APP_NAME=superProductivity
-APP_VERSION=1.10.12
+APP_VERSION=1.10.20
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/super-productivity/${APP_NAME}_${APP_VERSION}_amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1898,7 +1898,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE
 APP_NAME=eric
-APP_VERSION=6-18.04
+APP_VERSION=6-18.05
 APP_EXT=tar.gz
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
@@ -2174,7 +2174,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=groupoffice
-APP_VERSION=6.2.90
+APP_VERSION=6.2.91
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME}
 DB_USER=${APP_NAME}
@@ -2933,7 +2933,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=180306
+APP_VERSION=180503
 APP_EXT=tar.bz2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -2993,7 +2993,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2018.2
+APP_VERSION=1.2018.4
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -4584,7 +4584,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.2.0
+APP_VERSION=1.2.1
 APP_EXT=tar.bz2
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -7340,7 +7340,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Flare SDL-based 2-D adventure RPG from source
 APP_NAME=Flare
 APP_GUI_NAME="SDL-based 2-D adventure RPG."
-APP_VERSION=1.04
+APP_VERSION=1.05
 APP_EXT=tar.gz
 sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev cmake
 curl -o /tmp/${APP_NAME,,}-engine.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-game/${APP_NAME,,}-engine-v${APP_VERSION}.${APP_EXT}
@@ -8346,7 +8346,7 @@ APP_VERSION=N/A
 APP_EXT=deb
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ze|ar|bi)$ ]]; then  # 17.04, 17.10, 18.04
-	APP_VERSION=5.0-8_all
+	APP_VERSION=5.0-9_all
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya)$ ]]; then  # 16.04, 16.10
 	APP_VERSION=4.3-8_all-beta
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (vi|wi)$ ]]; then  # 15.04, 15.10
@@ -9237,3 +9237,178 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/web
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install XiX Music Player cross-platform audio player from package
+APP_NAME="XiX Music Player"
+APP_GUI_NAME="Cross-platformaudio player."
+APP_VERSION=N/A
+APP_EXT=zip
+# FILE_NAME="$(echo -e "${APP_NAME}" | tr -d '[:space:]')"_x64
+FILE_NAME=${APP_NAME// /}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/xixmusicplayer/${FILE_NAME}_x64.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME// /} /opt
+cat > /tmp/${FILE_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${FILE_NAME}
+PATH=/opt/${FILE_NAME}:\$PATH; export PATH
+LD_LIBRARY_PATH=/opt/${FILE_NAME}/lib:\$LD_LIBRARY_PATH; export LD_LIBRARY_PATH
+/opt/${FILE_NAME}/${FILE_NAME} "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${FILE_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME,,}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${FILE_NAME}
+Exec=/usr/local/bin/${FILE_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Audio;Multimedia
+Keywords=Audio;Music
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
+
+# Install Nethack text-based RPG from source
+# Build instructions based on http://jes.st/2015/compiling-playing-nethack-360-on-ubuntu/
+APP_NAME=Nethack
+APP_GUI_NAME="Text-based RPG."
+APP_VERSION=3.6.1
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION//./}-src
+sudo apt-get install -y flex bison build-essential libncurses5-dev checkinstall
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
+sed -i 's@/* #define LINUX */@#define LINUX@g' ./include/unixconf.h
+# Enable Status Hilites
+sed -i 's@/* #define STATUS_VIA_WINDOWPORT */@#define STATUS_VIA_WINDOWPORT@g' ./include/config.h
+sed -i 's@/* #define STATUS_HILITES */@#define STATUS_HILITES@g' ./include/config.h
+curl -o ./sys/unix/hints/linux -J -L https://gist.githubusercontent.com/jesstelford/67eceb7a7fa08405f6b7/raw/4579ba467ad6120a48e2e4b572c83b48dcdbc636/Makefile
+# Generate Makefile
+sh ./sys/unix/setup.sh ./sys/unix/hints/linux
+make all && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Digital Logic Design (DLD) Java-based digital circuit designer and simulator from package
+APP_NAME="Digital Logic Design"
+APP_GUI_NAME="Java-based digital circuit designer and simulator."
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=DLD
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/digitalcircuitdesign/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${FILE_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${FILE_NAME,,}
+cat > /tmp/${FILE_NAME,,}/${FILE_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${FILE_NAME,,}
+PATH=/opt/${FILE_NAME,,}:\$PATH; export PATH
+java -jar /opt/${FILE_NAME,,}/${FILE_NAME}.jar "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${FILE_NAME,,}/${FILE_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME,,}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${FILE_NAME,,}
+Exec=java -jar /opt/${FILE_NAME,,}/${FILE_NAME}.jar "\$1"
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Electronics;Education;Engineering;
+Keywords=Electronics;Simulation;
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
+
+# Install Everest cross-platform JavaFX-based REST API client from package
+APP_NAME=Everest
+APP_GUI_NAME="Cross-platform JavaFX-based REST API client."
+APP_VERSION=Alpha-1.0
+APP_EXT=jar
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/RohitAwate/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} "\$1"
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Test;Web Services;API;REST;
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
+
+# Install Turing cross-platform, Qt-based Python IDE from package
+APP_NAME=Turing
+APP_GUI_NAME="Cross-platform, Qt-based Python IDE."
+APP_VERSION=0.8
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}-nix
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/TuringApp/${APP_NAME}/releases/download/v${APP_VERSION}-beta/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,} "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,} "\$1"
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Python;Editor;IDE;
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
