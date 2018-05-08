@@ -8346,7 +8346,7 @@ APP_VERSION=N/A
 APP_EXT=deb
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ze|ar|bi)$ ]]; then  # 17.04, 17.10, 18.04
-	APP_VERSION=5.0-9_all
+	APP_VERSION=5.1-0_all
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya)$ ]]; then  # 16.04, 16.10
 	APP_VERSION=4.3-8_all-beta
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (vi|wi)$ ]]; then  # 15.04, 15.10
