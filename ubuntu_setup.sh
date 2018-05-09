@@ -558,13 +558,14 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install NewBreeze file manager from source
 APP_NAME=NewBreeze
-APP_VERSION=v3-rc1
+APP_VERSION=v3-RC2
 APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}%20${APP_VERSION}
 sudo apt-get install -y libmagic-dev zlib1g-dev liblzma-dev libbz2-dev libarchive-dev xdg-utils libpoppler-qt5-dev libsource-highlight-dev libpoppler-qt5-dev libdjvulibre-dev
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/marcusbritanicus/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/*${APP_NAME}*
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/*${APP_NAME}*
 qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
