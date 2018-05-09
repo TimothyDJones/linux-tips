@@ -9413,3 +9413,27 @@ EOF
 sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${FILE_NAME}*
+
+# Install KADOS (KAnban Dashboard for Online Scrum) web-based tool for managing Scrum projects with Kanban board
+# http://www.kados.info/
+APP_NAME=KADOS
+APP_VERSION=r10-GreenBee
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME,,} ${WWW_HOME}
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+sudo cp ${WWW_HOME}/${APP_NAME,,}/updates/R10-GreenBee/install/connect_r10.conf ${WWW_HOME}/${APP_NAME,,}/conf/connect.conf
+sudo sed -i 's@PARAM_host@localhost@g' ${WWW_HOME}/${APP_NAME,,}/conf/connect.conf
+sudo sed -i 's@PARAM_db@'${DB_NAME}'@g' ${WWW_HOME}/${APP_NAME,,}/conf/connect.conf
+sudo sed -i 's@PARAM_user@'${DB_USER}'@g' ${WWW_HOME}/${APP_NAME,,}/conf/connect.conf
+sudo sed -i 's@PARAM_password@'${DB_PASSWORD}'@g' ${WWW_HOME}/${APP_NAME,,}/conf/connect.conf
+sudo sed -i 's@PARAM_charset@utf8_general_ci@g' ${WWW_HOME}/${APP_NAME,,}/conf/connect.conf
+mysql --host=localhost --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME} < /tmp/${APP_NAME,,}/sql/create_database_R10.sql
+xdg-open http://localhost/${APP_NAME,,}/index.php &
