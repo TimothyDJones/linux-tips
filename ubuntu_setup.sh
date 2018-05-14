@@ -319,7 +319,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.53.0.0-1
+APP_VERSION=1.53.4.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1546,7 +1546,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Super Productivity To Do List and task manager from package
 APP_NAME=superProductivity
-APP_VERSION=1.10.31
+APP_VERSION=1.10.36
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/super-productivity/${APP_NAME}_${APP_VERSION}_amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1971,7 +1971,7 @@ sudo mv /tmp/${APP_NAME} /usr/local/bin
 
 # Install Freeplane mind-mapping tool from package
 APP_NAME=freeplane
-APP_VERSION=1.6.14
+APP_VERSION=1.6.15
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}~upstream-1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2558,7 +2558,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Printed Circuit Board Layout Tool
 APP_NAME=pcb
-APP_VERSION=4.1.1
+APP_VERSION=4.1.2
 APP_EXT=tar.gz
 sudo apt-get install -y intltool libgtkglext1-dev libgd-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
