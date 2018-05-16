@@ -9437,3 +9437,46 @@ sudo sed -i 's@PARAM_password@'${DB_PASSWORD}'@g' ${WWW_HOME}/${APP_NAME,,}/conf
 sudo sed -i 's@PARAM_charset@utf8_general_ci@g' ${WWW_HOME}/${APP_NAME,,}/conf/connect.conf
 mysql --host=localhost --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME} < /tmp/${APP_NAME,,}/sql/create_database_R10.sql
 xdg-open http://localhost/${APP_NAME,,}/index.php &
+
+# Install linNet symbolic Analysis of linear Electronic Circuits tool from package
+APP_NAME=linNet
+APP_GUI_NAME="Cross-platform, symbolic Analysis of linear Electronic Circuits tool."
+APP_VERSION=1.0.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-svn/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME}/components/${APP_NAME}/* /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/bin/LINUX/PRODUCTION/${APP_NAME}
+sudo rm -rf /opt/${APP_NAME,,}/bin/win*
+echo 'LINNET_HOME=/opt/'${APP_NAME,,}'/bin/LINUX/PRODUCTION; export LINNET_HOME' >> $HOME/.bashrc
+echo 'PATH=$PATH:$LINNET_HOME; export PATH' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}/bin/LINUX/PRODUCTION
+PATH=/opt/${APP_NAME,,}/bin/LINUX/PRODUCTION:\$PATH; export PATH
+/opt/${APP_NAME,,}/bin/LINUX/PRODUCTION/${APP_NAME} "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}/bin/LINUX/PRODUCTION
+Exec=/opt/${APP_NAME,,}/bin/LINUX/PRODUCTION/${APP_NAME} "\$1"
+Icon=/opt/${APP_NAME,,}/doc/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;Science;Electronics;
+Keywords=Electronics;Circuits;
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
