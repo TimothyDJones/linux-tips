@@ -9480,3 +9480,16 @@ EOF
 sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${FILE_NAME}*
+
+# Install Eval minimalist console calculator from package
+APP_NAME=concalc
+APP_GUI_NAME="Cross-platform, minimalist console calculator."
+APP_VERSION=N/A
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eval-command-line-calculator/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/consolecalc/${APP_NAME} /usr/local/bin
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
