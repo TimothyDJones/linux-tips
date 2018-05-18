@@ -121,6 +121,27 @@ sudo chown -R www-data:www-data ${WWW_HOME}
 # Enable PHP 5.6 as default version of PHP (if PHP 7.0+ gets installed, as well).
 sudo a2dismod php7.0 ; sudo a2enmod php5.6 ; sudo service apache2 restart ; echo 1 | sudo update-alternatives --config php
 
+# Create script to allow switching between PHP 5.6 and 7.2
+cat > /tmp/phpv << EOL
+#! /bin/sh
+if [ "\$1" = "5.6" ] || [ "\$1" = "5" ]; then
+    sudo a2dismod php7.2
+    sudo a2enmod php5.6
+    sudo service apache2 restart
+    echo 1 | sudo update-alternatives --config php
+elif [ "\$1" = "7.2" ] || [ "\$1" = "7" ]; then
+    sudo a2dismod php5.6
+    sudo a2enmod php7.2
+    sudo service apache2 restart
+    echo 0 | sudo update-alternatives --config php
+else
+    echo "Invalid option!"
+    echo "phpv 5.6 | 7.2"
+fi
+EOL
+sudo mv /tmp/phpv /usr/local/bin
+sudo chmod +x /usr/local/bin/phpv
+
 # Create simple 'phpinfo' script in main web server directory
 # Note: Must create file in /tmp and then move because 'sudo cat...' is allowed.
 sudo cat > /tmp/phpinfo.php << EOL
@@ -149,6 +170,11 @@ sudo php /usr/local/bin/composer create-project phpmyadmin/phpmyadmin --reposito
 sudo chown -R www-data:www-data ${WWW_HOME}/phpmyadmin
 xdg-open http://localhost/phpmyadmin/setup &
 cd $HOME
+
+# Install PHP 7.2 (optional)
+sudo apt-get install -y php7.2-bcmath php7.2-bz2 php7.2-cli php7.2-common php7.2-curl php7.2-gd php7.2-json php7.2-mbstring  php7.2-mysql php7.2-readline php7.2-sqlite3 php7.2-xml php7.2-xsl php7.2-zip php-xdebug \
+libapache2-mod-php7.2 libapache2-mod-xsendfile \
+mysql-server mysql-workbench mycli 
 
 # Install apt-fast script for speeding up apt-get by downloading
 # packages in parallel.
