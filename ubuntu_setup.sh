@@ -121,6 +121,27 @@ sudo chown -R www-data:www-data ${WWW_HOME}
 # Enable PHP 5.6 as default version of PHP (if PHP 7.0+ gets installed, as well).
 sudo a2dismod php7.0 ; sudo a2enmod php5.6 ; sudo service apache2 restart ; echo 1 | sudo update-alternatives --config php
 
+# Create script to allow switching between PHP 5.6 and 7.2
+cat > /tmp/phpv << EOL
+#! /bin/sh
+if [ "\$1" = "5.6" ] || [ "\$1" = "5" ]; then
+    sudo a2dismod php7.2
+    sudo a2enmod php5.6
+    sudo service apache2 restart
+    echo 1 | sudo update-alternatives --config php
+elif [ "\$1" = "7.2" ] || [ "\$1" = "7" ]; then
+    sudo a2dismod php5.6
+    sudo a2enmod php7.2
+    sudo service apache2 restart
+    echo 0 | sudo update-alternatives --config php
+else
+    echo "Invalid option!"
+    echo "phpv 5.6 | 7.2"
+fi
+EOL
+sudo mv /tmp/phpv /usr/local/bin
+sudo chmod +x /usr/local/bin/phpv
+
 # Create simple 'phpinfo' script in main web server directory
 # Note: Must create file in /tmp and then move because 'sudo cat...' is allowed.
 sudo cat > /tmp/phpinfo.php << EOL
@@ -149,6 +170,11 @@ sudo php /usr/local/bin/composer create-project phpmyadmin/phpmyadmin --reposito
 sudo chown -R www-data:www-data ${WWW_HOME}/phpmyadmin
 xdg-open http://localhost/phpmyadmin/setup &
 cd $HOME
+
+# Install PHP 7.2 (optional)
+sudo apt-get install -y php7.2-bcmath php7.2-bz2 php7.2-cli php7.2-common php7.2-curl php7.2-gd php7.2-json php7.2-mbstring  php7.2-mysql php7.2-readline php7.2-sqlite3 php7.2-xml php7.2-xsl php7.2-zip php-xdebug \
+libapache2-mod-php7.2 libapache2-mod-xsendfile \
+mysql-server mysql-workbench mycli 
 
 # Install apt-fast script for speeding up apt-get by downloading
 # packages in parallel.
@@ -260,7 +286,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
 APP_NAME=firejail
-APP_VERSION=0.9.52_1
+APP_VERSION=0.9.54_1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
@@ -767,7 +793,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.8.2
+APP_VERSION=7.9
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1336,7 +1362,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Worker File Manager (For AVFS support install AVFS above.)
 APP_NAME=worker
-APP_VERSION=3.14.0
+APP_VERSION=3.15.1
 APP_EXT=tar.bz2
 sudo apt-get install -y liblua5.3-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/workerfm/workerfm/3.11.0/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -1546,7 +1572,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Super Productivity To Do List and task manager from package
 APP_NAME=superProductivity
-APP_VERSION=1.10.36
+APP_VERSION=1.10.38
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/super-productivity/${APP_NAME}_${APP_VERSION}_amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2175,7 +2201,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=groupoffice
-APP_VERSION=6.2.93
+APP_VERSION=6.3.6
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME}
 DB_USER=${APP_NAME}
@@ -6951,7 +6977,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.23
+APP_VERSION=V1.24
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -8347,7 +8373,7 @@ APP_VERSION=N/A
 APP_EXT=deb
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ze|ar|bi)$ ]]; then  # 17.04, 17.10, 18.04
-	APP_VERSION=5.1-0_all
+	APP_VERSION=5.1-2_all
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya)$ ]]; then  # 16.04, 16.10
 	APP_VERSION=4.3-8_all-beta
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (vi|wi)$ ]]; then  # 15.04, 15.10
@@ -9437,3 +9463,70 @@ sudo sed -i 's@PARAM_password@'${DB_PASSWORD}'@g' ${WWW_HOME}/${APP_NAME,,}/conf
 sudo sed -i 's@PARAM_charset@utf8_general_ci@g' ${WWW_HOME}/${APP_NAME,,}/conf/connect.conf
 mysql --host=localhost --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME} < /tmp/${APP_NAME,,}/sql/create_database_R10.sql
 xdg-open http://localhost/${APP_NAME,,}/index.php &
+
+# Install linNet symbolic Analysis of linear Electronic Circuits tool from package
+APP_NAME=linNet
+APP_GUI_NAME="Cross-platform, symbolic Analysis of linear Electronic Circuits tool."
+APP_VERSION=1.0.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-svn/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME}/components/${APP_NAME}/* /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/bin/LINUX/PRODUCTION/${APP_NAME}
+sudo rm -rf /opt/${APP_NAME,,}/bin/win*
+echo 'LINNET_HOME=/opt/'${APP_NAME,,}'/bin/LINUX/PRODUCTION; export LINNET_HOME' >> $HOME/.bashrc
+echo 'PATH=$PATH:$LINNET_HOME; export PATH' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}/bin/LINUX/PRODUCTION
+PATH=/opt/${APP_NAME,,}/bin/LINUX/PRODUCTION:\$PATH; export PATH
+/opt/${APP_NAME,,}/bin/LINUX/PRODUCTION/${APP_NAME} "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}/bin/LINUX/PRODUCTION
+Exec=/opt/${APP_NAME,,}/bin/LINUX/PRODUCTION/${APP_NAME} "\$1"
+Icon=/opt/${APP_NAME,,}/doc/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;Science;Electronics;
+Keywords=Electronics;Circuits;
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
+
+# Install Eval minimalist console calculator from package
+APP_NAME=concalc
+APP_GUI_NAME="Cross-platform, minimalist console calculator."
+APP_VERSION=N/A
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eval-command-line-calculator/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/consolecalc/${APP_NAME} /usr/local/bin
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
+
+# Install FileRunner cross-platform, two-pane file manager with built-in FTP/SFTP client from package
+APP_NAME=FileRunner
+APP_GUI_NAME="Cross-platform, two-pane file manager with built-in FTP/SFTP client."
+APP_VERSION=18.05.18.00-2
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
