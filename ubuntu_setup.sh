@@ -9530,3 +9530,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Web Video Downloader Zenity GUI for cclive video download utility from package
+APP_NAME=WebVideoDownloader
+APP_GUI_NAME="Zenity GUI for cclive video download utility."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=${APP_NAME}
+sudo apt-get install -y zenity cclive
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}
+sudo mv /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/WebVideoDownloader
+sudo ln -s /usr/local/bin/${FILE_NAME} /usr/local/bin/wvdl
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
