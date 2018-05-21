@@ -7602,7 +7602,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Standard Notes Electron-based secure notepad from package
 APP_NAME=Standard-Notes
 APP_GUI_NAME="Electron-based secure notepad."
-APP_VERSION=2.1.21
+APP_VERSION=2.1.33
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/standardnotes/desktop/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
