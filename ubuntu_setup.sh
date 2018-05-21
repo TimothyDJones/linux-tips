@@ -5430,7 +5430,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Alpus cross-platform offline dictionary viewer from package
 APP_NAME=Alpus
 APP_GUI_NAME="Freeware cross-platform offline dictionary viewer."
-APP_VERSION=7.0
+APP_VERSION=7.5
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=-x64
