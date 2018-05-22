@@ -9565,8 +9565,6 @@ APP_EXT=snap
 FILE_NAME=${APP_NAME}_${APP_VERSION//.4/}_${KERNEL_TYPE}
 sudo apt-get install -y snapd snapd-xdg-open
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/icidasset/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-
-https://github.com/icidasset/diffuse/releases/download/1.0.0-alpha.4/Diffuse_1.0.0-alpha_amd64.snap
 sudo snap install --dangerous /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}
