@@ -1511,7 +1511,7 @@ rm -rf ${APP_NAME}*
 
 # Install BoostNote notepad/PIM from package
 APP_NAME=boostnote
-APP_VERSION=0.8.20
+APP_VERSION=0.11.5
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/BoostIO/boost-releases/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -9606,3 +9606,14 @@ EOF
 sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${FILE_NAME}*
+
+# Install Whale cross-platform advanced web browser from Debian package
+APP_NAME=Whale
+APP_GUI_NAME="Cross-platform advanced web browser."
+APP_VERSION=stable
+APP_EXT=deb
+FILE_NAME=naver-${APP_NAME,,}-${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://update.whale.naver.net/downloads/installers/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME},,*
