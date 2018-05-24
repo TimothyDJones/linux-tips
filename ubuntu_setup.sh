@@ -7017,7 +7017,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install TupiTube cross-platform 2D animation tool for amateur artists from package
 APP_NAME=TupiTube
 APP_GUI_NAME="Cross-platform 2D animation tool for amateur artists."
-APP_VERSION=0.2.10
+APP_VERSION=0.2.11
 APP_EXT=sh
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
