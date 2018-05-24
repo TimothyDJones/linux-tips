@@ -9665,7 +9665,7 @@ FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/quantumkv/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/*${APP_NAME},,*
+rm -rf /tmp/*${APP_NAME,,}*
 
 # Install MiluDBViewer cross-platform, Java-based multi-database (MySQL/PostgreSQL/Oracle/Cassandra/SQLite/SQLServer/MongoDB) viewer/editor client from package
 # Requires JRE 9 or later with JavaFX
@@ -9705,3 +9705,16 @@ EOF
 sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${FILE_NAME}*
+
+# Install SET's Editor simple Turbo C++-style console-mode text editor from Debian package
+APP_NAME=SETedit
+APP_GUI_NAME="Simple  Turbo C++-style console-mode text editor."
+APP_VERSION=0.5.8-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/rhtvision2.2.1_2.2.1-4_amd64.${APP_EXT} -J -L https://downloads.sourceforge.net/tvision/rhtvision2.2.1_2.2.1-4_amd64.${APP_EXT}
+sudo gdebi -n /tmp/rhtvision2.2.1_2.2.1-4_amd64.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME},,*
