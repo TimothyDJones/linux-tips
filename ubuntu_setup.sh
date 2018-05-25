@@ -9718,3 +9718,22 @@ sudo gdebi -n /tmp/rhtvision2.2.1_2.2.1-4_amd64.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME},,*
+
+# Install dotProject web-based tool for project management including Gantt charts
+# https://dotproject.net/
+APP_NAME=dotProject
+APP_VERSION=2.1.9
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo mkdir ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/install/index.php &
