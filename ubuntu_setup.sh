@@ -8524,7 +8524,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PHP Server Monitor web site and service monitoring platform
 APP_NAME=PHPServerMon
 APP_GUI_NAME="Web site and service monitoring platform."
-APP_VERSION=3.2.2
+APP_VERSION=3.3.0
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
