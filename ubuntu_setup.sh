@@ -9786,3 +9786,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/thombashi/${APP_NA
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install aria2 cross-platform, lightweight multi-protocol & multi-source, cross platform download utility which supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink from source
+APP_NAME=aria2
+APP_GUI_NAME="Cross-platform, lightweight multi-protocol & multi-source, cross platform download utility which supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink."
+APP_VERSION=1.34.0
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install libssh-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/aria2/aria2/releases/download/release-${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
