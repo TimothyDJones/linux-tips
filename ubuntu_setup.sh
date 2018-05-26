@@ -8065,17 +8065,19 @@ rm -rf /tmp/${APP_NAME,,}
 # Install CWED minimalist web-based C/C++ IDE
 APP_NAME=CWED
 APP_GUI_NAME="Minimalist web-based C/C++ IDE."
-APP_VERSION=N/A
+APP_VERSION=05262018
 APP_EXT=tar
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
 sudo apt-get install -y build-essential gdb make
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 sudo ./setcwmod.sh
 sudo ./install.sh
 cd /tmp
-sudo mv ${APP_NAME,,} ${WWW_HOME}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
 sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
@@ -8092,7 +8094,7 @@ Categories=Education;Development;Programming;
 Keywords=C;C++;Programming;IDE;Editor
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-xdg-open http://localhost/cwed/
+xdg-open http://localhost/${APP_NAME,,}/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
