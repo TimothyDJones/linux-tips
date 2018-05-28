@@ -7876,7 +7876,7 @@ APP_NAME=Writer2LaTeX
 APP_GUI_NAME="Java-based, command-line converters from OpenDocument Format (ODF/LibreOffice) to LaTeX/BibTeX, XHTML, XHTML+MathML and EPUB."
 APP_VERSION=1.6
 APP_EXT=zip
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION//./}beta.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
