@@ -345,7 +345,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.55.0.0-1
+APP_VERSION=1.55.1.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1135,7 +1135,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Sourceforge
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3693
+APP_VERSION_MINOR=3707
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-20_${KERNEL_TYPE}.deb
@@ -3844,7 +3844,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Sushi multi-panel web browser from package
 APP_NAME=sushi-browser
-APP_VERSION=0.14.6
+APP_VERSION=0.16.6
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sushib.me/dl/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4522,7 +4522,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JEditor Java-based text editor
 APP_NAME=jEditor
-APP_VERSION=0.4.14
+APP_VERSION=0.4.15
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_GPL-bin-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -7728,7 +7728,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Tiled Qt-based map tile editor from source
 APP_NAME=Tiled
 APP_GUI_NAME="Cross-platform Qt-based map tile editor."
-APP_VERSION=1.1.4
+APP_VERSION=1.1.5
 APP_EXT=tar.gz
 sudo apt-get install -y qt5-default qttools5-dev-tools zlib1g-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}%20${APP_VERSION}.${APP_EXT}
@@ -7876,7 +7876,7 @@ APP_NAME=Writer2LaTeX
 APP_GUI_NAME="Java-based, command-line converters from OpenDocument Format (ODF/LibreOffice) to LaTeX/BibTeX, XHTML, XHTML+MathML and EPUB."
 APP_VERSION=1.6
 APP_EXT=zip
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION//./}beta.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -8065,17 +8065,19 @@ rm -rf /tmp/${APP_NAME,,}
 # Install CWED minimalist web-based C/C++ IDE
 APP_NAME=CWED
 APP_GUI_NAME="Minimalist web-based C/C++ IDE."
-APP_VERSION=N/A
+APP_VERSION=05272018
 APP_EXT=tar
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
 sudo apt-get install -y build-essential gdb make
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 sudo ./setcwmod.sh
 sudo ./install.sh
 cd /tmp
-sudo mv ${APP_NAME,,} ${WWW_HOME}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
 sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
@@ -8092,7 +8094,7 @@ Categories=Education;Development;Programming;
 Keywords=C;C++;Programming;IDE;Editor
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-xdg-open http://localhost/cwed/
+xdg-open http://localhost/${APP_NAME,,}/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
@@ -8921,7 +8923,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Extraterm Electron-based, cross-platform terminal emulator from package
 APP_NAME=Extraterm
 APP_GUI_NAME="Electron-based, cross-platform terminal emulator."
-APP_VERSION=0.35.0
+APP_VERSION=0.35.1
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -9799,5 +9801,53 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install X11-Basic cross-platform Basic interpreter with graphics support from Debian package
+APP_NAME=x11basic
+APP_GUI_NAME="Cross-platform Basic interpreter with graphics support."
+APP_VERSION=1.25-49
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/x11-basic/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282832/libreadline6-dev_6.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
+curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282834/libreadline6_6.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/libreadline6.${APP_EXT}
+sudo gdebi -n /tmp/libreadline6.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install FriCAS computer algebra system from package
+APP_NAME=FriCAS
+APP_GUI_NAME="Computer algebra system."
+APP_VERSION=1.3.3
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo tar -C / -xvjf /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install LinSSID Qt-based GUI wireless network scanner from Debian package
+APP_NAME=LinSSID
+APP_GUI_NAME="Qt-based GUI wireless network scanner."
+APP_VERSION=3.1-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Devdom shell script to automate generating Apache virtual hosts from Debian package
+APP_NAME=Devdom
+APP_GUI_NAME="Shell script to automate generating Apache virtual hosts."
+APP_VERSION=N/A
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/angela-d/${APP_NAME,,}/raw/master/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
