@@ -389,9 +389,9 @@ sudo gdebi -n /tmp/${APP_NAME}.deb
 sudo ln -s /usr/local/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Configure CopyQ to autostart on system launch
 rm -f /tmp/${APP_NAME}*
 
-# Install Steel Bank Common Lisp (SBLC) from Sourceforge
+# Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.4.7
+APP_VERSION=1.4.8
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
