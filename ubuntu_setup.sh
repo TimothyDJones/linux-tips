@@ -9851,3 +9851,34 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/angela-d/${APP_NAM
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install PDF Chain graphical user interface for the PDF Toolkit (PDFtk) from source
+APP_NAME=PDFChain
+APP_GUI_NAME="Graphical user interface for the PDF Toolkit (PDFtk)."
+APP_VERSION=0.4.4.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtkmm-3.0-dev
+# Install PDFtk
+# PDFtk removed from repositories for Ubuntu 18.04 (Bionic Beaver), so we must install from Ubunutu 17.10 (Artful Aardvark) files in that case.  See these articles for details:
+# https://ubuntuforums.org/showthread.php?t=2390293
+# https://askubuntu.com/questions/1028522/how-can-i-install-pdftk-in-ubuntu-18-04-bionic
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi)$ ]]; then
+	sudo apt-get install -y gcc-6-base
+	cd /tmp
+	curl -o /tmp/libgcj-common.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/g/gcc-defaults/libgcj-common_6.4-3ubuntu1_all.deb
+	sudo gdebi -n /tmp/libgcj-common.deb
+	curl -o /tmp/libgcj17.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/g/gcc-6/libgcj17_6.4.0-8ubuntu1_amd64.deb
+	sudo gdebi -n /tmp/libgcj17.deb
+	curl -o /tmp/pdftk.deb -J -L http://mirrors.kernel.org/ubuntu/pool/universe/p/pdftk/pdftk_2.02-4build1_amd64.deb
+	sudo gdebi -n /tmp/pdftk.deb
+else
+	sudo apt-get install -y pdftk
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd ${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
