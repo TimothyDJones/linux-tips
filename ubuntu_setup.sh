@@ -2494,14 +2494,20 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Only Office Desktop Editor from package
 APP_NAME=onlyoffice-desktopeditors
-APP_VERSION=4.8
+APP_VERSION=5.1
 APP_EXT=deb
+FILE_NAME=${APP_NAME}_${KERNEL_TYPE}
 source /etc/lsb-release
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sourceforge.net/projects/teamlab/files/ONLYOFFICE_DesktopEditors/v${APP_VERSION}/ubuntu/${DISTRIB_RELEASE:0:2}/${APP_NAME}_${KERNEL_TYPE}.${APP_EXT}
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ze|ar|bi)$ ]]; then
+	DISTRIB_RELEASE=16
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(vi|wi)$ ]]; then
+	DISTRIB_RELEASE=14
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://sourceforge.net/projects/desktopeditors/files/v${APP_VERSION}/ubuntu/${DISTRIB_RELEASE:0:2}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Beige UML editor
 APP_NAME=beige-uml
