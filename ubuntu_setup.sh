@@ -9821,7 +9821,7 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/x11-basic/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282832/libreadline6-dev_6.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
-curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282834/libreadline6_6.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
+curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282834/libreadline6_6sudo ln -s /opt/${APP_NAME,,}/bin/${APP_NAME,,}.sh /usr/local/bin/${APP_NAME,,}.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/libreadline6.${APP_EXT}
 sudo gdebi -n /tmp/libreadline6.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -9900,5 +9900,44 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install MindRaider cross-platform, Java-based notepad, PIM, and outliner from package
+APP_NAME=MindRaider
+APP_GUI_NAME="Cross-platform, Java-based notepad, PIM, and outliner."
+APP_VERSION=15.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-allplatforms-release
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/bin/${APP_NAME,,}.sh
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}/bin
+PATH=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/bin:\$PATH; export PATH
+/opt/${APP_NAME,,}/bin/${APP_NAME,,}.sh "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}/bin
+Exec=/usr/local/bin/${APP_NAME,,} "\$1"
+Icon=/opt/${APP_NAME,,}/programIcon.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories
+Keywords=Editor;PIM;Outliner;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
