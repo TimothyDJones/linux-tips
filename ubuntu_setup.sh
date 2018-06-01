@@ -9977,3 +9977,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Battle for Wesnoth high-fantasy themed adventure game from source
+APP_NAME=Wesnoth
+APP_GUI_NAME="High-fantasy themed adventure game."
+APP_VERSION=1.14.2
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/bin -DENABLE_NLS=0 && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
