@@ -389,9 +389,9 @@ sudo gdebi -n /tmp/${APP_NAME}.deb
 sudo ln -s /usr/local/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Configure CopyQ to autostart on system launch
 rm -f /tmp/${APP_NAME}*
 
-# Install Steel Bank Common Lisp (SBLC) from Sourceforge
+# Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.4.7
+APP_VERSION=1.4.8
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -793,7 +793,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.9.1
+APP_VERSION=7.9.2
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -2138,36 +2138,39 @@ cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
 # Install Leo editor/IDE/PIM
-APP_NAME=Leo
-APP_VERSION=5.7b2
-APP_EXT=zip
+APP_NAME=Leo-Editor
+APP_GUI_NAME="Cross-platform, Python-based editor/IDE, outliner, and PIM."
+APP_VERSION=5.7.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y python3-pyqt5
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
-mv ${APP_NAME}-${APP_VERSION} ${APP_NAME,,}
-sudo mv ${APP_NAME,,} /opt
-cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
-PATH=/opt/${APP_NAME,,}:$PATH; export PATH
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
 python3 /opt/${APP_NAME,,}/launchLeo.py
 cd $HOME
 EOF
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
-Name=Leo Editor
-Comment=Cross-platform text edtior/IDE/PIM
-GenericName=IDE
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
 Exec=python3 /opt/${APP_NAME,,}/launchLeo.py
-Icon=/opt/${APP_NAME,,}/${APP_NAME,,}/Icons/LeoApp.ico
+Icon=/opt/${APP_NAME,,}/leo/Icons/LeoApp.ico
 Type=Application
 StartupNotify=true
 Terminal=true
-Categories=Programming;Development;
+Categories=Programming;Development;Accessories;
 Keywords=Editor;IDE;Python;PIM
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
@@ -2433,7 +2436,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 
 # Install DK Tools system utility from source
 APP_NAME=dktools
-APP_VERSION=4.15.0
+APP_VERSION=4.16.0
 APP_EXT=tar.gz
 KERNEL_TYPE=getKernelType()
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -2491,14 +2494,20 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Only Office Desktop Editor from package
 APP_NAME=onlyoffice-desktopeditors
-APP_VERSION=4.8
+APP_VERSION=5.1
 APP_EXT=deb
+FILE_NAME=${APP_NAME}_${KERNEL_TYPE}
 source /etc/lsb-release
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sourceforge.net/projects/teamlab/files/ONLYOFFICE_DesktopEditors/v${APP_VERSION}/ubuntu/${DISTRIB_RELEASE:0:2}/${APP_NAME}_${KERNEL_TYPE}.${APP_EXT}
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ze|ar|bi)$ ]]; then
+	DISTRIB_RELEASE=16
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(vi|wi)$ ]]; then
+	DISTRIB_RELEASE=14
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://sourceforge.net/projects/desktopeditors/files/v${APP_VERSION}/ubuntu/${DISTRIB_RELEASE:0:2}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Beige UML editor
 APP_NAME=beige-uml
@@ -3619,7 +3628,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 
 # Install Admidio organizational management tool
 APP_NAME=admidio
-APP_VERSION=3.3.3
+APP_VERSION=3.3.4
 APP_EXT=zip
 DB_NAME=admidio
 DB_USER=admidio
@@ -4522,7 +4531,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JEditor Java-based text editor
 APP_NAME=jEditor
-APP_VERSION=0.4.15
+APP_VERSION=0.4.17
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_GPL-bin-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -4957,7 +4966,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=18.3
+APP_VERSION=18.4
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -5078,7 +5087,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install ProjectLibre Java-based project management tool from package
 APP_NAME=ProjectLibre
-APP_VERSION=1.7.0-1
+APP_VERSION=1.8.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -9673,7 +9682,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Requires JRE 9 or later with JavaFX
 APP_NAME=MiluDBViewer
 APP_GUI_NAME="Cross-platform, Java-based multi-database (MySQL/PostgreSQL/Oracle/Cassandra/SQLite/SQLServer/MongoDB) viewer/editor client."
-APP_VERSION=0.1.8
+APP_VERSION=0.1.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -9812,7 +9821,7 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/x11-basic/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282832/libreadline6-dev_6.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
-curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282834/libreadline6_6.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
+curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282834/libreadline6_6sudo ln -s /opt/${APP_NAME,,}/bin/${APP_NAME,,}.sh /usr/local/bin/${APP_NAME,,}.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/libreadline6.${APP_EXT}
 sudo gdebi -n /tmp/libreadline6.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -9851,3 +9860,136 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/angela-d/${APP_NAM
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install PDF Chain graphical user interface for the PDF Toolkit (PDFtk) from source
+APP_NAME=PDFChain
+APP_GUI_NAME="Graphical user interface for the PDF Toolkit (PDFtk)."
+APP_VERSION=0.4.4.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtkmm-3.0-dev
+# Install PDFtk
+# PDFtk removed from repositories for Ubuntu 18.04 (Bionic Beaver), so we must install from Ubunutu 17.10 (Artful Aardvark) files in that case.  See these articles for details:
+# https://ubuntuforums.org/showthread.php?t=2390293
+# https://askubuntu.com/questions/1028522/how-can-i-install-pdftk-in-ubuntu-18-04-bionic
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi)$ ]]; then
+	sudo apt-get install -y gcc-6-base
+	cd /tmp
+	curl -o /tmp/libgcj-common.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/g/gcc-defaults/libgcj-common_6.4-3ubuntu1_all.deb
+	sudo gdebi -n /tmp/libgcj-common.deb
+	curl -o /tmp/libgcj17.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/g/gcc-6/libgcj17_6.4.0-8ubuntu1_amd64.deb
+	sudo gdebi -n /tmp/libgcj17.deb
+	curl -o /tmp/pdftk.deb -J -L http://mirrors.kernel.org/ubuntu/pool/universe/p/pdftk/pdftk_2.02-4build1_amd64.deb
+	sudo gdebi -n /tmp/pdftk.deb
+else
+	sudo apt-get install -y pdftk
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd ${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install MindForger notepad and Markdown editor/IDE with built-in preview from Debian package
+APP_NAME=MindForger
+APP_GUI_NAME="Notepad and Markdown editor/IDE with built-in preview."
+APP_VERSION=1.42.0-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install MindRaider cross-platform, Java-based notepad, PIM, and outliner from package
+APP_NAME=MindRaider
+APP_GUI_NAME="Cross-platform, Java-based notepad, PIM, and outliner."
+APP_VERSION=15.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-allplatforms-release
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/bin/${APP_NAME,,}.sh
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}/bin
+PATH=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/bin:\$PATH; export PATH
+/opt/${APP_NAME,,}/bin/${APP_NAME,,}.sh "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}/bin
+Exec=/usr/local/bin/${APP_NAME,,} "\$1"
+Icon=/opt/${APP_NAME,,}/programIcon.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories
+Keywords=Editor;PIM;Outliner;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install BackDrop Java-based image editor for multi-monitor wallpaper creation from package
+APP_NAME=BackDrop
+APP_GUI_NAME="Cross-platform, Java-based image editor for multi-monitor wallpaper creation."
+APP_VERSION=N/A
+APP_EXT=jar
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME}.${APP_EXT} "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}.${APP_EXT} "\$1"
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Graphics;Accessories;
+Keywords=Editor;Wallpaper;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Battle for Wesnoth high-fantasy themed adventure game from source
+APP_NAME=Wesnoth
+APP_GUI_NAME="High-fantasy themed adventure game."
+APP_VERSION=1.14.2
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/bin -DENABLE_NLS=0 && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
