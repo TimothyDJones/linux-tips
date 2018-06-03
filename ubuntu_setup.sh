@@ -9993,3 +9993,17 @@ mkdir build && cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/bin -DENABLE_NLS=0 && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install WAV Audio Compressor from source
+APP_NAME=Compressor
+APP_GUI_NAME="Command-line WAV audio compressor."
+APP_VERSION=0.30
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION//./}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+gcc compress.c -o compress && sudo mv compress /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
