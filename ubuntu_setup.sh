@@ -9945,9 +9945,9 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install BackDrop Java-based image editor for multi-monitor wallpaper creation from package
 APP_NAME=BackDrop
 APP_GUI_NAME="Cross-platform, Java-based image editor for multi-monitor wallpaper creation."
-APP_VERSION=N/A
+APP_VERSION=v1-0
 APP_EXT=jar
-FILE_NAME=${APP_NAME}
+FILE_NAME=${APP_NAME}-Linux-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
