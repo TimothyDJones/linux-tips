@@ -10012,3 +10012,20 @@ cd /tmp/${FILE_NAME}
 gcc compress.c -o compress && sudo mv compress /usr/local/bin
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install bashj utility to allow use of native Java code in Bash shell scripts from package
+# http://fil.gonze.org/wikiPG/index.php/Project_bashj_:_a_bash_mutant_with_java_support
+APP_NAME=bashj
+APP_GUI_NAME="Utility to allow use of native Java code in Bash shell scripts."
+APP_VERSION=N/A
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}Install
+sudo apt-get install -y openjdk-9-jdk  # Java 9 or later required!
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+java -jar /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+gcc compress.c -o compress && sudo mv compress /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
