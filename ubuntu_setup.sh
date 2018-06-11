@@ -85,6 +85,11 @@ sudo apt-get install -y vim vim-gtk3 vim-common \
 	git git-svn \
 	nodejs
 
+# Install Yarn package manager (must install NodeJS from package repo first)
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install -y yarn
+
 # Install MongoDB from official repository
 # https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 APP_NAME=mongodb
