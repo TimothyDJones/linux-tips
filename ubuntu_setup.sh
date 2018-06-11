@@ -350,7 +350,7 @@ rm -f /tmp/vivaldi.deb
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.55.3.0-1
+APP_VERSION=1.56.3.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -10022,10 +10022,15 @@ APP_EXT=jar
 FILE_NAME=${APP_NAME,,}Install
 sudo apt-get install -y openjdk-9-jdk  # Java 9 or later required!
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-java -jar /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
-gcc compress.c -o compress && sudo mv compress /usr/local/bin
+sudo mkdir -m=777 /var/lib/bashj/
+mv /tmp/${FILE_NAME}.${APP_EXT} /var/lib/bashj/
+cd /var/lib/bashj/
+jar xvf ./${FILE_NAME}.${APP_EXT}
+chmod +x ./bashjInstall
+sudo ./bashjInstall
+# Add configuration settings to .bashrc
+echo '# Initialize bashj extensions' >> $HOME/.bashrc
+echo '. jsbInit && jsbStart' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
