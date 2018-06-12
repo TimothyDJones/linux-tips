@@ -10034,3 +10034,40 @@ echo '. jsbInit && jsbStart' >> $HOME/.bashrc
 source $HOME/.bashrc	# Reload Bash configuration
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Query Light Java/JDBC-based Oracle database client from package
+# https://github.com/milind-brahme/query-light
+APP_NAME=QueryLight
+APP_GUI_NAME="Java/JDBC-based Oracle database client."
+APP_VERSION=N/A
+APP_EXT=jar
+FILE_NAME=runsql_anony
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/query-light-light-orcl-client/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT} "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT} "\$1"
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;Accessories;
+Keywords=Database;Oracle;Java;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
