@@ -4326,7 +4326,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Riot instant messenger/collaboration platform from package
 APP_NAME=riot-web
-APP_VERSION=0.13.4
+APP_VERSION=0.15.5
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://riot.im/packages/debian/pool/main/r/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
