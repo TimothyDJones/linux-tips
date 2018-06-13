@@ -10123,3 +10123,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install tmount minimalist block device/removable media mounting utility from source
+APP_NAME=tmount
+APP_GUI_NAME="Minimalist block device/removable media mounting utility."
+APP_VERSION=0.0.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y qtbase5-dev qt5-qmake qt5-default qttools5-dev-tools udevil libudev-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/abwaldner/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+qtchooser -run-tool=qmake -qt=5 ${APP_NAME}.pro && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
