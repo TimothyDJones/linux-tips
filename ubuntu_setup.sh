@@ -9147,11 +9147,15 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install tkdiff Tcl-based text file difference viewer/editor from source
 APP_NAME=tkdiff
 APP_GUI_NAME="Tcl-based text file difference viewer/editor."
-APP_VERSION=4.3devel
-APP_EXT=N/A
+APP_VERSION=4.3
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION/./-}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib
-git svn clone https://svn.code.sf.net/p/${APP_NAME,,}/code/branches/v${APP_VERSION}/ /tmp/${APP_NAME,,}
-sudo mv /tmp/${APP_NAME,,} /opt
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 
 # Install FreeBASIC cross-platform BASIC compiler, with syntax similar MS-QuickBASIC and advanced features from package
