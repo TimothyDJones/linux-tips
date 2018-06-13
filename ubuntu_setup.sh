@@ -10071,3 +10071,12 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Zippy IP Scanner cross-platform Python/Qt-based GUI IP scanner from package
+# https://github.com/swprojects/Zippy-Ip-Scanner
+APP_NAME=Zippy-IP-Scanner
+APP_GUI_NAME="Cross-platform Python/Qt-based GUI IP scanner."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo pip3 install ${APP_NAME,,}
