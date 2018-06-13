@@ -10138,3 +10138,10 @@ cd /tmp/${FILE_NAME}
 qtchooser -run-tool=qmake -qt=5 ${APP_NAME}.pro && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Y PPA Manager GUI management utility of PPA repositories from PPA
+APP_NAME=Y-PPA-Manager
+sudo add-apt-repository -y ppa:webupd8team/${APP_NAME,,}
+sudo apt-get update
+sudo apt-get install -y ${APP_NAME,,}
+
