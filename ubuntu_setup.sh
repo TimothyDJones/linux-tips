@@ -10177,3 +10177,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install WordPress Desktop application from package
+APP_NAME=WordPress-Desktop
+APP_GUI_NAME="Desktop editor for blogging on WordPress.com."
+APP_VERSION=3.3.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?type=${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
