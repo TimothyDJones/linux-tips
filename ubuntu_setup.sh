@@ -10145,3 +10145,35 @@ sudo add-apt-repository -y ppa:webupd8team/${APP_NAME,,}
 sudo apt-get update
 sudo apt-get install -y ${APP_NAME,,}
 
+# Install OpenTodoList cross-platform, Qt-based "To Do" list and task management from AppImage
+APP_NAME=OpenTodoList
+APP_GUI_NAME="Cross-platform, Qt-based \"To Do\" list and task management."
+APP_VERSION=3.8.0
+APP_EXT=AppImage
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+FILE_NAME=${APP_NAME}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mhoeher/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;
+Keywords=ToDo;Productivity;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
