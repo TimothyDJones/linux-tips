@@ -1521,7 +1521,7 @@ rm -rf ${APP_NAME}*
 
 # Install BoostNote notepad/PIM from package
 APP_NAME=boostnote
-APP_VERSION=0.11.5 
+APP_VERSION=0.11.6
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/BoostIO/boost-releases/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
