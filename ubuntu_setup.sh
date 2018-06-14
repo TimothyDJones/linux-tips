@@ -343,10 +343,15 @@ sudo add-apt-repository -y ppa:webupd8team/atom
 sudo apt-get update -y
 sudo apt-get install -y atom
 
-# Install Vivaldi web browser (stable version)
-wget -O /tmp/vivaldi.deb https://downloads.vivaldi.com/stable/vivaldi-stable_1.11.917.39-1_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/vivaldi.deb
-rm -f /tmp/vivaldi.deb
+# Install Vivaldi web browser (stable version) from package
+APP_NAME=Vivaldi
+APP_VERSION=1.15.1147.47-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -f /tmp/*${APP_NAME,,}*
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
