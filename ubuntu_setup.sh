@@ -10200,4 +10200,8 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-
+# Install Enpass cross-platform desktop password manager from PPA
+APP_NAME=Enpass
+curl -sL https://dl.sinew.in/keys/enpass-linux.key | sudo apt-key add -
+echo "deb http://repo.sinew.in/ stable main" | sudo tee /etc/apt/sources.list.d/enpass.list
+sudo apt-get update && sudo apt-get install -y enpass
