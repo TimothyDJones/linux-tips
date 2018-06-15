@@ -8817,7 +8817,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install EtherApe GTK-based GUI network monitoring tool from source
 APP_NAME=EtherApe
 APP_GUI_NAME="GTK-based GUI network monitoring tool."
-APP_VERSION=0.9.17
+APP_VERSION=0.9.18
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libglade2-dev libgnomecanvas2-dev libpcap-dev itstool libpopt-dev
