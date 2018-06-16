@@ -10319,3 +10319,22 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Vidiot cross-platform non-linear video editor from package
+APP_NAME=Vidiot
+APP_GUI_NAME="Cross-platform non-linear video editor."
+APP_VERSION=0.3.24
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_VERSION}-win64
+source /etc/lsb-release
+# If Ubuntu version is above 17.10 (Artful), then we install 17.04 version of libva1.
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi)$ ]]; then
+	curl -o /tmp/libva1.deb -J -L http://mirrors.cat.pdx.edu/ubuntu/pool/universe/libv/libva/libva1_1.8.3-2_amd64.deb
+	sudo gdebi -n /tmp/libva1.deb
+else
+	sudo apt-get install -y libva1
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
