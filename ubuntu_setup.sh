@@ -10066,9 +10066,9 @@ rm -rf /tmp/*${APP_NAME}*
 # http://fil.gonze.org/wikiPG/index.php/Project_bashj_:_a_bash_mutant_with_java_support
 APP_NAME=bashj
 APP_GUI_NAME="Utility to allow use of native Java code in Bash shell scripts."
-APP_VERSION=N/A
+APP_VERSION=0.991
 APP_EXT=jar
-FILE_NAME=${APP_NAME,,}Install
+FILE_NAME=${APP_NAME,,}Install-${APP_VERSION}
 sudo apt-get install -y openjdk-9-jdk  # Java 9 or later required!
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo mkdir -m=777 /var/lib/bashj/
