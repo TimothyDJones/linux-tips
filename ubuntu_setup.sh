@@ -85,6 +85,11 @@ sudo apt-get install -y vim vim-gtk3 vim-common \
 	git git-svn \
 	nodejs
 
+# Install Yarn package manager (must install NodeJS from package repo first)
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install -y yarn
+
 # Install MongoDB from official repository
 # https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 APP_NAME=mongodb
@@ -338,14 +343,19 @@ sudo add-apt-repository -y ppa:webupd8team/atom
 sudo apt-get update -y
 sudo apt-get install -y atom
 
-# Install Vivaldi web browser (stable version)
-wget -O /tmp/vivaldi.deb https://downloads.vivaldi.com/stable/vivaldi-stable_1.11.917.39-1_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/vivaldi.deb
-rm -f /tmp/vivaldi.deb
+# Install Vivaldi web browser (stable version) from package
+APP_NAME=Vivaldi
+APP_VERSION=1.15.1147.47-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -f /tmp/*${APP_NAME,,}*
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.55.3.0-1
+APP_VERSION=1.56.4.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1135,7 +1145,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Sourceforge
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3707
+APP_VERSION_MINOR=3748
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-20_${KERNEL_TYPE}.deb
@@ -1511,7 +1521,7 @@ rm -rf ${APP_NAME}*
 
 # Install BoostNote notepad/PIM from package
 APP_NAME=boostnote
-APP_VERSION=0.11.5 
+APP_VERSION=0.11.6
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/BoostIO/boost-releases/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1635,7 +1645,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Sidu database web GUI
 APP_NAME=sidu
-APP_VERSION=55
+APP_VERSION=60
 APP_EXT=zip
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -1788,7 +1798,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.0.9
+APP_VERSION=7.1.2
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2204,7 +2214,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=groupoffice
-APP_VERSION=6.3.6
+APP_VERSION=6.3.14
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME}
 DB_USER=${APP_NAME}
@@ -3029,7 +3039,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2018.6
+APP_VERSION=1.2018.7
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -3853,7 +3863,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Sushi multi-panel web browser from package
 APP_NAME=sushi-browser
-APP_VERSION=0.17.4
+APP_VERSION=0.18.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sushib.me/dl/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4321,7 +4331,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Riot instant messenger/collaboration platform from package
 APP_NAME=riot-web
-APP_VERSION=0.13.4
+APP_VERSION=0.15.5
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://riot.im/packages/debian/pool/main/r/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4382,7 +4392,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install GNU nano text editor from source
 APP_NAME=nano
-APP_VERSION=2.9.5
+APP_VERSION=2.9.8
 APP_EXT=tar.xz
 sudo apt-get install -y libncurses5-dev libncursesw5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://nano-editor.org/dist/v2.9/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -4531,7 +4541,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JEditor Java-based text editor
 APP_NAME=jEditor
-APP_VERSION=0.4.17
+APP_VERSION=0.4.18
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_GPL-bin-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -5378,7 +5388,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install SMPlayer Qt-based MPlayer front-end audio/video player with support for YouTube from source
 APP_NAME=SMPlayer
 APP_GUI_NAME="Cross-platform Qt-based audio/video player with support for YouTube."
-APP_VERSION=17.12.0
+APP_VERSION=18.5.0
 APP_EXT=tar.bz2
 sudo apt-get install -y qtbase5-dev qt5-qmake qt5-default qtscript5-dev qttools5-dev-tools qtbase5-private-dev libqt5webkit5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -5439,7 +5449,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Alpus cross-platform offline dictionary viewer from package
 APP_NAME=Alpus
 APP_GUI_NAME="Freeware cross-platform offline dictionary viewer."
-APP_VERSION=7.5
+APP_VERSION=7.6
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=-x64
@@ -6809,7 +6819,7 @@ cargo install --git https://github.com/jmacdonald/${APP_NAME,,}/ --tag ${APP_VER
 # Install Fractalscope Qt-based fractal explorer from source
 APP_NAME=Fractalscope
 APP_GUI_NAME="Cross-platform Qt-based fractal explorer."
-APP_VERSION=1.1.0
+APP_VERSION=1.1.3
 APP_EXT=tar.gz
 sudo apt-get install -y qt5-default yasm
 # Install MPIR (Multiple Precision Integers and Rationals) LGPL C library
@@ -8807,7 +8817,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install EtherApe GTK-based GUI network monitoring tool from source
 APP_NAME=EtherApe
 APP_GUI_NAME="GTK-based GUI network monitoring tool."
-APP_VERSION=0.9.17
+APP_VERSION=0.9.18
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libglade2-dev libgnomecanvas2-dev libpcap-dev itstool libpopt-dev
@@ -9142,11 +9152,15 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install tkdiff Tcl-based text file difference viewer/editor from source
 APP_NAME=tkdiff
 APP_GUI_NAME="Tcl-based text file difference viewer/editor."
-APP_VERSION=4.3devel
-APP_EXT=N/A
+APP_VERSION=4.3
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION/./-}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib
-git svn clone https://svn.code.sf.net/p/${APP_NAME,,}/code/branches/v${APP_VERSION}/ /tmp/${APP_NAME,,}
-sudo mv /tmp/${APP_NAME,,} /opt
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 
 # Install FreeBASIC cross-platform BASIC compiler, with syntax similar MS-QuickBASIC and advanced features from package
@@ -9682,7 +9696,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Requires JRE 9 or later with JavaFX
 APP_NAME=MiluDBViewer
 APP_GUI_NAME="Cross-platform, Java-based multi-database (MySQL/PostgreSQL/Oracle/Cassandra/SQLite/SQLServer/MongoDB) viewer/editor client."
-APP_VERSION=0.1.9
+APP_VERSION=0.2.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -10008,6 +10022,7 @@ gcc compress.c -o compress && sudo mv compress /usr/local/bin
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
+<<<<<<< HEAD
 # Install Piskvorky cross-platform, Qt-based Gomoku game from package
 APP_NAME=Piskvorky
 APP_GUI_NAME="Cross-platform, Qt-based Gomoku game."
@@ -10046,3 +10061,225 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install bashj utility to allow use of native Java code in Bash shell scripts from package
+# http://fil.gonze.org/wikiPG/index.php/Project_bashj_:_a_bash_mutant_with_java_support
+APP_NAME=bashj
+APP_GUI_NAME="Utility to allow use of native Java code in Bash shell scripts."
+APP_VERSION=N/A
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}Install
+sudo apt-get install -y openjdk-9-jdk  # Java 9 or later required!
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -m=777 /var/lib/bashj/
+mv /tmp/${FILE_NAME}.${APP_EXT} /var/lib/bashj/
+cd /var/lib/bashj/
+jar xvf ./${FILE_NAME}.${APP_EXT}
+chmod +x ./bashjInstall
+sudo ./bashjInstall
+# Add configuration settings to .bashrc
+echo '# Initialize bashj extensions' >> $HOME/.bashrc
+echo '. jsbInit && jsbStart' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Query Light Java/JDBC-based Oracle database client from package
+# https://github.com/milind-brahme/query-light
+APP_NAME=QueryLight
+APP_GUI_NAME="Java/JDBC-based Oracle database client."
+APP_VERSION=N/A
+APP_EXT=jar
+FILE_NAME=runsql_anony
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/query-light-light-orcl-client/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT} "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT} "\$1"
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;Accessories;
+Keywords=Database;Oracle;Java;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Zippy IP Scanner cross-platform Python/Qt-based GUI IP scanner from package
+# https://github.com/swprojects/Zippy-Ip-Scanner
+APP_NAME=Zippy-IP-Scanner
+APP_GUI_NAME="Cross-platform Python/Qt-based GUI IP scanner."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo pip3 install ${APP_NAME,,}
+
+# Install RecordEditor Java-based, GUI CSV/XML file editor from package
+# https://github.com/milind-brahme/query-light
+APP_NAME=RecordEditor
+APP_GUI_NAME="Java-based, GUI CSV/XML file editor."
+APP_VERSION=0.98.5
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_USB_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/record-editor/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME}_USB/* /opt/${APP_NAME}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME}
+PATH=/opt/${APP_NAME}:\$PATH; export PATH
+sh /opt/${APP_NAME}/${APP_NAME}.sh "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME}
+Exec=/usr/local/bin/${APP_NAME,,} "\$1"
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;Accessories;
+Keywords=Database;Java;CSV;XML
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install tmount minimalist block device/removable media mounting utility from source
+APP_NAME=tmount
+APP_GUI_NAME="Minimalist block device/removable media mounting utility."
+APP_VERSION=0.0.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y qtbase5-dev qt5-qmake qt5-default qttools5-dev-tools udevil libudev-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/abwaldner/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+qtchooser -run-tool=qmake -qt=5 ${APP_NAME}.pro && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Y PPA Manager GUI management utility of PPA repositories from PPA
+APP_NAME=Y-PPA-Manager
+sudo add-apt-repository -y ppa:webupd8team/${APP_NAME,,}
+sudo apt-get update
+sudo apt-get install -y ${APP_NAME,,}
+
+# Install OpenTodoList cross-platform, Qt-based "To Do" list and task management from AppImage
+APP_NAME=OpenTodoList
+APP_GUI_NAME="Cross-platform, Qt-based \"To Do\" list and task management."
+APP_VERSION=3.8.0
+APP_EXT=AppImage
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+FILE_NAME=${APP_NAME}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mhoeher/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;
+Keywords=ToDo;Productivity;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install WordPress Desktop application from package
+APP_NAME=WordPress-Desktop
+APP_GUI_NAME="Desktop editor for blogging on WordPress.com."
+APP_VERSION=3.3.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?type=${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install ElCalc minimalist cross-platform desktop calculator built with Electron from package
+APP_NAME=ElCalc
+APP_GUI_NAME="Minimalist cross-platform desktop calculator built with Electron."
+APP_VERSION=4.0.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/4.2/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Enpass cross-platform desktop password manager from PPA
+APP_NAME=Enpass
+curl -sL https://dl.sinew.in/keys/enpass-linux.key | sudo apt-key add -
+echo "deb http://repo.sinew.in/ stable main" | sudo tee /etc/apt/sources.list.d/enpass.list
+sudo apt-get update && sudo apt-get install -y enpass
+
+# Install Waterfox web browser from package
+APP_NAME=Waterfox
+APP_GUI_NAME="Cross-platform web browser."
+APP_VERSION=56.2.1
+APP_EXT=tar.bz2
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/* /opt
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/browser/icons/mozicon128.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;Network;Networking;
+Keywords=Firefox;Browser;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
