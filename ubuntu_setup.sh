@@ -9585,7 +9585,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Diffuse cross-platform, local and cloud account (AWS S3, Dropbox, Google Drive, etc.) audio player from Snap package
 APP_NAME=Diffuse
 APP_GUI_NAME="Cross-platform, local and cloud account (AWS S3, Dropbox, Google Drive, etc.) audio player."
-APP_VERSION=1.0.0-alpha.4
+APP_VERSION=1.0.0-beta
 APP_EXT=snap
 FILE_NAME=${APP_NAME}_${APP_VERSION//.4/}_${KERNEL_TYPE}
 sudo apt-get install -y snapd snapd-xdg-open
