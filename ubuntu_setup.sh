@@ -3863,7 +3863,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Sushi multi-panel web browser from package
 APP_NAME=sushi-browser
-APP_VERSION=0.18.0
+APP_VERSION=0.18.1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://sushib.me/dl/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
