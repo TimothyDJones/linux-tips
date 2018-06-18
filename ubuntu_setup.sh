@@ -10391,3 +10391,43 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Project GoldStars Calculator cross-platform, Java-based command-line and GUI calculators from package
+APP_NAME="Project GoldStars Calculator"
+APP_GUI_NAME="Cross-platform, Java-based command-line and GUI calculators."
+APP_VERSION="2.3 Update 2"
+APP_EXT=jar
+FILE_NAME=${APP_NAME// /.}.S.${APP_VERSION// /.}
+DIR_NAME=${APP_NAME,,// /}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ShakeelAlibhai/${APP_NAME// /}S/releases/download/v${APP_VERSION// Update /.}/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${DIR_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${DIR_NAME,,}
+cat > /tmp/${DIR_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${DIR_NAME,,}
+Exec=java -jar /opt/${DIR_NAME,,}/${FILE_NAME}.jar
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Education;
+Keywords=Math;Calculator;
+EOF
+sudo mv /tmp/${DIR_NAME,,}.desktop /usr/share/applications/
+FILE_NAME=${FILE_NAME//.S./.C.}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ShakeelAlibhai/${APP_NAME// /}S/releases/download/v${APP_VERSION// Update /.}/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${DIR_NAME,,}
+cat > /tmp/${DIR_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${DIR_NAME,,}
+PATH=/opt/${DIR_NAME,,}:\$PATH; export PATH
+java -jar /opt/${DIR_NAME,,}/${FILE_NAME}.jar "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${DIR_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
