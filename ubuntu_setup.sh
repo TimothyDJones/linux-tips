@@ -10478,3 +10478,24 @@ cd /tmp/${FILE_NAME}
 ./autogen.sh && ./usrinst.sh && make && sudo make install && sudo make install_config
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Bibletime cross-platform Bible study software using Crosswire SWORD toolkit from source
+# Crosswire SWORD toolkit must be install FIRST; see above.
+APP_NAME=Bibletime
+APP_GUI_NAME="Cross-platform Bible study software using Crosswire SWORD toolkit."
+APP_VERSION=2.11.2
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y qt5-default cmake libclucene-dev libqt5svg5-dev libqt5webkit5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+# Update minimum version of Qt library to 5.5 for CMake
+UPDATE_STRING=s/REQUIRED_QT_VERSION 5.9/REQUIRED_QT_VERSION 5.5/g
+sudo sed -i ${UPDATE_STRING} /tmp/${FILE_NAME}/CMakeLists.txt
+mkdir -p ./build && cd ./build
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+make clean && make && sudo make -j4 install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
