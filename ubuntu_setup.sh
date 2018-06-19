@@ -10584,3 +10584,10 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install aclh Python-based asynchronous command-line HTTP client via PIP
+APP_NAME=aclh
+APP_GUI_NAME="Cross-platform, Python-based asynchronous command-line HTTP client."
+APP_VERSION=N/A
+APP_EXT=N/A
+sudo pip3 install git+https://github.com/kanishka-linux/aclh.git
