@@ -10591,3 +10591,21 @@ APP_GUI_NAME="Cross-platform, Python-based asynchronous command-line HTTP client
 APP_VERSION=N/A
 APP_EXT=N/A
 sudo pip3 install git+https://github.com/kanishka-linux/aclh.git
+
+# Install WebComics minimalist PyQt-based desktop tool for reading web comics from package
+APP_NAME=WebComics
+APP_GUI_NAME="Minimalist PyQt-based desktop tool for reading web comics."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install python3-pyqt5
+sudo pip3 install pillow bs4
+sudo pip3 install git+https://github.com/kanishka-linux/vinanti.git
+cd /tmp
+git clone https://github.com/kanishka-linux/${APP_NAME}
+cd /tmp/${APP_NAME}
+python3 setup.py sdist
+cd /tmp/${APP_NAME}/dist
+sudo pip3 install ${APP_NAME}*
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
