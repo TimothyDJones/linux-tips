@@ -10499,3 +10499,43 @@ cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
 make clean && make && sudo make -j4 install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install CloudFiler cross-platorm, Python-based Amazon S3/Google Cloud client from package
+APP_NAME=CloudFiler
+APP_GUI_NAME="Cross-platform, Python-based Amazon S3/Google Cloud client."
+APP_VERSION=1.3
+APP_EXT=zip
+FILE_NAME=${APP_NAME}Source_${APP_VERSION}
+sudo apt-get install -y python-wxgtk3.0 python-wxtools wx3.0-i18n python-boto python-keyring python-passlib
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/cloud-filer/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo ./install.sh
+sudo rm -rf $HOME/.local/share/applications/${APP_NAME,,}.desktop
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /usr/local/${APP_NAME}
+PATH=/usr/local/${APP_NAME}:\$PATH; export PATH
+python /usr/local/${APP_NAME}/python/${APP_NAME}.py
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${DIR_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/${APP_NAME}
+Exec=python /usr/local/${APP_NAME}/python/${APP_NAME}.py
+Icon=/usr/local/${APP_NAME}/python/images/${APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;Networking;
+Keywords=Amazon;S3;Google;Cloud;
+EOF
+sudo mv /tmp/${DIR_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
