@@ -10662,3 +10662,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
+
+# Install UnNetHack Roguelike adventure game forked from NetHack from source
+APP_NAME=UnNetHack
+APP_GUI_NAME="Roguelike adventure game forked from NetHack."
+APP_VERSION=5.1.0-20131208
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y flex bison libncursesw5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make -j4 install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
