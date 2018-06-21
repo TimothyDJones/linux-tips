@@ -10638,3 +10638,15 @@ cd /tmp/${FILE_NAME}
 sudo python3 setup.py install --prefix=/usr/local
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Orange Calculator minimalist Java-based calculator from Debian package
+# http://www.wagemaker.co.uk/
+APP_NAME=OrangeCalc
+APP_GUI_NAME="Minimalist Java-based calculator."
+APP_VERSION=1.5.8
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/orangecalculator/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
