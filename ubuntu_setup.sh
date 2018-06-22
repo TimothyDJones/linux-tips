@@ -10677,3 +10677,21 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make -j4 install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install lf cross-platform, Go-based file manager for the shell/console from package
+APP_NAME=lf
+APP_GUI_NAME="Cross-platform, Go-based file manager for the shell/console."
+APP_VERSION=r5
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=386
+fi
+FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/gokcehan/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
