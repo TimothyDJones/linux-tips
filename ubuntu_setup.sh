@@ -415,7 +415,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Otter Browser from Sourceforge (from source)
 APP_NAME=otter-browser
-APP_VERSION=0.9.99-dev232
+APP_VERSION=0.9.99-dev233
 APP_EXT=tar.bz2
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev   # Qt5 development packages needed to build from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -803,7 +803,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.9.3
+APP_VERSION=7.10
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1145,7 +1145,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Sourceforge
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3748
+APP_VERSION_MINOR=3755
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-20_${KERNEL_TYPE}.deb
@@ -1191,7 +1191,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Tagstoo file tag manager
 APP_NAME=Tagstoo
-APP_VERSION=1.9.1
+APP_VERSION=1.10.2
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
@@ -2214,7 +2214,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=groupoffice
-APP_VERSION=6.3.14
+APP_VERSION=6.3.15
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME}
 DB_USER=${APP_NAME}
@@ -2263,7 +2263,7 @@ xdg-open http://localhost/${APP_NAME,,}/www/index.php &
 
 # Install Brackets text editor from package
 APP_NAME=Brackets
-APP_VERSION=1.12
+APP_VERSION=1.13
 APP_EXT=deb
 	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 		ARCH_TYPE=64-bit
@@ -3416,7 +3416,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Buttercup JavaScript/Electron desktop password manager from package
 APP_NAME=buttercup-desktop
-APP_VERSION=1.6.1
+APP_VERSION=1.7.1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/buttercup/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -6819,7 +6819,7 @@ cargo install --git https://github.com/jmacdonald/${APP_NAME,,}/ --tag ${APP_VER
 # Install Fractalscope Qt-based fractal explorer from source
 APP_NAME=Fractalscope
 APP_GUI_NAME="Cross-platform Qt-based fractal explorer."
-APP_VERSION=1.1.3
+APP_VERSION=1.2.0
 APP_EXT=tar.gz
 sudo apt-get install -y qt5-default yasm
 # Install MPIR (Multiple Precision Integers and Rationals) LGPL C library
@@ -7432,7 +7432,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install 16p Mahjong Python/Pygame tile puzzle game
 APP_NAME=16mj
 APP_GUI_NAME="Mahjong Python/Pygame tile puzzle game."
-APP_VERSION=031
+APP_VERSION=032
 APP_EXT=tar.gz
 sudo pip3 install pygame
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/mahjong-16p/${APP_NAME,,}_py${APP_VERSION}.${APP_EXT}
@@ -7470,7 +7470,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=4.0.5
+APP_VERSION=4.1.0
 APP_EXT=tgz
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
@@ -7929,7 +7929,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install MarkText Electron-based Markdown editor from Snap package
 APP_NAME=MarkText
 APP_GUI_NAME="Cross-platform, Electron-based Markdown editor."
-APP_VERSION=0.10.21
+APP_VERSION=0.12.25
 APP_EXT=snap
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo snap install --dangerous /tmp/${APP_NAME,,}.${APP_EXT}
@@ -8394,7 +8394,7 @@ APP_VERSION=N/A
 APP_EXT=deb
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ze|ar|bi)$ ]]; then  # 17.04, 17.10, 18.04
-	APP_VERSION=5.1-3_all
+	APP_VERSION=5.1-4_all
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya)$ ]]; then  # 16.04, 16.10
 	APP_VERSION=4.3-8_all-beta
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (vi|wi)$ ]]; then  # 15.04, 15.10
@@ -9696,7 +9696,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Requires JRE 9 or later with JavaFX
 APP_NAME=MiluDBViewer
 APP_GUI_NAME="Cross-platform, Java-based multi-database (MySQL/PostgreSQL/Oracle/Cassandra/SQLite/SQLServer/MongoDB) viewer/editor client."
-APP_VERSION=0.2.1
+APP_VERSION=0.2.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -9856,7 +9856,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install LinSSID Qt-based GUI wireless network scanner from Debian package
 APP_NAME=LinSSID
 APP_GUI_NAME="Qt-based GUI wireless network scanner."
-APP_VERSION=3.4-1
+APP_VERSION=3.5-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -10066,7 +10066,7 @@ rm -rf /tmp/*${APP_NAME}*
 # http://fil.gonze.org/wikiPG/index.php/Project_bashj_:_a_bash_mutant_with_java_support
 APP_NAME=bashj
 APP_GUI_NAME="Utility to allow use of native Java code in Bash shell scripts."
-APP_VERSION=0.991
+APP_VERSION=0.994
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}Install-${APP_VERSION}
 sudo apt-get install -y openjdk-9-jdk  # Java 9 or later required!
@@ -10376,3 +10376,322 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Modules environment variable configuration/management utility from source
+APP_NAME=Modules
+APP_GUI_NAME="Environment variable configuration/management utility."
+APP_VERSION=4.1.3
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y tcl8.6-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Project GoldStars Calculator cross-platform, Java-based command-line and GUI calculators from package
+APP_NAME="Project GoldStars Calculator"
+APP_GUI_NAME="Cross-platform, Java-based command-line and GUI calculators."
+APP_VERSION="2.3 Update 2"
+APP_EXT=jar
+FILE_NAME=${APP_NAME// /.}.S.${APP_VERSION// /.}
+DIR_NAME=${APP_NAME,,// /}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ShakeelAlibhai/${APP_NAME// /}S/releases/download/v${APP_VERSION// Update /.}/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${DIR_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${DIR_NAME,,}
+cat > /tmp/${DIR_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${DIR_NAME,,}
+Exec=java -jar /opt/${DIR_NAME,,}/${FILE_NAME}.jar
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Education;
+Keywords=Math;Calculator;
+EOF
+sudo mv /tmp/${DIR_NAME,,}.desktop /usr/share/applications/
+FILE_NAME=${FILE_NAME//.S./.C.}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ShakeelAlibhai/${APP_NAME// /}S/releases/download/v${APP_VERSION// Update /.}/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${DIR_NAME,,}
+cat > /tmp/${DIR_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${DIR_NAME,,}
+PATH=/opt/${DIR_NAME,,}:\$PATH; export PATH
+java -jar /opt/${DIR_NAME,,}/${FILE_NAME}.jar "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${DIR_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install dred fast, minimalist cross-platform, GTK+-based text editor from source
+APP_NAME=dred
+APP_GUI_NAME="Environment variable configuration/management utility."
+APP_VERSION=0.4.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtk-3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dr-soft/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+cc ./source/dred/dred_main.c -o dred `pkg-config --cflags --libs gtk+-3.0` -lm -ldl
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo mv /tmp/${FILE_NAME}/resources/images/logo.png /usr/local/share/pixmaps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Development;Programming;
+Keywords=Text;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Crosswire SWORD Bible research and study platform from source
+APP_NAME=SWORD
+APP_GUI_NAME="Bible research and study platform."
+APP_VERSION=1.8.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y automake libtool libclucene-dev libqt5clucene5 libcurl4-openssl-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://crosswire.org/ftpmirror/pub/sword/source/v1.8/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./autogen.sh && ./usrinst.sh && make && sudo make install && sudo make install_config
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Bibletime cross-platform Bible study software using Crosswire SWORD toolkit from source
+# Crosswire SWORD toolkit must be install FIRST; see above.
+APP_NAME=Bibletime
+APP_GUI_NAME="Cross-platform Bible study software using Crosswire SWORD toolkit."
+APP_VERSION=2.11.2
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y qt5-default cmake libclucene-dev libqt5svg5-dev libqt5webkit5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+# Update minimum version of Qt library to 5.5 for CMake
+UPDATE_STRING=s/REQUIRED_QT_VERSION 5.9/REQUIRED_QT_VERSION 5.5/g
+sudo sed -i ${UPDATE_STRING} /tmp/${FILE_NAME}/CMakeLists.txt
+mkdir -p ./build && cd ./build
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+make clean && make && sudo make -j4 install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install CloudFiler cross-platorm, Python-based Amazon S3/Google Cloud client from package
+APP_NAME=CloudFiler
+APP_GUI_NAME="Cross-platform, Python-based Amazon S3/Google Cloud client."
+APP_VERSION=1.3
+APP_EXT=zip
+FILE_NAME=${APP_NAME}Source_${APP_VERSION}
+sudo apt-get install -y python-wxgtk3.0 python-wxtools wx3.0-i18n python-boto python-keyring python-passlib
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/cloud-filer/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo ./install.sh
+sudo rm -rf $HOME/.local/share/applications/${APP_NAME,,}.desktop
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /usr/local/${APP_NAME}
+PATH=/usr/local/${APP_NAME}:\$PATH; export PATH
+python /usr/local/${APP_NAME}/python/${APP_NAME}.py
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${DIR_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/${APP_NAME}
+Exec=python /usr/local/${APP_NAME}/python/${APP_NAME}.py
+Icon=/usr/local/${APP_NAME}/python/images/${APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;Networking;
+Keywords=Amazon;S3;Google;Cloud;
+EOF
+sudo mv /tmp/${DIR_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Pomolectron cross-platform, Electron-based desktop Pomodoro application from package
+APP_NAME=Pomolectron
+APP_GUI_NAME="Cross-platform, Electron-based desktop Pomodoro application."
+APP_VERSION=1.1.0
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+FILE_NAME=${APP_NAME}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/amitmerchant1990/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${APP_NAME}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;
+Keywords=Pomodoro;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install aclh Python-based asynchronous command-line HTTP client via PIP
+APP_NAME=aclh
+APP_GUI_NAME="Cross-platform, Python-based asynchronous command-line HTTP client."
+APP_VERSION=N/A
+APP_EXT=N/A
+sudo pip3 install git+https://github.com/kanishka-linux/aclh.git
+
+# Install WebComics minimalist PyQt-based desktop tool for reading web comics from package
+APP_NAME=WebComics
+APP_GUI_NAME="Minimalist PyQt-based desktop tool for reading web comics."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install python3-pyqt5
+sudo pip3 install pillow bs4
+sudo pip3 install git+https://github.com/kanishka-linux/vinanti.git
+cd /tmp
+git clone https://github.com/kanishka-linux/${APP_NAME}
+cd /tmp/${APP_NAME}
+python3 setup.py sdist
+cd /tmp/${APP_NAME}/dist
+sudo pip3 install ${APP_NAME}*
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Yosoro cross-platform, Electron-based desktop notepad with Markdown support and One Drive cloud backup from package
+APP_NAME=Yosoro
+APP_GUI_NAME="Cross-platform, Electron-based desktop notepad with Markdown support and One Drive cloud backup."
+APP_VERSION=1.0.6
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-linux-x64-deb-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/IceEnd/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}*.deb
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
+
+# Install Meld GUI file diff/merge utility from source
+APP_NAME=Meld
+APP_GUI_NAME="Cross-platform, file diff/merge utility."
+APP_VERSION=3.18.2
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get build-dep -y meld python3-cairo-dev libgtksourceview-3.0-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.gnome.org/sources/${APP_NAME,,}/${APP_VERSION//.2/}/${FILE_NAME}.${APP_EXT}
+https://download.gnome.org/sources/meld//meld-3.18.2.tar.xz
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo python3 setup.py install --prefix=/usr/local
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Orange Calculator minimalist Java-based calculator from Debian package
+# http://www.wagemaker.co.uk/
+APP_NAME=OrangeCalc
+APP_GUI_NAME="Minimalist Java-based calculator."
+APP_VERSION=1.5.8
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/orangecalculator/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
+
+# Install Small Text Pad minimalist Java-based notepad from Debian package
+# http://www.wagemaker.co.uk/
+APP_NAME=SmallTextPad
+APP_GUI_NAME="Minimalist Java-based notepad."
+APP_VERSION=1.2.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
+
+# Install UnNetHack Roguelike adventure game forked from NetHack from source
+APP_NAME=UnNetHack
+APP_GUI_NAME="Roguelike adventure game forked from NetHack."
+APP_VERSION=5.1.0-20131208
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y flex bison libncursesw5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make -j4 install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install lf cross-platform, Go-based file manager for the shell/console from package
+APP_NAME=lf
+APP_GUI_NAME="Cross-platform, Go-based file manager for the shell/console."
+APP_VERSION=r5
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=386
+fi
+FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/gokcehan/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
