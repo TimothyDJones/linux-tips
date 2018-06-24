@@ -10695,3 +10695,16 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Mokomaze SDL-based ball labyrinth puzzle game from source
+APP_NAME=Mokomaze
+APP_GUI_NAME="SDL-based ball labyrinth puzzle game."
+APP_VERSION=N/A
+APP_EXT=N/A
+sudo apt-get install -y libjson-glib-dev libode-dev libsdl-gfx1.2-dev libsdl-ttf2.0-dev libsdl-image1.2-dev xsltproc autoconf libsdl1.2-dev librsvg2-dev libargtable2-dev libguichan-dev
+cd /tmp
+git clone https://git.code.sf.net/p/${APP_NAME,,}/code ${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+./autogen.sh && ./configure && make && sudo make -j4 install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
