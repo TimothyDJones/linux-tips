@@ -368,11 +368,15 @@ sudo echo $DEB_STRING > /etc/apt/sources.list.d/getdeb.list
 wget -q -O- http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
 sudo apt-get update -y
 
-# Install Albert application launcher from PPA.
+# Install Albert application launcher from Debian package
 # http://sourcedigit.com/22129-linux-quick-launcher-ubuntu-albert-best-linux-launcher/
-sudo add-apt-repository -y ppa:nilarimogard/webupd8
-sudo apt-get update -y
-sudo apt-get install -y albert
+APP_NAME=Albert
+APP_VERSION=0.14.21
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+source /etc/lsb-release
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 ln -s /usr/share/applications/albert.desktop $HOME/.config/autostart/  # Create link to autostart Albert on startup
 
 
