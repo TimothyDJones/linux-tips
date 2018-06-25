@@ -10736,3 +10736,37 @@ cd /tmp/${APP_NAME,,}
 ./autogen.sh && ./configure && make && sudo make -j4 install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Semantik Python-based mind-mapping tool from Debian package
+# https://waf.io/semantik.html
+APP_NAME=Semantik
+APP_GUI_NAME="Python-based mind-mapping tool."
+APP_VERSION=1.0.4-24
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://waf.io/rpms/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
+
+# Install PDFBox Java-based, cross-platform command-line PDF manipulation application from package
+APP_NAME=PDFBox
+APP_GUI_NAME="Java-based, cross-platform command-line PDF manipulation application."
+APP_VERSION=2.0.10
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}-app-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://apache.osuosl.org/${APP_NAME,,}/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
