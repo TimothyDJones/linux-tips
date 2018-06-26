@@ -10720,8 +10720,8 @@ APP_GUI_NAME="Cross-platform SDL2-based BBS SSH terminal."
 APP_VERSION=0.9.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-https://download.opensuse.org/repositories/home:/apamment/xUbuntu_18.04/amd64/magiterm_0.9.0-1_amd64.deb
+source /etc/lsb-release
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/apamment/xUbuntu_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
