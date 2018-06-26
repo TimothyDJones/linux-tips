@@ -10712,3 +10712,16 @@ cd /tmp/${APP_NAME,,}
 ./autogen.sh && ./configure && make && sudo make -j4 install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install MagiTerm cross-platform SDL2-based BBS SSH terminal from Debian package
+# https://magickabbs.com/index.php/magiterm/
+APP_NAME=MagiTerm
+APP_GUI_NAME="Cross-platform SDL2-based BBS SSH terminal."
+APP_VERSION=0.9.0-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+https://download.opensuse.org/repositories/home:/apamment/xUbuntu_18.04/amd64/magiterm_0.9.0-1_amd64.deb
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
