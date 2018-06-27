@@ -10820,3 +10820,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install gcdemu GTK+-based CD emulation utility from PPA
+APP_NAME=gcdemu
+APP_GUI_NAME="GTK+-based CD emulation utility."
+APP_VERSION=3.1.0
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo add-apt-repository -y ppa:cdemu/ppa
+sudo apt-get update
+sudo apt-get install -y gcdemu cdemu-daemon cdemu-client 
