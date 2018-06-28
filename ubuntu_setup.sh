@@ -181,6 +181,25 @@ sudo apt-get install -y php7.2-bcmath php7.2-bz2 php7.2-cli php7.2-common php7.2
 libapache2-mod-php7.2 libapache2-mod-xsendfile \
 mysql-server mysql-workbench mycli 
 
+# Install Jupyter Notebook support for Python 3
+sudo apt-get install -y python3 python3-ipython
+sudo pip3 install jupyter
+# Add application menu icon to open new Jupyter notebook
+cat > /tmp/jupyter.desktop << EOF
+[Desktop Entry]
+Name=Jupyter Notebook
+Comment=Open a new Jupyter Python notebook.
+GenericName=Jupyter
+Exec=jupyter-notebook
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Jupyter;Python;
+EOF
+sudo mv /tmp/jupyter.desktop /usr/share/applications/
+
 # Install apt-fast script for speeding up apt-get by downloading
 # packages in parallel.
 # https://github.com/ilikenwf/apt-fast
@@ -10954,5 +10973,3 @@ cd /tmp/${FILE_NAME}
 echo '/usr/local/lib' | sudo tee -a /etc/ld.so.conf.d/${APP_NAME,,}.conf > /dev/null && sudo ldconfig
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
-
-https://github.com/gkarsay/parlatype/releases/download/v1.5.5/parlatype-1.5.5.tar.gz
