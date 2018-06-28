@@ -10831,3 +10831,15 @@ FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo add-apt-repository -y ppa:cdemu/ppa
 sudo apt-get update
 sudo apt-get install -y gcdemu cdemu-daemon cdemu-client 
+
+# Install Fresh Memory cross-platform flash card learning tool with Spaced Repetition method from Debian package
+# http://fresh-memory.com/
+APP_NAME=FreshMemory
+APP_GUI_NAME="Cross-platform flash card learning tool with Spaced Repetition method."
+APP_VERSION=1.5.0-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
