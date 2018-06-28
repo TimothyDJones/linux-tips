@@ -694,19 +694,42 @@ sudo make install-profile DOTWCD=1     # Set up shell integration and store conf
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install BeeBEEP LAN messenger from Sourceforge
-APP_NAME=beebeep
-APP_VERSION=4.0.0
-DL_BASE_FILE_NAME=beebeep-${APP_VERSION}-qt4-${KERNEL_VERSION}
+# Install BeeBEEP LAN messenger from package
+APP_NAME=BeeBEEP
+APP_GUI_NAME="Cross-platform secure LAN messenger."
+APP_VERSION=5.0.0
+if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
+	KERNEL_TYPE=amd64
+	APP_VERSION=5.0.0
+else    # Otherwise use version for 32-bit kernel
+	KERNEL_TYPE=i386
+	APP_VERSION=4.0.0
+fi
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt4-${KERNEL_TYPE}
 sudo apt-get install -y qt4-default libqt4-xml libxcb-screensaver0 libavahi-compat-libdnssd1 libphonon4 libhunspell-dev phonon-backend-gstreamer
-curl -o /tmp/${APP_NAME}.tar.gz -J -L https://superb-sea2.dl.sourceforge.net/project/beebeep/Linux/${DL_FILE_NAME}.tar.gz
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.tar.gz
-cd /tmp/${APP_NAME}
-mv ${DL_BASE_FILE_NAME} ${APP_NAME}
-sudo mv ${APP_NAME} /opt
-sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -f -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Networking;Accessories;
+Keywords=Messenger;Productivity;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install tmux terminal multiplexer from source
 APP_NAME=tmux
