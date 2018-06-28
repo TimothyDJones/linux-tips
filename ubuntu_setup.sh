@@ -1195,7 +1195,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Tagstoo file tag manager
 APP_NAME=Tagstoo
-APP_VERSION=1.10.3
+APP_VERSION=1.10.4
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
