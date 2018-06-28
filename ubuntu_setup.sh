@@ -10938,3 +10938,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Parlatype GTK+-based audio player for transcription from source
+APP_NAME=Parlatype
+APP_GUI_NAME="GTK+-based audio player for transcription."
+APP_VERSION=1.5.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential automake autoconf intltool libgirepository1.0-dev libgladeui-dev gtk-doc-tools yelp-tools libgtk-3-dev libgtk-3-0 libgstreamer1.0-dev libgstreamer1.0-0 libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly libreoffice-script-provider-python itstool
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/gkarsay/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make -j4 install
+echo '/usr/local/lib' | sudo tee -a /etc/ld.so.conf.d/${APP_NAME,,}.conf > /dev/null && sudo ldconfig
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+https://github.com/gkarsay/parlatype/releases/download/v1.5.5/parlatype-1.5.5.tar.gz
