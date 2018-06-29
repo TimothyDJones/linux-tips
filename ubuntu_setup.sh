@@ -4395,7 +4395,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install SimulIDE electronic circuit simulator
 APP_NAME=SimulIDE
-APP_VERSION=0.1.7
+APP_VERSION=0.2.8
 #APP_MINOR_VERSION=SR1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
