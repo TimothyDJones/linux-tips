@@ -11064,3 +11064,15 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install NumericalChameleon cross-platform, Java-based unit converter/calculator from Debian package
+# http://numericalchameleon.net/en/index.html
+APP_NAME=NumericalChameleon
+APP_GUI_NAME="Cross-platform, Java-based unit converter/calculator."
+APP_VERSION=2.1.0-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/numchameleon/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
