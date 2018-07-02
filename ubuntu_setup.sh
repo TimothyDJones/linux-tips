@@ -6339,7 +6339,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Block Attack SDL Tetris clone from source
 APP_NAME=BlockAttack
 APP_GUI_NAME="SDL Tetris clone."
-APP_VERSION=2.2.0
+APP_VERSION=2.3.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libphysfs-dev libboost-dev libboost-program-options-dev libutfcpp-dev cmake
