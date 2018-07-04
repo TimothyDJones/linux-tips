@@ -424,7 +424,7 @@ rm -f /tmp/${APP_NAME}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.4.8
+APP_VERSION=1.4.9
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -3025,7 +3025,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=180602
+APP_VERSION=180702
 APP_EXT=tar.bz2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -11159,3 +11159,41 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install IceHRM web-based Human Resources Management (HRM) tool
+APP_NAME=IceHRM
+APP_GUI_NAME="Web-based Human Resources Management (HRM)"
+APP_VERSION=24.0.0
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}.OS
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n ${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+x ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/app/install/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/web/images/logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;
+Keywords=HRM;Management;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
