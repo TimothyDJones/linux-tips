@@ -11125,7 +11125,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Reversee Electron-based reverse-proxy web debugger from package
 APP_NAME=Reversee
 APP_GUI_NAME="Electron-based reverse-proxy web debugger."
-APP_VERSION=0.0.15
+APP_VERSION=0.0.16
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.reversee.ninja/${FILE_NAME}.${APP_EXT}
