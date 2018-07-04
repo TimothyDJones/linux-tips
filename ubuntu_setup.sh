@@ -11260,3 +11260,12 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Slap Sublime Text-style JavaScript-based console text editor from source
+APP_NAME=Slap
+APP_GUI_NAME="Sublime Text-style JavaScript-based console text editor."
+APP_VERSION=N/A
+APP_EXT=tar.gz
+curl -sL https://raw.githubusercontent.com/slap-editor/slap/master/install.sh | sh
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
