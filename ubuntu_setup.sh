@@ -11208,3 +11208,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/liberodark/${APP_N
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
+
+# Install TEA Qt-based text editor from source
+APP_NAME=TEA
+APP_GUI_NAME="Cross-platform Qt-based text editor."
+APP_VERSION=45.0.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y qt5-default qt5-qmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/psemiletov/tea-qt/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-qt-${APP_VERSION}
+qtchooser -run-tool=qmake -qt=5 src.pro && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
