@@ -11269,3 +11269,14 @@ APP_EXT=tar.gz
 curl -sL https://raw.githubusercontent.com/slap-editor/slap/master/install.sh | sh
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Universal Tag Finder cross-platform, Java-based HTML tag file search utility from Debian package
+APP_NAME=Universal-Tag-Finder
+APP_GUI_NAME="Cross-platform, Java-based HTML tag file search utility."
+APP_VERSION=1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
