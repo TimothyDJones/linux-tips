@@ -11344,3 +11344,22 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
+
+# Install PharTools PHP CLI utility for managing phar (PHP ARchive) files from source
+APP_NAME=PharTools
+APP_GUI_NAME="PHP CLI utility for managing phar (PHP ARchive) files."
+APP_VERSION=v2.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/EvolSoft/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME}/${APP_NAME,,}.sh /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}.sh
+sudo ln -f -s /usr/local/bin/${APP_NAME,,}.sh /usr/local/bin/${APP_NAME,,}
+sudo sed -i 's@;phar.readonly = On@phar.readonly = Off@g' /etc/php/5.6/cli/php.ini
+sudo sed -i 's@;phar.readonly = On@phar.readonly = Off@g' /etc/php/7.0/cli/php.ini
+sudo sed -i 's@;phar.readonly = On@phar.readonly = Off@g' /etc/php/7.1/cli/php.ini
+sudo sed -i 's@;phar.readonly = On@phar.readonly = Off@g' /etc/php/7.2/cli/php.ini
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
