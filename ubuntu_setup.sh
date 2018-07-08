@@ -8034,7 +8034,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Tixati cross-platform BitTorrent P2P file sharing client from package
 APP_NAME=Tixati
 APP_GUI_NAME="Cross-platform BitTorrent P2P file sharing client."
-APP_VERSION=2.57-1
+APP_VERSION=2.58-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://download2.${APP_NAME,,}.com/download/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
