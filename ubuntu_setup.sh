@@ -4395,7 +4395,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install SimulIDE electronic circuit simulator
 APP_NAME=SimulIDE
-APP_VERSION=0.2.8
+APP_VERSION=0.2.8-SR1
 #APP_MINOR_VERSION=SR1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
@@ -4407,7 +4407,7 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp
-mv ${APP_NAME}_${APP_VERSION}-${ARCH_TYPE}-RC3 ${APP_NAME,,}
+mv ${APP_NAME}_${APP_VERSION}-${ARCH_TYPE} ${APP_NAME,,}
 sudo mv ${APP_NAME,,} /opt
 cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
 # /bin/sh
