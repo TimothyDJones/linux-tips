@@ -8724,8 +8724,8 @@ rm -rf /tmp/${APP_NAME,,}
 # Install SwitchHosts cross-platform, Electron-based hosts file manager from package
 APP_NAME=SwitchHosts
 APP_GUI_NAME="Cross-platform, Electron-based hosts file manager."
-APP_MAJOR_VERSION=3.3.11
-APP_MINOR_VERSION=5347
+APP_MAJOR_VERSION=3.3.12
+APP_MINOR_VERSION=5349
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-linux-x64_v${APP_MAJOR_VERSION}.${APP_MINOR_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/oldj/${APP_NAME}/releases/download/v${APP_MAJOR_VERSION}/${FILE_NAME}.${APP_EXT}
