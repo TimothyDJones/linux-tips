@@ -1775,7 +1775,7 @@ mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 
 # Install Webtareas project management tool
 APP_NAME=webTareas
-APP_VERSION=2.0
+APP_VERSION=2.0p1
 APP_EXT=zip
 DB_NAME=webtareas
 DB_USER=webtareas
