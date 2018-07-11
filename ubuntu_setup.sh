@@ -11553,3 +11553,42 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Rodent GTK+-based GUI file manager from source
+APP_NAME=Rodent
+APP_GUI_NAME="GTK+-based GUI file manager."
+APP_VERSION=5.3.16.3
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtk2.0-dev libgtk-3-dev automake libzip-dev librsvg2-dev libxml2-dev libmagic-dev
+TEMP_FILE_NAME=libdbh2-5.0.22
+TEMP_APP_EXT=tar.gz
+curl -o /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT} -J -L https://downloads.sourceforge.net/dbh/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+cd /tmp
+dtrx -n /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+cd /tmp/${TEMP_FILE_NAME}
+./autogen.sh && ./configure && make && sudo make install
+TEMP_FILE_NAME=libtubo0_5.0.14-1_${KERNEL_TYPE}
+TEMP_APP_EXT=deb
+curl -o /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT} -J -L https://downloads.sourceforge.net/xffm/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+sudo gdebi -n /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+TEMP_FILE_NAME=libtubo0-dev_5.0.14-1_${KERNEL_TYPE}
+TEMP_APP_EXT=deb
+curl -o /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT} -J -L https://downloads.sourceforge.net/xffm/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+sudo gdebi -n /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+TEMP_FILE_NAME=librfm5-5.3.16.4
+TEMP_APP_EXT=tar.bz2
+curl -o /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT} -J -L https://downloads.sourceforge.net/xffm/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+cd /tmp
+dtrx -n /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+cd /tmp/${TEMP_FILE_NAME}
+./autogen.sh && ./configure && make && sudo make install && sudo ldconfig
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/xffm/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./autogen.sh && ./configure && make && sudo make install
+sudo cp /tmp/${FILE_NAME}/apps/rodent-fm/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
