@@ -11627,3 +11627,14 @@ EOF
 sudo mv /tmp/${APP_NAME//:/}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install PMan desktop media player and media management tool from Debian package
+APP_NAME=PMan
+APP_GUI_NAME="Desktop media player and media management tool."
+APP_VERSION=0.8.9
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/pman-player/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
