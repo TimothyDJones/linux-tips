@@ -11638,3 +11638,30 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/pma
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
+
+# Install OpenProject from PPA
+APP_NAME=OpenProject
+APP_VERSION=N/A
+APP_EXT=N/A
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+sudo apt-get install -y apt-transport-https
+# If Ubuntu version is above 16.04 (Xenial), then we need to install some packages from 16.04.
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ya|ze|ar|bi)$ ]]; then
+    curl -o /tmp/libreadline6.deb -J -L http://ftp.osuosl.org/pub/ubuntu/pool/main/r/readline6/libreadline6_6.3-8ubuntu2_amd64.deb
+    sudo gdebi -n /tmp/libreadline6.deb
+    curl -o /tmp/libevent-core.deb -J -L http://security.ubuntu.com/ubuntu/pool/main/libe/libevent/libevent-core-2.0-5_2.0.21-stable-2ubuntu0.16.04.1_amd64.deb
+    sudo gdebi -n /tmp/libevent-core.deb
+    curl -o /tmp/libevent.deb -J -L http://security.ubuntu.com/ubuntu/pool/main/libe/libevent/libevent-2.0-5_2.0.21-stable-2ubuntu0.16.04.1_amd64.deb
+    sudo gdebi -n /tmp/libevent.deb
+    curl -o /tmp/libevent-extra.deb -J -L http://security.ubuntu.com/ubuntu/pool/main/libe/libevent/libevent-extra-2.0-5_2.0.21-stable-2ubuntu0.16.04.1_amd64.deb
+    sudo gdebi -n /tmp/libevent-extra.deb
+fi
+wget -qO- https://dl.packager.io/srv/opf/openproject-ce/key | sudo apt-key add -
+sudo wget -O /etc/apt/sources.list.d/openproject-ce.list https://dl.packager.io/srv/opf/openproject-ce/stable/7/installer/ubuntu/16.04.repo
+sudo apt-get install -y openproject
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+sudo openproject configure
