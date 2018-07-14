@@ -11701,3 +11701,23 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Password Safe cross-platform password manager from Debian package
+APP_NAME=PasswordSafe
+APP_GUI_NAME="Cross-platform password manager."
+APP_VERSION=1.05.0-BETA
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-debian-${APP_VERSION}.${KERNEL_TYPE}
+# If Ubuntu version is above 16.04 (Xenial), then we need to install some packages from 16.04.
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ya|ze|ar|bi)$ ]]; then
+    curl -o /tmp/libicu55.deb -J -L http://security.ubuntu.com/ubuntu/pool/main/i/icu/libicu55_55.1-7ubuntu0.4_amd64.deb
+    sudo gdebi -n /tmp/libicu55.deb
+    curl -o /tmp/libxerces-c3.1.deb -J -L http://ftp.osuosl.org/pub/ubuntu/pool/universe/x/xerces-c/libxerces-c3.1_3.1.3+debian-1_${KERNEL_TYPE}.deb
+    sudo gdebi -n /tmp/libxerces-c3.1.deb
+    curl -o /tmp/libqrencode3.deb -J -L http://ftp.debian.org/debian/pool/main/q/qrencode/libqrencode3_3.4.4-1+b2_amd64.deb
+    sudo gdebi -n /tmp/libqrencode3.deb
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
