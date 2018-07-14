@@ -244,7 +244,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Google Go language
 APP_NAME=go
-APP_VERSION=1.10.2
+APP_VERSION=1.10.3
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
 else    # Otherwise use version for 32-bit kernel
@@ -438,7 +438,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Otter Browser from Sourceforge (from source)
 APP_NAME=otter-browser
-APP_VERSION=0.9.99-dev233
+APP_VERSION=0.9.99.1
 APP_EXT=tar.bz2
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev   # Qt5 development packages needed to build from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -1775,7 +1775,7 @@ mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 
 # Install Webtareas project management tool
 APP_NAME=webTareas
-APP_VERSION=2.0
+APP_VERSION=2.0p1
 APP_EXT=zip
 DB_NAME=webtareas
 DB_USER=webtareas
@@ -2492,7 +2492,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 
 # Install DK Tools system utility from source
 APP_NAME=dktools
-APP_VERSION=4.16.0
+APP_VERSION=4.17.0
 APP_EXT=tar.gz
 KERNEL_TYPE=getKernelType()
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -3684,7 +3684,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 
 # Install Admidio organizational management tool
 APP_NAME=admidio
-APP_VERSION=3.3.4
+APP_VERSION=3.3.5
 APP_EXT=zip
 DB_NAME=admidio
 DB_USER=admidio
@@ -4377,7 +4377,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Riot instant messenger/collaboration platform from package
 APP_NAME=riot-web
-APP_VERSION=0.15.5
+APP_VERSION=0.15.7
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://riot.im/packages/debian/pool/main/r/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4504,7 +4504,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install HOFAT (Hash Of File And Text) Java-based hash calculator
 APP_NAME=HOFAT
-APP_VERSION=24-06-2018
+APP_VERSION=13-07-2018
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_bin.${APP_EXT}
 cd /tmp
@@ -6857,7 +6857,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Amp Rust-based command-line text editor from source
 APP_NAME=Amp
 APP_GUI_NAME="Cross-platform Rust-based command-line text editor."
-APP_VERSION=0.3.4
+APP_VERSION=0.4.1
 APP_EXT=N/A
 sudo apt-get install -y zlib1g-dev openssl libxcb1-dev cmake pkg-config
 curl https://sh.rustup.rs -sSf | sh
@@ -7604,7 +7604,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Bitwarden Electron-based desktop/online password manager from package
 APP_NAME=Bitwarden
 APP_GUI_NAME="Electron-based desktop/online password manager."
-APP_VERSION=1.0.5
+APP_VERSION=1.3.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/desktop/releases/download/v1.0.5/${APP_NAME}-${APP_VERSION}-amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -8465,7 +8465,7 @@ APP_VERSION=N/A
 APP_EXT=deb
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ze|ar|bi)$ ]]; then  # 17.04, 17.10, 18.04
-	APP_VERSION=5.1-7_all
+	APP_VERSION=5.1-8_all
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya)$ ]]; then  # 16.04, 16.10
 	APP_VERSION=4.3-8_all-beta
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (vi|wi)$ ]]; then  # 15.04, 15.10
@@ -8724,8 +8724,8 @@ rm -rf /tmp/${APP_NAME,,}
 # Install SwitchHosts cross-platform, Electron-based hosts file manager from package
 APP_NAME=SwitchHosts
 APP_GUI_NAME="Cross-platform, Electron-based hosts file manager."
-APP_MAJOR_VERSION=3.3.11
-APP_MINOR_VERSION=5347
+APP_MAJOR_VERSION=3.3.12
+APP_MINOR_VERSION=5349
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-linux-x64_v${APP_MAJOR_VERSION}.${APP_MINOR_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/oldj/${APP_NAME}/releases/download/v${APP_MAJOR_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -9786,7 +9786,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Requires JRE 9 or later with JavaFX
 APP_NAME=MiluDBViewer
 APP_GUI_NAME="Cross-platform, Java-based multi-database (MySQL/PostgreSQL/Oracle/Cassandra/SQLite/SQLServer/MongoDB) viewer/editor client."
-APP_VERSION=0.2.4
+APP_VERSION=0.2.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -10156,7 +10156,7 @@ rm -rf /tmp/*${APP_NAME}*
 # http://fil.gonze.org/wikiPG/index.php/Project_bashj_:_a_bash_mutant_with_java_support
 APP_NAME=bashj
 APP_GUI_NAME="Utility to allow use of native Java code in Bash shell scripts."
-APP_VERSION=0.998
+APP_VERSION=0.999
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}Install-${APP_VERSION}
 sudo apt-get install -y openjdk-9-jdk  # Java 9 or later required!
@@ -10327,10 +10327,10 @@ rm -rf /tmp/${APP_NAME}*
 # Install ElCalc minimalist cross-platform desktop calculator built with Electron from package
 APP_NAME=ElCalc
 APP_GUI_NAME="Minimalist cross-platform desktop calculator built with Electron."
-APP_VERSION=4.0.2
+APP_VERSION=4.0.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/4.2/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION//0./}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
@@ -11400,3 +11400,268 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Virtual Celestial Globe Java-based planetarium software from package
+APP_NAME="Virtual Celestial Globe"
+APP_GUI_NAME="Java-based planetarium software."
+APP_VERSION=N/A
+APP_EXT=jar
+FILE_NAME=${APP_NAME// /}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${FILE_NAME,,}/VirutalCelestialGlobe.${APP_EXT}
+sudo mkdir -p /opt/${FILE_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${FILE_NAME,,}
+cat > /tmp/${FILE_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${FILE_NAME,,}
+PATH=/opt/${FILE_NAME,,}:\$PATH; export PATH
+java -Xms128m -Xmx512m -classpath /opt/${FILE_NAME,,}/${FILE_NAME}.${APP_EXT} com.main.GlobeFrame
+cd $HOME
+EOF
+sudo mv /tmp/${FILE_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME,,}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${FILE_NAME,,}
+Exec=java -Xms128m -Xmx512m -classpath /opt/${FILE_NAME,,}/${FILE_NAME}.${APP_EXT} com.main.GlobeFrame
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;Science;
+Keywords=Stars;Planetarium;
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${FILE_NAME}*
+
+# Install Safe File Manager Java-based minimalist file manager from package
+APP_NAME=SafeFileManager
+APP_GUI_NAME="Java-based minimalist file manager."
+APP_VERSION=1.1
+APP_EXT=jar
+FILE_NAME=${APP_NAME}_v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.mindbytez.com/sfm/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=File;Manager;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install browsh cross-platform modern browser for shell/console from Debian package
+APP_NAME=browsh
+APP_GUI_NAME="Cross-platform modern browser for shell/console."
+APP_VERSION=1.2.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME}_${APP_VERSION}_linux_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/browsh-org/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
+
+# Install ZDT (Zhongwen Development Tool) Java-based flash card utility for learning Mandarin Chinese from package
+APP_NAME=ZDT
+APP_GUI_NAME="Java-based flash card utility for learning Mandarin Chinese."
+APP_VERSION=1.0.3
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -f -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/icon.xpm
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;
+Keywords=Language;Chinese;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install eLogSim digital circuit simulator from package
+APP_NAME=eLogSim
+APP_GUI_NAME="Digital circuit simulator."
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=My${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo mv /opt/${APP_NAME,,}/${APP_NAME} /opt/${APP_NAME,,}/${APP_NAME}.app
+sudo mv /opt/${APP_NAME,,}/${APP_NAME}.app/* /opt/${APP_NAME,,}
+sudo rm -rf /opt/${APP_NAME,,}/${APP_NAME}.app /opt/${APP_NAME,,}/${APP_NAME}.exe
+sudo ln -f -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;Electronics;
+Keywords=Electronics;Digital;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Rodent GTK+-based GUI file manager from source
+APP_NAME=Rodent
+APP_GUI_NAME="GTK+-based GUI file manager."
+APP_VERSION=5.3.16.3
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtk2.0-dev libgtk-3-dev automake libzip-dev librsvg2-dev libxml2-dev libmagic-dev
+TEMP_FILE_NAME=libdbh2-5.0.22
+TEMP_APP_EXT=tar.gz
+curl -o /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT} -J -L https://downloads.sourceforge.net/dbh/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+cd /tmp
+dtrx -n /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+cd /tmp/${TEMP_FILE_NAME}
+./autogen.sh && ./configure && make && sudo make install
+TEMP_FILE_NAME=libtubo0_5.0.14-1_${KERNEL_TYPE}
+TEMP_APP_EXT=deb
+curl -o /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT} -J -L https://downloads.sourceforge.net/xffm/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+sudo gdebi -n /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+TEMP_FILE_NAME=libtubo0-dev_5.0.14-1_${KERNEL_TYPE}
+TEMP_APP_EXT=deb
+curl -o /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT} -J -L https://downloads.sourceforge.net/xffm/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+sudo gdebi -n /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+TEMP_FILE_NAME=librfm5-5.3.16.4
+TEMP_APP_EXT=tar.bz2
+curl -o /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT} -J -L https://downloads.sourceforge.net/xffm/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+cd /tmp
+dtrx -n /tmp/${TEMP_FILE_NAME}.${TEMP_APP_EXT}
+cd /tmp/${TEMP_FILE_NAME}
+./autogen.sh && ./configure && make && sudo make install && sudo ldconfig
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/xffm/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./autogen.sh && ./configure && make && sudo make install
+sudo cp /tmp/${FILE_NAME}/apps/rodent-fm/${APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install fre:ac audio converter and CD ripper from package
+APP_NAME="fre:ac"
+APP_GUI_NAME="Audio converter and CD ripper."
+APP_VERSION=1.1-alpha-20180710
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux-x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux
+fi
+FILE_NAME=${APP_NAME//:/}-${APP_VERSION}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/bonkenc/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME//:/}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME//:/}
+sudo ln -f -s /opt/${APP_NAME//:/}/${APP_NAME//:/} /usr/local/bin/${APP_NAME//:/}
+sudo ln -f -s /opt/${APP_NAME//:/}/${APP_NAME//:/}cmd /usr/local/bin/${APP_NAME//:/}cmd
+cat > /tmp/${APP_NAME//:/}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME//:/}
+Exec=/usr/local/bin/${APP_NAME//:/}
+Icon=/opt/${APP_NAME//:/}/icons/${APP_NAME//:/}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Multimedia;Audio;
+Keywords=Audio;Converter;
+EOF
+sudo mv /tmp/${APP_NAME//:/}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install PMan desktop media player and media management tool from Debian package
+APP_NAME=PMan
+APP_GUI_NAME="Desktop media player and media management tool."
+APP_VERSION=0.8.9
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/pman-player/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
+
+# Install OpenProject from PPA
+APP_NAME=OpenProject
+APP_VERSION=N/A
+APP_EXT=N/A
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+sudo apt-get install -y apt-transport-https
+# If Ubuntu version is above 16.04 (Xenial), then we need to install some packages from 16.04.
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ya|ze|ar|bi)$ ]]; then
+    curl -o /tmp/libreadline6.deb -J -L http://ftp.osuosl.org/pub/ubuntu/pool/main/r/readline6/libreadline6_6.3-8ubuntu2_amd64.deb
+    sudo gdebi -n /tmp/libreadline6.deb
+    curl -o /tmp/libevent-core.deb -J -L http://security.ubuntu.com/ubuntu/pool/main/libe/libevent/libevent-core-2.0-5_2.0.21-stable-2ubuntu0.16.04.1_amd64.deb
+    sudo gdebi -n /tmp/libevent-core.deb
+    curl -o /tmp/libevent.deb -J -L http://security.ubuntu.com/ubuntu/pool/main/libe/libevent/libevent-2.0-5_2.0.21-stable-2ubuntu0.16.04.1_amd64.deb
+    sudo gdebi -n /tmp/libevent.deb
+    curl -o /tmp/libevent-extra.deb -J -L http://security.ubuntu.com/ubuntu/pool/main/libe/libevent/libevent-extra-2.0-5_2.0.21-stable-2ubuntu0.16.04.1_amd64.deb
+    sudo gdebi -n /tmp/libevent-extra.deb
+fi
+wget -qO- https://dl.packager.io/srv/opf/openproject-ce/key | sudo apt-key add -
+sudo wget -O /etc/apt/sources.list.d/openproject-ce.list https://dl.packager.io/srv/opf/openproject-ce/stable/7/installer/ubuntu/16.04.repo
+sudo apt-get install -y openproject
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+sudo openproject configure
