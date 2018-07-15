@@ -11734,3 +11734,17 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Anki flash card utility from package
+APP_NAME=Anki
+APP_GUI_NAME="Flash card utility."
+APP_VERSION=2.0.52
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://apps.ankiweb.net/downloads/current/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
+sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
