@@ -11748,3 +11748,17 @@ cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
 sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install BWPing network ping utility based on ICMP echo request/echo reply mechanism from source
+APP_NAME=BWPing
+APP_GUI_NAME="Network ping utility based on ICMP echo request/echo reply mechanism."
+APP_VERSION=1.9
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
