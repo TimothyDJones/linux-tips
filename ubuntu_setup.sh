@@ -11792,3 +11792,31 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install && sudo ldconfig
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install WordTsar GTK-based WordStar text editor clone from package
+APP_NAME=WordTsar
+APP_GUI_NAME="GTK-based WordStar text editor clone."
+APP_VERSION=0.1.73.18
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-gtk3-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://wordtsar.ca/download/${APP_NAME}/Linux/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Accessories;
+Keywords=Word;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
