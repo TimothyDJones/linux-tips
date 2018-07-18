@@ -9786,7 +9786,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Requires JRE 9 or later with JavaFX
 APP_NAME=MiluDBViewer
 APP_GUI_NAME="Cross-platform, Java-based multi-database (MySQL/PostgreSQL/Oracle/Cassandra/SQLite/SQLServer/MongoDB) viewer/editor client."
-APP_VERSION=0.2.5
+APP_VERSION=0.2.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
