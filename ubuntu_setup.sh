@@ -11594,7 +11594,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install fre:ac audio converter and CD ripper from package
 APP_NAME="fre:ac"
 APP_GUI_NAME="Audio converter and CD ripper."
-APP_VERSION=1.1-alpha-20180710
+APP_VERSION=1.1-alpha-20180716
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux-x64
