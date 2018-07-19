@@ -10484,7 +10484,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Project GoldStars Calculator cross-platform, Java-based command-line and GUI calculators from package
 APP_NAME="Project GoldStars Calculator"
 APP_GUI_NAME="Cross-platform, Java-based command-line and GUI calculators."
-APP_VERSION="2.3 Update 2"
+APP_VERSION="2.4 Final Version"
 APP_EXT=jar
 FILE_NAME=${APP_NAME// /.}.S.${APP_VERSION// /.}
 DIR_NAME=${APP_NAME,,// /}
