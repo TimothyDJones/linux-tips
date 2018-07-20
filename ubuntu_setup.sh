@@ -11871,3 +11871,8 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Mu Editor Python text editor via Pip
+APP_NAME=mu-editor
+sudo pip3 install shortcut
+sudo pip3 install ${APP_NAME}
