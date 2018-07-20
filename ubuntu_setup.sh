@@ -11888,3 +11888,19 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
+
+# Install BOUML Java-based UML modeling and code generation tool from PPA
+APP_NAME=BOUML
+APP_GUI_NAME="Java-based UML modeling and code generation tool."
+APP_VERSION=N/A
+APP_EXT=N/A
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi)$ ]]; then  # 14.04, 14.10, 15.04, 15.10
+	DISTRIB_CODENAME=trusty
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (pr|qu|ra|sa)$ ]]; then  # 13.10, 13.04, 12.10, 12.04
+	DISTRIB_CODENAME=precise
+fi
+wget -q https://www.bouml.fr/bouml_key.asc -O- | sudo apt-key add -
+echo "deb https://www.bouml.fr/apt/"${DISTRIB_CODENAME}" "${DISTRIB_CODENAME}" free" | sudo tee -a /etc/apt/sources.list
+sudo apt-get update -y
+sudo apt-get install -y bouml
