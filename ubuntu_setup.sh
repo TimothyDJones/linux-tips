@@ -11876,3 +11876,15 @@ rm -rf /tmp/*${APP_NAME}*
 APP_NAME=mu-editor
 sudo pip3 install shortcut
 sudo pip3 install ${APP_NAME}
+
+# Install NoteCase GTK-based hierarchical notepad/outliner from Debian package
+APP_NAME=NoteCase
+APP_GUI_NAME="GTK-based hierarchical notepad/outliner."
+APP_VERSION=1.9.8
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+sudo apt-get install -y libgnomevfs2-0 libgtksourceview2.0-0
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
