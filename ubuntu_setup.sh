@@ -11904,3 +11904,23 @@ wget -q https://www.bouml.fr/bouml_key.asc -O- | sudo apt-key add -
 echo "deb https://www.bouml.fr/apt/"${DISTRIB_CODENAME}" "${DISTRIB_CODENAME}" free" | sudo tee -a /etc/apt/sources.list
 sudo apt-get update -y
 sudo apt-get install -y bouml
+
+# Install Cmajor C#-style programming language and IDE from package
+APP_NAME=Cmajor
+APP_GUI_NAME="C#-style programming language and IDE."
+APP_VERSION=2.1.0
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-14.04-x86_64-binaries
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.bz2
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.tar/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
+sudo ln -s /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.6* /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.64.0
+sudo ln -s /usr/lib/x86_64-linux-gnu/libboost_system.so.1.6* /usr/lib/x86_64-linux-gnu/libboost_system.so.1.64.0
+echo 'CMAJOR_ROOT=/opt/'${APP_NAME,,}'; export CMAJOR_ROOT;' >> $HOME/.bashrc
+echo 'PATH=$PATH:$CMAJOR_ROOT/bin' >> $HOME/.bashrc
+echo 'LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CMAJOR_ROOT/lib' >> $HOME/.bashrc
+source $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
