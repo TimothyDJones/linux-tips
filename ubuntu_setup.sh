@@ -11924,3 +11924,14 @@ echo 'LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CMAJOR_ROOT/lib' >> $HOME/.bashrc
 source $HOME/.bashrc
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install MicroPad Electron-based notepad with MarkDown support from Debian package
+APP_NAME=MicroPad
+APP_GUI_NAME="Electron-based notepad with MarkDown support."
+APP_VERSION=3.8.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/Electron/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
