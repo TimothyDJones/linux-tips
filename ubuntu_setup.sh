@@ -11946,3 +11946,41 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
+
+# Install HHDB SQL Admin Java-based GUI PostgreSQL client from package
+APP_NAME="HHDB SQL Admin"
+APP_GUI_NAME="Java-based GUI PostgreSQL client."
+APP_VERSION=4.2
+APP_EXT=tar.gz
+FILE_NAME=hhdb_csadmin_Linux_v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hhdb-admin/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/hhdb_csadmin /opt
+sudo chmod -R a+w /opt/${APP_NAME,,}
+cat > /tmp/hhdb_csadmin << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/hhdb_csadmin:\$PATH; export PATH
+/opt/hhdb_csadmin/start_csadmin.sh
+cd $HOME
+EOF
+sudo mv /tmp/hhdb_csadmin /usr/local/bin
+sudo chmod a+x /usr/local/bin/hhdb_csadmin
+cat > /tmp/hhdb_csadmin.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/hhdb_csadmin
+Exec=/opt/hhdb_csadmin/start_csadmin.sh
+Icon=/opt/hhdb_csadmin/etc/icon/manage.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Database;PostgreSQL;
+EOF
+sudo mv /tmp/hhdb_csadmin.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/hhdb_csadmin*
