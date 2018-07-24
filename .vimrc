@@ -150,3 +150,13 @@ nmap <silent> <A-Up>    : wincmd k<CR>
 nmap <silent> <A-Down>  : wincmd j<CR>
 nmap <silent> <A-Left>  : wincmd h<CR>
 nmap <silent> <A-Right> : wincmd l<CR>
+
+" Strip trailing whitespaces on each save
+" https://github.com/hukl/dotfiles/blob/master/.vimrc#L40
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
