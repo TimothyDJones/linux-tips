@@ -4578,7 +4578,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install BashStyle-NG graphical tool for managing Bash and other shell tools from package
 APP_NAME=BashStyle-NG
-APP_VERSION=10.3
+APP_VERSION=10.5
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://apt.nanolx.org/pool/main/b/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}-1nano_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
