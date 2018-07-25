@@ -12066,3 +12066,23 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Open Visual Traceroute Java-based GUI traceroute utility from Debian package
+APP_NAME=OVTR
+APP_GUI_NAME="Java-based GUI traceroute utility."
+APP_VERSION=1.7.0-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|bi)$ ]]; then  # 18.04
+    # Install gksu package from 17.10 (Artful)
+    # https://askubuntu.com/questions/1030054/how-to-install-an-application-that-requires-gksu-package-on-ubuntu-18-04
+    curl -o /tmp/libgksu2-0.${APP_EXT} -J -L http://ftp.osuosl.org/pub/ubuntu/pool/universe/libg/libgksu/libgksu2-0_2.0.13~pre1-9ubuntu2_${KERNEL_TYPE}.${APP_EXT}
+    sudo gdebi -n /tmp/libgksu2-0.${APP_EXT}
+    curl -o /tmp/gksu.${APP_EXT} -J -L http://ftp.osuosl.org/pub/ubuntu/pool/universe/g/gksu/gksu_2.0.2-9ubuntu1_${KERNEL_TYPE}.${APP_EXT}
+    sudo gdebi -n /tmp/gksu.${APP_EXT}
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/openvisualtrace/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
