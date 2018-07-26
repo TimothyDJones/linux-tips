@@ -1537,12 +1537,13 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install reCsvEditor CSV editor
 APP_NAME=reCsvEditor
-APP_VERSION=0.98.3
-APP_EXT=7z
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L http://cfhcable.dl.sourceforge.net/project/${APP_NAME,,}/${APP_NAME}/Version_${APP_VERSION}/${APP_NAME}_Installer_${APP_VERSION}.jar.${APP_EXT}
+APP_VERSION=0.98.5
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_Installer_${APP_VERSION}.jar
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.${APP_EXT}
-sudo java -jar /tmp/${APP_NAME}/${APP_NAME}_Installer_${APP_VERSION}.jar  # Launches GUI installer
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo java -jar /tmp/${FILE_NAME}/${FILE_NAME}  # Launches GUI installer
 sudo ln -s /usr/local/RecordEdit/reCsvEd/bin/runCsvEditor.sh /usr/local/bin/recsveditor
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
