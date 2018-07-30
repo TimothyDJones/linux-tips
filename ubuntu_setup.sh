@@ -11824,10 +11824,10 @@ rm -rf /tmp/*${APP_NAME}*
 # Install QtFM lightweight desktop-independent GUI file manager from source
 APP_NAME=QtFM
 APP_GUI_NAME="Lightweight desktop-independent GUI file manager."
-APP_VERSION=6.0.3
-APP_EXT=tar.xz
+APP_VERSION=6.1.0-beta2
+APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rodlie/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rodlie/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
