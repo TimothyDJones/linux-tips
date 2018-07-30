@@ -12148,3 +12148,39 @@ sudo mv /tmp/${FILE_NAME}/pacman/* /opt/${APP_NAME,,}
 sudo ln -f -s /opt/${APP_NAME,,}/pacman_gnu /usr/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
+
+# Install Elastic Notepad Java-based text editor with "intelligent" tab stops from package
+APP_NAME=ElasticNotepad
+APP_GUI_NAME="Java-based text editor with \"intelligent\" tab stops."
+APP_VERSION=1.3.0
+APP_EXT=jar
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nickgravgaard/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Accessories;Development;Science;
+Keywords=Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
