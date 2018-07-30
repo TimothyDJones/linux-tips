@@ -617,7 +617,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install NewBreeze file manager from source
 APP_NAME=NewBreeze
-APP_VERSION=v3-RC2
+APP_VERSION=v3-rc3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}%20${APP_VERSION}
 sudo apt-get install -y libmagic-dev zlib1g-dev liblzma-dev libbz2-dev libarchive-dev xdg-utils libpoppler-qt5-dev libsource-highlight-dev libpoppler-qt5-dev libdjvulibre-dev
