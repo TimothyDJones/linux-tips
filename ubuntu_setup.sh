@@ -12132,3 +12132,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
+
+# Install MiniPacman minimalist console Pacman using ASCII characters built with SFML from package
+APP_NAME=MiniPacman
+APP_GUI_NAME="Minimalist console Pacman using ASCII characters built with SFML."
+APP_VERSION=30jul18
+APP_EXT=tar.gz
+FILE_NAME=mpac${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/pacman/* /opt/${APP_NAME,,}
+sudo ln -f -s /opt/${APP_NAME,,}/pacman_gnu /usr/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
