@@ -18,6 +18,7 @@ highlight SpecialKey ctermfg=LightGrey guifg=LightGrey
 
 " Highlight matching parentheses
 highlight MatchParen ctermbg=4
+set matchpairs=(:),{:},[:]
 
 " Enable <backspace>
 set backspace=2
