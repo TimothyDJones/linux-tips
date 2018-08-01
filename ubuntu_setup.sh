@@ -2946,7 +2946,7 @@ sudo apt-get install -y smuxi
 
 # Install Textadept minimalist cross-platform text editor
 APP_NAME=textadept
-APP_VERSION=9.6
+APP_VERSION=10.0
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
