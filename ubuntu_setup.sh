@@ -7568,7 +7568,7 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=Visual-Paradigm
 APP_GUI_NAME="Eclipse-based UML and architecture diagramming tool."
 APP_MAJOR_VERSION=15.0
-APP_MINOR_VERSION=20180228
+APP_MINOR_VERSION=20180801
 APP_EXT=sh
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=Linux64
