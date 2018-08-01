@@ -12239,3 +12239,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/klauscfhq/${APP_NA
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
+
+# Install Too Many Files Python script to delete files based on date from source
+APP_NAME=TooManyFiles
+APP_GUI_NAME="Python script to delete files based on date."
+APP_VERSION=20180727
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo pip3 install cx_Freeze
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/too-many-files/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo python3 ./setup.py install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
