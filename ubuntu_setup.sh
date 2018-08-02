@@ -12256,3 +12256,33 @@ cd /tmp/${FILE_NAME}
 sudo python3 ./setup.py install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install gdcalc console and GTK+ financial, statistics, scientific and programmer's calculator from source
+APP_NAME=gdcalc
+APP_GUI_NAME="Console and GTK+ financial, statistics, scientific and programmer's calculator."
+APP_VERSION=2.17
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgnomeui-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./autogen.sh && ./configure --prefix=/usr/local && make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Programming;
+Keywords=Calculator;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
