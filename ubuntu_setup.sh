@@ -3026,24 +3026,27 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=180702
+APP_MAJOR_VERSION=18.08
+APP_MINOR_VERSION=180801
 APP_EXT=tar.bz2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=i386
 fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/mltframework/${APP_NAME,,}/releases/download/v18.03/${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_MINOR_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mltframework/${APP_NAME,,}/releases/download/v${APP_MAJOR_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME} /opt/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME} /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME}.app/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=Cross-platform Video Editor
 GenericName=Video Editor
 Exec=/opt/${APP_NAME,,}/${APP_NAME}.app/${APP_NAME,,}
-Icon=applications-multimedia
+Icon=/opt/${APP_NAME,,}/${APP_NAME}.app/share/icons/hicolor/64x64/apps/org.shotcut.Shotcut.png
 Path=/opt/${APP_NAME,,}/${APP_NAME}.app
 Type=Application
 StartupNotify=true
@@ -3052,7 +3055,6 @@ Categories=Video;Multimedia;
 Keywords=Video;Editor;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-sudo ln -s /opt/${APP_NAME,,}/${APP_NAME}.app/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
