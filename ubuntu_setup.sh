@@ -2288,7 +2288,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install ZenTao project management suite (manual installation)
 APP_NAME=zentao
-APP_VERSION=9.6.2_1
+APP_VERSION=10.2.stable_1
 APP_EXT=zip
 DB_NAME=${APP_NAME}
 DB_USER=${APP_NAME}
