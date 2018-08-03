@@ -12365,3 +12365,39 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install SQLiteStudio Qt-based SQLite database GUI client from package
+APP_NAME=SQLiteStudio
+APP_GUI_NAME="Qt-based SQLite database GUI client."
+APP_VERSION=3.2.1
+APP_EXT=tar.xz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux32
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux64
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://sqlitestudio.pl/files/sqlitestudio3/complete/${ARCH_TYPE}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME}/* /opt/${APP_NAME,,}
+sudo ln -f -s /opt/sqlitestudio/sqlitestudio /usr/local/bin/sqlitestudio
+sudo ln -f -s /opt/sqlitestudio/sqlitestudiocli /usr/local/bin/sqlitestudiocli
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=Linux Task Manager (LTM)
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/app_icon/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Database;SQLite;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
