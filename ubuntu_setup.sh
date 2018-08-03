@@ -12412,3 +12412,14 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${AP
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Lyrebird Java-based desktop Twitter client from Debian package
+APP_NAME=Lyrebird
+APP_GUI_NAME="Java-based desktop Twitter client."
+APP_VERSION=1.1.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-DEB
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Tristan971/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
