@@ -10747,7 +10747,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # http://www.wagemaker.co.uk/
 APP_NAME=SmallTextPad
 APP_GUI_NAME="Minimalist Java-based notepad."
-APP_VERSION=1.3.0-beta
+APP_VERSION=1.3.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
