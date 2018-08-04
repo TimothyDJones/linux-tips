@@ -12423,3 +12423,19 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Tristan971/${APP_N
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install curl-httpie curl client with HTTPie syntax from Debian package
+APP_NAME=curl-httpie
+APP_GUI_NAME="Curl client with HTTPie syntax."
+APP_VERSION=1.0.0
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux_amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux_386
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rs/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
