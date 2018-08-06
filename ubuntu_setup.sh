@@ -12504,3 +12504,8 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install LazyGit Go-based shell GUI for Git from PPA
+sudo add-apt-repository -y ppa:lazygit-team/daily
+sudo apt-get update -y
+sudo apt-get install -y lazygit
