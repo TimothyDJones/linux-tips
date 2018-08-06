@@ -797,7 +797,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Leanote Desktop app
 APP_NAME=leanote-desktop
-APP_VERSION=2.6
+APP_VERSION=2.6.1
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
 else    # Otherwise use version for 32-bit kernel
