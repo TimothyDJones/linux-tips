@@ -2697,7 +2697,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Strong Java Chess Engine (SJCE) graphical chess tool
 APP_NAME=SJCE
-APP_VERSION=14-11-17
+APP_VERSION=08-08-18
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L  https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_bin.${APP_EXT}
 cd /tmp
