@@ -12607,7 +12607,6 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-
 # Install SysUsage Perl-based GUI system monitor from package
 APP_NAME=SysUsage
 APP_GUI_NAME="Perl-based GUI system monitor."
@@ -12655,3 +12654,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Converseen Qt-based bulk image converting/resizing tool from source
+APP_NAME=Converseen
+APP_GUI_NAME="Qt-based bulk image converting/resizing tool."
+APP_VERSION=0.9.7
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libmagick++-dev cmake qttools5-dev-tools qttools5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p build && cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local .. && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
