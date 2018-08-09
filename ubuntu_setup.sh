@@ -12822,3 +12822,39 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install ExeQt small tool for pinning applications to system tray from source
+APP_NAME=ExeQt
+APP_GUI_NAME="Small tool for pinning applications to system tray."
+APP_VERSION=1.2.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/AlexandruIstrate/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}/lib/qtsingleapplication
+./configure
+sudo ln -s -f /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h /usr/include/x86_64-linux-gnu/qt5/QtCore/QStringLiteral
+cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 CONFIG+=release PREFIX=/usr/local .. && make && sudo make install
+sudo cp /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}/build/TrayIcon /usr/local/bin
+sudo ln -f -s /usr/local/bin/TrayIcon /usr/local/bin/${APP_NAME,,}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}/assets/images/app-icon.png /usr/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;
+Keywords=Tray Menu;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
