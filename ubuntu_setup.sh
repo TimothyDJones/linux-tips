@@ -364,7 +364,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from package
 APP_NAME=Vivaldi
-APP_VERSION=1.15.1147.55-1
+APP_VERSION=1.15.1147.64-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -716,7 +716,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install BeeBEEP LAN messenger from package
 APP_NAME=BeeBEEP
 APP_GUI_NAME="Cross-platform secure LAN messenger."
-APP_VERSION=5.4.0
+APP_VERSION=5.4.1
 if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 	KERNEL_TYPE=amd64
 	APP_VERSION=5.0.0
@@ -797,7 +797,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Leanote Desktop app
 APP_NAME=leanote-desktop
-APP_VERSION=2.6
+APP_VERSION=2.6.1
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
 else    # Otherwise use version for 32-bit kernel
@@ -849,7 +849,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=7.10.3
+APP_VERSION=7.10.6
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1022,7 +1022,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Madedit-Mod text editor from Sourceforge
 APP_NAME=madedit-mod
-APP_VERSION=0.4.13-1
+APP_VERSION=0.4.14-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu16.04.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1528,7 +1528,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Brave web browser from package
 APP_NAME=brave
-APP_VERSION=0.23.77
+APP_VERSION=0.23.78
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}-browser.mirror/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1550,7 +1550,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZenTao project management tool from package
 APP_NAME=ZenTaoPMS
-APP_VERSION=10.1.stable
+APP_VERSION=10.3.stable
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${APP_NAME}_${APP_VERSION}_1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2261,7 +2261,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.29
+APP_VERSION=6.3.31
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2697,7 +2697,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Strong Java Chess Engine (SJCE) graphical chess tool
 APP_NAME=SJCE
-APP_VERSION=14-11-17
+APP_VERSION=08-08-18
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L  https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_bin.${APP_EXT}
 cd /tmp
@@ -2896,7 +2896,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Micro terminal-based text editor
 APP_NAME=micro
-APP_VERSION=1.4.0
+APP_VERSION=1.4.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
@@ -4507,7 +4507,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install HOFAT (Hash Of File And Text) Java-based hash calculator
 APP_NAME=HOFAT
-APP_VERSION=13-07-2018
+APP_VERSION=08-08-18
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_bin.${APP_EXT}
 cd /tmp
@@ -4544,7 +4544,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Terminus JavaScript/Electron terminal from package
 APP_NAME=terminus
-APP_VERSION=1.0.0-alpha.48
+APP_VERSION=1.0.0-alpha.51
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/Eugeny/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -5920,7 +5920,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Code::Blocks open-source, cross-platform, WX-based, free C, C++ and Fortran IDE
 APP_NAME=codeblocks
 APP_GUI_NAME="Open-source, cross-platform, WX-based, free C, C++ and Fortran IDE."
-APP_VERSION=17.12
+APP_VERSION=17.12-1
 APP_EXT=tar.xz
 # Code::Blocks requires at least version 1.62 of Boost C++ libraries
 # TODO: Update to include check for version of Ubuntu before updating.
@@ -8575,7 +8575,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Mnemosyne cross-platform Python/Qt-based flashcard program from source
 APP_NAME=Mnemosyne
 APP_GUI_NAME="Cross-platform Python/Qt-based flashcard program."
-APP_VERSION=2.6
+APP_VERSION=2.6.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y python3-pip python3-pyqt5 python3-matplotlib python3-virtualenv python3-setuptools python3-wheel python3-webob python3-willow python3-pyqt5.qtwebengine python3-pyqt5.qtwebkit python3-pyqt5.qtsql python3-opengl
@@ -10329,7 +10329,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install ElCalc minimalist cross-platform desktop calculator built with Electron from package
 APP_NAME=ElCalc
 APP_GUI_NAME="Minimalist cross-platform desktop calculator built with Electron."
-APP_VERSION=4.0.7
+APP_VERSION=4.0.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION//0./}/${FILE_NAME}.${APP_EXT}
@@ -10998,9 +10998,9 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Klein minimalist console-based text editor from source
 APP_NAME=Klein
 APP_GUI_NAME="Minimalist console-based text editor."
-APP_VERSION=0.9.3
+APP_VERSION=N/A
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
+FILE_NAME=${APP_NAME,,}-src
 sudo apt-get install -y libncurses-dev libpth-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mycced/${FILE_NAME}.${APP_EXT}
 cd /tmp
@@ -12470,6 +12470,455 @@ StartupNotify=true
 Terminal=false
 Categories=Entertainment;Games;
 Keywords=Soccer;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install IdleX Tkinter extensions to Python IDLE IDE from package
+APP_NAME=IdleX
+APP_GUI_NAME="Tkinter extensions to Python IDLE IDE."
+APP_VERSION=1.18
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y idle3
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo python3 ./setup.py install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Python;IDE;IDLE;IDLEX;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install LazyGit Go-based shell GUI for Git from PPA
+sudo add-apt-repository -y ppa:lazygit-team/daily
+sudo apt-get update -y
+sudo apt-get install -y lazygit
+
+# Install UMLet Java-based UML diagram tool from package
+APP_NAME=UMLet
+APP_GUI_NAME="Java-based UML diagram tool."
+APP_VERSION=14.3
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-standalone-${APP_VERSION}.0
+sudo apt-get install -y idle3
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.umlet.com/${APP_NAME,,}_${APP_VERSION//./_}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME//ML/ml}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib:\$PATH; export PATH
+java -Dsun.java2d.xrender=f -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib
+Exec=java -Dsun.java2d.xrender=f -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+Icon=/opt/${APP_NAME,,}/img/${APP_NAME,,}_logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=UML;Diagramming;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Pasang Emas traditional board game from Brunei from source
+APP_NAME=Pasang-Emas
+APP_GUI_NAME="Traditional board game from Brunei."
+APP_VERSION=5.2.0
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y itstool
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure --prefix=/usr/local && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Double Commander dual-pane canonical file manager from package
+APP_NAME=DoubleCmd
+APP_GUI_NAME="Dual-pane canonical file manager."
+APP_VERSION=0.8.3
+APP_EXT=tar.xz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i386
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.qt5.${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/* /opt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$(pwd)
+./${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib
+Exec=export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/${APP_NAME,,}; /opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Accessories;
+Keywords=File;Manager;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install SysUsage Perl-based GUI system monitor from package
+APP_NAME=SysUsage
+APP_GUI_NAME="Perl-based GUI system monitor."
+APP_VERSION=5.6
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y rrdtool librrds-perl sysstat
+sudo cpan Proc::Queue
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+perl Makefile.PL && make && sudo make install
+sudo ln -f -s /usr/local/${APP_NAME,,}/doc/${APP_NAME,,}.1 /usr/local/man/man1/${APP_NAME,,}.1
+sudo chmod -R 777 /usr/local/${APP_NAME,,}/rrdfiles
+sudo chmod -R 777 /usr/local/${APP_NAME,,}/etc
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R 777 ${WWW_HOME}/${APP_NAME,,}
+# Add cron jobs for scripts
+(crontab -l 2>/dev/null; echo "*/1 * * * * /usr/local/sysusage/bin/sysusage > /dev/null 2>&1") | crontab -
+(crontab -l 2>/dev/null; echo "*/5 * * * * /usr/local/sysusage/bin/sysusagejqgraph > /dev/null 2>&1") | crontab -
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /usr/local/${APP_NAME,,}
+PATH=/usr/local/${APP_NAME,,}:\$PATH; export PATH
+xdg-open http://localhost/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/${APP_NAME,,}
+Exec=xdg-open http://localhost/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Accessories;
+Keywords=CPU;Memory;Monitoring;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Converseen Qt-based bulk image converting/resizing tool from source
+APP_NAME=Converseen
+APP_GUI_NAME="Qt-based bulk image converting/resizing tool."
+APP_VERSION=0.9.7
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libmagick++-dev cmake qttools5-dev-tools qttools5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p build && cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local .. && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install JIVAM cross-platform Java Image Viewer And Manipulator from package
+APP_NAME=JIVAM
+APP_GUI_NAME="Cross-platform Java Image Viewer And Manipulator."
+APP_VERSION=08-08-18
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_bin
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Graphics;Accessories;
+Keywords=Image Viewer;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install SJmp3 small Java-based MP3 player from package
+APP_NAME=SJmp3
+APP_GUI_NAME="Small Java-based MP3 player."
+APP_VERSION=08-08-18
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_bin
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Graphics;Accessories;
+Keywords=Image Viewer;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install MultiTextEditor Java-based text editor/word processor from package
+APP_NAME=MultiTextEditor
+APP_GUI_NAME="Java-based text editor/word processor."
+APP_VERSION=2.9
+APP_EXT=zip
+FILE_NAME=${APP_NAME//M/m}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/* /opt
+sudo rm -rf /opt/${APP_NAME//M/m}/java
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME//M/m}
+PATH=/opt/${APP_NAME//M/m}:/opt/${APP_NAME//M/m}/lib:\$PATH; export PATH
+java -jar /opt/${APP_NAME//M/m}/${APP_NAME//M/m}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME//M/m}:/opt/${APP_NAME//M/m}/lib
+Exec=java -jar /opt/${APP_NAME//M/m}/${APP_NAME//M/m}.jar
+Icon=/opt/${APP_NAME//M/m}/${APP_NAME//M/m}.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Programming;Development;Accessories;
+Keywords=Text Editor;Word Processor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install DaSPyMan Python-based SQLite and CSV file management tool from package
+APP_NAME=DaSPyMan
+APP_GUI_NAME="Python-based SQLite and CSV file management tool."
+APP_VERSION=2V1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/pycsvdb/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+python3 /opt/${APP_NAME,,}/${APP_NAME}.pyw
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python3 /opt/${APP_NAME,,}/${APP_NAME}.pyw
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=SQLite;CSV;Database;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install ExeQt small tool for pinning applications to system tray from source
+APP_NAME=ExeQt
+APP_GUI_NAME="Small tool for pinning applications to system tray."
+APP_VERSION=1.2.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/AlexandruIstrate/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}/lib/qtsingleapplication
+./configure
+sudo ln -s -f /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h /usr/include/x86_64-linux-gnu/qt5/QtCore/QStringLiteral
+cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 CONFIG+=release PREFIX=/usr/local .. && make && sudo make install
+sudo cp /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}/build/TrayIcon /usr/local/bin
+sudo ln -f -s /usr/local/bin/TrayIcon /usr/local/bin/${APP_NAME,,}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/${APP_NAME}/assets/images/app-icon.png /usr/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;
+Keywords=Tray Menu;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install nnn terminal file manager with desktop integration from Debian package
+APP_NAME=nnn
+APP_GUI_NAME="Terminal file manager with desktop integration."
+APP_VERSION=1.9-1
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(bi)$ ]]; then
+	DISTRIB_RELEASE=18.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar|)$ ]]; then
+	DISTRIB_RELEASE=16.04
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_ubuntu${DISTRIB_RELEASE}.${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/nnn-file-browser/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Lepton Electron-based Github Gist editor/viewer from Snap package
+APP_NAME=Lepton
+APP_GUI_NAME="Electron-based Github Gist editor/viewer."
+APP_VERSION=1.6.2
+APP_EXT=snap
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/hackjutsu/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+sudo snap install --dangerous /tmp/${APP_NAME,,}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install AsciidocFX JavaFX-based book/document editor to build PDF, EPUB, Mobi and HTML books from package
+APP_NAME=AsciidocFX
+APP_GUI_NAME="JavaFX-based book/document editor to build PDF, EPUB, Mobi and HTML books."
+APP_VERSION=1.6.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}_Linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME}
+Icon=/opt/${APP_NAME,,}/conf/public/favicon.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Accessories;
+Keywords=Ebook;PDF;EPUB;Editor;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
