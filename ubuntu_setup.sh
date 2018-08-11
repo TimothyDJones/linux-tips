@@ -11707,7 +11707,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Password Safe cross-platform password manager from Debian package
 APP_NAME=PasswordSafe
 APP_GUI_NAME="Cross-platform password manager."
-APP_VERSION=1.05.0-BETA
+APP_VERSION=1.06.0-BETA
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-debian-${APP_VERSION}.${KERNEL_TYPE}
 # If Ubuntu version is above 16.04 (Xenial), then we need to install some packages from 16.04.
