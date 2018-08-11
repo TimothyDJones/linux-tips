@@ -11828,7 +11828,7 @@ APP_NAME=QtFM
 APP_GUI_NAME="Lightweight desktop-independent GUI file manager."
 APP_VERSION=6.1.0
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}%20${APP_VERSION}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rodlie/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
