@@ -12944,3 +12944,32 @@ sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/doc /opt/${APP_NAME,,}
 sudo ln -f -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Haxima (a.k.a. Nazghul) retro Ultima-style RPG from Git repository
+APP_NAME=Haxima
+APP_GUI_NAME="Retro Ultima-style RPG."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo apt-get install -y libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev automake
+cd /tmp
+git clone https://git.code.sf.net/p/nazghul/git ${APP_NAME,,}
+dtrx -n /tmp/${APP_NAME,,}
+./autogen.sh && make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/share/nazghul/${APP_NAME,,}
+Exec=${APP_NAME,,}.sh
+Icon=/usr/local/share/nazghul/${APP_NAME,,}/splash.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=RPG;Ultima;Haxima;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
