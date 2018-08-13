@@ -12245,7 +12245,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install Too Many Files Python script to delete files based on date from source
 APP_NAME=TooManyFiles
 APP_GUI_NAME="Python script to delete files based on date."
-APP_VERSION=20180727
+APP_VERSION=20180812
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo pip3 install cx_Freeze
