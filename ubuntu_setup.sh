@@ -13143,3 +13143,25 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/ooo
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install SC-IM ncurses spreadsheet program for terminal from source
+APP_NAME=SC-IM
+APP_GUI_NAME="Ncurses spreadsheet program for terminal."
+APP_VERSION=0.7.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libzip-dev libxml2-dev bison  libncurses5-dev libncursesw5-dev cmake
+# Install libxlsxwriter for support of importing Excel XLSX files.
+curl -o /tmp/libxlsxwriter-RELEASE_0.7.7.tar.gz -J -L https://github.com/jmcnamara/libxlsxwriter/archive/RELEASE_0.7.7.tar.gz
+cd /tmp
+dtrx -n /tmp/libxlsxwriter-RELEASE_0.7.7.tar.gz
+cd /tmp/libxlsxwriter-RELEASE_0.7.7
+mkdir build && cd build
+cmake .. && make && sudo make install
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/andmarti1424/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/src
+make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
