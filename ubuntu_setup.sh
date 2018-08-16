@@ -13207,3 +13207,14 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Gisto Github Gist code snippet management tool from Debian package
+APP_NAME=Gisto
+APP_GUI_NAME="Github Gist code snippet management tool."
+APP_VERSION=1.9.61
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_VERSION}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
