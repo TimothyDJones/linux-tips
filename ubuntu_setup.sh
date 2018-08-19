@@ -12567,7 +12567,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Double Commander dual-pane canonical file manager from package
 APP_NAME=DoubleCmd
 APP_GUI_NAME="Dual-pane canonical file manager."
-APP_VERSION=0.8.3
+APP_VERSION=0.8.4
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
