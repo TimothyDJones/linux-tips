@@ -4590,7 +4590,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JEditor Java-based text editor
 APP_NAME=jEditor
-APP_VERSION=0.4.20
+APP_VERSION=0.4.21
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_GPL-bin-${APP_VERSION}.${APP_EXT}
 cd /tmp
