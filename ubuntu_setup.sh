@@ -1237,7 +1237,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Tagstoo file tag manager
 APP_NAME=Tagstoo
-APP_VERSION=1.10.4
+APP_VERSION=1.11.2
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
@@ -1577,7 +1577,7 @@ sudo rm -rf ${APP_NAME}*
 
 # Install Red Notebook notepad from source
 APP_NAME=rednotebook
-APP_VERSION=2.4
+APP_VERSION=2.6.1
 APP_EXT=tar.gz
 sudo apt-get install -y python3-enchant gir1.2-webkit2-4.0 python3-pip python3-yaml  # Install dependencies
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -2261,7 +2261,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.31
+APP_VERSION=6.3.33
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2870,7 +2870,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Treeline tree-structured notepad
 APP_NAME=TreeLine
-APP_VERSION=2.9.1
+APP_VERSION=3.0.0
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -4590,7 +4590,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JEditor Java-based text editor
 APP_NAME=jEditor
-APP_VERSION=0.4.20
+APP_VERSION=0.4.21
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_GPL-bin-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -7272,7 +7272,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install x-whnb self-contained web-based hierarchical notebook (similar to Cherrytree)
 APP_NAME=x-whnb
 APP_GUI_NAME="Self-contained web-based hierarchical notebook (similar to Cherrytree)."
-APP_VERSION=v0.5.0
+APP_VERSION=v0.5.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}.${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -7966,7 +7966,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Writer2LaTeX Java-based, command-line converters from OpenDocument Format (ODF/LibreOffice) to LaTeX/BibTeX, XHTML, XHTML+MathML and EPUB from package
 APP_NAME=Writer2LaTeX
 APP_GUI_NAME="Java-based, command-line converters from OpenDocument Format (ODF/LibreOffice) to LaTeX/BibTeX, XHTML, XHTML+MathML and EPUB."
-APP_VERSION=1.6
+APP_VERSION=1.6.1beta
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
 cd /tmp
@@ -8788,7 +8788,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install fileobj Python-based ncurses hex editor with Vi keybindings from source
 APP_NAME=fileobj
 APP_GUI_NAME="Python-based ncurses hex editor."
-APP_VERSION=0.7.62
+APP_VERSION=0.7.74
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kusumi/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
@@ -9788,7 +9788,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Requires JRE 9 or later with JavaFX
 APP_NAME=MiluDBViewer
 APP_GUI_NAME="Cross-platform, Java-based multi-database (MySQL/PostgreSQL/Oracle/Cassandra/SQLite/SQLServer/MongoDB) viewer/editor client."
-APP_VERSION=0.2.9
+APP_VERSION=0.3.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -13280,6 +13280,44 @@ StartupNotify=true
 Terminal=false
 Categories=Programming;Accessories;
 Keywords=Text Editor;Notepad;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Robopages PHP-based, no-database CMS with XML configuration from package
+APP_NAME=Robopages
+APP_GUI_NAME="PHP-based, no-database CMS  with XML configuration."
+APP_VERSION=Aug_20_2018
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd ${WWW_HOME}/${APP_NAME,,}
+PATH=${WWW_HOME}/${APP_NAME,,}:\$PATH; export PATH
+xdg-open http://localhost/${APP_NAME,,}/index.php
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=${WWW_HOME}/${APP_NAME,,}
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;
+Keywords=CMS;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
