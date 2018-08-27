@@ -1995,7 +1995,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Finanx 12c HP-12c financial calculator emulator
 APP_NAME=finanx
-APP_VERSION=12c-0.2.1
+APP_VERSION=12c-0.2.2
 APP_EXT=zip
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/finanx/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
