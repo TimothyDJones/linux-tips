@@ -374,7 +374,7 @@ rm -f /tmp/*${APP_NAME,,}*
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.59.0.0-1
+APP_VERSION=1.60.0.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1845,7 +1845,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.1.4
+APP_VERSION=7.1.5
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -1995,7 +1995,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Finanx 12c HP-12c financial calculator emulator
 APP_NAME=finanx
-APP_VERSION=12c-0.2.1
+APP_VERSION=12c-0.2.2
 APP_EXT=zip
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/finanx/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -3088,7 +3088,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2018.8
+APP_VERSION=1.2018.10
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -3611,7 +3611,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Kid3 audio tag editor
 APP_NAME=Kid3
-APP_VERSION=3.6.1
+APP_VERSION=3.6.2
 APP_EXT=tgz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-Linux.${APP_EXT}
 cd /tmp
@@ -3997,7 +3997,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal_facet_uml
-APP_VERSION=1.4.0
+APP_VERSION=1.5.1
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -5156,7 +5156,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install phpCollab web-based collaboration and project management tool
 # http://www.phpcollab.com/
 APP_NAME=phpCollab
-APP_VERSION=v2.6.2
+APP_VERSION=v2.6.3
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -8389,7 +8389,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PAGE drag-and-drop GUI generator for Python and Tkinter from source
 APP_NAME=PAGE
 APP_GUI_NAME="Drag-and-drop GUI generator for Python and Tkinter."
-APP_VERSION=4.15
+APP_VERSION=4.16
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -11826,7 +11826,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install QtFM lightweight desktop-independent GUI file manager from source
 APP_NAME=QtFM
 APP_GUI_NAME="Lightweight desktop-independent GUI file manager."
-APP_VERSION=6.1.0
+APP_VERSION=6.1.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rodlie/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
