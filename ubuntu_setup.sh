@@ -2197,7 +2197,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Leo editor/IDE/PIM
 APP_NAME=Leo-Editor
 APP_GUI_NAME="Cross-platform, Python-based editor/IDE, outliner, and PIM."
-APP_VERSION=5.7.3
+APP_VERSION=5.8-b1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y python3-pyqt5
