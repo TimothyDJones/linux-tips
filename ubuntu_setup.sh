@@ -1418,13 +1418,14 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Worker File Manager (For AVFS support install AVFS above.)
 APP_NAME=worker
-APP_VERSION=3.15.1
+APP_VERSION=3.15.2
 APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y liblua5.3-dev
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/workerfm/workerfm/3.11.0/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/workerfm/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./configure && make && make install
 # Create icon in menus
 cat > /tmp/${APP_NAME}.desktop << EOF
