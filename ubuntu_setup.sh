@@ -12789,7 +12789,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install DaSPyMan Python-based SQLite and CSV file management tool from package
 APP_NAME=DaSPyMan
 APP_GUI_NAME="Python-based SQLite and CSV file management tool."
-APP_VERSION=2V1
+APP_VERSION=2V16
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/pycsvdb/${FILE_NAME}.${APP_EXT}
