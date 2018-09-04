@@ -13410,3 +13410,14 @@ sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Photo Manager Java-based GUI image organizer from Debian package
+APP_NAME=Photo-Manager
+APP_GUI_NAME="Java-based GUI image organizer."
+APP_VERSION=1.2.4-0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/photo-man/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
