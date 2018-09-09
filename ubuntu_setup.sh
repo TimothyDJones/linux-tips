@@ -1406,7 +1406,7 @@ fi
 
 # Install AVFS virtual file system
 APP_NAME=avfs
-APP_VERSION=1.0.5
+APP_VERSION=1.0.6
 APP_EXT=tar.bz2
 sudo apt-get install -y libfuse-dev libarchive-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/avf/${APP_NAME}/1.0.5/${APP_NAME}-${APP_VERSION}.${APP_EXT}
