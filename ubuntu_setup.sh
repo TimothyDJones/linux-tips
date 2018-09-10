@@ -13459,3 +13459,45 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install FreeJ2ME J2ME emulator for desktop OSes from source
+APP_NAME=FreeJ2ME
+APP_GUI_NAME="J2ME emulator for desktop OSes."
+APP_VERSION=2018-09-07
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y ant
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
+ant build.xml
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}/build/* /opt/${APP_NAME,,}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/resources/org/recompile/icon.png /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar "\$1"
+Icon=/opt/${APP_NAME,,}/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Entertainment;Games;
+Keywords=Games;Emulator;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
