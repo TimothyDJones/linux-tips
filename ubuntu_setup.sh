@@ -374,7 +374,7 @@ rm -f /tmp/*${APP_NAME,,}*
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.60.5.0-1
+APP_VERSION=1.61.0.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1406,7 +1406,7 @@ fi
 
 # Install AVFS virtual file system
 APP_NAME=avfs
-APP_VERSION=1.0.5
+APP_VERSION=1.0.6
 APP_EXT=tar.bz2
 sudo apt-get install -y libfuse-dev libarchive-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/avf/${APP_NAME}/1.0.5/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -1529,7 +1529,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Brave web browser from package
 APP_NAME=brave
-APP_VERSION=0.23.105
+APP_VERSION=0.23.106
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}-browser.mirror/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -10002,7 +10002,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install MindForger notepad and Markdown editor/IDE with built-in preview from Debian package
 APP_NAME=MindForger
 APP_GUI_NAME="Notepad and Markdown editor/IDE with built-in preview."
-APP_VERSION=1.43.0-1
+APP_VERSION=1.46.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -13421,3 +13421,83 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/pho
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install SQLAdmin Java/JDBC-based database management tool from package
+APP_NAME=SQLAdmin
+APP_GUI_NAME="Java/JDBC-based database management tool."
+APP_VERSION=2.6
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}-all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sql-admin/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar "\$1"
+Icon=/opt/${APP_NAME,,}/src/gpl/fredy/images/database.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Accessories;
+Keywords=Database;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install FreeJ2ME J2ME emulator for desktop OSes from source
+APP_NAME=FreeJ2ME
+APP_GUI_NAME="J2ME emulator for desktop OSes."
+APP_VERSION=2018-09-07
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y ant
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
+ant build.xml
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}/build/* /opt/${APP_NAME,,}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/resources/org/recompile/icon.png /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar "\$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar "\$1"
+Icon=/opt/${APP_NAME,,}/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Entertainment;Games;
+Keywords=Games;Emulator;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
