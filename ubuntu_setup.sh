@@ -13536,3 +13536,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Me and My Shadow SDL2 puzzle arcade game from source
+APP_NAME=MeandMyShadow
+APP_GUI_NAME="SDL2 puzzle arcade game."
+APP_VERSION=0.5-rc
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
+sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev libcurl4-gnutls-dev liblua5.3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${FILE_NAME//-src/}
+mkdir -p build && cd build
+cmake .. && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
