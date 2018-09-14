@@ -12751,7 +12751,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install MultiTextEditor Java-based text editor/word processor from package
 APP_NAME=MultiTextEditor
 APP_GUI_NAME="Java-based text editor/word processor."
-APP_VERSION=2.9
+APP_VERSION=3.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME//M/m}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
