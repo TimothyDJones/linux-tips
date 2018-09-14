@@ -10115,7 +10115,6 @@ gcc compress.c -o compress && sudo mv compress /usr/local/bin
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-<<<<<<< HEAD
 # Install Piskvorky cross-platform, Qt-based Gomoku game from package
 APP_NAME=Piskvorky
 APP_GUI_NAME="Cross-platform, Qt-based Gomoku game."
