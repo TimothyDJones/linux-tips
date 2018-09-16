@@ -13732,3 +13732,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install MagicCube 3-D Rubik's cube visualization from Debian package
+APP_NAME=MagicCube3
+APP_GUI_NAME="3-D Rubik's cube visualization."
+APP_VERSION=1.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
