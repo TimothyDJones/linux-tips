@@ -13782,46 +13782,6 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install EmACT minimalist Emacs editor clone from source
-APP_NAME=EmACT
-APP_GUI_NAME="Minimalist Emacs editor clone."
-APP_VERSION=2.58.0
-APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd ${FILE_NAME}
-./configure && make && sudo make install
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,} << EOF
-#! /bin/sh
-cd /opt/${APP_NAME,,}
-PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-java -cp derbyclient.jar -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
-cd $HOME
-EOF
-sudo mv /tmp/${APP_NAME,,} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=/opt/${APP_NAME,,}
-Exec=java -cp derbyclient.jar -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
-Icon=
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Entertainment;Games;
-Keywords=Adventure;Space;
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-cd $HOME
-rm -rf /tmp/*${APP_NAME}*
-
 # Install xonsh alternative, cross-platform Python-based console shell from package
 APP_NAME=xonsh
 APP_GUI_NAME="Alternative, cross-platform Python-based console shell."
@@ -13872,5 +13832,41 @@ Keywords=Task Management;Project Management;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 xdg-open http://localhost/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Master Password cross-platform Java GUI password management tool from package
+APP_NAME=MasterPassword
+APP_GUI_NAME="Cross-platform Java GUI password management tool."
+APP_VERSION=N/A
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}-gui
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://masterpassword.app/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Internet;System;
+Keywords=Password;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
