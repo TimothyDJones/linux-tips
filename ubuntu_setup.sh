@@ -8390,7 +8390,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PAGE drag-and-drop GUI generator for Python and Tkinter from source
 APP_NAME=PAGE
 APP_GUI_NAME="Drag-and-drop GUI generator for Python and Tkinter."
-APP_VERSION=4.16
+APP_VERSION=4.17
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
