@@ -5386,8 +5386,8 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 
-# Install jPDFViewer cross-platform Java-based PDF viewer/reader
-APP_NAME=jPDFViewer
+# Install JPDFViewer cross-platform Java-based PDF viewer/reader
+APP_NAME=JPDFViewer
 APP_GUI_NAME="Cross-platform Java-based PDF viewer/reader."
 APP_VERSION=N/A
 APP_EXT=jar
@@ -5397,14 +5397,14 @@ if ! [ -x "$(command -v java)" ]; then
 	echo 'Installing Java...'
 	sudo apt-get install -y openjdk-8-jre
 fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${APP_NAME,,}.${APP_EXT} /opt/${APP_NAME,,}
+sudo mv /tmp/${APP_NAME}.${APP_EXT} /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
 PATH=/opt/${APP_NAME,,}:$PATH; export PATH
-java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+java -jar /opt/${APP_NAME,,}/${APP_NAME}.${APP_EXT}
 cd $HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
@@ -5415,7 +5415,7 @@ Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
-Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}.${APP_EXT}
 #Icon=
 Type=Application
 StartupNotify=true
