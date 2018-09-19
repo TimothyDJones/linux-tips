@@ -310,7 +310,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
 APP_NAME=firejail
-APP_VERSION=0.9.54_1
+APP_VERSION=0.9.56_1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
