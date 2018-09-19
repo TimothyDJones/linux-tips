@@ -7672,7 +7672,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Standard Notes Electron-based secure notepad from App Image
 APP_NAME=Standard-Notes
 APP_GUI_NAME="Electron-based secure notepad."
-APP_VERSION=2.3.1
+APP_VERSION=2.3.5
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=i386
@@ -13980,3 +13980,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Ninja IDE Qt-based Python editor/IDE from Debian package
+APP_NAME=Ninja-IDE
+APP_GUI_NAME="Qt-based Python editor/IDE."
+APP_VERSION=2.3%2Br597~saucy1_all
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.dropbox.com/s/qwxvndlrtzdstpx/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
