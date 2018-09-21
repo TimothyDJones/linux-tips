@@ -7273,7 +7273,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install x-whnb self-contained web-based hierarchical notebook (similar to Cherrytree)
 APP_NAME=x-whnb
 APP_GUI_NAME="Self-contained web-based hierarchical notebook (similar to Cherrytree)."
-APP_VERSION=v0.5.2
+APP_VERSION=v0.5.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}.${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
