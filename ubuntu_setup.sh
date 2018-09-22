@@ -13991,3 +13991,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.dropbox.com/s/qwxvndlrtzd
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install MP3Gain MP3 file volume normalizer from source
+APP_NAME=MP3Gain
+APP_GUI_NAME="MP3 file volume normalizer."
+APP_VERSION=1.6.2
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION//./_}-src
+sudo apt-get install -y libmpg123-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
