@@ -4680,7 +4680,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.2.3
+APP_VERSION=1.2.4
 APP_EXT=tar.bz2
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -14016,7 +14016,9 @@ FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/libUseful-3
+./configure && make && sudo make install
 cd /tmp/${FILE_NAME}
-make && sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
