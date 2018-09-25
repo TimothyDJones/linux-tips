@@ -14062,3 +14062,33 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install GNU Spice GUI wxWidgets GUI for NG-Spice and GNU-Cap electronic circuit emulation tools from source
+APP_NAME=gSpiceUI
+APP_GUI_NAME="File hash tool with support for many hash algorithms."
+APP_VERSION=1.1.00
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
+sudo apt-get install libpangox-1.0-dev libwxgtk3.0-dev gwave
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/${APP_NAME,,}/icons/${APP_NAME,,}-32x32.xpm
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Engineering;Electronics;Programming;Development;
+Keywords=Electronics;Spice;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
