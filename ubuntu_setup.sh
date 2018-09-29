@@ -8158,9 +8158,9 @@ rm -rf /tmp/${APP_NAME,,}
 # Install CWED minimalist web-based C/C++ IDE
 APP_NAME=CWED
 APP_GUI_NAME="Minimalist web-based C/C++ IDE."
-APP_VERSION=05272018
+APP_VERSION=0.8.5
 APP_EXT=tar
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential gdb make
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
