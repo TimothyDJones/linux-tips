@@ -11000,7 +11000,7 @@ APP_NAME=Klein
 APP_GUI_NAME="Minimalist console-based text editor."
 APP_VERSION=N/A
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-src
+FILE_NAME=${APP_NAME,,}-last
 sudo apt-get install -y libncurses-dev libpth-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mycced/${FILE_NAME}.${APP_EXT}
 cd /tmp
