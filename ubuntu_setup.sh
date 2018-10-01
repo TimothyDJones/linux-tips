@@ -14291,3 +14291,20 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 xdg-open http://localhost/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install official OpenJDK 11 along with OpenJDK from repositories with alternatives
+APP_NAME=OpenJDK
+APP_GUI_NAME="Official OpenJDK 11."
+APP_VERSION=11+28
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}_linux-x64_bin
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.java.net/java/GA/jdk11/28/GPL/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/* /usr/lib/jvm
+sudo sh -c 'for bin in /usr/lib/jvm/jdk-11/bin/*; do update-alternatives --install /usr/bin/$(basename $bin) $(basename $bin) $bin 100; done'
+sudo sh -c 'for bin in /usr/lib/jvm/jdk-11/bin/*; do update-alternatives --set $(basename $bin) $bin; done'
+echo "To change JDK version, run 'sudo update-alternatives --config java'."
+cd $HOME
+sudo rm -rf /tmp/${FILE_NAME}*
+
