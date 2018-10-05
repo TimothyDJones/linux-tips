@@ -6861,7 +6861,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Amp Rust-based command-line text editor from source
 APP_NAME=Amp
 APP_GUI_NAME="Cross-platform Rust-based command-line text editor."
-APP_VERSION=0.4.1
+APP_VERSION=0.5.1
 APP_EXT=N/A
 sudo apt-get install -y zlib1g-dev openssl libxcb1-dev cmake pkg-config
 curl https://sh.rustup.rs -sSf | sh
