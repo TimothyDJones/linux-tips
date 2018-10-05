@@ -6863,7 +6863,7 @@ APP_NAME=Amp
 APP_GUI_NAME="Cross-platform Rust-based command-line text editor."
 APP_VERSION=0.5.1
 APP_EXT=N/A
-sudo apt-get install -y zlib1g-dev openssl libxcb1-dev cmake pkg-config
+sudo apt-get install -y zlib1g-dev openssl libxcb1-dev cmake pkg-config libssl-dev
 curl https://sh.rustup.rs -sSf | sh
 cargo install --git https://github.com/jmacdonald/${APP_NAME,,}/ --tag ${APP_VERSION}
 
