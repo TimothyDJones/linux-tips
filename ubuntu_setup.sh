@@ -3421,7 +3421,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Video Easy Editor minimal video editor from source
 APP_NAME=video-easy-editor
-APP_VERSION=170
+APP_VERSION=190
 APP_EXT=tar.gz
 sudo apt-get install -y pkg-config libopencv-dev ffmpeg libpulse-dev libgtk2.0-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/easy-editor-${APP_VERSION}.${APP_EXT}
