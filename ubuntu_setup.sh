@@ -1846,7 +1846,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.2.3
+APP_VERSION=7.2.4
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
