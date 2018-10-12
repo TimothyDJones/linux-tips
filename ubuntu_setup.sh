@@ -14512,3 +14512,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/abahmed/${APP_NAME
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Sudoku-Tk Python 3 Tkinter-based Sudoku puzzle generator and solver from package
+APP_NAME=Sudoku-Tk
+APP_GUI_NAME="Python 3 Tkinter-based Sudoku puzzle generator and solver."
+APP_VERSION=1.2.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y python3-tk python3-pil python3-numpy tcl8.6 tk8.6
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-j4321/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/*${APP_NAME}*/
+sudo python3 ./setup.py install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
