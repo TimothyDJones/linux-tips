@@ -14065,7 +14065,7 @@ rm -rf /tmp/*${APP_NAME}*
 
 # Install GNU Spice GUI wxWidgets GUI for NG-Spice and GNU-Cap electronic circuit emulation tools from source
 APP_NAME=gSpiceUI
-APP_GUI_NAME="File hash tool with support for many hash algorithms."
+APP_GUI_NAME="wxWidgets GUI for NG-Spice and GNU-Cap electronic circuit emulation tools."
 APP_VERSION=1.1.00
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
