@@ -1846,7 +1846,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.2.4
+APP_VERSION=7.2.5
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -1996,7 +1996,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Finanx 12c HP-12c financial calculator emulator
 APP_NAME=finanx
-APP_VERSION=12c-0.2.2
+APP_VERSION=12c-0.2.3
 APP_EXT=zip
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/finanx/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -3366,7 +3366,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Pentobi Blokus-style board game from source
 APP_NAME=pentobi
-APP_VERSION=15.0
+APP_VERSION=16.1
 APP_EXT=tar.xz
 sudo apt-get install -y g++ make cmake qttools5-dev qttools5-dev-tools libqt5svg5-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -12658,7 +12658,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Converseen Qt-based bulk image converting/resizing tool from source
 APP_NAME=Converseen
 APP_GUI_NAME="Qt-based bulk image converting/resizing tool."
-APP_VERSION=0.9.7
+APP_VERSION=0.9.7.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libmagick++-dev cmake qttools5-dev-tools qttools5-dev
@@ -14510,5 +14510,138 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/abahmed/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Sudoku-Tk Python 3 Tkinter-based Sudoku puzzle generator and solver from package
+APP_NAME=Sudoku-Tk
+APP_GUI_NAME="Python 3 Tkinter-based Sudoku puzzle generator and solver."
+APP_VERSION=1.2.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y python3-tk python3-pil python3-numpy tcl8.6 tk8.6
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-j4321/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/*${APP_NAME}*/
+sudo python3 ./setup.py install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Google-Drive-Electron cross-platform, Electron-based desktop tool for Google Drive from package
+APP_NAME=Google-Drive-Electron
+APP_GUI_NAME="Cross-platform, Electron-based desktop tool for Google Drive."
+APP_VERSION=v.funky-duck/0.0.2
+APP_EXT=zip
+FILE_NAME=${APP_NAME//-/.}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/alexkim205/Google-Drive-Electron/releases/download/${APP_VERSION////%2F}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv "/tmp/${FILE_NAME}/${FILE_NAME//./\ }"/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+"/opt/${APP_NAME,,}/${APP_NAME//-/\ }"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec="/opt/${APP_NAME,,}/${APP_NAME//-/\ }"
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;Accessories;System;
+Keywords=Google;Storage;Drive;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Leibnitz 3D graphing calculator from package
+APP_NAME=Leibnitz
+APP_GUI_NAME="3D graphing calculator."
+APP_VERSION=2.1.0
+APP_EXT=tgz
+FILE_NAME=${APP_NAME}_${APP_VERSION}_tar_RHFC27
+sudo apt-get install -y libjpeg62 
+sudo ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.1
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/desktop/${APP_NAME,,}.xpm
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;Accessories;
+Keywords=Calculator;Graphing;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install System G minimalist GUI file manager from package
+APP_NAME=System-G
+APP_GUI_NAME="Minimalist GUI file manager."
+APP_VERSION=2.7.0
+APP_EXT=tgz
+FILE_NAME=${APP_NAME//-/_}_${APP_VERSION}_tar_RHFC27
+sudo apt-get install -y libjpeg62 
+sudo ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.1
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/nps-systemg/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME//-/_}-${APP_VERSION}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/systemg
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/systemg
+Icon=/opt/${APP_NAME,,}/desktop/systemg.xpm
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=File;Manager;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
