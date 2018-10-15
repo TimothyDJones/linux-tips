@@ -849,7 +849,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=8.0.1
+APP_VERSION=8.0.2
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1194,7 +1194,7 @@ APP_VERSION_MAJOR=4.1.1
 APP_VERSION_MINOR=3780
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
-curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-20_${KERNEL_TYPE}.deb
+curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-22_${KERNEL_TYPE}.deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}_${APP_VERSION_MAJOR}-${APP_VERSION_MINOR}_${KERNEL_TYPE}.deb
 cd /tmp
 sudo gdebi -n libpasastro.deb
@@ -1996,7 +1996,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Finanx 12c HP-12c financial calculator emulator
 APP_NAME=finanx
-APP_VERSION=12c-0.2.3
+APP_VERSION=12c-0.2.4
 APP_EXT=zip
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/finanx/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -2396,7 +2396,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
 APP_NAME=xschem
-APP_VERSION=2.6.1
+APP_VERSION=2.6.2
 APP_EXT=tar.gz
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -14065,7 +14065,7 @@ rm -rf /tmp/*${APP_NAME}*
 
 # Install GNU Spice GUI wxWidgets GUI for NG-Spice and GNU-Cap electronic circuit emulation tools from source
 APP_NAME=gSpiceUI
-APP_GUI_NAME="File hash tool with support for many hash algorithms."
+APP_GUI_NAME="wxWidgets GUI for NG-Spice and GNU-Cap electronic circuit emulation tools."
 APP_VERSION=1.1.00
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
