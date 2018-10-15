@@ -14645,3 +14645,15 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Docker from official repository
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-cache policy docker-ce
+sudo apt-get install -y docker-ce
+sudo systemctl status docker
+sudo usermod -aG docker ${USER}  # Add user account to 'docker' group to run commands without sudo.
+su ${USER}
+id -nG  # Confirm user account added to 'docker' group.
+docker run hello-world  # Confirm Docker installation.
