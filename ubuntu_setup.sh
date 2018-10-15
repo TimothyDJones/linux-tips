@@ -11953,7 +11953,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install HHDB SQL Admin Java-based GUI PostgreSQL client from package
 APP_NAME="HHDB SQL Admin"
 APP_GUI_NAME="Java-based GUI PostgreSQL client."
-APP_VERSION=4.3
+APP_VERSION=4.5
 APP_EXT=tar.gz
 FILE_NAME=hhdb_csadmin_Linux_v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hhdb-admin/${FILE_NAME}.${APP_EXT}
