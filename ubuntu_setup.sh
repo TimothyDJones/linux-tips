@@ -2494,7 +2494,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 
 # Install DK Tools system utility from source
 APP_NAME=dktools
-APP_VERSION=4.18.1
+APP_VERSION=4.19.0
 APP_EXT=tar.gz
 KERNEL_TYPE=getKernelType()
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
