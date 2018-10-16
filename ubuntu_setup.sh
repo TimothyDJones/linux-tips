@@ -3997,18 +3997,14 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
-APP_NAME=crystal_facet_uml
-APP_VERSION=1.6.0
+APP_NAME=crystal-facet-uml
+APP_VERSION=1.6.1-1
 APP_EXT=deb
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x86_64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=x86
-fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/crystal-facet-uml/${APP_NAME}-${APP_VERSION}-Linux-${ARCH_TYPE}.${APP_EXT}
+FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/crystal_facet
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 sudo cp -r * /
 cd $HOME
 rm -rf /tmp/${APP_NAME,,} /tmp/crystal_facet*
