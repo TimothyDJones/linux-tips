@@ -14770,3 +14770,14 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 xdg-open http://localhost/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install GraphQL Playground Electron-based IDE/client for GraphQL development and testing from Debian package
+APP_NAME=GraphQL-Playground
+APP_GUI_NAME="Electron-based IDE/client for GraphQL development and testing."
+APP_VERSION=1.8.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-electron_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/prisma/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
