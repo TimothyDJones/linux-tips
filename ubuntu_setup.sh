@@ -14785,7 +14785,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install glparchis OpenGL-based Parchis (Parcheesi) game from package
 APP_NAME=glparchis
 APP_GUI_NAME="OpenGL-based Parchis (Parcheesi) game."
-APP_VERSION=20180510
+APP_VERSION=20181020
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}.x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
