@@ -14819,3 +14819,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install imgp image resizer and rotator from Debian package
+APP_NAME=imgp
+APP_GUI_NAME="Image resizer and rotator."
+APP_VERSION=2.6-1
+APP_EXT=deb
+source /etc/lsb-release
+# If Ubuntu version is above 16.04 (Xenial), then we use 16.04.
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar)$ ]]; then
+	DISTRIB_RELEASE=16.04
+else 
+    DISTRIB_RELEASE=18.04
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_ubuntu${DISTRIB_RELEASE}.${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
