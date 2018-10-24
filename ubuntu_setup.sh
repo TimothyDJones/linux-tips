@@ -13378,7 +13378,7 @@ sudo rm -rf /tmp/*${APP_NAME,,}*
 # Install CiteSpace scientific literature visual exploration tool from package
 APP_NAME=CiteSpace
 APP_GUI_NAME="Scientific literature visual exploration tool."
-APP_VERSION=5.3.R4.8.31.2018
+APP_VERSION=5.3.R5.10.23.2018
 APP_EXT=7z
 FILE_NAME=${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
