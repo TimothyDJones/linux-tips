@@ -15083,3 +15083,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install EmACT minimalist terminal Emacs clone from source
+APP_NAME=EmACT
+APP_GUI_NAME="Minimalist terminal Emacs clone."
+APP_VERSION=2.58.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libtinfo-dev libncurses5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
