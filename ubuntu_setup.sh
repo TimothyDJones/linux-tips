@@ -15186,3 +15186,32 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Code Notes simple code snippet/Github Gist manager built with Electron and Vue.JS from AppImage
+APP_NAME=Code-Notes
+APP_GUI_NAME="Simple code snippet/Github Gist manager built with Electron and Vue.JS."
+APP_VERSION=1.2.1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/lauthieb//${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod a+w /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -f -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Snippets;Gist;
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
