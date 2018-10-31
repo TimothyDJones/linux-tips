@@ -10353,7 +10353,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install ElCalc minimalist cross-platform desktop calculator built with Electron from package
 APP_NAME=ElCalc
 APP_GUI_NAME="Minimalist cross-platform desktop calculator built with Electron."
-APP_VERSION=5.0.0-rc.2
+APP_VERSION=5.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
