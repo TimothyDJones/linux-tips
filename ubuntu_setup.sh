@@ -15196,7 +15196,7 @@ FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/lauthieb//${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
-sudo chmod a+w /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo chmod a+x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo ln -f -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${FILE_NAME,,}.desktop << EOF
 [Desktop Entry]
