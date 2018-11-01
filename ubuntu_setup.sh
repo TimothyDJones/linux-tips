@@ -849,7 +849,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=8.0.2
+APP_VERSION=8.1.1
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1846,7 +1846,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.2.5
+APP_VERSION=7.2.7
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2396,7 +2396,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
 APP_NAME=xschem
-APP_VERSION=2.6.8
+APP_VERSION=2.7.0
 APP_EXT=tar.gz
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -6626,7 +6626,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install SMath Studio WYSIWYG math editor
 APP_NAME=SMathStudio
 APP_GUI_NAME="WYSIWYG math editor."
-APP_VERSION=0.99.6671
+APP_VERSION=0.99.6839
 APP_EXT=tar.gz
 sudo apt-get install -y mono-runtime libmono-system-windows-forms4.0-cil
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} --referer https://en.smath.info/view/SMathStudio/summary -J -L https://smath.info/file/v4yoT/${APP_NAME}Desktop.${APP_VERSION//./_}.Mono.${APP_EXT}
@@ -9801,7 +9801,7 @@ rm -rf /tmp/${FILE_NAME}*
 # Install Nighthawk cross-platform, Electron-based minimalist music player from Debian package
 APP_NAME=Nighthawk
 APP_GUI_NAME="Cross-platform, Electron-based minimalist music player."
-APP_VERSION=v1.0.0
+APP_VERSION=v2.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/quantumkv/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -10353,7 +10353,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install ElCalc minimalist cross-platform desktop calculator built with Electron from package
 APP_NAME=ElCalc
 APP_GUI_NAME="Minimalist cross-platform desktop calculator built with Electron."
-APP_VERSION=5.0.0-rc.2
+APP_VERSION=5.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -13160,7 +13160,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install iMath LibreOffice extension for numeric and symbolic calculations inside a Writer document from Debian package
 APP_NAME=iMath
 APP_GUI_NAME="LibreOffice extension for numeric and symbolic calculations inside a Writer document."
-APP_VERSION=2.2.4
+APP_VERSION=2.2.6
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/ooo-imath/${FILE_NAME}.${APP_EXT}
@@ -14724,7 +14724,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Polar Bookshelf personal document management/ebook reader tool from Debian package
 APP_NAME=Polar-Bookshelf
 APP_GUI_NAME="Personal document management/ebook reader tool."
-APP_VERSION=1.0.3
+APP_VERSION=1.0.9
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/burtonator/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -15201,3 +15201,32 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Code Notes simple code snippet/Github Gist manager built with Electron and Vue.JS from AppImage
+APP_NAME=Code-Notes
+APP_GUI_NAME="Simple code snippet/Github Gist manager built with Electron and Vue.JS."
+APP_VERSION=1.2.1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/lauthieb//${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -f -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Snippets;Gist;
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
