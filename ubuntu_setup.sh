@@ -15186,3 +15186,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install GXemul full-system computer emulator that emulates processors (ARM, MIPS, M88K, PowerPC, and SuperH) and peripherals from source
+APP_NAME=GXemul
+APP_GUI_NAME="Full-system computer emulator that emulates processors (ARM, MIPS, M88K, PowerPC, and SuperH) and peripherals."
+APP_VERSION=0.6.0.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libtinfo-dev libncurses5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
