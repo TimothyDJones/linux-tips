@@ -15230,3 +15230,17 @@ EOF
 sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Batch Audio Converter command-line audio file converter from package
+APP_NAME=BAC
+APP_GUI_NAME="Command-line audio file converter."
+APP_VERSION=N/A
+APP_EXT=sh
+FILE_NAME=${APP_NAME,,}
+sudo apt-get install -y ffmpeg
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/batchaudiocvt/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -f -s /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
