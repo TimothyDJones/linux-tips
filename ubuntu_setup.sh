@@ -14050,7 +14050,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Videomass2 GUI front-end for FFmpeg from Debian package
 APP_NAME=Videomass2
 APP_GUI_NAME="GUI front-end for FFmpeg."
-APP_VERSION=1.0.1-1
+APP_VERSION=1.2.0-1
 APP_EXT=deb
 FILE_NAME=python-${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
