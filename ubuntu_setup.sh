@@ -15244,3 +15244,43 @@ sudo chmod a+x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -f -s /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install ChurchInfo web-based (PHP/MySQL) church management system from package
+APP_NAME=ChurchInfo
+APP_GUI_NAME="Web-based (PHP/MySQL) church management system."
+APP_VERSION=1.3.0
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+#sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+#sudo chmod -R a+w ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_general_ci;"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+mysql -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/SQL/Install.sql
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.html
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;
+Keywords=Church;Management;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+xdg-open http://localhost/${APP_NAME,,}/index.html
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
