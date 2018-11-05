@@ -15350,3 +15350,21 @@ EOF
 sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install ProcDump Linux version of Sysinternals ProcDump tool Debian package
+APP_NAME=ProcDump
+APP_GUI_NAME="Linux version of Sysinternals ProcDump tool."
+APP_VERSION=1.0.1
+APP_EXT=deb
+source /etc/lsb-release
+# If Ubuntu version is above 16.04 (Xenial), then we use 16.04.
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar|bi|co)$ ]]; then
+	DISTRIB_CODENAME=xenial
+else 
+    DISTRIB_CODENAME=trusty
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://packages.microsoft.com/repos/microsoft-ubuntu-${DISTRIB_CODENAME}-prod/pool/main/p/procdump/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
