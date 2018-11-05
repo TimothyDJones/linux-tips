@@ -2542,7 +2542,7 @@ xdg-open http://localhost:8080/${APP_NAME,,}/ &
 
 # Install Squirrel SQL Java database client utility
 APP_NAME=squirrel-sql
-APP_VERSION=3.8.1
+APP_VERSION=3.9.0
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-standard.${APP_EXT}
 sudo java -jar /tmp/${APP_NAME,,}.${APP_EXT}
