@@ -15368,3 +15368,35 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://packages.microsoft.com/repos/
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install SQL Workbench Java-based GUI and console database client from package
+APP_NAME=SQLWorkbench
+APP_GUI_NAME="Java-based GUI and console database client."
+APP_VERSION=124
+APP_EXT=zip
+FILE_NAME=${APP_NAME//SQL/}-Build${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://www.sql-workbench.eu/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+#sudo chmod -R a+w /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/sqlwbconsole.sh /opt/${APP_NAME,,}/${APP_NAME,,}.sh
+sudo ln -s -f /opt/${APP_NAME,,}/sqlwbconsole.sh /usr/local/bin/sqlwbconsole
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}.sh
+Icon=/opt/${APP_NAME,,}/workbench32.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=SQL;Database;Java;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
