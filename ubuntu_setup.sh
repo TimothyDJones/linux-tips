@@ -15399,4 +15399,20 @@ Keywords=SQL;Database;Java;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
+
+# Install Archiver Golang-based multi-format archiver/extractor from package
+APP_NAME=Archiver
+APP_GUI_NAME="Golang-based multi-format archiver/extractor."
+APP_VERSION=3.0.0
+APP_EXT=N/A
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=386
+fi
+FILE_NAME=arc_linux_${ARCH_TYPE}
+curl -o /tmp/arc -J -L https://github.com/mholt/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo mv /tmp/arc /usr/local/bin
+sudo chmod a+x /usr/local/bin/arc
+cd $HOME
 rm -rf /tmp/*${APP_NAME}*
