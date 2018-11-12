@@ -15416,3 +15416,23 @@ sudo mv /tmp/arc /usr/local/bin
 sudo chmod a+x /usr/local/bin/arc
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Conky-Easy customized Conky system monitor configuration from package
+APP_NAME=Conky-Easy
+APP_GUI_NAME="Customized Conky system monitor configuration."
+APP_VERSION=1.0.9
+APP_EXT=7z
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y conky-all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://dl.opendesktop.org/api/files/download/id/1541941778/s/e6e6b0063ee171a6a3084f47badceb928031b4b7dab9020ff0ba591f207a2d43678ebe4d5662b6ac0486a4ba4044e908b7c56ab75cf136dc94a7fe9e0d167fb5/t/1542063859/u//${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}/conky.png /usr/share/icons # For start notification
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}/'zekton rg.ttf' /usr/share/fonts  # For clock font
+cp -R /tmp/${FILE_NAME}/${APP_NAME}/.conkybasic_c110 $HOME
+cp -R /tmp/${FILE_NAME}/${APP_NAME}/.lua $HOME
+cp -R /tmp/${FILE_NAME}/${APP_NAME}/.icons $HOME
+sed -i 's@ .conkybasic_c110@ $HOME/.conkybasic_c110@g' /tmp/${FILE_NAME}/${APP_NAME}/startconky.sh
+sudo cp /tmp/${FILE_NAME}/${APP_NAME}/startconky.sh /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
