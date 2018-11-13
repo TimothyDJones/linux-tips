@@ -15476,3 +15476,16 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 xdg-open http://localhost/${APP_NAME,,}/install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install sysget universal package manager for Linux from repository
+APP_NAME=sysget
+APP_GUI_NAME="Universal package manager for Linux."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo wget -qO - https://apt.emilengler.com/signkey.asc | sudo apt-key add
+echo "deb [arch=all] https://apt.emilengler.com/ stable main" | sudo tee /etc/apt/sources.list.d/emilengler.list
+sudo apt update 
+sudo apt install -y sysget
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
