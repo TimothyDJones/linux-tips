@@ -15489,3 +15489,21 @@ sudo apt update
 sudo apt install -y sysget
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Qomp Quick (Qt) Online Music Player from Debian package
+APP_NAME=Qomp
+APP_GUI_NAME="Quick (Qt) Online Music Player."
+APP_VERSION=1.3.1
+APP_EXT=deb
+source /etc/lsb-release
+# If Ubuntu version is above 16.04 (Xenial), then we use 16.04.
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ar|bi|co)$ ]]; then
+	DISTRIB_CODENAME=artful
+else 
+    DISTRIB_CODENAME=zesty
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-0ubuntu1~0ppa1~${DISTRIB_CODENAME}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~${APP_NAME,,}/+archive/ubuntu/ppa/+files/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
