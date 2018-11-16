@@ -3027,9 +3027,9 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_MAJOR_VERSION=18.08
-APP_MINOR_VERSION=181008
-APP_EXT=tar.bz2
+APP_MAJOR_VERSION=18.11
+APP_MINOR_VERSION=181113
+APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
