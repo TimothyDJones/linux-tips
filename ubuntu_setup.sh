@@ -521,7 +521,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install tke text editor
 APP_NAME=tke
-APP_VERSION=3.4
+APP_VERSION=3.5
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -1087,7 +1087,7 @@ sudo apt-get install -y quiterss
 # Install Makagiga Java-based PIM/RSS feed reader from package
 APP_NAME=Makagiga
 APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
-APP_VERSION=6.2
+APP_VERSION=6.4
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1191,7 +1191,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Sourceforge
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3807
+APP_VERSION_MINOR=3823
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-22_${KERNEL_TYPE}.deb
@@ -1667,7 +1667,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Psi XMPP messenger from source
 APP_NAME=psi
-APP_VERSION=1.3
+APP_VERSION=1.4
 APP_EXT=tar.xz
 sudo apt-get install -y libqca2-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -3028,14 +3028,14 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Shotcut video editor
 APP_NAME=Shotcut
 APP_MAJOR_VERSION=18.11
-APP_MINOR_VERSION=181113
+APP_MINOR_VERSION=18.11.18
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=i386
 fi
-FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_MINOR_VERSION}
+FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_MINOR_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mltframework/${APP_NAME,,}/releases/download/v${APP_MAJOR_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -3572,7 +3572,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install SmallBASIC interpreter from package
 APP_NAME=smallbasic
-APP_VERSION=0.12.13
+APP_VERSION=0.12.14
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -3998,7 +3998,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.7.0-1
+APP_VERSION=1.7.1-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -11822,7 +11822,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install WordTsar GTK-based WordStar text editor clone from package
 APP_NAME=WordTsar
 APP_GUI_NAME="GTK-based WordStar text editor clone."
-APP_VERSION=0.1.73.18
+APP_VERSION=0.1.290
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-gtk3-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://wordtsar.ca/download/${APP_NAME}/Linux/${FILE_NAME}.${APP_EXT}
@@ -13001,7 +13001,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install qBittorrent Qt-based Bittorrent client from source
 APP_NAME=qBittorrent
 APP_GUI_NAME="Qt-based Bittorrent client."
-APP_VERSION=4.1.3
+APP_VERSION=4.1.4
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y ${APP_NAME,,}
