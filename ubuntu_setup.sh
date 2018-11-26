@@ -2979,7 +2979,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install TexStudio LaTeX editor
 APP_NAME=texstudio
-APP_VERSION=2.12.6
+APP_VERSION=2.12.12
 APP_EXT=tar.gz
 sudo apt-get install -y libpoppler-qt5-dev libgs-dev qtscript5-dev texlive
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
