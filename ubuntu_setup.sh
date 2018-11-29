@@ -13771,7 +13771,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install D-rkstar Java-based galactic civilization game from source
 APP_NAME=DrkStar
 APP_GUI_NAME="Java-based galactic civilization game."
-APP_VERSION=0.6.12
+APP_VERSION=0.7.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
