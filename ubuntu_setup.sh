@@ -15511,7 +15511,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Safe Clock multi-panel clock from package
 APP_NAME=safe-clock
 APP_GUI_NAME="Safe Clock multi-panel clock."
-APP_VERSION=1.1.0
+APP_VERSION=1.2.0
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME//-/_}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
