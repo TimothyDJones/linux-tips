@@ -1022,9 +1022,9 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Madedit-Mod text editor from Sourceforge
 APP_NAME=madedit-mod
-APP_VERSION=0.4.14-1
+APP_VERSION=0.4.15-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu16.04.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu18.04.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
@@ -1983,7 +1983,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE
 APP_NAME=eric
-APP_VERSION=6-18.11
+APP_VERSION=6-18.12
 APP_EXT=tar.gz
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
@@ -2979,7 +2979,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install TexStudio LaTeX editor
 APP_NAME=texstudio
-APP_VERSION=2.12.12
+APP_VERSION=2.12.14
 APP_EXT=tar.gz
 sudo apt-get install -y libpoppler-qt5-dev libgs-dev qtscript5-dev texlive
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -15533,6 +15533,137 @@ StartupNotify=true
 Terminal=false
 Categories=Accessories;System;
 Keywords=Clock;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+
+# Install JPhotoTagger Java-based GUI photo tag/metadata editor from package
+APP_NAME=JPhotoTagger
+APP_GUI_NAME="Java-based GUI photo tag/metadata editor."
+APP_VERSION=0.41.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME} /opt
+sudo chmod -R a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME}
+PATH=/opt/${APP_NAME}:/opt/${APP_NAME}/lib:\$PATH; export PATH
+java -jar ${APP_NAME}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME}:/opt/${APP_NAME}/lib
+Exec=java -jar ${APP_NAME}.jar
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Accessories;Graphics;
+Keywords=Photo;Tagger;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install ptop Python-based Linux task manager for shell from package
+APP_NAME=ptop
+APP_GUI_NAME="Python-based Linux task manager for shell."
+APP_VERSION=1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/darxtrix/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo pip3 install -r requirements.txt
+sudo python3 setup.py install
+
+# Install fre:ac audio converter and CD ripper from package
+APP_NAME="fre:ac"
+APP_GUI_NAME="Audio converter and CD ripper."
+APP_VERSION=1.1-alpha-20181201
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux-x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux
+fi
+FILE_NAME=${APP_NAME//:/}-${APP_VERSION}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/bonkenc/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME//:/}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME//:/}
+sudo ln -f -s /opt/${APP_NAME//:/}/${APP_NAME//:/} /usr/local/bin/${APP_NAME//:/}
+sudo ln -f -s /opt/${APP_NAME//:/}/${APP_NAME//:/}cmd /usr/local/bin/${APP_NAME//:/}cmd
+cat > /tmp/${APP_NAME//:/} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME//:/}
+LD_LIBRARY_PATH=/opt/${APP_NAME//:/}:${LD_LIBRARY_PATH}; export LD_LIBRARY_PATH
+PATH=/opt/${APP_NAME//:/}:\$PATH; export PATH
+/opt/${APP_NAME//:/}/${APP_NAME//:/}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME//:/} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME//:/}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME//:/}
+Exec=/opt/${APP_NAME//:/}/${APP_NAME//:/}
+Icon=/opt/${APP_NAME//:/}/icons/${APP_NAME//:/}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Audio;Multimedia;
+Keywords=Audio;Converter;
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Trilium Notes Electron-based hierarchical note taking application from package
+APP_NAME=Trilium
+APP_GUI_NAME="Electron-based hierarchical note taking application."
+APP_VERSION=0.25.0-beta
+APP_EXT=7z
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zadam/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}-linux-${ARCH_TYPE}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Office;
+Keywords=Notepad;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
