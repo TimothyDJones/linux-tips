@@ -14445,7 +14445,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install JPasswords Java-based password manager from package
 APP_NAME=JPWS
 APP_GUI_NAME="Java-based password manager."
-APP_VERSION=1.1.0
+APP_VERSION=1.2.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}-${APP_VERSION//./-}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
