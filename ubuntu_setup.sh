@@ -2395,14 +2395,15 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
-APP_NAME=xschem
-APP_VERSION=2.8.0
+APP_NAME=XSchem
+APP_VERSION=2.8.1
 APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://repo.hu/projects/${APP_NAME,,}/releases/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}/src
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/src
 make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
