@@ -2508,7 +2508,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Task Coach to do list manager from package
 APP_NAME=taskcoach
-APP_VERSION=1.4.3-1
+APP_VERSION=1.4.4-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}.${APP_EXT}
 cd /tmp
