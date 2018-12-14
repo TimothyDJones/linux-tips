@@ -15770,3 +15770,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Direnv environment switcher for the shell from package
+APP_NAME=Direnv
+APP_GUI_NAME="Environment switcher for the shell."
+APP_VERSION=2.18.2
+APP_EXT=N/A
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=386
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=amd64
+fi
+FILE_NAME=${APP_NAME,,}.linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo mv /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo ln -f -s /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
