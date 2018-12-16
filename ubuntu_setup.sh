@@ -15817,3 +15817,36 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install pcaprunner shell-based PCAP IP packet analyzer from source
+APP_NAME=pcaprunner
+APP_GUI_NAME="Shell-based PCAP IP packet analyzer."
+APP_VERSION=0.8
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make
+sudo mkdir /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${APP_NAME,,}
+sudo ln -f -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python3 /opt/${APP_NAME,,}/${APP_NAME,,}_gui.py
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Networking;
+Keywords=PCAP;Networking
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
