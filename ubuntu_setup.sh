@@ -15850,3 +15850,33 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Netsurf minimalist GTK web browser from source
+APP_NAME=Netsurf
+APP_GUI_NAME="Minimalist GTK web browser."
+APP_VERSION=3.8
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-all-${APP_VERSION}
+sudo apt-get install -y build-essential pkg-config gperf libcurl3-dev libpng-dev libjpeg-dev libgtk-3-dev librsvg2-dev libssl-dev bison flex
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://download.netsurf-browser.org/${APP_NAME,,}/releases/source-full/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/bin
+Exec=/bin/netsurf-gtk
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;
+Keywords=Web;Browser;GTK;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
