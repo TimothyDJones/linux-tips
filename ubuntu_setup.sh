@@ -1527,11 +1527,12 @@ mkdir -p build && cd build && cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Brave web browser from package
-APP_NAME=brave
-APP_VERSION=0.26.0
+# Install Brave web browser (release channel) from package
+APP_NAME=Brave-Browser
+APP_VERSION=0.57.18
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}-browser.mirror/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
