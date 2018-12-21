@@ -15954,3 +15954,12 @@ Categories=Internet;
 Keywords=Social;Media;Networking;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
+# Install Custom Linux Creator fork of Remastersys for creating Live CD from Ubuntu 17.04 and later installation from Debian package
+APP_NAME=CustomLinuxCreator
+APP_GUI_NAME="Fork of Remastersys for creating Live CD from Ubuntu 17.04 and later installation."
+APP_VERSION=1.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME}${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/custom-linux-creator/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
