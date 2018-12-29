@@ -15542,7 +15542,7 @@ cd $HOME
 # Install JPhotoTagger Java-based GUI photo tag/metadata editor from package
 APP_NAME=JPhotoTagger
 APP_GUI_NAME="Java-based GUI photo tag/metadata editor."
-APP_VERSION=0.42.1
+APP_VERSION=0.42.6
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
