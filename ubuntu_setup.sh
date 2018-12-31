@@ -16044,3 +16044,20 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install go-t cross-platform command line Twitter client from package
+APP_NAME="go-t"
+APP_GUI_NAME="Cross-platform command line Twitter client."
+APP_VERSION=0.1
+APP_EXT=N/A
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux-386
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux-amd64
+fi
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/cbrgm/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo mv /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
