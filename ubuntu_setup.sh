@@ -16036,3 +16036,11 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
+# Install Streamtuner Python-based Internet radio directory browser from Debian package
+APP_NAME=Streamtuner2
+APP_GUI_NAME="Python-based Internet radio directory browser."
+APP_VERSION=2.2.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
