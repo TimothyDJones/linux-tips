@@ -16061,3 +16061,12 @@ sudo mv /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Hexyl Rust-based hex viewer for the terminal from Debian package
+APP_NAME=Hexyl
+APP_GUI_NAME="Rust-based hex viewer for the terminal."
+APP_VERSION=0.3.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
