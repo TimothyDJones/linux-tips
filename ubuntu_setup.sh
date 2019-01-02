@@ -12893,10 +12893,10 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install nnn terminal file manager with desktop integration from Debian package
 APP_NAME=nnn
 APP_GUI_NAME="Terminal file manager with desktop integration."
-APP_VERSION=1.9-1
+APP_VERSION=2.2-1
 APP_EXT=deb
 source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(bi)$ ]]; then
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co)$ ]]; then
 	DISTRIB_RELEASE=18.04
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar|)$ ]]; then
 	DISTRIB_RELEASE=16.04
