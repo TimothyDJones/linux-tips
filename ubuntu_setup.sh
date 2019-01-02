@@ -16075,3 +16075,18 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install StarCalendar Python-based simple calendar tool from package
+# Note: Install shell script creates Debian package used for installation.
+APP_NAME=StarCal
+APP_GUI_NAME="Python-based simple calendar tool."
+APP_VERSION=3.0.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo /tmp/${FILE_NAME}/install-ubuntu
+cd $HOME
+sudo rm -rf /tmp/${FILE_NAME}*
