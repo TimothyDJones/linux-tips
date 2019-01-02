@@ -16090,3 +16090,44 @@ cd /tmp/${FILE_NAME}
 sudo /tmp/${FILE_NAME}/install-ubuntu
 cd $HOME
 sudo rm -rf /tmp/${FILE_NAME}*
+
+# Install ImLab cross-platform scientific image processing tool from package
+APP_NAME=ImLab
+APP_GUI_NAME="Cross-platform scientific image processing tool."
+APP_VERSION=3.1
+APP_EXT=tar.gz
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(vi|wi)$ ]]; then
+	DISTRIB_RELEASE=15
+	sudo apt-get install -y libpng12* libglu1-mesa
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(tr|ut)$ ]]; then
+	DISTRIB_RELEASE=14
+	sudo apt-get install -y libpng12* libglu1-mesa
+else
+	DISTRIB_RELEASE=16
+	sudo apt-get install -y libglu1-mesa
+	curl -o /tmp/libpng12-0.deb -J -L http://security.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
+	sudo gdebi -n /tmp/libpng12-0.deb
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}_Ubuntu${DISTRIB_RELEASE}_x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/* /usr/local/bin
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/bin/${APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Graphics;System;
+Keywords=Image;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
