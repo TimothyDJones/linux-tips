@@ -415,7 +415,7 @@ rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Sourceforge
 APP_NAME=copyq
-APP_VERSION=3.6.0
+APP_VERSION=3.7.2
 source /etc/os-release
 curl -o /tmp/${APP_NAME}.deb -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}/Linux/${APP_NAME}_${APP_VERSION}_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
 sudo gdebi -n /tmp/${APP_NAME}.deb
