@@ -16132,21 +16132,31 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${FILE_NAME}*
 
-# Install PinX tiny Java-based GUI continuous ping utility from package
-APP_NAME=PinX
-APP_GUI_NAME="Tiny Java-based GUI continuous ping utility."
+# Install Linux Reminders GUI periodic and one-time reminder tool from Debian package
+APP_NAME=Linux-Reminders
+APP_GUI_NAME="GUI periodic and one-time reminder tool."
+APP_VERSION=2.2.0
+APP_EXT=deb
+FILE_NAME=reminders_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Vido Python GUI video/audio downloader frontend for youtube-dl from package
+APP_NAME=Vido
+APP_GUI_NAME="Python GUI video/audio downloader frontend for youtube-dl."
 APP_VERSION=N/A
 APP_EXT=zip
-FILE_NAME=${APP_NAME//P/p}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/pinxmonitor/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
-sudo chmod -R a+w /opt/${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
 PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-java -jar ${FILE_NAME}.${APP_EXT}
+python3 /opt/${APP_NAME,,}/${APP_NAME,,}.py
 cd $HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
@@ -16157,14 +16167,14 @@ Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
-Exec=java -jar ${FILE_NAME}.${APP_EXT}
-Icon=
+Exec=python3 /opt/${APP_NAME,,}/${APP_NAME,,}.py
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.svg
 Type=Application
 StartupNotify=true
 Terminal=false
-Categories=Programming;Development;
-Keywords=UML;Diagramming;
+Categories=Video;Audio;Multimedia;
+Keywords=Audio;Video;Downloader;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/*${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}
