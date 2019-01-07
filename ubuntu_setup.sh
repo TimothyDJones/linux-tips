@@ -16178,3 +16178,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Grip GTK-based CD player, CD ripper, and MP3 encoder from source
+APP_NAME=Grip
+APP_GUI_NAME="GTK-based CD player, CD ripper, and MP3 encoder."
+APP_VERSION=3.10.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libssl-dev libssh2-1-dev libvte-dev libcurl4-openssl-dev libgnomeui-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
