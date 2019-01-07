@@ -3924,13 +3924,15 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Rufas Slider puzzle game from source
 APP_NAME=rufasslider
-APP_VERSION=12aug18
-APP_EXT=tar.gz
+APP_GUI_NAME="Klotsky-style slider puzzle game."
+APP_VERSION=8jan19
+APP_EXT=7z
+FILE_NAME=rsl${APP_VERSION}
 sudo apt-get install -y qttools5-dev qttools5-dev-tools cmake
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/rs${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/rslid
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/rslid
 sudo mkdir -p /opt/${APP_NAME}
 sudo mv ./puzzles /opt/${APP_NAME}
 sudo mv ./data /opt/${APP_NAME}
@@ -3943,6 +3945,21 @@ sudo mv ./bin/gnu/* /opt/${APP_NAME}/bin/gnu
 sudo mkdir -p /opt/${APP_NAME}/src
 sudo mv *.cc *.cpp *.h *.hpp /opt/${APP_NAME}/src
 sudo ln -s /opt/${APP_NAME}/bin/gnu/rufaslid /usr/local/bin/rufaslider
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/rufaslider
+Icon=/opt/${APP_NAME}/data/nexslider.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Puzzle;Slider;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
