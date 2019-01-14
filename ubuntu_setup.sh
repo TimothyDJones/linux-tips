@@ -16251,3 +16251,40 @@ FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 sudo apt-get install -y libgconf2-4
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/headsetapp/headset-electron/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Kitchen Garden Aid Java-based garden/small farm planning/layout tool from package
+APP_NAME="Kitchen Garden Aid"
+APP_GUI_NAME="Java-based garden/small farm planning/layout tool."
+APP_VERSION=1.8.2
+APP_EXT=jar
+FILE_NAME=${APP_NAME// /}.${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/kitchengarden/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME// /}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME// /}
+cat > /tmp/${APP_NAME// /} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME// /}
+PATH=/opt/${APP_NAME// /}:\$PATH; export PATH
+java -jar ${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME// /} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME// /}
+cat > /tmp/${APP_NAME// /}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME// /}
+Exec=java -jar ${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Graphics;Other;
+Keywords=Garden;
+EOF
+sudo mv /tmp/${APP_NAME// /}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME// /}*
+
