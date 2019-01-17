@@ -16334,3 +16334,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install BitchX console IRC client from source
+APP_NAME=BitchX
+APP_VERSION=N/A
+APP_EXT=N/A
+git clone https://git.code.sf.net/p/${APP_NAME,,}/git /tmp/${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+./configure && make && sudo make install
+sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
