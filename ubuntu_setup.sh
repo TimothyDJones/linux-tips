@@ -244,7 +244,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Google Go language
 APP_NAME=go
-APP_VERSION=1.10.3
+APP_VERSION=1.11.2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
 else    # Otherwise use version for 32-bit kernel
@@ -374,7 +374,7 @@ rm -f /tmp/*${APP_NAME,,}*
 
 # Install Cudatext editor from Sourceforge
 APP_NAME=cudatext
-APP_VERSION=1.66.0.0-1
+APP_VERSION=1.68.0.0-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -415,7 +415,7 @@ rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Sourceforge
 APP_NAME=copyq
-APP_VERSION=3.6.0
+APP_VERSION=3.7.2
 source /etc/os-release
 curl -o /tmp/${APP_NAME}.deb -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}/Linux/${APP_NAME}_${APP_VERSION}_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
 sudo gdebi -n /tmp/${APP_NAME}.deb
@@ -424,7 +424,7 @@ rm -f /tmp/${APP_NAME}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.4.13
+APP_VERSION=1.4.15
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -440,7 +440,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=otter-browser
 APP_VERSION=0.9.99.3
 APP_EXT=tar.bz2
-sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev   # Qt5 development packages needed to build from source
+sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev libqt5svg5-dev cmake  # Qt5 development packages needed to build from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME}.${APP_EXT}
@@ -521,7 +521,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install tke text editor
 APP_NAME=tke
-APP_VERSION=3.5
+APP_VERSION=3.5.2
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -849,7 +849,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=8.1.5
+APP_VERSION=8.2.4
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -970,7 +970,7 @@ fi
 
 # Install xosview X11 performance meter
 APP_NAME=xosview
-APP_VERSION=2-2.3.0
+APP_VERSION=2-2.3.1
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -1022,9 +1022,9 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Madedit-Mod text editor from Sourceforge
 APP_NAME=madedit-mod
-APP_VERSION=0.4.14-1
+APP_VERSION=0.4.15-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu16.04.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu18.04.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
@@ -1191,7 +1191,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Sourceforge
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3823
+APP_VERSION_MINOR=3832
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-22_${KERNEL_TYPE}.deb
@@ -1480,7 +1480,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Digital Clock 4
 APP_NAME=digital_clock_4
-APP_VERSION=4.7.3
+APP_VERSION=4.7.4
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -1527,12 +1527,13 @@ mkdir -p build && cd build && cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Brave web browser from package
-APP_NAME=brave
-APP_VERSION=0.25.2
+# Install Brave web browser (release channel) from package
+APP_NAME=Brave-Browser
+APP_VERSION=0.57.18
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}-browser.mirror/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
@@ -1551,7 +1552,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZenTao project management tool from package
 APP_NAME=ZenTaoPMS
-APP_VERSION=10.6
+APP_VERSION=11.1.stable
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${APP_NAME}_${APP_VERSION}_1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1667,7 +1668,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Psi XMPP messenger from source
 APP_NAME=psi
-APP_VERSION=1.3
+APP_VERSION=1.4
 APP_EXT=tar.xz
 sudo apt-get install -y libqca2-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -1846,7 +1847,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.2.7
+APP_VERSION=7.3.3
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -1912,7 +1913,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Hyper JS/HTML/CSS Terminal 
 APP_NAME=hyper
-APP_VERSION=2.0.0
+APP_VERSION=2.1.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hyper.mirror/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1926,7 +1927,7 @@ sudo apt-get install -y qownnotes
 
 # Install Tiki Wiki CMS/groupware
 APP_NAME=tiki
-APP_VERSION=18.2
+APP_VERSION=19.0
 APP_EXT=tar.gz
 DB_NAME=tikiwiki
 DB_USER=tikiwiki
@@ -1983,7 +1984,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE
 APP_NAME=eric
-APP_VERSION=6-18.11
+APP_VERSION=6-19.01
 APP_EXT=tar.gz
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
@@ -2055,7 +2056,7 @@ sudo mv /tmp/${APP_NAME} /usr/local/bin
 
 # Install Freeplane mind-mapping tool from package
 APP_NAME=freeplane
-APP_VERSION=1.7.2
+APP_VERSION=1.7.3
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}~upstream-1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2262,7 +2263,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.52
+APP_VERSION=6.3.58
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2395,21 +2396,22 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
-APP_NAME=xschem
-APP_VERSION=2.8.0
+APP_NAME=XSchem
+APP_VERSION=2.8.1
 APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://repo.hu/projects/${APP_NAME,,}/releases/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}/src
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/src
 make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install QPDF PDF utility from source
 APP_NAME=qpdf
-APP_VERSION=8.2.1
+APP_VERSION=8.3.0
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -2508,7 +2510,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Task Coach to do list manager from package
 APP_NAME=taskcoach
-APP_VERSION=1.4.3-1
+APP_VERSION=1.4.4-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -2676,7 +2678,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Agora Project groupware application (manual installation)
 APP_NAME=agora_project
-APP_VERSION=3.4.1
+APP_VERSION=3.5.0
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2871,7 +2873,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Treeline tree-structured notepad
 APP_NAME=TreeLine
-APP_VERSION=3.0.2
+APP_VERSION=3.0.3
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -2979,7 +2981,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install TexStudio LaTeX editor
 APP_NAME=texstudio
-APP_VERSION=2.12.6
+APP_VERSION=2.12.14
 APP_EXT=tar.gz
 sudo apt-get install -y libpoppler-qt5-dev libgs-dev qtscript5-dev texlive
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -3089,7 +3091,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2018.12
+APP_VERSION=1.2018.14
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -3612,7 +3614,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Kid3 audio tag editor
 APP_NAME=Kid3
-APP_VERSION=3.6.2
+APP_VERSION=3.7.0
 APP_EXT=tgz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-Linux.${APP_EXT}
 cd /tmp
@@ -3688,7 +3690,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 
 # Install Admidio organizational management tool
 APP_NAME=admidio
-APP_VERSION=3.3.7
+APP_VERSION=3.3.9
 APP_EXT=zip
 DB_NAME=admidio
 DB_USER=admidio
@@ -3922,13 +3924,15 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Rufas Slider puzzle game from source
 APP_NAME=rufasslider
-APP_VERSION=12aug18
-APP_EXT=tar.gz
+APP_GUI_NAME="Klotsky-style slider puzzle game."
+APP_VERSION=8jan19
+APP_EXT=7z
+FILE_NAME=rsl${APP_VERSION}
 sudo apt-get install -y qttools5-dev qttools5-dev-tools cmake
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/rs${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/rslid
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/rslid
 sudo mkdir -p /opt/${APP_NAME}
 sudo mv ./puzzles /opt/${APP_NAME}
 sudo mv ./data /opt/${APP_NAME}
@@ -3941,6 +3945,21 @@ sudo mv ./bin/gnu/* /opt/${APP_NAME}/bin/gnu
 sudo mkdir -p /opt/${APP_NAME}/src
 sudo mv *.cc *.cpp *.h *.hpp /opt/${APP_NAME}/src
 sudo ln -s /opt/${APP_NAME}/bin/gnu/rufaslid /usr/local/bin/rufaslider
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/rufaslider
+Icon=/opt/${APP_NAME}/data/nexslider.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Puzzle;Slider;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
@@ -3998,7 +4017,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.7.1-1
+APP_VERSION=1.8.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -4386,7 +4405,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Angry IP Scanner from package
 APP_NAME=ipscan
-APP_VERSION=3.5.2
+APP_VERSION=3.5.5
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4587,7 +4606,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JEditor Java-based text editor
 APP_NAME=jEditor
-APP_VERSION=0.4.24
+APP_VERSION=0.4.25
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_GPL-bin-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -5022,7 +5041,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=18.8
+APP_VERSION=19.0
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -5052,7 +5071,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install pgweb cross-platform client for PostgreSQL databases 
 APP_NAME=pgweb
 APP_GUI_NAME="Cross-platform client for PostgreSQL databases"
-APP_VERSION=0.9.12
+APP_VERSION=0.10.0
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux_amd64
@@ -5282,7 +5301,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install NGSpice electronic circuit simulation tool from source
 APP_NAME=ngspice
 APP_GUI_NAME="Classic electronic circuit simulation tool."
-APP_VERSION=29
+APP_VERSION=30
 APP_EXT=tar.gz
 sudo apt-get install -y libx11-dev libxaw7-dev libreadline6-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -6453,7 +6472,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install DB Tarzan Java-based database client from package
 APP_NAME=DBTarzan
 APP_GUI_NAME="Java-based database client."
-APP_VERSION=1.15
+APP_VERSION=1.16
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -6866,7 +6885,7 @@ cargo install --git https://github.com/jmacdonald/${APP_NAME,,}/ --tag ${APP_VER
 # Install Fractalscope Qt-based fractal explorer from source
 APP_NAME=Fractalscope
 APP_GUI_NAME="Cross-platform Qt-based fractal explorer."
-APP_VERSION=1.3.0
+APP_VERSION=1.3.4
 APP_EXT=tar.gz
 sudo apt-get install -y qt5-default yasm
 # Install MPIR (Multiple Precision Integers and Rationals) LGPL C library
@@ -7433,7 +7452,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Flare SDL-based 2-D adventure RPG from source
 APP_NAME=Flare
 APP_GUI_NAME="SDL-based 2-D adventure RPG."
-APP_VERSION=1.06
+APP_VERSION=1.09
 APP_EXT=tar.gz
 sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev cmake
 curl -o /tmp/${APP_NAME,,}-engine.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-game/${APP_NAME,,}-engine-v${APP_VERSION}.${APP_EXT}
@@ -7517,7 +7536,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=4.1.2
+APP_VERSION=4.1.3
 APP_EXT=tgz
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
@@ -7696,7 +7715,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Standard Notes Electron-based secure notepad from App Image
 APP_NAME=Standard-Notes
 APP_GUI_NAME="Electron-based secure notepad."
-APP_VERSION=2.3.5
+APP_VERSION=3.0.2
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=i386
@@ -8414,7 +8433,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PAGE drag-and-drop GUI generator for Python and Tkinter from source
 APP_NAME=PAGE
 APP_GUI_NAME="Drag-and-drop GUI generator for Python and Tkinter."
-APP_VERSION=4.17
+APP_VERSION=4.20
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -8512,8 +8531,8 @@ APP_GUI_NAME="Live CD creator for Ubuntu-based distributions."
 APP_VERSION=N/A
 APP_EXT=deb
 source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi)$ ]]; then  # 18.04
-	APP_VERSION=2.18.4_all
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co)$ ]]; then  # 18.04
+	APP_VERSION=2.18.5_all
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04, 16.10, 17.04, 17.10
 	APP_VERSION=2.2.7_all
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi)$ ]]; then  # 14.04, 14.10, 15.04, 15.10
@@ -10771,7 +10790,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # http://www.wagemaker.co.uk/
 APP_NAME=SmallTextPad
 APP_GUI_NAME="Minimalist Java-based notepad."
-APP_VERSION=1.3.1
+APP_VERSION=1.3.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -11548,7 +11567,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install eLogSim digital circuit simulator from package
 APP_NAME=eLogSim
 APP_GUI_NAME="Digital circuit simulator."
-APP_VERSION=1.2.1
+APP_VERSION=1.4.0
 APP_EXT=zip
 FILE_NAME=My${APP_NAME}_${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -11731,9 +11750,14 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Password Safe cross-platform password manager from Debian package
 APP_NAME=PasswordSafe
 APP_GUI_NAME="Cross-platform password manager."
-APP_VERSION=1.06.0-BETA
+APP_VERSION=1.07.0-BETA
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-debian-${APP_VERSION}.${KERNEL_TYPE}
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co)$ ]]; then
+	APP_DISTRO=ubuntu18
+else
+	APP_DISTRO=ubuntu16
+fi
+FILE_NAME=${APP_NAME,,}-${APP_DISTRO}-${APP_VERSION}.${KERNEL_TYPE}
 # If Ubuntu version is above 16.04 (Xenial), then we need to install some packages from 16.04.
 if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ya|ze|ar|bi)$ ]]; then
     curl -o /tmp/libicu55.deb -J -L http://security.ubuntu.com/ubuntu/pool/main/i/icu/libicu55_55.1-7ubuntu0.4_amd64.deb
@@ -11822,9 +11846,9 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install WordTsar GTK-based WordStar text editor clone from package
 APP_NAME=WordTsar
 APP_GUI_NAME="GTK-based WordStar text editor clone."
-APP_VERSION=0.1.290
+APP_VERSION=0.1.705
 APP_EXT=zip
-FILE_NAME=${APP_NAME}-gtk3-${APP_VERSION}
+FILE_NAME=${APP_NAME}-gtk2-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://wordtsar.ca/download/${APP_NAME}/Linux/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -11850,7 +11874,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install QtFM lightweight desktop-independent GUI file manager from source
 APP_NAME=QtFM
 APP_GUI_NAME="Lightweight desktop-independent GUI file manager."
-APP_VERSION=6.1.3
+APP_VERSION=6.1.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rodlie/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
@@ -11935,7 +11959,7 @@ sudo apt-get install -y bouml
 # Install Cmajor C#-style programming language and IDE from package
 APP_NAME=Cmajor
 APP_GUI_NAME="C#-style programming language and IDE."
-APP_VERSION=2.4.0
+APP_VERSION=3.1.0
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-14.04-x86_64-binaries
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.bz2
@@ -12886,10 +12910,10 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install nnn terminal file manager with desktop integration from Debian package
 APP_NAME=nnn
 APP_GUI_NAME="Terminal file manager with desktop integration."
-APP_VERSION=1.9-1
+APP_VERSION=2.2-1
 APP_EXT=deb
 source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(bi)$ ]]; then
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co)$ ]]; then
 	DISTRIB_RELEASE=18.04
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar|)$ ]]; then
 	DISTRIB_RELEASE=16.04
@@ -13361,7 +13385,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Dos9 cross-platform command prompt from source
 APP_NAME=Dos9
 APP_GUI_NAME="Cross-platform command prompt."
-APP_VERSION=218.2
+APP_VERSION=218.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -13771,7 +13795,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install D-rkstar Java-based galactic civilization game from source
 APP_NAME=DrkStar
 APP_GUI_NAME="Java-based galactic civilization game."
-APP_VERSION=0.6.12
+APP_VERSION=0.7.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -14445,7 +14469,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install JPasswords Java-based password manager from package
 APP_NAME=JPWS
 APP_GUI_NAME="Java-based password manager."
-APP_VERSION=1.1.0
+APP_VERSION=1.2.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}-${APP_VERSION//./-}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -15507,3 +15531,817 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~${APP_NAME,,}/
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Safe Clock multi-panel clock from package
+APP_NAME=safe-clock
+APP_GUI_NAME="Safe Clock multi-panel clock."
+APP_VERSION=1.2.0
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME//-/_}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/source/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=Clock;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+
+# Install JPhotoTagger Java-based GUI photo tag/metadata editor from package
+APP_NAME=JPhotoTagger
+APP_GUI_NAME="Java-based GUI photo tag/metadata editor."
+APP_VERSION=0.42.6
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME} /opt
+sudo chmod -R a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME}
+PATH=/opt/${APP_NAME}:/opt/${APP_NAME}/lib:\$PATH; export PATH
+java -jar ${APP_NAME}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME}:/opt/${APP_NAME}/lib
+Exec=java -jar ${APP_NAME}.jar
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Accessories;Graphics;
+Keywords=Photo;Tagger;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install ptop Python-based Linux task manager for shell from package
+APP_NAME=ptop
+APP_GUI_NAME="Python-based Linux task manager for shell."
+APP_VERSION=1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/darxtrix/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo pip3 install -r requirements.txt
+sudo python3 setup.py install
+
+# Install fre:ac audio converter and CD ripper from package
+APP_NAME="fre:ac"
+APP_GUI_NAME="Audio converter and CD ripper."
+APP_VERSION=1.1-alpha-20181201
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux-x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux
+fi
+FILE_NAME=${APP_NAME//:/}-${APP_VERSION}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/bonkenc/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME//:/}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME//:/}
+sudo ln -f -s /opt/${APP_NAME//:/}/${APP_NAME//:/} /usr/local/bin/${APP_NAME//:/}
+sudo ln -f -s /opt/${APP_NAME//:/}/${APP_NAME//:/}cmd /usr/local/bin/${APP_NAME//:/}cmd
+cat > /tmp/${APP_NAME//:/} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME//:/}
+LD_LIBRARY_PATH=/opt/${APP_NAME//:/}:${LD_LIBRARY_PATH}; export LD_LIBRARY_PATH
+PATH=/opt/${APP_NAME//:/}:\$PATH; export PATH
+/opt/${APP_NAME//:/}/${APP_NAME//:/}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME//:/} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME//:/}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME//:/}
+Exec=/opt/${APP_NAME//:/}/${APP_NAME//:/}
+Icon=/opt/${APP_NAME//:/}/icons/${APP_NAME//:/}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Audio;Multimedia;
+Keywords=Audio;Converter;
+EOF
+sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Trilium Notes Electron-based hierarchical note taking application from package
+APP_NAME=Trilium
+APP_GUI_NAME="Electron-based hierarchical note taking application."
+APP_VERSION=0.27.3
+APP_EXT=7z
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zadam/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}-linux-${ARCH_TYPE}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Office;
+Keywords=Notepad;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+
+# Install JUL Designer RAD tool for JavaScript development from App Image
+APP_NAME=JUL-Designer
+APP_GUI_NAME="RAD tool for JavaScript development."
+APP_VERSION=2.5.0
+APP_EXT=AppImage
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=i386
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86_64
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=JavaScript;Web;Development;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install E.R.A simple Java UML diagramming tool from package
+APP_NAME=Era
+APP_GUI_NAME="Simple Java UML diagramming tool."
+APP_VERSION=N/A
+APP_EXT=jar
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/era-simple-uml/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod -R a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar ${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar ${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=UML;Diagramming;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Qubist GTK2 3-D 4x4x4 Tic-Tac-Toe puzzle game from package
+APP_NAME=Qubist
+APP_GUI_NAME="GTK2 3-D 4x4x4 Tic-Tac-Toe puzzle game."
+APP_VERSION=0.6
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtk2.0-dev help2man
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/qubic/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+sudo ln -f -s /usr/local/games/${APP_NAME,,}-gtk2 /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/games
+Exec=/usr/local/games/${APP_NAME,,}-gtk2
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Tic-Tac-Toe;Puzzle;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Direnv environment switcher for the shell from package
+APP_NAME=Direnv
+APP_GUI_NAME="Environment switcher for the shell."
+APP_VERSION=2.18.2
+APP_EXT=N/A
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=386
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=amd64
+fi
+FILE_NAME=${APP_NAME,,}.linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo mv /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo ln -f -s /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install NextFractal Java-based fractal explorer from package
+APP_NAME=NextFractal
+APP_GUI_NAME="Java-based fractal explorer."
+APP_VERSION=2.1.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_debian_x86_64_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME} /opt
+sudo ln -s -f /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;Math;Science;
+Keywords=Fractal;Math
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install pcaprunner shell-based PCAP IP packet analyzer from source
+APP_NAME=pcaprunner
+APP_GUI_NAME="Shell-based PCAP IP packet analyzer."
+APP_VERSION=0.8
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make
+sudo mkdir /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${APP_NAME,,}
+sudo ln -f -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python3 /opt/${APP_NAME,,}/${APP_NAME,,}_gui.py
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Networking;
+Keywords=PCAP;Networking
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Netsurf minimalist GTK web browser from source
+APP_NAME=Netsurf
+APP_GUI_NAME="Minimalist GTK web browser."
+APP_VERSION=3.8
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-all-${APP_VERSION}
+sudo apt-get install -y build-essential pkg-config gperf libcurl3-dev libpng-dev libjpeg-dev libgtk-3-dev librsvg2-dev libssl-dev bison flex
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://download.netsurf-browser.org/${APP_NAME,,}/releases/source-full/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/bin
+Exec=/bin/netsurf-gtk
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;
+Keywords=Web;Browser;GTK;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install RTextDoc Java-based editor for structured text, such as LaTeX from package
+APP_NAME=RTextDoc
+APP_GUI_NAME="Java-based editor for structured text, such as LaTeX."
+APP_VERSION=2.3
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}.sh
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}.sh
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;
+Keywords=Editor;LaTeX;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Jcow social networking tool
+APP_NAME=Jcow
+APP_VERSION=12
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}.ce.${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/install.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/themes/default/ico.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;
+Keywords=Social;Media;Networking;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
+# Install Custom Linux Creator fork of Remastersys for creating Live CD from Ubuntu 17.04 and later installation from Debian package
+APP_NAME=CustomLinuxCreator
+APP_GUI_NAME="Fork of Remastersys for creating Live CD from Ubuntu 17.04 and later installation."
+APP_VERSION=1.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME}${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/custom-linux-creator/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Tag Inspector GUI MP3 tag viewer/editor from package
+APP_NAME=TagInspector
+APP_GUI_NAME="GUI MP3 tag viewer/editor."
+APP_VERSION=N/A
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=32bit
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=64bit
+fi
+FILE_NAME=${APP_NAME,,}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Multimedia;
+Keywords=MP3;Tags;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install FreeDoko cross-platform version of Doppelkopf German card game from package
+APP_NAME=FreeDoko
+APP_GUI_NAME="Cross-platform version of Doppelkopf German card game."
+APP_VERSION=0.7.19
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_${APP_VERSION}.Linux
+sudo apt-get install -y libalut0
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/free-doko/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}_${APP_VERSION}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;Other;
+Keywords=Cards;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Streamtuner Python-based Internet radio directory browser from Debian package
+APP_NAME=Streamtuner2
+APP_GUI_NAME="Python-based Internet radio directory browser."
+APP_VERSION=2.2.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install go-t cross-platform command line Twitter client from package
+APP_NAME="go-t"
+APP_GUI_NAME="Cross-platform command line Twitter client."
+APP_VERSION=0.1
+APP_EXT=N/A
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux-386
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux-amd64
+fi
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/cbrgm/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo mv /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Hexyl Rust-based hex viewer for the terminal from Debian package
+APP_NAME=Hexyl
+APP_GUI_NAME="Rust-based hex viewer for the terminal."
+APP_VERSION=0.3.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install StarCalendar Python-based simple calendar tool from package
+# Note: Install shell script creates Debian package used for installation.
+APP_NAME=StarCal
+APP_GUI_NAME="Python-based simple calendar tool."
+APP_VERSION=3.0.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo /tmp/${FILE_NAME}/install-ubuntu
+cd $HOME
+sudo rm -rf /tmp/${FILE_NAME}*
+
+# Install ImLab cross-platform scientific image processing tool from package
+APP_NAME=ImLab
+APP_GUI_NAME="Cross-platform scientific image processing tool."
+APP_VERSION=3.1
+APP_EXT=tar.gz
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(vi|wi)$ ]]; then
+	DISTRIB_RELEASE=15
+	sudo apt-get install -y libpng12* libglu1-mesa
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(tr|ut)$ ]]; then
+	DISTRIB_RELEASE=14
+	sudo apt-get install -y libpng12* libglu1-mesa
+else
+	DISTRIB_RELEASE=16
+	sudo apt-get install -y libglu1-mesa
+	curl -o /tmp/libpng12-0.deb -J -L http://security.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
+	sudo gdebi -n /tmp/libpng12-0.deb
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}_Ubuntu${DISTRIB_RELEASE}_x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/* /usr/local/bin
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/bin/${APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Graphics;System;
+Keywords=Image;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
+
+# Install Linux Reminders GUI periodic and one-time reminder tool from Debian package
+APP_NAME=Linux-Reminders
+APP_GUI_NAME="GUI periodic and one-time reminder tool."
+APP_VERSION=2.2.0
+APP_EXT=deb
+FILE_NAME=reminders_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Vido Python GUI video/audio downloader frontend for youtube-dl from package
+APP_NAME=Vido
+APP_GUI_NAME="Python GUI video/audio downloader frontend for youtube-dl."
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+python3 /opt/${APP_NAME,,}/${APP_NAME,,}.py
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python3 /opt/${APP_NAME,,}/${APP_NAME,,}.py
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Video;Audio;Multimedia;
+Keywords=Audio;Video;Downloader;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Grip GTK-based CD player, CD ripper, and MP3 encoder from source
+APP_NAME=Grip
+APP_GUI_NAME="GTK-based CD player, CD ripper, and MP3 encoder."
+APP_VERSION=3.10.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libssl-dev libssh2-1-dev libvte-dev libcurl4-openssl-dev libgnomeui-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
+APP_NAME=TkCVS
+APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
+APP_VERSION=9.0.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo wish ./doinstall.tcl /usr/local
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/lib/${APP_NAME,,}/bitmaps/ticklefish48.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Git;SVN;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Headset cross-platform Electron-based Youtube/Reddit desktop music player from Debian package
+# https://www.linuxlinks.com/headset-youtube-reddit-desktop-music-player/
+APP_NAME=Headset
+APP_GUI_NAME="Cross-platform Electron-based Youtube/Reddit desktop music player."
+APP_VERSION=2.1.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+sudo apt-get install -y libgconf2-4
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/headsetapp/headset-electron/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Kitchen Garden Aid Java-based garden/small farm planning/layout tool from package
+APP_NAME="Kitchen Garden Aid"
+APP_GUI_NAME="Java-based garden/small farm planning/layout tool."
+APP_VERSION=1.8.2
+APP_EXT=jar
+FILE_NAME=${APP_NAME// /}.${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/kitchengarden/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME// /}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME// /}
+cat > /tmp/${APP_NAME// /} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME// /}
+PATH=/opt/${APP_NAME// /}:\$PATH; export PATH
+java -jar ${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME// /} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME// /}
+cat > /tmp/${APP_NAME// /}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME// /}
+Exec=java -jar ${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Graphics;Other;
+Keywords=Garden;
+EOF
+sudo mv /tmp/${APP_NAME// /}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME// /}*
+
+# Install Nuclear cross-platform Electron-based desktop music player focused on streaming from free sources from Debian package
+APP_NAME=Nuclear 
+APP_GUI_NAME="Cross-platform Electron-based desktop music player focused on streaming from free sources."
+APP_VERSION=0.4.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nukeop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install SQLeo Java-based visual SQL query builder tool from package
+APP_NAME=SQLeoVQB
+APP_GUI_NAME="Java-based visual SQL query builder tool."
+APP_VERSION=2017.09.rc1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}.${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sqleo/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME}*/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -Dfile.encoding=UTF-8 -jar ${APP_NAME}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -Dfile.encoding=UTF-8 -jar ${APP_NAME}.jar
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Database;SQL;Java;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install BitchX console IRC client from source
+APP_NAME=BitchX
+APP_VERSION=N/A
+APP_EXT=N/A
+git clone https://git.code.sf.net/p/${APP_NAME,,}/git /tmp/${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+./configure && make && sudo make install
+sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
