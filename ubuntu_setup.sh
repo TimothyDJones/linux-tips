@@ -16417,3 +16417,57 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Configure Mono Project build environment for C#/.NET
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co)$ ]]; then
+	VERSION_NUMBER=18.04
+	VERSION_NAME=bionic
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar)$ ]]; then
+	VERSION_NUMBER=16.04
+	VERSION_NAME=xenial
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(tr|ut|vi|wi)$ ]]; then
+	VERSION_NUMBER=14.04
+	VERSION_NAME=trusty
+fi
+# Add appropriate repository
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+sudo apt-get install -y apt-transport-https
+echo "deb https://download.mono-project.com/repo/ubuntu stable-"${VERSION_NAME}" main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+sudo apt-get update
+sudo apt-get install -y mono-devel monodevelop
+# Build example file to test installation
+# https://www.mono-project.com/docs/getting-started/mono-basics/
+cd /tmp
+cat > /tmp/hello_mono.cs << EOF
+using System;
+ 
+public class HelloWorld
+{
+    static public void Main ()
+    {
+        Console.WriteLine ("Hello, Mono World!");
+    }
+}
+EOF
+csc /tmp/hello_mono.cs
+mono hello_mono.exe
+cat > /tmp/hello_mono_winforms.cs << EOF
+using System;
+using System.Windows.Forms;
+
+public class HelloWorld : Form
+{
+    static public void Main ()
+    {
+        Application.Run (new HelloWorld ());
+    }
+
+    public HelloWorld ()
+    {
+        Text = "Hello, Mono World";
+    }
+}
+EOF
+csc /tmp/hello_mono_winforms.cs -r:System.Windows.Forms.dll
+mono hello_mono_winforms.exe
