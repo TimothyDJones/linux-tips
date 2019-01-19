@@ -4753,7 +4753,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Dooble web browser from package
 APP_NAME=Dooble
-APP_VERSION=2.1.9.4
+APP_VERSION=2019.01.20
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -8433,7 +8433,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PAGE drag-and-drop GUI generator for Python and Tkinter from source
 APP_NAME=PAGE
 APP_GUI_NAME="Drag-and-drop GUI generator for Python and Tkinter."
-APP_VERSION=4.17
+APP_VERSION=4.20
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -11846,7 +11846,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install WordTsar GTK-based WordStar text editor clone from package
 APP_NAME=WordTsar
 APP_GUI_NAME="GTK-based WordStar text editor clone."
-APP_VERSION=0.1.616
+APP_VERSION=0.1.705
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-gtk2-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://wordtsar.ca/download/${APP_NAME}/Linux/${FILE_NAME}.${APP_EXT}
@@ -16252,6 +16252,7 @@ sudo apt-get install -y libgconf2-4
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/headsetapp/headset-electron/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
+<<<<<<< HEAD
 # Install orng Java Markdown-based journal editor from package
 APP_NAME=orng
 APP_GUI_NAME="Java Markdown-based journal editor."
@@ -16264,11 +16265,68 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
 sudo chmod -R a+w /opt/${APP_NAME,,}
+=======
+# Install Kitchen Garden Aid Java-based garden/small farm planning/layout tool from package
+APP_NAME="Kitchen Garden Aid"
+APP_GUI_NAME="Java-based garden/small farm planning/layout tool."
+APP_VERSION=1.8.2
+APP_EXT=jar
+FILE_NAME=${APP_NAME// /}.${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/kitchengarden/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME// /}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME// /}
+cat > /tmp/${APP_NAME// /} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME// /}
+PATH=/opt/${APP_NAME// /}:\$PATH; export PATH
+java -jar ${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME// /} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME// /}
+cat > /tmp/${APP_NAME// /}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME// /}
+Exec=java -jar ${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Graphics;Other;
+Keywords=Garden;
+EOF
+sudo mv /tmp/${APP_NAME// /}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME// /}*
+
+# Install Nuclear cross-platform Electron-based desktop music player focused on streaming from free sources from Debian package
+APP_NAME=Nuclear 
+APP_GUI_NAME="Cross-platform Electron-based desktop music player focused on streaming from free sources."
+APP_VERSION=0.4.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nukeop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install SQLeo Java-based visual SQL query builder tool from package
+APP_NAME=SQLeoVQB
+APP_GUI_NAME="Java-based visual SQL query builder tool."
+APP_VERSION=2017.09.rc1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}.${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sqleo/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME}*/* /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
 PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-java -jar ${FILE_NAME}.${APP_EXT}
+java -Dfile.encoding=UTF-8 -jar ${APP_NAME}.jar
 cd $HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
@@ -16279,13 +16337,13 @@ Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
-Exec=java -jar ${FILE_NAME}.${APP_EXT}
+Exec=java -Dfile.encoding=UTF-8 -jar ${APP_NAME}.jar
 Icon=
 Type=Application
 StartupNotify=true
 Terminal=false
 Categories=Programming;Development;
-Keywords=UML;Diagramming;
+Keywords=Database;SQL;Java;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
@@ -16305,3 +16363,57 @@ mkdir build && cd build
 cmake .. && make
 sudo mv ${APP_NAME,,} /usr/local/bin
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install BitchX console IRC client from source
+APP_NAME=BitchX
+APP_VERSION=N/A
+APP_EXT=N/A
+git clone https://git.code.sf.net/p/${APP_NAME,,}/git /tmp/${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+./configure && make && sudo make install
+sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Arena UCI and Winboard-compatible chess GUI from package
+APP_NAME=Arena
+APP_GUI_NAME="UCI and Winboard-compatible chess GUI."
+APP_VERSION=1.1
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=64bit
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=32bit
+fi
+FILE_NAME=${APP_NAME,,}linux_${ARCH_TYPE}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://www.playwitharena.de/downloads/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/Arena_x86_64_linux
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/Arena_x86_64_linux
+Icon=/opt/${APP_NAME,,}/${APP_NAME}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Chess;UCI;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}

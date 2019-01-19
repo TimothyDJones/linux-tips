@@ -1,0 +1,9 @@
+function weather() {
+	if [[ -z $1 ]]; then
+		curl wttr.in/$1
+	elif [[ -z $CITY ]]; then
+		curl wttr.in/$CITY
+	else
+		echo "Please specify city!"
+	fi
+}
