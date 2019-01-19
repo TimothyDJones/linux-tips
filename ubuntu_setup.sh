@@ -16252,7 +16252,6 @@ sudo apt-get install -y libgconf2-4
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/headsetapp/headset-electron/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
-<<<<<<< HEAD
 # Install orng Java Markdown-based journal editor from package
 APP_NAME=orng
 APP_GUI_NAME="Java Markdown-based journal editor."
@@ -16265,7 +16264,7 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
 sudo chmod -R a+w /opt/${APP_NAME,,}
-=======
+
 # Install Kitchen Garden Aid Java-based garden/small farm planning/layout tool from package
 APP_NAME="Kitchen Garden Aid"
 APP_GUI_NAME="Java-based garden/small farm planning/layout tool."
@@ -16471,3 +16470,16 @@ public class HelloWorld : Form
 EOF
 csc /tmp/hello_mono_winforms.cs -r:System.Windows.Forms.dll
 mono hello_mono_winforms.exe
+
+# Install Spez custom web browser from Debian package
+APP_NAME=Spez
+APP_GUI_NAME=""
+APP_VERSION=9.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}brow_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/libgranite5-common.deb -J -L https://code.launchpad.net/~philip.scott/+archive/ubuntu/spice-up-daily/+files/libgranite-common_5.2.3+r201901160601-1355+pkg106~ubuntu5.0.1_all.deb
+curl -o /tmp/libgranite5.deb -J -L https://code.launchpad.net/~philip.scott/+archive/ubuntu/spice-up-daily/+files/libgranite5_5.2.3+r201901160601-1355+pkg106~ubuntu5.0.1_${KERNEL_TYPE}.deb
+sudo gdebi -n libgranite5-common.deb
+sudo gdebi -n libgranite5.deb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/spez-browser-mirrors/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
