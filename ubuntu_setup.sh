@@ -521,7 +521,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install tke text editor
 APP_NAME=tke
-APP_VERSION=3.5.2
+APP_VERSION=3.6
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -3319,7 +3319,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Geoserver as stand-alone binary
 # http://docs.geoserver.org/latest/en/user/installation/linux.html
 APP_NAME=geoserver
-APP_VERSION=2.14.0
+APP_VERSION=2.14.2
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-bin.${APP_EXT}
 cd /tmp
@@ -4017,7 +4017,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.8.0-1
+APP_VERSION=1.9.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -4753,7 +4753,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Dooble web browser from package
 APP_NAME=Dooble
-APP_VERSION=2.1.9.4
+APP_VERSION=2019.01.20
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -5315,7 +5315,7 @@ rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}*
 
 # Install QDVDAuthor Qt-based DVD authoring tool from package
 APP_NAME=qdvdauthor
-APP_VERSION=2.3.1-9
+APP_VERSION=2.3.1-10
 APP_EXT=deb
 source /etc/lsb-release
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/tkb/x${DISTRIB_ID}_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
@@ -16252,6 +16252,19 @@ sudo apt-get install -y libgconf2-4
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/headsetapp/headset-electron/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
+# Install orng Java Markdown-based journal editor from package
+APP_NAME=orng
+APP_GUI_NAME="Java Markdown-based journal editor."
+APP_VERSION=1.1.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}j_${APP_VERSION}_gnu_linux_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod -R a+w /opt/${APP_NAME,,}
+
 # Install Kitchen Garden Aid Java-based garden/small farm planning/layout tool from package
 APP_NAME="Kitchen Garden Aid"
 APP_GUI_NAME="Java-based garden/small farm planning/layout tool."
@@ -16335,6 +16348,21 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
+# Install cfiles ncurses file manager with Vim keybindings from source
+APP_NAME=cfiles
+APP_GUI_NAME="Ncurses file manager with Vim keybindings."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo apt-get install -y libncurses5-dev cmake 
+cd /tmp
+git clone https://github.com/mananapr/${APP_NAME,,}
+cd /tmp/${APP_NAME,,}
+mkdir build && cd build
+cmake .. && make
+sudo mv ${APP_NAME,,} /usr/local/bin
+sudo rm -rf /tmp/${APP_NAME,,}*
+
 # Install BitchX console IRC client from source
 APP_NAME=BitchX
 APP_VERSION=N/A
@@ -16354,3 +16382,166 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-app_${APP_VERSION}-debian-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://omnidb.org/dist/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Arena UCI and Winboard-compatible chess GUI from package
+APP_NAME=Arena
+APP_GUI_NAME="UCI and Winboard-compatible chess GUI."
+APP_VERSION=1.1
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=64bit
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=32bit
+fi
+FILE_NAME=${APP_NAME,,}linux_${ARCH_TYPE}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://www.playwitharena.de/downloads/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/Arena_x86_64_linux
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/Arena_x86_64_linux
+Icon=/opt/${APP_NAME,,}/${APP_NAME}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Chess;UCI;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Configure Mono Project build environment for C#/.NET
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co)$ ]]; then
+	VERSION_NUMBER=18.04
+	VERSION_NAME=bionic
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar)$ ]]; then
+	VERSION_NUMBER=16.04
+	VERSION_NAME=xenial
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(tr|ut|vi|wi)$ ]]; then
+	VERSION_NUMBER=14.04
+	VERSION_NAME=trusty
+fi
+# Add appropriate repository
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+sudo apt-get install -y apt-transport-https
+echo "deb https://download.mono-project.com/repo/ubuntu stable-"${VERSION_NAME}" main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+sudo apt-get update
+sudo apt-get install -y mono-devel monodevelop
+# Build example file to test installation
+# https://www.mono-project.com/docs/getting-started/mono-basics/
+cd /tmp
+cat > /tmp/hello_mono.cs << EOF
+using System;
+ 
+public class HelloWorld
+{
+    static public void Main ()
+    {
+        Console.WriteLine ("Hello, Mono World!");
+    }
+}
+EOF
+csc /tmp/hello_mono.cs
+mono hello_mono.exe
+cat > /tmp/hello_mono_winforms.cs << EOF
+using System;
+using System.Windows.Forms;
+
+public class HelloWorld : Form
+{
+    static public void Main ()
+    {
+        Application.Run (new HelloWorld ());
+    }
+
+    public HelloWorld ()
+    {
+        Text = "Hello, Mono World";
+    }
+}
+EOF
+csc /tmp/hello_mono_winforms.cs -r:System.Windows.Forms.dll
+mono hello_mono_winforms.exe
+
+# Install Spez custom web browser from Debian package
+APP_NAME=Spez
+APP_GUI_NAME=""
+APP_VERSION=9.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}brow_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/libgranite5-common.deb -J -L https://code.launchpad.net/~philip.scott/+archive/ubuntu/spice-up-daily/+files/libgranite-common_5.2.3+r201901160601-1355+pkg106~ubuntu5.0.1_all.deb
+curl -o /tmp/libgranite5.deb -J -L https://code.launchpad.net/~philip.scott/+archive/ubuntu/spice-up-daily/+files/libgranite5_5.2.3+r201901160601-1355+pkg106~ubuntu5.0.1_${KERNEL_TYPE}.deb
+sudo gdebi -n libgranite5-common.deb
+sudo gdebi -n libgranite5.deb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/spez-browser-mirrors/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install JIBS (Java Image Browser Sorter) image viewer focused on image sorting from package
+APP_NAME=JIBS
+APP_GUI_NAME="Image viewer focused on image sorting."
+APP_VERSION=3.2.1
+APP_EXT=jar
+FILE_NAME=${APP_NAME}-legacy-Java8-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/img-browse-sort/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Graphics;
+Keywords=Image;Viewer;Java;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install zBoy classic Gameboy emulator from source
+APP_NAME=zBoy
+APP_GUI_NAME="Classic Gameboy emulator."
+APP_VERSION=0.60
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libsdl2-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+cp Makefile.linux Makefile
+make
+sudo mv ${APP_NAME,,} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
