@@ -16580,3 +16580,42 @@ Categories=Internet;
 Keywords=Password;Security;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
+# Install TestLink web-based (PHP/MySQL) test and requirements management tool
+APP_NAME=TestLink
+APP_GUI_NAME="Web-based (PHP/MySQL) test and requirements management tool"
+APP_VERSION=1.9.19
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+sudo mkdir -p /var/${APP_NAME,,}/logs/
+sudo mkdir -p /var/${APP_NAME,,}/upload_area/
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data /var/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/install/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/gui/themes/default/images/tl-logo-transparent.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Testing;Requirements;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
