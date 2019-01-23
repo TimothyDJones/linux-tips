@@ -33,7 +33,17 @@ function mySqlCreateDatabase() {
 	fi
 }
 
+# Checks to see if tool/command exists
+# https://github.com/kennylevinsen/dotfiles/blob/master/setup
+function tool_installed() {
+	which $1 1>/dev/null 2>/dev/null
+	ret=$?
+	printf '%b' "[Tool installation check for $1: $ret]\n" >> $LOGFILE
+	return $ret
+}
+
 # Set some parameters for general use
+LOGFILE=/var/log/ubuntu_setup.log
 WWW_HOME=/var/www/html
 
 
