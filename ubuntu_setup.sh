@@ -16532,7 +16532,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install zBoy classic Gameboy emulator from source
 APP_NAME=zBoy
 APP_GUI_NAME="Classic Gameboy emulator."
-APP_VERSION=0.60
+APP_VERSION=0.70
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libsdl2-dev
