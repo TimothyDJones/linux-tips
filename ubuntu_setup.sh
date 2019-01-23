@@ -326,7 +326,7 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${AP
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
 rm -f /tmp/${APP_NAME}.${APP_EXT}
 APP_NAME=firetools
-APP_VERSION=0.9.52_1
+APP_VERSION=0.9.58_1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/firejail/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
@@ -1201,7 +1201,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Sourceforge
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3832
+APP_VERSION_MINOR=3844
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-22_${KERNEL_TYPE}.deb
@@ -2273,7 +2273,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.58
+APP_VERSION=6.3.59
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3039,16 +3039,15 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_MAJOR_VERSION=18.11
-APP_MINOR_VERSION=18.11.18
+APP_VERSION=19.01.24
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=i386
 fi
-FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_MINOR_VERSION//./}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mltframework/${APP_NAME,,}/releases/download/v${APP_MAJOR_VERSION}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_VERSION//./}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mltframework/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mv /tmp/${FILE_NAME}/${APP_NAME} /opt/${APP_NAME,,}
@@ -3101,7 +3100,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2018.14
+APP_VERSION=1.2019.0
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -3700,7 +3699,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 
 # Install Admidio organizational management tool
 APP_NAME=admidio
-APP_VERSION=3.3.9
+APP_VERSION=3.3.10
 APP_EXT=zip
 DB_NAME=admidio
 DB_USER=admidio
@@ -4705,7 +4704,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.2.4
+APP_VERSION=1.2.6
 APP_EXT=tar.bz2
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -5568,7 +5567,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install WackoWiki PHP-based lightweight wiki tool
 APP_NAME=wacko
-APP_VERSION=r5.5.6
+APP_VERSION=r5.5.7
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -6421,7 +6420,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install BiglyBT Java-based (Azureus) GUI BitTorrent client
 APP_NAME=BiglyBT
 APP_GUI_NAME="Java-based (Azureus) GUI BitTorrent client."
-APP_VERSION=1.6.0.0
+APP_VERSION=1.8.00
 APP_EXT=sh
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/BiglySoftware/${APP_NAME}/releases/download/v${APP_VERSION}/GitHub_${APP_NAME}_Installer.${APP_EXT}
 sudo sh /tmp/${APP_NAME,,}.${APP_EXT}
@@ -7072,7 +7071,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.24
+APP_VERSION=V1.26
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -11577,7 +11576,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install eLogSim digital circuit simulator from package
 APP_NAME=eLogSim
 APP_GUI_NAME="Digital circuit simulator."
-APP_VERSION=1.4.0
+APP_VERSION=1.5.0
 APP_EXT=zip
 FILE_NAME=My${APP_NAME}_${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -13857,7 +13856,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Rukovoditel web-based (PHP/MySQL) project management tool from package
 APP_NAME=Rukovoditel
 APP_GUI_NAME="Web-based (PHP/MySQL) project management tool."
-APP_VERSION=2.3.1
+APP_VERSION=2.4.1
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -16265,7 +16264,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install orng Java Markdown-based journal editor from package
 APP_NAME=orng
 APP_GUI_NAME="Java Markdown-based journal editor."
-APP_VERSION=1.1.0
+APP_VERSION=1.1.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}j_${APP_VERSION}_gnu_linux_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -16383,6 +16382,15 @@ cd /tmp/${APP_NAME,,}
 sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install OmniDB Django/Python-based web database administration tool from Debian package
+APP_NAME=OmniDB 
+APP_GUI_NAME="Django/Python-based web database administration tool."
+APP_VERSION=2.13.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-app_${APP_VERSION}-debian-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://omnidb.org/dist/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
 # Install Arena UCI and Winboard-compatible chess GUI from package
 APP_NAME=Arena
@@ -16533,7 +16541,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install zBoy classic Gameboy emulator from source
 APP_NAME=zBoy
 APP_GUI_NAME="Classic Gameboy emulator."
-APP_VERSION=0.60
+APP_VERSION=0.70
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libsdl2-dev
@@ -16546,3 +16554,130 @@ make
 sudo mv ${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install phpBlueDragon PassWeb web-based password manager
+APP_NAME=PassWeb
+APP_VERSION=1.0.0
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=phpBlueDragon_${APP_NAME}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/phpbluedragon-passweb/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/*${APP_NAME}*/* ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/install.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/favicon.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;
+Keywords=Password;Security;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
+# Install TestLink web-based (PHP/MySQL) test and requirements management tool
+APP_NAME=TestLink
+APP_GUI_NAME="Web-based (PHP/MySQL) test and requirements management tool"
+APP_VERSION=1.9.19
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+sudo mkdir -p /var/${APP_NAME,,}/logs/
+sudo mkdir -p /var/${APP_NAME,,}/upload_area/
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data /var/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/install/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/gui/themes/default/images/tl-logo-transparent.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Testing;Requirements;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
+# Install fnm (Fast Node Manager) Node.js package version manager from package
+APP_NAME=fnm 
+APP_GUI_NAME="Node.js package version manager."
+APP_VERSION=1.0.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Schniz/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+echo 'eval `fnm env`' >> $HOME/.bashrc
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install RedisView GUI management tool for Redis databases from package
+APP_NAME=RedisView
+APP_GUI_NAME="GUI management tool for Redis databases."
+APP_VERSION=1.5.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME}
+Icon=/opt/${APP_NAME,,}/default.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Redis;Database;Cache;NoSQL;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
