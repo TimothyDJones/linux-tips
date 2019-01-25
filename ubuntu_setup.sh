@@ -3029,16 +3029,15 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_MAJOR_VERSION=18.11
-APP_MINOR_VERSION=18.11.18
+APP_VERSION=19.01.24
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=i386
 fi
-FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_MINOR_VERSION//./}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mltframework/${APP_NAME,,}/releases/download/v${APP_MAJOR_VERSION}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}-${APP_VERSION//./}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mltframework/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mv /tmp/${FILE_NAME}/${APP_NAME} /opt/${APP_NAME,,}
