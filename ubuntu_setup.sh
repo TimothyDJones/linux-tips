@@ -16692,3 +16692,15 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/fut
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}.deb
+
+# Install Notable Markdown-based note-taking tool from Debian package
+APP_NAME=Notable
+APP_GUI_NAME="Markdown-based note-taking tool."
+APP_VERSION=1.2.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/fabiospampinato/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}.deb
+
