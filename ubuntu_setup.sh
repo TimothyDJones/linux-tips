@@ -8365,7 +8365,7 @@ FILE_NAME=libdbh2-5.0.22
 curl -o /tmp/${FILE_NAME}.tar.gz -J -L https://downloads.sourceforge.net/dbh/${FILE_NAME}.tar.gz
 dtrx -n /tmp/${FILE_NAME}.tar.gz && cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install && cd /tmp
-FILE_NAME=librfm5-${APP_VERSION}
+FILE_NAME=librfm5-5.3.16.4
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT} && cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install && cd /tmp
