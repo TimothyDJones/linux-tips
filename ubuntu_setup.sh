@@ -33,7 +33,17 @@ function mySqlCreateDatabase() {
 	fi
 }
 
+# Checks to see if tool/command exists
+# https://github.com/kennylevinsen/dotfiles/blob/master/setup
+function tool_installed() {
+	which $1 1>/dev/null 2>/dev/null
+	ret=$?
+	printf '%b' "[Tool installation check for $1: $ret]\n" >> $LOGFILE
+	return $ret
+}
+
 # Set some parameters for general use
+LOGFILE=/var/log/ubuntu_setup.log
 WWW_HOME=/var/www/html
 
 
@@ -310,7 +320,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
 APP_NAME=firejail
-APP_VERSION=0.9.56-LTS_1
+APP_VERSION=0.9.58_1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
@@ -424,7 +434,7 @@ rm -f /tmp/${APP_NAME}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.4.15
+APP_VERSION=1.4.16
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -1847,7 +1857,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.3.3
+APP_VERSION=7.3.4
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -7061,7 +7071,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.26
+APP_VERSION=V1.27
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -8355,7 +8365,7 @@ FILE_NAME=libdbh2-5.0.22
 curl -o /tmp/${FILE_NAME}.tar.gz -J -L https://downloads.sourceforge.net/dbh/${FILE_NAME}.tar.gz
 dtrx -n /tmp/${FILE_NAME}.tar.gz && cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install && cd /tmp
-FILE_NAME=librfm5-${APP_VERSION}
+FILE_NAME=librfm5-5.3.16.4
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT} && cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install && cd /tmp
@@ -10789,7 +10799,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # http://www.wagemaker.co.uk/
 APP_NAME=SmallTextPad
 APP_GUI_NAME="Minimalist Java-based notepad."
-APP_VERSION=1.3.2
+APP_VERSION=1.3.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -16671,3 +16681,26 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install QFutureBuilder Qt-based desktop goal tracker from Debian package	
+APP_NAME=QFutureBuilder
+APP_GUI_NAME="Qt-based desktop goal tracker"
+APP_VERSION=N/A
+APP_EXT=tar.gz
+FILE_NAME=linux_deb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/futurbuilder/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}.deb
+
+# Install Notable Markdown-based note-taking tool from Debian package
+APP_NAME=Notable
+APP_GUI_NAME="Markdown-based note-taking tool."
+APP_VERSION=1.2.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/fabiospampinato/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}.deb
+
