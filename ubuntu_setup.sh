@@ -16801,3 +16801,30 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
+# Install A Text Editor inspired by Sam and Acme text editors for the Plan 9 operating system from package
+APP_NAME=A
+APP_GUI_NAME="Text Editor inspired by Sam and Acme text editors for the Plan 9 operating system."
+APP_VERSION=0.7.3
+APP_EXT=zip
+FILE_NAME=a-linux-amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/as/a/files/2135664/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+chmod a+x /tmp/${FILE_NAME}/a
+sudo mv /tmp/${FILE_NAME}/* /usr/local/bin
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/a
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Text;Editor;Acme;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
