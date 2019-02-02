@@ -382,13 +382,14 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -f /tmp/*${APP_NAME,,}*
 
-# Install Cudatext editor from Sourceforge
-APP_NAME=cudatext
-APP_VERSION=1.68.0.0-1
+# Install CudaText editor from Debian package
+APP_NAME=CudaText
+APP_VERSION=1.73.0.0-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
-rm -f /tmp/${APP_NAME}*
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+rm -f /tmp/${APP_NAME,,}*
 
 # Enable GetDeb repository for your version of Ubuntu
 source /etc/os-release   # This config file contains Ubuntu version details.
