@@ -424,14 +424,15 @@ cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/ksnip*
 
-# Install CopyQ clipboard manager from Sourceforge
-APP_NAME=copyq
+# Install CopyQ clipboard manager from Debian package
+APP_NAME=CopyQ
 APP_VERSION=3.7.3
-source /etc/os-release
-curl -o /tmp/${APP_NAME}.deb -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}/Linux/${APP_NAME}_${APP_VERSION}_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/${APP_NAME}.deb
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_9.0-1_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo ln -s /usr/local/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Configure CopyQ to autostart on system launch
-rm -f /tmp/${APP_NAME}*
+rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
