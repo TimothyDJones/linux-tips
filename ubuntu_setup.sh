@@ -16759,19 +16759,3 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install zBoy classic Gameboy emulator from source
-APP_NAME=zBoy
-APP_GUI_NAME="Classic Gameboy emulator."
-APP_VERSION=0.70
-APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y libsdl2-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
-cp Makefile.linux Makefile
-make
-sudo mv ${APP_NAME,,} /usr/local/bin
-cd $HOME
-sudo rm -rf /tmp/${APP_NAME,,}*
