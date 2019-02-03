@@ -16828,3 +16828,29 @@ Keywords=Text;Editor;Acme;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 
+# Install FRequest Qt-based desktop HTTP(S) request tool from AppImage
+APP_NAME=FRequest
+APP_VERSION=1.1c
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}${APP_VERSION//./}_linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/fabiobento512/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment="Qt-based desktop HTTP(S) request tool."
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=HTTP;Web;Services
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
