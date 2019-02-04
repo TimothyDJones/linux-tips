@@ -382,13 +382,14 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -f /tmp/*${APP_NAME,,}*
 
-# Install Cudatext editor from Sourceforge
-APP_NAME=cudatext
-APP_VERSION=1.68.0.0-1
+# Install CudaText editor from Debian package
+APP_NAME=CudaText
+APP_VERSION=1.73.0.0-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/release/Linux/${APP_NAME}_${APP_VERSION}_gtk2_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
-rm -f /tmp/${APP_NAME}*
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+rm -f /tmp/${APP_NAME,,}*
 
 # Enable GetDeb repository for your version of Ubuntu
 source /etc/os-release   # This config file contains Ubuntu version details.
@@ -423,14 +424,15 @@ cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/ksnip*
 
-# Install CopyQ clipboard manager from Sourceforge
-APP_NAME=copyq
-APP_VERSION=3.7.2
-source /etc/os-release
-curl -o /tmp/${APP_NAME}.deb -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}/Linux/${APP_NAME}_${APP_VERSION}_Ubuntu_${VERSION_ID}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/${APP_NAME}.deb
+# Install CopyQ clipboard manager from Debian package
+APP_NAME=CopyQ
+APP_VERSION=3.7.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_9.0-1_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo ln -s /usr/local/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Configure CopyQ to autostart on system launch
-rm -f /tmp/${APP_NAME}*
+rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
@@ -859,7 +861,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=8.2.4
+APP_VERSION=8.3.1
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1994,7 +1996,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE
 APP_NAME=eric
-APP_VERSION=6-19.01
+APP_VERSION=6-19.02
 APP_EXT=tar.gz
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
@@ -2066,7 +2068,7 @@ sudo mv /tmp/${APP_NAME} /usr/local/bin
 
 # Install Freeplane mind-mapping tool from package
 APP_NAME=freeplane
-APP_VERSION=1.7.3
+APP_VERSION=1.7.5
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}~upstream-1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2421,7 +2423,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install QPDF PDF utility from source
 APP_NAME=qpdf
-APP_VERSION=8.3.0
+APP_VERSION=8.4.0
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -2661,9 +2663,9 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Printed Circuit Board Layout Tool
+# Install Printed Circuit Board (PCB) Layout Tool from source
 APP_NAME=pcb
-APP_VERSION=4.1.3
+APP_VERSION=4.2.0
 APP_EXT=tar.gz
 sudo apt-get install -y intltool libgtkglext1-dev libgd-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -4026,7 +4028,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.9.0-1
+APP_VERSION=1.10.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -7268,7 +7270,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install phpSysInfo web-based Linux system information utility
 APP_NAME=phpSysInfo
-APP_VERSION=3.2.10
+APP_VERSION=3.3.0
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -10843,12 +10845,14 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Mokomaze SDL-based ball labyrinth puzzle game from source
 APP_NAME=Mokomaze
 APP_GUI_NAME="SDL-based ball labyrinth puzzle game."
-APP_VERSION=N/A
-APP_EXT=N/A
+APP_VERSION=0.7.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libjson-glib-dev libode-dev libsdl-gfx1.2-dev libsdl-ttf2.0-dev libsdl-image1.2-dev xsltproc autoconf libsdl1.2-dev librsvg2-dev libargtable2-dev libguichan-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-git clone https://git.code.sf.net/p/${APP_NAME,,}/code ${APP_NAME,,}
-cd /tmp/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./autogen.sh && ./configure && make && sudo make -j4 install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
@@ -16264,7 +16268,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install orng Java Markdown-based journal editor from package
 APP_NAME=orng
 APP_GUI_NAME="Java Markdown-based journal editor."
-APP_VERSION=1.1.2
+APP_VERSION=1.1.9
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}j_${APP_VERSION}_gnu_linux_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -16718,3 +16722,137 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install NitsLoch Java-based classic RPG from package
+APP_NAME=NitsLoch
+APP_GUI_NAME="Java-based classic RPG."
+APP_VERSION=2.2.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Entertainment;Games;
+Keywords=RPG;Retro;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Web Contact Manager (WCM) web-based (PHP/MySQL) contact management tool
+APP_NAME=WCM
+APP_GUI_NAME="Web-based (PHP/MySQL) contact management tool."
+APP_VERSION=1.4.1
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}.${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/webcontactmanag/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cp /tmp/${FILE_NAME}/${APP_NAME,,}/inc/Config.Sample.inc.php /tmp/${FILE_NAME}/${APP_NAME,,}/inc/Config.inc.php
+sed -i 's@wcmpass@wcm@g' /tmp/${FILE_NAME}/${APP_NAME,,}/inc/Config.inc.php
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}/Uploads
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}/Images
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data /var/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/SiteLogo.jpg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;
+Keywords=Contacts;Address;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install A Text Editor inspired by Sam and Acme text editors for the Plan 9 operating system from package
+APP_NAME=A
+APP_GUI_NAME="Text Editor inspired by Sam and Acme text editors for the Plan 9 operating system."
+APP_VERSION=0.7.3
+APP_EXT=zip
+FILE_NAME=a-linux-amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/as/a/files/2135664/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+chmod a+x /tmp/${FILE_NAME}/a
+sudo mv /tmp/${FILE_NAME}/* /usr/local/bin
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/a
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Text;Editor;Acme;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
+# Install FRequest Qt-based desktop HTTP(S) request tool from AppImage
+APP_NAME=FRequest
+APP_VERSION=1.1c
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}${APP_VERSION//./}_linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/fabiobento512/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment="Qt-based desktop HTTP(S) request tool."
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=HTTP;Web;Services
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
