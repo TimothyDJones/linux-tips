@@ -12613,7 +12613,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Pasang Emas traditional board game from Brunei from source
 APP_NAME=Pasang-Emas
 APP_GUI_NAME="Traditional board game from Brunei."
-APP_VERSION=5.2.0
+APP_VERSION=6.1.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y itstool
