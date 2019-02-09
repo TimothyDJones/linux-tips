@@ -273,7 +273,7 @@ cd $HOME
 
 # Install Lite IDE for Go language development
 APP_NAME=LiteIDE
-APP_VERSION=x35.2
+APP_VERSION=x35.4
 QT_VERSION=qt5.5.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
@@ -1203,7 +1203,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Sourceforge
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3844
+APP_VERSION_MINOR=3864
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-22_${KERNEL_TYPE}.deb
@@ -1859,7 +1859,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.3.4
+APP_VERSION=7.4.0
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -1925,7 +1925,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Hyper JS/HTML/CSS Terminal 
 APP_NAME=hyper
-APP_VERSION=2.1.0
+APP_VERSION=2.1.2
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hyper.mirror/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2275,7 +2275,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.59
+APP_VERSION=6.3.62
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -6219,7 +6219,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install QVGE (Qt Visual Graph Editor) Qt-based 2-D visual graph editor from source
 APP_NAME=QVGE
 APP_GUI_NAME="Cross-platform Qt-based 2-D visual graph editor."
-APP_VERSION=0.4.3
+APP_VERSION=0.5.3
 APP_EXT=7z
 sudo apt-get install -y qt5-qmake qt5-default libqt5x11extras5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
@@ -7073,7 +7073,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.27
+APP_VERSION=V1.28
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -12613,7 +12613,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Pasang Emas traditional board game from Brunei from source
 APP_NAME=Pasang-Emas
 APP_GUI_NAME="Traditional board game from Brunei."
-APP_VERSION=5.2.0
+APP_VERSION=6.1.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y itstool
@@ -16856,3 +16856,81 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install PHP My Family web-based (PHP/MySQL) genealogy tool with GEDCOM support
+APP_NAME=PHPMyFamily
+APP_GUI_NAME="Web-based (PHP/MySQL) genealogy tool with GEDCOM support."
+APP_VERSION=v2.1.0-alpha-2
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=pmf${APP_VERSION//./-}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cp /tmp/${FILE_NAME}/inc/database.inc /tmp/${FILE_NAME}/inc/database.inc.php
+sed -i 's@""@"'${APP_NAME,,}'"@g' /tmp/${FILE_NAME}/inc/database.inc.php
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/admin/install.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/images/favicon.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Education;
+Keywords=Genealogy;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Universal Password Manager (UPM) Java-based password manager from package
+APP_NAME=UPM
+APP_GUI_NAME="Java-based password manager."
+APP_VERSION=1.15.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Internet;
+Keywords=Password;Security;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
