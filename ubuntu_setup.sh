@@ -320,7 +320,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
 APP_NAME=firejail
-APP_VERSION=0.9.58_1
+APP_VERSION=0.9.58.2_1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
@@ -4019,7 +4019,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JSoko Java-based Sokoban puzzle game from package
 APP_NAME=JSoko
-APP_VERSION=1.82
+APP_VERSION=1.83
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}applet/${APP_NAME}_${APP_VERSION}_linux.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
