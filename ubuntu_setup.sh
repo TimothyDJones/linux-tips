@@ -320,7 +320,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
 APP_NAME=firejail
-APP_VERSION=0.9.58_1
+APP_VERSION=0.9.58.2_1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
@@ -4019,7 +4019,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JSoko Java-based Sokoban puzzle game from package
 APP_NAME=JSoko
-APP_VERSION=1.82
+APP_VERSION=1.83
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}applet/${APP_NAME}_${APP_VERSION}_linux.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4706,7 +4706,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.2.6
+APP_VERSION=1.3.0
 APP_EXT=tar.bz2
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -5052,7 +5052,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=19.0
+APP_VERSION=19.1
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -8044,7 +8044,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install RHash cross-platform, shell-based tool for calculating and verifying various hash sums for files from source
 APP_NAME=RHash
 APP_GUI_NAME="Cross-platform, shell-based tool for calculating and verifying various hash sums for files."
-APP_VERSION=1.3.6
+APP_VERSION=1.3.8
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
 cd /tmp
@@ -11887,7 +11887,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install QtFM lightweight desktop-independent GUI file manager from source
 APP_NAME=QtFM
 APP_GUI_NAME="Lightweight desktop-independent GUI file manager."
-APP_VERSION=6.1.5
+APP_VERSION=6.1.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rodlie/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
@@ -13261,7 +13261,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Manuskript editing tool for book writers from Debian package
 APP_NAME=Manuskript
 APP_GUI_NAME="Editing tool for book writers."
-APP_VERSION=0.7.0-1
+APP_VERSION=0.8.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -16943,3 +16943,34 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-debian
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tryghost/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Gede Qt-based GUI front-end to GDB from source
+APP_NAME=Gede
+APP_GUI_NAME="Qt-based GUI front-end to GDB."
+APP_VERSION=2.12.3
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y qt5-default exuberant-ctags
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://gede.acidron.com/uploads/source/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;
+Keywords=GDB;Debugger;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
