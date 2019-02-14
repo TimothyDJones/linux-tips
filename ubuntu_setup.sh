@@ -16977,7 +16977,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install GEDKeeper cross-platform personal genealogical database tool from Debian package
 APP_NAME=GEDKeeper
 APP_GUI_NAME="Cross-platform personal genealogical database tool."
-APP_VERSION=2.14.0
+APP_VERSION=2.15.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
