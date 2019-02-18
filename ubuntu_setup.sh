@@ -17015,3 +17015,18 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
+# Install YouTube-DL-PyTK simple Python/Tkinter GUI for downloading videos from YouTube from package
+APP_NAME=YouTube-DL-PyTK
+APP_GUI_NAME="Simple Python/Tkinter GUI for downloading videos from YouTube."
+APP_VERSION=19.2.17
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME}_${APP_VERSION}
+sudo apt-get install -y python3-tk menu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/youtube-dl-gtk/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}
+sudo /tmp/${FILE_NAME}/${APP_NAME}/install.sh
+cd $HOME
+sudo -rm -rf /tmp/${APP_NAME}*
+
