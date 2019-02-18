@@ -16983,3 +16983,35 @@ FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
+# Install Kevora cross-platform Qt-based database management/query tool with support for MySQL, Oracle, PostgreSQL, and SQLite from source
+APP_NAME=Kevora
+APP_GUI_NAME="Cross-platform Qt-based database management/query tool with support for MySQL, Oracle, PostgreSQL, and SQLite."
+APP_VERSION=nightly-qt5.12
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-src-${APP_VERSION}
+sudo apt-get install -y qt5-default qt5-qmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
+mkdir -p build && cd build && qtchooser -run-tool=qmake -qt=5 .. && make
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/build/${APP_NAME,,} /usr/local/bin  # No 'install' target for make
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/ui/svg/${APP_NAME,,}.svg /usr/local/share/pixmaps/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/pixmaps/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;System;
+Keywords=Database;SQL;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
