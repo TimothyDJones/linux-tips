@@ -3549,7 +3549,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Raccoon Java-based Google Play Store and APK downloader utility
 APP_NAME=raccoon
-APP_VERSION=4.2.6
+APP_VERSION=4.4.0
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L http://${APP_NAME}.onyxbits.de/sites/${APP_NAME}.onyxbits.de/files/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME}
