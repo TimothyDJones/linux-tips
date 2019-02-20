@@ -2885,7 +2885,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Treeline tree-structured notepad
 APP_NAME=TreeLine
-APP_VERSION=3.0.3
+APP_VERSION=3.1.0
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
