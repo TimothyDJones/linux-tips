@@ -2887,6 +2887,7 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=TreeLine
 APP_VERSION=3.1.0
 APP_EXT=tar.gz
+sudo apt-get install -y python3-pyqt5
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -2895,7 +2896,7 @@ sudo python3 /tmp/${APP_NAME,,}/${APP_NAME}/install.py
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=Java-based mind mapping application
+Comment=Python/Qt-based tree-structured notepad
 GenericName=${APP_NAME}
 Exec=/usr/local/bin/${APP_NAME,,}
 Icon=/usr/local/share/icons/treeline/toolbar/32x32/treelogo.png
