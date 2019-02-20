@@ -12657,7 +12657,7 @@ Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib
-Exec=export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/${APP_NAME,,}; /opt/${APP_NAME,,}/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
 Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
