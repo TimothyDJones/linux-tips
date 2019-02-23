@@ -861,7 +861,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=8.3.1
+APP_VERSION=8.5
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1200,10 +1200,10 @@ make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Skychart planetarium package from Sourceforge
+# Install Skychart planetarium package from Debian package
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3864
+APP_VERSION_MINOR=3881
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-22_${KERNEL_TYPE}.deb
@@ -1859,7 +1859,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.4.0
+APP_VERSION=7.4.2
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -1939,7 +1939,7 @@ sudo apt-get install -y qownnotes
 
 # Install Tiki Wiki CMS/groupware
 APP_NAME=tiki
-APP_VERSION=19.0
+APP_VERSION=19.1
 APP_EXT=tar.gz
 DB_NAME=tikiwiki
 DB_USER=tikiwiki
@@ -2275,7 +2275,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.62
+APP_VERSION=6.3.65
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2885,8 +2885,9 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Treeline tree-structured notepad
 APP_NAME=TreeLine
-APP_VERSION=3.0.3
+APP_VERSION=3.1.0
 APP_EXT=tar.gz
+sudo apt-get install -y python3-pyqt5
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -2895,7 +2896,7 @@ sudo python3 /tmp/${APP_NAME,,}/${APP_NAME}/install.py
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=Java-based mind mapping application
+Comment=Python/Qt-based tree-structured notepad
 GenericName=${APP_NAME}
 Exec=/usr/local/bin/${APP_NAME,,}
 Icon=/usr/local/share/icons/treeline/toolbar/32x32/treelogo.png
@@ -3549,7 +3550,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Raccoon Java-based Google Play Store and APK downloader utility
 APP_NAME=raccoon
-APP_VERSION=4.2.6
+APP_VERSION=4.4.0
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L http://${APP_NAME}.onyxbits.de/sites/${APP_NAME}.onyxbits.de/files/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME}
@@ -5204,7 +5205,7 @@ xdg-open http://localhost/${APP_NAME,,}/installation/setup.php &
 # Install PySolFC Python-based Solitaire card game
 APP_NAME=PySolFC
 APP_GUI_NAME="Python-based Solitaire card game"
-APP_VERSION=2.4.0
+APP_VERSION=2.6.1
 APP_EXT=tar.xz
 sudo apt-get install -y python3-pip
 sudo pip3 install random2 sgmllib3k
@@ -7995,7 +7996,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Joy of Text (JOT) minimalist text editor from package
 APP_NAME=JOT
 APP_GUI_NAME="Cross-platform minimalist text editor."
-APP_VERSION=2.3.4
+APP_VERSION=2.3.5
 APP_EXT=tz
 sudo ln -s /lib/x86_64-linux-gnu/libncurses.so.5 /lib/x86_64-linux-gnu/libncurses.so.6
 sudo ln -s /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libtinfo.so.6
@@ -9313,7 +9314,7 @@ sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 # Install FreeBASIC cross-platform BASIC compiler, with syntax similar MS-QuickBASIC and advanced features from package
 APP_NAME=FreeBASIC
 APP_GUI_NAME="Cross-platform BASIC compiler, with syntax similar MS-QuickBASIC and advanced features."
-APP_VERSION=1.05.0
+APP_VERSION=1.06.0
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -12628,7 +12629,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Double Commander dual-pane canonical file manager from package
 APP_NAME=DoubleCmd
 APP_GUI_NAME="Dual-pane canonical file manager."
-APP_VERSION=0.8.4
+APP_VERSION=0.9.1
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -12656,7 +12657,7 @@ Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib
-Exec=export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/${APP_NAME,,}; /opt/${APP_NAME,,}/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
 Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
@@ -16171,41 +16172,14 @@ FILE_NAME=reminders_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
-# Install Vido Python GUI video/audio downloader frontend for youtube-dl from package
+# Install Vido Python GUI video/audio downloader frontend for youtube-dl from Debian package
 APP_NAME=Vido
 APP_GUI_NAME="Python GUI video/audio downloader frontend for youtube-dl."
-APP_VERSION=N/A
-APP_EXT=zip
-FILE_NAME=${APP_NAME,,}
+APP_VERSION=1.0.5
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}%20${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mkdir /opt/${APP_NAME,,}
-sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,} << EOF
-#! /bin/sh
-cd /opt/${APP_NAME,,}
-PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-python3 /opt/${APP_NAME,,}/${APP_NAME,,}.py
-cd $HOME
-EOF
-sudo mv /tmp/${APP_NAME,,} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=/opt/${APP_NAME,,}
-Exec=python3 /opt/${APP_NAME,,}/${APP_NAME,,}.py
-Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.svg
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Video;Audio;Multimedia;
-Keywords=Audio;Video;Downloader;
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
@@ -16711,7 +16685,7 @@ sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}.deb
 # Install Klavaro GTK3-based Touch Typing Tutor from source
 APP_NAME=Klavaro
 APP_GUI_NAME="GTK3-based Touch Typing Tutor."
-APP_VERSION=3.03
+APP_VERSION=3.04
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y intltool libgtk-3-dev
@@ -16935,6 +16909,15 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
+# Install Ghost Desktop Electron-based blog management tool from Debian package
+APP_NAME=Ghost-Desktop
+APP_GUI_NAME="Electron-based blog management tool."
+APP_VERSION=1.7.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-debian
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tryghost/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
 # Install Gede Qt-based GUI front-end to GDB from source
 APP_NAME=Gede
 APP_GUI_NAME="Qt-based GUI front-end to GDB."
@@ -16964,3 +16947,60 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install GEDKeeper cross-platform personal genealogical database tool from Debian package
+APP_NAME=GEDKeeper
+APP_GUI_NAME="Cross-platform personal genealogical database tool."
+APP_VERSION=2.15.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Kevora cross-platform Qt-based database management/query tool with support for MySQL, Oracle, PostgreSQL, and SQLite from source
+APP_NAME=Kevora
+APP_GUI_NAME="Cross-platform Qt-based database management/query tool with support for MySQL, Oracle, PostgreSQL, and SQLite."
+APP_VERSION=nightly-qt5.12
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-src-${APP_VERSION}
+sudo apt-get install -y qt5-default qt5-qmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
+mkdir -p build && cd build && qtchooser -run-tool=qmake -qt=5 .. && make
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/build/${APP_NAME,,} /usr/local/bin  # No 'install' target for make
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/ui/svg/${APP_NAME,,}.svg /usr/local/share/pixmaps/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/pixmaps/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;System;
+Keywords=Database;SQL;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install YouTube-DL-PyTK simple Python/Tkinter GUI for downloading videos from YouTube from package
+APP_NAME=YouTube-DL-PyTK
+APP_GUI_NAME="Simple Python/Tkinter GUI for downloading videos from YouTube."
+APP_VERSION=19.2.17
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME}_${APP_VERSION}
+sudo apt-get install -y python3-tk menu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/youtube-dl-gtk/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}
+sudo /tmp/${FILE_NAME}/${APP_NAME}/install.sh
+cd $HOME
+sudo -rm -rf /tmp/${APP_NAME}*
+
