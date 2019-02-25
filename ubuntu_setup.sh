@@ -384,7 +384,7 @@ rm -f /tmp/*${APP_NAME,,}*
 
 # Install CudaText editor from Debian package
 APP_NAME=CudaText
-APP_VERSION=1.73.0.0-1
+APP_VERSION=1.75.4.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -436,7 +436,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.4.16
+APP_VERSION=1.5.0
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -1099,7 +1099,7 @@ sudo apt-get install -y quiterss
 # Install Makagiga Java-based PIM/RSS feed reader from package
 APP_NAME=Makagiga
 APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
-APP_VERSION=6.4
+APP_VERSION=6.6
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1694,7 +1694,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Read the Bible from source
 APP_NAME=Bible
-APP_VERSION=6.3.6
+APP_VERSION=6.3.7
 APP_EXT=tar.xz
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/readthebible/${APP_NAME}${APP_VERSION}-64bit.${APP_EXT}
 cd /tmp
@@ -2068,7 +2068,7 @@ sudo mv /tmp/${APP_NAME} /usr/local/bin
 
 # Install Freeplane mind-mapping tool from package
 APP_NAME=freeplane
-APP_VERSION=1.7.5
+APP_VERSION=1.7.6
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}~upstream-1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2556,7 +2556,7 @@ xdg-open http://localhost:8080/${APP_NAME,,}/ &
 
 # Install Squirrel SQL Java database client utility
 APP_NAME=squirrel-sql
-APP_VERSION=3.9.0
+APP_VERSION=3.9.1
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-standard.${APP_EXT}
 sudo java -jar /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4707,7 +4707,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.3.0
+APP_VERSION=1.3.1
 APP_EXT=tar.bz2
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -7074,7 +7074,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.28
+APP_VERSION=V1.30
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -16242,7 +16242,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install orng Java Markdown-based journal editor from package
 APP_NAME=orng
 APP_GUI_NAME="Java Markdown-based journal editor."
-APP_VERSION=1.1.9
+APP_VERSION=1.1.12
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}j_${APP_VERSION}_gnu_linux_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -17019,4 +17019,16 @@ mkdir -p build && cd build
 cmake -DCMAKE_BUILD_TYPE=release .. && make clean all && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Hypercube Qt-based graph visualization tool from Debian package
+APP_NAME=Hypercube
+APP_VERSION=1.7.0
+APP_EXT=deb
+source /etc/lsb-release
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/tumic:/${APP_NAME}/xUbuntu_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
 
