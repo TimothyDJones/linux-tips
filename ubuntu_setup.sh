@@ -17004,3 +17004,14 @@ sudo /tmp/${FILE_NAME}/${APP_NAME}/install.sh
 cd $HOME
 sudo -rm -rf /tmp/${APP_NAME}*
 
+# Install Hypercube Qt-based graph visualization tool from Debian package
+APP_NAME=Hypercube
+APP_VERSION=1.7.0
+APP_EXT=deb
+source /etc/lsb-release
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/tumic:/${APP_NAME}/xUbuntu_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
