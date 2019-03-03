@@ -17004,6 +17004,22 @@ sudo /tmp/${FILE_NAME}/${APP_NAME}/install.sh
 cd $HOME
 sudo -rm -rf /tmp/${APP_NAME}*
 
+# Install Muse Qt-based digital audio workstation (DAW) and MIDI/sudio sequencer with recording and editing capabilities from source
+APP_NAME=Muse
+APP_GUI_NAME="Qt-based digital audio workstation (DAW) and MIDI/sudio sequencer with recording and editing capabilities."
+APP_VERSION=3.0.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential cmake libsndfile1-dev libsamplerate0-dev libjack-jackd2-dev ladspa-sdk qt5-default qttools5-dev qttools5-dev-tools liblo-dev dssi-dev lv2-dev libsamplerate0-dev libsndfile1-dev git libfluidsynth-dev libgtkmm-2.4-dev librtaudio-dev libqt5svg5-dev libinstpatch-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/l${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p build && cd build 
+cmake -DCMAKE_BUILD_TYPE=release .. && make clean all && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
 # Install Hypercube Qt-based graph visualization tool from Debian package
 APP_NAME=Hypercube
 APP_VERSION=1.7.0
@@ -17043,4 +17059,23 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install ff Rust-based, cross-platform CLI file finder from package
+APP_NAME=ff
+APP_GUI_NAME="Rust-based, cross-platform CLI file finder."
+APP_VERSION=0.1.1
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i686
+fi
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-${ARCH_TYPE}-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/vishaltelangre/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
 
