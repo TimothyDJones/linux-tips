@@ -2409,7 +2409,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
 APP_NAME=XSchem
-APP_VERSION=2.8.1
+APP_VERSION=2.8.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
@@ -3103,7 +3103,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2019.0
+APP_VERSION=1.2019.2
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -3393,18 +3393,30 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install FeedTurtle Java-based RSS news aggregator client
 APP_NAME=FeedTurtle
-APP_VERSION=X.6
+APP_GUI_NAME="Java-based RSS news aggregator client"
+APP_VERSION=11
 APP_EXT=zip
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME}%20${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME}${APP_VERSION} /opt/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME}${APP_VERSION}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=Java-based RSS news aggregator
+Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}${APP_VERSION}.jar
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}${APP_VERSION}.jar
 #Icon=
 Type=Application
 StartupNotify=true
@@ -10057,7 +10069,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install MindForger notepad and Markdown editor/IDE with built-in preview from Debian package
 APP_NAME=MindForger
 APP_GUI_NAME="Notepad and Markdown editor/IDE with built-in preview."
-APP_VERSION=1.47.0-1
+APP_VERSION=1.49.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -17079,6 +17091,28 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
+# Install Dr. Geo cross-platform interactive geometry package from package
+APP_NAME=DrGeo
+APP_GUI_NAME="Cross-platform interactive geometry package."
+APP_VERSION=19.03a
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	sudo dpkg --add-architecture i386  # Add libraries for 32-bit architecture
+	sudo apt-get update -y 
+	sudo apt-get dist-upgrade -y
+	sudo apt-get install -y libcairo2:i386 libgl1-mesa-glx:i386
+else    # Otherwise use version for 32-bit kernel
+	sudo apt-get install -y libcairo2 libgl1-mesa-glx
+fi
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-${ARCH_TYPE}-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/vishaltelangre/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
 # Install REDasm interactive, multiarchitecture, Qt-based disassembler from package
 APP_NAME=REDasm
 APP_GUI_NAME="Interactive, multiarchitecture, Qt-based disassembler."
@@ -17117,3 +17151,43 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo -rm -rf /tmp/${APP_NAME}*
+
+# Install Raven Reader Electron-based RSS news reader from AppImage
+APP_NAME=Raven-Reader
+APP_GUI_NAME="Electron-based RSS news reader."
+APP_VERSION=0.4.4
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mrgodhani/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -f -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;
+Keywords=RSS;News;Aggregator;Reader;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install SmallPassKeeper Java-based password manager from Debian package
+APP_NAME=SmallPassKeeper
+APP_VERSION=0.9.8
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/smallpasskepper/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
