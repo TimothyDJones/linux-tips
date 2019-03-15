@@ -1247,26 +1247,29 @@ sudo ./install.sh geo
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Tagstoo file tag manager
+# Install Tagstoo file tag manager from AppImage
 APP_NAME=Tagstoo
-APP_VERSION=1.12.5
-APP_EXT=tar.gz
+APP_GUI_NAME="File tag manager"
+APP_VERSION=1.12.7
+APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=linux32
 fi
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/project/${APP_NAME,,}/${APP_NAME}%20${APP_VERSION}%20${ARCH_TYPE}/${APP_NAME}_${APP_VERSION}_${ARCH_TYPE}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/project/${APP_NAME,,}/${APP_NAME}%20${APP_VERSION}%20${ARCH_TYPE}/${APP_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.${APP_EXT}
-sudo mv ${APP_NAME} /opt
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv ${APP_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 # Create icon in menus
-cat > /tmp/${APP_NAME}.desktop << EOF
+cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
-Name=Tagstoo
-Comment=File tag manager
-GenericName=Tagstoo
-Exec=/opt/${APP_NAME}/${APP_NAME}
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/usr/local/bin/${APP_NAME,,}
 #Icon=/opt/${APP_NAME}/share/${APP_NAME}/welcome/images/liteide128.xpm
 Type=Application
 StartupNotify=false
@@ -1274,7 +1277,7 @@ Terminal=false
 Categories=Accessories;System;
 Keywords=tag;tagging;
 EOF
-sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
