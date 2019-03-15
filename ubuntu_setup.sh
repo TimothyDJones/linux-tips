@@ -11355,9 +11355,10 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install Gopherus cross-platform console-mode gopher client from source
 APP_NAME=Gopherus
 APP_GUI_NAME="Cross-platform console-mode gopher client."
-APP_VERSION=1.0c
-APP_EXT=tar.gz
+APP_VERSION=1.1
+APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libsdl2-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -17187,6 +17188,16 @@ APP_VERSION=0.9.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/smallpasskepper/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install GPT fdisk (gdisk) disk partitioning tool for GUID Partition Table (GPT) disks from Debian package
+APP_NAME=gdisk
+APP_VERSION=1.0.4-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/gptfdisk/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
