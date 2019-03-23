@@ -1644,12 +1644,13 @@ sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Super Productivity To Do List and task manager from package
+# Install Super Productivity To Do List and task manager from Debian package
 APP_NAME=superProductivity
-APP_VERSION=1.10.50
+APP_VERSION=2.5.8
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/super-productivity/${APP_NAME}_${APP_VERSION}_amd64.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johannesjo/super-productivity/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf ${APP_NAME}*
 
