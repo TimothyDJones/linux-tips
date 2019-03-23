@@ -384,7 +384,7 @@ rm -f /tmp/*${APP_NAME,,}*
 
 # Install CudaText editor from Debian package
 APP_NAME=CudaText
-APP_VERSION=1.75.4.0-1
+APP_VERSION=1.76.2.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -1247,26 +1247,29 @@ sudo ./install.sh geo
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Tagstoo file tag manager
+# Install Tagstoo file tag manager from AppImage
 APP_NAME=Tagstoo
-APP_VERSION=1.12.5
-APP_EXT=tar.gz
+APP_GUI_NAME="File tag manager"
+APP_VERSION=1.12.7
+APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=linux32
 fi
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/project/${APP_NAME,,}/${APP_NAME}%20${APP_VERSION}%20${ARCH_TYPE}/${APP_NAME}_${APP_VERSION}_${ARCH_TYPE}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/project/${APP_NAME,,}/${APP_NAME}%20${APP_VERSION}%20${ARCH_TYPE}/${APP_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.${APP_EXT}
-sudo mv ${APP_NAME} /opt
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv ${APP_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 # Create icon in menus
-cat > /tmp/${APP_NAME}.desktop << EOF
+cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
-Name=Tagstoo
-Comment=File tag manager
-GenericName=Tagstoo
-Exec=/opt/${APP_NAME}/${APP_NAME}
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/usr/local/bin/${APP_NAME,,}
 #Icon=/opt/${APP_NAME}/share/${APP_NAME}/welcome/images/liteide128.xpm
 Type=Application
 StartupNotify=false
@@ -1274,7 +1277,7 @@ Terminal=false
 Categories=Accessories;System;
 Keywords=tag;tagging;
 EOF
-sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
@@ -2275,7 +2278,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.65
+APP_VERSION=6.3.67
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3042,7 +3045,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=19.01.24
+APP_VERSION=19.02.28
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -3103,7 +3106,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2019.2
+APP_VERSION=1.2019.3
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -10957,7 +10960,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install gcdemu GTK+-based CD emulation utility from PPA
 APP_NAME=gcdemu
 APP_GUI_NAME="GTK+-based CD emulation utility."
-APP_VERSION=3.1.0
+APP_VERSION=3.2.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo add-apt-repository -y ppa:cdemu/ppa
@@ -11355,9 +11358,10 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install Gopherus cross-platform console-mode gopher client from source
 APP_NAME=Gopherus
 APP_GUI_NAME="Cross-platform console-mode gopher client."
-APP_VERSION=1.0c
-APP_EXT=tar.gz
+APP_VERSION=1.1
+APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libsdl2-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -17187,6 +17191,26 @@ APP_VERSION=0.9.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/smallpasskepper/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install GPT fdisk (gdisk) disk partitioning tool for GUID Partition Table (GPT) disks from Debian package
+APP_NAME=gdisk
+APP_VERSION=1.0.4-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/gptfdisk/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install fixparts Master Boot Record (MBR) repair tool for GUID Partition Table (GPT) disks from Debian package
+APP_NAME=fixparts
+APP_VERSION=1.0.4-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/gptfdisk/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
