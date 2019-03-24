@@ -2527,11 +2527,12 @@ cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Task Coach to do list manager from package
-APP_NAME=taskcoach
-APP_VERSION=1.4.4-1
+# Install Task Coach to do list manager from Debian package
+APP_NAME=TaskCoach
+APP_VERSION=1.4.5-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
