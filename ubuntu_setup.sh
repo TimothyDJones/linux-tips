@@ -1203,7 +1203,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Skychart planetarium package from Debian package
 APP_NAME=skychart
 APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3881
+APP_VERSION_MINOR=3923
 APP_EXT=deb
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
 curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-22_${KERNEL_TYPE}.deb
