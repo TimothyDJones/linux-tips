@@ -617,7 +617,7 @@ curl -o /tmp/libgcrypt20-dev.deb -J -L http://mirrors.kernel.org/ubuntu/pool/mai
 curl -o /tmp/libgcrypt20.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20_1.7.8-2ubuntu1_amd64.deb
 sudo gdebi -n /tmp/libgcrypt20.deb
 sudo gdebi -n /tmp/libgcrypt20-dev.deb
-sudo apt-get install -y libcrypto++-dev libxi-dev libmicrohttpd-dev libxtst-dev qttools5-dev-tools cmake
+sudo apt-get install -y libcrypto++-dev libxi-dev libmicrohttpd-dev libxtst-dev qttools5-dev-tools cmake libargon2-0-dev libqrencode-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/keepassxreboot/${APP_NAME}/releases/download/${APP_VERSION}/${APP_NAME}-${APP_VERSION}-src.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME}.${APP_EXT}
