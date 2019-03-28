@@ -8338,7 +8338,7 @@ rm -rf /tmp/${APP_NAME,,}
 # https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
 APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
-APP_VERSION=6.1.0
+APP_VERSION=6.2.0
 APP_EXT=deb
 source /etc/lsb-release
 # PowerShell is only supported on LTS releases 
