@@ -17264,3 +17264,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo -rm -rf /tmp/${APP_NAME}*
+
+# Install Lush Lisp dialect with extensions for object-oriented and array-oriented programming from source
+APP_NAME=Lush
+APP_GUI_NAME="Lisp dialect with extensions for object-oriented and array-oriented programming."
+APP_VERSION=2.0.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y binutils-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/l${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make clean all && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
