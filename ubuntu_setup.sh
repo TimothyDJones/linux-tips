@@ -13306,7 +13306,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Pext Python/Qt-based productivity tool from AppImage
 APP_NAME=Pext
 APP_GUI_NAME="Python/Qt-based productivity tool."
-APP_VERSION=0.17
+APP_VERSION=0.23
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
