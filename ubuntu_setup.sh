@@ -384,7 +384,7 @@ rm -f /tmp/*${APP_NAME,,}*
 
 # Install CudaText editor from Debian package
 APP_NAME=CudaText
-APP_VERSION=1.76.6.0-1
+APP_VERSION=1.77.2.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
