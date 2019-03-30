@@ -611,13 +611,13 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install KeePassXC password manager from source
 APP_NAME=keepassxc
-APP_VERSION=2.3.4
+APP_VERSION=2.4.0
 APP_EXT=tar.xz
 curl -o /tmp/libgcrypt20-dev.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20-dev_1.7.8-2ubuntu1_amd64.deb
 curl -o /tmp/libgcrypt20.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20_1.7.8-2ubuntu1_amd64.deb
 sudo gdebi -n /tmp/libgcrypt20.deb
 sudo gdebi -n /tmp/libgcrypt20-dev.deb
-sudo apt-get install -y libcrypto++-dev libxi-dev libmicrohttpd-dev libxtst-dev qttools5-dev-tools cmake
+sudo apt-get install -y libcrypto++-dev libxi-dev libmicrohttpd-dev libxtst-dev qttools5-dev-tools cmake libargon2-0-dev libqrencode-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/keepassxreboot/${APP_NAME}/releases/download/${APP_VERSION}/${APP_NAME}-${APP_VERSION}-src.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1570,7 +1570,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZenTao project management tool from package
 APP_NAME=ZenTaoPMS
-APP_VERSION=11.2.stable
+APP_VERSION=11.4.stable
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${APP_NAME}_${APP_VERSION}_1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2075,7 +2075,7 @@ sudo mv /tmp/${APP_NAME} /usr/local/bin
 
 # Install Freeplane mind-mapping tool from package
 APP_NAME=freeplane
-APP_VERSION=1.7.6
+APP_VERSION=1.7.7
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}~upstream-1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -7569,7 +7569,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=4.1.3
+APP_VERSION=4.1.4
 APP_EXT=tgz
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
@@ -8017,7 +8017,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Joy of Text (JOT) minimalist text editor from package
 APP_NAME=JOT
 APP_GUI_NAME="Cross-platform minimalist text editor."
-APP_VERSION=2.3.5
+APP_VERSION=2.4
 APP_EXT=tz
 sudo ln -s /lib/x86_64-linux-gnu/libncurses.so.5 /lib/x86_64-linux-gnu/libncurses.so.6
 sudo ln -s /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libtinfo.so.6
@@ -8338,7 +8338,7 @@ rm -rf /tmp/${APP_NAME,,}
 # https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
 APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
-APP_VERSION=6.1.0
+APP_VERSION=6.2.0
 APP_EXT=deb
 source /etc/lsb-release
 # PowerShell is only supported on LTS releases 
@@ -17264,3 +17264,99 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo -rm -rf /tmp/${APP_NAME}*
+
+# Install Lush Lisp dialect with extensions for object-oriented and array-oriented programming from source
+APP_NAME=Lush
+APP_GUI_NAME="Lisp dialect with extensions for object-oriented and array-oriented programming."
+APP_VERSION=2.0.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y binutils-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/l${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make clean all && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install pyFileSearcher cross-platform Python/Qt GUI file search tool from package
+APP_NAME=pyFileSearcher
+APP_GUI_NAME="Cross-platform Python/Qt GUI file search tool."
+APP_VERSION=1.1.0
+APP_EXT=tgz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+FILE_NAME=${APP_NAME}-${APP_VERSION}_linux_qt5_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=File;Search;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo -rm -rf /tmp/${APP_NAME}*
+
+# Install ArgoUML Java-based UML diagram editor/modeling tool from package
+APP_NAME=ArgoUML
+APP_GUI_NAME="Java-based UML diagram editor/modeling tool."
+APP_VERSION=0.34
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://argouml-downloads.tigris.org/nonav/${APP_NAME,,}-${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+Icon=/opt/${APP_NAME,,}/icon/${APP_NAME,,}2.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=UML;Diagramming;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
