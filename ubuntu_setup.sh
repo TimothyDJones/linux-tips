@@ -383,6 +383,7 @@ cd $HOME
 rm -f /tmp/*${APP_NAME,,}*
 
 # Install CudaText editor from Debian package
+# http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
 APP_VERSION=1.77.2.0-1
 APP_EXT=deb
