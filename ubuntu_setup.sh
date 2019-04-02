@@ -166,6 +166,7 @@ sudo cat > /tmp/phpinfo.php << EOL
 EOL
 sudo mv /tmp/phpinfo.php ${WWW_HOME}
 sudo chown www-data:www-data ${WWW_HOME}/phpinfo.php
+xdg-open http://localhost/phpinfo.php &
 
 # Disable XDebug on CLI to prevent warnings when installing/running Composer
 sudo phpdismod -s cli xdebug
