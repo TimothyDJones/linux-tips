@@ -166,6 +166,7 @@ sudo cat > /tmp/phpinfo.php << EOL
 EOL
 sudo mv /tmp/phpinfo.php ${WWW_HOME}
 sudo chown www-data:www-data ${WWW_HOME}/phpinfo.php
+xdg-open http://localhost/phpinfo.php &
 
 # Disable XDebug on CLI to prevent warnings when installing/running Composer
 sudo phpdismod -s cli xdebug
@@ -383,6 +384,7 @@ cd $HOME
 rm -f /tmp/*${APP_NAME,,}*
 
 # Install CudaText editor from Debian package
+# http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
 APP_VERSION=1.77.2.0-1
 APP_EXT=deb
@@ -2282,7 +2284,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.67
+APP_VERSION=6.3.68
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
