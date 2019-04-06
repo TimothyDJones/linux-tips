@@ -166,6 +166,7 @@ sudo cat > /tmp/phpinfo.php << EOL
 EOL
 sudo mv /tmp/phpinfo.php ${WWW_HOME}
 sudo chown www-data:www-data ${WWW_HOME}/phpinfo.php
+xdg-open http://localhost/phpinfo.php &
 
 # Disable XDebug on CLI to prevent warnings when installing/running Composer
 sudo phpdismod -s cli xdebug
@@ -383,6 +384,7 @@ cd $HOME
 rm -f /tmp/*${APP_NAME,,}*
 
 # Install CudaText editor from Debian package
+# http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
 APP_VERSION=1.77.2.0-1
 APP_EXT=deb
@@ -2282,7 +2284,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.67
+APP_VERSION=6.3.68
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -4039,7 +4041,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JSoko Java-based Sokoban puzzle game from package
 APP_NAME=JSoko
-APP_VERSION=1.83
+APP_VERSION=1.85
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}applet/${APP_NAME}_${APP_VERSION}_linux.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4786,7 +4788,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Dooble web browser from package
 APP_NAME=Dooble
-APP_VERSION=2019.01.20
+APP_VERSION=2019.04.04
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -7095,7 +7097,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.30
+APP_VERSION=V1.35
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
