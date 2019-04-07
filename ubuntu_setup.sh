@@ -17410,3 +17410,19 @@ APP_EXT=deb
 FILE_NAME=balena-${APP_NAME,,}-electron_${APP_VERSION}_${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/balena-io/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install SQLite-New cross-platform Qt-based SQLite GUI manager from source
+APP_NAME=SQLite-New
+APP_GUI_NAME="Cross-platform Qt-based SQLite GUI manager."
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-master
+sudo apt-get install -y qt5-default libsqlite3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/srgank/${APP_NAME,,}/archive/master.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}-master
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 CONFIG+=release PREFIX=/usr/local .. && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
