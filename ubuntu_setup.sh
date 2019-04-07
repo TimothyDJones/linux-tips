@@ -1546,13 +1546,10 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Brave web browser (release channel) from package
 APP_NAME=Brave-Browser
-APP_VERSION=0.61.52
+APP_VERSION=0.62.51
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-
-
-https://github.com/brave/brave-browser/releases/download/v0.61.52/brave-browser_0.61.52_amd64.deb
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
