@@ -17499,3 +17499,8 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install QElectroTech electronic diagraming tool from PPA
+sudo add-apt-repository -y ppa:scorpio/ppa
+sudo apt-get update -y
+sudo apt-get install -y qelectrotech
