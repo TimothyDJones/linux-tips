@@ -5197,12 +5197,13 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install ProjectLibre Java-based project management tool from package
 APP_NAME=ProjectLibre
-APP_VERSION=1.8.0-1
+APP_VERSION=1.9.0-1
 APP_EXT=deb
+sudo apt-get install openjdk-11-jre 
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/*${APP_NAME,,}* /tmp/*${APP_NAME}*
 
 # Install phpCollab web-based collaboration and project management tool
 # http://www.phpcollab.com/
