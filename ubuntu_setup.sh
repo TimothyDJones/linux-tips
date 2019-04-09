@@ -16648,7 +16648,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install RedisView GUI management tool for Redis databases from package
 APP_NAME=RedisView
 APP_GUI_NAME="GUI management tool for Redis databases."
-APP_VERSION=1.5.0
+APP_VERSION=1.6.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
