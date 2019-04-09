@@ -5660,7 +5660,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install ProjectForge Java-based project management tool
 APP_NAME=ProjectForge
 APP_GUI_NAME="Cross-platform Java-based project management tool."
-APP_VERSION=6.22.0
+APP_VERSION=6.25.0
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/pforge/${APP_NAME}-application_${APP_VERSION}-RELEASE.${APP_EXT}
 cd /tmp
