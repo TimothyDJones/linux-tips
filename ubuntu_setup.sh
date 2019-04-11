@@ -386,7 +386,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.77.2.0-1
+APP_VERSION=1.78.0.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -863,7 +863,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=8.5.4
+APP_VERSION=8.5.5
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1546,13 +1546,10 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Brave web browser (release channel) from package
 APP_NAME=Brave-Browser
-APP_VERSION=0.61.52
+APP_VERSION=0.62.51
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-
-
-https://github.com/brave/brave-browser/releases/download/v0.61.52/brave-browser_0.61.52_amd64.deb
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
@@ -4966,7 +4963,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install EJE (Everyone's Java Editor) minimalist Java IDE
 APP_NAME=EJE
 APP_GUI_NAME="EJE (Everyone's Java Editor)"
-APP_VERSION=3.5
+APP_VERSION=3.5.1
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
 cd /tmp
@@ -5197,12 +5194,13 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install ProjectLibre Java-based project management tool from package
 APP_NAME=ProjectLibre
-APP_VERSION=1.8.0-1
+APP_VERSION=1.9.0-1
 APP_EXT=deb
+sudo apt-get install openjdk-11-jre 
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/*${APP_NAME,,}* /tmp/*${APP_NAME}*
 
 # Install phpCollab web-based collaboration and project management tool
 # http://www.phpcollab.com/
@@ -7676,7 +7674,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Zettlr Electron-based Markdown editor with built-in preview from Debian package
 APP_NAME=Zettlr
 APP_GUI_NAME="Electron-based Markdown editor with built-in preview."
-APP_VERSION=1.2.2
+APP_VERSION=1.2.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -12126,7 +12124,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install VNote Vim-inspired note-taking application with MarkDown support from App Image
 APP_NAME=VNote
 APP_GUI_NAME="Vim-inspired note-taking application with MarkDown support."
-APP_VERSION=2.0
+APP_VERSION=2.4
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=i386
@@ -16650,7 +16648,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install RedisView GUI management tool for Redis databases from package
 APP_NAME=RedisView
 APP_GUI_NAME="GUI management tool for Redis databases."
-APP_VERSION=1.5.0
+APP_VERSION=1.6.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -17411,6 +17409,22 @@ FILE_NAME=balena-${APP_NAME,,}-electron_${APP_VERSION}_${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/balena-io/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
+# Install SQLite-New cross-platform Qt-based SQLite GUI manager from source
+APP_NAME=SQLite-New
+APP_GUI_NAME="Cross-platform Qt-based SQLite GUI manager."
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-master
+sudo apt-get install -y qt5-default libsqlite3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/srgank/${APP_NAME,,}/archive/master.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}-master
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 CONFIG+=release PREFIX=/usr/local .. && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
 # Install Space Faring 2D single-player turn-based 4X space conquest strategy game from package
 APP_NAME=Space-Faring
 APP_GUI_NAME="2D single-player turn-based 4X space conquest strategy game."
@@ -17486,3 +17500,47 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install QElectroTech electronic diagraming tool from PPA
+sudo add-apt-repository -y ppa:scorpio/ppa
+sudo apt-get update -y
+sudo apt-get install -y qelectrotech
+
+# Install SQLTabs cross-platform, multi-database (MySQL, PostgreSQL, SQL Server, etc.) GUI database management/client tool from package
+APP_NAME=SQLTabs
+APP_GUI_NAME="Cross-platform, multi-database (MySQL, PostgreSQL, SQL Server, etc.) GUI database management/client tool."
+APP_VERSION=1.0.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}.linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sasha-alias/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}*/* /opt/${APP_NAME,,}
+sudo chmod -R a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Database;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
