@@ -386,7 +386,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.77.2.0-1
+APP_VERSION=1.78.0.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -2002,7 +2002,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE
 APP_NAME=eric
-APP_VERSION=6-19.02
+APP_VERSION=6-19.04
 APP_EXT=tar.gz
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
@@ -5194,12 +5194,13 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install ProjectLibre Java-based project management tool from package
 APP_NAME=ProjectLibre
-APP_VERSION=1.8.0-1
+APP_VERSION=1.9.0-1
 APP_EXT=deb
+sudo apt-get install openjdk-11-jre 
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/*${APP_NAME,,}* /tmp/*${APP_NAME}*
 
 # Install phpCollab web-based collaboration and project management tool
 # http://www.phpcollab.com/
@@ -11882,10 +11883,10 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install WordTsar GTK-based WordStar text editor clone from package
 APP_NAME=WordTsar
 APP_GUI_NAME="GTK-based WordStar text editor clone."
-APP_VERSION=0.1.705
+APP_VERSION=0.1.960
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-gtk2-${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://wordtsar.ca/download/${APP_NAME}/Linux/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mv /tmp/${FILE_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
@@ -16647,7 +16648,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install RedisView GUI management tool for Redis databases from package
 APP_NAME=RedisView
 APP_GUI_NAME="GUI management tool for Redis databases."
-APP_VERSION=1.5.0
+APP_VERSION=1.6.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
