@@ -4303,12 +4303,12 @@ sudo apt-get install -y openshot-qt
 APP_NAME=vym
 APP_VERSION=2.7.0
 APP_EXT=tar.bz2
-sudo apt-get install -y python3-tk
+sudo apt-get install -y python3-tk qt5-default libqt5svg5-dev libqt5scripttools5 qtscript5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
-qmake && make && sudo make install
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=Vym (View Your Mind)
