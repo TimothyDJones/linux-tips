@@ -4828,7 +4828,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Qt-based Torrent File Editor from source
 APP_NAME=torrent-file-editor
-APP_VERSION=0.3.13
+APP_VERSION=0.3.14
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
