@@ -17616,3 +17616,11 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install VSCodium open-source version of Visual Studio Code (VSCode) from repository
+# https://www.fossmint.com/vscodium-clone-of-visual-studio-code-for-linux/
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
+echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list
+sudo apt-get update
+sudo apt-get install -y vscodium
+
