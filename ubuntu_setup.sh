@@ -17624,3 +17624,24 @@ echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ v
 sudo apt-get update
 sudo apt-get install -y vscodium
 
+# Install Coffee minimalist news and weather widget from Debian package
+# https://www.fossmint.com/coffee-news-and-weather-app-for-linux/
+APP_NAME=Coffee
+APP_GUI_NAME="Minimalist news and weather widget."
+APP_VERSION=1.1.0
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ar|bi|co|di)$ ]]; then
+	VERSION_NUMBER=17.10
+	VERSION_NAME=artful
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ze)$ ]]; then
+	VERSION_NUMBER=17.04
+	VERSION_NAME=zesty
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya)$ ]]; then
+	VERSION_NUMBER=16.10
+	VERSION_NAME=xenial
+fi
+APP_EXT=deb
+FILE_NAME=com.github.nick92.${APP_NAME,,}_${APP_VERSION}~ubuntu${VERSION_NUMBER}_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~coffee-team/+archive/ubuntu/${APP_NAME,,}/+files/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
