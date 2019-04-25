@@ -17724,3 +17724,15 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Entity Relationship Designer Java-based database design tool from Debian package
+APP_NAME=ERDesignerNG
+APP_GUI_NAME="Java-based database design tool."
+APP_VERSION=3.1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y openjdk-11-jre
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mogwai/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
