@@ -2528,7 +2528,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Task Coach to do list manager from Debian package
 APP_NAME=TaskCoach
-APP_VERSION=1.4.5-1
+APP_VERSION=1.4.6-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
