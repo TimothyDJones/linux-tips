@@ -428,7 +428,7 @@ rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Debian package
 APP_NAME=CopyQ
-APP_VERSION=3.7.3
+APP_VERSION=3.8.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_9.0-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1497,7 +1497,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Digital Clock 4
 APP_NAME=digital_clock_4
-APP_VERSION=4.7.4
+APP_VERSION=4.7.5
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -2429,7 +2429,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install QPDF PDF utility from source
 APP_NAME=qpdf
-APP_VERSION=8.4.0
+APP_VERSION=8.4.1
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -2528,7 +2528,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Task Coach to do list manager from Debian package
 APP_NAME=TaskCoach
-APP_VERSION=1.4.5-1
+APP_VERSION=1.4.6-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -4047,7 +4047,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.10.0-1
+APP_VERSION=1.12.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -7095,7 +7095,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.38
+APP_VERSION=V1.39
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -12375,7 +12375,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Timeline Project Python-based GUI timeline tool from source
 APP_NAME=Timeline
 APP_GUI_NAME="Python-based GUI timeline tool."
-APP_VERSION=1.18.0
+APP_VERSION=1.19.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 # Due to dependencies, we use Python 2.x
@@ -16124,7 +16124,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Hexyl Rust-based hex viewer for the terminal from Debian package
 APP_NAME=Hexyl
 APP_GUI_NAME="Rust-based hex viewer for the terminal."
-APP_VERSION=0.3.0
+APP_VERSION=0.5.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -16224,7 +16224,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
 APP_NAME=TkCVS
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.0.2
+APP_VERSION=9.0.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
@@ -17465,7 +17465,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Radio Player Forte Plus cross-platform Internet radio player from package
 APP_NAME=RadioPlayer
 APP_GUI_NAME="Cross-platform Internet radio player."
-APP_VERSION=1.1.0-2
+APP_VERSION=4.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/radio-player-forte-plus/${FILE_NAME}.${APP_EXT}
@@ -17778,5 +17778,41 @@ xdg-open http://localhost/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-
-
+# Install CutePy Qt-based interactive Python console with with variable explorer, command history, and syntax highlighting from package
+APP_NAME=CutePy
+APP_GUI_NAME="Qt-based interactive Python console with with variable explorer, command history, and syntax highlighting."
+APP_VERSION=1.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_v${APP_VERSION}
+sudo apt-get install -y python3-pyqt5
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+python3 /opt/${APP_NAME,,}/${APP_NAME}.pyw
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python3 /opt/${APP_NAME,,}/${APP_NAME}.py
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
