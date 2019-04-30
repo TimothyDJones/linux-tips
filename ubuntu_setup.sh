@@ -3337,7 +3337,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Geoserver as stand-alone binary
 # http://docs.geoserver.org/latest/en/user/installation/linux.html
 APP_NAME=geoserver
-APP_VERSION=2.14.2
+APP_VERSION=2.15.1
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-bin.${APP_EXT}
 cd /tmp
