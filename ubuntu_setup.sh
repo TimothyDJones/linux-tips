@@ -15852,7 +15852,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install NextFractal Java-based fractal explorer from package
 APP_NAME=NextFractal
 APP_GUI_NAME="Java-based fractal explorer."
-APP_VERSION=2.1.0
+APP_VERSION=2.1.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_debian_x86_64_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
