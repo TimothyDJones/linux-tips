@@ -839,15 +839,16 @@ Keywords=pim;
 EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 
-# Install QXmlEdit from source via Sourceforge
+# Install QXmlEdit XML editor and XSD viewer from source
 APP_NAME=QXmlEdit
-APP_VERSION=0.9.11
+APP_VERSION=0.9.13
 APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
 sudo apt-get install -y libqt5xmlpatterns5-dev libqt5svg5-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+dtrx -n ${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
 qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 sudo ln -s /opt/${APP_NAME,,}/${APP_NAME}.desktop /usr/share/applications/${APP_NAME}.desktop
 cd $HOME
