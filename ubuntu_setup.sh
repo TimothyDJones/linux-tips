@@ -2644,7 +2644,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install CopyMastro file move/copy utility
 APP_NAME=CopyMastro
-APP_VERSION=2.1.4
+APP_VERSION=2.1.8
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-qt5-${KERNEL_TYPE}.${APP_EXT}
 cd /tmp
