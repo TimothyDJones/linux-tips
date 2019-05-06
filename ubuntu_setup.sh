@@ -1204,18 +1204,18 @@ cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
-APP_NAME=skychart
-APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3928
+APP_NAME=Skychart
+APP_VERSION=4.1.1-3929
 APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
-curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-22_${KERNEL_TYPE}.deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}_${APP_VERSION_MAJOR}-${APP_VERSION_MINOR}_${KERNEL_TYPE}.deb
+curl -o /tmp/libpasastro.${APP_EXT} -J -L https://downloads.sourceforge.net/libpasastro/libpasastro_1.1-20_${KERNEL_TYPE}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-sudo gdebi -n libpasastro.deb
+sudo gdebi -n libpasastro.${APP_EXT}
 sudo gdebi -n ${APP_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/libpasastro.* /tmp/${APP_NAME}*
+rm -rf /tmp/libpasastro.* /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 
 # Install Qt Bitcoin Trader from source
 APP_NAME=QtBitcoinTrader
