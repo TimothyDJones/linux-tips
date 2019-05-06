@@ -1930,14 +1930,15 @@ sudo python3 setup.py install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Hyper JS/HTML/CSS Terminal 
-APP_NAME=hyper
-APP_VERSION=2.1.2
+# Install Hyper JS/HTML/CSS Terminal from Debian package
+APP_NAME=Hyper
+APP_VERSION=3.0.0
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hyper.mirror/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hyper.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 
 # Install QOwnNotes from PPA
 sudo add-apt-repository -y ppa:pbek/qownnotes
