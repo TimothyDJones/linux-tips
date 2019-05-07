@@ -17903,3 +17903,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install ripgrep command-line file search tool that recursively traverses directory structure from Debian package
+APP_NAME=ripgrep
+APP_GUI_NAME="Command-line file search tool that recursively traverses directory structure."
+APP_VERSION=11.0.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/BurntSushi/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
