@@ -17467,7 +17467,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Radio Player Forte Plus cross-platform Internet radio player from package
 APP_NAME=RadioPlayer
 APP_GUI_NAME="Cross-platform Internet radio player."
-APP_VERSION=5.0.5-1
+APP_VERSION=5.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/radio-player-forte-plus/${FILE_NAME}.${APP_EXT}
