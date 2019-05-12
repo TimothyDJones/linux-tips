@@ -11078,14 +11078,14 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Klein minimalist console-based text editor from source
 APP_NAME=Klein
 APP_GUI_NAME="Minimalist console-based text editor."
-APP_VERSION=N/A
-APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-last
+APP_VERSION=1.1-src-11-2018
+APP_EXT=tar
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libncurses-dev libpth-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mycced/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
 make && sudo make -j4 install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
