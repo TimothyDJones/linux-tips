@@ -1157,14 +1157,14 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install HTTP Test Tool (httest) from source
 APP_NAME=httest
-APP_VERSION_MAJOR=2.4
-APP_VERSION_MINOR=23
+APP_VERSION=2.4.24
 APP_EXT=tar.gz
-sudo apt-get install -y libapr1-dev libaprutil1-dev libpcre3-dev help2man
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/htt/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_EXT}
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y libapr1-dev libaprutil1-dev libpcre3-dev help2man zlib1g-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/htt/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 # Due to path for PCRE header file on Ubuntu,
 # we have to update the source files for the #include
 # directory for the header file.
