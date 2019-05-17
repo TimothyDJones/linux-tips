@@ -3334,7 +3334,8 @@ APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=ia32
+	ARCH_TYPE=noarch
+	APP_VERSION=free-3.0-700
 fi
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
