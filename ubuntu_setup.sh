@@ -3327,7 +3327,7 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Voya Media audio/video/image player from Debian package
+# Install  from Debian package
 APP_NAME=VoyaMedia
 APP_VERSION=3.1-100
 APP_EXT=deb
