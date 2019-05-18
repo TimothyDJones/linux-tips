@@ -3321,13 +3321,20 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install PDF Split and Merge (PDFsam) editor from package
-APP_NAME=pdfsam
-APP_VERSION=3.3.5-1
+APP_NAME=PDFSam
+APP_VERSION=4.0.3-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=all
+	APP_VERSION=4.0.1-1
+fi
+FILE_NAME=${APP_NAME}_${APP_VERSION}_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install  from Debian package
 APP_NAME=VoyaMedia
