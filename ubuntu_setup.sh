@@ -255,7 +255,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Google Go language
 APP_NAME=go
-APP_VERSION=1.11.2
+APP_VERSION=1.12.4
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
 else    # Otherwise use version for 32-bit kernel
@@ -375,7 +375,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from package
 APP_NAME=Vivaldi
-APP_VERSION=2.1.1337.36-1
+APP_VERSION=2.5.1525.41-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -386,7 +386,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.78.0.0-1
+APP_VERSION=1.80.0.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -428,7 +428,7 @@ rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Debian package
 APP_NAME=CopyQ
-APP_VERSION=3.7.3
+APP_VERSION=3.8.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_9.0-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -438,7 +438,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.5.1
+APP_VERSION=1.5.2
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -730,13 +730,13 @@ rm -rf /tmp/${APP_NAME}*
 # Install BeeBEEP LAN messenger from package
 APP_NAME=BeeBEEP
 APP_GUI_NAME="Cross-platform secure LAN messenger."
-APP_VERSION=5.4.2
+APP_VERSION=5.6.0
 if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 	KERNEL_TYPE=amd64
-	APP_VERSION=5.0.0
+	APP_VERSION=5.6.0
 else    # Otherwise use version for 32-bit kernel
 	KERNEL_TYPE=i386
-	APP_VERSION=4.0.0
+	APP_VERSION=5.4.2
 fi
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt4-${KERNEL_TYPE}
@@ -839,15 +839,16 @@ Keywords=pim;
 EOF
 sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 
-# Install QXmlEdit from source via Sourceforge
+# Install QXmlEdit XML editor and XSD viewer from source
 APP_NAME=QXmlEdit
-APP_VERSION=0.9.11
+APP_VERSION=0.9.13
 APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
 sudo apt-get install -y libqt5xmlpatterns5-dev libqt5svg5-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+dtrx -n ${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
 qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 sudo ln -s /opt/${APP_NAME,,}/${APP_NAME}.desktop /usr/share/applications/${APP_NAME}.desktop
 cd $HOME
@@ -863,7 +864,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=8.5.5
+APP_VERSION=8.6.3
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1034,9 +1035,9 @@ ln -s /usr/share/applications/${APP_NAME,,}.desktop $HOME/.config/autostart/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Madedit-Mod text editor from Sourceforge
+# Install Madedit-Mod text editor from Debian package
 APP_NAME=madedit-mod
-APP_VERSION=0.4.15-1
+APP_VERSION=0.4.16-1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu18.04.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1156,14 +1157,14 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install HTTP Test Tool (httest) from source
 APP_NAME=httest
-APP_VERSION_MAJOR=2.4
-APP_VERSION_MINOR=23
+APP_VERSION=2.4.24
 APP_EXT=tar.gz
-sudo apt-get install -y libapr1-dev libaprutil1-dev libpcre3-dev help2man
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/htt/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_EXT}
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y libapr1-dev libaprutil1-dev libpcre3-dev help2man zlib1g-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/htt/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 # Due to path for PCRE header file on Ubuntu,
 # we have to update the source files for the #include
 # directory for the header file.
@@ -1203,18 +1204,18 @@ cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
-APP_NAME=skychart
-APP_VERSION_MAJOR=4.1.1
-APP_VERSION_MINOR=3923
+APP_NAME=Skychart
+APP_VERSION=4.1.1-3929
 APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
-curl -o /tmp/libpasastro.deb -J -L https://superb-sea2.dl.sourceforge.net/project/libpasastro/version_1.1-20/libpasastro_1.1-22_${KERNEL_TYPE}.deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}_${APP_VERSION_MAJOR}-${APP_VERSION_MINOR}_${KERNEL_TYPE}.deb
+curl -o /tmp/libpasastro.${APP_EXT} -J -L https://downloads.sourceforge.net/libpasastro/libpasastro_1.1-20_${KERNEL_TYPE}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-sudo gdebi -n libpasastro.deb
+sudo gdebi -n libpasastro.${APP_EXT}
 sudo gdebi -n ${APP_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/libpasastro.* /tmp/${APP_NAME}*
+rm -rf /tmp/libpasastro.* /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 
 # Install Qt Bitcoin Trader from source
 APP_NAME=QtBitcoinTrader
@@ -1497,7 +1498,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Digital Clock 4
 APP_NAME=digital_clock_4
-APP_VERSION=4.7.4
+APP_VERSION=4.7.5
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -1569,7 +1570,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZenTao project management tool from package
 APP_NAME=ZenTaoPMS
-APP_VERSION=11.4.stable
+APP_VERSION=11.5.stable.int
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${APP_NAME}_${APP_VERSION}_1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1865,7 +1866,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=7.4.3
+APP_VERSION=8.0.3
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -1929,14 +1930,15 @@ sudo python3 setup.py install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Hyper JS/HTML/CSS Terminal 
-APP_NAME=hyper
-APP_VERSION=2.1.2
+# Install Hyper JS/HTML/CSS Terminal from Debian package
+APP_NAME=Hyper
+APP_VERSION=3.0.2
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hyper.mirror/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hyper.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 
 # Install QOwnNotes from PPA
 sudo add-apt-repository -y ppa:pbek/qownnotes
@@ -2002,7 +2004,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE
 APP_NAME=eric
-APP_VERSION=6-19.04
+APP_VERSION=6-19.5
 APP_EXT=tar.gz
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
@@ -2281,7 +2283,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.68
+APP_VERSION=6.3.73
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2415,7 +2417,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
 APP_NAME=XSchem
-APP_VERSION=2.8.3
+APP_VERSION=2.8.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
@@ -2516,7 +2518,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 
 # Install DK Tools system utility from source
 APP_NAME=dktools
-APP_VERSION=4.20.0
+APP_VERSION=4.22.0
 APP_EXT=tar.gz
 KERNEL_TYPE=getKernelType()
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -2530,7 +2532,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Task Coach to do list manager from Debian package
 APP_NAME=TaskCoach
-APP_VERSION=1.4.5-1
+APP_VERSION=1.4.6-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -2646,7 +2648,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install CopyMastro file move/copy utility
 APP_NAME=CopyMastro
-APP_VERSION=2.1.4
+APP_VERSION=2.1.8
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-qt5-${KERNEL_TYPE}.${APP_EXT}
 cd /tmp
@@ -2893,7 +2895,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Treeline tree-structured notepad
 APP_NAME=TreeLine
-APP_VERSION=3.1.0
+APP_VERSION=3.1.1
 APP_EXT=tar.gz
 sudo apt-get install -y python3-pyqt5
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -3050,7 +3052,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=19.02.28
+APP_VERSION=19.04.30
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -3111,7 +3113,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2019.4
+APP_VERSION=1.2019.5
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -3327,19 +3329,26 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Voya Media audio/video/image player from package
-APP_NAME=voyamedia
-APP_VERSION=3.0-5
+# Install  from Debian package
+APP_NAME=VoyaMedia
+APP_VERSION=3.1-100
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-free-${APP_VERSION}.noarch.${APP_EXT}
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=noarch
+	APP_VERSION=free-3.0-700
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Geoserver as stand-alone binary
 # http://docs.geoserver.org/latest/en/user/installation/linux.html
 APP_NAME=geoserver
-APP_VERSION=2.14.2
+APP_VERSION=2.15.1
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-bin.${APP_EXT}
 cd /tmp
@@ -3388,7 +3397,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Pentobi Blokus-style board game from source
 APP_NAME=pentobi
-APP_VERSION=16.1
+APP_VERSION=16.3
 APP_EXT=tar.xz
 sudo apt-get install -y g++ make cmake qttools5-dev qttools5-dev-tools libqt5svg5-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -3646,7 +3655,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Kid3 audio tag editor
 APP_NAME=Kid3
-APP_VERSION=3.7.0
+APP_VERSION=3.7.1
 APP_EXT=tgz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-Linux.${APP_EXT}
 cd /tmp
@@ -4049,7 +4058,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.10.0-1
+APP_VERSION=1.12.1-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -4303,14 +4312,14 @@ sudo apt-get install -y openshot-qt
 
 # Install View Your Mind (VYM) Qt mind-mapping tool from source
 APP_NAME=vym
-APP_VERSION=2.6.11
+APP_VERSION=2.7.0
 APP_EXT=tar.bz2
-sudo apt-get install -y python3-tk
+sudo apt-get install -y python3-tk qt5-default libqt5svg5-dev libqt5scripttools5 qtscript5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
-qmake && make && sudo make install
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=Vym (View Your Mind)
@@ -4830,7 +4839,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Qt-based Torrent File Editor from source
 APP_NAME=torrent-file-editor
-APP_VERSION=0.3.13
+APP_VERSION=0.3.14
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -5075,7 +5084,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=19.2
+APP_VERSION=19.3
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -5593,7 +5602,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install WackoWiki PHP-based lightweight wiki tool
 APP_NAME=wacko
-APP_VERSION=r5.5.7
+APP_VERSION=r5.5.10
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -5662,7 +5671,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install ProjectForge Java-based project management tool
 APP_NAME=ProjectForge
 APP_GUI_NAME="Cross-platform Java-based project management tool."
-APP_VERSION=6.22.0
+APP_VERSION=6.25.0
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/pforge/${APP_NAME}-application_${APP_VERSION}-RELEASE.${APP_EXT}
 cd /tmp
@@ -6920,7 +6929,7 @@ cargo install --git https://github.com/jmacdonald/${APP_NAME,,}/ --tag ${APP_VER
 # Install Fractalscope Qt-based fractal explorer from source
 APP_NAME=Fractalscope
 APP_GUI_NAME="Cross-platform Qt-based fractal explorer."
-APP_VERSION=1.3.4
+APP_VERSION=1.3.5
 APP_EXT=tar.gz
 sudo apt-get install -y qt5-default yasm
 # Install MPIR (Multiple Precision Integers and Rationals) LGPL C library
@@ -7097,7 +7106,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.35
+APP_VERSION=V1.43
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -7571,7 +7580,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=4.1.4
+APP_VERSION=4.1.5
 APP_EXT=tgz
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
@@ -7901,7 +7910,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Tiled Qt-based map tile editor from source
 APP_NAME=Tiled
 APP_GUI_NAME="Cross-platform Qt-based map tile editor."
-APP_VERSION=1.2.1
+APP_VERSION=1.2.4
 APP_EXT=tar.gz
 sudo apt-get install -y qt5-default qttools5-dev-tools zlib1g-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}%20${APP_VERSION}.${APP_EXT}
@@ -8020,7 +8029,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Joy of Text (JOT) minimalist text editor from package
 APP_NAME=JOT
 APP_GUI_NAME="Cross-platform minimalist text editor."
-APP_VERSION=2.4
+APP_VERSION=2.4.1
 APP_EXT=tz
 sudo ln -s /lib/x86_64-linux-gnu/libncurses.so.5 /lib/x86_64-linux-gnu/libncurses.so.6
 sudo ln -s /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libtinfo.so.6
@@ -8857,7 +8866,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install fd user-friendly alternative to Linux 'find' from package
 APP_NAME=fd
 APP_GUI_NAME="Cross-platform, user-friendly alternative to Linux 'find'."
-APP_VERSION=7.0.0
+APP_VERSION=7.3.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-musl_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -9099,7 +9108,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install ghostwriter Qt-based, cross-platform Markdown editor with built-in preview from source
 APP_NAME=ghostwriter
 APP_GUI_NAME="Qt-based, cross-platform Markdown editor."
-APP_VERSION=1.6.1
+APP_VERSION=1.7.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qt5-default hunspell libhunspell-dev libqt5webkit5-dev
@@ -9170,7 +9179,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Luna Electron-based GUI for Node.JS/NPM package management from package
 APP_NAME=Luna
 APP_GUI_NAME="Electron-based GUI for Node.JS/NPM package management."
-APP_VERSION=2.1.0
+APP_VERSION=3.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rvpanoz/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -10167,7 +10176,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Battle for Wesnoth high-fantasy themed adventure game from source
 APP_NAME=Wesnoth
 APP_GUI_NAME="High-fantasy themed adventure game."
-APP_VERSION=1.14.5
+APP_VERSION=1.14.7
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
@@ -10826,7 +10835,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # http://www.wagemaker.co.uk/
 APP_NAME=SmallTextPad
 APP_GUI_NAME="Minimalist Java-based notepad."
-APP_VERSION=1.3.4
+APP_VERSION=1.3.5
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -11079,14 +11088,14 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Klein minimalist console-based text editor from source
 APP_NAME=Klein
 APP_GUI_NAME="Minimalist console-based text editor."
-APP_VERSION=N/A
-APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-last
+APP_VERSION=1.1-src-11-2018
+APP_EXT=tar
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libncurses-dev libpth-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mycced/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
 make && sudo make -j4 install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
@@ -11606,7 +11615,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install eLogSim digital circuit simulator from package
 APP_NAME=eLogSim
 APP_GUI_NAME="Digital circuit simulator."
-APP_VERSION=1.5.0
+APP_VERSION=2.1.0
 APP_EXT=zip
 FILE_NAME=My${APP_NAME}_${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -11885,7 +11894,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install WordTsar GTK-based WordStar text editor clone from package
 APP_NAME=WordTsar
 APP_GUI_NAME="GTK-based WordStar text editor clone."
-APP_VERSION=0.1.960
+APP_VERSION=0.1.1314
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-gtk2-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -11913,7 +11922,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install QtFM lightweight desktop-independent GUI file manager from source
 APP_NAME=QtFM
 APP_GUI_NAME="Lightweight desktop-independent GUI file manager."
-APP_VERSION=6.1.6
+APP_VERSION=6.1.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rodlie/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
@@ -12029,7 +12038,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install TimeSlotTracker Java-based minimalist time tracking tool from Debian package
 APP_NAME=TimeSlotTracker
 APP_GUI_NAME="Java-based minimalist time tracking tool."
-APP_VERSION=1.3.16
+APP_VERSION=1.3.21
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -12377,7 +12386,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Timeline Project Python-based GUI timeline tool from source
 APP_NAME=Timeline
 APP_GUI_NAME="Python-based GUI timeline tool."
-APP_VERSION=1.18.0
+APP_VERSION=1.19.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 # Due to dependencies, we use Python 2.x
@@ -13064,7 +13073,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install qBittorrent Qt-based Bittorrent client from source
 APP_NAME=qBittorrent
 APP_GUI_NAME="Qt-based Bittorrent client."
-APP_VERSION=4.1.4
+APP_VERSION=4.1.6
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y ${APP_NAME,,}
@@ -15854,7 +15863,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install NextFractal Java-based fractal explorer from package
 APP_NAME=NextFractal
 APP_GUI_NAME="Java-based fractal explorer."
-APP_VERSION=2.1.0
+APP_VERSION=2.1.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_debian_x86_64_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -16126,7 +16135,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Hexyl Rust-based hex viewer for the terminal from Debian package
 APP_NAME=Hexyl
 APP_GUI_NAME="Rust-based hex viewer for the terminal."
-APP_VERSION=0.3.0
+APP_VERSION=0.5.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -16191,7 +16200,7 @@ rm -rf /tmp/${FILE_NAME}*
 # Install Linux Reminders GUI periodic and one-time reminder tool from Debian package
 APP_NAME=Linux-Reminders
 APP_GUI_NAME="GUI periodic and one-time reminder tool."
-APP_VERSION=2.2.0
+APP_VERSION=2.3.0
 APP_EXT=deb
 FILE_NAME=reminders_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -16226,7 +16235,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
 APP_NAME=TkCVS
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.0.2
+APP_VERSION=9.0.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
@@ -16267,7 +16276,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install orng Java Markdown-based journal editor from package
 APP_NAME=orng
 APP_GUI_NAME="Java Markdown-based journal editor."
-APP_VERSION=1.1.12
+APP_VERSION=1.1.16
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}j_${APP_VERSION}_gnu_linux_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -17467,7 +17476,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Radio Player Forte Plus cross-platform Internet radio player from package
 APP_NAME=RadioPlayer
 APP_GUI_NAME="Cross-platform Internet radio player."
-APP_VERSION=1.1.0-2
+APP_VERSION=5.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/radio-player-forte-plus/${FILE_NAME}.${APP_EXT}
@@ -17542,6 +17551,505 @@ StartupNotify=true
 Terminal=false
 Categories=Development;Programming;
 Keywords=Database;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Moeditor cross-platform, Electron-based Markdown editor from Debian package
+APP_NAME=Moeditor
+APP_GUI_NAME="Cross-platform, Electron-based Markdown editor."
+APP_VERSION=0.2.0-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v0.2.0-beta/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Persepolis Python-based GUI for aria2 download manager from Debian package
+APP_NAME=Persepolis
+APP_GUI_NAME="Python-based GUI for aria2 download manager."
+APP_VERSION=3.1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.0_all
+sudo apt-get install -y aria2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/persepolisdm/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install NSBase cross-platform database alternative to MS Access from Debian package
+APP_NAME=NSBase
+APP_GUI_NAME="Cross-platform database alternative to MS Access."
+APP_VERSION=V1.0.9
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux32-i386
+fi
+FILE_NAME=${APP_NAME,,}-${ARCH_TYPE}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Apricot Java-based database ERD, design, and reverse-engineering tool from package
+APP_NAME=ApricotDB
+APP_GUI_NAME="Java-based database ERD, design, and reverse-engineering tool."
+APP_VERSION=0.3
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-all-bin
+sudo apt-get install -y openjdk-11-jre openjfx
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/apricot-db/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/* /opt
+sudo chmod -R a+w /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development
+Keywords=Database;SQL;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install VSCodium open-source version of Visual Studio Code (VSCode) from repository
+# https://www.fossmint.com/vscodium-clone-of-visual-studio-code-for-linux/
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
+echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list
+sudo apt-get update
+sudo apt-get install -y vscodium
+
+# Install Coffee minimalist news and weather widget from Debian package
+# https://www.fossmint.com/coffee-news-and-weather-app-for-linux/
+APP_NAME=Coffee
+APP_GUI_NAME="Minimalist news and weather widget."
+APP_VERSION=1.1.0
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ar|bi|co|di)$ ]]; then
+	VERSION_NUMBER=17.10
+	VERSION_NAME=artful
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ze)$ ]]; then
+	VERSION_NUMBER=17.04
+	VERSION_NAME=zesty
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya)$ ]]; then
+	VERSION_NUMBER=16.10
+	VERSION_NAME=xenial
+fi
+APP_EXT=deb
+FILE_NAME=com.github.nick92.${APP_NAME,,}_${APP_VERSION}~ubuntu${VERSION_NUMBER}_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~coffee-team/+archive/ubuntu/${APP_NAME,,}/+files/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Mattermost cross-platform, Electron-based workplace messaging alternative to Slack from Debian package
+APP_NAME=Mattermost
+APP_GUI_NAME="Cross-platform, Electron-based workplace messaging alternative to Slack."
+APP_VERSION=4.2.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-desktop-${APP_VERSION}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://releases.mattermost.com/desktop/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Doffen SSH Tunnel cross-platform SSH terminal, file transfer, and tunnelling tool from AppImage
+APP_NAME=DoffenSSHTunnel
+APP_GUI_NAME="Cross-platform SSH terminal, file transfer, and tunnelling tool."
+APP_VERSION=0.9.36
+APP_EXT=AppImage
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+FILE_NAME=${APP_NAME}-v${APP_VERSION}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;
+Keywords=SSH;Networking;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Yet Another Python Sudoku (YAPySudoku) puzzle game built with wxPython and Pygame from package
+APP_NAME=YAPySudoku
+APP_GUI_NAME="Puzzle game built with wxPython and Pygame."
+APP_VERSION=4.0.2
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y python3-pygame python3-wxgtk4.0
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+python3 /opt/${APP_NAME,,}/${APP_NAME,,}.py
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python3 /opt/${APP_NAME,,}/${APP_NAME,,}.py
+Icon=/opt/${APP_NAME,,}/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Sudoku;Puzzle;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Entity Relationship Designer Java-based database design tool from Debian package
+APP_NAME=ERDesignerNG
+APP_GUI_NAME="Java-based database design tool."
+APP_VERSION=3.1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y openjdk-11-jre
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mogwai/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Taskboard PHP/SQLite-based Kanban-style task management tool from package
+APP_NAME=TaskBoard
+APP_GUI_NAME="PHP/SQLite-based Kanban-style task management tool."
+APP_VERSION=N/A
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kiswa/TaskBoard/archive/master.zip
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}-master/* ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+w ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_general_ci;"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+cd ${WWW_HOME}/${APP_NAME,,}
+./build/composer.phar install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=xdg-open http://localhost/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Development;Programming;
+Keywords=Task Management;Project Management;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+xdg-open http://localhost/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install CutePy Qt-based interactive Python console with with variable explorer, command history, and syntax highlighting from package
+APP_NAME=CutePy
+APP_GUI_NAME="Qt-based interactive Python console with with variable explorer, command history, and syntax highlighting."
+APP_VERSION=1.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_v${APP_VERSION}
+sudo apt-get install -y python3-pyqt5
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+python3 /opt/${APP_NAME,,}/${APP_NAME}.pyw
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python3 /opt/${APP_NAME,,}/${APP_NAME}.py
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install MDyna React- and Electron-based Markdown editor from Debian package
+APP_NAME=MDyna
+APP_GUI_NAME="React- and Electron-based Markdown editor."
+APP_VERSION=0.5.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}-app/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install SQLite3 Page Explorer Electron-based tool for exploring internal organization of SQLite 3 databases from package
+APP_NAME=SQLite3-Page-Explorer
+APP_GUI_NAME="Electron-based tool for exploring internal organization of SQLite 3 databases."
+APP_VERSION=1.0-linux
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/siara-cc/sqlite3_page_explorer/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Database;SQLite;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install jMathPaper Java-based notepad calculator from package
+APP_NAME=jMathPaper
+APP_GUI_NAME="Java-based notepad calculator."
+APP_VERSION=1.3
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-full
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/RobertZenz/${APP_NAME}/uploads/ac8f51c915d564128d9c1692f05db101/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Education;
+Keywords=Calculator
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install ripgrep command-line file search tool that recursively traverses directory structure from Debian package
+APP_NAME=ripgrep
+APP_GUI_NAME="Command-line file search tool that recursively traverses directory structure."
+APP_VERSION=11.0.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/BurntSushi/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Encryptic Electron-based encryption-focused Markdown note-taking tool from package
+APP_NAME=Encryptic
+APP_GUI_NAME="Electron-based encryption-focused Markdown note-taking tool."
+APP_VERSION=0.0.4
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/encryptic-team/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;
+Keywords=Notepad;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install PotatoSQL Java-based database design and learning tool from package
+# https://github.com/x-jrga/potatosql
+APP_NAME=PotatoSQL
+APP_GUI_NAME="Java-based database design and learning tool."
+APP_VERSION=0.2
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION//./}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod -R a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.jar
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Database;SQL;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install SOFA Statistics simple statistics, analysis, and reporting tool from Debian package
+APP_NAME=SOFAStatistics
+APP_GUI_NAME="Simple statistics, analysis, and reporting."
+APP_VERSION=1.5.0-1
+APP_EXT=deb
+FILE_NAME=sofastats-${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Knobjex wxPython personal information manager (PIM) from package
+APP_NAME=Knobjex
+APP_GUI_NAME="wxPython personal information manager (PIM)."
+APP_VERSION=4.07
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_source
+sudo apt-get install -y python3-wxgtk4.0
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-info-manager/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod -R a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+python3 /opt/${APP_NAME,,}/main_startup.py
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python3 /opt/${APP_NAME,,}/main_startup.py
+Icon=/opt/${APP_NAME,,}/icons/kjx_logo.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Office;
+Keywords=PIM;Calendar;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
