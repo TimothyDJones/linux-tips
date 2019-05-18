@@ -2428,13 +2428,15 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install QPDF PDF utility from source
-APP_NAME=qpdf
-APP_VERSION=8.4.0
+APP_NAME=QPDF
+APP_VERSION=8.4.2
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y zlib1g-dev libjpeg62-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
