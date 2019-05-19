@@ -18017,7 +18017,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install SOFA Statistics simple statistics, analysis, and reporting tool from Debian package
 APP_NAME=SOFAStatistics
 APP_GUI_NAME="Simple statistics, analysis, and reporting."
-APP_VERSION=1.5.0-1
+APP_VERSION=1.5.1-1
 APP_EXT=deb
 FILE_NAME=sofastats-${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
