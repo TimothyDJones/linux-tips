@@ -179,6 +179,9 @@ rm -f /tmp/composer-setup.php
 sudo chmod +x /usr/local/bin/composer
 sudo chown -R $USER:$USER $HOME/.composer
 
+# Install Prestissimo Composer plugin for parallel downloads.
+sudo php /usr/local/bin/composer global require hirak/prestissimo
+
 # Install latest PhpMyAdmin version via Composer
 # https://docs.phpmyadmin.net/en/latest/setup.html#composer
 cd ${WWW_HOME}
