@@ -375,7 +375,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from package
 APP_NAME=Vivaldi
-APP_VERSION=2.5.1525.41-1
+APP_VERSION=2.5.1525.43-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -386,7 +386,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.80.0.0-1
+APP_VERSION=1.80.1.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -2430,13 +2430,15 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install QPDF PDF utility from source
-APP_NAME=qpdf
-APP_VERSION=8.4.1
+APP_NAME=QPDF
+APP_VERSION=8.4.2
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y zlib1g-dev libjpeg62-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
@@ -3319,13 +3321,20 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install PDF Split and Merge (PDFsam) editor from package
-APP_NAME=pdfsam
-APP_VERSION=3.3.5-1
+APP_NAME=PDFSam
+APP_VERSION=4.0.3-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=all
+	APP_VERSION=4.0.1-1
+fi
+FILE_NAME=${APP_NAME}_${APP_VERSION}_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install  from Debian package
 APP_NAME=VoyaMedia
@@ -17474,7 +17483,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Radio Player Forte Plus cross-platform Internet radio player from package
 APP_NAME=RadioPlayer
 APP_GUI_NAME="Cross-platform Internet radio player."
-APP_VERSION=5.5
+APP_VERSION=5.5.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/radio-player-forte-plus/${FILE_NAME}.${APP_EXT}
