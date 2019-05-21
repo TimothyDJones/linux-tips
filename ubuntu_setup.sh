@@ -18085,3 +18085,12 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Peltoche/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Hypernomicon Java-based research tracking database with built-in PDF viewer from package
+APP_NAME=Hypernomicon
+APP_GUI_NAME="Java-based research tracking database with built-in PDF viewer."
+APP_VERSION=1.1
+APP_EXT=sh
+FILE_NAME=${APP_NAME}_linux_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo sh /tmp/${FILE_NAME}.${APP_EXT} -c -q -dir /opt/${APP_NAME,,} -overwrite
