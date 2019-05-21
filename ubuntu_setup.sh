@@ -4612,13 +4612,14 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install Terminus JavaScript/Electron terminal from package
-APP_NAME=terminus
-APP_VERSION=1.0.0-alpha.51
+APP_NAME=Terminus
+APP_VERSION=1.0.77
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/Eugeny/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
+curl -o /tmp/${FILE_NAME,,}.${APP_EXT} -J -L https://github.com/Eugeny/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Parlatype GTK audio player for transcription from source
 APP_NAME=Parlatype
