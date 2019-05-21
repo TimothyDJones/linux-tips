@@ -18075,3 +18075,12 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Q-Vault/${APP_NAME
 sudo snap install --dangerous /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install LSD (LSDeluxe) Rust-based next-generation 'ls' command from Debian package
+APP_NAME=LSD
+APP_GUI_NAME="Rust-based next-generation 'ls' command."
+APP_VERSION=0.14.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Peltoche/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
