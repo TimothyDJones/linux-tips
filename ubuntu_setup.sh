@@ -18094,3 +18094,37 @@ APP_EXT=sh
 FILE_NAME=${APP_NAME}_linux_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo sh /tmp/${FILE_NAME}.${APP_EXT} -c -q -dir /opt/${APP_NAME,,} -overwrite
+
+# Install Maxit Qt/OpenGL-based math puzzle game from source
+APP_NAME=Maxit
+APP_GUI_NAME="Qt/OpenGL-based math puzzle game."
+APP_VERSION=1.04
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}.d
+sudo apt-get install -y qt5-default qt5-qmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${FILE_NAME,,}
+mkdir -p build && cd build
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make
+sudo cp /tmp/${FILE_NAME}/${FILE_NAME,,}/build/${APP_NAME} /usr/local/bin  # No 'install' target for make
+sudo cp /tmp/${FILE_NAME}/${FILE_NAME,,}/images.d/${APP_NAME,,}.png /usr/local/share/pixmaps/${APP_NAME,,}.png
+sudo ln -s -f /usr/local/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME}
+Icon=/usr/local/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;Education;
+Keywords=Puzzle;Game;Math;Education;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
