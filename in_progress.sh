@@ -60,3 +60,44 @@ cd /tmp
 dtrx -n gtk+-3.22.15.tar.xz
 cd gtk+-3.22.15
 ./configure && make && sudo make install
+
+
+# Install Quite Universal Circuit Simulator (QUCS) Qt-based GUI electronic circuit simulator from source
+APP_NAME=QUCS
+APP_GUI_NAME="Qt-based GUI electronic circuit simulator."
+APP_VERSION=0.0.20-rc2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y automake libtool libtool-bin gperf flex bison libqt4-dev libqt4-qt3support build-essential
+# Install dependency ADMS, code generator for electronic device models
+curl -o /tmp/adms-2.3.6.tar.gz -J -L https://downloads.sourceforge.net/mot-adms/adms-2.3.6.tar.gz
+cd /tmp
+dtrx -n /tmp/adms-2.3.6.tar.gz
+cd /tmp/adms-2.3.6
+./configure && make && sudo make install
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-0.0.20
+mkdir -p build && cd build
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make
+sudo cp /tmp/${FILE_NAME}/${FILE_NAME,,}/build/${APP_NAME} /usr/local/bin  # No 'install' target for make
+sudo cp /tmp/${FILE_NAME}/${FILE_NAME,,}/images.d/${APP_NAME,,}.png /usr/local/share/pixmaps/${APP_NAME,,}.png
+sudo ln -s -f /usr/local/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME}
+Icon=/usr/local/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;Education;
+Keywords=Puzzle;Game;Math;Education;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
