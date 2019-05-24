@@ -18137,3 +18137,29 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/agalwood/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Praxis Live Java hybrid visual live programming environment based on Netbeans from Debian package
+APP_NAME=Praxis-Live
+APP_GUI_NAME="Java hybrid visual live programming environment based on Netbeans."
+APP_VERSION=4.3.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install sslh protocol multiplexer that allows sharing SSL/HTTPS and SSH on same port from source
+# http://rutschle.net/tech/sslh/README.html
+APP_NAME=sslh
+APP_GUI_NAME="Protocol multiplexer that allows sharing SSL/HTTPS and SSH on same port."
+APP_VERSION=1.20
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libwrap0-dev libconfig-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/yrutschle/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+sudo cp basic.cfg /etc/sslh.cfg
+sudo cp scripts/etc.init.d.sslh /etc/init.d/sslh
+sudo update-rc.d sslh defaults
