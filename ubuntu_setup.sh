@@ -18163,3 +18163,12 @@ make && sudo make install
 sudo cp basic.cfg /etc/sslh.cfg
 sudo cp scripts/etc.init.d.sslh /etc/init.d/sslh
 sudo update-rc.d sslh defaults
+
+# Install Rats on the Boat P2P BitTorrent search engine desktop client with integrated BitTorrent client from Debian package
+APP_NAME=Rats-Search
+APP_GUI_NAME="P2P BitTorrent search engine desktop client with integrated BitTorrent client."
+APP_VERSION=1.2.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/DEgITx/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
