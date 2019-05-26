@@ -179,6 +179,9 @@ rm -f /tmp/composer-setup.php
 sudo chmod +x /usr/local/bin/composer
 sudo chown -R $USER:$USER $HOME/.composer
 
+# Install Prestissimo Composer plugin for parallel downloads.
+sudo php /usr/local/bin/composer global require hirak/prestissimo
+
 # Install latest PhpMyAdmin version via Composer
 # https://docs.phpmyadmin.net/en/latest/setup.html#composer
 cd ${WWW_HOME}
@@ -730,13 +733,13 @@ rm -rf /tmp/${APP_NAME}*
 # Install BeeBEEP LAN messenger from package
 APP_NAME=BeeBEEP
 APP_GUI_NAME="Cross-platform secure LAN messenger."
-APP_VERSION=5.6.0
+APP_VERSION=5.6.1
 if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 	KERNEL_TYPE=amd64
-	APP_VERSION=5.6.0
+	APP_VERSION=5.6.1
 else    # Otherwise use version for 32-bit kernel
 	KERNEL_TYPE=i386
-	APP_VERSION=5.4.2
+	APP_VERSION=5.6.1
 fi
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt4-${KERNEL_TYPE}
@@ -864,7 +867,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Jailer Java database utility
 APP_NAME=jailer
-APP_VERSION=8.6.3
+APP_VERSION=8.7
 curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
 cd /tmp
 dtrx -n ${APP_NAME}.zip
@@ -1205,7 +1208,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.1.1-3929
+APP_VERSION=4.1.1-3930
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2283,7 +2286,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.73
+APP_VERSION=6.3.74
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -4609,13 +4612,14 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install Terminus JavaScript/Electron terminal from package
-APP_NAME=terminus
-APP_VERSION=1.0.0-alpha.51
+APP_NAME=Terminus
+APP_VERSION=1.0.77
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/Eugeny/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
+curl -o /tmp/${FILE_NAME,,}.${APP_EXT} -J -L https://github.com/Eugeny/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Parlatype GTK audio player for transcription from source
 APP_NAME=Parlatype
@@ -5091,7 +5095,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=19.3
+APP_VERSION=19.4
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -8357,11 +8361,11 @@ rm -rf /tmp/${APP_NAME,,}
 # https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
 APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
-APP_VERSION=6.2.0
+APP_VERSION=6.2.1
 APP_EXT=deb
 source /etc/lsb-release
 # PowerShell is only supported on LTS releases 
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ze|xe|tr)$ ]]; then
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|xe)$ ]]; then
 	curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}-1.ubuntu.${DISTRIB_RELEASE}_amd64.${APP_EXT}
 	sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 else
@@ -12670,7 +12674,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Double Commander dual-pane canonical file manager from package
 APP_NAME=DoubleCmd
 APP_GUI_NAME="Dual-pane canonical file manager."
-APP_VERSION=0.9.2
+APP_VERSION=0.9.3
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -18088,3 +18092,110 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Q Vault Electron-based password manager from Snap package
+APP_NAME=QVault
+APP_GUI_NAME="Electron-based password manager."
+APP_VERSION=0.0.31
+APP_EXT=snap
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Q-Vault/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo snap install --dangerous /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install LSD (LSDeluxe) Rust-based next-generation 'ls' command from Debian package
+APP_NAME=LSD
+APP_GUI_NAME="Rust-based next-generation 'ls' command."
+APP_VERSION=0.14.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Peltoche/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Hypernomicon Java-based research tracking database with built-in PDF viewer from package
+APP_NAME=Hypernomicon
+APP_GUI_NAME="Java-based research tracking database with built-in PDF viewer."
+APP_VERSION=1.1
+APP_EXT=sh
+FILE_NAME=${APP_NAME}_linux_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo sh /tmp/${FILE_NAME}.${APP_EXT} -c -q -dir /opt/${APP_NAME,,} -overwrite
+
+# Install Maxit Qt/OpenGL-based math puzzle game from source
+APP_NAME=Maxit
+APP_GUI_NAME="Qt/OpenGL-based math puzzle game."
+APP_VERSION=1.04
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}.d
+sudo apt-get install -y qt5-default qt5-qmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${FILE_NAME,,}
+mkdir -p build && cd build
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make
+sudo cp /tmp/${FILE_NAME}/${FILE_NAME,,}/build/${APP_NAME} /usr/local/bin  # No 'install' target for make
+sudo cp /tmp/${FILE_NAME}/${FILE_NAME,,}/images.d/${APP_NAME,,}.png /usr/local/share/pixmaps/${APP_NAME,,}.png
+sudo ln -s -f /usr/local/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME}
+Icon=/usr/local/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;Education;
+Keywords=Puzzle;Game;Math;Education;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Motrix Electron-based GUI download manager (aria wrapper) from Debian package
+APP_NAME=Motrix
+APP_GUI_NAME="Electron-based GUI download manager (aria wrapper)."
+APP_VERSION=1.3.8
+APP_EXT=deb
+FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/agalwood/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Praxis Live Java hybrid visual live programming environment based on Netbeans from Debian package
+APP_NAME=Praxis-Live
+APP_GUI_NAME="Java hybrid visual live programming environment based on Netbeans."
+APP_VERSION=4.3.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install sslh protocol multiplexer that allows sharing SSL/HTTPS and SSH on same port from source
+# http://rutschle.net/tech/sslh/README.html
+APP_NAME=sslh
+APP_GUI_NAME="Protocol multiplexer that allows sharing SSL/HTTPS and SSH on same port."
+APP_VERSION=1.20
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libwrap0-dev libconfig-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/yrutschle/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+sudo cp basic.cfg /etc/sslh.cfg
+sudo cp scripts/etc.init.d.sslh /etc/init.d/sslh
+sudo update-rc.d sslh defaults
+
+# Install Rats on the Boat P2P BitTorrent search engine desktop client with integrated BitTorrent client from Debian package
+APP_NAME=Rats-Search
+APP_GUI_NAME="P2P BitTorrent search engine desktop client with integrated BitTorrent client."
+APP_VERSION=1.2.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/DEgITx/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
