@@ -324,7 +324,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Firejail and Firetools utilities for running applications
 # in isolated memory space.
 APP_NAME=firejail
-APP_VERSION=0.9.58.2_1
+APP_VERSION=0.9.60_1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
@@ -441,7 +441,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.5.2
+APP_VERSION=1.5.3
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -1869,7 +1869,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=8.0.3
+APP_VERSION=8.0.4
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2079,7 +2079,7 @@ sudo mv /tmp/${APP_NAME} /usr/local/bin
 
 # Install Freeplane mind-mapping tool from package
 APP_NAME=freeplane
-APP_VERSION=1.7.7
+APP_VERSION=1.7.8
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}~upstream-1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -2286,7 +2286,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.74
+APP_VERSION=6.3.75
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3116,7 +3116,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2019.5
+APP_VERSION=1.2019.6
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -7507,7 +7507,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Flare SDL-based 2-D adventure RPG from source
 APP_NAME=Flare
 APP_GUI_NAME="SDL-based 2-D adventure RPG."
-APP_VERSION=1.09
+APP_VERSION=1.10
 APP_EXT=tar.gz
 sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev cmake
 curl -o /tmp/${APP_NAME,,}-engine.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-game/${APP_NAME,,}-engine-v${APP_VERSION}.${APP_EXT}
@@ -8489,7 +8489,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PAGE drag-and-drop GUI generator for Python and Tkinter from source
 APP_NAME=PAGE
 APP_GUI_NAME="Drag-and-drop GUI generator for Python and Tkinter."
-APP_VERSION=4.22
+APP_VERSION=4.23
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -17487,7 +17487,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Radio Player Forte Plus cross-platform Internet radio player from package
 APP_NAME=RadioPlayer
 APP_GUI_NAME="Cross-platform Internet radio player."
-APP_VERSION=5.5.1
+APP_VERSION=5.5.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/radio-player-forte-plus/${FILE_NAME}.${APP_EXT}
@@ -17603,7 +17603,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Apricot Java-based database ERD, design, and reverse-engineering tool from package
 APP_NAME=ApricotDB
 APP_GUI_NAME="Java-based database ERD, design, and reverse-engineering tool."
-APP_VERSION=0.3
+APP_VERSION=0.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-all-bin
 sudo apt-get install -y openjdk-11-jre openjfx
@@ -18021,7 +18021,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install SOFA Statistics simple statistics, analysis, and reporting tool from Debian package
 APP_NAME=SOFAStatistics
 APP_GUI_NAME="Simple statistics, analysis, and reporting."
-APP_VERSION=1.5.0-1
+APP_VERSION=1.5.1-1
 APP_EXT=deb
 FILE_NAME=sofastats-${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18061,6 +18061,33 @@ StartupNotify=true
 Terminal=false
 Categories=Accessories;Office;
 Keywords=PIM;Calendar;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Gaphor simple Python UML modeling tool from package
+APP_NAME=Gaphor
+APP_GUI_NAME="Simple Python UML modeling tool."
+APP_VERSION=1.0.1
+APP_EXT=whl
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-py3-none-any
+sudo apt-get install -y python3-setuptools python3-pip python3-wheel
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo pip3 install /tmp/${FILE_NAME}.${APP_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=UML;Modeling;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
