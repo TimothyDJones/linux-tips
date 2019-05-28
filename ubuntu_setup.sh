@@ -18247,3 +18247,16 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.florian-diesch.de/software/${APP_NAME,,}/dist/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install mtag command-line media tagging utility from source
+APP_NAME=mtag
+APP_GUI_NAME="Command-line media tagging utility."
+APP_VERSION=2.2.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libtag1-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/psemiletov/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
