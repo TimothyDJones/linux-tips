@@ -3592,7 +3592,7 @@ APP_NAME=Raccoon
 APP_VERSION=4.7.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -k -L http://${APP_NAME}.onyxbits.de/sites/${APP_NAME}.onyxbits.de/files/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -k -L http://${APP_NAME,,}.onyxbits.de/sites/${APP_NAME,,}.onyxbits.de/files/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,} << EOF
