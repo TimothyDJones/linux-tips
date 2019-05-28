@@ -4772,7 +4772,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Dextrous Text Editor (DTE) console text editor from source
 APP_NAME=DTE
-APP_VERSION=1.6
+APP_VERSION=1.8.2
 APP_EXT=tar.gz
 sudo apt-get install -y make gcc libncurses5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/craigbarnes/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
