@@ -3587,19 +3587,29 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Raccoon Java-based Google Play Store and APK downloader utility
-APP_NAME=raccoon
-APP_VERSION=4.4.0
+# Install Raccoon Java-based Google Play Store and APK downloader utility from package
+APP_NAME=Raccoon
+APP_VERSION=4.7.0
 APP_EXT=jar
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L http://${APP_NAME}.onyxbits.de/sites/${APP_NAME}.onyxbits.de/files/${APP_NAME}-${APP_VERSION}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME}
-sudo mv /tmp/${APP_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -k -L http://${APP_NAME}.onyxbits.de/sites/${APP_NAME}.onyxbits.de/files/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar ${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=Java-based Google Play Store and APK downloader utility
 GenericName=${APP_NAME}
-Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}.${APP_EXT}
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 #Icon=
 Type=Application
 StartupNotify=true
@@ -3609,7 +3619,7 @@ Keywords=Android;APK;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Mind Map Architect mind mapping tool from package
 APP_NAME=mmarchitect
