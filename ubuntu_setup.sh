@@ -18199,3 +18199,18 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/DEgITx/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install pstoedit PostScript/PDF converter to other vector formats from source
+APP_NAME=pstoedit
+APP_GUI_NAME="PostScript/PDF converter to other vector formats."
+APP_VERSION=3.74
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y ghostscript
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure.sh && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
