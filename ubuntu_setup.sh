@@ -389,7 +389,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.80.1.0-1
+APP_VERSION=1.81.2.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -3339,9 +3339,9 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install  from Debian package
+# Install Voya Media video, music, and picture player from Debian package
 APP_NAME=VoyaMedia
-APP_VERSION=3.1-100
+APP_VERSION=3.1-200
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -3587,19 +3587,29 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Raccoon Java-based Google Play Store and APK downloader utility
-APP_NAME=raccoon
-APP_VERSION=4.4.0
+# Install Raccoon Java-based Google Play Store and APK downloader utility from package
+APP_NAME=Raccoon
+APP_VERSION=4.7.0
 APP_EXT=jar
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L http://${APP_NAME}.onyxbits.de/sites/${APP_NAME}.onyxbits.de/files/${APP_NAME}-${APP_VERSION}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME}
-sudo mv /tmp/${APP_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -k -L http://${APP_NAME,,}.onyxbits.de/sites/${APP_NAME,,}.onyxbits.de/files/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar ${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=Java-based Google Play Store and APK downloader utility
 GenericName=${APP_NAME}
-Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME}.${APP_EXT}
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 #Icon=
 Type=Application
 StartupNotify=true
@@ -3609,7 +3619,7 @@ Keywords=Android;APK;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Mind Map Architect mind mapping tool from package
 APP_NAME=mmarchitect
@@ -3798,12 +3808,13 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Insomnia REST client from package
-APP_NAME=insomnia
-APP_VERSION=5.16.6
+# Install Insomnia REST client from Debian package
+APP_NAME=Insomnia
+APP_VERSION=6.5.3
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://builds.insomnia.rest/downloads/ubuntu/latest
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://updates.insomnia.rest/downloads/ubuntu/latest
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
@@ -4509,7 +4520,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install GNU nano text editor from source
 APP_NAME=nano
 APP_GUI_NAME="Minimalist console text editor."
-APP_VERSION=4.0
+APP_VERSION=4.2
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y libncurses5-dev libncursesw5-dev
@@ -4749,7 +4760,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.3.1
+APP_VERSION=1.3.2
 APP_EXT=tar.bz2
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -4761,18 +4772,20 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Dextrous Text Editor (DTE) console text editor from source
 APP_NAME=DTE
-APP_VERSION=1.6
+APP_GUI_NAME="Console text editor"
+APP_VERSION=1.8.2
 APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y make gcc libncurses5-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/craigbarnes/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/craigbarnes/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 make -j8 && sudo make install
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=Console text editor
+Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/usr/local/bin
 Exec=/usr/local/bin/${APP_NAME,,}
@@ -6466,7 +6479,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install BiglyBT Java-based (Azureus) GUI BitTorrent client
 APP_NAME=BiglyBT
 APP_GUI_NAME="Java-based (Azureus) GUI BitTorrent client."
-APP_VERSION=1.8.00
+APP_VERSION=2.0.0.0
 APP_EXT=sh
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/BiglySoftware/${APP_NAME}/releases/download/v${APP_VERSION}/GitHub_${APP_NAME}_Installer.${APP_EXT}
 sudo sh /tmp/${APP_NAME,,}.${APP_EXT}
@@ -11315,7 +11328,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install TEA Qt-based text editor from source
 APP_NAME=TEA
 APP_GUI_NAME="Cross-platform Qt-based text editor."
-APP_VERSION=46.3.0
+APP_VERSION=47.1.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qt5-default qt5-qmake
@@ -11905,7 +11918,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install WordTsar GTK-based WordStar text editor clone from package
 APP_NAME=WordTsar
 APP_GUI_NAME="GTK-based WordStar text editor clone."
-APP_VERSION=0.1.1314
+APP_VERSION=0.1.1572
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-gtk2-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -16246,7 +16259,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
 APP_NAME=TkCVS
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.0.7
+APP_VERSION=9.0.8
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
@@ -17487,7 +17500,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Radio Player Forte Plus cross-platform Internet radio player from package
 APP_NAME=RadioPlayer
 APP_GUI_NAME="Cross-platform Internet radio player."
-APP_VERSION=5.5.2
+APP_VERSION=5.6.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/radio-player-forte-plus/${FILE_NAME}.${APP_EXT}
@@ -18116,7 +18129,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Hypernomicon Java-based research tracking database with built-in PDF viewer from package
 APP_NAME=Hypernomicon
 APP_GUI_NAME="Java-based research tracking database with built-in PDF viewer."
-APP_VERSION=1.1
+APP_VERSION=1.11
 APP_EXT=sh
 FILE_NAME=${APP_NAME}_linux_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18214,3 +18227,77 @@ cd /tmp/${FILE_NAME}
 ./configure.sh && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install mtCellEdit lightweight Qt-based spreadsheet program from AppImage
+APP_NAME=mtCellEdit
+APP_GUI_NAME="Lightweight Qt-based spreadsheet program."
+APP_VERSION=3.3
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}-qt4-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/matyler/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;
+Keywords=Spreadsheet;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Arronax Python/GTK GUI for creating/editing starter (.desktop) files from Debian package
+APP_NAME=Arronax
+APP_GUI_NAME="Python/GTK GUI for creating/editing starter (.desktop) files."
+APP_VERSION=0.7.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.florian-diesch.de/software/${APP_NAME,,}/dist/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install mtag command-line media tagging utility from source
+APP_NAME=mtag
+APP_GUI_NAME="Command-line media tagging utility."
+APP_VERSION=2.2.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libtag1-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/psemiletov/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+
+# Install Dnote cross-platform lightweight encrypted console notebook for developers from package
+APP_NAME=Dnote
+APP_GUI_NAME="Cross-platform lightweight encrypted console notebook for developers."
+APP_VERSION=0.8.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/cli-v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Gis Weather desktop weather widget from Debian package
+APP_NAME=Gis-Weather
+APP_GUI_NAME="Desktop weather widget."
+APP_VERSION=0.8.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
