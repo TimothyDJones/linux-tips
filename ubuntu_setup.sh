@@ -18330,3 +18330,12 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Iso2Usb utility to create bootable USB drive from ISO image from Debian package
+APP_NAME=Iso2Usb
+APP_GUI_NAME="Utility to create bootable USB drive from ISO image."
+APP_VERSION=0.1.5.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_VERSION}-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/KaustubhPatange/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
