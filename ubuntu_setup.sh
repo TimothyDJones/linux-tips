@@ -389,7 +389,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.81.2.0-1
+APP_VERSION=1.82.0.2-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -615,22 +615,24 @@ cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
 # Install KeePassXC password manager from source
-APP_NAME=keepassxc
-APP_VERSION=2.4.0
+APP_NAME=KeePassXC
+APP_VERSION=2.4.3
 APP_EXT=tar.xz
-curl -o /tmp/libgcrypt20-dev.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20-dev_1.7.8-2ubuntu1_amd64.deb
-curl -o /tmp/libgcrypt20.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20_1.7.8-2ubuntu1_amd64.deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
+LIBCRYPT20_VERSION=1.8.4-5
+curl -o /tmp/libgcrypt20-dev.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20-dev_${LIBCRYPT20_VERSION}ubuntu1_${KERNEL_TYPE}.deb
+curl -o /tmp/libgcrypt20.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20_${LIBCRYPT20_VERSION}ubuntu1_${KERNEL_TYPE}.deb
 sudo gdebi -n /tmp/libgcrypt20.deb
 sudo gdebi -n /tmp/libgcrypt20-dev.deb
-sudo apt-get install -y libcrypto++-dev libxi-dev libmicrohttpd-dev libxtst-dev qttools5-dev-tools cmake libargon2-0-dev libqrencode-dev
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/keepassxreboot/${APP_NAME}/releases/download/${APP_VERSION}/${APP_NAME}-${APP_VERSION}-src.${APP_EXT}
+sudo apt-get install -y libcrypto++-dev libxi-dev libmicrohttpd-dev libxtst-dev qttools5-dev-tools cmake libargon2-0-dev libqrencode-dev libsodium-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/keepassxreboot/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
 mkdir build && cd build
 cmake .. -DWITH_TESTS=OFF && make && sudo make install
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install NewBreeze file manager from source
 APP_NAME=NewBreeze
@@ -865,17 +867,44 @@ sudo gdebi -n /tmp/${APP_NAME}.deb   # '-n' is non-interactive mode for gdebi
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Jailer Java database utility
-APP_NAME=jailer
-APP_VERSION=8.7
-curl -o /tmp/${APP_NAME}.zip -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}.zip
+# Install Jailer cross-platform Java database browser and editor from package
+APP_NAME=Jailer
+APP_GUI_NAME="Cross-platform Java database browser and editor"
+APP_VERSION=8.7.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.zip
-sudo mv ${APP_NAME} /opt
-# sudo ln -s /opt/${APP_NAME}/${APP_NAME}.sh /usr/local/bin/${APP_NAME}
-echo "export PATH=$PATH:/opt/${APP_NAME}" >> $HOME/.bashrc
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}/* /opt/${APP_NAME,,}
+sudo chmod -R a+w /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+Icon=/opt/${APP_NAME,,}/docs/favicon.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Database;SQL;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 
 # Install ZinjaI C++ IDE
 APP_NAME=zinjai
@@ -1208,7 +1237,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.1.1-3930
+APP_VERSION=4.1.1-3934
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2286,7 +2315,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.3.75
+APP_VERSION=6.4.21
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2420,7 +2449,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
 APP_NAME=XSchem
-APP_VERSION=2.8.4
+APP_VERSION=2.9.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
@@ -3407,7 +3436,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Pentobi Blokus-style board game from source
 APP_NAME=pentobi
-APP_VERSION=16.3
+APP_VERSION=17.1
 APP_EXT=tar.xz
 sudo apt-get install -y g++ make cmake qttools5-dev qttools5-dev-tools libqt5svg5-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -7457,7 +7486,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PeaZip cross-platform archive management utility from package
 APP_NAME=PeaZip
 APP_GUI_NAME="Cross-platform archive management utility."
-APP_VERSION=6.5.1
+APP_VERSION=6.8.1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.LINUX.GTK2-2_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -7604,7 +7633,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=4.1.5
+APP_VERSION=4.1.6
 APP_EXT=tgz
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
@@ -8053,7 +8082,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Joy of Text (JOT) minimalist text editor from package
 APP_NAME=JOT
 APP_GUI_NAME="Cross-platform minimalist text editor."
-APP_VERSION=2.4.1
+APP_VERSION=2.4.2
 APP_EXT=tz
 sudo ln -s /lib/x86_64-linux-gnu/libncurses.so.5 /lib/x86_64-linux-gnu/libncurses.so.6
 sudo ln -s /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libtinfo.so.6
@@ -8580,7 +8609,7 @@ APP_VERSION=N/A
 APP_EXT=deb
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ze|ar|bi)$ ]]; then  # 17.04, 17.10, 18.04
-	APP_VERSION=5.1-8_all
+	APP_VERSION=5.2-1_all
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya)$ ]]; then  # 16.04, 16.10
 	APP_VERSION=4.3-8_all-beta
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (vi|wi)$ ]]; then  # 15.04, 15.10
@@ -10035,7 +10064,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install X11-Basic cross-platform Basic interpreter with graphics support from Debian package
 APP_NAME=x11basic
 APP_GUI_NAME="Cross-platform Basic interpreter with graphics support."
-APP_VERSION=1.25-49
+APP_VERSION=1.26-53
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/x11-basic/${FILE_NAME}.${APP_EXT}
@@ -15286,7 +15315,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install GXemul full-system computer emulator that emulates processors (ARM, MIPS, M88K, PowerPC, and SuperH) and peripherals from source
 APP_NAME=GXemul
 APP_GUI_NAME="Full-system computer emulator that emulates processors (ARM, MIPS, M88K, PowerPC, and SuperH) and peripherals."
-APP_VERSION=0.6.0.2
+APP_VERSION=0.6.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libtinfo-dev libncurses5-dev
@@ -16259,7 +16288,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
 APP_NAME=TkCVS
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.0.8
+APP_VERSION=9.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
@@ -17500,7 +17529,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Radio Player Forte Plus cross-platform Internet radio player from package
 APP_NAME=RadioPlayer
 APP_GUI_NAME="Cross-platform Internet radio player."
-APP_VERSION=5.6.1
+APP_VERSION=6.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/radio-player-forte-plus/${FILE_NAME}.${APP_EXT}
@@ -17995,7 +18024,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # https://github.com/x-jrga/potatosql
 APP_NAME=PotatoSQL
 APP_GUI_NAME="Java-based database design and learning tool."
-APP_VERSION=0.2
+APP_VERSION=0.3
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18129,7 +18158,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Hypernomicon Java-based research tracking database with built-in PDF viewer from package
 APP_NAME=Hypernomicon
 APP_GUI_NAME="Java-based research tracking database with built-in PDF viewer."
-APP_VERSION=1.11
+APP_VERSION=1.12
 APP_EXT=sh
 FILE_NAME=${APP_NAME}_linux_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18212,6 +18241,21 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/DEgITx/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install pstoedit PostScript/PDF converter to other vector formats from source
+APP_NAME=pstoedit
+APP_GUI_NAME="PostScript/PDF converter to other vector formats."
+APP_VERSION=3.74
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y ghostscript
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure.sh && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install mtCellEdit lightweight Qt-based spreadsheet program from AppImage
 APP_NAME=mtCellEdit
@@ -18324,3 +18368,12 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Iso2Usb utility to create bootable USB drive from ISO image from Debian package
+APP_NAME=Iso2Usb
+APP_GUI_NAME="Utility to create bootable USB drive from ISO image."
+APP_VERSION=0.1.5.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_VERSION}-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/KaustubhPatange/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
