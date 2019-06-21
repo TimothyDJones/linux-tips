@@ -18379,7 +18379,6 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/KaustubhPatange/${
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
 # Install Tute Java-based Spanish playing card game from package
-# https://github.com/milind-brahme/query-light
 APP_NAME=Tute
 APP_GUI_NAME="Java-based Spanish playing card game."
 APP_VERSION=N/A
@@ -18414,3 +18413,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Topgrade cross-platform/cross-distribution upgrade manager from package
+# https://www.ostechnix.com/how-to-upgrade-everything-using-a-single-command-in-linux/
+APP_NAME=Topgrade
+APP_GUI_NAME="Cross-platform/cross-distribution upgrade manager."
+APP_VERSION=2.3.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/r-darwish/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
