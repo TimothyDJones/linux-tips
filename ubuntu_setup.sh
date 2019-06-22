@@ -735,13 +735,13 @@ rm -rf /tmp/${APP_NAME}*
 # Install BeeBEEP LAN messenger from package
 APP_NAME=BeeBEEP
 APP_GUI_NAME="Cross-platform secure LAN messenger."
-APP_VERSION=5.6.1
+APP_VERSION=5.6.2
 if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 	KERNEL_TYPE=amd64
-	APP_VERSION=5.6.1
+	APP_VERSION=5.6.2
 else    # Otherwise use version for 32-bit kernel
 	KERNEL_TYPE=i386
-	APP_VERSION=5.6.1
+	APP_VERSION=5.6.2
 fi
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt4-${KERNEL_TYPE}
