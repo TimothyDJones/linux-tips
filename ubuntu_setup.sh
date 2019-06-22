@@ -378,7 +378,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from package
 APP_NAME=Vivaldi
-APP_VERSION=2.5.1525.43-1
+APP_VERSION=2.6.1566.40-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -389,7 +389,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.83.0.0-1
+APP_VERSION=1.83.1.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -870,7 +870,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=8.7.1
+APP_VERSION=8.7.5
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1285,7 +1285,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Tagstoo file tag manager from AppImage
 APP_NAME=Tagstoo
 APP_GUI_NAME="File tag manager"
-APP_VERSION=1.12.7
+APP_VERSION=2.0.1
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
@@ -2315,7 +2315,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.21
+APP_VERSION=6.4.23
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -5027,7 +5027,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install EJE (Everyone's Java Editor) minimalist Java IDE
 APP_NAME=EJE
 APP_GUI_NAME="EJE (Everyone's Java Editor)"
-APP_VERSION=3.5.1
+APP_VERSION=3.5.2
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
 cd /tmp
@@ -7159,7 +7159,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.46
+APP_VERSION=V1.47
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -8531,7 +8531,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PAGE drag-and-drop GUI generator for Python and Tkinter from source
 APP_NAME=PAGE
 APP_GUI_NAME="Drag-and-drop GUI generator for Python and Tkinter."
-APP_VERSION=4.23
+APP_VERSION=4.24
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -18377,3 +18377,53 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/KaustubhPatange/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+
+# Install Tute Java-based Spanish playing card game from package
+APP_NAME=Tute
+APP_GUI_NAME="Java-based Spanish playing card game."
+APP_VERSION=N/A
+APP_EXT=jar
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}-cardgame/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Cards;Games;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Topgrade cross-platform/cross-distribution upgrade manager from package
+# https://www.ostechnix.com/how-to-upgrade-everything-using-a-single-command-in-linux/
+APP_NAME=Topgrade
+APP_GUI_NAME="Cross-platform/cross-distribution upgrade manager."
+APP_VERSION=2.3.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/r-darwish/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
