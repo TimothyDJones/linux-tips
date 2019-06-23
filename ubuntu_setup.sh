@@ -1454,17 +1454,19 @@ if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	rm -rf /tmp/${APP_NAME}*
 fi
 
-# Install AVFS virtual file system
-APP_NAME=avfs
-APP_VERSION=1.0.6
+# Install AVFS virtual file system from source
+APP_NAME=AVFS
+APP_VERSION=1.1.0
 APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libfuse-dev libarchive-dev
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://versaweb.dl.sourceforge.net/project/avf/${APP_NAME}/1.0.5/${APP_NAME}-${APP_VERSION}.${APP_EXT}
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
-./configure && make && make install
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/avf/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Worker File Manager (For AVFS support install AVFS above.)
 APP_NAME=worker
