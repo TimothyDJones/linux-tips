@@ -18429,3 +18429,33 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Race Into Space SDL-based remake of classic Interplay game from source
+APP_NAME=RaceIntoSpace
+APP_GUI_NAME="SDL-based remake of classic Interplay game."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo apt-get install -y cmake libsdl-dev libboost-dev libpng-dev libjsoncpp-dev libogg-dev libvorbis-dev libtheora-dev libprotobuf-dev protobuf-compiler
+cd /tmp
+git clone git://github.com/${APP_NAME,,}/${APP_NAME,,}.git
+mkdir ${APP_NAME,,}-build
+cd ${APP_NAME,,}-build
+cmake ../${APP_NAME,,} && make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/${APP_NAME,,}/images/aprog.0.6.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;Education;
+Keywords=Space;Simulation;Retro;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
