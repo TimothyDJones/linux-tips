@@ -1237,7 +1237,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.1.1-3934
+APP_VERSION=4.1.1-3950
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -1900,7 +1900,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=8.0.4
+APP_VERSION=8.0.6
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2317,7 +2317,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.23
+APP_VERSION=6.4.24
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -7635,7 +7635,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=4.1.6
+APP_VERSION=4.1.7
 APP_EXT=tgz
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
@@ -10066,7 +10066,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install X11-Basic cross-platform Basic interpreter with graphics support from Debian package
 APP_NAME=x11basic
 APP_GUI_NAME="Cross-platform Basic interpreter with graphics support."
-APP_VERSION=1.26-53
+APP_VERSION=1.27-57
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/x11-basic/${FILE_NAME}.${APP_EXT}
@@ -11670,7 +11670,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install eLogSim digital circuit simulator from package
 APP_NAME=eLogSim
 APP_GUI_NAME="Digital circuit simulator."
-APP_VERSION=2.1.0
+APP_VERSION=2.2.0
 APP_EXT=zip
 FILE_NAME=My${APP_NAME}_${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -16774,7 +16774,7 @@ sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}.deb
 # Install Klavaro GTK3-based Touch Typing Tutor from source
 APP_NAME=Klavaro
 APP_GUI_NAME="GTK3-based Touch Typing Tutor."
-APP_VERSION=3.05
+APP_VERSION=3.08
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y intltool libgtk-3-dev
@@ -18429,3 +18429,33 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Race Into Space SDL-based remake of classic Interplay game from source
+APP_NAME=RaceIntoSpace
+APP_GUI_NAME="SDL-based remake of classic Interplay game."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo apt-get install -y cmake libsdl-dev libboost-dev libpng-dev libjsoncpp-dev libogg-dev libvorbis-dev libtheora-dev libprotobuf-dev protobuf-compiler
+cd /tmp
+git clone git://github.com/${APP_NAME,,}/${APP_NAME,,}.git
+mkdir ${APP_NAME,,}-build
+cd ${APP_NAME,,}-build
+cmake ../${APP_NAME,,} && make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/${APP_NAME,,}/images/aprog.0.6.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;Education;
+Keywords=Space;Simulation;Retro;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
