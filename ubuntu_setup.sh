@@ -431,7 +431,7 @@ rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Debian package
 APP_NAME=CopyQ
-APP_VERSION=3.8.0
+APP_VERSION=3.9.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_9.0-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -544,7 +544,7 @@ sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+cd /tmp/${APP_pNAME}/${APP_NAME}-${APP_VERSION}
 sudo tclsh8.6 install.tcl
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
