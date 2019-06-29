@@ -389,7 +389,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.83.1.0-1
+APP_VERSION=1.83.1.3-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -431,7 +431,7 @@ rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Debian package
 APP_NAME=CopyQ
-APP_VERSION=3.8.0
+APP_VERSION=3.9.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_9.0-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -544,7 +544,7 @@ sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+cd /tmp/${APP_pNAME}/${APP_NAME}-${APP_VERSION}
 sudo tclsh8.6 install.tcl
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
@@ -4336,7 +4336,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shaarli PHP-based databaseless bookmark manager
 APP_NAME=Shaarli
-APP_VERSION=0.9.2
+APP_VERSION=0.10.4
 APP_EXT=tar.gz
 sudo apt-get install -y qttools5-dev qttools5-dev-tools cmake
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://codeload.github.com/${APP_NAME,,}/${APP_NAME}/${APP_EXT}/v${APP_VERSION}
@@ -5139,7 +5139,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=19.4
+APP_VERSION=19.5
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
