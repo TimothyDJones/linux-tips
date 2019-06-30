@@ -18487,3 +18487,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Scratux Linux binaries for Scatch Desktop visual programming tool from Debian package
+APP_NAME=Scratux
+APP_GUI_NAME="Linux binaries for Scatch Desktop visual programming tool."
+APP_VERSION=1.1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v1.1/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
