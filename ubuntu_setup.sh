@@ -17350,7 +17350,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install pyFileSearcher cross-platform Python/Qt GUI file search tool from package
 APP_NAME=pyFileSearcher
 APP_GUI_NAME="Cross-platform Python/Qt GUI file search tool."
-APP_VERSION=1.1.0
+APP_VERSION=1.1.1
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
