@@ -18576,3 +18576,29 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install phpIPAM open-source PHP/MySQL-based IP address management tool (manual installation)
+APP_NAME=phpIPAM
+APP_VERSION=1.4
+APP_EXT=tar
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}admin
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libwbxml2-utils tnef
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}/* ${WWW_HOME}/${APP_NAME,,}
+sudo cp ${WWW_HOME}/${APP_NAME,,}/config.dist.php ${WWW_HOME}/${APP_NAME,,}/config.php
+sudo sed -i.bak "s@define('BASE', \"/\");@define('BASE', \"/phpipam\");@g" ${WWW_HOME}/${APP_NAME,,}/config.php
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+mysql -u root -proot phpipam < ${WWW_HOME}/${APP_NAME,,}/db/SCHEMA.sql
+xdg-open http://localhost/${APP_NAME,,}/ &
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
