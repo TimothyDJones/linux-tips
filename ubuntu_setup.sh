@@ -18602,3 +18602,34 @@ mysql -u root -proot phpipam < ${WWW_HOME}/${APP_NAME,,}/db/SCHEMA.sql
 xdg-open http://localhost/${APP_NAME,,}/ &
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install k3rmit VTE-based minimal terminal emulator from source
+APP_NAME=k3rmit
+APP_GUI_NAME="VTE-based minimal terminal emulator."
+APP_VERSION=1.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libvte-2.91-dev libgtk-3-dev cmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://codeload.github.com/keylo99/${APP_NAME,,}/${APP_EXT}/${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p build && cd build
+cmake ../ -DCMAKE_INSTALL_PREFIX=/usr/local && make && sudo make install && sudo ldconfig
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Accessories;
+Keywords=Terminal;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
