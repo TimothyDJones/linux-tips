@@ -389,7 +389,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.83.1.3-1
+APP_VERSION=1.83.6.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -441,7 +441,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.5.3
+APP_VERSION=1.5.4
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -1237,7 +1237,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.1.1-3950
+APP_VERSION=4.1.1-3957
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2317,7 +2317,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.24
+APP_VERSION=6.4.26
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -7161,7 +7161,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.47
+APP_VERSION=V1.50
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -17350,7 +17350,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install pyFileSearcher cross-platform Python/Qt GUI file search tool from package
 APP_NAME=pyFileSearcher
 APP_GUI_NAME="Cross-platform Python/Qt GUI file search tool."
-APP_VERSION=1.1.0
+APP_VERSION=1.1.1
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -18160,7 +18160,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Hypernomicon Java-based research tracking database with built-in PDF viewer from package
 APP_NAME=Hypernomicon
 APP_GUI_NAME="Java-based research tracking database with built-in PDF viewer."
-APP_VERSION=1.12
+APP_VERSION=1.14
 APP_EXT=sh
 FILE_NAME=${APP_NAME}_linux_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18460,6 +18460,44 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
+# Install IP Calculator Java-based IP subnet calculator from package
+APP_NAME=IP-Calculator
+APP_GUI_NAME="Java-based IP subnet calculator."
+APP_VERSION=28-06-2019
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_bin
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Network;System;Accessories;
+Keywords=Networking;Calculator;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
 # Install GitApp cross-platform Electron-based desktop GitHub client from AppImage
 APP_NAME=GitApp
 APP_GUI_NAME="Cross-platform Electron-based desktop GitHub client."
@@ -18476,6 +18514,7 @@ cat > /tmp/${APP_NAME,,}.desktop << EOF
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
 Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 #Icon=
 Type=Application
@@ -18496,5 +18535,160 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v1.1/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install minuteProject Java-based reverse-engineering tool from package
+APP_NAME=minuteProject
+APP_GUI_NAME="Java-based reverse-engineering tool."
+APP_VERSION=0.9.10
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/bin/start-console.sh
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib:\$PATH; export PATH
+/opt/${APP_NAME,,}/bin/start-console.sh
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib
+Exec=/opt/${APP_NAME,,}/bin/start-console.sh
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Hacking;Reversing;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install phpIPAM open-source PHP/MySQL-based IP address management tool (manual installation)
+APP_NAME=phpIPAM
+APP_VERSION=1.4
+APP_EXT=tar
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}admin
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libwbxml2-utils tnef
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}/* ${WWW_HOME}/${APP_NAME,,}
+sudo cp ${WWW_HOME}/${APP_NAME,,}/config.dist.php ${WWW_HOME}/${APP_NAME,,}/config.php
+sudo sed -i.bak "s@define('BASE', \"/\");@define('BASE', \"/phpipam\");@g" ${WWW_HOME}/${APP_NAME,,}/config.php
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+mysql -u root -proot phpipam < ${WWW_HOME}/${APP_NAME,,}/db/SCHEMA.sql
+xdg-open http://localhost/${APP_NAME,,}/ &
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install k3rmit VTE-based minimal terminal emulator from source
+APP_NAME=k3rmit
+APP_GUI_NAME="VTE-based minimal terminal emulator."
+APP_VERSION=1.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libvte-2.91-dev libgtk-3-dev cmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://codeload.github.com/keylo99/${APP_NAME,,}/${APP_EXT}/${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p build && cd build
+cmake ../ -DCMAKE_INSTALL_PREFIX=/usr/local && make && sudo make install && sudo ldconfig
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Accessories;
+Keywords=Terminal;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Cloaker cross-platform GUI password-based file encryption tool from package
+APP_NAME=Cloaker
+APP_GUI_NAME="Cross-platform GUI password-based file encryption tool."
+APP_VERSION=2.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}Linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/spieglt/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME}.run /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;
+Keywords=Encryption;Security;Privacy;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Kiwix offline Wikipedia downloader/reader desktop client from AppImage
+APP_NAME=Kiwix
+APP_GUI_NAME="Offline Wikipedia downloader/reader desktop client."
+APP_VERSION=2.0-beta5
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}-desktop_x86_64_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT,,}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;Office;
+Keywords=Wikipedia;Reader;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
