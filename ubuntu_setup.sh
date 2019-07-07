@@ -18707,7 +18707,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Tartube PyGTK GUI frontend for youtube-dl for video download from package
 APP_NAME=Tartube
 APP_GUI_NAME="PyGTK GUI frontend for youtube-dl for video download."
-APP_VERSION=0.6.0
+APP_VERSION=0.7.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
