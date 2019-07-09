@@ -1589,16 +1589,16 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install reCsvEditor CSV editor
+# Install reCsvEditor CSV editor from package
 APP_NAME=reCsvEditor
-APP_VERSION=0.98.5
+APP_VERSION=0.99.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_Installer_${APP_VERSION}.jar
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo java -jar /tmp/${FILE_NAME}/${FILE_NAME}  # Launches GUI installer
-sudo ln -s /usr/local/RecordEdit/reCsvEd/bin/runCsvEditor.sh /usr/local/bin/recsveditor
+sudo ln -s /usr/local/RecordEdit/reCsvEd/bin/runCsvEditor.sh /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
