@@ -18780,3 +18780,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Cicada bash-like shell implemented in Rust from package
+APP_NAME=Cicada
+APP_GUI_NAME="bash-like shell implemented in Rust."
+APP_VERSION=0.9.8
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/mitnk/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp -R /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
