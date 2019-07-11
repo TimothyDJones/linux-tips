@@ -18790,3 +18790,14 @@ FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/mitnk/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
 sudo cp -R /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
+
+# Install Foliate simple Javascript-based modern GTK ebook reader from Debian package
+APP_NAME=Foliate
+APP_GUI_NAME="Simple Javascript-based modern GTK ebook reader."
+APP_VERSION=1.4.0
+APP_EXT=deb
+FILE_NAME=com.github.johnfactotum.${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johnfactotum/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
