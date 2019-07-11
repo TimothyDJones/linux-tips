@@ -2317,7 +2317,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.29
+APP_VERSION=6.4.31
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -18801,3 +18801,23 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johnfactotum/${APP
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Pista bash/zsh shell prompt implemented in Rust from package
+APP_NAME=Pista
+APP_GUI_NAME="bash/zsh shell prompt implemented in Rust."
+APP_VERSION=0.1.1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/NerdyPepper/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp -R /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+
+# Install Eva shell/command-line calculator REPL implemented in Rust from package
+APP_NAME=Eva
+APP_GUI_NAME="Shell/command-line calculator REPL implemented in Rust."
+APP_VERSION=0.2.5
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/NerdyPepper/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp -R /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
