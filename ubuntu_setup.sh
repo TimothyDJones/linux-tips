@@ -18821,3 +18821,30 @@ FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/NerdyPepper/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
 sudo cp -R /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
+
+# Install Small Yet Powerful PHP Shell (SYPPS) from package
+APP_NAME=SYPPS
+APP_GUI_NAME="Small Yet Powerful PHP Shell (SYPPS)."
+APP_VERSION=N/a
+APP_EXT=php
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} ${WWW_HOME}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=PHP;Shell;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+xdg-open http://localhost/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
