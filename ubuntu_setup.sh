@@ -18848,3 +18848,32 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 xdg-open http://localhost/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Gophwr GUI gopher client built with Racket from package
+APP_NAME=Gophwr
+APP_GUI_NAME="GUI gopher client built with Racket."
+APP_VERSION=0.5.6
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-bin-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/erkin/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}/* /usr/local
+sudo ldconfig
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;Networking;
+Keywords=Gopher;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
