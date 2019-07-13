@@ -18821,3 +18821,18 @@ FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/NerdyPepper/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
 sudo cp -R /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
+
+# Install Phlipple 3D SDL-based puzzle game from source
+APP_NAME=Phlipple
+APP_GUI_NAME="3D SDL-based puzzle game."
+APP_VERSION=0.8.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y pkg-config libsdl1.2-dev libvorbis-dev libglew-dev libsdl-image1.2-dev libsdl-mixer1.2-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
