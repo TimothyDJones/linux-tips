@@ -735,13 +735,13 @@ rm -rf /tmp/${APP_NAME}*
 # Install BeeBEEP LAN messenger from package
 APP_NAME=BeeBEEP
 APP_GUI_NAME="Cross-platform secure LAN messenger."
-APP_VERSION=5.6.2
+APP_VERSION=5.6.4
 if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 	KERNEL_TYPE=amd64
-	APP_VERSION=5.6.2
+	APP_VERSION=5.6.4
 else    # Otherwise use version for 32-bit kernel
 	KERNEL_TYPE=i386
-	APP_VERSION=5.6.2
+	APP_VERSION=5.6.4
 fi
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt4-${KERNEL_TYPE}
@@ -1900,7 +1900,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=8.1.0
+APP_VERSION=8.1.1
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -3147,7 +3147,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2019.7
+APP_VERSION=1.2019.8
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -4580,7 +4580,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install nuBASIC IDE and compiler for BASIC from package
 APP_NAME=nubasic
-APP_VERSION=1.48-1
+APP_VERSION=1.50.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -7161,7 +7161,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.53
+APP_VERSION=V1.55
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -12718,7 +12718,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Double Commander dual-pane canonical file manager from package
 APP_NAME=DoubleCmd
 APP_GUI_NAME="Dual-pane canonical file manager."
-APP_VERSION=0.9.4
+APP_VERSION=0.9.5
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -18026,7 +18026,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # https://github.com/x-jrga/potatosql
 APP_NAME=PotatoSQL
 APP_GUI_NAME="Java-based database design and learning tool."
-APP_VERSION=0.3
+APP_VERSION=0.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18877,3 +18877,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Phlipple 3D SDL-based puzzle game from source
+APP_NAME=Phlipple
+APP_GUI_NAME="3D SDL-based puzzle game."
+APP_VERSION=0.8.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y pkg-config libsdl1.2-dev libvorbis-dev libglew-dev libsdl-image1.2-dev libsdl-mixer1.2-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
