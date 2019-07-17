@@ -272,6 +272,7 @@ echo 'export GOPATH=$HOME/projects/go' >> $HOME/.bashrc
 echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> $HOME/.bashrc
 source $HOME/.bashrc
 mkdir -p $HOME/projects/go
+mkdir -p $HOME/projects/go/bin $HOME/projects/go/pkg $HOME/projects/go/src
 rm -rf /tmp/go*
 cd $HOME
 
