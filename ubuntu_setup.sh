@@ -2551,16 +2551,16 @@ cd $HOME
 rm -rf /tmp/${APP_NAME}*
 xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 
-# Install DK Tools system utility from source
-APP_NAME=dktools
-APP_VERSION=4.22.0
+# Install DK Tools system utility suite from source
+APP_NAME=DKTools
+APP_GUI_NAME="System utility suite."
+APP_VERSION=4.24.0
 APP_EXT=tar.gz
-KERNEL_TYPE=getKernelType()
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-sudo dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo chown -R ${USER}:${USER} /tmp/${APP_NAME,,}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
@@ -2570,6 +2570,7 @@ APP_NAME=TaskCoach
 APP_VERSION=1.4.6-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+sudo apt-get install -y libbz2-dev libpng-dev libjpeg-dev libtiff-dev libdb-dev libmysqlclient-dev libwxgtk3.0-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
