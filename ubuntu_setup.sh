@@ -272,6 +272,7 @@ echo 'export GOPATH=$HOME/projects/go' >> $HOME/.bashrc
 echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> $HOME/.bashrc
 source $HOME/.bashrc
 mkdir -p $HOME/projects/go
+mkdir -p $HOME/projects/go/bin $HOME/projects/go/pkg $HOME/projects/go/src
 rm -rf /tmp/go*
 cd $HOME
 
@@ -1237,7 +1238,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.1.1-3958
+APP_VERSION=4.1.1-3963
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -1604,7 +1605,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZenTao project management tool from package
 APP_NAME=ZenTaoPMS
-APP_VERSION=11.5.2.int
+APP_VERSION=11.6.stable.int
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${APP_NAME}_${APP_VERSION}_1_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1900,7 +1901,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=8.1.1
+APP_VERSION=8.1.2
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -1981,7 +1982,7 @@ sudo apt-get install -y qownnotes
 
 # Install Tiki Wiki CMS/groupware
 APP_NAME=tiki
-APP_VERSION=19.1
+APP_VERSION=20.0
 APP_EXT=tar.gz
 DB_NAME=tikiwiki
 DB_USER=tikiwiki
@@ -2317,7 +2318,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.31
+APP_VERSION=6.4.33
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2451,7 +2452,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
 APP_NAME=XSchem
-APP_VERSION=2.9.0
+APP_VERSION=2.9.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
@@ -2550,16 +2551,16 @@ cd $HOME
 rm -rf /tmp/${APP_NAME}*
 xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 
-# Install DK Tools system utility from source
-APP_NAME=dktools
-APP_VERSION=4.22.0
+# Install DK Tools system utility suite from source
+APP_NAME=DKTools
+APP_GUI_NAME="System utility suite."
+APP_VERSION=4.24.0
 APP_EXT=tar.gz
-KERNEL_TYPE=getKernelType()
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-sudo dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo chown -R ${USER}:${USER} /tmp/${APP_NAME,,}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
@@ -2569,6 +2570,7 @@ APP_NAME=TaskCoach
 APP_VERSION=1.4.6-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+sudo apt-get install -y libbz2-dev libpng-dev libjpeg-dev libtiff-dev libdb-dev libmysqlclient-dev libwxgtk3.0-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
@@ -3086,7 +3088,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=19.07.07
+APP_VERSION=19.07.15
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -7161,7 +7163,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.55
+APP_VERSION=V1.56
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -16290,7 +16292,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
 APP_NAME=TkCVS
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.1
+APP_VERSION=9.1.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
@@ -18745,7 +18747,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Easy Cloud Shell Java-based web file manager with built-in text editor, terminal, image viewer and video player from package
 APP_NAME=Easy-Cloud-Shell
 APP_GUI_NAME="Java-based web file manager with built-in text editor, terminal, image viewer and video player."
-APP_VERSION=0.5
+APP_VERSION=0.6
 APP_EXT=tar.gz
 FILE_NAME=cloud-shell-bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/subhra74/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -18822,6 +18824,62 @@ curl -o /tmp/${FILE_NAME} -J -L https://github.com/NerdyPepper/${APP_NAME,,}/rel
 sudo cp -R /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 
+# Install Small Yet Powerful PHP Shell (SYPPS) from package
+APP_NAME=SYPPS
+APP_GUI_NAME="Small Yet Powerful PHP Shell (SYPPS)."
+APP_VERSION=N/a
+APP_EXT=php
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} ${WWW_HOME}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${FILE_NAME}.${APP_EXT}
+Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=PHP;Shell;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+xdg-open http://localhost/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Gophwr GUI gopher client built with Racket from package
+APP_NAME=Gophwr
+APP_GUI_NAME="GUI gopher client built with Racket."
+APP_VERSION=0.5.6
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-bin-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/erkin/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}/* /usr/local
+sudo ldconfig
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;Networking;
+Keywords=Gopher;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
 # Install Phlipple 3D SDL-based puzzle game from source
 APP_NAME=Phlipple
 APP_GUI_NAME="3D SDL-based puzzle game."
@@ -18836,3 +18894,98 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Hypnos Java-based minimalist music player from AppImage
+APP_NAME=Hypnos
+APP_GUI_NAME="Java-based minimalist music player."
+APP_VERSION=beta6_2019-07-14_b1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-nix-64bit-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://hypnosplayer.org/download/beta6/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=AudioVideo;Multimedia;
+Keywords=MP3;Music;Player;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install xsnow desktop decoration from Debian package
+APP_NAME=xsnow
+APP_GUI_NAME=""
+APP_VERSION=2.0.9-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Zola standalone command-line CMS and blogging tool built with Rust from package
+APP_NAME=Zola
+APP_GUI_NAME="Standalone command-line CMS and blogging tool built with Rust."
+APP_VERSION=0.8.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/getzola/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/* /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install WebChangeMonitor GUI web page change tracking/monitoriing tool from package
+APP_NAME=WebChangeMonitor
+APP_GUI_NAME="GUI web page change tracking/monitoriing tool."
+APP_VERSION=19_07
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_${APP_VERSION}
+sudo apt-get install -y libwxgtk3.0-0v5 libwxbase3.0-0v5
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/webchangemon/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/* /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME}
+sudo ln -s -f /usr/local/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;Networking;
+Keywords=Monitoring;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install muCommander Java-based dual-pane file manager from Debian package
+APP_NAME=muCommander
+APP_GUI_NAME="Java-based dual-pane file manager"
+APP_VERSION=0.9.3-3
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION//-3/}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
