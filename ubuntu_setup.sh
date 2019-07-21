@@ -18989,3 +18989,9 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${AP
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Bookworm ebook reader with support for EPUB, PDF, and MOBI formats from PPA
+APP_NAME=Bookworm
+sudo apt-add-repository -y ppa:bookworm-team/${APP_NAME,,}
+sudo apt-get update
+sudo apt-get install -y ${APP_NAME,,}
