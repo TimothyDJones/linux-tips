@@ -871,7 +871,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=8.8.0
+APP_VERSION=8.8.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -2318,7 +2318,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.33
+APP_VERSION=6.4.36
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3552,7 +3552,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Buttercup JavaScript/Electron desktop password manager from package
 APP_NAME=buttercup-desktop
-APP_VERSION=1.15.0
+APP_VERSION=1.16.2
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/buttercup/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -19029,3 +19029,9 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Bookworm ebook reader with support for EPUB, PDF, and MOBI formats from PPA
+APP_NAME=Bookworm
+sudo apt-add-repository -y ppa:bookworm-team/${APP_NAME,,}
+sudo apt-get update
+sudo apt-get install -y ${APP_NAME,,}
