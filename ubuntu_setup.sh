@@ -1069,13 +1069,14 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install Madedit-Mod text editor from Debian package
-APP_NAME=madedit-mod
-APP_VERSION=0.4.16-1
+APP_NAME=Madedit-Mod
+APP_VERSION=0.4.17-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu18.04.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}_ubuntu%2018.04
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 
 # Install IT-Edit (Integrated Terminal Editor)
 APP_NAME=it-edit
