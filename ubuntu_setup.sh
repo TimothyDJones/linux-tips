@@ -19035,3 +19035,17 @@ APP_NAME=Bookworm
 sudo apt-add-repository -y ppa:bookworm-team/${APP_NAME,,}
 sudo apt-get update
 sudo apt-get install -y ${APP_NAME,,}
+
+# Install EPR Python-based command-line EPUB reader from package
+APP_NAME=EPR
+APP_GUI_NAME="Python-based command-line EPUB reader."
+APP_VERSION=2.2.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wustho/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo python3 ./setup.py install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
