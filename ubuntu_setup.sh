@@ -19049,3 +19049,18 @@ cd /tmp/${FILE_NAME}
 sudo python3 ./setup.py install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install ClipIt GTK+ 2/3 minimalist clipboard manager from source
+APP_NAME=ClipIt
+APP_GUI_NAME="GTK+ 2/3 minimalist clipboard manager."
+APP_VERSION=1.4.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtk2.0-dev xdotool autotool intltool
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/CristianHenzel/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}
+./autogen.sh && ./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
