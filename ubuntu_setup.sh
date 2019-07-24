@@ -19065,3 +19065,19 @@ cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}
 ./autogen.sh && ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install shc (Shell Script Compiler) tool that compiles shell scripts to C code from source
+APP_NAME=shc
+APP_GUI_NAME="Tool that compiles shell scripts to C code."
+APP_VERSION=4.0.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtk2.0-dev xdotool autotool intltool
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/neurobin/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p m4
+./autogen.sh && ./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
