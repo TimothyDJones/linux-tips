@@ -19081,3 +19081,22 @@ mkdir -p m4
 ./autogen.sh && ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Tektronix 4010, 4013, 4014 and 4015 Storage Tube Terminal Emulator from source
+APP_NAME=Tek4010
+APP_GUI_NAME="Tektronix 4010, 4013, 4014 and 4015 Storage Tube Terminal Emulator."
+APP_VERSION=1.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y libgtk-3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rricharz/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo rm -rf ${APP_NAME,,}
+make
+cd /tmp
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
