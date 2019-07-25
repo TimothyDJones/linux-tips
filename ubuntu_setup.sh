@@ -19100,3 +19100,21 @@ sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Terminology terminal emulator built on Enlightenment framework from source
+APP_NAME=Terminology
+APP_GUI_NAME="Terminal emulator built on Enlightenment framework."
+APP_VERSION=1.5.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libefl-all-dev meson
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/billiob/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./autogen.sh && cd build && ninja && sudo ninja install
+cd /tmp
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
