@@ -19168,3 +19168,20 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://rastersoft.com/descargas/${APP
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Terminus GTK3 terminal with support for tiled sub-terminals from Debian package
+APP_NAME=Terminus
+APP_GUI_NAME="GTK3 terminal with support for tiled sub-terminals."
+APP_VERSION=1.5.0
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di|co)$ ]]; then  # 19.04, 18.10
+	DISTRIB_CODENAME=disco
+else
+	DISTRIB_CODENAME=bionic
+fi
+FILE_NAME=${APP_NAME,,}-${DISTRIB_CODENAME}_${APP_VERSION}-ubuntu1_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://rastersoft.com/descargas/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
