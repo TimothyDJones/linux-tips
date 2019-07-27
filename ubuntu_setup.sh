@@ -390,7 +390,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.84.1.0-1
+APP_VERSION=1.84.4.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -1069,13 +1069,14 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install Madedit-Mod text editor from Debian package
-APP_NAME=madedit-mod
-APP_VERSION=0.4.16-1
+APP_NAME=Madedit-Mod
+APP_VERSION=0.4.17-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu18.04.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}_ubuntu%2018.04
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 
 # Install IT-Edit (Integrated Terminal Editor)
 APP_NAME=it-edit
@@ -3784,7 +3785,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 
 # Install Admidio organizational management tool
 APP_NAME=admidio
-APP_VERSION=3.3.10
+APP_VERSION=3.3.11
 APP_EXT=zip
 DB_NAME=admidio
 DB_USER=admidio
@@ -5171,7 +5172,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install pgweb cross-platform client for PostgreSQL databases 
 APP_NAME=pgweb
 APP_GUI_NAME="Cross-platform client for PostgreSQL databases"
-APP_VERSION=0.10.0
+APP_VERSION=0.11.3
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux_amd64
@@ -7861,7 +7862,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Java_console cross-platform Java shell from source
 APP_NAME=Java_console
 APP_GUI_NAME="Cross-platform Java shell."
-APP_VERSION=2.1.2
+APP_VERSION=2.2.1
 APP_EXT=tar.gz
 sudo apt-get install -y openjdk-8-jdk
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/javaconsole222/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -10474,7 +10475,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install ElCalc minimalist cross-platform desktop calculator built with Electron from package
 APP_NAME=ElCalc
 APP_GUI_NAME="Minimalist cross-platform desktop calculator built with Electron."
-APP_VERSION=5.0.0
+APP_VERSION=6.0.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -16292,7 +16293,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
 APP_NAME=TkCVS
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.1.3
+APP_VERSION=9.1.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
@@ -18162,9 +18163,9 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Hypernomicon Java-based research tracking database with built-in PDF viewer from package
 APP_NAME=Hypernomicon
 APP_GUI_NAME="Java-based research tracking database with built-in PDF viewer."
-APP_VERSION=1.14
+APP_VERSION=1.15.1
 APP_EXT=sh
-FILE_NAME=${APP_NAME}_linux_${APP_VERSION}
+FILE_NAME=${APP_NAME}_linux_${APP_VERSION//./_}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo sh /tmp/${FILE_NAME}.${APP_EXT} -c -q -dir /opt/${APP_NAME,,} -overwrite
 
@@ -18990,8 +18991,130 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
+# Install VCT (Video Converter & Transcoder) .NET-based cross-platform GUI front-end for ffmpeg from package
+# Must install Mono binaries (see above) before installing VCT.
+APP_NAME=VCT
+APP_GUI_NAME=".NET-based cross-platform GUI front-end for ffmpeg."
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_Linux_mono_binary
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/videoconvertertranscoder/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/VCT_mono/* /opt/${APP_NAME,,}
+sudo chmod 777 -R /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME}.exe
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME}.exe
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Multimedia;Audio;Video;
+Keywords=FFMpeg;Converter;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
 # Install Bookworm ebook reader with support for EPUB, PDF, and MOBI formats from PPA
 APP_NAME=Bookworm
 sudo apt-add-repository -y ppa:bookworm-team/${APP_NAME,,}
 sudo apt-get update
 sudo apt-get install -y ${APP_NAME,,}
+
+# Install EPR Python-based command-line EPUB reader from package
+APP_NAME=EPR
+APP_GUI_NAME="Python-based command-line EPUB reader."
+APP_VERSION=2.2.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wustho/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo python3 ./setup.py install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install ClipIt GTK+ 2/3 minimalist clipboard manager from source
+APP_NAME=ClipIt
+APP_GUI_NAME="GTK+ 2/3 minimalist clipboard manager."
+APP_VERSION=1.4.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtk2.0-dev xdotool autotool intltool
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/CristianHenzel/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}
+./autogen.sh && ./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install shc (Shell Script Compiler) tool that compiles shell scripts to C code from source
+APP_NAME=shc
+APP_GUI_NAME="Tool that compiles shell scripts to C code."
+APP_VERSION=4.0.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgtk2.0-dev xdotool autotool intltool
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/neurobin/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p m4
+./autogen.sh && ./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Tektronix 4010, 4013, 4014 and 4015 Storage Tube Terminal Emulator from source
+APP_NAME=Tek4010
+APP_GUI_NAME="Tektronix 4010, 4013, 4014 and 4015 Storage Tube Terminal Emulator."
+APP_VERSION=1.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y libgtk-3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rricharz/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo rm -rf ${APP_NAME,,}
+make
+cd /tmp
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Terminology terminal emulator built on Enlightenment framework from source
+APP_NAME=Terminology
+APP_GUI_NAME="Terminal emulator built on Enlightenment framework."
+APP_VERSION=1.5.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libefl-all-dev meson
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/billiob/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./autogen.sh && cd build && ninja && sudo ninja install
+cd /tmp
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
