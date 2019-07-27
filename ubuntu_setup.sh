@@ -19138,3 +19138,16 @@ sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install FileCtor Javascript-based file inspector with interactive console from Debian package
+APP_NAME=FileCtor
+APP_GUI_NAME="Javascript-based file inspector with interactive console."
+APP_VERSION=1.1.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_EXT}-x64
+curl -o /tmp/${FILE_NAME}.zip -J -L https://github.com/tomaschyly/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.zip
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.zip
+sudo gdebi -n /tmp/${FILE_NAME}/tch-${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
