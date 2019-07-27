@@ -19151,3 +19151,20 @@ dtrx -n /tmp/${FILE_NAME}.zip
 sudo gdebi -n /tmp/${FILE_NAME}/tch-${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install DevedeNG Python-based video DVD and CD (VCD, sVCD or CVD) creator from Debian package
+APP_NAME=DevedeNG
+APP_GUI_NAME="Python-based video DVD and CD (VCD, sVCD or CVD) creator."
+APP_VERSION=4.15.0
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di|co)$ ]]; then  # 19.04, 18.10
+	DISTRIB_CODENAME=cosmic
+else
+	DISTRIB_CODENAME=bionic
+fi
+FILE_NAME=python3-${APP_NAME,,}-${DISTRIB_CODENAME}_${APP_VERSION}-ubuntu1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://rastersoft.com/descargas/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
