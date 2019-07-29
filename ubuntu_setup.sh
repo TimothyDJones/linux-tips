@@ -9652,7 +9652,7 @@ rm -rf /tmp/${FILE_NAME}*
 # Install Everest cross-platform JavaFX-based REST API client from package
 APP_NAME=Everest
 APP_GUI_NAME="Cross-platform JavaFX-based REST API client."
-APP_VERSION=Alpha-1.0
+APP_VERSION=Alpha-1.3
 APP_EXT=jar
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/RohitAwate/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
