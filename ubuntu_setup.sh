@@ -19203,3 +19203,15 @@ curl -o /tmp/${APP_NAME,,}-common_${APP_VERSION}~${DISTRIB_CODENAME}ppa1_all.${A
 sudo dpkg -i /tmp/${FILE_NAME}.${APP_EXT} /tmp/${APP_NAME,,}-common_${APP_VERSION}~${DISTRIB_CODENAME}ppa1_all.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Guymager forensic disk imaging tool from Debian package
+APP_NAME=Guymager
+APP_GUI_NAME="Forensic disk imaging tool."
+APP_VERSION=0.8.11-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-beta_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/libguytools2_2.1.0-1_${KERNEL_TYPE}.${APP_EXT} -J -L https://downloads.sourceforge.net/libguytools/libguytools2_2.1.0-1_${KERNEL_TYPE}.${APP_EXT}
+sudo dpkg -i /tmp/${FILE_NAME}.${APP_EXT} /tmp/libguytools2_2.1.0-1_${KERNEL_TYPE}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
