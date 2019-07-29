@@ -19185,3 +19185,21 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://rastersoft.com/descargas/${APP
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install gImageReader GUI front-end for Tesseract OCR tool from Debian package
+APP_NAME=gImageReader
+APP_GUI_NAME="GUI front-end for Tesseract OCR tool."
+APP_VERSION=3.3.1-1
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di|co)$ ]]; then  # 19.04, 18.10
+	DISTRIB_CODENAME=disco
+else
+	DISTRIB_CODENAME=bionic
+fi
+FILE_NAME=${APP_NAME,,}-gtk_${APP_VERSION}~${DISTRIB_CODENAME}ppa1_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~sandromani/+archive/ubuntu/${APP_NAME,,}/+files/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}-common_${APP_VERSION}~${DISTRIB_CODENAME}ppa1_all.${APP_EXT} -J -L https://launchpad.net/~sandromani/+archive/ubuntu/${APP_NAME,,}/+files/${APP_NAME,,}-common_${APP_VERSION}~${DISTRIB_CODENAME}ppa1_all.${APP_EXT}
+sudo dpkg -i /tmp/${FILE_NAME}.${APP_EXT} /tmp/${APP_NAME,,}-common_${APP_VERSION}~${DISTRIB_CODENAME}ppa1_all.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
