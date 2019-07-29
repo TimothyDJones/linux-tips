@@ -19201,6 +19201,7 @@ FILE_NAME=${APP_NAME,,}-gtk_${APP_VERSION}~${DISTRIB_CODENAME}ppa1_${KERNEL_TYPE
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~sandromani/+archive/ubuntu/${APP_NAME,,}/+files/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}-common_${APP_VERSION}~${DISTRIB_CODENAME}ppa1_all.${APP_EXT} -J -L https://launchpad.net/~sandromani/+archive/ubuntu/${APP_NAME,,}/+files/${APP_NAME,,}-common_${APP_VERSION}~${DISTRIB_CODENAME}ppa1_all.${APP_EXT}
 sudo dpkg -i /tmp/${FILE_NAME}.${APP_EXT} /tmp/${APP_NAME,,}-common_${APP_VERSION}~${DISTRIB_CODENAME}ppa1_all.${APP_EXT}
+sudo apt-get --fix-broken install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
@@ -19213,6 +19214,7 @@ FILE_NAME=${APP_NAME,,}-beta_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/libguytools2_2.1.0-1_${KERNEL_TYPE}.${APP_EXT} -J -L https://downloads.sourceforge.net/libguytools/libguytools2_2.1.0-1_${KERNEL_TYPE}.${APP_EXT}
 sudo dpkg -i /tmp/${FILE_NAME}.${APP_EXT} /tmp/libguytools2_2.1.0-1_${KERNEL_TYPE}.${APP_EXT}
+sudo apt-get --fix-broken install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
