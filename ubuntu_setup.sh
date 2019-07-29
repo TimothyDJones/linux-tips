@@ -19215,3 +19215,14 @@ curl -o /tmp/libguytools2_2.1.0-1_${KERNEL_TYPE}.${APP_EXT} -J -L https://downlo
 sudo dpkg -i /tmp/${FILE_NAME}.${APP_EXT} /tmp/libguytools2_2.1.0-1_${KERNEL_TYPE}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install LCXterm ncurses-based terminal emulator from Debian package
+APP_NAME=LCXterm
+APP_GUI_NAME="ncurses-based terminal emulator."
+APP_VERSION=0.9-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
