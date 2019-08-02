@@ -19277,3 +19277,41 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -R /tmp/${FILE_NAME}/* /usr/local/bin
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install Chess Tournaments cross-platform Java-based chess tournament organization tool from package
+APP_NAME="Chess Tournaments"
+APP_GUI_NAME="Cross-platform Java-based chess tournament organization tool."
+APP_VERSION=2.0
+APP_EXT=jar
+FILE_NAME=${APP_NAME// /%20}%20${APP_VERSION}
+DIR_NAME=${APP_NAME// /}
+DIR_NAME=${DIR_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${DIR_NAME}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${DIR_NAME}
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /opt/${DIR_NAME}
+cat > /tmp/${DIR_NAME} << EOF
+#! /bin/sh
+cd /opt/${DIR_NAME}
+PATH=/opt/${DIR_NAME}:\$PATH; export PATH
+java -jar /opt/${DIR_NAME}/${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${DIR_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${DIR_NAME}
+cat > /tmp/${FILE_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${DIR_NAME}
+Exec=java -jar /opt/${DIR_NAME}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Entertainment;Games;
+Keywords=Chess;Tournament;
+EOF
+sudo mv /tmp/${DIR_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${FILE_NAME}*
