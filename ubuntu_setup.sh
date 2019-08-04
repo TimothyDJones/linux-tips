@@ -19314,4 +19314,64 @@ Keywords=Chess;Tournament;
 EOF
 sudo mv /tmp/${DIR_NAME}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${FILE_NAME}*
+cat >> $HOME/.config/vim_sh_config << EOF
+# Enable 256 color support in terminal
+export TERM=xterm-256color
+# Use Vim instead of Vi, particularly for Git
+export VISUAL=vim
+export EDITOR=vim
+# Make 'vi' a function that calls Vim
+vi() {
+    vim "$@"
+}
+EOF
+echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
+# Enable 256 color support in terminal
+export TERM=xterm-256color
+# Use Vim instead of Vi, particularly for Git
+export VISUAL=vim
+export EDITOR=vim
+# Make 'vi' a function that calls Vim
+vi() {
+    vim "$@"
+}
+EOF
+echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
+# Enable 256 color support in terminal
+export TERM=xterm-256color
+# Use Vim instead of Vi, particularly for Git
+export VISUAL=vim
+export EDITOR=vim
+# Make 'vi' a function that calls Vim
+vi() {
+    vim "$@"
+}
+EOF
+echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
+# Enable 256 color support in terminal
+export TERM=xterm-256color
+# Use Vim instead of Vi, particularly for Git
+export VISUAL=vim
+export EDITOR=vim
+# Make 'vi' a function that calls Vim
+vi() {
+    vim "$@"
+}
+EOF
+echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	rm -rf /tmp/${FILE_NAME}*
+
+# Install StarCalendar international calendar from Debian package
+APP_NAME=StarCal
+APP_GUI_NAME="International calendar."
+APP_VERSION=3.1.4-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}3_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
