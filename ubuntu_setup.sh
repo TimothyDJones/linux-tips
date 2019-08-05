@@ -1472,7 +1472,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Worker File Manager (For AVFS support install AVFS above.)
 APP_NAME=worker
-APP_VERSION=4.0.0
+APP_VERSION=4.0.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y liblua5.3-dev
@@ -4104,7 +4104,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JSoko Java-based Sokoban puzzle game from package
 APP_NAME=JSoko
-APP_VERSION=1.85
+APP_VERSION=1.86
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}applet/${APP_NAME}_${APP_VERSION}_linux.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -10939,7 +10939,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install lf cross-platform, Go-based file manager for the shell/console from package
 APP_NAME=lf
 APP_GUI_NAME="Cross-platform, Go-based file manager for the shell/console."
-APP_VERSION=r6
+APP_VERSION=r13
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
@@ -19314,4 +19314,64 @@ Keywords=Chess;Tournament;
 EOF
 sudo mv /tmp/${DIR_NAME}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${FILE_NAME}*
+cat >> $HOME/.config/vim_sh_config << EOF
+# Enable 256 color support in terminal
+export TERM=xterm-256color
+# Use Vim instead of Vi, particularly for Git
+export VISUAL=vim
+export EDITOR=vim
+# Make 'vi' a function that calls Vim
+vi() {
+    vim "$@"
+}
+EOF
+echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
+# Enable 256 color support in terminal
+export TERM=xterm-256color
+# Use Vim instead of Vi, particularly for Git
+export VISUAL=vim
+export EDITOR=vim
+# Make 'vi' a function that calls Vim
+vi() {
+    vim "$@"
+}
+EOF
+echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
+# Enable 256 color support in terminal
+export TERM=xterm-256color
+# Use Vim instead of Vi, particularly for Git
+export VISUAL=vim
+export EDITOR=vim
+# Make 'vi' a function that calls Vim
+vi() {
+    vim "$@"
+}
+EOF
+echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
+# Enable 256 color support in terminal
+export TERM=xterm-256color
+# Use Vim instead of Vi, particularly for Git
+export VISUAL=vim
+export EDITOR=vim
+# Make 'vi' a function that calls Vim
+vi() {
+    vim "$@"
+}
+EOF
+echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	rm -rf /tmp/${FILE_NAME}*
+
+# Install StarCalendar international calendar from Debian package
+APP_NAME=StarCal
+APP_GUI_NAME="International calendar."
+APP_VERSION=3.1.4-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}3_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
