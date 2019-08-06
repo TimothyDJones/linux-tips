@@ -71,20 +71,6 @@ sudo apt-add-repository -y ppa:ondrej/php
 # Add Vim 8.x package repository
 # https://itsfoss.com/vim-8-release-install/
 sudo apt-add-repository -y ppa:jonathonf/vim
-# Add some settings to .bashrc to use Vim instead of Vi
-cat >> $HOME/.config/vim_sh_config << EOF
-# Enable 256 color support in terminal
-export TERM=xterm-256color
-# Use Vim instead of Vi, particularly for Git
-export VISUAL=vim
-export EDITOR=vim
-# Make 'vi' a function that calls Vim
-vi() {
-    vim "$@"
-}
-EOF
-echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
-source $HOME/.bashrc	# Reload Bash configuration
 
 # Add NodeJS package repository
 # https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
@@ -99,6 +85,21 @@ sudo apt-get install -y vim vim-gtk3 vim-common \
 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update && sudo apt-get install -y yarn
+
+# Add some settings to .bashrc to use Vim instead of Vi
+cat >> $HOME/.config/vim_sh_config << EOF
+# Enable 256 color support in terminal
+export TERM=xterm-256color
+# Use Vim instead of Vi, particularly for Git
+export VISUAL=vim
+export EDITOR=vim
+# Make 'vi' a function that calls Vim
+vi() {
+    vim "$@"
+}
+EOF
+echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
 
 # Install MongoDB from official repository
 # https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
@@ -19314,55 +19315,6 @@ Keywords=Chess;Tournament;
 EOF
 sudo mv /tmp/${DIR_NAME}.desktop /usr/share/applications/
 cd $HOME
-cat >> $HOME/.config/vim_sh_config << EOF
-# Enable 256 color support in terminal
-export TERM=xterm-256color
-# Use Vim instead of Vi, particularly for Git
-export VISUAL=vim
-export EDITOR=vim
-# Make 'vi' a function that calls Vim
-vi() {
-    vim "$@"
-}
-EOF
-echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
-source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
-# Enable 256 color support in terminal
-export TERM=xterm-256color
-# Use Vim instead of Vi, particularly for Git
-export VISUAL=vim
-export EDITOR=vim
-# Make 'vi' a function that calls Vim
-vi() {
-    vim "$@"
-}
-EOF
-echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
-source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
-# Enable 256 color support in terminal
-export TERM=xterm-256color
-# Use Vim instead of Vi, particularly for Git
-export VISUAL=vim
-export EDITOR=vim
-# Make 'vi' a function that calls Vim
-vi() {
-    vim "$@"
-}
-EOF
-echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
-source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
-# Enable 256 color support in terminal
-export TERM=xterm-256color
-# Use Vim instead of Vi, particularly for Git
-export VISUAL=vim
-export EDITOR=vim
-# Make 'vi' a function that calls Vim
-vi() {
-    vim "$@"
-}
-EOF
-echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
-source $HOME/.bashrc	rm -rf /tmp/${FILE_NAME}*
 
 # Install StarCalendar international calendar from Debian package
 APP_NAME=StarCal
