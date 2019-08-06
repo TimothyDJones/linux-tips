@@ -19327,3 +19327,37 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
+# Install JE Editor minimalist Java text editor from package
+APP_NAME="JE Editor"
+APP_GUI_NAME="Minimalist Java text editor."
+APP_VERSION=4.0
+APP_EXT=jar
+FILE_NAME=je
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/je-java/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${FILE_NAME}
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /opt/${FILE_NAME}
+cat > /tmp/${FILE_NAME} << EOF
+#! /bin/sh
+cd /opt/${FILE_NAME}
+PATH=/opt/${FILE_NAME}:\$PATH; export PATH
+java -jar /opt/${FILE_NAME}/${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cat > /tmp/${FILE_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${FILE_NAME}
+Exec=java -jar /opt/${FILE_NAME}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Text;Editor;
+EOF
+sudo mv /tmp/${FILE_NAME}.desktop /usr/share/applications/
+cd $HOME
