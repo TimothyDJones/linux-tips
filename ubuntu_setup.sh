@@ -19381,3 +19381,14 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Graviton Electron-based minimalist code editor from Debian package
+APP_NAME=Graviton
+APP_GUI_NAME="Electron-based minimalist code editor."
+APP_VERSION=1.0.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_VERSION}-${KERNEL_TYPE}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}-Code-Editor/${APP_NAME}-App/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
