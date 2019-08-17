@@ -19392,3 +19392,15 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}-Code-E
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install mkcert Golang tool for creating SSL certificates for localhost from package
+APP_NAME=mkcert
+APP_GUI_NAME="Golang tool for creating SSL certificates for localhost."
+APP_VERSION=1.4.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/FiloSottile/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo mv /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
