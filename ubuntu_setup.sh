@@ -71,20 +71,6 @@ sudo apt-add-repository -y ppa:ondrej/php
 # Add Vim 8.x package repository
 # https://itsfoss.com/vim-8-release-install/
 sudo apt-add-repository -y ppa:jonathonf/vim
-# Add some settings to .bashrc to use Vim instead of Vi
-cat >> $HOME/.config/vim_sh_config << EOF
-# Enable 256 color support in terminal
-export TERM=xterm-256color
-# Use Vim instead of Vi, particularly for Git
-export VISUAL=vim
-export EDITOR=vim
-# Make 'vi' a function that calls Vim
-vi() {
-    vim "$@"
-}
-EOF
-echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
-source $HOME/.bashrc	# Reload Bash configuration
 
 # Add NodeJS package repository
 # https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
@@ -99,6 +85,21 @@ sudo apt-get install -y vim vim-gtk3 vim-common \
 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update && sudo apt-get install -y yarn
+
+# Add some settings to .bashrc to use Vim instead of Vi
+cat >> $HOME/.config/vim_sh_config << EOF
+# Enable 256 color support in terminal
+export TERM=xterm-256color
+# Use Vim instead of Vi, particularly for Git
+export VISUAL=vim
+export EDITOR=vim
+# Make 'vi' a function that calls Vim
+vi() {
+    vim "$@"
+}
+EOF
+echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
 
 # Install MongoDB from official repository
 # https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
@@ -871,7 +872,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=8.8.1
+APP_VERSION=8.8.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1136,7 +1137,7 @@ sudo apt-get install -y quiterss
 # Install Makagiga Java-based PIM/RSS feed reader from package
 APP_NAME=Makagiga
 APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
-APP_VERSION=6.6
+APP_VERSION=6.7.1-beta
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1239,7 +1240,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.1.1-3965
+APP_VERSION=4.1.1-3967
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -1902,7 +1903,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=8.1.3
+APP_VERSION=8.1.4
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2319,7 +2320,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.36
+APP_VERSION=6.4.38
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2555,7 +2556,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 # Install DK Tools system utility suite from source
 APP_NAME=DKTools
 APP_GUI_NAME="System utility suite."
-APP_VERSION=4.24.0
+APP_VERSION=4.24.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -3737,7 +3738,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Open Limbas PHP database utility
 APP_NAME=openlimbas
-APP_VERSION=3.5.12.606
+APP_VERSION=3.6.12.694
 APP_EXT=tar.gz
 DB_NAME=limbas
 DB_USER=limbas
@@ -4113,7 +4114,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.13.0-1
+APP_VERSION=1.14.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -5032,7 +5033,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install EJE (Everyone's Java Editor) minimalist Java IDE
 APP_NAME=EJE
 APP_GUI_NAME="EJE (Everyone's Java Editor)"
-APP_VERSION=3.5.2
+APP_VERSION=3.5.3
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
 cd /tmp
@@ -5543,12 +5544,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 
-# Install FinalCrypt Java-based file encryption utility from package
+# Install FinalCrypt Java-based file encryption utility from Debian package
 APP_NAME=FinalCrypt
-APP_VERSION=Linux_x86_64_Debian_Based
+APP_VERSION=5.3.0
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_linux_x86_64_debian_based
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
@@ -6571,10 +6573,10 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install DB Tarzan Java-based database client from package
+# Install DB Tarzan Java-based database client from Debian package
 APP_NAME=DBTarzan
 APP_GUI_NAME="Java-based database client."
-APP_VERSION=1.16
+APP_VERSION=1.20
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -7142,7 +7144,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install UNA social-media community management web-based tool (PHP/MySQL)
 APP_NAME=UNA
-APP_VERSION=10.0.0-B2
+APP_VERSION=10.0.0-RC1
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -7164,7 +7166,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.61
+APP_VERSION=V1.65
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -7862,7 +7864,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Java_console cross-platform Java shell from source
 APP_NAME=Java_console
 APP_GUI_NAME="Cross-platform Java shell."
-APP_VERSION=2.2.1
+APP_VERSION=2.2.2
 APP_EXT=tar.gz
 sudo apt-get install -y openjdk-8-jdk
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/javaconsole222/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -9306,7 +9308,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install LiVES non-linear video editor from source
 APP_NAME=LiVES
 APP_GUI_NAME="Non-linear video editor."
-APP_VERSION=2.8.9
+APP_VERSION=3.0.0
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y imagemagick mplayer libjpeg62-dev sox libmjpegtools-dev lame ffmpeg libgtk-3-dev libgdk-pixbuf2.0-dev libjack-dev libpulse-dev
@@ -10254,7 +10256,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Battle for Wesnoth high-fantasy themed adventure game from source
 APP_NAME=Wesnoth
 APP_GUI_NAME="High-fantasy themed adventure game."
-APP_VERSION=1.14.7
+APP_VERSION=1.15.0
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
@@ -16219,21 +16221,6 @@ FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
-# Install StarCalendar Python-based simple calendar tool from package
-# Note: Install shell script creates Debian package used for installation.
-APP_NAME=StarCal
-APP_GUI_NAME="Python-based simple calendar tool."
-APP_VERSION=3.0.7
-APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
-sudo /tmp/${FILE_NAME}/install-ubuntu
-cd $HOME
-sudo rm -rf /tmp/${FILE_NAME}*
-
 # Install ImLab cross-platform scientific image processing tool from package
 APP_NAME=ImLab
 APP_GUI_NAME="Cross-platform scientific image processing tool."
@@ -16313,7 +16300,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
 APP_NAME=TkCVS
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.1.6
+APP_VERSION=9.1.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
@@ -17670,9 +17657,9 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Apricot Java-based database ERD, design, and reverse-engineering tool from package
 APP_NAME=ApricotDB
 APP_GUI_NAME="Java-based database ERD, design, and reverse-engineering tool."
-APP_VERSION=0.4
-APP_EXT=zip
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-all-bin
+APP_VERSION=0.6
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64
 sudo apt-get install -y openjdk-11-jre openjfx
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/apricot-db/${FILE_NAME}.${APP_EXT}
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -17737,7 +17724,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Mattermost cross-platform, Electron-based workplace messaging alternative to Slack from Debian package
 APP_NAME=Mattermost
 APP_GUI_NAME="Cross-platform, Electron-based workplace messaging alternative to Slack."
-APP_VERSION=4.2.1
+APP_VERSION=4.2.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-desktop-${APP_VERSION}-linux-${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://releases.mattermost.com/desktop/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -19314,55 +19301,6 @@ Keywords=Chess;Tournament;
 EOF
 sudo mv /tmp/${DIR_NAME}.desktop /usr/share/applications/
 cd $HOME
-cat >> $HOME/.config/vim_sh_config << EOF
-# Enable 256 color support in terminal
-export TERM=xterm-256color
-# Use Vim instead of Vi, particularly for Git
-export VISUAL=vim
-export EDITOR=vim
-# Make 'vi' a function that calls Vim
-vi() {
-    vim "$@"
-}
-EOF
-echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
-source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
-# Enable 256 color support in terminal
-export TERM=xterm-256color
-# Use Vim instead of Vi, particularly for Git
-export VISUAL=vim
-export EDITOR=vim
-# Make 'vi' a function that calls Vim
-vi() {
-    vim "$@"
-}
-EOF
-echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
-source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
-# Enable 256 color support in terminal
-export TERM=xterm-256color
-# Use Vim instead of Vi, particularly for Git
-export VISUAL=vim
-export EDITOR=vim
-# Make 'vi' a function that calls Vim
-vi() {
-    vim "$@"
-}
-EOF
-echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
-source $HOME/.bashrc	cat >> $HOME/.config/vim_sh_config << EOF
-# Enable 256 color support in terminal
-export TERM=xterm-256color
-# Use Vim instead of Vi, particularly for Git
-export VISUAL=vim
-export EDITOR=vim
-# Make 'vi' a function that calls Vim
-vi() {
-    vim "$@"
-}
-EOF
-echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
-source $HOME/.bashrc	rm -rf /tmp/${FILE_NAME}*
 
 # Install StarCalendar international calendar from Debian package
 APP_NAME=StarCal
@@ -19375,3 +19313,82 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
+# Install JE Editor minimalist Java text editor from package
+APP_NAME="JE Editor"
+APP_GUI_NAME="Minimalist Java text editor."
+APP_VERSION=4.0
+APP_EXT=jar
+FILE_NAME=je
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/je-java/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${FILE_NAME}
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /opt/${FILE_NAME}
+cat > /tmp/${FILE_NAME} << EOF
+#! /bin/sh
+cd /opt/${FILE_NAME}
+PATH=/opt/${FILE_NAME}:\$PATH; export PATH
+java -jar /opt/${FILE_NAME}/${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cat > /tmp/${FILE_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${FILE_NAME}
+Exec=java -jar /opt/${FILE_NAME}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=Text;Editor;
+EOF
+sudo mv /tmp/${FILE_NAME}.desktop /usr/share/applications/
+cd $HOME
+
+# Install ogl pretty Git log printer command-line tool from package
+APP_NAME=ogl
+APP_GUI_NAME="Pretty Git log printer command-line tool from package."
+APP_VERSION=0.0.1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/onilton/${APP_NAME,,}/releases/download/v${APP_VERSION}/ogl
+sudo cp -R /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install rmw (ReMove to Waste) command-line tool for sending files to trash can from Debian package
+APP_NAME=rmw
+APP_GUI_NAME="command-line tool for sending files to trash can."
+APP_VERSION=0.7.04-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Debreate Debian package builder tool from Debian package
+APP_NAME=Debreate
+APP_GUI_NAME="Debian package builder tool."
+APP_VERSION=0.7.next16-2
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Graviton Electron-based minimalist code editor from Debian package
+APP_NAME=Graviton
+APP_GUI_NAME="Electron-based minimalist code editor."
+APP_VERSION=1.0.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_VERSION}-${KERNEL_TYPE}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}-Code-Editor/${APP_NAME}-App/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
