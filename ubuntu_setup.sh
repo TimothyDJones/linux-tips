@@ -19418,3 +19418,42 @@ cd /tmp/${FILE_NAME}
 make all && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install SQL Dynamite cross-platform Mono/.NET-based GUI database client from package
+APP_NAME="SQL Dynamite"
+APP_GUI_NAME="Cross-platform Mono/.NET-based GUI database client."
+APP_VERSION=2.1.5.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME// /%20}%20${APP_VERSION}%20"(Linux)"
+PATH_NAME=${APP_NAME,,}
+PATH_NAME=${PATH_NAME// /-}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${PATH_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${PATH_NAME}
+sudo cp -R /tmp/${FILE_NAME}/SQL*/* /opt/${PATH_NAME}
+cat > /tmp/${PATH_NAME} << EOF
+#! /bin/sh
+cd /opt/${PATH_NAME}
+PATH=/opt/${PATH_NAME}:\$PATH; export PATH
+mono /opt/${PATH_NAME}/SqlDynamiteX.exe
+cd $HOME
+EOF
+sudo mv /tmp/${PATH_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${PATH_NAME}
+cat > /tmp/${PATH_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${PATH_NAME}
+Exec=mono /opt/${PATH_NAME}/SqlDynamiteX.exe
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=SQL;Database;Editor;
+EOF
+sudo mv /tmp/${PATH_NAME}.desktop /usr/share/applications/
+cd $HOME
