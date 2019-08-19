@@ -19404,3 +19404,17 @@ sudo mv /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install lr file listing tool which includes the best features of ls(1), find(1), stat(1) and du(1) from source
+APP_NAME=lr
+APP_GUI_NAME="File listing tool which includes the best features of ls(1), find(1), stat(1) and du(1)."
+APP_VERSION=1.4.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://codeload.github.com/leahneukirchen/${APP_NAME,,}/${APP_EXT}/v${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make all && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
