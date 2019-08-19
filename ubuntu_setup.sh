@@ -3090,7 +3090,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=19.08.05
+APP_VERSION=19.08.16
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -19392,3 +19392,29 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}-Code-E
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install mkcert Golang tool for creating SSL certificates for localhost from package
+APP_NAME=mkcert
+APP_GUI_NAME="Golang tool for creating SSL certificates for localhost."
+APP_VERSION=1.4.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/FiloSottile/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo mv /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
+
+# Install lr file listing tool which includes the best features of ls(1), find(1), stat(1) and du(1) from source
+APP_NAME=lr
+APP_GUI_NAME="File listing tool which includes the best features of ls(1), find(1), stat(1) and du(1)."
+APP_VERSION=1.4.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://codeload.github.com/leahneukirchen/${APP_NAME,,}/${APP_EXT}/v${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make all && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
