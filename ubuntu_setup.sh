@@ -3349,15 +3349,6 @@ cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Delta Hex Editor Java-based hexadecimal editor from package
-APP_NAME=deltahex-editor
-APP_VERSION=0.1.3
-APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/deltahex/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/${APP_NAME,,}
-
 # Install PDF Split and Merge (PDFsam) editor from package
 APP_NAME=PDFSam
 APP_VERSION=4.0.3-1
@@ -19499,6 +19490,17 @@ cd $HOME
 APP_NAME=Gramps
 APP_GUI_NAME="Cross-platform desktop genealogy program with GEDCOM support."
 APP_VERSION=5.0.2-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install BinEd cross-platform Java-based binary/hexadecimal viewer/editor from Debian package
+APP_NAME=BinEd
+APP_GUI_NAME="Cross-platform Java-based binary/hexadecimal viewer/editor."
+APP_VERSION=0.2.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
