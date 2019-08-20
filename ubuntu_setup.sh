@@ -16274,7 +16274,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Vido Python GUI video/audio downloader frontend for youtube-dl from Debian package
 APP_NAME=Vido
 APP_GUI_NAME="Python GUI video/audio downloader frontend for youtube-dl."
-APP_VERSION=1.0.5
+APP_VERSION=1.1.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}%20${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
