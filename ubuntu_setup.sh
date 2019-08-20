@@ -1881,7 +1881,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install WebCollab web-based project management tool
 APP_NAME=webcollab
-APP_VERSION=3.45
+APP_VERSION=3.46
 APP_EXT=tar.gz
 DB_NAME=webcollab
 DB_USER=webcollab
