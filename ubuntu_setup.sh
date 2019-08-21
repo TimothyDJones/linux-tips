@@ -12078,9 +12078,17 @@ sudo apt-get install -y bouml
 # Install Cmajor C#-style programming language and IDE from package
 APP_NAME=Cmajor
 APP_GUI_NAME="C#-style programming language and IDE."
-APP_VERSION=3.1.0
+APP_VERSION=3.2.0
 APP_EXT=tar.bz2
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-14.04-x86_64-binaries
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi|xe|ya|ze|ar)$ ]]; then  # 14.04, 14.10, 15.04, 15.10, 16.04, 16.10, 17.04, 17.10
+	DISTRIB_RELEASE=14.04
+	APP_VERSION=3.1.0
+else
+	DISTRIB_RELEASE=18.04
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-${DISTRIB_RELEASE}-x86_64-binaries
+sudo apt-get install -y libboost-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.bz2
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
