@@ -4191,7 +4191,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install QtPass GUI for pass, the standard Unix password manager from source
 APP_NAME=QtPass
-APP_VERSION=1.2.1
+APP_VERSION=1.3.0
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://github.com/IJHack/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
 cd /tmp
