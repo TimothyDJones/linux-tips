@@ -19577,3 +19577,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install WTF cross-platform terminal-based dashboard utility from package
+APP_NAME=WTF
+APP_GUI_NAME="Cross-platform terminal-based dashboard utility."
+APP_VERSION=0.20.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wtfutil/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/wtfutil /usr/local/bin/${APP_NAME,,}
+# Download sample configuration file
+mkdir -p ${HOME}/.config/wtf
+curl -o ${HOME}/.config/wtf/config.yml https://raw.githubusercontent.com/wtfutil/wtf/master/_sample_configs/sample_config.yml
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
