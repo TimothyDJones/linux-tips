@@ -86,6 +86,21 @@ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update && sudo apt-get install -y yarn
 
+# Add some shortcut functions for package administration
+cat >> $HOME/.config/apt_pkg_mgmt << EOF
+# Shortcut for installing new packages
+function pinstall {
+	sudo apt-get install -y "$@"
+}
+
+# Shortcut for full upgrade including removing unused packages and clearing cache.
+function pupgrade {
+	sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -f && sudo apt-get clean	
+}
+EOF
+echo 'source $HOME/.config/apt_pkg_mgmt' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+
 # Add some settings to .bashrc to use Vim instead of Vi
 cat >> $HOME/.config/vim_sh_config << EOF
 # Enable 256 color support in terminal
