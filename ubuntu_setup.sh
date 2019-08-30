@@ -90,7 +90,7 @@ sudo apt-get update && sudo apt-get install -y yarn
 cat >> $HOME/.config/apt_pkg_mgmt << EOF
 # Shortcut for installing new packages
 function pinstall {
-	sudo apt-get install -y "$@"
+	sudo apt-get install -y "\$@"
 }
 
 # Shortcut for full upgrade including removing unused packages and clearing cache.
