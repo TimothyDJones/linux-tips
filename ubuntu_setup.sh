@@ -2346,28 +2346,6 @@ xdg-open http://localhost/${APP_NAME,,}/ &
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install ZenTao project management suite (manual installation)
-APP_NAME=zentao
-APP_VERSION=10.2.stable_1
-APP_EXT=zip
-DB_NAME=${APP_NAME}
-DB_USER=${APP_NAME}
-DB_PASSWORD=${APP_NAME}
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/ZenTaoPMS_${APP_VERSION}_all.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
-mv ${APP_NAME}pms ${APP_NAME}
-sudo mv ${APP_NAME} ${WWW_HOME}
-sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
-# Create database
-mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
-mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
-mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
-cd $HOME
-rm -rf /tmp/${APP_NAME}*
-xdg-open http://localhost/${APP_NAME,,}/www/index.php &
-
 # Install Brackets text editor from package
 APP_NAME=Brackets
 APP_VERSION=1.13
