@@ -3693,19 +3693,21 @@ sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Kid3 audio tag editor
+# Install Kid3 cross-platform audio tag editor from package
 APP_NAME=Kid3
-APP_VERSION=3.7.1
+APP_GUI_NAME="Cross-platform audio tag editor."
+APP_VERSION=3.8.0
 APP_EXT=tgz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-Linux.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
-sudo mv ${APP_NAME,,}-${APP_VERSION}-Linux /opt/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=Audio tag editor
+Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Exec=/opt/${APP_NAME,,}/${APP_NAME,,}-qt
 Icon=/opt/${APP_NAME,,}/icons/hicolor/48x48/apps/${APP_NAME,,}-qt.png
@@ -3716,8 +3718,8 @@ Categories=Audio;Multimedia;
 Keywords=MP3;Tag;Editor
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,}-cli /usr/local/bin/${APP_NAME,,}
-sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,}-qt /usr/local/bin/${APP_NAME,,}-qt
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,}-cli /usr/local/bin/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,}-qt /usr/local/bin/${APP_NAME,,}-qt
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
