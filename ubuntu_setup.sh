@@ -16562,16 +16562,16 @@ EOF
 csc /tmp/hello_mono_winforms.cs -r:System.Windows.Forms.dll
 mono hello_mono_winforms.exe
 
-# Install Spez custom web browser from Debian package
+# Install Spez Epiphany custom web browser from Debian package
 APP_NAME=Spez
 APP_GUI_NAME=""
-APP_VERSION=9.0
+APP_VERSION=10.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}brow_${APP_VERSION}_${KERNEL_TYPE}
-curl -o /tmp/libgranite5-common.deb -J -L https://code.launchpad.net/~philip.scott/+archive/ubuntu/spice-up-daily/+files/libgranite-common_5.2.3+r201901160601-1355+pkg106~ubuntu5.0.1_all.deb
-curl -o /tmp/libgranite5.deb -J -L https://code.launchpad.net/~philip.scott/+archive/ubuntu/spice-up-daily/+files/libgranite5_5.2.3+r201901160601-1355+pkg106~ubuntu5.0.1_${KERNEL_TYPE}.deb
-sudo gdebi -n libgranite5-common.deb
-sudo gdebi -n libgranite5.deb
+FILE_NAME=${APP_NAME,,}epip-${APP_VERSION}-${KERNEL_TYPE}
+curl -o /tmp/libgranite5-common.deb -J -L https://code.launchpad.net/~philip.scott/+archive/ubuntu/spice-up-daily/+files/libgranite-common_5.2.4+r201908291816-1430+pkg109~ubuntu5.0.1_all.deb
+curl -o /tmp/libgranite5.deb -J -L https://code.launchpad.net/~philip.scott/+archive/ubuntu/spice-up-daily/+files/libgranite5_5.2.4+r201908291816-1430+pkg109~ubuntu5.0.1_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/libgranite5-common.deb
+sudo gdebi -n /tmp/libgranite5.deb
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/spez-browser-mirrors/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
