@@ -86,6 +86,21 @@ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update && sudo apt-get install -y yarn
 
+# Add some shortcut functions for package administration
+cat >> $HOME/.config/apt_pkg_mgmt << EOF
+# Shortcut for installing new packages
+function pinstall {
+	sudo apt-get install -y "\$@"
+}
+
+# Shortcut for full upgrade including removing unused packages and clearing cache.
+function pupgrade {
+	sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -f && sudo apt-get clean	
+}
+EOF
+echo 'source $HOME/.config/apt_pkg_mgmt' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+
 # Add some settings to .bashrc to use Vim instead of Vi
 cat >> $HOME/.config/vim_sh_config << EOF
 # Enable 256 color support in terminal
@@ -279,7 +294,7 @@ cd $HOME
 
 # Install Lite IDE for Go language development
 APP_NAME=LiteIDE
-APP_VERSION=x36
+APP_VERSION=x36.1
 QT_VERSION=qt5.5.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
@@ -339,15 +354,15 @@ sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for g
 rm -f /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
 
-# Install Stacer Linux monitoring tool
-# Must download specific version, because unable to get 'latest' from Sourceforge to work.
-APP_NAME=stacer
-APP_VERSION=1.0.9
+# Install Stacer Linux monitoring tool from Debian package
+APP_NAME=Stacer
+APP_VERSION=1.1.0
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility
 cd $HOME/Downloads
@@ -380,7 +395,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from package
 APP_NAME=Vivaldi
-APP_VERSION=2.6.1566.40-1
+APP_VERSION=2.7.1628.30-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -391,7 +406,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.84.4.0-1
+APP_VERSION=1.85.0.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -433,7 +448,7 @@ rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Debian package
 APP_NAME=CopyQ
-APP_VERSION=3.9.0
+APP_VERSION=3.9.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_9.0-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -443,7 +458,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.5.5
+APP_VERSION=1.5.6
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -720,7 +735,7 @@ rm -rf /tmp/youtube-dl-pytk*
 
 # Install WCD chdir utility from source
 APP_NAME=wcd
-APP_VERSION=6.0.2
+APP_VERSION=6.0.3
 APP_EXT=tar.gz
 sudo apt-get install -y libncursesw5-dev groff sed build-essential ghostscript po4a
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -872,7 +887,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=8.8.2
+APP_VERSION=8.8.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1240,7 +1255,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.1.1-3967
+APP_VERSION=4.1.1-4000
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -1605,12 +1620,13 @@ sudo ln -s /usr/local/RecordEdit/reCsvEd/bin/runCsvEditor.sh /usr/local/bin/${AP
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install ZenTao project management tool from package
+# Install ZenTao project management tool from Debian package
 APP_NAME=ZenTaoPMS
-APP_VERSION=11.6.stable
+APP_VERSION=11.6.1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${APP_NAME}_${APP_VERSION}_1_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME}_${APP_VERSION}_1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
@@ -1881,7 +1897,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install WebCollab web-based project management tool
 APP_NAME=webcollab
-APP_VERSION=3.45
+APP_VERSION=3.46
 APP_EXT=tar.gz
 DB_NAME=webcollab
 DB_USER=webcollab
@@ -1903,7 +1919,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=8.1.4
+APP_VERSION=8.1.5
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2100,7 +2116,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Swiss File Knife (SFK) shell file utility
 APP_NAME=sfk
-APP_VERSION=1.9.4
+APP_VERSION=1.9.5
 APP_EXT=exe
 	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 		ARCH_TYPE=linux-64
@@ -2320,7 +2336,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.38
+APP_VERSION=6.4.48
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2344,28 +2360,6 @@ mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/ &
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
-
-# Install ZenTao project management suite (manual installation)
-APP_NAME=zentao
-APP_VERSION=10.2.stable_1
-APP_EXT=zip
-DB_NAME=${APP_NAME}
-DB_USER=${APP_NAME}
-DB_PASSWORD=${APP_NAME}
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/ZenTaoPMS_${APP_VERSION}_all.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
-mv ${APP_NAME}pms ${APP_NAME}
-sudo mv ${APP_NAME} ${WWW_HOME}
-sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
-# Create database
-mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
-mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
-mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
-cd $HOME
-rm -rf /tmp/${APP_NAME}*
-xdg-open http://localhost/${APP_NAME,,}/www/index.php &
 
 # Install Brackets text editor from package
 APP_NAME=Brackets
@@ -2556,7 +2550,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 # Install DK Tools system utility suite from source
 APP_NAME=DKTools
 APP_GUI_NAME="System utility suite."
-APP_VERSION=4.24.1
+APP_VERSION=4.24.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -3151,7 +3145,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2019.8
+APP_VERSION=1.2019.9
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -3348,15 +3342,6 @@ cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
-
-# Install Delta Hex Editor Java-based hexadecimal editor from package
-APP_NAME=deltahex-editor
-APP_VERSION=0.1.3
-APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/deltahex/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/${APP_NAME,,}
 
 # Install PDF Split and Merge (PDFsam) editor from package
 APP_NAME=PDFSam
@@ -3708,19 +3693,21 @@ sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Kid3 audio tag editor
+# Install Kid3 cross-platform audio tag editor from package
 APP_NAME=Kid3
-APP_VERSION=3.7.1
+APP_GUI_NAME="Cross-platform audio tag editor."
+APP_VERSION=3.8.0
 APP_EXT=tgz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-Linux.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
-sudo mv ${APP_NAME,,}-${APP_VERSION}-Linux /opt/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=Audio tag editor
+Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Exec=/opt/${APP_NAME,,}/${APP_NAME,,}-qt
 Icon=/opt/${APP_NAME,,}/icons/hicolor/48x48/apps/${APP_NAME,,}-qt.png
@@ -3731,8 +3718,8 @@ Categories=Audio;Multimedia;
 Keywords=MP3;Tag;Editor
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,}-cli /usr/local/bin/${APP_NAME,,}
-sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,}-qt /usr/local/bin/${APP_NAME,,}-qt
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,}-cli /usr/local/bin/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,}-qt /usr/local/bin/${APP_NAME,,}-qt
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
@@ -4020,35 +4007,36 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install Rufas Slider puzzle game from source
-APP_NAME=rufasslider
+APP_NAME=RufasSlider
 APP_GUI_NAME="Klotsky-style slider puzzle game."
-APP_VERSION=8jan19
+APP_VERSION=25aug19
 APP_EXT=7z
-FILE_NAME=rsl${APP_VERSION}
+FILE_NAME=rs${APP_VERSION}
 sudo apt-get install -y qttools5-dev qttools5-dev-tools cmake
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}/rslid
-sudo mkdir -p /opt/${APP_NAME}
-sudo mv ./puzzles /opt/${APP_NAME}
-sudo mv ./data /opt/${APP_NAME}
-sudo mv ./include /opt/${APP_NAME}
-sudo mv ./*.txt ./*.md /opt/${APP_NAME}
-sudo mkdir -p /opt/${APP_NAME}/libs/gnu
-sudo mv ./libs/gnu/* /opt/${APP_NAME}/libs/gnu
-sudo mkdir -p /opt/${APP_NAME}/bin/gnu
-sudo mv ./bin/gnu/* /opt/${APP_NAME}/bin/gnu
-sudo mkdir -p /opt/${APP_NAME}/src
-sudo mv *.cc *.cpp *.h *.hpp /opt/${APP_NAME}/src
-sudo ln -s /opt/${APP_NAME}/bin/gnu/rufaslid /usr/local/bin/rufaslider
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv ./puzzles /opt/${APP_NAME,,}
+sudo mv ./data /opt/${APP_NAME,,}
+sudo mv ./include /opt/${APP_NAME,,}
+sudo mv ./*.txt ./*.md /opt/${APP_NAME,,}
+sudo mkdir -p /opt/${APP_NAME,,}/libs/gnu
+sudo mv ./libs/gnu/* /opt/${APP_NAME,,}/libs/gnu
+sudo mkdir -p /opt/${APP_NAME,,}/bin/gnu
+sudo mv ./bin/gnu/* /opt/${APP_NAME,,}/bin/gnu
+sudo mkdir -p /opt/${APP_NAME,,}/src
+sudo mv *.cc *.cpp *.h *.hpp /opt/${APP_NAME,,}/src
+sudo ldconfig /opt/${APP_NAME,,}/libs/gnu
+sudo ln -s /opt/${APP_NAME,,}/bin/gnu/rufaslid /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
-Exec=/usr/local/bin/rufaslider
+Exec=/usr/local/bin/${APP_NAME,,}
 Icon=/opt/${APP_NAME}/data/nexslider.png
 Type=Application
 StartupNotify=true
@@ -4200,7 +4188,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install QtPass GUI for pass, the standard Unix password manager from source
 APP_NAME=QtPass
-APP_VERSION=1.2.1
+APP_VERSION=1.3.0
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://github.com/IJHack/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -4795,7 +4783,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.3.3
+APP_VERSION=1.3.4
 APP_EXT=tar.bz2
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -5662,7 +5650,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install WackoWiki PHP-based lightweight wiki tool
 APP_NAME=wacko
-APP_VERSION=r5.5.11
+APP_VERSION=r5.5.12
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -7097,7 +7085,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Impressive PDF slide show presenter from source
 APP_NAME=Impressive
 APP_GUI_NAME="PDF slide show presenter."
-APP_VERSION=0.12.0
+APP_VERSION=0.12.1
 APP_EXT=tar.gz
 sudo apt-get install -y python-pygame python-imaging pdftk mupdf-tools xdg-utils mplayer ffmpeg
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -7144,7 +7132,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install UNA social-media community management web-based tool (PHP/MySQL)
 APP_NAME=UNA
-APP_VERSION=10.0.0-RC1
+APP_VERSION=10.0.0
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -7166,7 +7154,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.65
+APP_VERSION=V1.69
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -7493,7 +7481,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PeaZip cross-platform archive management utility from package
 APP_NAME=PeaZip
 APP_GUI_NAME="Cross-platform archive management utility."
-APP_VERSION=6.8.1
+APP_VERSION=6.9.1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.LINUX.GTK2-2_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -7864,7 +7852,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Java_console cross-platform Java shell from source
 APP_NAME=Java_console
 APP_GUI_NAME="Cross-platform Java shell."
-APP_VERSION=2.2.2
+APP_VERSION=2.2.3
 APP_EXT=tar.gz
 sudo apt-get install -y openjdk-8-jdk
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/javaconsole222/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -8558,7 +8546,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PAGE drag-and-drop GUI generator for Python and Tkinter from source
 APP_NAME=PAGE
 APP_GUI_NAME="Drag-and-drop GUI generator for Python and Tkinter."
-APP_VERSION=4.24
+APP_VERSION=4.25
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -9308,7 +9296,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install LiVES non-linear video editor from source
 APP_NAME=LiVES
 APP_GUI_NAME="Non-linear video editor."
-APP_VERSION=3.0.0
+APP_VERSION=3.0.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y imagemagick mplayer libjpeg62-dev sox libmjpegtools-dev lame ffmpeg libgtk-3-dev libgdk-pixbuf2.0-dev libjack-dev libpulse-dev
@@ -10256,7 +10244,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Battle for Wesnoth high-fantasy themed adventure game from source
 APP_NAME=Wesnoth
 APP_GUI_NAME="High-fantasy themed adventure game."
-APP_VERSION=1.15.0
+APP_VERSION=1.15.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
@@ -11081,9 +11069,9 @@ sudo rm -rf /tmp/${APP_NAME}*
 # http://sohag-developer.com/
 APP_NAME=Sohag-Developer
 APP_GUI_NAME="Cross-platformtool for generating Qt C++ classes for data management in PostgreSQL databases."
-APP_VERSION=V2
+APP_VERSION=V3.01
 APP_EXT=tar.xz
-FILE_NAME=sohagDeveloper${APP_VERSION}Linux64
+FILE_NAME=sohagDeveloper${APP_VERSION}Linux_X64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -11202,7 +11190,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Keepboard cross-platform, Java-based clipboard manager from package
 APP_NAME=Keepboard
 APP_GUI_NAME="Cross-platform, Java-based clipboard manager."
-APP_VERSION=5.3
+APP_VERSION=5.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_Linux_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -12087,9 +12075,17 @@ sudo apt-get install -y bouml
 # Install Cmajor C#-style programming language and IDE from package
 APP_NAME=Cmajor
 APP_GUI_NAME="C#-style programming language and IDE."
-APP_VERSION=3.1.0
+APP_VERSION=3.2.0
 APP_EXT=tar.bz2
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-14.04-x86_64-binaries
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi|xe|ya|ze|ar)$ ]]; then  # 14.04, 14.10, 15.04, 15.10, 16.04, 16.10, 17.04, 17.10
+	DISTRIB_RELEASE=14.04
+	APP_VERSION=3.1.0
+else
+	DISTRIB_RELEASE=18.04
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-${DISTRIB_RELEASE}-x86_64-binaries
+sudo apt-get install -y libboost-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.bz2
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -13975,7 +13971,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Rukovoditel web-based (PHP/MySQL) project management tool from package
 APP_NAME=Rukovoditel
 APP_GUI_NAME="Web-based (PHP/MySQL) project management tool."
-APP_VERSION=2.5.1
+APP_VERSION=2.5.2
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -16274,7 +16270,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Vido Python GUI video/audio downloader frontend for youtube-dl from Debian package
 APP_NAME=Vido
 APP_GUI_NAME="Python GUI video/audio downloader frontend for youtube-dl."
-APP_VERSION=1.0.5
+APP_VERSION=1.1.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}%20${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18717,7 +18713,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Tartube PyGTK GUI frontend for youtube-dl for video download from package
 APP_NAME=Tartube
 APP_GUI_NAME="PyGTK GUI frontend for youtube-dl for video download."
-APP_VERSION=1.0.0
+APP_VERSION=1.1.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -19420,7 +19416,7 @@ cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 
 # Install Java Multiprecision Calculator cross-platform calculator based on Java BigDecimal class from package
-APP_NAME="Java Multiprecision Calculator"
+APP_NAME="MultiPrecision Calculator"
 APP_GUI_NAME="Cross-platform calculator based on Java BigDecimal class."
 APP_VERSION=20190831
 APP_EXT=zip
@@ -19430,6 +19426,7 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/multicalcu
 sudo cp -R /tmp/${FILE_NAME}/* /opt/multicalcu
+sudo chmod -R 777 /opt/multicalcu
 cat > /tmp/multicalcu << EOF
 #! /bin/sh
 cd /opt/multicalcu/_binary
@@ -19444,6 +19441,7 @@ cat > /tmp/multicalcu.desktop << EOF
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
+Path=/opt/${FILE_NAME}
 Path=/opt/multicalcu/_binary
 Exec=java -jar /opt/multicalcu/_binary/multicalcu-gui-v1.1-SNAPSHOT-all.jar
 #Icon=
@@ -19455,3 +19453,195 @@ Keywords=Calculator;
 EOF
 sudo mv /tmp/multicalcu.desktop /usr/share/applications/
 cd $HOME
+
+# Install SQL Dynamite cross-platform Mono/.NET-based GUI database client from package
+APP_NAME="SQL Dynamite"
+APP_GUI_NAME="Cross-platform Mono/.NET-based GUI database client."
+APP_VERSION=2.1.5.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME// /%20}%20${APP_VERSION}%20"(Linux)"
+PATH_NAME=${APP_NAME,,}
+PATH_NAME=${PATH_NAME// /-}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${PATH_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${PATH_NAME}
+sudo cp -R /tmp/${FILE_NAME}/SQL*/* /opt/${PATH_NAME}
+cat > /tmp/${PATH_NAME} << EOF
+#! /bin/sh
+cd /opt/${PATH_NAME}
+PATH=/opt/${PATH_NAME}:\$PATH; export PATH
+mono /opt/${PATH_NAME}/SqlDynamiteX.exe
+cd $HOME
+EOF
+sudo mv /tmp/${PATH_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${PATH_NAME}
+cat > /tmp/${PATH_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${PATH_NAME}
+Exec=mono /opt/${PATH_NAME}/SqlDynamiteX.exe
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=SQL;Database;Editor;
+EOF
+sudo mv /tmp/${PATH_NAME}.desktop /usr/share/applications/
+cd $HOME
+
+# Install OverCASE Java-based integrate CASE tool from package
+APP_NAME=OverCASE
+APP_GUI_NAME="Java-based integrate CASE tool."
+APP_VERSION=latest
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}-bin
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/org.aka.overcase.core.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${FILE_NAME}
+Exec=java -jar /opt/${APP_NAME,,}/org.aka.overcase.core.jar
+Icon=/opt/${APP_NAME,,}/OverCase.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;
+Keywords=CASE;Modeling;Project Management;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+
+# Install Gramps cross-platform desktop genealogy program with GEDCOM support from Debian package
+APP_NAME=Gramps
+APP_GUI_NAME="Cross-platform desktop genealogy program with GEDCOM support."
+APP_VERSION=5.0.2-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install BinEd cross-platform Java-based binary/hexadecimal viewer/editor from Debian package
+APP_NAME=BinEd
+APP_GUI_NAME="Cross-platform Java-based binary/hexadecimal viewer/editor."
+APP_VERSION=0.2.0-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Ubuntu Launchpad keyboard-centric launcher for Ubuntu from Debian package
+APP_NAME=Launchpad
+APP_GUI_NAME="Keyboard-centric launcher for Ubuntu."
+APP_VERSION=1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/ubuntu-${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install JDBCSQL Java-based command-line SQL query tool from package
+APP_NAME=JDBCSQL
+APP_GUI_NAME="Java-based command-line SQL query tool."
+APP_VERSION=1.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}/${FILE_NAME}.jar
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.jar "$1"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+
+# Install Scribus cross-platform desktop publishing tool from AppImage
+APP_NAME=Scribus
+APP_GUI_NAME="Cross-platform desktop publishing tool."
+APP_VERSION=1.5.5
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;
+Keywords=Publishing;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install WTF cross-platform terminal-based dashboard utility from package
+APP_NAME=WTF
+APP_GUI_NAME="Cross-platform terminal-based dashboard utility."
+APP_VERSION=0.20.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wtfutil/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/wtfutil /usr/local/bin/${APP_NAME,,}
+# Download sample configuration file
+mkdir -p ${HOME}/.config/wtf
+curl -o ${HOME}/.config/wtf/config.yml https://raw.githubusercontent.com/wtfutil/wtf/master/_sample_configs/sample_config.yml
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Pastel command-line color analysis and management tool from Debi package
+APP_NAME=Pastel
+APP_GUI_NAME="Command-line color analysis and management tool."
+APP_VERSION=0.5.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install Gnome Feeds RSS feed reader from Flatpak
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y flathub org.gabmus.gnome-feeds
