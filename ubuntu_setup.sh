@@ -19630,7 +19630,7 @@ curl -o ${HOME}/.config/wtf/config.yml https://raw.githubusercontent.com/wtfutil
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Pastel command-line color analysis and management tool from Debi package
+# Install Pastel command-line color analysis and management tool from Debian package
 APP_NAME=Pastel
 APP_GUI_NAME="Command-line color analysis and management tool."
 APP_VERSION=0.5.2
@@ -19660,3 +19660,14 @@ echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
 source $HOME/.bashrc	# Reload Bash configuration
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Swifty lightweight, cross-platform, Electron-based password manager from Debian package
+APP_NAME=Swifty
+APP_GUI_NAME="Lightweight, cross-platform, Electron-based password manager."
+APP_VERSION=0.2.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/swiftyapp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
