@@ -19645,3 +19645,18 @@ rm -rf /tmp/${APP_NAME,,}
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install -y flathub org.gabmus.gnome-feeds
+
+# Install Starship minimal, customizable shell prompt from package
+APP_NAME=Starship
+APP_GUI_NAME="Minimal, customizable shell prompt."
+APP_VERSION=0.13.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/x86_64-unknown-linux-gnu/${APP_NAME,,} /usr/local/bin
+echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
