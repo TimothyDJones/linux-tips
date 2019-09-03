@@ -19693,3 +19693,17 @@ cd /tmp/${FILE_NAME}
 make && sudo make install-linux
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install Treebolic Java-based hierarchical data viewer using hyperbolic rendering from Debian package
+APP_NAME=Treebolic
+APP_GUI_NAME="Java-based hierarchical data viewer using hyperbolic rendering."
+APP_VERSION=3.8.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-install-deb-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}*.deb
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
