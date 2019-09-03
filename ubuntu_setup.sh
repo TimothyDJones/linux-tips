@@ -19677,3 +19677,19 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install -y flathub org.gnome.FeedReader
+
+# Install Nift cross-platform web site generation and management framework from source
+# https://www.nift.cc/
+APP_NAME=NSM
+APP_GUI_NAME="Cross-platform web site generation and management framework."
+APP_VERSION=1.8
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nifty-site-manager/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install-linux
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
