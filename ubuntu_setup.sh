@@ -3084,7 +3084,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=19.08.16
+APP_VERSION=19.09.02
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -19703,7 +19703,6 @@ FILE_NAME=${APP_NAME,,}-install-deb-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
 sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}*.deb
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
