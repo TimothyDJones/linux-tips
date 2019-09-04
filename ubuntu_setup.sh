@@ -19706,3 +19706,53 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}*.deb
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install openTimetool web-based (PHP/MySQL) project time-tracking tool from package
+APP_NAME=openTimetool
+APP_GUI_NAME="Web-based (PHP/MySQL) project time-tracking tool."
+APP_VERSION=2.7.0
+APP_EXT=tar.bz2
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+sudo apt-get install -y html2pdf
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${FILE_NAME//_/-}/* ${WWW_HOME}/${APP_NAME,,}
+sudo cp ${WWW_HOME}/${APP_NAME,,}/config-local.php.dist ${WWW_HOME}/${APP_NAME,,}/config-local.php
+sudo sed -i 's@<account>@'${DB_USER}'@g' ${WWW_HOME}/${APP_NAME,,}/config-local.php
+sudo sed -i 's@<password>@'${DB_PASSWORD}'@g' ${WWW_HOME}/${APP_NAME,,}/config-local.php
+sudo sed -i 's@localhost/'${APP_NAME}'@localhost/'${DB_NAME}'@g' ${WWW_HOME}/${APP_NAME,,}/config-local.php
+sudo sed -i 's@AllowOverride None@AllowOverride All@g' /etc/apache2/apache2.conf
+sudo systemctl restart apache2.service
+# Create symbolic link for each language
+sudo ln -s -f ${WWW_HOME}/${APP_NAME,,}/htdocs ${WWW_HOME}/${APP_NAME,,}/htdocs/en
+sudo chmod -R a+w ${WWW_HOME}/${APP_NAME,,}/htdocs/tmp
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+x ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+# Populate DB from script
+mysql --host=localhost --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/mysql.sql
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/media/image/tt_logo.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;
+Keywords=Time;Management;Tracking;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
