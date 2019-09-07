@@ -9296,7 +9296,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install LiVES non-linear video editor from source
 APP_NAME=LiVES
 APP_GUI_NAME="Non-linear video editor."
-APP_VERSION=3.0.1
+APP_VERSION=3.0.2
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y imagemagick mplayer libjpeg62-dev sox libmjpegtools-dev lame ffmpeg libgtk-3-dev libgdk-pixbuf2.0-dev libjack-dev libpulse-dev
