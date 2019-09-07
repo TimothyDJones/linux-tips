@@ -406,7 +406,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.85.0.0-1
+APP_VERSION=1.86.0.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -752,13 +752,13 @@ rm -rf /tmp/${APP_NAME}*
 # Install BeeBEEP LAN messenger from package
 APP_NAME=BeeBEEP
 APP_GUI_NAME="Cross-platform secure LAN messenger."
-APP_VERSION=5.6.4
+APP_VERSION=5.6.8
 if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 	KERNEL_TYPE=amd64
-	APP_VERSION=5.6.4
+	APP_VERSION=5.6.8
 else    # Otherwise use version for 32-bit kernel
 	KERNEL_TYPE=i386
-	APP_VERSION=5.6.4
+	APP_VERSION=5.6.8
 fi
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt4-${KERNEL_TYPE}
@@ -1152,7 +1152,7 @@ sudo apt-get install -y quiterss
 # Install Makagiga Java-based PIM/RSS feed reader from package
 APP_NAME=Makagiga
 APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
-APP_VERSION=6.7.1-beta
+APP_VERSION=6.8
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -3084,7 +3084,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=19.08.16
+APP_VERSION=19.09.02
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -10485,7 +10485,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install ElCalc minimalist cross-platform desktop calculator built with Electron from package
 APP_NAME=ElCalc
 APP_GUI_NAME="Minimalist cross-platform desktop calculator built with Electron."
-APP_VERSION=6.1.1
+APP_VERSION=6.1.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -13308,7 +13308,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install iMath LibreOffice extension for numeric and symbolic calculations inside a Writer document from Debian package
 APP_NAME=iMath
 APP_GUI_NAME="LibreOffice extension for numeric and symbolic calculations inside a Writer document."
-APP_VERSION=2.2.6
+APP_VERSION=2.2.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/ooo-imath/${FILE_NAME}.${APP_EXT}
@@ -19677,3 +19677,111 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install -y flathub org.gnome.FeedReader
+
+# Install Nift cross-platform web site generation and management framework from source
+# https://www.nift.cc/
+APP_NAME=NSM
+APP_GUI_NAME="Cross-platform web site generation and management framework."
+APP_VERSION=1.8
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nifty-site-manager/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install-linux
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install Treebolic Java-based hierarchical data viewer using hyperbolic rendering from Debian package
+APP_NAME=Treebolic
+APP_GUI_NAME="Java-based hierarchical data viewer using hyperbolic rendering."
+APP_VERSION=3.8.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-install-deb-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}*.deb
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install openTimetool web-based (PHP/MySQL) project time-tracking tool from package
+APP_NAME=openTimetool
+APP_GUI_NAME="Web-based (PHP/MySQL) project time-tracking tool."
+APP_VERSION=2.7.0
+APP_EXT=tar.bz2
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+sudo apt-get install -y html2pdf
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${FILE_NAME//_/-}/* ${WWW_HOME}/${APP_NAME,,}
+sudo cp ${WWW_HOME}/${APP_NAME,,}/config-local.php.dist ${WWW_HOME}/${APP_NAME,,}/config-local.php
+sudo sed -i 's@<account>@'${DB_USER}'@g' ${WWW_HOME}/${APP_NAME,,}/config-local.php
+sudo sed -i 's@<password>@'${DB_PASSWORD}'@g' ${WWW_HOME}/${APP_NAME,,}/config-local.php
+sudo sed -i 's@localhost/'${APP_NAME}'@localhost/'${DB_NAME}'@g' ${WWW_HOME}/${APP_NAME,,}/config-local.php
+sudo sed -i 's@AllowOverride None@AllowOverride All@g' /etc/apache2/apache2.conf
+sudo systemctl restart apache2.service
+# Create symbolic link for each language
+sudo ln -s -f ${WWW_HOME}/${APP_NAME,,}/htdocs ${WWW_HOME}/${APP_NAME,,}/htdocs/en
+sudo chmod -R a+w ${WWW_HOME}/${APP_NAME,,}/htdocs/tmp
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+x ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+# Populate DB from script
+mysql --host=localhost --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/mysql.sql
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/media/image/tt_logo.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;
+Keywords=Time;Management;Tracking;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
+# Install BashDB bash shell debugger from source
+APP_NAME=BashDB
+APP_GUI_NAME="bash shell debugger."
+APP_VERSION=5.0-1.1.0
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Jag console text editor with syntax highlighting for C++, Python, and Tamgu from package
+# https://github.com/naver/tamgu/wiki/jag:-a-simple-terminal-editor-with-syntax-highlighting
+APP_NAME=Jag
+APP_GUI_NAME="Console text editor with syntax highlighting for C++, Python, and Tamgu."
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/naver/tamgu/releases/download/tamgu.jag/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}/ubuntu/${APP_NAME,,} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
