@@ -19863,3 +19863,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install BIC minimalist C interpreter and REPL from source
+APP_NAME=BIC
+APP_GUI_NAME="Minimalist C interpreter and REPL."
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-master
+sudo apt-get install -y build-essential libreadline-dev autoconf-archive libgmp-dev expect flex bison automake m4 libtool pkg-config
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/hexagonal-sun/${APP_NAME,,}/archive/master.zip
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+autoreconf -i && ./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
