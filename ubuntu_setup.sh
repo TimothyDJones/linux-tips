@@ -19894,3 +19894,19 @@ mkdir -p build && cd build
 cmake ../ && make && sudo make install   # Build with CMake due to problems with 'configure'
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install FSelect console file search tool with SQL syntax from package
+APP_NAME=FSelect
+APP_GUI_NAME="Console file search tool with SQL syntax."
+APP_VERSION=0.6.5
+APP_EXT=gz
+FILE_NAME=${APP_NAME,,}-x86_64-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jhspetersson/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+dtrx -n ${APP_NAME,,}.${APP_EXT}
+chmod a+x ${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
