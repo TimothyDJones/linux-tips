@@ -19878,3 +19878,19 @@ cd /tmp/${FILE_NAME}
 autoreconf -i && ./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install bin2header utility to convert binary files to character array to include in C/C++ source file from source
+APP_NAME=bin2header
+APP_GUI_NAME="Utility to convert binary files to character array to include in C/C++ source file."
+APP_VERSION=0.2.0
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential cmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p build && cd build
+cmake ../ && make && sudo make install   # Build with CMake due to problems with 'configure'
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
