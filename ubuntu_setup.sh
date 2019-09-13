@@ -17653,7 +17653,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Apricot Java-based database ERD, design, and reverse-engineering tool from package
 APP_NAME=ApricotDB
 APP_GUI_NAME="Java-based database ERD, design, and reverse-engineering tool."
-APP_VERSION=0.6
+APP_VERSION=0.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64
 sudo apt-get install -y openjdk-11-jre openjfx
