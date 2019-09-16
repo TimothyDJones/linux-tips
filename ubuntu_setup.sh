@@ -887,7 +887,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=8.8.5
+APP_VERSION=8.8.7
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1919,7 +1919,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=8.1.5
+APP_VERSION=8.2.0
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2057,7 +2057,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE
 APP_NAME=eric
-APP_VERSION=6-19.7
+APP_VERSION=6-19.9
 APP_EXT=tar.gz
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
@@ -3145,7 +3145,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2019.9
+APP_VERSION=1.2019.10
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -3427,7 +3427,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Pentobi Blokus-style board game from source
 APP_NAME=pentobi
-APP_VERSION=17.1
+APP_VERSION=17.2
 APP_EXT=tar.xz
 sudo apt-get install -y g++ make cmake qttools5-dev qttools5-dev-tools libqt5svg5-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -4102,7 +4102,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.14.0-1
+APP_VERSION=1.14.2-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -4685,7 +4685,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install BashStyle-NG graphical tool for managing Bash and other shell tools from package
 APP_NAME=BashStyle-NG
-APP_VERSION=10.5
+APP_VERSION=10.7
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://apt.nanolx.org/pool/main/b/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}-1nano_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -5650,7 +5650,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install WackoWiki PHP-based lightweight wiki tool
 APP_NAME=wacko
-APP_VERSION=r5.5.12
+APP_VERSION=r5.5.13
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -6958,7 +6958,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install WebTorrent Desktop cross-platform Electron-based torrent streaming client from package
 APP_NAME=WebTorrent-Desktop
 APP_GUI_NAME="Cross-platform Electron-based torrent streaming client."
-APP_VERSION=0.20.0-1
+APP_VERSION=0.21.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -16296,7 +16296,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
 APP_NAME=TkCVS
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.1.7
+APP_VERSION=9.2.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
