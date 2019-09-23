@@ -2462,7 +2462,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install QPDF PDF utility from source
 APP_NAME=QPDF
-APP_VERSION=9.0.0
+APP_VERSION=9.0.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y zlib1g-dev libjpeg62-dev
@@ -5392,7 +5392,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install NGSpice electronic circuit simulation tool from source
 APP_NAME=ngspice
 APP_GUI_NAME="Classic electronic circuit simulation tool."
-APP_VERSION=30
+APP_VERSION=31
 APP_EXT=tar.gz
 sudo apt-get install -y libx11-dev libxaw7-dev libreadline6-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -11372,7 +11372,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install TEA Qt-based text editor from source
 APP_NAME=TEA
 APP_GUI_NAME="Cross-platform Qt-based text editor."
-APP_VERSION=47.1.0
+APP_VERSION=48.0.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qt5-default qt5-qmake
