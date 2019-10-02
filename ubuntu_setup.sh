@@ -20037,3 +20037,16 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/pvigier/${APP_NAME
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install expreduce Mathematica-compatible, Golang-based computer algebra tool from package
+APP_NAME=expreduce
+APP_GUI_NAME="Mathematica-compatible, Golang-based computer algebra tool."
+APP_VERSION=0.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/corywalker/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
