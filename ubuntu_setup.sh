@@ -3375,21 +3375,48 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Geoserver as stand-alone binary
+# Install GeoServer cross-platform Java-based geospatial server from package
 # http://docs.geoserver.org/latest/en/user/installation/linux.html
-APP_NAME=geoserver
-APP_VERSION=2.15.1
+APP_NAME=GeoServer
+APP_GUI_NAME="Cross-platform Java-based geospatial server."
+APP_VERSION=2.16.0
 APP_EXT=zip
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-bin.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-bin
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION} /opt/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
 sudo chown -R $USER /opt/${APP_NAME,,}
 echo "export GEOSERVER_HOME=/opt/"${APP_NAME,,} >> $HOME/.profile
 source $HOME/.profile
-sudo ln -s /opt/${APP_NAME,,}/bin/startup.sh /usr/local/bin/geoserver
-sh /opt/${APP_NAME,,}/bin/startup.sh
-xdg-open http://localhost:8080/geoserver &
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/bin/startup.sh
+xdg-open http://localhost:8080/geoserver
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${FILE_NAME}
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Other;
+Keywords=GIS;Maps;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install TeamPass PHP-based collaborative password manager
 # https://github.com/nilsteampassnet/TeamPass
