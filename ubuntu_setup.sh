@@ -11001,7 +11001,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install PDFBox Java-based, cross-platform command-line PDF manipulation application from package
 APP_NAME=PDFBox
 APP_GUI_NAME="Java-based, cross-platform command-line PDF manipulation application."
-APP_VERSION=2.0.10
+APP_VERSION=2.0.17
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}-app-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://apache.osuosl.org/${APP_NAME,,}/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
