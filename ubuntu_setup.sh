@@ -406,7 +406,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.87.0.0-1
+APP_VERSION=1.87.2.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -458,7 +458,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.5.6
+APP_VERSION=1.5.7
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -887,7 +887,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=8.8.8
+APP_VERSION=9.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1255,7 +1255,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.1.1-4012
+APP_VERSION=4.1.1-4014
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -1622,7 +1622,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZenTao project management tool from Debian package
 APP_NAME=ZenTaoPMS
-APP_VERSION=11.6.2
+APP_VERSION=11.6.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${FILE_NAME}.${APP_EXT}
@@ -1919,7 +1919,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=8.2.0
+APP_VERSION=8.2.2
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2057,7 +2057,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE
 APP_NAME=eric
-APP_VERSION=6-19.9
+APP_VERSION=6-19.10
 APP_EXT=tar.gz
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
@@ -2336,7 +2336,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.57
+APP_VERSION=6.4.64
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3145,7 +3145,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2019.10
+APP_VERSION=1.2019.11
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -3375,21 +3375,48 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Geoserver as stand-alone binary
+# Install GeoServer cross-platform Java-based geospatial server from package
 # http://docs.geoserver.org/latest/en/user/installation/linux.html
-APP_NAME=geoserver
-APP_VERSION=2.15.1
+APP_NAME=GeoServer
+APP_GUI_NAME="Cross-platform Java-based geospatial server."
+APP_VERSION=2.16.0
 APP_EXT=zip
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-bin.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-bin
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION} /opt/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
 sudo chown -R $USER /opt/${APP_NAME,,}
 echo "export GEOSERVER_HOME=/opt/"${APP_NAME,,} >> $HOME/.profile
 source $HOME/.profile
-sudo ln -s /opt/${APP_NAME,,}/bin/startup.sh /usr/local/bin/geoserver
-sh /opt/${APP_NAME,,}/bin/startup.sh
-xdg-open http://localhost:8080/geoserver &
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/bin/startup.sh
+xdg-open http://localhost:8080/geoserver
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${FILE_NAME}
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Other;
+Keywords=GIS;Maps;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install TeamPass PHP-based collaborative password manager
 # https://github.com/nilsteampassnet/TeamPass
@@ -7132,7 +7159,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install UNA social-media community management web-based tool (PHP/MySQL)
 APP_NAME=UNA
-APP_VERSION=10.0.0
+APP_VERSION=10.1.0
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -10535,7 +10562,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Pixelitor cross-platform, Java-based image editor from package
 APP_NAME=Pixelitor
 APP_GUI_NAME="Cross-platform, Java-based image editor."
-APP_VERSION=4.2.0
+APP_VERSION=4.2.1
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -10974,7 +11001,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install PDFBox Java-based, cross-platform command-line PDF manipulation application from package
 APP_NAME=PDFBox
 APP_GUI_NAME="Java-based, cross-platform command-line PDF manipulation application."
-APP_VERSION=2.0.10
+APP_VERSION=2.0.17
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}-app-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://apache.osuosl.org/${APP_NAME,,}/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -12615,7 +12642,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install YSoccer cross-platform, Java-based retro soccer game from package
 APP_NAME=YSoccer
 APP_GUI_NAME="Cross-platform, Java-based retro soccer."
-APP_VERSION=16
+APP_VERSION=19_preview
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux32
@@ -13149,7 +13176,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install qBittorrent Qt-based Bittorrent client from source
 APP_NAME=qBittorrent
 APP_GUI_NAME="Qt-based Bittorrent client."
-APP_VERSION=4.1.6
+APP_VERSION=4.1.8
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y ${APP_NAME,,}
@@ -13372,7 +13399,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Manuskript editing tool for book writers from Debian package
 APP_NAME=Manuskript
 APP_GUI_NAME="Editing tool for book writers."
-APP_VERSION=0.8.0-1
+APP_VERSION=0.10.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -16769,10 +16796,10 @@ sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}.deb
 # Install Notable Markdown-based note-taking tool from Debian package
 APP_NAME=Notable
 APP_GUI_NAME="Markdown-based note-taking tool."
-APP_VERSION=1.2.0
+APP_VERSION=1.7.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/fabiospampinato/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}.deb
@@ -18713,7 +18740,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Tartube PyGTK GUI frontend for youtube-dl for video download from package
 APP_NAME=Tartube
 APP_GUI_NAME="PyGTK GUI frontend for youtube-dl for video download."
-APP_VERSION=1.1.0
+APP_VERSION=1.2.008
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18931,7 +18958,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install xsnow desktop decoration from Debian package
 APP_NAME=xsnow
 APP_GUI_NAME=""
-APP_VERSION=2.0.11-1
+APP_VERSION=2.0.12-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -19825,7 +19852,6 @@ APP_VERSION=5.3.0.beta1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/${APP_VERSION//.b/-b}/${FILE_NAME}.${APP_EXT}
-https://github.com/Ulauncher/Ulauncher/releases/download/5.3.0-beta1/
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
@@ -19989,3 +20015,52 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install HTTPToolkit Electron-based cross-platform HTTP(S) debugging proxy, analyzer and client from Debian package
+APP_NAME=HTTPToolkit
+APP_GUI_NAME="Electron-based cross-platform HTTP(S) debugging proxy, analyzer and client."
+APP_VERSION=0.1.14
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}-desktop/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install Gitamine Electron-based cross-platform Git GUI client from Debian package
+APP_NAME=Gitamine
+APP_GUI_NAME="Electron-based cross-platform Git GUI client."
+APP_VERSION=0.0.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/pvigier/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install expreduce Mathematica-compatible, Golang-based computer algebra tool from package
+APP_NAME=expreduce
+APP_GUI_NAME="Mathematica-compatible, Golang-based computer algebra tool."
+APP_VERSION=0.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/corywalker/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install impromp2 simple Perl script to modify Bash shell prompt (PS1) from package
+APP_NAME=impromp2
+APP_GUI_NAME="Simple Perl script to modify Bash shell prompt (PS1)."
+APP_VERSION=N/A
+APP_EXT=sh
+FILE_NAME=${APP_NAME,,}
+sudo apt-get install -y perl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${FILE_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
