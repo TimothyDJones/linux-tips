@@ -20064,3 +20064,40 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${FILE_NAME}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Ag cross-platform, GTK-based GUI and command-line anagram generator from package
+APP_NAME=Ag
+APP_GUI_NAME="Cross-platform, GTK-based GUI and command-line anagram generator."
+APP_VERSION=1.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-gtk
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}1/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+PATH=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/Lexicons:\$PATH; export PATH
+/opt/${APP_NAME,,}/agc "$@"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/Lexicons
+Exec=/opt/${APP_NAME,,}/ag
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Accessories;Games;
+Keywords=Anagrams;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
