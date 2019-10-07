@@ -7768,10 +7768,10 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Bitwarden Electron-based desktop/online password manager from package
+# Install Bitwarden Electron-based desktop/online password manager from Debian package
 APP_NAME=Bitwarden
 APP_GUI_NAME="Electron-based desktop/online password manager."
-APP_VERSION=1.3.0
+APP_VERSION=1.16.6
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/desktop/releases/download/v1.0.5/${APP_NAME}-${APP_VERSION}-amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
