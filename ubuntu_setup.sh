@@ -8872,23 +8872,26 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install VeraCrypt cross-platform disk encryption utility from package
+# Install VeraCrypt cross-platform disk encryption utility from Debian package
 APP_NAME=VeraCrypt
 APP_GUI_NAME="Cross-platform disk encryption utility."
-APP_VERSION=1.22
-APP_EXT=tar.bz2
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-setup
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=x86
+APP_VERSION=1.24
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo)$ ]]; then  # 19.10
+	DIST_VERSION=19.10
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di)$ ]]; then  # 19.04
+	DIST_VERSION=19.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co)$ ]]; then  # 18.04
+	DIST_VERSION=18.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04, 16.10, 17.04, 17.10
+	DIST_VERSION=16.04
 fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Ubuntu-${DIST_VERSION}-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo sh /tmp/${FILE_NAME}/${FILE_NAME}-console-${ARCH_TYPE}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Pinky Bar window manager-independent status bar system information utility from source
 APP_NAME=Pinky-Bar
