@@ -6601,7 +6601,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Koxinga Python-based board game similar to Jamaica
 APP_NAME=Koxinga
 APP_GUI_NAME="Python-based board game similar to Jamaica."
-APP_VERSION=030
+APP_VERSION=031
 APP_EXT=tar.gz
 sudo pip3 install pygame
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}.${APP_EXT}
