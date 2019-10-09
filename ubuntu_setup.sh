@@ -20104,3 +20104,20 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install jtc cross-platform command-line tool to extract, manipulate, and transform JSON data from package
+APP_NAME=jtc
+APP_GUI_NAME="Cross-platform command-line tool to extract, manipulate, and transform JSON data."
+APP_VERSION=1.74
+APP_EXT=N/A
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=32
+fi
+FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}.v${APP_VERSION}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/ldn-softdev/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
