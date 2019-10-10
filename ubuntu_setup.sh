@@ -19790,7 +19790,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install BashDB bash shell debugger from source
 APP_NAME=BashDB
 APP_GUI_NAME="bash shell debugger."
-APP_VERSION=5.0-1.1.0
+APP_VERSION=5.0-1.1.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
