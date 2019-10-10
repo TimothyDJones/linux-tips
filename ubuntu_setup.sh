@@ -13757,7 +13757,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Todoyu web-based (PHP/MySQL) project and task management tool from package
 APP_NAME=Todoyu
 APP_GUI_NAME="Web-based (PHP/MySQL) project and task management tool."
-APP_VERSION=3.0.1
+APP_VERSION=3.0.2
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
