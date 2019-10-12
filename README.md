@@ -7,6 +7,10 @@ Collection of tips on Linux (mostly Debian/Ubuntu) helpful to me
 git config [--global] user.email "user@domain.com"
 git config [--global] user.name "User Name"
 
+# Store/cache password
+git config [--global] credential.helper store
+git pull
+
 # Set the remote repository (for existing code)
 git remote add origin https://github.com/user/repo_name.git
 ```
