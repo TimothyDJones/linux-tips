@@ -925,7 +925,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 
 # Install ZinjaI C++ IDE
 APP_NAME=zinjai
-APP_VERSION=20180718
+APP_VERSION=20191006
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=l64
@@ -1255,7 +1255,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.1.1-4014
+APP_VERSION=4.1.1-4028
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2336,7 +2336,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.64
+APP_VERSION=6.4.65
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3084,7 +3084,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=19.09.02
+APP_VERSION=19.10.10
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -6210,7 +6210,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install CPod (formerly Cumulonimbus) Electron-based podcast player and organizer from package
 APP_NAME=CPod
 APP_GUI_NAME="Cross-platform Electron-based podcast player and organizer."
-APP_VERSION=1.17.1
+APP_VERSION=1.27.1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/z-------------/cumulonimbus/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -6601,7 +6601,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Koxinga Python-based board game similar to Jamaica
 APP_NAME=Koxinga
 APP_GUI_NAME="Python-based board game similar to Jamaica."
-APP_VERSION=030
+APP_VERSION=031
 APP_EXT=tar.gz
 sudo pip3 install pygame
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}.${APP_EXT}
@@ -7768,10 +7768,10 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Bitwarden Electron-based desktop/online password manager from package
+# Install Bitwarden Electron-based desktop/online password manager from Debian package
 APP_NAME=Bitwarden
 APP_GUI_NAME="Electron-based desktop/online password manager."
-APP_VERSION=1.3.0
+APP_VERSION=1.16.6
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/desktop/releases/download/v1.0.5/${APP_NAME}-${APP_VERSION}-amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -8872,23 +8872,26 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install VeraCrypt cross-platform disk encryption utility from package
+# Install VeraCrypt cross-platform disk encryption utility from Debian package
 APP_NAME=VeraCrypt
 APP_GUI_NAME="Cross-platform disk encryption utility."
-APP_VERSION=1.22
-APP_EXT=tar.bz2
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-setup
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=x86
+APP_VERSION=1.24
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo)$ ]]; then  # 19.10
+	DIST_VERSION=19.10
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di)$ ]]; then  # 19.04
+	DIST_VERSION=19.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co)$ ]]; then  # 18.04
+	DIST_VERSION=18.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04, 16.10, 17.04, 17.10
+	DIST_VERSION=16.04
 fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Ubuntu-${DIST_VERSION}-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo sh /tmp/${FILE_NAME}/${FILE_NAME}-console-${ARCH_TYPE}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Pinky Bar window manager-independent status bar system information utility from source
 APP_NAME=Pinky-Bar
@@ -10562,7 +10565,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Pixelitor cross-platform, Java-based image editor from package
 APP_NAME=Pixelitor
 APP_GUI_NAME="Cross-platform, Java-based image editor."
-APP_VERSION=4.2.1
+APP_VERSION=4.2.2
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -11710,7 +11713,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install eLogSim digital circuit simulator from package
 APP_NAME=eLogSim
 APP_GUI_NAME="Digital circuit simulator."
-APP_VERSION=2.2.0
+APP_VERSION=2.3.0
 APP_EXT=zip
 FILE_NAME=My${APP_NAME}_${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -13754,7 +13757,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Todoyu web-based (PHP/MySQL) project and task management tool from package
 APP_NAME=Todoyu
 APP_GUI_NAME="Web-based (PHP/MySQL) project and task management tool."
-APP_VERSION=3.0.1
+APP_VERSION=3.0.2
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -16323,7 +16326,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
 APP_NAME=TkCVS
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.2.3
+APP_VERSION=9.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
@@ -19445,7 +19448,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install Java Multiprecision Calculator cross-platform calculator based on Java BigDecimal class from package
 APP_NAME="MultiPrecision Calculator"
 APP_GUI_NAME="Cross-platform calculator based on Java BigDecimal class."
-APP_VERSION=20190831
+APP_VERSION=20191009
 APP_EXT=zip
 FILE_NAME=${APP_VERSION}.${APP_NAME// /}.v1.1
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/javamultiprecis/${FILE_NAME}.${APP_EXT}
@@ -19787,7 +19790,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install BashDB bash shell debugger from source
 APP_NAME=BashDB
 APP_GUI_NAME="bash shell debugger."
-APP_VERSION=5.0-1.1.0
+APP_VERSION=5.0-1.1.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
@@ -20075,3 +20078,86 @@ curl -o /tmp/${FILE_NAME} -J -L https://github.com/svenstaro/${APP_NAME,,}/relea
 sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Ag cross-platform, GTK-based GUI and command-line anagram generator from package
+APP_NAME=Ag
+APP_GUI_NAME="Cross-platform, GTK-based GUI and command-line anagram generator."
+APP_VERSION=1.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-gtk
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}1/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+PATH=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/Lexicons:\$PATH; export PATH
+/opt/${APP_NAME,,}/agc "$@"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/Lexicons
+Exec=/opt/${APP_NAME,,}/ag
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Accessories;Games;
+Keywords=Anagrams;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install jtc cross-platform command-line tool to extract, manipulate, and transform JSON data from package
+APP_NAME=jtc
+APP_GUI_NAME="Cross-platform command-line tool to extract, manipulate, and transform JSON data."
+APP_VERSION=1.74
+APP_EXT=N/A
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=32
+fi
+FILE_NAME=${APP_NAME,,}-linux-${ARCH_TYPE}.v${APP_VERSION}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/ldn-softdev/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Rolisteam cross-platform Qt-based role-playing game (RPG) management tool from AppImage
+APP_NAME=Rolisteam
+APP_GUI_NAME="Cross-platform Qt-based role-playing game (RPG) management tool."
+APP_VERSION=1.9.0
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}_v${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=RPG;Games;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
