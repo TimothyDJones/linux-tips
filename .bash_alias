@@ -7,3 +7,7 @@ function weather() {
 		echo "Please specify city!"
 	fi
 }
+
+alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
+alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
+alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
