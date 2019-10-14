@@ -1419,7 +1419,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install XML Tree Editor from Debian package
 APP_NAME=xmltreeedit
-APP_VERSION=0.1.0.32
+APP_VERSION=0.1.0.33
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}or/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 cd /tmp
@@ -5677,7 +5677,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install WackoWiki PHP-based lightweight wiki tool
 APP_NAME=wacko
-APP_VERSION=r5.5.13
+APP_VERSION=r5.5.14
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -7263,7 +7263,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install TraySearch Java-based cross-platform quick search utility
 APP_NAME=TraySearch
 APP_GUI_NAME="Java-based cross-platform quick search utility."
-APP_VERSION=5.3.0
+APP_VERSION=5.4.1
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -7760,7 +7760,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Zettlr Electron-based Markdown editor with built-in preview from Debian package
 APP_NAME=Zettlr
 APP_GUI_NAME="Electron-based Markdown editor with built-in preview."
-APP_VERSION=1.2.3
+APP_VERSION=1.4.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -12144,7 +12144,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install TimeSlotTracker Java-based minimalist time tracking tool from Debian package
 APP_NAME=TimeSlotTracker
 APP_GUI_NAME="Java-based minimalist time tracking tool."
-APP_VERSION=1.3.21
+APP_VERSION=1.3.22
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18062,7 +18062,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # https://github.com/x-jrga/potatosql
 APP_NAME=PotatoSQL
 APP_GUI_NAME="Java-based database design and learning tool."
-APP_VERSION=0.4
+APP_VERSION=0.11
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -19992,7 +19992,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install TaskUnifier cross-platform, Electron-based GTD task manager from package
 APP_NAME=TaskUnifier
 APP_GUI_NAME="Cross-platform, Electron-based GTD task manager."
-APP_VERSION=0.6.0-beta
+APP_VERSION=0.7.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-app-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -20065,6 +20065,17 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${FILE_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install miniserve Rust-based CLI tool to serve files and directories over HTTP from package
+APP_NAME=miniserve
+APP_GUI_NAME="Rust-based CLI tool to serve files and directories over HTTP."
+APP_VERSION=0.5.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-x86_64
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/svenstaro/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
