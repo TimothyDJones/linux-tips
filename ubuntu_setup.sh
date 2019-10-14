@@ -20161,3 +20161,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install godu simple cross-platform Golang utility to find large files/directories from package
+APP_NAME=godu
+APP_GUI_NAME="Simple cross-platform Golang utility to find large files/directories."
+APP_VERSION=1.1
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-linux-${KERNEL_TYPE}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/viktomas/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/* /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
