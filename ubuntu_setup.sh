@@ -20174,3 +20174,36 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/* /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install WaveSurfer audio visualizer and editor from package
+APP_NAME=WaveSurfer
+APP_GUI_NAME="Cross-platform audio visualizer and editor."
+APP_VERSION=1.8.8p5
+APP_EXT=tgz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i386
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Multimedia;Audio;Video;
+Keywords=Audio;Video;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
