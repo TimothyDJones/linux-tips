@@ -20207,3 +20207,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install HackMD Electron-based cross-platform Markdown editor from Debian package
+APP_NAME=HackMD
+APP_GUI_NAME="Electron-based cross-platform Markdown editor."
+APP_VERSION=0.1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-desktop_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/hackmdio/${APP_NAME,,}-desktop/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
