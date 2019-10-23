@@ -12241,14 +12241,9 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install VNote Vim-inspired note-taking application with MarkDown support from App Image
 APP_NAME=VNote
 APP_GUI_NAME="Vim-inspired note-taking application with MarkDown support."
-APP_VERSION=2.4
+APP_VERSION=2.7.2
 APP_EXT=AppImage
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=i386
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=x86_64
-fi
-FILE_NAME=${APP_NAME}-${APP_VERSION}-${ARCH_TYPE}
+FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tamlok/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
