@@ -20356,3 +20356,21 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}-linux /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install FastoRedis cross-platform Redis DB GUI management tool from Debian package
+APP_NAME=FastoRedis
+APP_GUI_NAME="Cross-platform Redis DB GUI management tool."
+APP_VERSION=2.4.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_pro-${APP_VERSION}-x86_64
+# Install Redis DB, if not installed
+if ! [ -x "$(command -v redis-cli)" ]; then
+	echo 'Redis DB not installed. Installing...' >&2
+	sudo apt-get install -y redis-server
+	sudo systemctl enable redis-server.service
+	echo 'Edit "/etc/redis/redis.conf" as root to change Redis DB configuration.' >&2
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
