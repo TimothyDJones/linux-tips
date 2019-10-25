@@ -20364,6 +20364,7 @@ APP_VERSION=2.4.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_pro-${APP_VERSION}-x86_64
 # Install Redis DB, if not installed
+# https://tecadmin.net/install-redis-ubuntu/
 if ! [ -x "$(command -v redis-cli)" ]; then
 	echo 'Redis DB not installed. Installing...' >&2
 	sudo apt-get install -y redis-server
