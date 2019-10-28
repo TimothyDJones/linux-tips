@@ -20390,3 +20390,19 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install ORSimpleVideoConverter cross-platform, Java-based GUI front-end for FFmpeg from Debian package
+APP_NAME=Orsvc
+APP_GUI_NAME="Cross-platform, Java-based GUI front-end for FFmpeg."
+APP_VERSION=3.5
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-installer
+# Install Java runtime, if not installed
+if ! [ -x "$(command -v java)" ]; then
+	echo 'Java runtime not installed. Installing...' >&2
+	sudo apt-get install -y openjdk-11-jre
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
