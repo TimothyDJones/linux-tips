@@ -274,7 +274,11 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Google Go language
 APP_NAME=go
+<<<<<<< HEAD
+APP_VERSION=1.13.1
+=======
 APP_VERSION=1.13.3
+>>>>>>> db77cd329228a0efaef1cb5841b6373542e104e1
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
 else    # Otherwise use version for 32-bit kernel
@@ -20156,6 +20160,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Simplenote cross-platform Electron-based React online note-taking tool from Debian package
+APP_NAME=Simplenote
+APP_GUI_NAME="Cross-platform Electron-based React online note-taking tool."
+APP_VERSION=1.9.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-linux-${APP_VERSION}-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Automattic/${APP_NAME,,}-electron/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 
 # Install godu simple cross-platform Golang utility to find large files/directories from package
 APP_NAME=godu
