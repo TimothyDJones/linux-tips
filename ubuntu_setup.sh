@@ -12294,7 +12294,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install Golden Scrabble multi-language GUI Scrabble crossword game from package
 APP_NAME=GScrabble
 APP_GUI_NAME="Multi-language GUI Scrabble crossword game."
-APP_VERSION=0.1.2
+APP_VERSION=0.1.5
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
