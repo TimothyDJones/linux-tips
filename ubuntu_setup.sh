@@ -20419,3 +20419,21 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Rabarbar Qt-based command-line website screenshot tool from source
+APP_NAME=Rabarbar
+APP_GUI_NAME="Qt-based command-line website screenshot tool."
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-master
+sudo apt-get install -y qtwebengine5-dev libqt5webkit5-dev xfvb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://codeload.github.com/cepa/${APP_NAME,,}/${APP_EXT}/master
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p build && cd build
+qtchooser -run-tool=qmake -qt=5 .. && make && sudo make install
+sudo ln -s -f /opt/${APP_NAME,,}/bin/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
