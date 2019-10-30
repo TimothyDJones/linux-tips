@@ -20444,3 +20444,49 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://ftp.debian.org/debian/pool/mai
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install 3tdb web-based MySQL/MariaDB database client from package
+APP_NAME=3tdb
+APP_GUI_NAME="Web-based MySQL/MariaDB database client."
+APP_VERSION=5.0-2
+APP_EXT=tar.xz
+DB_NAME=author	# See ../examples/doc/README.TXT for details.
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=3t-${APP_VERSION}
+sudo apt-get install -y libapache2-mod-python
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/db3t/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+w ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+x ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+# Populate DB from script
+mysql --host=localhost --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/doc/examples/requiredTables/_kooky.sql
+mysql --host=localhost --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/doc/examples/requiredTables/_config.sql
+mysql --host=localhost --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/doc/examples/requiredTables/_category.sql
+mysql --host=localhost --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/doc/examples/requiredTables/_locale.sql
+mysql --host=localhost --user=${DB_USER} --password=${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/doc/examples/requiredTables/_doc_en_US.sql
+xdg-open http://localhost/${APP_NAME,,} &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,} &
+Icon=${WWW_HOME}/${APP_NAME,,}/images/default.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Python;Webdesign;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
