@@ -20490,3 +20490,34 @@ Categories=Development;Programming;
 Keywords=Python;Webdesign;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
+# Install jdTextEdit Python text editor based on Qt and Scintilla from package
+APP_NAME=jdTextEdit
+APP_GUI_NAME="Python text editor based on Qt and Scintilla."
+APP_VERSION=3.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}-Python
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/* /opt/${APP_NAME,,}
+pip3 install -r /opt/${APP_NAME,,}/requirements.txt
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME}.py /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=/opt/${APP_NAME,,}/${APP_NAME}.py
+Icon=/opt/${APP_NAME,,}/icons/edit-copy.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Python;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
