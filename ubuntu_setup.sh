@@ -406,7 +406,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.89.2.0-1
+APP_VERSION=1.89.0.2-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -3145,7 +3145,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install PlantUML Java-based UML modeling tool
 APP_NAME=PlantUML
-APP_VERSION=1.2019.11
+APP_VERSION=1.2019.12
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -12487,7 +12487,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Timeline Project Python-based GUI timeline tool from source
 APP_NAME=Timeline
 APP_GUI_NAME="Python-based GUI timeline tool."
-APP_VERSION=1.19.0
+APP_VERSION=1.20.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 # Due to dependencies, we use Python 2.x
