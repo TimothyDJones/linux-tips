@@ -12640,7 +12640,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install YSoccer cross-platform, Java-based retro soccer game from package
 APP_NAME=YSoccer
 APP_GUI_NAME="Cross-platform, Java-based retro soccer."
-APP_VERSION=19_preview
+APP_VERSION=19
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux32
