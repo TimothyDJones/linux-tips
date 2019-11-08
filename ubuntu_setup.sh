@@ -2954,7 +2954,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Micro terminal-based text editor
 APP_NAME=micro
-APP_VERSION=1.4.1
+APP_VERSION=1.4.2
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
