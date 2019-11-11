@@ -18144,7 +18144,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install Gaphor simple Python UML modeling tool from package
 APP_NAME=Gaphor
 APP_GUI_NAME="Simple Python UML modeling tool."
-APP_VERSION=1.0.1
+APP_VERSION=1.1.1
 APP_EXT=whl
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-py3-none-any
 sudo apt-get install -y python3-setuptools python3-pip python3-wheel
@@ -20625,3 +20625,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Gotop Golang-based graphical activity monitor for shell from package
+APP_NAME=Gotop
+APP_GUI_NAME="Golang-based graphical activity monitor for shell."
+APP_VERSION=3.0.0
+APP_EXT=tgz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=386
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cjbassi/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
