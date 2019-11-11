@@ -20592,3 +20592,36 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 git config --global core.pager "delta --dark"
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install WordGrinder a simple, non-WYSIWIG, Unicode-aware word processor for the console from source
+APP_NAME=WordGrinder
+APP_GUI_NAME="A simple, non-WYSIWIG, Unicode-aware word processor for the console."
+APP_VERSION=0.7.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y ninja-build libncursesw5-dev liblua5.2-dev zlib1g-dev libxft-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/davidgiven/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install PREFIX=/usr/local
+sudo cp ./bin/${APP_NAME,,}-builtin-curses-release-stripped /usr/local/bin/${APP_NAME,,}
+sudo cp ./bin/x${APP_NAME,,}-builtin-x11-release-stripped /usr/local/bin/x${APP_NAME,,}
+sudo cp ./extras/icon.png /usr/local/share/icons/hicolor/48x48/apps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/x${APP_NAME,,}
+Icon=/usr/local/share/icons/hicolor/48x48/apps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;
+Keywords=Editor;Word Processor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
