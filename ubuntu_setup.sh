@@ -20714,3 +20714,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Ctalk C-like object-oriented programming language with GUI, networking and systems programming features from source
+APP_NAME=Ctalk
+APP_GUI_NAME="C-like object-oriented programming language with GUI, networking and systems programming features."
+APP_VERSION=0.0.65
+APP_DATE=2019-11-12
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${APP_DATE}
+sudo apt-get install -y build-essential texinfo
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
+./configure && make && sudo make install PREFIX=/usr/local
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
