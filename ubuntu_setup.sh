@@ -20730,3 +20730,16 @@ cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
 ./configure && make && sudo make install PREFIX=/usr/local
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install repotools Rust-based command-line shortcuts for common Git commands from package
+APP_NAME=repotools
+APP_GUI_NAME="Rust-based command-line shortcuts for common Git commands."
+APP_VERSION=0.7.1
+APP_EXT=txz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-ubuntu-bionic-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ctsrc/${APP_NAME,,}/releases/download/${APP_NAME,,}-v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/bin/* /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
