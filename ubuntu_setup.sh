@@ -4430,33 +4430,37 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install ChessPDFBrowser for working with chess PDF books and PGNs
+# Install ChessPDFBrowser Java-based tool to work with chess PDF books and PGNs from package
 APP_NAME=ChessPDFBrowser
-APP_VERSION=20171115
+APP_GUI_NAME="Java-based tool to work with chess PDF books and PGNs."
+APP_VERSION=1.11
+APP_DATE=2019-11-03
 APP_EXT=zip
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}1/${APP_VERSION}.${APP_NAME}.v1.0.${APP_EXT}
+FILE_NAME=${APP_DATE//-/}.${APP_NAME}.v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}1/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
-mv ${APP_VERSION}.${APP_NAME}.v1.0 ${APP_NAME,,}
-sudo mv ${APP_NAME,,} /opt
-cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo cp /opt/${APP_NAME,,}/_source/apps/chess/${APP_NAME}.v${APP_VERSION}/src/main/resources/com/frojasg1/${APP_NAME,,}/resources/icons/App.icon.png /usr/local/share/icons/hicolor/48x48/apps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,} << EOF
 # /bin/sh
 cd /opt/${APP_NAME,,}/_binary
-PATH=/opt/${APP_NAME,,}/_binary:$PATH; export PATH
-java -jar ./ChessPDFbrowser.v1.0.jar
-cd $HOME
+PATH=/opt/${APP_NAME,,}/_binary:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/_binary/${APP_NAME}-v${APP_VERSION}-SNAPSHOT-all.jar
+cd \$HOME
 EOF
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=Tool to work with chess PDF books and PGNs
+Comment=
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}/_binary
-Exec=java -jar /opt/${APP_NAME,,}/_binary/ChessPDFbrowser.v1.0.jar
-#Icon=/opt/${APP_NAME,,}/lib/ico-gvSIG.png
+Exec=java -jar /opt/${APP_NAME,,}/_binary/${APP_NAME}-v${APP_VERSION}-SNAPSHOT-all.jar
+Icon=/usr/local/share/icons/hicolor/48x48/apps/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
