@@ -16172,7 +16172,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install FreeDoko cross-platform version of Doppelkopf German card game from package
 APP_NAME=FreeDoko
 APP_GUI_NAME="Cross-platform version of Doppelkopf German card game."
-APP_VERSION=0.7.20
+APP_VERSION=0.7.21
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_${APP_VERSION}.Linux
 sudo apt-get install -y libalut0
