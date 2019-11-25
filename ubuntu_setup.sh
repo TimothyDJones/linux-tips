@@ -20857,3 +20857,19 @@ Categories=Education;Accessories;
 Keywords=Reference;Bibliography;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
+# Install Perl Audio Converter Linux command line audio converter from package
+APP_NAME=PACPL
+APP_GUI_NAME="Linux command line audio converter."
+APP_VERSION=6.1.2
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sed -i 's@sudo apt-get install@sudo apt-get install -y@g' /tmp/${FILE_NAME}/extra/mod-install-debian.sh  # Update script to run updates without prompting.
+sudo /tmp/${FILE_NAME}/extra/mod-install-debian.sh
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
