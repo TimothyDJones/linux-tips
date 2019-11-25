@@ -406,7 +406,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.90.0.0-1
+APP_VERSION=1.90.0.4-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -16172,7 +16172,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install FreeDoko cross-platform version of Doppelkopf German card game from package
 APP_NAME=FreeDoko
 APP_GUI_NAME="Cross-platform version of Doppelkopf German card game."
-APP_VERSION=0.7.20
+APP_VERSION=0.7.21
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_${APP_VERSION}.Linux
 sudo apt-get install -y libalut0
@@ -20132,7 +20132,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Rolisteam cross-platform Qt-based role-playing game (RPG) management tool from AppImage
 APP_NAME=Rolisteam
 APP_GUI_NAME="Cross-platform Qt-based role-playing game (RPG) management tool."
-APP_VERSION=1.9.0
+APP_VERSION=1.9.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}_v${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
