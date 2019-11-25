@@ -20813,3 +20813,47 @@ sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install Refbase Zotero-compatible, web-based (PHP/MySQL) bibliographic manager for research groups from package
+APP_NAME=Refbase
+APP_GUI_NAME="Zotero-compatible, web-based (PHP/MySQL) bibliographic manager for research groups."
+APP_VERSION=0.9.6
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+w ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+# Set parameters in database configuration file
+sudo sed -i 's@$databaseName = "literature"@$databaseName = "'${DB_NAME}'"@g' ${WWW_HOME}/${APP_NAME,,}/initialize/db.inc.php
+sudo sed -i 's@$username = "litwww"@$username = "'${DB_USER}'"@g' ${WWW_HOME}/${APP_NAME,,}/initialize/db.inc.php
+sudo sed -i 's@$password = "%l1t3ratur3?"@$password = "'${DB_PASSWORD}'"@g' ${WWW_HOME}/${APP_NAME,,}/initialize/db.inc.php
+echo "Login with following administrative user after installation to create your own administrative user account:"
+echo "   Email Address: user@refbase.net"
+echo "        Password: start"
+xdg-open http://localhost/${APP_NAME,,}/install.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/img/logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;Accessories;
+Keywords=Reference;Bibliography;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
