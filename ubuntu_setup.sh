@@ -203,6 +203,9 @@ sudo php /usr/local/bin/composer global require hirak/prestissimo
 cd ${WWW_HOME}
 sudo php /usr/local/bin/composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json --no-dev
 sudo chown -R www-data:www-data ${WWW_HOME}/phpmyadmin
+# Enable use of MySQL Native Password for log in
+# https://stackoverflow.com/questions/49948350/phpmyadmin-on-mysql-8-0
+mysql -u root -proot -Bse "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';"
 xdg-open http://localhost/phpmyadmin/setup &
 cd $HOME
 
