@@ -20873,3 +20873,14 @@ sudo /tmp/${FILE_NAME}/extra/mod-install-debian.sh
 ./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install Gopass minimalist Golang-based GnuPG collaborative password manager from Debian package
+APP_NAME=Gopass
+APP_GUI_NAME="Minimalist Golang-based GnuPG collaborative password manager."
+APP_VERSION=1.8.6
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/gopasspw/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
