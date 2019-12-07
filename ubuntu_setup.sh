@@ -203,6 +203,9 @@ sudo php /usr/local/bin/composer global require hirak/prestissimo
 cd ${WWW_HOME}
 sudo php /usr/local/bin/composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json --no-dev
 sudo chown -R www-data:www-data ${WWW_HOME}/phpmyadmin
+# Enable use of MySQL Native Password for log in
+# https://stackoverflow.com/questions/49948350/phpmyadmin-on-mysql-8-0
+mysql -u root -proot -Bse "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';"
 xdg-open http://localhost/phpmyadmin/setup &
 cd $HOME
 
@@ -406,7 +409,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.90.0.4-1
+APP_VERSION=1.90.1.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -1255,7 +1258,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4054
+APP_VERSION=4.3-4070
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2445,7 +2448,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
 APP_NAME=XSchem
-APP_VERSION=2.9.2
+APP_VERSION=2.9.5_RC5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
@@ -20838,4 +20841,103 @@ Keywords=Java;IDE;Editor;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Refbase Zotero-compatible, web-based (PHP/MySQL) bibliographic manager for research groups from package
+APP_NAME=Refbase
+APP_GUI_NAME="Zotero-compatible, web-based (PHP/MySQL) bibliographic manager for research groups."
+APP_VERSION=0.9.6
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+w ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+# Set parameters in database configuration file
+sudo sed -i 's@$databaseName = "literature"@$databaseName = "'${DB_NAME}'"@g' ${WWW_HOME}/${APP_NAME,,}/initialize/db.inc.php
+sudo sed -i 's@$username = "litwww"@$username = "'${DB_USER}'"@g' ${WWW_HOME}/${APP_NAME,,}/initialize/db.inc.php
+sudo sed -i 's@$password = "%l1t3ratur3?"@$password = "'${DB_PASSWORD}'"@g' ${WWW_HOME}/${APP_NAME,,}/initialize/db.inc.php
+echo "Login with following administrative user after installation to create your own administrative user account:"
+echo "   Email Address: user@refbase.net"
+echo "        Password: start"
+xdg-open http://localhost/${APP_NAME,,}/install.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/img/logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Education;Accessories;
+Keywords=Reference;Bibliography;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Perl Audio Converter Linux command line audio converter from package
+APP_NAME=PACPL
+APP_GUI_NAME="Linux command line audio converter."
+APP_VERSION=6.1.2
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sed -i 's@sudo apt-get install@sudo apt-get install -y@g' /tmp/${FILE_NAME}/extra/mod-install-debian.sh  # Update script to run updates without prompting.
+sudo /tmp/${FILE_NAME}/extra/mod-install-debian.sh
+./configure && make && sudo make install
+cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install Gopass minimalist Golang-based GnuPG collaborative password manager from Debian package
+APP_NAME=Gopass
+APP_GUI_NAME="Minimalist Golang-based GnuPG collaborative password manager."
+APP_VERSION=1.8.6
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/gopasspw/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Interval RPN Calculator console RPN calculator with interval output from package
+APP_NAME=irpn
+APP_GUI_NAME="Console RPN calculator with interval output."
+APP_VERSION=27feb19
+APP_EXT=7z
+FILE_NAME=${APP_NAME,,}${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/intervalrpncalculator/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/intRpn/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,}_gnu /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Thorium Reader (Readium) cross-platform EPUB reader from Debian package
+APP_NAME=ThoriumReader
+APP_GUI_NAME="Cross-platform EPUB reader."
+APP_VERSION=1.0.6-rc.0.1822
+APP_EXT=deb
+FILE_NAME=EDRLab.${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/readium/readium-desktop/releases/download/latest-linux/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
