@@ -15848,7 +15848,7 @@ cd $HOME
 # Install JUL Designer RAD tool for JavaScript development from App Image
 APP_NAME=JUL-Designer
 APP_GUI_NAME="RAD tool for JavaScript development."
-APP_VERSION=2.5.0
+APP_VERSION=3.0.3
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=i386
