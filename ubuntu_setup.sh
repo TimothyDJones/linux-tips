@@ -11103,9 +11103,9 @@ sudo rm -rf /tmp/${APP_NAME}*
 # http://sohag-developer.com/
 APP_NAME=Sohag-Developer
 APP_GUI_NAME="Cross-platformtool for generating Qt C++ classes for data management in PostgreSQL databases."
-APP_VERSION=V3.01
+APP_VERSION=V3.2
 APP_EXT=tar.xz
-FILE_NAME=sohagDeveloper${APP_VERSION}Linux_X64
+FILE_NAME=sohagDeveloperLinux_X64_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
