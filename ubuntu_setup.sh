@@ -20977,3 +20977,26 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install McFly replacement for <Ctrl>+R search of command-line history from package
+APP_NAME=McFly
+APP_GUI_NAME="Replacement for <Ctrl>+R search of command-line history."
+APP_VERSION=0.3.5
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i686
+fi
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-${ARCH_TYPE}-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cantino/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cp /tmp/${FILE_NAME}/${APP_NAME,,}.bash $HOME/.config
+echo 'if [[ -r '$HOME/${APP_NAME,,}'.bash ]]; then' >> $HOME/.bashrc
+echo '  source '$HOME/${APP_NAME,,}'.bash' >> $HOME/.bashrc
+echo 'fi' >> $HOME/.bashrc
+source $HOME/.bashrc
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
