@@ -19484,34 +19484,33 @@ sudo mv /tmp/multicalcu.desktop /usr/share/applications/
 cd $HOME
 
 # Install SQL Dynamite cross-platform Mono/.NET-based GUI database client from package
-APP_NAME="SQL Dynamite"
+APP_NAME=SQL-Dynamite
 APP_GUI_NAME="Cross-platform Mono/.NET-based GUI database client."
-APP_VERSION=2.1.5.0
+APP_VERSION=2.5.1.1
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME// /%20}%20${APP_VERSION}%20"(Linux)"
-PATH_NAME=${APP_NAME,,}
-PATH_NAME=${PATH_NAME// /-}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${PATH_NAME}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME//-/_}_Linux_${APP_VERSION}
+sudo apt-get install -y mono-4.0-gac gtk-sharp2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sql-dynamite/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${PATH_NAME}
-sudo cp -R /tmp/${FILE_NAME}/SQL*/* /opt/${PATH_NAME}
-cat > /tmp/${PATH_NAME} << EOF
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/SQL*/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
-cd /opt/${PATH_NAME}
-PATH=/opt/${PATH_NAME}:\$PATH; export PATH
-mono /opt/${PATH_NAME}/SqlDynamiteX.exe
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+mono /opt/${APP_NAME,,}/SqlDynamiteX.exe
 cd $HOME
 EOF
-sudo mv /tmp/${PATH_NAME} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${PATH_NAME}
-cat > /tmp/${PATH_NAME}.desktop << EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Path=/opt/${PATH_NAME}
-Exec=mono /opt/${PATH_NAME}/SqlDynamiteX.exe
+Path=/opt/${APP_NAME,,}
+Exec=mono /opt/${APP_NAME,,}/SqlDynamiteX.exe
 #Icon=
 Type=Application
 StartupNotify=true
@@ -19519,7 +19518,7 @@ Terminal=false
 Categories=Programming;Development;
 Keywords=SQL;Database;Editor;
 EOF
-sudo mv /tmp/${PATH_NAME}.desktop /usr/share/applications/
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 
 # Install OverCASE Java-based integrate CASE tool from package
