@@ -21075,3 +21075,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install SciCalc programmable scientific desktop calculator from Debian package
+APP_NAME=SciCalc
+APP_GUI_NAME="Programmable scientific desktop calculator."
+APP_VERSION=1.2.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-amd64-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.scicalc.io/download/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
