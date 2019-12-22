@@ -350,7 +350,7 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${AP
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
 rm -f /tmp/${APP_NAME}.${APP_EXT}
 APP_NAME=firetools
-APP_VERSION=0.9.58_1
+APP_VERSION=0.9.62_1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/firejail/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
@@ -409,7 +409,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.90.1.0-1
+APP_VERSION=1.91.0.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -890,7 +890,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=9.1.7
+APP_VERSION=9.2.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1258,7 +1258,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4070
+APP_VERSION=4.3-4079
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -1622,7 +1622,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZenTao project management tool from Debian package
 APP_NAME=ZenTaoPMS
-APP_VERSION=11.6.3
+APP_VERSION=11.7
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${FILE_NAME}.${APP_EXT}
@@ -2336,7 +2336,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.79
+APP_VERSION=6.4.93
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3084,7 +3084,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=19.10.20
+APP_VERSION=19.12.16
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -4129,7 +4129,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.15.0-1
+APP_VERSION=1.16.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -5192,7 +5192,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install pgweb cross-platform client for PostgreSQL databases 
 APP_NAME=pgweb
 APP_GUI_NAME="Cross-platform client for PostgreSQL databases"
-APP_VERSION=0.11.4
+APP_VERSION=0.11.5
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux_amd64
@@ -5681,7 +5681,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install WackoWiki PHP-based lightweight wiki tool
 APP_NAME=wacko
-APP_VERSION=r6.0.beta1
+APP_VERSION=r6.0.0
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -7659,7 +7659,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=4.2.2
+APP_VERSION=4.2.3
 APP_EXT=tgz
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
@@ -11103,9 +11103,9 @@ sudo rm -rf /tmp/${APP_NAME}*
 # http://sohag-developer.com/
 APP_NAME=Sohag-Developer
 APP_GUI_NAME="Cross-platformtool for generating Qt C++ classes for data management in PostgreSQL databases."
-APP_VERSION=V3.01
+APP_VERSION=V3.2
 APP_EXT=tar.xz
-FILE_NAME=sohagDeveloper${APP_VERSION}Linux_X64
+FILE_NAME=sohagDeveloperLinux_X64_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -13178,7 +13178,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install qBittorrent Qt-based Bittorrent client from source
 APP_NAME=qBittorrent
 APP_GUI_NAME="Qt-based Bittorrent client."
-APP_VERSION=4.1.9
+APP_VERSION=4.2.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y ${APP_NAME,,}
@@ -15848,7 +15848,7 @@ cd $HOME
 # Install JUL Designer RAD tool for JavaScript development from App Image
 APP_NAME=JUL-Designer
 APP_GUI_NAME="RAD tool for JavaScript development."
-APP_VERSION=2.5.0
+APP_VERSION=3.0.3
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=i386
@@ -18195,7 +18195,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Hypernomicon Java-based research tracking database with built-in PDF viewer from package
 APP_NAME=Hypernomicon
 APP_GUI_NAME="Java-based research tracking database with built-in PDF viewer."
-APP_VERSION=1.17
+APP_VERSION=1.17.2
 APP_EXT=sh
 FILE_NAME=${APP_NAME}_linux_${APP_VERSION//./_}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -19484,34 +19484,33 @@ sudo mv /tmp/multicalcu.desktop /usr/share/applications/
 cd $HOME
 
 # Install SQL Dynamite cross-platform Mono/.NET-based GUI database client from package
-APP_NAME="SQL Dynamite"
+APP_NAME=SQL-Dynamite
 APP_GUI_NAME="Cross-platform Mono/.NET-based GUI database client."
-APP_VERSION=2.1.5.0
+APP_VERSION=2.5.1.1
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME// /%20}%20${APP_VERSION}%20"(Linux)"
-PATH_NAME=${APP_NAME,,}
-PATH_NAME=${PATH_NAME// /-}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${PATH_NAME}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME//-/_}_Linux_${APP_VERSION}
+sudo apt-get install -y mono-4.0-gac gtk-sharp2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sql-dynamite/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${PATH_NAME}
-sudo cp -R /tmp/${FILE_NAME}/SQL*/* /opt/${PATH_NAME}
-cat > /tmp/${PATH_NAME} << EOF
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/SQL*/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
-cd /opt/${PATH_NAME}
-PATH=/opt/${PATH_NAME}:\$PATH; export PATH
-mono /opt/${PATH_NAME}/SqlDynamiteX.exe
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+mono /opt/${APP_NAME,,}/SqlDynamiteX.exe
 cd $HOME
 EOF
-sudo mv /tmp/${PATH_NAME} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${PATH_NAME}
-cat > /tmp/${PATH_NAME}.desktop << EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Path=/opt/${PATH_NAME}
-Exec=mono /opt/${PATH_NAME}/SqlDynamiteX.exe
+Path=/opt/${APP_NAME,,}
+Exec=mono /opt/${APP_NAME,,}/SqlDynamiteX.exe
 #Icon=
 Type=Application
 StartupNotify=true
@@ -19519,7 +19518,7 @@ Terminal=false
 Categories=Programming;Development;
 Keywords=SQL;Database;Editor;
 EOF
-sudo mv /tmp/${PATH_NAME}.desktop /usr/share/applications/
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 
 # Install OverCASE Java-based integrate CASE tool from package
@@ -19789,7 +19788,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install BashDB bash shell debugger from source
 APP_NAME=BashDB
 APP_GUI_NAME="bash shell debugger."
-APP_VERSION=5.0-1.1.1
+APP_VERSION=5.0-1.1.2
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
@@ -20938,6 +20937,152 @@ APP_VERSION=1.0.6-rc.0.1822
 APP_EXT=deb
 FILE_NAME=EDRLab.${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/readium/readium-desktop/releases/download/latest-linux/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Mindustry Java-based desktop sandbox tower defense game from package
+APP_NAME=Mindustry
+APP_GUI_NAME="Java-based desktop sandbox tower defense game."
+APP_VERSION="5.0 Build 101.1"
+APP_EXT=jar
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} "$@"
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Simultation;Multiplayer;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install McFly replacement for <Ctrl>+R search of command-line history from package
+APP_NAME=McFly
+APP_GUI_NAME="Replacement for <Ctrl>+R search of command-line history."
+APP_VERSION=0.3.5
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i686
+fi
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-${ARCH_TYPE}-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cantino/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cp /tmp/${FILE_NAME}/${APP_NAME,,}.bash $HOME/.config
+echo 'if [[ -r '$HOME/${APP_NAME,,}'.bash ]]; then' >> $HOME/.bashrc
+echo '  source '$HOME/${APP_NAME,,}'.bash' >> $HOME/.bashrc
+echo 'fi' >> $HOME/.bashrc
+source $HOME/.bashrc
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install remindME cross-platform sticky note tool from package
+APP_NAME=remindME
+APP_GUI_NAME="Cross-platform sticky note tool."
+APP_VERSION=beta1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/remind-me/${FILE_NAME}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp /tmp/${FILE_NAME} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${FILE_NAME}
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=Notepad;Sticky;Notes;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install SimPy Big Two Taiwan Big Two Python/Pygame card game from package
+APP_NAME=SimPyBigTwo
+APP_GUI_NAME="Taiwan Big Two Python/Pygame card game."
+APP_VERSION=0.3.6
+APP_EXT=tar.gz
+FILE_NAME=linux_${APP_NAME,,}_${APP_VERSION//./}
+sudo apt-get install -y python3-pygame
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+python3 /opt/${APP_NAME,,}/main.py
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/Image/simpybigtwo_default.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Poker;Cards;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install SciCalc programmable scientific desktop calculator from Debian package
+APP_NAME=SciCalc
+APP_GUI_NAME="Programmable scientific desktop calculator."
+APP_VERSION=1.2.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-amd64-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.scicalc.io/download/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
