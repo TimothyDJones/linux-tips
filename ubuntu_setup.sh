@@ -21086,3 +21086,19 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.scicalc.io/download/
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Glow Golang-based command-line markdown renderer from Debian package
+APP_NAME=Glow
+APP_GUI_NAME="Golang-based command-line markdown renderer."
+APP_VERSION=0.1.3
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=386
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/charmbracelet/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
