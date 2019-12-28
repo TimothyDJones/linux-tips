@@ -866,7 +866,7 @@ sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 
 # Install QXmlEdit XML editor and XSD viewer from source
 APP_NAME=QXmlEdit
-APP_VERSION=0.9.13
+APP_VERSION=0.9.14
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
 sudo apt-get install -y libqt5xmlpatterns5-dev libqt5svg5-dev
