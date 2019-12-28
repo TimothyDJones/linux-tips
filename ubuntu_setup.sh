@@ -4890,13 +4890,31 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Thonny minimalist Python IDE/editor from package
+# Install Thonny minimalist Python IDE/editor for beginners from package
 APP_NAME=Thonny
-APP_VERSION=2.1.16
-APP_EXT=sh
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://bitbucket.org/plas/${APP_NAME,,}/downloads/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
-sudo chmod +x /tmp/${APP_NAME,,}.${APP_EXT}
-/tmp/${APP_NAME,,}.${APP_EXT}
+APP_VERSION=3.2.5
+APP_GUI_NAME="Minimalist Python IDE/editor for beginners."
+APP_EXT=tar.gz
+if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i686
+fi
+sudo apt-get install -y python3 python3-pip 
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+/tmp/${FILE_NAME}/${APP_NAME,,}/install
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd ${HOME}/apps/${APP_NAME,,}/bin
+PATH=${HOME}/apps/${APP_NAME,,}/bin:\$PATH; export PATH
+${HOME}/apps/${APP_NAME,,}/bin/${APP_NAME,,}
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
