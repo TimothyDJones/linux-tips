@@ -21121,3 +21121,19 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Pynguin Python/Qt-based turtle graphics application from Debian package
+APP_NAME=Pynguin
+APP_GUI_NAME="Python/Qt-based turtle graphics application."
+APP_VERSION=0.18-1
+APP_EXT=deb
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar|bi|co|di|eo)$ ]]; then
+	APP_VERSION=0.18-1
+else
+	APP_VERSION=0.16-1
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~missive/+archive/ubuntu/ppa/+files/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
