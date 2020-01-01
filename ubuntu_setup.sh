@@ -3002,23 +3002,26 @@ sudo add-apt-repository -y ppa:meebey/smuxi-stable
 sudo apt-get update
 sudo apt-get install -y smuxi
 
-# Install Textadept minimalist cross-platform text editor
-APP_NAME=textadept
-APP_VERSION=10.0
+# Install Textadept minimalist cross-platform text editor from package
+APP_NAME=Textadept
+APP_GUI_NAME="Minimalist cross-platform text editor"
+APP_VERSION=10.8
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=i386
 fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://foicica.com/${APP_NAME,,}/download/${APP_NAME,,}_${APP_VERSION}.${ARCH_TYPE}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://foicica.com/${APP_NAME,,}/download/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${ARCH_TYPE} /opt/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
-Name=Textadept
-Comment=Minimalist cross-platform text editor
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
 GenericName=Editor
 Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
 Icon=/opt/${APP_NAME,,}/core/images/ta_32x32.png
@@ -3030,9 +3033,8 @@ Categories=Programming;Accessories;System;Development;
 Keywords=Editor;Text;Lua;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install TexStudio LaTeX editor
 APP_NAME=texstudio
