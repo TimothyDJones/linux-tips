@@ -21178,3 +21178,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install EZPwd Golang-based minimalist console password manager with GnuPGP/OpenPGP compatibility from package
+APP_NAME=EZPwd
+APP_GUI_NAME="Golang-based minimalist console password manager with GnuPGP/OpenPGP compatibility."
+APP_VERSION=2.2.1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}_tui_linux
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/jdevelop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+mkdir -p ${HOME}/private
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
