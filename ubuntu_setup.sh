@@ -21138,3 +21138,43 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~missive/+archi
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install PmWiki PHP-based wiki tool from package
+APP_NAME=PmWiki
+APP_GUI_NAME="PHP-based wiki tool."
+APP_VERSION=2.2.123
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+if ![ -x "$(command -v php)" ]; then
+  echo 'Error: php is not installed.' >&2
+  return
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.pmwiki.org/pub/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+cat > /tmp/index.php << EOF
+<?php include_once('pmwiki.php');
+EOF
+sudo cp /tmp/index.php ${WWW_HOME}/${APP_NAME,,}
+sudo mkdir ${WWW_HOME}/${APP_NAME,,}/wiki.d
+sudo chmod 777 ${WWW_HOME}/${APP_NAME,,}/wiki.d
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php
+Icon=${WWW_HOME}/${APP_NAME,,}/pub/skins/pmwiki/pmwiki-32.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;
+Keywords=Wiki;Documentation;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
