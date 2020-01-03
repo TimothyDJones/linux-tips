@@ -19972,22 +19972,22 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install GORSS console-based RSS/Atom feed reader with theming capability from package
 APP_NAME=GORSS
 APP_GUI_NAME="Console-based RSS/Atom feed reader with theming capability."
-APP_VERSION=N/A
-APP_EXT=zip
-FILE_NAME=${APP_NAME,,}-master
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Lallassu/${APP_NAME,,}/archive/master.zip
+APP_VERSION=0.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Lallassu/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo cp /tmp/${FILE_NAME}/bin/${APP_NAME,,}_linux /usr/local/bin/${APP_NAME,,}_linux
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/${APP_NAME,,}_linux /usr/local/bin/${APP_NAME,,}_linux
 mkdir -p $HOME/.config/${APP_NAME,,}
-cp /tmp/${FILE_NAME}/${APP_NAME,,}.conf $HOME/.config/${APP_NAME,,}
-cp /tmp/${FILE_NAME}/*.theme $HOME/.config/${APP_NAME,,}
+cp /tmp/${FILE_NAME}/${APP_NAME,,}/${APP_NAME,,}.conf $HOME/.config/${APP_NAME,,}
+cp /tmp/${FILE_NAME}/${APP_NAME,,}/themes/*.theme $HOME/.config/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
-cd $HOME/.config/${APP_NAME,,}
+cd \$HOME/.config/${APP_NAME,,}
 PATH=/usr/local/bin:\$PATH; export PATH
-/usr/local/bin/${APP_NAME,,}_linux -config $HOME/.config/${APP_NAME,,}/gorss.conf -theme $HOME/.config/${APP_NAME,,}/default.theme
-cd $HOME
+/usr/local/bin/${APP_NAME,,}_linux -config \$HOME/.config/${APP_NAME,,}/gorss.conf -theme \$HOME/.config/${APP_NAME,,}/default.theme
+cd \$HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
