@@ -461,7 +461,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=1.5.9
+APP_VERSION=2.0.0
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -19253,7 +19253,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Milkman cross-platform JavaFX-based REST API client from package
 APP_NAME=Milkman
 APP_GUI_NAME="Cross-platform JavaFX-based REST API client."
-APP_VERSION=3.3.0
+APP_VERSION=4.0.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-dist-linux64-bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/warmuuh/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -19974,22 +19974,22 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install GORSS console-based RSS/Atom feed reader with theming capability from package
 APP_NAME=GORSS
 APP_GUI_NAME="Console-based RSS/Atom feed reader with theming capability."
-APP_VERSION=N/A
-APP_EXT=zip
-FILE_NAME=${APP_NAME,,}-master
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Lallassu/${APP_NAME,,}/archive/master.zip
+APP_VERSION=0.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Lallassu/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo cp /tmp/${FILE_NAME}/bin/${APP_NAME,,}_linux /usr/local/bin/${APP_NAME,,}_linux
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/${APP_NAME,,}_linux /usr/local/bin/${APP_NAME,,}_linux
 mkdir -p $HOME/.config/${APP_NAME,,}
-cp /tmp/${FILE_NAME}/${APP_NAME,,}.conf $HOME/.config/${APP_NAME,,}
-cp /tmp/${FILE_NAME}/*.theme $HOME/.config/${APP_NAME,,}
+cp /tmp/${FILE_NAME}/${APP_NAME,,}/${APP_NAME,,}.conf $HOME/.config/${APP_NAME,,}
+cp /tmp/${FILE_NAME}/${APP_NAME,,}/themes/*.theme $HOME/.config/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
-cd $HOME/.config/${APP_NAME,,}
+cd \$HOME/.config/${APP_NAME,,}
 PATH=/usr/local/bin:\$PATH; export PATH
-/usr/local/bin/${APP_NAME,,}_linux -config $HOME/.config/${APP_NAME,,}/gorss.conf -theme $HOME/.config/${APP_NAME,,}/default.theme
-cd $HOME
+/usr/local/bin/${APP_NAME,,}_linux -config \$HOME/.config/${APP_NAME,,}/gorss.conf -theme \$HOME/.config/${APP_NAME,,}/default.theme
+cd \$HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
@@ -21183,3 +21183,56 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install PmWiki PHP-based wiki tool from package
+APP_NAME=PmWiki
+APP_GUI_NAME="PHP-based wiki tool."
+APP_VERSION=2.2.123
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+if ![ -x "$(command -v php)" ]; then
+  echo 'Error: php is not installed.' >&2
+  return
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.pmwiki.org/pub/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+cat > /tmp/index.php << EOF
+<?php include_once('pmwiki.php');
+EOF
+sudo cp /tmp/index.php ${WWW_HOME}/${APP_NAME,,}
+sudo mkdir ${WWW_HOME}/${APP_NAME,,}/wiki.d
+sudo chmod 777 ${WWW_HOME}/${APP_NAME,,}/wiki.d
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php
+Icon=${WWW_HOME}/${APP_NAME,,}/pub/skins/pmwiki/pmwiki-32.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;
+Keywords=Wiki;Documentation;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install EZPwd Golang-based minimalist console password manager with GnuPGP/OpenPGP compatibility from package
+APP_NAME=EZPwd
+APP_GUI_NAME="Golang-based minimalist console password manager with GnuPGP/OpenPGP compatibility."
+APP_VERSION=2.2.1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}_tui_linux
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/jdevelop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+mkdir -p ${HOME}/private
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
