@@ -21236,3 +21236,19 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 mkdir -p ${HOME}/private
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Broot Rust-based command-line directory tree navigation tool with fuzzy-search capability from package
+# https://dystroy.org/broot/
+APP_NAME=Broot
+APP_GUI_NAME="Rust-based command-line directory tree navigation tool with fuzzy-search capability."
+APP_VERSION=0.11.3
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+/usr/local/bin/${APP_NAME,,} --install
+# Reload Bash configuration
+source $HOME/.bashrc
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
