@@ -21281,3 +21281,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install AnetTest integrated Ethernet packet generator and sniffer from source
+APP_NAME=AnetTest
+APP_GUI_NAME="Integrated Ethernet packet generator and sniffer."
+APP_VERSION=1.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}${APP_VERSION}_sources
+sudo apt-get install libncurses5-dev libpcap0.8-dev -y
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
