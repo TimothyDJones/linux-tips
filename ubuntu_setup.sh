@@ -21296,3 +21296,25 @@ cd /tmp/${FILE_NAME}/${APP_NAME,,}
 ./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
+
+# Install sfbf (Search For Big Files) command-line tool to find largest files on file system from Debian package
+APP_NAME=sfbf
+APP_GUI_NAME="Command-line tool to find largest files on file system."
+APP_VERSION=1.31.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/spypunk/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install sfbf-ui UI for sfbf (Search For Big Files) command-line tool to find largest files on file system from Debian package
+APP_NAME=sfbf-ui
+APP_GUI_NAME="UI for sfbf (Search For Big Files) command-line tool to find largest files on file system."
+APP_VERSION=1.4.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/spypunk/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
