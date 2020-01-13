@@ -21318,3 +21318,31 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/spypunk/${APP_NAME
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install SFTPGo Golang-based highly-configurable SFTP server from package
+APP_NAME=SFTPGo
+APP_GUI_NAME="Golang-based highly-configurable SFTP server."
+APP_VERSION=0.9.5
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_x86_64
+sudo apt-get install sqlite3 openssh-server -y
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/drakkan/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mkdir -p /var/log/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo mkdir -p /opt/${APP_NAME,,}/config
+sudo mkdir -p /opt/${APP_NAME,,}/config/logs
+sudo cp /opt/${APP_NAME,,}/sql/sqlite/* /opt/${APP_NAME,,}/config
+sudo cp /opt/${APP_NAME,,}/${APP_NAME,,}.json /opt/${APP_NAME,,}/config
+sudo chmod -R 777 /opt/${APP_NAME,,}/config
+sudo addgroup ${APP_NAME,,}
+sudo adduser --no-create-home --disabled-password --gecos "SFTPGo User Account",,,, --ingroup ${APP_NAME,,} ${APP_NAME,,}
+sudo usermod -a -G ${APP_NAME,,} ${USER}
+sudo chown -R ${APP_NAME,,}:${APP_NAME,,} /var/log/${APP_NAME,,}
+sudo chmod -R 777 /var/log/${APP_NAME,,}
+echo '/opt/'${APP_NAME,,}/${APP_NAME,,}' serve --config-dir /opt/'${APP_NAME,,}'/config --log-file-path /var/log/'${APP_NAME,,} >> ${HOME}/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
