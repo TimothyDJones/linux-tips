@@ -21346,3 +21346,17 @@ echo '/opt/'${APP_NAME,,}/${APP_NAME,,}' serve --config-dir /opt/'${APP_NAME,,}'
 source $HOME/.bashrc	# Reload Bash configuration
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Murex Golang-based alternate command shell with focus on scripting from package
+APP_NAME=Murex
+APP_GUI_NAME="Golang-based alternate command shell with focus on scripting."
+APP_VERSION=N/A
+APP_EXT=gz
+FILE_NAME=${APP_NAME,,}-linux-${KERNEL_TYPE//i/}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://murex.rocks/bin/latest/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
