@@ -1622,7 +1622,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZenTao project management tool from Debian package
 APP_NAME=ZenTaoPMS
-APP_VERSION=11.7
+APP_VERSION=12.0stable
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${FILE_NAME}.${APP_EXT}
