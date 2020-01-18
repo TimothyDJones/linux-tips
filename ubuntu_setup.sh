@@ -1089,9 +1089,9 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Madedit-Mod text editor from Debian package
 APP_NAME=Madedit-Mod
-APP_VERSION=0.4.17-1
+APP_VERSION=0.4.18-1
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}_ubuntu%2018.04
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu19.10
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
@@ -1622,7 +1622,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZenTao project management tool from Debian package
 APP_NAME=ZenTaoPMS
-APP_VERSION=11.7
+APP_VERSION=12.0stable
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${FILE_NAME}.${APP_EXT}
@@ -4385,7 +4385,7 @@ sudo apt-get install -y openshot-qt
 
 # Install View Your Mind (VYM) Qt mind-mapping tool from source
 APP_NAME=vym
-APP_VERSION=2.7.0
+APP_VERSION=2.7.1
 APP_EXT=tar.bz2
 sudo apt-get install -y python3-tk qt5-default libqt5svg5-dev libqt5scripttools5 qtscript5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -4816,7 +4816,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.3.5
+APP_VERSION=1.3.6
 APP_EXT=tar.bz2
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -5701,7 +5701,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install WackoWiki PHP-based lightweight wiki tool
 APP_NAME=wacko
-APP_VERSION=r6.0.0
+APP_VERSION=r6.0.2
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -9852,7 +9852,7 @@ rm -rf /tmp/${FILE_NAME}*
 # Install FileRunner cross-platform, two-pane file manager with built-in FTP/SFTP client from package
 APP_NAME=FileRunner
 APP_GUI_NAME="Cross-platform, two-pane file manager with built-in FTP/SFTP client."
-APP_VERSION=18.07.19.16-2
+APP_VERSION=19.12.21.13-2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -16319,7 +16319,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Grip GTK-based CD player, CD ripper, and MP3 encoder from source
 APP_NAME=Grip
 APP_GUI_NAME="GTK-based CD player, CD ripper, and MP3 encoder."
-APP_VERSION=3.10.0
+APP_VERSION=4.0.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libssl-dev libssh2-1-dev libvte-dev libcurl4-openssl-dev libgnomeui-dev
@@ -21316,5 +21316,86 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/spypunk/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install SFTPGo Golang-based highly-configurable SFTP server from package
+APP_NAME=SFTPGo
+APP_GUI_NAME="Golang-based highly-configurable SFTP server."
+APP_VERSION=0.9.5
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_x86_64
+sudo apt-get install sqlite3 openssh-server -y
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/drakkan/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mkdir -p /var/log/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo mkdir -p /opt/${APP_NAME,,}/config
+sudo mkdir -p /opt/${APP_NAME,,}/config/logs
+sudo cp /opt/${APP_NAME,,}/sql/sqlite/* /opt/${APP_NAME,,}/config
+sudo cp /opt/${APP_NAME,,}/${APP_NAME,,}.json /opt/${APP_NAME,,}/config
+sudo chmod -R 777 /opt/${APP_NAME,,}/config
+sudo addgroup ${APP_NAME,,}
+sudo adduser --no-create-home --disabled-password --gecos "SFTPGo User Account",,,, --ingroup ${APP_NAME,,} ${APP_NAME,,}
+sudo usermod -a -G ${APP_NAME,,} ${USER}
+sudo chown -R ${APP_NAME,,}:${APP_NAME,,} /var/log/${APP_NAME,,}
+sudo chmod -R 777 /var/log/${APP_NAME,,}
+echo '/opt/'${APP_NAME,,}/${APP_NAME,,}' serve --config-dir /opt/'${APP_NAME,,}'/config --log-file-path /var/log/'${APP_NAME,,} >> ${HOME}/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Murex Golang-based alternate command shell with focus on scripting from package
+APP_NAME=Murex
+APP_GUI_NAME="Golang-based alternate command shell with focus on scripting."
+APP_VERSION=N/A
+APP_EXT=gz
+FILE_NAME=${APP_NAME,,}-linux-${KERNEL_TYPE//i/}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://murex.rocks/bin/latest/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install RufasSok cross-platform OpenGL Sokoban game from package
+APP_NAME=RufasSok
+APP_GUI_NAME="Cross-platform OpenGL Sokoban game."
+APP_VERSION=15jan20
+APP_EXT=7z
+FILE_NAME=as${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/asok/* /opt/${APP_NAME,,}
+sudo chown -R ${USER}:${USER} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/rufasok_gnu
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/rufasok_gnu
+#Icon=/opt/${APP_NAME,,}/rufasok.app/Contents/Resources/rufasok.icns
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Sokoban;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
