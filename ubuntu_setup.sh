@@ -21441,3 +21441,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Dino XMPP/Jabber GTK+/Vala chat client from Debian package
+# https://github.com/dino/dino
+APP_NAME=Dino
+APP_GUI_NAME="XMPP/Jabber GTK+/Vala chat client"
+APP_VERSION=0.1.0~git0.20200129.fd9db13
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+source /etc/lsb-release
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/network:/messaging:/xmpp:/${APP_NAME,,}/xUbuntu_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
