@@ -4131,7 +4131,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.16.0-1
+APP_VERSION=1.18.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -21450,5 +21450,46 @@ Categories=Development;Programming;
 Keywords=PHP;Editor;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Anoa Notepad minimalist notepad and code editor from package
+APP_NAME=Anoa-Notepad
+APP_GUI_NAME="Minimalist notepad and code editor."
+APP_VERSION=1.7-R.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-v.${APP_VERSION}-Linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;Development;
+Keywords=Editor;Notepad;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Dino XMPP/Jabber GTK+/Vala chat client from Debian package
+# https://github.com/dino/dino
+APP_NAME=Dino
+APP_GUI_NAME="XMPP/Jabber GTK+/Vala chat client"
+APP_VERSION=0.1.0~git0.20200129.fd9db13
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+source /etc/lsb-release
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/network:/messaging:/xmpp:/${APP_NAME,,}/xUbuntu_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
