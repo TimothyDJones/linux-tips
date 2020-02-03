@@ -451,7 +451,7 @@ rm -rf /tmp/ksnip*
 
 # Install CopyQ clipboard manager from Debian package
 APP_NAME=CopyQ
-APP_VERSION=3.9.1
+APP_VERSION=3.10.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_9.0-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -2057,7 +2057,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE
 APP_NAME=eric
-APP_VERSION=6-20.1
+APP_VERSION=6-20.2
 APP_EXT=tar.gz
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
@@ -3086,7 +3086,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=19.12.16
+APP_VERSION=20.02.02
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -3725,7 +3725,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Kid3 cross-platform audio tag editor from package
 APP_NAME=Kid3
 APP_GUI_NAME="Cross-platform audio tag editor."
-APP_VERSION=3.8.0
+APP_VERSION=3.8.2
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -7205,7 +7205,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.69
+APP_VERSION=V1.74
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -12777,7 +12777,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Double Commander dual-pane canonical file manager from package
 APP_NAME=DoubleCmd
 APP_GUI_NAME="Dual-pane canonical file manager."
-APP_VERSION=0.9.6
+APP_VERSION=0.9.8
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -18751,7 +18751,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Tartube PyGTK GUI frontend for youtube-dl for video download from package
 APP_NAME=Tartube
 APP_GUI_NAME="PyGTK GUI frontend for youtube-dl for video download."
-APP_VERSION=1.2.008
+APP_VERSION=1.4.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -21411,6 +21411,45 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 sudo python3 /tmp/${FILE_NAME}/setup.py install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Zira Editor Qt-based minimalist PHP editor from package
+APP_NAME=ZiraEditor
+APP_GUI_NAME="Qt-based minimalist PHP editor."
+APP_VERSION=1.6.4
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}-x86-64-Qt.5.12.6-cs-phpman
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ziracms/editor/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/Zira/* /opt/${APP_NAME,,}
+sudo chown -R ${USER}:${USER} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME}
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME}
+Icon=/opt/${APP_NAME,,}/zira.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=PHP;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
