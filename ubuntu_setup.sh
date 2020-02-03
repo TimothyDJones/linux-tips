@@ -4867,7 +4867,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Modelio UML modeling tool from package
 APP_NAME=Modelio
-APP_VERSION=3.8_3.8.0
+APP_VERSION=4.0_4.0.1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}uml/${APP_NAME,,}-open-source${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
