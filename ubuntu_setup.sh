@@ -755,17 +755,10 @@ rm -rf /tmp/${APP_NAME}*
 # Install BeeBEEP LAN messenger from package
 APP_NAME=BeeBEEP
 APP_GUI_NAME="Cross-platform secure LAN messenger."
-APP_VERSION=5.6.8
-if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
-	KERNEL_TYPE=amd64
-	APP_VERSION=5.6.8
-else    # Otherwise use version for 32-bit kernel
-	KERNEL_TYPE=i386
-	APP_VERSION=5.6.8
-fi
+APP_VERSION=5.8.2
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt4-${KERNEL_TYPE}
-sudo apt-get install -y qt4-default libqt4-xml libxcb-screensaver0 libavahi-compat-libdnssd1 libphonon4 libhunspell-dev phonon-backend-gstreamer
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt5-${KERNEL_TYPE}
+sudo apt-get install -y qt5-default libqt5xml5 libphonon4qt5-4 libhunspell-1.7-0 libxcb-screensaver0 phonon-backend-gstreamer libavahi-compat-libdnssd1 libqt5multimedia5
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
