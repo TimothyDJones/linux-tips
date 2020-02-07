@@ -18578,7 +18578,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install minuteProject Java-based reverse-engineering tool from package
 APP_NAME=minuteProject
 APP_GUI_NAME="Java-based reverse-engineering tool."
-APP_VERSION=0.9.10
+APP_VERSION=0.9.12
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
