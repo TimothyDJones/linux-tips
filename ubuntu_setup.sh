@@ -2109,7 +2109,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Swiss File Knife (SFK) shell file utility
 APP_NAME=sfk
-APP_VERSION=1.9.5
+APP_VERSION=1.9.6
 APP_EXT=exe
 	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 		ARCH_TYPE=linux-64
