@@ -461,7 +461,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=2.0.0
+APP_VERSION=2.0.1
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -755,17 +755,10 @@ rm -rf /tmp/${APP_NAME}*
 # Install BeeBEEP LAN messenger from package
 APP_NAME=BeeBEEP
 APP_GUI_NAME="Cross-platform secure LAN messenger."
-APP_VERSION=5.6.8
-if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
-	KERNEL_TYPE=amd64
-	APP_VERSION=5.6.8
-else    # Otherwise use version for 32-bit kernel
-	KERNEL_TYPE=i386
-	APP_VERSION=5.6.8
-fi
+APP_VERSION=5.8.2
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt4-${KERNEL_TYPE}
-sudo apt-get install -y qt4-default libqt4-xml libxcb-screensaver0 libavahi-compat-libdnssd1 libphonon4 libhunspell-dev phonon-backend-gstreamer
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt5-${KERNEL_TYPE}
+sudo apt-get install -y qt5-default libqt5xml5 libphonon4qt5-4 libhunspell-1.7-0 libxcb-screensaver0 phonon-backend-gstreamer libavahi-compat-libdnssd1 libqt5multimedia5
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -3345,9 +3338,9 @@ cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install PDF Split and Merge (PDFsam) editor from package
+# Install PDF Split and Merge (PDFsam) editor from Debian package
 APP_NAME=PDFSam
-APP_VERSION=4.0.3-1
+APP_VERSION=4.1.1-1
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
@@ -4867,7 +4860,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Modelio UML modeling tool from package
 APP_NAME=Modelio
-APP_VERSION=3.8_3.8.0
+APP_VERSION=4.0_4.0.1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}uml/${APP_NAME,,}-open-source${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -5182,7 +5175,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=20.0
+APP_VERSION=20.1
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -16319,7 +16312,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Grip GTK-based CD player, CD ripper, and MP3 encoder from source
 APP_NAME=Grip
 APP_GUI_NAME="GTK-based CD player, CD ripper, and MP3 encoder."
-APP_VERSION=4.0.1
+APP_VERSION=4.1.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libssl-dev libssh2-1-dev libvte-dev libcurl4-openssl-dev libgnomeui-dev
@@ -18585,7 +18578,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install minuteProject Java-based reverse-engineering tool from package
 APP_NAME=minuteProject
 APP_GUI_NAME="Java-based reverse-engineering tool."
-APP_VERSION=0.9.10
+APP_VERSION=0.9.12
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -19999,7 +19992,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install TaskUnifier cross-platform, Electron-based GTD task manager from package
 APP_NAME=TaskUnifier
 APP_GUI_NAME="Cross-platform, Electron-based GTD task manager."
-APP_VERSION=0.9.2
+APP_VERSION=0.9.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-app-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -21491,5 +21484,57 @@ FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 source /etc/lsb-release
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/network:/messaging:/xmpp:/${APP_NAME,,}/xUbuntu_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install ytop Rust-based real-time GUI command-line system monitor from package
+APP_NAME=ytop
+APP_GUI_NAME="Rust-based real-time GUI command-line system monitor."
+APP_VERSION=0.4.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cjbassi/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install GitBucket Scala-based Git platform with web-based frontend from package
+APP_NAME=GitBucket
+APP_GUI_NAME="Scala-based Git platform with web-based frontend."
+APP_VERSION=4.33.0
+APP_EXT=war
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chown -R ${USER}:${USER} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+xdg-open http://localhost:8080/
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} && xdg-open http://localhost:8080/
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=Git;Version Control;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
