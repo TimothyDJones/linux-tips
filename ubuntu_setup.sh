@@ -20136,7 +20136,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Rolisteam cross-platform Qt-based role-playing game (RPG) management tool from AppImage
 APP_NAME=Rolisteam
 APP_GUI_NAME="Cross-platform Qt-based role-playing game (RPG) management tool."
-APP_VERSION=1.9.1
+APP_VERSION=1.9.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}_v${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
