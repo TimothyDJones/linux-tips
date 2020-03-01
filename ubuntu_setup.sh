@@ -1643,7 +1643,7 @@ sudo rm -rf ${APP_NAME}*
 
 # Install Red Notebook cross-platform journey/diary/PIM from source
 APP_NAME=rednotebook
-APP_VERSION=2.10
+APP_VERSION=2.18
 APP_EXT=tar.gz
 sudo apt-get install -y python3-enchant gir1.2-webkit2-4.0 python3-pip python3-yaml  # Install dependencies
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
