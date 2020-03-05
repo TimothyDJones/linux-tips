@@ -7198,7 +7198,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from source
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=V1.76
+APP_VERSION=V1.78
 APP_EXT=zip
 sudo apt-get install -y qt5-default
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./}_Src.${APP_EXT}
@@ -8416,36 +8416,15 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install QtChess cross-platform, peer-to-peer Qt/OpenGL chess program from source
+# Install QtChess cross-platform, peer-to-peer Qt/OpenGL chess program from Debian package
 APP_NAME=QtChess
 APP_GUI_NAME="Cross-platform , peer-to-peer Qt/OpenGL chess program."
-APP_VERSION=master
-APP_EXT=zip
+APP_VERSION=2020.02.15
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_VERSION}_amd64
 sudo apt-get install -y qt5-default
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
-qtchooser -run-tool=qmake -qt=5 ${APP_NAME,,}.pro && make
-# No target for 'make install', so must copy files explicitly
-sudo cp ./${APP_NAME} /usr/local/bin
-sudo cp ./Images/chess.ico /usr/local/share/icons/${APP_NAME,,}.ico
-sudo ln -s -f /usr/local/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=/usr/local/bin
-Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/local/share/icons/${APP_NAME,,}.ico
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Games;Entertainment;
-Keywords=Chess
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
@@ -18744,7 +18723,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Tartube PyGTK GUI frontend for youtube-dl for video download from package
 APP_NAME=Tartube
 APP_GUI_NAME="PyGTK GUI frontend for youtube-dl for video download."
-APP_VERSION=1.4.0
+APP_VERSION=1.5.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -20136,7 +20115,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Rolisteam cross-platform Qt-based role-playing game (RPG) management tool from AppImage
 APP_NAME=Rolisteam
 APP_GUI_NAME="Cross-platform Qt-based role-playing game (RPG) management tool."
-APP_VERSION=1.9.1
+APP_VERSION=1.9.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}_v${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -20325,7 +20304,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install WoTerm cross-platform Qt-based SSH client/terminal with session manager from package
 APP_NAME=WoTerm
 APP_GUI_NAME="Cross-platform Qt-based SSH client/terminal with session manager."
-APP_VERSION=2019.10.17.0915
+APP_VERSION=2020.02.29.1703
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-x86_64-${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
