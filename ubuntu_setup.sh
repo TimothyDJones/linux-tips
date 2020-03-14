@@ -409,7 +409,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText editor from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.94.1.0-1
+APP_VERSION=1.96.2.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -21629,6 +21629,18 @@ python3 /opt/${APP_NAME,,}/box.py &
 cd \$HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install ls-lint Golang-based linter for enforcing naming-format standards via YAML configuration files from package
+APP_NAME=ls-lint
+APP_GUI_NAME="Golang-based linter for enforcing naming-format standards via YAML configuration files."
+APP_VERSION=1.1.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/loeffel-io/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
