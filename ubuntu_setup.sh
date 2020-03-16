@@ -461,7 +461,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=2.0.1
+APP_VERSION=2.0.2
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -636,7 +636,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install KeePassXC password manager from source
 APP_NAME=KeePassXC
-APP_VERSION=2.5.0
+APP_VERSION=2.5.3
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
 LIBCRYPT20_VERSION=1.8.5-3ubuntu1
@@ -1543,7 +1543,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Digital Clock 4
 APP_NAME=digital_clock_4
-APP_VERSION=4.7.5
+APP_VERSION=4.7.6
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -1643,7 +1643,7 @@ sudo rm -rf ${APP_NAME}*
 
 # Install Red Notebook cross-platform journey/diary/PIM from source
 APP_NAME=rednotebook
-APP_VERSION=2.10
+APP_VERSION=2.18
 APP_EXT=tar.gz
 sudo apt-get install -y python3-enchant gir1.2-webkit2-4.0 python3-pip python3-yaml  # Install dependencies
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -3622,7 +3622,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install CherryTree hierarchical notepad/text editor from package
 # https://www.giuspen.com/cherrytree/
 APP_NAME=cherrytree
-APP_VERSION=0.38.6-0
+APP_VERSION=0.38.11-0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.giuspen.com/software/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -4124,7 +4124,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.18.0-1
+APP_VERSION=1.19.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -5175,7 +5175,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=20.1
+APP_VERSION=20.2
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -8395,7 +8395,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Grisbi cross-platform, GTK+ 3-based personal finance tool from source
 APP_NAME=Grisbi
 APP_GUI_NAME="Cross-platform, GTK+ 3-based personal finance tool from source."
-APP_VERSION=1.1.92
+APP_VERSION=1.2.2-1
 APP_EXT=tar.bz2
 sudo apt-get install -y libgtk-3-dev libgsf-1-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -21228,7 +21228,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install massCode Electron-based, cross-platform codes snippet manager/editor from AppImage
 APP_NAME=massCode
 APP_GUI_NAME="Electron-based, cross-platform codes snippet manager/editor."
-APP_VERSION=0.3.4
+APP_VERSION=1.0.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/antonreshetov/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21642,5 +21642,45 @@ FILE_NAME=${APP_NAME,,}-linux
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/loeffel-io/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
 sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Elephant Java-based desktop notepad/PIM from package
+APP_NAME=Elephant
+APP_GUI_NAME="Java-based desktop notepad/PIM."
+APP_VERSION=61
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}${APP_VERSION}_jar
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jusu/${APP_NAME,,}/releases/download/V${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}app.jar /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}app.jar &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=java -jar /opt/${APP_NAME,,}/${APP_NAME,,}app.jar &
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Accessories;
+Keywords=Notepad;PIM;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
