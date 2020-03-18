@@ -21721,3 +21721,24 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install kurly cross-platform, Golang-based alternative to cURL HTTP utility from package
+APP_NAME=kurly
+APP_GUI_NAME="Cross-platform, Golang-based alternative to cURL HTTP utility."
+APP_VERSION=1.2.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux-amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/davidjpeacock/${APP_NAME,,}/-/jobs/artifacts/master/raw/artifacts/linux-amd64/${FILE_NAME}.${APP_EXT}?job=compile
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+APP_MAN_PATH=$(manpath)
+if [ "$APP_MAN_PATH" != "" ]
+then
+	sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}.man ${APP_MAN_PATH}/man1
+else
+	sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}.man /usr/share/man/man1
+fi
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
