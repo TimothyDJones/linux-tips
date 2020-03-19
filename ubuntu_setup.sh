@@ -295,9 +295,9 @@ mkdir -p $HOME/projects/go/bin $HOME/projects/go/pkg $HOME/projects/go/src
 rm -rf /tmp/go*
 cd $HOME
 
-# Install Lite IDE for Go language development
+# Install Lite IDE for Go language development from package
 APP_NAME=LiteIDE
-APP_VERSION=x36.1
+APP_VERSION=x36.3
 QT_VERSION=qt5.5.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
