@@ -7674,19 +7674,20 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=4.3.0
+APP_VERSION=4.3.2
 APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}${APP_VERSION//./}
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${APP_NAME,,}${APP_VERSION//./}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/scintilla/gtk
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/scintilla/gtk
 make
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}/gtk
+cd /tmp/${FILE_NAME}/${APP_NAME,,}/gtk
 make && sudo make install
 sudo ln -s /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install pgFormatter PostgreSQL and other DB SQL syntax beautifier from source
 APP_NAME=pgFormatter
