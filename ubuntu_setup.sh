@@ -2120,14 +2120,15 @@ curl -o /tmp/${APP_NAME} -J -L https://downloads.sourceforge.net/swissfileknife/
 sudo chmod a+x /tmp/${APP_NAME}
 sudo mv /tmp/${APP_NAME} /usr/local/bin
 
-# Install Freeplane mind-mapping tool from package
-APP_NAME=freeplane
-APP_VERSION=1.7.12
+# Install Freeplane mind-mapping tool from Debian package
+APP_NAME=Freeplane
+APP_VERSION=1.8.0
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}~upstream-1_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}~upstream-1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install HyperJump Bash bookmark tool
 APP_NAME=hyperjump
