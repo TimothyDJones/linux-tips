@@ -21744,3 +21744,43 @@ else
 fi
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Cancion Music Player Python/Qt5 minimalist audio player from package
+APP_NAME="Cancion Music Player"
+APP_GUI_NAME="Python/Qt5 minimalist audio player."
+APP_VERSION=2.0
+APP_EXT=rar
+FILE_NAME=${APP_NAME// /%20}%20v${APP_VERSION}
+sudo apt-get install python3-pyqt5 python3-pyqt5.qtmultimedia python3-pyqt5.qtwebengine -y
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/cancion-music-player/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+rm -rf /tmp/${FILE_NAME}/Cancion*/*.exe
+sudo mkdir -p /opt/cancion-music-player
+sudo cp -R /tmp/${FILE_NAME}/Cancion*/* /opt/cancion-music-player
+cat > /tmp/cancion-music-player << EOF
+#! /bin/sh
+cd /opt/cancion-music-player
+PATH=/opt/cancion-music-player:\$PATH; export PATH
+python3 /opt/cancion-music-player/cancion.py &
+cd \$HOME
+EOF
+sudo mv /tmp/cancion-music-player /usr/local/bin
+sudo chmod a+x /usr/local/bin/cancion-music-player
+cat > /tmp/cancion-music-player.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=python3 /opt/cancion-music-player/cancion.py &
+Icon=/opt/cancion-music-player/icon.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Multimedia;Audio;
+Keywords=MP3;Audio;
+EOF
+sudo mv /tmp/cancion-music-player.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
