@@ -21780,3 +21780,46 @@ EOF
 sudo mv /tmp/cancion-music-player.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install PHP Shell PHP-based front-end to run shell utilities/scripts on server remotely from package
+APP_NAME="PHP Shell"
+APP_NAME_STRIPPED=${APP_NAME// /}
+APP_NAME_STRIPPED=${APP_NAME_STRIPPED,,}
+APP_GUI_NAME="PHP-based front-end to run shell utilities/scripts on server remotely."
+APP_VERSION=2.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME_STRIPPED}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME_STRIPPED}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME_STRIPPED}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME_STRIPPED}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME_STRIPPED}
+sudo chmod -R 644 ${WWW_HOME}/${APP_NAME_STRIPPED}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME_STRIPPED} << EOF
+#! /bin/sh
+cd ${WWW_HOME}/${APP_NAME_STRIPPED}
+PATH=${WWW_HOME}/${APP_NAME_STRIPPED}:\$PATH; export PATH
+xdg-open http://localhost/${APP_NAME_STRIPPED}/${APP_NAME_STRIPPED}.php &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME_STRIPPED} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME_STRIPPED}
+cat > /tmp/${APP_NAME_STRIPPED}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=xdg-open http://localhost/${APP_NAME_STRIPPED}/${APP_NAME_STRIPPED}.php &
+Icon=${WWW_HOME}/${APP_NAME_STRIPPED}/${APP_NAME_STRIPPED}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Internet;System;
+Keywords=Shell;PHP;
+EOF
+sudo mv /tmp/${APP_NAME_STRIPPED}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}* /tmp/${APP_NAME_STRIPPED}*
