@@ -435,19 +435,15 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 ln -s /usr/share/applications/albert.desktop $HOME/.config/autostart/  # Create link to autostart Albert on startup
 
 
-# Install KSnip screenshot utility from Sourceforge
+# Install KSnip screenshot utility from Debian package
 APP_NAME=KSnip
-APP_VERSION=1.4.0
-APP_EXT=tar.gz
-sudo apt-get install -y cmake extra-cmake-modules libqt5x11extras5-dev # Install required packages
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
-mkdir build && cd build
-cmake .. && make && sudo make install
+APP_VERSION=1.6.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/ksnip*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install CopyQ clipboard manager from Debian package
 APP_NAME=CopyQ
