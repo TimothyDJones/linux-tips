@@ -7520,13 +7520,14 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install PeaZip cross-platform archive management utility from package
+# Install PeaZip cross-platform archive management utility from Debian package
 APP_NAME=PeaZip
 APP_GUI_NAME="Cross-platform archive management utility."
-APP_VERSION=6.9.2
+APP_VERSION=7.1.1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.LINUX.GTK2-2_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.LINUX.GTK2-2_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
