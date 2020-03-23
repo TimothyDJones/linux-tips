@@ -200,13 +200,7 @@ sudo php /usr/local/bin/composer global require hirak/prestissimo
 
 # Install latest PhpMyAdmin version via Composer
 # https://docs.phpmyadmin.net/en/latest/setup.html#composer
-cd ${WWW_HOME}
-sudo php /usr/local/bin/composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json --no-dev
-sudo chown -R www-data:www-data ${WWW_HOME}/phpmyadmin
-# Enable use of MySQL Native Password for log in
-# https://stackoverflow.com/questions/49948350/phpmyadmin-on-mysql-8-0
-mysql -u root -proot -Bse "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';"
-xdg-open http://localhost/phpmyadmin/setup &
+
 cd $HOME
 
 # Install PHP 7.2 (optional)
@@ -6447,7 +6441,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Miller text processor which combines functions of awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON from source
 APP_NAME=miller
 APP_GUI_NAME="Text processor which combines functions of awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON."
-APP_VERSION=5.6.0
+APP_VERSION=5.7.0
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/johnkerl/${APP_NAME,,}/releases/download/v${APP_VERSION}/mlr-${APP_VERSION}.${APP_EXT}
 cd /tmp
