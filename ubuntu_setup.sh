@@ -21872,3 +21872,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install downTube Qt-based GUI front-end for youtube-dl multimedia download tool from Debian package
+APP_NAME=downTube
+APP_GUI_NAME="Qt-based GUI front-end for youtube-dl multimedia download tool."
+APP_VERSION=1.0-2rc
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/GearFox98/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
