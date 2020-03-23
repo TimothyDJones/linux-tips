@@ -21829,3 +21829,46 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/reposit
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install PySpread cross-platform Qt-based desktop spreadsheet that uses Python expessions from source
+# https://pyspread.gitlab.io/
+APP_NAME=PySpread
+APP_GUI_NAME="Cross-platform Qt-based desktop spreadsheet that uses Python expessions."
+APP_VERSION=1.99.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y python3-enchant python3-pyqt5 python3-numpy python3-pyqt5.qtsvg
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://pypi.python.org/packages/source/p/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cd /opt/${APP_NAME,,}
+sudo pip3 install -r ./requirements.txt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+export PYTHONPATH=$PYTHONPATH:.
+python3 /opt/${APP_NAME,,}/${APP_NAME,,} $@ &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Math;Spreadsheet;
+Keywords=Spreadsheet;CSV;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
