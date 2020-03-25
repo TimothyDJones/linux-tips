@@ -21895,3 +21895,37 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Kitty cross-platform GPU-based terminal from package
+# https://sw.kovidgoyal.net/kitty/
+APP_NAME=Kitty
+APP_GUI_NAME="Cross-platform GPU-based terminal."
+APP_VERSION=0.17.0
+APP_EXT=txz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i686
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}
+sudo apt-get install -y python3-enchant python3-pyqt5 python3-numpy python3-pyqt5.qtsvg
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+sudo tar -C / -xvf ${FILE_NAME}.${APP_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/bin/${APP_NAME,,}
+Exec=/bin/${APP_NAME,,}
+Icon=/share/icons/hicolor/256x256/apps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=System;Accessories;
+Keywords=Terminal;Shell;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
