@@ -21883,3 +21883,15 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/GearFox98/${APP_NA
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install OvoPlayer cross-platform, Lazarus/FreePascal-based minimalist audio player from Debian package
+# https://github.com/varianus/ovoplayer
+APP_NAME=OvoPlayer
+APP_GUI_NAME="Cross-platform, Lazarus/FreePascal-based minimalist audio player."
+APP_VERSION=1.3.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-gtk2-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
