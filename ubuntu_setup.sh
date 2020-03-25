@@ -21970,3 +21970,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install term_wifi interactive console utility for WiFi configuration via iwconfig from package
+APP_NAME=term_wifi
+APP_GUI_NAME="1nteractive console utility for WiFi configuration via iwconfig."
+APP_VERSION=1.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://codeload.github.com/ColumPaget/${APP_NAME,,}/${APP_EXT}/v${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo cp ${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
