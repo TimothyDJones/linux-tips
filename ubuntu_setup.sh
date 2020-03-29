@@ -22105,3 +22105,22 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install CoolFormat cross-platform command-line source code formatter and highlighting generator from package
+APP_NAME=CoolFormat
+APP_GUI_NAME="Cross-platform command-line source code formatter and highlighting generator."
+APP_VERSION=1.0
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=Linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=Linux32
+fi
+FILE_NAME=${APP_NAME}Exec${APP_VERSION}%28${ARCH_TYPE}%29
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME}Exec /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
