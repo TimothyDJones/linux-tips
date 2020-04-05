@@ -22176,3 +22176,20 @@ cd /tmp/${FILE_NAME}
 make -j8 && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Whalebird cross-platform Electron-based Mastodon desktop client from Debian package
+APP_NAME=Whalebird
+APP_GUI_NAME="Cross-platform Electron-based Mastodon desktop client."
+APP_VERSION=4.0.1
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+https://github.com/h3poteto/${APP_NAME,,}-desktop/releases/download/${APP_VERSION}/Whalebird-4.0.1-linux-x64.deb
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
