@@ -22176,3 +22176,17 @@ cd /tmp/${FILE_NAME}
 make -j8 && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Intermodal cross-platform, Rust-based command-line BitTorrent metainfo utility from package
+# https://rodarmor.com/blog/intermodal
+APP_NAME=Intermodal
+APP_GUI_NAME="Cross-platform, Rust-based command-line BitTorrent metainfo utility."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=imdl
+cd /tmp
+curl --proto '=https' --tlsv1.2 -sSf https://imdl.io/install.sh | bash
+chmod ${HOME}/bin/${FILE_NAME}
+sudo ln -s -f ${HOME}/bin/${FILE_NAME} /usr/local/bin/${FILE_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
