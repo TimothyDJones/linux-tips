@@ -572,34 +572,41 @@ source $HOME/.local/goto.sh
 cd $HOME
 rm -rf /tmp/goto*
 
-# Install Free42 HP-42S calculator simulator
+# Install Free42 HP-42S calculator simulator from package
+APP_NAME=Free42
+APP_GUI_NAME="Free, cross-platfrom HP-42S calculator simulator."
+APP_VERSION=2.5.18
+APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	FREE42_FILE_NAME=Free42Linux-64bit.tgz
+	ARCH_TYPE=64bit
 else    # Otherwise use version for 32-bit kernel
-	FREE42_FILE_NAME=Free42Linux-32bit.tgz
+	ARCH_TYPE=32bit
 fi
-wget -O /tmp/Free42Linux.tgz http://thomasokken.com/free42/download/${FREE42_FILE_NAME}
+FILE_NAME=${APP_NAME}Linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://thomasokken.com/${APP_NAME,,}/download/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/Free42Linux.tgz
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/Free42Linux
-sudo mv /tmp/Free42Linux/free42* /usr/local/bin
-sudo ln -s /usr/local/bin/free42dec /usr/local/bin/free42
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}* /usr/local/bin
+sudo ln -s /usr/local/bin/${APP_NAME,,}dec /usr/local/bin/${APP_NAME,,}
 # Create icon in menus
-cat > /tmp/free42.desktop << EOF
+cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
-Name=Free42
-Comment=RPN (postfix) Scientific Calculator
-GenericName=Calculator
-Exec=/usr/local/bin/free42
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin/
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/bin/${APP_NAME,,}icon-128x128.xpm
 Type=Application
 StartupNotify=true
 Terminal=false
-Categories=Utility;Development
-Keywords=calculator;rpn;
+Categories=Programming;Accessories;
+Keywords=Calculator;RPN;
 EOF
-sudo mv /tmp/free42.desktop /usr/share/applications/
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /temp/Free42*
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Modify keyboard mapping to swap Caps Lock and (Right) Control keys
 # See https://github.com/501st-alpha1/scott-script/blob/master/newsystem
