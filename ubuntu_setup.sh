@@ -403,7 +403,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.97.0.3-1
+APP_VERSION=1.97.6.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -21220,10 +21220,10 @@ source $HOME/.bashrc
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install massCode Electron-based, crosks-platform codes snippet manager/editor from AppImage
+# Install massCode Electron-based, cross-platform codes snippet manager/editor from AppImage
 APP_NAME=massCode
 APP_GUI_NAME="Electron-based, cross-platform codes snippet manager/editor."
-APP_VERSION=1.0.2
+APP_VERSION=1.2.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/antonreshetov/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -22188,5 +22188,32 @@ cd /tmp
 curl --proto '=https' --tlsv1.2 -sSf https://imdl.io/install.sh | bash
 chmod ${HOME}/bin/${FILE_NAME}
 sudo ln -s -f ${HOME}/bin/${FILE_NAME} /usr/local/bin/${FILE_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Whalebird cross-platform Electron-based Mastodon desktop client from Debian package
+APP_NAME=Whalebird
+APP_GUI_NAME="Cross-platform Electron-based Mastodon desktop client."
+APP_VERSION=4.0.1
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=ia32
+fi
+FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/h3poteto/${APP_NAME,,}-desktop/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install KeeWeb cross-platform Electron-based password manager compatible with Keepass from Debian package
+APP_NAME=KeeWeb
+APP_GUI_NAME="Electron-based password manager compatible with Keepass."
+APP_VERSION=1.13.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_VERSION}.linux.x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
