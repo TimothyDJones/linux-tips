@@ -137,6 +137,17 @@ sudo apt-get update
 sudo apt-get install -y mongodb-org
 sudo service mongod start
 
+# Install MongoDB Compass cross-platform MongoDB management tool from Debian package
+APP_NAME=MongoDB-Compass
+APP_GUI_NAME="Cross-platform MongoDB management tool."
+APP_VERSION=1.20.5
+APP_EXT=deb
+FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.mongodb.com/compass/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
 # Install PHP 5.6, Apache 2, and MySQL Server
 export DEBIAN_FRONTEND=noninteractive
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'  # Set MySQL password to 'root'.
