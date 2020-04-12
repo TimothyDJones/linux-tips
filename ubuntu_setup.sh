@@ -119,12 +119,18 @@ source $HOME/.bashrc	# Reload Bash configuration
 # Install MongoDB from official repository
 # https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 APP_NAME=mongodb
-APP_VERSION=3.4
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+APP_VERSION=4.0
+sudo apt-get install -y gnupg
+# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+# Install package management public key
+wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
 source /etc/lsb-release
-# If Ubuntu version is above 16.04 (Xenial), then we use 16.04.
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ya|ze|ar|bi)$ ]]; then
+# If Ubuntu version is above 16.04 (Xenial) up to 18.04 (Bionic), then we use 16.04.
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ya|ze|ar)$ ]]; then
 	DISTRIB_CODENAME=xenial
+# Otherwise, we use Bionic.
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo|fo)$ ]]; then
+	DISTRIB_CODENAME=bionic
 fi
 echo "deb [ arch="${KERNEL_TYPE}" ] http://repo.mongodb.org/apt/ubuntu "${DISTRIB_CODENAME}"/mongodb-org/"${APP_VERSION}" multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${APP_VERSION}.list
 sudo apt-get update
