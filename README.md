@@ -75,7 +75,9 @@ sudo shutdown -r now
 See [this article](https://unix.stackexchange.com/questions/22820/how-to-make-apt-get-accept-new-config-files-in-an-unattended-install-of-debian-f) for details about forcing use of new/package maintainer's version of configuration files.  For additional details refer to [this article](https://serverfault.com/a/858361).
 
 ### Confirm new release version
+```bash
 lsb_release -a
+```
 
 ### Re-enable third-party repositories (PPAs) and change them to the new version codename
 ```bash
