@@ -378,13 +378,16 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}   # '-n' is non-interactive mode for 
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install DBeaver Java database utility
-cd $HOME/Downloads
-curl -o dbeaver.deb -J -L http://dbeaver.jkiss.org/files/dbeaver-ce_latest_${KERNEL_TYPE}.deb
-sudo gdebi -n dbeaver.deb
-rm -f dbeaver.deb
+# Install DBeaver Java database utility from Debian package
+APP_NAME=DBeaver
+APP_VERSION=7.0.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 sudo apt-get install -y libmysql-java   # Install MySQL JDBC driver
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
 cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Linux Brew (similar to MacOS X "Home Brew")
 # Ruby *should* already be installed; it gets installed when Vim is installed. But we will install the dependencies, just in case.
