@@ -7429,12 +7429,13 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 # Install PICSimLab wxWidgets-based real-time PIC and Arduino microcontroller simulator laboratory from package
 APP_NAME=PICSimLab
 APP_GUI_NAME="Cross-platform real-time PIC and Arduino microcontroller simulator laboratory."
-APP_VERSION=0.7
+APP_VERSION=0.7.5
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/picsim/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/picsim/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}*
+sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install x-whnb self-contained web-based hierarchical notebook (similar to Cherrytree)
 APP_NAME=x-whnb
