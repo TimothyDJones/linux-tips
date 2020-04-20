@@ -42,3 +42,49 @@ sudo apt-get build-dep PKG_NAME
 ```
 where `PKG_NAME` is the package name, such as `vim-common`.
 [Reference](https://wiki.debian.org/BuildingTutorial#Get_the_build_dependencies)
+
+## Upgrade Ubuntu to non-LTS version via command line
+By default, most installations of Ubuntu are configured to upgrade only to LTS (long-term support) distribution releases, which come out every two years (e.g., 18.04, 20.04, etc.).  If you want to upgrade your Ubuntu installation to a non-LTS release (e.g., from Bionic Beaver [18.04] to Eoan Ermine [19.10]) you can do so via command line.  Here's how.
+
+### Update current release to latest patches
+```bash
+sudo apt-get install update-manager-core -y
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
+```
+
+### Update upgrade manager to `normal` (non-LTS) setting
+```bash
+sudo sed -i 's/Prompt=lts/Prompt=normal/g' /etc/update-manager/release-upgrades
+```
+
+### Change distribution reference to desired version codename* and disable third-party repositories (PPAs)
+```bash
+sudo sed -i 's/bionic/eoan/g' /etc/apt/sources.list
+sudo sed -i 's/^/#/' /etc/apt/sources.list.d/*.list
+```
+Replace `bionic` and `eoan` above with the current and desired distribution version codenames, respectively, as appropriate.
+*See [here](https://en.wikipedia.org/wiki/Ubuntu_version_history) for list of Ubuntu distribution codenames with associated version numbers.
+
+### Run the upgrade, remove unneeded packages, and reboot to complete update
+```bash
+echo '* libraries/restart-without-asking boolean true' | sudo debconf-set-selections
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confnew
+sudo apt-get autoremove -f -y && sudo apt-get clean -y
+sudo shutdown -r now
+```
+See [this article](https://unix.stackexchange.com/questions/22820/how-to-make-apt-get-accept-new-config-files-in-an-unattended-install-of-debian-f) for details about forcing use of new/package maintainer's version of configuration files.  For additional details refer to [this article](https://serverfault.com/a/858361).
+
+### Confirm new release version
+```bash
+lsb_release -a
+```
+
+### Re-enable third-party repositories (PPAs) and change them to the new version codename
+```bash
+sudo sed -i '/deb/s/^#//g' /etc/apt/sources.list.d/*.list
+sudo sed -i 's/bionic/eoan/g' /etc/apt/sources.list.d/*.list
+sudo apt-get update && sudo apt-get upgrade -y
+```
+If you get any errors that a repository can't be found (e.g., `The repository 'http://linux.dropbox.com/ubuntu eoan Release' does not have a Release file.`), then you will need to revert these individual repositories to the earlier distribution version codename in `/etc/apt/sources.list.d` directory.
+
+[Reference](https://www.linuxbabe.com/ubuntu/upgrade-ubuntu-18-04-to-ubuntu-19-10-from-command-line)
