@@ -93,9 +93,8 @@ If you get any errors that a repository can't be found (e.g., `The repository 'h
 When using third-party repositories (PPAs), you typically need to install GPG key. If you have trouble with GPG keys, you can configure the repository, in `/etc/apt/sources.list` or the custom configuration file in `/etc/apt/sources.list.d/` by adding `trusted=yes` or `allow-insecure=yes`. The difference between them is that `allow-insecure=yes` will prompt you before allowing you to install, but `trusted=yes` won't.
 
 For example, here's the setting used with the MongoDB repository:
-```bash
-deb [ arch=amd64 ***allow-insecure=yes*** ] http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse
 
-```
+	`deb [ arch=amd64 `***`allow-insecure=yes`***` ] http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse`
+
 
 [Reference](https://unix.stackexchange.com/questions/198000/bypass-gpg-signature-checks-only-for-a-single-repository)
