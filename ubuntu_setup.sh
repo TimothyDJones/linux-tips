@@ -51,9 +51,13 @@ WWW_HOME=/var/www/html
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get autoremove -f -y
-sudo apt-get install -y build-essential dtrx curl wget checkinstall gdebi \
+sudo apt-get install -y build-essential curl wget checkinstall gdebi \
 	openjdk-11-jre software-properties-common \
 	mc python3-pip htop synaptic
+
+# Install dtrx from Python package, because no longer included in Ubuntu repositories
+# https://pypi.org/project/dtrx-noahp/
+sudo pip3 install dtrx-noahp
 
 # Allow current user to run 'sudo' without password
 # https://phpraxis.wordpress.com/2016/09/27/enable-sudo-without-password-in-ubuntudebian/
