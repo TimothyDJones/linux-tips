@@ -132,7 +132,7 @@ if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ya|ze|ar)$ ]]; then
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo|fo)$ ]]; then
 	DISTRIB_CODENAME=bionic
 fi
-echo "deb [ arch="${KERNEL_TYPE}" ] http://repo.mongodb.org/apt/ubuntu "${DISTRIB_CODENAME}"/mongodb-org/"${APP_VERSION}" multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${APP_VERSION}.list
+echo "deb [ arch="${KERNEL_TYPE}" allow-insecure=yes ] http://repo.mongodb.org/apt/ubuntu "${DISTRIB_CODENAME}"/mongodb-org/"${APP_VERSION}" multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${APP_VERSION}.list
 sudo apt-get update
 sudo apt-get install -y mongodb-org
 sudo service mongod start
