@@ -146,7 +146,7 @@ APP_NAME=MongoDB-Compass
 APP_GUI_NAME="Cross-platform MongoDB management tool."
 APP_VERSION=1.20.5
 APP_EXT=deb
-FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.mongodb.com/compass/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
