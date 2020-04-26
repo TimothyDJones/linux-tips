@@ -22375,3 +22375,36 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install MeowSQL cross-platform, Qt-based HeidiSQL clone with support for MySQL, PostgreSQL, and SQLite from AppImage
+APP_NAME=MeowSQL
+APP_GUI_NAME="Cross-platform, Qt-based HeidiSQL clone with support for MySQL, PostgreSQL, and SQLite."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Database;SQL;"
+APP_VERSION=0.4.2
+APP_EXT=AppImage
+FILE_NAME=Linux_${APP_NAME}_${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ragnar-lodbrok/meow-sql/releases/download/v${APP_VERSION}-alpha/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+curl -o /tmp/${APP_NAME}.svg -J -L https://github.com/ragnar-lodbrok/meow-sql/raw/master/resources/icons/logo.svg
+sudo mv /tmp/${APP_NAME}.svg /usr/share/pixmaps/${APP_NAME}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+Icon=/usr/share/pixmaps/${APP_NAME}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
