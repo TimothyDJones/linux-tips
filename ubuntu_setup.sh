@@ -1160,8 +1160,32 @@ sudo gdebi -n ${APP_NAME}.deb
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install QuiteRSS RSS reader from PPA
-APP_NAME=quiterss
+# Install QuiteRSS cross-platform Qt-based RSS reader from Debian package
+APP_NAME=QuiteRSS
+APP_GUI_NAME="Cross-platform Qt-based RSS reader."
+APP_VERSION=N/A
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo|fo)$ ]]; then  # 19.10, 20.04
+	APP_VERSION=0.19.2-0ubuntu1~eoan
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di)$ ]]; then  # 19.04
+	APP_VERSION=0.19.2-0ubuntu1~disco
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co)$ ]]; then  # 18.04, 18.10
+	APP_VERSION=0.19.2-0ubuntu1~bionic
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ar)$ ]]; then  # 17.10
+	APP_VERSION=0.18.12-0ubuntu1~artful
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe)$ ]]; then  # 17.10
+	APP_VERSION=0.19.2-0ubuntu1~xenial
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi|ya|ze)$ ]]; then  # 14.04 - 17.04
+	APP_VERSION=0.18.12-0ubuntu1~trusty
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~${APP_NAME,,}/+archive/ubuntu/${APP_NAME,,}/+files/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+
 sudo apt-add-repository -y ppa:quiterss/quiterss
 sudo apt-get update
 sudo apt-get install -y quiterss
