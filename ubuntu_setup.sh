@@ -1185,11 +1185,6 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-
-sudo apt-add-repository -y ppa:quiterss/quiterss
-sudo apt-get update
-sudo apt-get install -y quiterss
-
 # Install Makagiga Java-based PIM/RSS feed reader from package
 APP_NAME=Makagiga
 APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
