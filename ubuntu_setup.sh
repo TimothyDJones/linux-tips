@@ -543,7 +543,7 @@ google-drive-ocamlfuse $HOME/google-drive  # Mount Google Drive to folder.
 # Install MuPDF PDF viewer from source.
 # Install pre-requisite development packages.
 APP_NAME=MuPDF
-APP_VERSION=1.17.0
+APP_VERSION=1.17.0-rc1
 APP_EXT=tar.xz
 sudo apt-get install -y libjbig2dec0-dev libfreetype6-dev libftgl-dev libjpeg-dev libopenjp2-7-dev zlib1g-dev xserver-xorg-dev mesa-common-dev libgl1-mesa-dev libxcursor-dev libxrandr-dev libxinerama-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://mupdf.com/downloads/${APP_NAME,,}-${APP_VERSION}-source.${APP_EXT}
@@ -22296,5 +22296,19 @@ Categories=Games;Entertainment;Programming;
 Keywords=Games;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Alaya WebDAV-enabled web/HTTP server focused on sharing directories with WebDAV from source
+APP_NAME=Alaya
+APP_GUI_NAME="WebDAV-enabled web/HTTP server focused on sharing directories with WebDAV."
+APP_VERSION=3.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
