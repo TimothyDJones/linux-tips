@@ -22312,3 +22312,18 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install lookat Ncurses-based shell file viewer from source
+APP_NAME=lookat
+APP_GUI_NAME="Ncurses-based shell file viewer."
+APP_VERSION=2.0.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_bekijk-${APP_VERSION}
+sudo apt-get install build-essential libncurses-dev -y
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.savannah.nongnu.org/releases/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
