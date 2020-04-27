@@ -6122,10 +6122,11 @@ cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Code::Blocks open-source, cross-platform, WX-based, free C, C++ and Fortran IDE
-APP_NAME=codeblocks
+APP_NAME=CodeBlocks
 APP_GUI_NAME="Open-source, cross-platform, WX-based, free C, C++ and Fortran IDE."
-APP_VERSION=17.12-1
+APP_VERSION=20.03
 APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}_stable
 # Code::Blocks requires at least version 1.62 of Boost C++ libraries
 # TODO: Update to include check for version of Ubuntu before updating.
 curl -o /tmp/libboost-dev.deb -J -L http://ubuntu.mirrors.tds.net/ubuntu/pool/main/b/boost1.62/libboost1.62-dev_1.62.0+dfsg-4_${KERNEL_TYPE}.deb
@@ -6137,21 +6138,21 @@ sudo gdebi -n /tmp/libhunspell.deb
 sudo apt-get install -y hunspell-en-us
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}_stable.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
-sudo gdebi -n /tmp/${APP_NAME,,}/${APP_NAME,,}-common_${APP_VERSION}_all.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/lib${APP_NAME,,}0_${APP_VERSION}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/${APP_NAME,,}-contrib-common_${APP_VERSION}_all.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/${APP_NAME,,}-libwxcontrib0_${APP_VERSION}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/libwxsmithlib0_${APP_VERSION}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/wxsmith-dev_${APP_VERSION}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/wxsmith-headers_${APP_VERSION}_all.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/libwxsmithlib0-dev_${APP_VERSION}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/${APP_NAME,,}-contrib_${APP_VERSION}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/${APP_NAME,,}-contrib-common_${APP_VERSION}_all.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/${APP_NAME,,}-dev_${APP_VERSION}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/${APP_NAME,,}/${APP_NAME,,}-headers_${APP_VERSION}_all.deb
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}-common_${APP_VERSION}_all.deb
+sudo gdebi -n /tmp/${FILE_NAME}/lib${APP_NAME,,}0_${APP_VERSION}_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}-contrib-common_${APP_VERSION}_all.deb
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}-libwxcontrib0_${APP_VERSION}_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/${FILE_NAME}/libwxsmithlib0_${APP_VERSION}_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/${FILE_NAME}/wxsmith-dev_${APP_VERSION}_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/${FILE_NAME}/wxsmith-headers_${APP_VERSION}_all.deb
+sudo gdebi -n /tmp/${FILE_NAME}/libwxsmithlib0-dev_${APP_VERSION}_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}-contrib_${APP_VERSION}_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}-contrib-common_${APP_VERSION}_all.deb
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}-dev_${APP_VERSION}_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}-headers_${APP_VERSION}_all.deb
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
