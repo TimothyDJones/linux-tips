@@ -14260,14 +14260,37 @@ cd /tmp/${FILE_NAME}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install Videomass2 GUI front-end for FFmpeg from Debian package
+# Install Videomass2 GUI front-end for FFmpeg from package
 APP_NAME=Videomass2
 APP_GUI_NAME="GUI front-end for FFmpeg."
-APP_VERSION=1.2.0-1
-APP_EXT=deb
-FILE_NAME=python-${APP_NAME,,}_${APP_VERSION}_all
+APP_GUI_CATEGORIES="Multimedia;Accessories;"
+APP_GUI_KEYWORDS="FFmpeg;Video;Audio;Converter;"
+APP_VERSION=2.0.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install python3-wxgtk4.0 ffmpeg -y
+sudo pip3 install pypubsub youtube-dl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo python3 ./setup.py install
+sudo cp ./art/icons/videomass.png /usr/share/pixmaps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
 
