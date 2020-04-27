@@ -22443,3 +22443,46 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install IPE cross-platform diagram editor that generates PS/PDF from Debian package
+# http://ipe.otfried.org/
+APP_NAME=IPE
+APP_GUI_NAME="Cross-platform diagram editor that generates PS/PDF."
+APP_GUI_CATEGORIES="Graphics;Office;"
+APP_GUI_KEYWORDS="Diagram;Diagramming;PDF;PS;"
+APP_VERSION=7.2.14-1
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo|fo)$ ]]; then  # 19.10, 20.04
+	DISTRIB_VERSION=xUbuntu_19.10
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di)$ ]]; then  # 19.04
+	DISTRIB_VERSION=xUbuntu_19.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co)$ ]]; then  # 18.04, 18.10
+	DISTRIB_VERSION=xUbuntu_18.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04 - 17.10
+	DISTRIB_VERSION=xUbuntu_16.04
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/otfried13/${DISTRIB_VERSION}/${KERNEL_TYPE}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/lib${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/otfried13/${DISTRIB_VERSION}/${KERNEL_TYPE}/lib${FILE_NAME}.${APP_EXT}
+https://download.opensuse.org/repositories/home:/otfried13/xUbuntu_19.10/amd64/ipe_7.2.15-1_amd64.deb
+https://download.opensuse.org/repositories/home:/otfried13/xUbuntu_19.10/amd64/ipe_7.2.15-1_amd64.deb
+sudo gdebi -n /tmp/lib${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/bin
+Exec=/usr/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
