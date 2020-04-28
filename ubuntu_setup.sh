@@ -22515,8 +22515,8 @@ Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.ico
 Type=Application
 StartupNotify=true
 Terminal=false
-Categories=Accessories;Networking;
-Keywords=Messenger;Chat;
+Categories=Programming;Games;
+Keywords=Tanks;Games;Programming;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -22524,17 +22524,24 @@ cd /tmp/${FILE_NAME}
 make -j8 && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
-EOF
-sudo mv /tmp/${APP_NAME,,} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${APP_NAME,,}
->>>>>>> 2de6fbf3cc0e0ebdb28b51ffdd0f4c9f991ae266
+
+# Install Noteastic cross-platform minimalist notepad from package
+APP_NAME=Noteastic
+APP_GUI_NAME="Cross-platform minimalist notepad."
+APP_VERSION=2.8.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://market.ape-apps.com/linux_installers/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
-<<<<<<< HEAD
 Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 #Icon=
 Type=Application
@@ -22544,19 +22551,5 @@ Categories=Math;Education;
 Keywords=Math;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-=======
-Exec=/opt/${APP_NAME,,}/${APP_NAME,,}.sh
-Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.ico
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Programming;Games;
-Keywords=Tanks;Games;Programming;
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
-make -j8 && sudo make install
->>>>>>> 2de6fbf3cc0e0ebdb28b51ffdd0f4c9f991ae266
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
