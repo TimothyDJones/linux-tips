@@ -475,7 +475,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=2.0.3
+APP_VERSION=2.0.4
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -22482,6 +22482,35 @@ StartupNotify=true
 Terminal=false
 Categories=${APP_GUI_CATEGORIES}
 Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Noteastic cross-platform minimalist notepad from package
+APP_NAME=Noteastic
+APP_GUI_NAME="Cross-platform minimalist notepad."
+APP_VERSION=2.8.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://market.ape-apps.com/linux_installers/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Math;Education;
+Keywords=Math;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
