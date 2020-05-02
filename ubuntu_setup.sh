@@ -22570,3 +22570,19 @@ sudo ln -s -f /usr/local/share/games/${APP_NAME,,}/desktop/large/${APP_NAME,,}.p
 sudo ln -s -f /usr/local/share/games/${APP_NAME,,}/desktop/${APP_NAME,,}.desktop /usr/share/applications/${APP_NAME,,}.desktop
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Nitrogen GTK+-based background/wallpaper browser and setter from source
+# Can be used to set wallpaper images downloaded from various sources, such as Bing, via command line.
+APP_NAME=Nitrogen
+APP_GUI_NAME="GTK+-based background/wallpaper browser and setter."
+APP_VERSION=1.6.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install build-essential libgtk2.0-dev libgtkmm-2.4-dev -y
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/l3ib/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+autoreconf -fi && ./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
