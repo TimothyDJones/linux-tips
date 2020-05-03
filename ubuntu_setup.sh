@@ -22653,6 +22653,7 @@ cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Bashtop shell-script-based command-line system monitor from PPA
+# https://github.com/aristocratos/bashtop
 APP_NAME=Bashtop
 APP_GUI_NAME="Shell-script-based command-line system monitor."
 APP_VERSION=0.8.23
