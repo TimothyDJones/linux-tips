@@ -42,6 +42,31 @@ function tool_installed() {
 	return $ret
 }
 
+# Update wallpaper with Bing image of the day.
+# Requires lynx text-mode browser and Nitrogen (see below for installation details).
+cat >> $HOME/.config/bing_daily_wallpaper << EOF
+# Set wallpaper with Bing image of the day.
+function bing_daily_wallpaper() {
+local idx="\$1"
+if [ -z \$idx ]; then
+	idx=0
+fi
+bing_wallpaper_base_url=\$(lynx -source "http://www.bing.com/HPImageArchive.aspx?format=xml&idx=\$idx&n=1&mkt=en-US" | awk -F ".jpg" '{print \$1}' | awk -F "<url>" '{print \$2}')
+bing_wallpaper_name=\$(echo \$bing_wallpaper_base_url | sed 's/\/th?id=//g')
+# Get the "startdate" value, which is the third ('{print \$3') attribute.
+bing_wallpaper_name="bing_"\$(lynx -source "http://www.bing.com/HPImageArchive.aspx?format=xml&idx=\$idx&n=1&mkt=en-US" | sed 's/></>\n</g' | awk -F"[<>]" '/fullstartdate/{print \$3}')_\${bing_wallpaper_name}.jpg
+bing_wallpaper_url="https://www.bing.com\${bing_wallpaper_base_url}.jpg"
+
+wget -O /tmp/\$bing_wallpaper_name "\$bing_wallpaper_url"
+
+sudo cp /tmp/\$bing_wallpaper_name /usr/share/wallpapers
+
+nitrogen --set-scaled --save "/usr/share/wallpapers/\$bing_wallpaper_name"
+}
+EOF
+echo 'source $HOME/.config/bing_daily_wallpaper' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+
 # Set some parameters for general use
 LOGFILE=/var/log/ubuntu_setup.log
 WWW_HOME=/var/www/html
