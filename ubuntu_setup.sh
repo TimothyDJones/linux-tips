@@ -5035,7 +5035,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install util-linux general system utilites from source
 APP_NAME=util-linux
-APP_VERSION=2.31
+APP_VERSION=2.35.1
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/karelzak/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
 cd /tmp
