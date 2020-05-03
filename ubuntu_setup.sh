@@ -178,11 +178,13 @@ cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install PHP 5.6, Apache 2, and MySQL Server
+PHP5_VERSION=5.6
 export DEBIAN_FRONTEND=noninteractive
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'  # Set MySQL password to 'root'.
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-sudo apt-get install -y php5.6-bcmath php5.6-bz2 php5.6-cli php5.6-common php5.6-curl php5.6-gd php5.6-json php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-readline php5.6-sqlite3 php5.6-xml php5.6-xsl php5.6-zip php-xdebug \
-libapache2-mod-php5.6 libapache2-mod-xsendfile \
+export MYSQL_ROOT_PASSWORD=root
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password ${MYSQL_ROOT_PASSWORD}'  # Set MySQL password to 'root'.
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password ${MYSQL_ROOT_PASSWORD}'
+sudo apt-get install -y php${PHP5_VERSION}-bcmath php${PHP5_VERSION}-bz2 php${PHP5_VERSION}-cli php${PHP5_VERSION}-common php${PHP5_VERSION}-curl php${PHP5_VERSION}-gd php${PHP5_VERSION}-json php${PHP5_VERSION}-mbstring php${PHP5_VERSION}-mcrypt php${PHP5_VERSION}-mysql php${PHP5_VERSION}-readline php${PHP5_VERSION}-sqlite3 php${PHP5_VERSION}-xml php${PHP5_VERSION}xsl php${PHP5_VERSION}-zip php-xdebug \
+libapache2-mod-php${PHP5_VERSION} libapache2-mod-xsendfile \
 mysql-server mysql-workbench mycli libcurl3
 
 # Enable 'modrewrite' Apache module
@@ -196,19 +198,19 @@ sudo usermod -a -G www-data ${USER}
 sudo chown -R www-data:www-data ${WWW_HOME}
 
 # Enable PHP 5.6 as default version of PHP (if PHP 7.0+ gets installed, as well).
-sudo a2dismod php7.0 ; sudo a2enmod php5.6 ; sudo service apache2 restart ; echo 1 | sudo update-alternatives --config php
+sudo a2dismod php${PHP7_VERSION} ; sudo a2enmod php${PHP5_VERSION} ; sudo service apache2 restart ; echo 1 | sudo update-alternatives --config php
 
 # Create script to allow switching between PHP 5.6 and 7.2
 cat > /tmp/phpv << EOL
 #! /bin/sh
 if [ "\$1" = "5.6" ] || [ "\$1" = "5" ]; then
-    sudo a2dismod php7.2
-    sudo a2enmod php5.6
+    sudo a2dismod php${PHP7_VERSION}
+    sudo a2enmod php${PHP5_VERSION}
     sudo service apache2 restart
     echo 1 | sudo update-alternatives --config php
 elif [ "\$1" = "7.2" ] || [ "\$1" = "7" ]; then
-    sudo a2dismod php5.6
-    sudo a2enmod php7.2
+    sudo a2dismod php${PHP5_VERSION}
+    sudo a2enmod php${PHP7_VERSION}
     sudo service apache2 restart
     echo 0 | sudo update-alternatives --config php
 else
@@ -249,9 +251,10 @@ sudo php /usr/local/bin/composer global require hirak/prestissimo
 
 cd $HOME
 
-# Install PHP 7.2 (optional)
-sudo apt-get install -y php7.2-bcmath php7.2-bz2 php7.2-cli php7.2-common php7.2-curl php7.2-gd php7.2-json php7.2-mbstring  php7.2-mysql php7.2-readline php7.2-sqlite3 php7.2-xml php7.2-xsl php7.2-zip php-xdebug \
-libapache2-mod-php7.2 libapache2-mod-xsendfile \
+# Install PHP 7.x (optional)
+PHP_VERSION=7.2
+sudo apt-get install -y php${PHP7_VERSION}-bcmath php${PHP7_VERSION}-bz2 php${PHP7_VERSION}-cli php${PHP7_VERSION}-common php${PHP7_VERSION}-curl php${PHP7_VERSION}-gd php${PHP7_VERSION}-json php${PHP7_VERSION}-mbstring  php${PHP7_VERSION}-mysql php${PHP7_VERSION}-readline php${PHP7_VERSION}-sqlite3 php${PHP7_VERSION}-xml php${PHP7_VERSION}-xsl php${PHP7_VERSION}-zip php-xdebug \
+libapache2-mod-php${PHP7_VERSION} libapache2-mod-xsendfile \
 mysql-server mysql-workbench mycli 
 
 # Install Jupyter Notebook support for Python 3
@@ -3498,7 +3501,7 @@ APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
 DB_PASSWORD=${APP_NAME,,}
-sudo apt-get install -y php5.6-mcrypt php5.6-mbstring php5.6-iconv php5.6-xml php5.6-gd openssl
+sudo apt-get install -y php${PHP5_VERSION}-mcrypt php${PHP5_VERSION}-mbstring php${PHP5_VERSION}-iconv php${PHP5_VERSION}-xml php${PHP5_VERSION}-gd openssl
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://codeload.github.com/nilsteampassnet/${APP_NAME}/${APP_EXT}/${APP_VERSION}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -3830,7 +3833,7 @@ DB_NAME=limbas
 DB_USER=limbas
 DB_PASSWORD=limbas
 source /etc/lsb-release
-sudo apt-get install -y unixodbc php5.6-odbc
+sudo apt-get install -y unixodbc php${PHP5_VERSION}-odbc
 curl -o /tmp/mysql-odbc-driver.tar.gz -J -L https://cdn.mysql.com//Downloads/Connector-ODBC/5.3/mysql-connector-odbc-5.3.9-linux-ubuntu16.04-x86-64bit.tar.gz
 cd /tmp
 dtrx -n /tmp/mysql-odbc-driver.tar.gz
@@ -8103,7 +8106,7 @@ APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
 DB_PASSWORD=${APP_NAME,,}
-sudo apt-get install -y php5.6-soap graphviz
+sudo apt-get install -y php${PHP5_VERSION}-soap graphviz
 sudo service apache2 restart
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -8614,7 +8617,7 @@ APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
 DB_PASSWORD=${APP_NAME,,}
-sudo apt-get install -y php5.6-soap graphviz
+sudo apt-get install -y php${PHP5_VERSION}-soap graphviz
 sudo service apache2 restart
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -22601,3 +22604,4 @@ cd /tmp/${FILE_NAME}
 autoreconf -fi && ./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
