@@ -252,7 +252,7 @@ sudo php /usr/local/bin/composer global require hirak/prestissimo
 cd $HOME
 
 # Install PHP 7.x (optional)
-PHP_VERSION=7.2
+PHP7_VERSION=7.2
 sudo apt-get install -y php${PHP7_VERSION}-bcmath php${PHP7_VERSION}-bz2 php${PHP7_VERSION}-cli php${PHP7_VERSION}-common php${PHP7_VERSION}-curl php${PHP7_VERSION}-gd php${PHP7_VERSION}-json php${PHP7_VERSION}-mbstring  php${PHP7_VERSION}-mysql php${PHP7_VERSION}-readline php${PHP7_VERSION}-sqlite3 php${PHP7_VERSION}-xml php${PHP7_VERSION}-xsl php${PHP7_VERSION}-zip php-xdebug \
 libapache2-mod-php${PHP7_VERSION} libapache2-mod-xsendfile \
 mysql-server mysql-workbench mycli 
