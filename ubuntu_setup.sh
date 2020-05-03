@@ -22661,3 +22661,18 @@ APP_EXT=deb
 sudo add-apt-repository -y ppa:${APP_NAME,,}-monitor/${APP_NAME,,}
 sudo apt-get update
 sudo apt-get install -y ${APP_NAME,,}
+
+# Install PDFtk Java-based command-line PDF editor from package
+# This build contains native x86_64 package and does not require Java JRE.
+APP_NAME=PDFtk
+APP_GUI_NAME="Java-based command-line PDF editor."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://gitlab.com/${APP_NAME,,}-java/${APP_NAME,,}/-/jobs/534709327/artifacts/raw/build/native-image/${APP_NAME,,}?inline=false
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+cd ${HOME}
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+
