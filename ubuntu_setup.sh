@@ -22605,3 +22605,46 @@ autoreconf -fi && ./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
+# Install Tiny Tiny RSS (tt-rss) PHP/MySQL-based self-hosted RSS news aggregator from package
+# https://www.hiroom2.com/2019/06/17/ubuntu-1904-tt-rss-en/
+APP_NAME=TT-RSS
+APP_GUI_NAME="PHP/MySQL-based self-hosted RSS news aggregator."
+APP_VERSION=master
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_NAME=${DB_NAME//-/}
+DB_USER=${DB_NAME}
+DB_PASSWORD=${DB_NAME}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+[ -z "${TT_RSS_FQDN}" ] && TT_RSS_FQDN=$(hostname -f)
+TT_RSS_URL=https://${TT_RSS_FQDN}/${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://git.tt-rss.org/fox/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+w ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R 777 ${WWW_HOME}/${APP_NAME,,}/cache ${WWW_HOME}/${APP_NAME,,}/feed-icons ${WWW_HOME}/${APP_NAME,,}/lock
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
+mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/install &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/images/img/php-fusion-icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;Internet;
+Keywords=CMS;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
