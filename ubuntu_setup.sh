@@ -69,8 +69,8 @@ source $HOME/.bashrc	# Reload Bash configuration
 
 # Set some parameters for general use
 LOGFILE=/var/log/ubuntu_setup.log
-WWW_HOME=/var/www/html
-
+echo 'WWW_HOME=/var/www/html' >> $HOME/.bashrc
+source $HOME/.bashrc
 
 # Add some necessary non-default packages
 sudo apt-get update -y
