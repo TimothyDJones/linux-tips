@@ -181,8 +181,8 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 PHP5_VERSION=5.6
 export DEBIAN_FRONTEND=noninteractive
 export MYSQL_ROOT_PASSWORD=root
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password ${MYSQL_ROOT_PASSWORD}'  # Set MySQL password to 'root'.
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password ${MYSQL_ROOT_PASSWORD}'
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password '${MYSQL_ROOT_PASSWORD}  # Set MySQL password to 'root'.
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password '${MYSQL_ROOT_PASSWORD}
 sudo apt-get install -y php${PHP5_VERSION}-bcmath php${PHP5_VERSION}-bz2 php${PHP5_VERSION}-cli php${PHP5_VERSION}-common php${PHP5_VERSION}-curl php${PHP5_VERSION}-gd php${PHP5_VERSION}-json php${PHP5_VERSION}-mbstring php${PHP5_VERSION}-mcrypt php${PHP5_VERSION}-mysql php${PHP5_VERSION}-readline php${PHP5_VERSION}-sqlite3 php${PHP5_VERSION}-xml php${PHP5_VERSION}xsl php${PHP5_VERSION}-zip php-xdebug \
 libapache2-mod-php${PHP5_VERSION} libapache2-mod-xsendfile \
 mysql-server mysql-workbench mycli libcurl3
