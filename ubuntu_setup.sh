@@ -22617,7 +22617,8 @@ DB_USER=${DB_NAME}
 DB_PASSWORD=${DB_NAME}
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 [ -z "${TT_RSS_FQDN}" ] && TT_RSS_FQDN=$(hostname -f)
-TT_RSS_URL=https://${TT_RSS_FQDN}/${APP_NAME,,}
+TT_RSS_URL=http://${TT_RSS_FQDN}/${APP_NAME,,}
+sudo apt-get install -y php${PHP7_VERSION}-intl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://git.tt-rss.org/fox/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -22630,21 +22631,23 @@ sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
 mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
-xdg-open http://localhost/${APP_NAME,,}/install &
+xdg-open ${TT_RSS_URL}/install/index.php &
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=
-Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
-Icon=${WWW_HOME}/${APP_NAME,,}/images/img/php-fusion-icon.png
+Exec=xdg-open ${TT_RSS_URL}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/images/logo_small.png
 Type=Application
 StartupNotify=true
 Terminal=false
-Categories=Programming;Development;Internet;
-Keywords=CMS;
+Categories=Internet;Networking;Office;
+Keywords=News;RSS;Aggregator;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+# Configure cron job to refresh feeds every 30 minutes
+(crontab -l 2>/dev/null; echo "*/30 * * * * /usr/bin/php "${WWW_HOME}/${APP_NAME,,}"/update.php --feeds --quiet") | crontab -
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
