@@ -22651,3 +22651,12 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 (crontab -l 2>/dev/null; echo "*/30 * * * * /usr/bin/php "${WWW_HOME}/${APP_NAME,,}"/update.php --feeds --quiet") | crontab -
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Bashtop shell-script-based command-line system monitor from PPA
+APP_NAME=Bashtop
+APP_GUI_NAME="Shell-script-based command-line system monitor."
+APP_VERSION=0.8.23
+APP_EXT=deb
+sudo add-apt-repository -y ppa:${APP_NAME,,}-monitor/${APP_NAME,,}
+sudo apt-get update
+sudo apt-get install -y ${APP_NAME,,}
