@@ -22764,8 +22764,5 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/extrawurst/${APP_N
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
-cd /tmp/${FILE_NAME}
-qtchooser -run-tool=qmake -qt=5 && make && sudo make install distclean
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
