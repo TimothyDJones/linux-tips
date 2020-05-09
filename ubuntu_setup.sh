@@ -1289,13 +1289,18 @@ cd ..
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install ubunsys installer/tweaker
-APP_NAME=ubunsys
-APP_VERSION=2018.10.14
-APP_EXT=deb
-FILE_NAME=${APP_NAME}_${APP_VERSION}_ubuntu_all_${KERNEL_TYPE}
-source /etc/os-release   # This config file contains Ubuntu version details.
+# Install Ubunsys Ubuntu installer/tweaker from source
+APP_NAME=Ubunsys
+APP_GUI_NAME="Ubuntu installer/tweaker."
+APP_VERSION=2020.05.04
+APP_EXT=tar.gz
+FILE_NAME=v${APP_VERSION}
+sudo apt-get install qt5-qmake qt5-default -y
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/*${APP_NAME,,}*
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
