@@ -22713,3 +22713,22 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd ${HOME}
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Clementine cross-platform music player/organizer from Debian package
+APP_NAME=Clementine
+APP_GUI_NAME="Cross-platform music player/organizer."
+APP_VERSION=1.4.0rc1-177-g096203ac8
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo)$ ]]; then  # 20.04
+	DISTRIB_VERSION=focal
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo)$ ]]; then  # 19.10
+	DISTRIB_VERSION=eoan
+else
+	DISTRIB_VERSION=bionic
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.${DISTRIB_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
