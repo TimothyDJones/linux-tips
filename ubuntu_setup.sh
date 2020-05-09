@@ -22753,3 +22753,19 @@ qtchooser -run-tool=qmake -qt=5 && make && sudo make install distclean
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install GitUI cross-platform console GUI for Git version control from package
+APP_NAME=GitUI
+APP_GUI_NAME="Cross-platform console GUI for Git version control."
+APP_VERSION=0.2.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/extrawurst/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd /tmp/${FILE_NAME}
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install distclean
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
