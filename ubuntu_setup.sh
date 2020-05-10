@@ -22917,3 +22917,34 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Circuit Simulator 2019 GUI circuit simulation tool from package
+APP_NAME="Circuit Simulator 2019"
+APP_GUI_NAME="GUI circuit simulation tool."
+APP_VERSION=2.32.0.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME// /}_v${APP_VERSION}
+sudo apt-get install -y ngspice okular
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://andreaverdi.altervista.org/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME// /}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME// /}
+sudo ln -s -f /opt/${APP_NAME// /}/${APP_NAME// /} /usr/local/bin/${APP_NAME// /}
+cat > /tmp/${APP_NAME// /}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME// /}
+Exec=/usr/local/bin/${APP_NAME// /}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Electronics;Education;
+Keywords=Electronics;
+EOF
+sudo mv /tmp/${APP_NAME// /}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
