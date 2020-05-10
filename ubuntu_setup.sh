@@ -23020,3 +23020,36 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/acheronfail/${APP_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Todo-List cross-platform Electron/VueJS-based to do manager from AppImage
+APP_NAME=Todo-list
+APP_GUI_NAME="Cross-platform Electron/VueJS-based to do manager."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="To Do;Productivity;"
+APP_VERSION=0.9.0
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME//-/}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/blaadje/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+curl -o /tmp/${APP_NAME}.png -J -L https://github.com/blaadje/Todo-list/raw/master/icons/256x256.png
+sudo mv /tmp/${APP_NAME}.png /usr/share/pixmaps/${APP_NAME}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+Icon=/usr/share/pixmaps/${APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
