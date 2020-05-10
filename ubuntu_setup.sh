@@ -22948,3 +22948,18 @@ EOF
 sudo mv /tmp/${APP_NAME// /}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Tanglet Qt-based cross-platform Boggle-style puzzle word game from source
+APP_NAME=Tanglet
+APP_GUI_NAME="Qt-based cross-platform Boggle-style puzzle word game."
+APP_VERSION=1.5.6
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install qt5-qmake qt5-default qttools5-dev-tools -y
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/gottcode/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
