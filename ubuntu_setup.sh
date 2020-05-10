@@ -23053,3 +23053,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Notes-CLI Golang-based shell notepad with Markdown support from package
+APP_NAME=Notes-CLI
+APP_GUI_NAME="Golang-based shell notepad with Markdown support."
+APP_VERSION=2020.04.29
+APP_EXT=tar.gz
+FILE_NAME=notes-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/prdpx7/${APP_NAME,,}/releases/download/v0.1/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/* /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
