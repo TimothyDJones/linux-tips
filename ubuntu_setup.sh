@@ -22995,3 +22995,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Pyp Python shell-based REPL from package
+APP_NAME=Pyp
+APP_GUI_NAME="Python shell-based REPL."
+APP_VERSION=0.2.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/hauntsaninja/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo python3 /tmp/${FILE_NAME}/setup.py install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
