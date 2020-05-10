@@ -22963,3 +22963,35 @@ cd /tmp/${FILE_NAME}
 qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Lite cross-platform SDL-based GUI text editor written in Lua from package
+APP_NAME=Lite
+APP_GUI_NAME="Cross-platform SDL-based GUI text editor written in Lua."
+APP_VERSION=1.03
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rxi/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+curl -o /tmp/${APP_NAME}.ico -J -L https://github.com/rxi/lite/raw/master/icon.ico
+sudo mv /tmp/${APP_NAME}.ico /usr/share/pixmaps/${APP_NAME}.ico
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/share/pixmaps/${APP_NAME}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Accessories;
+Keywords=Text;Editor;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
