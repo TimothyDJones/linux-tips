@@ -23097,3 +23097,36 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/x86_64-unknown-linux-gnu /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Birdfont cross-platform font editor from AppImage
+APP_NAME=Birdfont
+APP_GUI_NAME="Cross-platform font editor."
+APP_GUI_CATEGORIES="Accessories;Office;System;"
+APP_GUI_KEYWORDS="To Do;Productivity;"
+APP_VERSION=2.29.0
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-669f14e-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johanmattssonm/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+curl -o /tmp/${APP_NAME}.png -J -L https://github.com/johanmattssonm/birdfont/raw/master/resources/linux/128x128/birdfont.png
+sudo mv /tmp/${APP_NAME}.png /usr/share/pixmaps/${APP_NAME}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+Icon=/usr/share/pixmaps/${APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
