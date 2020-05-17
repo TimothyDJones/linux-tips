@@ -23187,3 +23187,33 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo /tmp/${FILE_NAME}/${FILE_NAME}.${ARCH_TYPE}.sh
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Lionwiki-t2t minimalist CMS based on Lionwiki and txt2tags syntax from package
+APP_NAME=Lionwiki-t2t
+APP_GUI_NAME="Minimalist CMS based on Lionwiki and txt2tags syntax."
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/lionwiki-t2t_logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Office;Internet;
+Keywords=Wiki;CMS;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd ${HOME}
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
