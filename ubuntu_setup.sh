@@ -23168,3 +23168,22 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd ${HOME}
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install KJV Pure Bible Search cross-platfrom GUI Bible search tool from package
+APP_NAME=KVJPureBibleSearch
+APP_GUI_NAME="Cross-platfrom GUI Bible search tool."
+APP_VERSION=3.0.0-2
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i486
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y alien lsb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/purebiblesearch/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo /tmp/${FILE_NAME}/${FILE_NAME}.${ARCH_TYPE}.sh
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
