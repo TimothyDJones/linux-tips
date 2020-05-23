@@ -257,6 +257,14 @@ sudo apt-get install -y php${PHP7_VERSION}-bcmath php${PHP7_VERSION}-bz2 php${PH
 libapache2-mod-php${PHP7_VERSION} libapache2-mod-xsendfile \
 mysql-server mysql-workbench mycli 
 
+# Install nvm (Node Version Manager) command-line utility for running/managing multiple versions of Node.JS from package
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+source $HOME/.bashrc
+nvm install --lts=dubnium node
+nvm alias default node
+curl -o- -L https://yarnpkg.com/install.sh | bash
+source $HOME/.bashrc
+
 # Install Jupyter Notebook support for Python 3
 sudo apt-get install -y python3 python3-ipython
 sudo pip3 install jupyter
