@@ -23231,3 +23231,22 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 sudo add-apt-repository -y ppa:atareao/atareao
 sudo apt-get update -y
 sudo apt-get install -y touchpad-indicator
+
+# Install GeoDa cross-platform GIS utility from Debian package
+APP_NAME=GeoDa
+APP_GUI_NAME="Cross-platform GIS utility."
+APP_VERSION=1.14.0.2
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di|eo|fo)$ ]]; then  # 19.04, 19.10, 20.04
+	DISTRIB_VERSION=disco
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co)$ ]]; then  # 18.04, 18.10
+	DISTRIB_VERSION=bionic
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04 - 17.10
+	DISTRIB_VERSION=xenial
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1${DISTRIB_VERSION}1_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/GeoDaCenter/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
