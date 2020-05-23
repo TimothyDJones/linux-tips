@@ -101,10 +101,11 @@ deb [ arch=amd64 `allow-insecure=yes ] http://repo.mongodb.org/apt/ubuntu bionic
 ## Reset 'root' password for MySQL Server (version 8.0+)
 If you install [MySQL Server 8.0](https://dev.mysql.com/doc/refman/8.0/en/) or later in Ubuntu without specifying the `root` password, you can set (reset) it as follows.
 
-Run mysql with `root` account:
+Run `mysql` utility with `root` account without password:
 ```bash
 sudo mysql
 ```
+(Note: This only works if not `root` password is set.)
 
 At the MySQL prompt, use the [`ALTER USER`](https://dev.mysql.com/doc/refman/8.0/en/alter-user.html) command to set the desired password.  It is important to specify the authentication plugin as [`mysql_native_password`](https://dev.mysql.com/doc/refman/8.0/en/native-pluggable-authentication.html) to allow applications such as [phpMyAdmin](https://www.phpmyadmin.net/) to connect.
 ```bash
