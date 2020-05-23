@@ -23217,3 +23217,9 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd ${HOME}
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Touchpad Indicator utility to quickly disable touchpad when typing and/or when mouse is plugged in from PPA
+# https://itsfoss.com/disable-touchpad-when-mouse-used/
+sudo add-apt-repository -y ppa:atareao/atareao
+sudo apt-get update -y
+sudo apt-get install -y touchpad-indicator
