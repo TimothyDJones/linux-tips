@@ -255,7 +255,7 @@ cd $HOME
 PHP7_VERSION=7.2
 sudo apt-get install -y php${PHP7_VERSION}-bcmath php${PHP7_VERSION}-bz2 php${PHP7_VERSION}-cli php${PHP7_VERSION}-common php${PHP7_VERSION}-curl php${PHP7_VERSION}-gd php${PHP7_VERSION}-json php${PHP7_VERSION}-mbstring  php${PHP7_VERSION}-mysql php${PHP7_VERSION}-readline php${PHP7_VERSION}-sqlite3 php${PHP7_VERSION}-xml php${PHP7_VERSION}-xsl php${PHP7_VERSION}-zip php-xdebug \
 libapache2-mod-php${PHP7_VERSION} libapache2-mod-xsendfile \
-mysql-server mysql-workbench mycli 
+mysql-server  mysql-workbench mycli 
 
 # Install nvm (Node Version Manager) command-line utility for running/managing multiple versions of Node.JS from package
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
@@ -14314,7 +14314,7 @@ APP_NAME=Videomass2
 APP_GUI_NAME="GUI front-end for FFmpeg."
 APP_GUI_CATEGORIES="Multimedia;Accessories;"
 APP_GUI_KEYWORDS="FFmpeg;Video;Audio;Converter;"
-APP_VERSION=2.0.5
+APP_VERSION=2.1.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install python3-wxgtk4.0 ffmpeg -y
