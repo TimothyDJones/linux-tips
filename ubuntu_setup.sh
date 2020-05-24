@@ -12608,12 +12608,11 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Timeline Project Python-based GUI timeline tool from source
 APP_NAME=Timeline
 APP_GUI_NAME="Python-based GUI timeline tool."
-APP_VERSION=2.1.0
+APP_VERSION=2.2.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-# Due to dependencies, we use Python 2.x
-sudo apt-get install -y python-wxgtk4.0 python-pip python-pip-whl python-wxgtk-media4.0 python-wxtools python-wxversion python-wxgtk-webview4.0
-sudo pip2 install git+https://github.com/thetimelineproj/humblewx.git
+sudo apt-get install -y python3-wxgtk4.0 python3-pip python3-wxgtk-media4.0 python3-wxgtk-webview4.0
+sudo pip3 install git+https://github.com/thetimelineproj/humblewx.git
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/thetimelineproj/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -12623,7 +12622,7 @@ cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}/source
 PATH=/opt/${APP_NAME,,}/source:\$PATH; export PATH
-python2 /opt/${APP_NAME,,}/source/${APP_NAME,,}.py
+python3 /opt/${APP_NAME,,}/source/${APP_NAME,,}.py
 cd $HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
@@ -12634,7 +12633,7 @@ Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}/source
-Exec=python2 /opt/${APP_NAME,,}/source/${APP_NAME,,}.py
+Exec=python3 /opt/${APP_NAME,,}/source/${APP_NAME,,}.py
 Icon=/opt/${APP_NAME,,}/icons/${APP_NAME}.ico
 Type=Application
 StartupNotify=true
