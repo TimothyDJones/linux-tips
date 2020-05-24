@@ -23312,3 +23312,20 @@ sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install MySQL Workbench GUI editor and client for MySQL from Debian package
+APP_NAME=MySQL-Workbench
+APP_GUI_NAME="GUI editor and client for MySQL."
+APP_VERSION=8.0.20-1
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo)$ ]]; then  # 20.04
+	DISTRIB_VERSION=20.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di|eo)$ ]]; then  # 18.04, 18.10, 19.04, 19.10
+	DISTRIB_VERSION=18.04
+fi
+FILE_NAME=${APP_NAME,,}-community_${APP_VERSION}ubuntu${DISTRIB_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://dev.mysql.com/get/Downloads/MySQLGUITools/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
