@@ -122,3 +122,5 @@ You should now be able to log in to MySQL from command prompt with the new passw
 ```bash
 mysql -u root -pnew_root_password
 ```
+
+[Reference](https://askubuntu.com/questions/766900/mysql-doesnt-ask-for-root-password-when-installing/766908#766908)

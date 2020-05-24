@@ -145,6 +145,20 @@ EOF
 echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
 source $HOME/.bashrc	# Reload Bash configuration
 
+# Install various monospaced fonts for programming
+sudo apt-get install -y fontconfig
+mkdir -p $HOME/.local/share/fonts
+curl -o /tmp/Fira_Code_v4.zip -J -L https://github.com/tonsky/FiraCode/releases/download/4/Fira_Code_v4.zip
+cd /tmp
+dtrx -n /tmp/Fira_Code_v4.zip
+sudo cp -R /tmp/Fira_Code_v4/ttf/* /usr/local/share/fonts
+curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.xz
+cd /tmp
+dtrx -n /tmp/Hack-v3.003-ttf.tar.xz
+sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
+sudo fc-cache -f -v
+
+
 # Install MongoDB from official repository
 # https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 APP_NAME=mongodb
@@ -23253,6 +23267,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Wine Windows emulator from repository
 # https://wiki.winehq.org/Ubuntu
+# https://linuxhint.com/wine_ubuntu_install_configure/
 sudo dpkg --add-architecture i386
 wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
 source /etc/lsb-release
@@ -23267,4 +23282,4 @@ elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04 - 17.10
 fi
 sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ '${DISTRIB_VERSION}' main'
 sudo apt-get update -y
-sudo apt-get install -y --install-recommends winehq-stable
+sudo apt-get install -y --install-recommends winehq-stable winetricks
