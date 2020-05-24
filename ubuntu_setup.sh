@@ -23250,3 +23250,21 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/GeoDaCenter/${APP_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Wine Windows emulator from repository
+# https://wiki.winehq.org/Ubuntu
+sudo dpkg --add-architecture i386
+wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo)$ ]]; then  # 20.04
+	DISTRIB_VERSION=focal
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo)$ ]]; then  # 19.10
+	DISTRIB_VERSION=eoan
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di)$ ]]; then  # 18.04, 18.10, 19.04
+	DISTRIB_VERSION=bionic
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04 - 17.10
+	DISTRIB_VERSION=xenial
+fi
+sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ '${DISTRIB_VERSION}' main'
+sudo apt-get update -y
+sudo apt-get install -y --install-recommends winehq-stable
