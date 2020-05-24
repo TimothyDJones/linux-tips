@@ -262,7 +262,25 @@ sudo php /usr/local/bin/composer global require hirak/prestissimo
 
 # Install latest PhpMyAdmin version via Composer
 # https://docs.phpmyadmin.net/en/latest/setup.html#composer
-
+APP_NAME=phpMyAdmin
+cd ${WWW_HOME}
+sudo composer create-project phpmyadmin/phpmyadmin
+sudo chown -R www-data:www-data ${WWW_HOME}
+xdg-open http://localhost/phpmyadmin/setup/index.php
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=PHP-based MySQL manager
+GenericName=${APP_NAME,,}
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php
+Icon=${WWW_HOME}/${APP_NAME,,}/favicon.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Development;Programming;
+Keywords=PHP;MySQL;${APP_NAME};
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 
 # Install PHP 7.x (optional)
@@ -5299,7 +5317,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=20.2
+APP_VERSION=20.3
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
