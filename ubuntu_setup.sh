@@ -22761,7 +22761,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Clementine cross-platform music player/organizer from Debian package
 APP_NAME=Clementine
 APP_GUI_NAME="Cross-platform music player/organizer."
-APP_VERSION=1.4.0rc1-204-g912589439
+APP_VERSION=1.4.0rc1-231-g60a46d193
 APP_EXT=deb
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo)$ ]]; then  # 20.04
