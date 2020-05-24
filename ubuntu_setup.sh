@@ -23346,3 +23346,24 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://dev.mysql.com/get/Downloads/M
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install s3fs file system extension to mount AWS S3 bucket from source
+# https://sysadminxpert.com/how-to-mount-s3-bucket-on-linux-instance/
+APP_NAME=s3fs-fuse
+APP_GUI_NAME="File system extension to mount AWS S3 bucket."
+APP_VERSION=1.86
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+sudo apt-get install -y build-essential libcurl4-openssl-dev libxml2-dev mime-support libfuse-dev libssl-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
+./autogen.sh && ./configure && make && sudo make install
+sudo echo <access-key-id>:<secret-access-key> > /etc/passwd-s3fs
+sudo chmod 600 /etc/passwd-s3fs
+sudo mkdir /mnt/<bucket-name>
+sudo echo s3fs#<bucket-name> /mnt/<bucket-name> fuse _netdev,rw,nosuid,nodev,allow_other,nonempty 0 0 >> /etc/fstab
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
