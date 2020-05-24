@@ -23283,3 +23283,32 @@ fi
 sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ '${DISTRIB_VERSION}' main'
 sudo apt-get update -y
 sudo apt-get install -y --install-recommends winehq-stable winetricks
+
+# Install MyDailyWallpaper daily Bing wallpaper downloader from package
+APP_NAME=MyDailyWallpaper
+APP_GUI_NAME="Daily Bing wallpaper downloader."
+APP_VERSION=1.2
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i386
+fi
+FILE_NAME=${APP_NAME}-v${APP_VERSION}-${ARCH_TYPE}-linux
+sudo apt-get install -y alien lsb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:/opt/${APP_NAME,,}/lib:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME}App &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
