@@ -14983,6 +14983,7 @@ cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
 # Install Docker from official repository
+# https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 # Remove old Docker versions, if any
 sudo apt-get remove -y docker docker-engine docker.io
@@ -14993,7 +14994,7 @@ sudo apt-cache policy docker-ce
 sudo apt-get install -y docker-ce
 sudo systemctl status docker
 sudo usermod -aG docker ${USER}  # Add user account to 'docker' group to run commands without sudo.
-su ${USER}
+su - ${USER}
 id -nG  # Confirm user account added to 'docker' group.
 docker run hello-world  # Confirm Docker installation.
 
@@ -16166,7 +16167,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Netsurf minimalist GTK web browser from source
 APP_NAME=Netsurf
 APP_GUI_NAME="Minimalist GTK web browser."
-APP_VERSION=3.8
+APP_VERSION=3.10
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-all-${APP_VERSION}
 sudo apt-get install -y build-essential pkg-config gperf libcurl3-dev libpng-dev libjpeg-dev libgtk-3-dev librsvg2-dev libssl-dev bison flex
