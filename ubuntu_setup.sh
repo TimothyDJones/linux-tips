@@ -156,6 +156,10 @@ curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack
 cd /tmp
 dtrx -n /tmp/Hack-v3.003-ttf.tar.xz
 sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
+curl -o /tmp/ttf-iosevka-3.0.1.zip https://github.com/be5invis/Iosevka/releases/download/v3.0.1/ttf-iosevka-3.0.1.zip
+cd /tmp
+dtrx -n /tmp/ttf-iosevka-3.0.1.zip
+sudo cp -R /tmp/ttf-iosevka-3.0.1/* /usr/local/share/fonts
 sudo fc-cache -f -v
 
 
@@ -9496,22 +9500,14 @@ meson --prefix=/usr/local build && cd build && sudo ninja install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Etcher cross-platform Electron-based tool to copy OS images to USB drives from package
-APP_NAME=Etcher
+# Install Balena Etcher cross-platform Electron-based tool to copy OS images to USB drives from Debian package
+APP_NAME=Balena-Etcher
 APP_GUI_NAME="Cross-platform Electron-based tool to copy OS images to USB drives."
-APP_VERSION=1.4.1
-APP_EXT=zip
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=ia32
-fi
-FILE_NAME=${APP_NAME,,}-electron-${APP_VERSION}-linux-${ARCH_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/resin-io/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}-electron-${APP_VERSION}*.AppImage /usr/local/bin
-/usr/local/bin/${FILE_NAME}/${APP_NAME,,}-electron-${APP_VERSION}*.AppImage &
+APP_VERSION=1.5.93
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-electron_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/balena-io/etcher/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
