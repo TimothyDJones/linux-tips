@@ -156,7 +156,7 @@ curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack
 cd /tmp
 dtrx -n /tmp/Hack-v3.003-ttf.tar.xz
 sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
-curl -o /tmp/ttf-iosevka-3.0.1.zip https://github.com/be5invis/Iosevka/releases/download/v3.0.1/ttf-iosevka-3.0.1.zip
+curl -o /tmp/ttf-iosevka-3.0.1.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v3.0.1/ttf-iosevka-3.0.1.zip
 cd /tmp
 dtrx -n /tmp/ttf-iosevka-3.0.1.zip
 sudo cp -R /tmp/ttf-iosevka-3.0.1/* /usr/local/share/fonts
