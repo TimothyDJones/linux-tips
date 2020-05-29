@@ -23367,3 +23367,18 @@ sudo echo s3fs#<bucket-name> /mnt/<bucket-name> fuse _netdev,rw,nosuid,nodev,all
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Lumina Desktop Qt-based Linux desktop environment from source
+APP_NAME=Lumina
+APP_VERSION=1.6.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential qt5-default qttools5-dev-tools libxrandr-dev libqt5gui5 qtmultimedia5-dev libqt5multimediawidgets5  libqt5network5 libqt5svg5-dev libqt5x11extras5-dev libxcb-icccm4-dev libxcb-ewmh-dev libxcb-composite0-dev libxcb-damage0-dev libxcb-util0-dev libphonon4qt5-dev libxcomposite-dev libxdamage-dev libxrender-dev libxcb-image0-dev libxcb-screensaver0-dev qtdeclarative5-dev fluxbox kde-style-oxygen-qt5 xscreensaver xbacklight alsa-utils acpi numlockx pavucontrol xterm sysstat libxcursor-dev libqt5concurrent5 libqt5core5a lightdm qtbase5-private-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/lumina-desktop/lumina/archive/v1.6.0.tar.gz
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 ../lumina.pro && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
