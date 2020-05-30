@@ -23359,3 +23359,14 @@ mkdir build && cd build
 qtchooser -run-tool=qmake -qt=5 ../lumina.pro && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Clipboard History cross-platform manager built with Electron from Debian package
+APP_NAME=ClipboardHistory
+APP_GUI_NAME="Cross-platform manager built with Electron."
+APP_VERSION=1.1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/savannahar68/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
