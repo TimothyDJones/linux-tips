@@ -23370,3 +23370,15 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/savannahar68/${APP
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Verco simple Rust-based Git/Hg TUI client focused on keyboard shortcuts from package
+APP_NAME=Verco
+APP_GUI_NAME="Simple Rust-based Git/Hg TUI client focused on keyboard shortcuts."
+APP_VERSION=5.4.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-x86_64
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/matheuslessarodrigues/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo mv /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
