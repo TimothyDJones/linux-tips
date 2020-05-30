@@ -22077,7 +22077,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install PHP-Fusion lightweight PHP/MySQL content management system (CMS) from package
 APP_NAME=PHP-Fusion
 APP_GUI_NAME="Lightweight PHP/MySQL content management system (CMS)."
-APP_VERSION=9.03.50
+APP_VERSION=9.03.60
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_NAME=${DB_NAME//-/}
