@@ -22899,7 +22899,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install FidoCadJ Java-based minimalist EDA/PCB design tool from package
 APP_NAME=FidoCadJ
 APP_GUI_NAME="Java-based minimalist EDA/PCB design tool."
-APP_VERSION=0.24.8_epsilon
+APP_VERSION=0.24.8_eta
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/DarwinNE/${APP_NAME}/releases/download/v${APP_VERSION//_/}/${FILE_NAME}.${APP_EXT}
