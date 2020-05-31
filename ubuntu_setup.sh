@@ -6586,12 +6586,12 @@ APP_GUI_NAME="Lightweight image editor similar to MS Paint."
 APP_VERSION=0.12.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y intltool libgtk2.0-dev libbabl-dev libgegl-dev
+sudo apt-get install -y intltool libgtk2.0-dev libbabl-dev libgegl-dev libexiv2-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/${APP_NAME,,}/trunk/${APP_VERSION}/+download/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
-./configure --with-gegl-0.3 --libdir=/usr/include && make && sudo make install
+./configure --with-gegl-0.4 --libdir=/usr/include && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
