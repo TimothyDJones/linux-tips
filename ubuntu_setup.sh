@@ -23382,3 +23382,18 @@ sudo mv /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install git-fuzzy interactive Git commmand-line tool powered by 'fzf' from package
+APP_NAME=git-fuzzy
+APP_GUI_NAME="Interactive Git commmand-line tool powered by 'fzf'."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo apt-get install -y fzf
+cd /opt
+sudo git clone https://github.com/bigH/git-fuzzy.git
+sudo chmod a+x /opt/${APP_NAME,,}/bin/${APP_NAME,,}
+echo "export PATH=/opt/"${APP_NAME,,}"/bin:\$PATH" >> ${HOME}/.bashrc
+source ${HOME}/.bashrc
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
