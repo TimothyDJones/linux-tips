@@ -3164,16 +3164,18 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install TexStudio LaTeX editor
-APP_NAME=texstudio
-APP_VERSION=2.12.14
+# Install TexStudio cross-platfor Qt-based LaTeX editor from source
+APP_NAME=TexStudio
+APP_VERSION=2.12.22
 APP_EXT=tar.gz
-sudo apt-get install -y libpoppler-qt5-dev libgs-dev qtscript5-dev texlive
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_VERSION}
+sudo apt-get install -y libpoppler-qt5-dev libqt5svg5-dev qttools5-dev libgs-dev qtscript5-dev texlive
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}${APP_VERSION}
-qmake texstudio.pro && make && sudo make install
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}*
+mkdir -p build && cd build
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
