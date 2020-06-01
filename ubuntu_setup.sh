@@ -23499,3 +23499,14 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${AP
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install FontEdit cross-platform Qt-based font editor/converter for building fonts for embedded system applications from Debian package
+APP_NAME=FontEdit
+APP_GUI_NAME="Cross-platform Qt-based font editor/converter for building fonts for embedded system applications."
+APP_VERSION=1.1.0-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ayoy/${APP_NAME,,}/releases/download/v${APP_VERSION//-1/}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
