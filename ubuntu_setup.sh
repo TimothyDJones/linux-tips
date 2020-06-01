@@ -499,7 +499,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.101.0.0-1
+APP_VERSION=1.101.5.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -3278,7 +3278,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PlantUML Java-based UML modeling tool from package
 APP_NAME=PlantUML
 APP_GUI_NAME="Java-based UML modeling tool"
-APP_VERSION=1.2020.9
+APP_VERSION=1.2020.11
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -5842,7 +5842,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install WackoWiki PHP-based lightweight wiki tool
 APP_NAME=wacko
-APP_VERSION=r6.0.6
+APP_VERSION=r6.0.7
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -6191,7 +6191,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Damn Cool Editor (DCE) Tcl/Tk plain text editor from source
 APP_NAME=DCE
 APP_GUI_NAME="Tcl/Tk plain text editor."
-APP_VERSION=0.14
+APP_VERSION=0.17
 APP_EXT=tar.gz
 sudo apt-get install -y tcl8.6 tk8.6 tklib tkpng tk-tktray libtk-img tdom tcllib libsqlite3-tcl
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.jmos.net/download/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -6585,14 +6585,15 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Dibuja lightweight image editor similar to MS Paint from source
 APP_NAME=Dibuja
 APP_GUI_NAME="Lightweight image editor similar to MS Paint."
-APP_VERSION=0.8.0
+APP_VERSION=0.12.0
 APP_EXT=tar.gz
-sudo apt-get install -y intltool libgtk2.0-dev libbabl-dev libgegl-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://launchpad.net/${APP_NAME,,}/trunk/${APP_VERSION}/+download/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y intltool libgtk2.0-dev libbabl-dev libgegl-dev libexiv2-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/${APP_NAME,,}/trunk/${APP_VERSION}/+download/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
-./configure --with-gegl-0.3 --libdir=/usr/include && make && sudo make install
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure --with-gegl-0.4 --libdir=/usr/include && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
@@ -16925,7 +16926,7 @@ sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}.deb
 # Install Klavaro GTK3-based Touch Typing Tutor from source
 APP_NAME=Klavaro
 APP_GUI_NAME="GTK3-based Touch Typing Tutor."
-APP_VERSION=3.09
+APP_VERSION=3.10
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y intltool libgtk-3-dev
@@ -22079,7 +22080,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install PHP-Fusion lightweight PHP/MySQL content management system (CMS) from package
 APP_NAME=PHP-Fusion
 APP_GUI_NAME="Lightweight PHP/MySQL content management system (CMS)."
-APP_VERSION=9.03.50
+APP_VERSION=9.03.60
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_NAME=${DB_NAME//-/}
@@ -22901,7 +22902,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install FidoCadJ Java-based minimalist EDA/PCB design tool from package
 APP_NAME=FidoCadJ
 APP_GUI_NAME="Java-based minimalist EDA/PCB design tool."
-APP_VERSION=0.24.8_epsilon
+APP_VERSION=0.24.8_eta
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/DarwinNE/${APP_NAME}/releases/download/v${APP_VERSION//_/}/${FILE_NAME}.${APP_EXT}
@@ -23361,3 +23362,140 @@ mkdir build && cd build
 qtchooser -run-tool=qmake -qt=5 ../lumina.pro && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Clipboard History cross-platform manager built with Electron from Debian package
+APP_NAME=ClipboardHistory
+APP_GUI_NAME="Cross-platform manager built with Electron."
+APP_VERSION=1.1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/savannahar68/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Verco simple Rust-based Git/Hg TUI client focused on keyboard shortcuts from package
+APP_NAME=Verco
+APP_GUI_NAME="Simple Rust-based Git/Hg TUI client focused on keyboard shortcuts."
+APP_VERSION=5.4.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-x86_64
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/matheuslessarodrigues/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo mv /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install git-fuzzy interactive Git commmand-line tool powered by 'fzf' from package
+APP_NAME=git-fuzzy
+APP_GUI_NAME="Interactive Git commmand-line tool powered by 'fzf'."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo apt-get install -y fzf
+cd /opt
+sudo git clone https://github.com/bigH/git-fuzzy.git
+sudo chmod a+x /opt/${APP_NAME,,}/bin/${APP_NAME,,}
+echo "export PATH=/opt/"${APP_NAME,,}"/bin:\$PATH" >> ${HOME}/.bashrc
+source ${HOME}/.bashrc
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install GtkRadio simple Internet radio player from Debian package
+APP_NAME=Online-Radio-Player
+APP_GUI_NAME="Simple Internet radio player."
+APP_VERSION=1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/gtk-radio/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install MuWire cross-platform Java-based P2P client with anonymization features from package
+APP_NAME=MuWire
+APP_GUI_NAME="Cross-platform Java-based P2P client with anonymization features."
+APP_VERSION=0.7.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://muwire.com/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Shutter Encoder cross-platform audio/video encoder/converter from Debian package
+APP_NAME="Shutter Encoder"
+APP_GUI_NAME="Cross-platform audio/video encoder/converter."
+APP_VERSION=13.7
+APP_EXT=deb
+FILE_NAME=${APP_NAME// /%20}%20"("Linux%20Version%20${APP_VERSION}")"
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.shutterencoder.com/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Hearts Qt-based networked card game from source
+APP_NAME=Hearts
+APP_GUI_NAME="Qt-based networked card game."
+APP_VERSION=1.5.2b
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential qt5-default qttools5-dev-tools liballegro5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Rescator7/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME}.pro && make
+sudo mv /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/build/${APP_NAME} /usr/local/bin
+sudo ln -s -f /usr/local/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/SVG-cards/Default/back.png /usr/share/pixmaps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Cards;Hearts;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Qt JSON diff GUI JSON viewer/comparer from source
+APP_NAME=QTjsonDiff
+APP_VERSION=0.33b
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential qt5-default qttools5-dev-tools
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/coozoo/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME}.pro && make && sudo make install
+sudo mv /tmp/${FILE_NAME}/build/${APP_NAME} /usr/bin
+sudo ln -s -f /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Beekeeper Studio cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server) from Debian package
+APP_NAME=Beekeeper-Studio
+APP_GUI_NAME="Cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server)."
+APP_VERSION=1.4.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
