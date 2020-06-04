@@ -23510,3 +23510,19 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ayoy/${APP_NAME,,}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Secret minimalist command-line password manager from package
+APP_NAME=Secret
+APP_GUI_NAME="Minimalist command-line password manager."
+APP_VERSION=0.9
+APP_EXT=bin
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i686
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/angt/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
