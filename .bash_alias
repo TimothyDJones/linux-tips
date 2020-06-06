@@ -12,5 +12,9 @@ alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=au
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 
+alias rm='rm -i -v'
+alias cp='cp -v'
+alias mv='mv -v'
+
 # Git aliases
 alias gitlog='git log --all --decorate --graph --oneline'
