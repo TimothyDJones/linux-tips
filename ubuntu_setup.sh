@@ -23618,6 +23618,7 @@ APP_NAME=ijq
 APP_VERSION=0.1.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-x86_64-linux-gnu
+npm install -g jq
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://git.sr.ht/~gpanders/${APP_NAME,,}/refs/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
