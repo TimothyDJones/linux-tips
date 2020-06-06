@@ -8,6 +8,12 @@ function weather() {
 	fi
 }
 
+# Create a directory and change to it
+function mcd() {
+	mkdir -pv $1
+	cd $1
+}
+
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
@@ -15,6 +21,11 @@ alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --colo
 alias rm='rm -i -v'
 alias cp='cp -v'
 alias mv='mv -v'
+alias mkdir='mkdir -pv'
+alias top='htop'
+
+# Get public IP address
+alias publicip='curl https://ipecho.net/plain; echo'
 
 # Searchable 'ps' command alias
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
