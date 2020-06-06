@@ -16,5 +16,8 @@ alias rm='rm -i -v'
 alias cp='cp -v'
 alias mv='mv -v'
 
+# Searchable 'ps' command alias
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+
 # Git aliases
 alias gitlog='git log --all --decorate --graph --oneline'
