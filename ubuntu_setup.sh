@@ -23669,3 +23669,16 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/reposit
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install xsv cross-platform, Rust-based CSV command-line toolkit from package
+# https://gpanders.com/blog/introducing-ijq/
+APP_NAME=xsv
+APP_VERSION=0.13.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/BurntSushi/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
