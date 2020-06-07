@@ -23662,6 +23662,9 @@ else
 	DISTRIB_CODENAME=bionic
 fi
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}.${DISTRIB_CODENAME}1_${KERNEL_TYPE}
+FILE_NAME_COMMON=${APP_NAME,,}-common_${APP_VERSION}.${DISTRIB_CODENAME}1_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME_COMMON}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/ungoogled_chromium/${DISTRIB_VERSION}/${KERNEL_TYPE}/${FILE_NAME_COMMON}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME_COMMON}.${APP_EXT}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/ungoogled_chromium/${DISTRIB_VERSION}/${KERNEL_TYPE}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
