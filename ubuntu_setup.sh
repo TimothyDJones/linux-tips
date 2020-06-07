@@ -23647,3 +23647,22 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Ungoogled Chromium Chrome web browser with Google integration removed from Debian package
+APP_NAME=Ungoogled-Chromium
+APP_GUI_NAME="Chrome web browser with Google integration removed."
+APP_VERSION=81.0.4044.138-1
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo)$ ]]; then  # 20.04
+	DISTRIB_VERSION=Ubuntu_Focal
+	DISTRIB_CODENAME=focal
+else
+	DISTRIB_VERSION=Ubuntu_Bionic
+	DISTRIB_CODENAME=bionic
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.${DISTRIB_CODENAME}1_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/ungoogled_chromium/${DISTRIB_VERSION}/${KERNEL_TYPE}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
