@@ -23682,3 +23682,26 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Virtualbox virtualization platform from Debian package
+APP_NAME=Virtualbox
+APP_GUI_NAME="Virtualization platform."
+APP_VERSION=6.1_6.1.10-138449
+MAJOR_VERSION=${APP_VERSION#*_}
+MAJOR_VERSION=${MAJOR_VERSION%-*}
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo|fo)$ ]]; then  # 19.10, 20.04
+	DISTRIB_CODENAME=eoan
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di)$ ]]; then  # 18.04, 18.10, 19.04
+	DISTRIB_CODENAME=bionic
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04 - 17.10
+	DISTRIB_CODENAME=xenial
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi)$ ]]; then  # 14.04 - 15.10
+	DISTRIB_CODENAME=trusty
+fi
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}~Ubuntu~${DISTRIB_CODENAME}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.virtualbox.org/virtualbox/${MAJOR_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
