@@ -23705,3 +23705,14 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.virtualbox.org/virtu
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Cryo visual file manager from Debian package
+APP_NAME=Cryo
+APP_GUI_NAME="Visual file manager."
+APP_VERSION=0.5.6
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://cryonet.io/downloads/linux/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
