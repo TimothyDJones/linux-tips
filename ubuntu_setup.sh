@@ -23716,3 +23716,17 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://cryonet.io/downloads/linux/${
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install ugrep ultra fast grep with interactive query UI from source
+APP_NAME=ugrep
+APP_VERSION=2.2.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libbz2-dev libz-dev liblzma-dev libpcre2-dev libboost-regex-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Genivia/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./build.sh --enable-pager && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
