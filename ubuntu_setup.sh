@@ -23761,3 +23761,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install dutree cross-platform, Rust-based colorized file system utilization analyzer from package
+APP_NAME=dutree
+APP_VERSION=0.2.15
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/nachoparker/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
