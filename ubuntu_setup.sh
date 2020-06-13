@@ -10256,9 +10256,9 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install X11-Basic cross-platform Basic interpreter with graphics support from Debian package
 APP_NAME=x11basic
 APP_GUI_NAME="Cross-platform Basic interpreter with graphics support."
-APP_VERSION=1.27-57
+APP_VERSION=1.27-60
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}-unstable
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/x11-basic/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282832/libreadline6-dev_6.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
 curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282834/libreadline6_6sudo ln -s /opt/${APP_NAME,,}/bin/${APP_NAME,,}.sh /usr/local/bin/${APP_NAME,,}.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
