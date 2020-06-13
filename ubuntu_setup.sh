@@ -23772,3 +23772,14 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${FILE_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Belofte cross-platform Xboard-compatible chess engine from package
+APP_NAME=Belofte
+APP_VERSION=0.9.18
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
