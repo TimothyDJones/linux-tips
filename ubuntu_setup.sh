@@ -5218,11 +5218,12 @@ rm -rf /tmp/${APP_NAME,,}
 # Install EJE (Everyone's Java Editor) minimalist Java IDE
 APP_NAME=EJE
 APP_GUI_NAME="EJE (Everyone's Java Editor)"
-APP_VERSION=3.5.3
+APP_VERSION=4.0
 APP_EXT=zip
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${APP_NAME,,}
 sudo mv /tmp/${APP_NAME,,}/${APP_NAME} /opt
 sudo chmod a+x /opt/${APP_NAME}/${APP_NAME,,}.sh
@@ -23783,3 +23784,34 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install DatabaseViewer lightweight PHP-based MySQL database viewer/editor from package
+APP_NAME=DatabaseViewer
+APP_GUI_NAME="Lightweight PHP-based MySQL database viewer/editor."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Database;MySQL;"
+APP_VERSION=0.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/philipredstone/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=${WWW_HOME}/${APP_NAME,,}
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php
+Icon=${WWW_HOME}/${APP_NAME,,}/favicon/favicon-32x32.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
