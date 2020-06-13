@@ -23716,3 +23716,59 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://cryonet.io/downloads/linux/${
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install ugrep ultra fast grep with interactive query UI from source
+APP_NAME=ugrep
+APP_VERSION=2.2.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libbz2-dev libz-dev liblzma-dev libpcre2-dev libboost-regex-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Genivia/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./build.sh --enable-pager && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Obsidian cross-platform knowledge-base tool using Markdown files from AppImage
+APP_NAME=Obsidian
+APP_GUI_NAME="Cross-platform knowledge-base tool using Markdown files."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="Markdown;Editor;"
+APP_VERSION=0.6.7
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/obsidianmd/${APP_NAME,,}-releases/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=/usr/share/pixmaps/${APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install dutree cross-platform, Rust-based colorized file system utilization analyzer from package
+APP_NAME=dutree
+APP_VERSION=0.2.15
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/nachoparker/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
