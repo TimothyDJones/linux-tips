@@ -22991,7 +22991,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Lite cross-platform SDL-based GUI text editor written in Lua from package
 APP_NAME=Lite
 APP_GUI_NAME="Cross-platform SDL-based GUI text editor written in Lua."
-APP_VERSION=1.03
+APP_VERSION=1.08
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rxi/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
