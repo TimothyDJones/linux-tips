@@ -150,6 +150,17 @@ curl -o $HOME/.config/eaxtract.sh -J -L https://raw.githubusercontent.com/xvolan
 echo 'source $HOME/.config/extract.sh' >> $HOME/.bashrc
 source $HOME/.bashrc
 
+# Install and configure Python 3 virtualenv and virtualenvwrapper
+sudo apt-get install -y python3-pip
+python3 -m pip install --upgrade pip
+python3 -m pip install virtualenv virtualenvwrapper
+mkdir -p $HOME/.virtualenvs
+echo 'export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3' >> $HOME/.bashrc
+echo 'export WORKON_HOME=$HOME/.virtualenvs' >> $HOME/.bashrc
+echo 'export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv' >> $HOME/.bashrc
+echo 'source $HOME/.local/bin/virtualenvwrapper.sh' >> $HOME/.bashrc
+source $HOME/.bashrc
+
 # Install various monospaced fonts for programming
 sudo apt-get install -y fontconfig
 mkdir -p $HOME/.local/share/fonts
@@ -166,7 +177,6 @@ cd /tmp
 dtrx -n /tmp/ttf-iosevka-3.0.1.zip
 sudo cp -R /tmp/ttf-iosevka-3.0.1/* /usr/local/share/fonts
 sudo fc-cache -f -v
-
 
 # Install MongoDB from official repository
 # https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
@@ -23815,6 +23825,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install bemenu dynamic menu library and client program from source
+APP_NAME=bemenu
+APP_VERSION=0.4.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libncursesw5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Cloudef/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install && sudo ldconfig
+echo 'export BEMENU_BACKEND=curses' >> $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install pacapt Archlinux Pacman-like package manager wrapper utility from package
 APP_NAME=pacapt
