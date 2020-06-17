@@ -1734,7 +1734,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install reCsvEditor CSV editor from package
 APP_NAME=reCsvEditor
-APP_VERSION=0.99.0
+APP_VERSION=0.99.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_Installer_${APP_VERSION}.jar
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -7947,9 +7947,9 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Zettlr Electron-based Markdown editor with built-in preview from Debian package
 APP_NAME=Zettlr
 APP_GUI_NAME="Electron-based Markdown editor with built-in preview."
-APP_VERSION=1.5.0
+APP_VERSION=1.7.0-beta.11
 APP_EXT=deb
-FILE_NAME=${APP_NAME}-linux-x64-${APP_VERSION}
+FILE_NAME=${APP_NAME}-${APP_VERSION}-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
@@ -23840,3 +23840,17 @@ make && sudo make install && sudo ldconfig
 echo 'export BEMENU_BACKEND=curses' >> $HOME/.bashrc
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install pacapt Archlinux Pacman-like package manager wrapper utility from package
+APP_NAME=pacapt
+APP_VERSION=2.4.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/icy/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod 755 /usr/local/bin/${APP_NAME,,}
+sudo ln -f -sv /usr/local/bin/${APP_NAME,,} /usr/local/bin/pacman || true
+cd $HOME
+rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
