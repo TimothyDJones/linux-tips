@@ -23854,3 +23854,14 @@ sudo chmod 755 /usr/local/bin/${APP_NAME,,}
 sudo ln -f -sv /usr/local/bin/${APP_NAME,,} /usr/local/bin/pacman || true
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
+APP_NAME=Eggs
+APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
+APP_VERSION=7.5.114-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
