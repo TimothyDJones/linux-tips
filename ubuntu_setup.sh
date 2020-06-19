@@ -2125,7 +2125,7 @@ sudo apt-get install -y qownnotes
 
 # Install Tiki Wiki CMS/groupware
 APP_NAME=tiki
-APP_VERSION=21.0
+APP_VERSION=21.1
 APP_EXT=tar.gz
 DB_NAME=tikiwiki
 DB_USER=tikiwiki
