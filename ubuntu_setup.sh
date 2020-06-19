@@ -14611,7 +14611,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install FreshRSS web-based (PHP/MySQL), self-hosted RSS news aggregator from package
 APP_NAME=FreshRSS
 APP_GUI_NAME="Web-based (PHP/MySQL), self-hosted RSS news aggregator."
-APP_VERSION=1.11.2
+APP_VERSION=1.16.2
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -23888,5 +23888,20 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 autoreconf -i && ./configure --with-libwebsockets --with-qtwebengine && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install btfs BitTorrent file system to allow mounting .torrent or .magnet file as directory from source
+APP_NAME=btfs
+APP_GUI_NAME="BitTorrent file system to allow mounting .torrent or .magnet file as directory."
+APP_VERSION=2.21
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y autoconf automake libfuse-dev libtorrent-rasterbar-dev libcurl4-openssl-dev g++
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johang/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+autoreconf -i && ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
