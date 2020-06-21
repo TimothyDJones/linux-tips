@@ -14355,22 +14355,22 @@ cd /tmp/${FILE_NAME}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install Videomass2 GUI front-end for FFmpeg from package
-APP_NAME=Videomass2
+# Install Videomass GUI front-end for FFmpeg from package
+APP_NAME=Videomass
 APP_GUI_NAME="GUI front-end for FFmpeg."
 APP_GUI_CATEGORIES="Multimedia;Accessories;"
 APP_GUI_KEYWORDS="FFmpeg;Video;Audio;Converter;"
-APP_VERSION=2.1.3
+APP_VERSION=2.8.8
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install python3-wxgtk4.0 ffmpeg -y
 sudo pip3 install pypubsub youtube-dl
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}2/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 sudo python3 ./setup.py install
-sudo cp ./art/icons/videomass.png /usr/share/pixmaps/${APP_NAME,,}.png
+sudo cp /tmp/${FILE_NAME}/videomass3/art/icons/videomass.png /usr/share/pixmaps/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
