@@ -542,7 +542,7 @@ ln -s /usr/share/applications/albert.desktop $HOME/.config/autostart/  # Create 
 
 # Install KSnip screenshot utility from Debian package
 APP_NAME=KSnip
-APP_VERSION=1.6.2
+APP_VERSION=1.7.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -2044,7 +2044,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=8.4.6
+APP_VERSION=8.5.0
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2125,7 +2125,7 @@ sudo apt-get install -y qownnotes
 
 # Install Tiki Wiki CMS/groupware
 APP_NAME=tiki
-APP_VERSION=21.0
+APP_VERSION=21.1
 APP_EXT=tar.gz
 DB_NAME=tikiwiki
 DB_USER=tikiwiki
@@ -5858,7 +5858,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install WackoWiki PHP-based lightweight wiki tool
 APP_NAME=wacko
-APP_VERSION=r6.0.7
+APP_VERSION=r6.0.8
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -14611,7 +14611,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install FreshRSS web-based (PHP/MySQL), self-hosted RSS news aggregator from package
 APP_NAME=FreshRSS
 APP_GUI_NAME="Web-based (PHP/MySQL), self-hosted RSS news aggregator."
-APP_VERSION=1.11.2
+APP_VERSION=1.16.2
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -22808,7 +22808,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install GitUI cross-platform console GUI for Git version control from package
 APP_NAME=GitUI
 APP_GUI_NAME="Cross-platform console GUI for Git version control."
-APP_VERSION=0.2.1
+APP_VERSION=0.7.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/extrawurst/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -23001,7 +23001,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Lite cross-platform SDL-based GUI text editor written in Lua from package
 APP_NAME=Lite
 APP_GUI_NAME="Cross-platform SDL-based GUI text editor written in Lua."
-APP_VERSION=1.03
+APP_VERSION=1.08
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rxi/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -23885,5 +23885,54 @@ Categories=${APP_GUI_CATEGORIES}
 Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
+# Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
+APP_NAME=Eggs
+APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
+APP_VERSION=7.5.114-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install SOPS (Secrets OPerationS) cross-platform, command-line utility to manage secrets from Debian package
+APP_NAME=SOPS
+APP_GUI_NAME="Cross-platform, command-line utility to manage secrets."
+APP_VERSION=3.5.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mozilla/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install DomTerm combined terminal emulator and REPL console using web technlogies from source
+APP_NAME=DomTerm
+APP_VERSION=2.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y automake libjson-c-dev pkg-config asciidoctor libmagic-dev zlib1g-dev qt5-qmake qt5-default libqt5webengine5 libqt5webchannel5-dev qtwebengine5-dev libwebsockets-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/PerBothner/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+autoreconf -i && ./configure --with-libwebsockets --with-qtwebengine && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install btfs BitTorrent file system to allow mounting .torrent or .magnet file as directory from source
+APP_NAME=btfs
+APP_GUI_NAME="BitTorrent file system to allow mounting .torrent or .magnet file as directory."
+APP_VERSION=2.21
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y autoconf automake libfuse-dev libtorrent-rasterbar-dev libcurl4-openssl-dev g++
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johang/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+autoreconf -i && ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
