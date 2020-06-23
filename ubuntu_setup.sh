@@ -23966,3 +23966,23 @@ sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}*/* /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME}.sh /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install qcd cross-platform to quickly navigate directories in console with bookmarks from package
+APP_NAME=qcd
+APP_GUI_NAME="Cross-platform to quickly navigate directories in console with bookmarks."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Productivity;Shell;"
+APP_VERSION=1.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_linux_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/eykrehbein/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/linux_amd64
+sudo cp /tmp/${FILE_NAME}/linux_amd64/bin/qcdscript /usr/local/bin
+sudo cp /tmp/${FILE_NAME}/linux_amd64/bin/qcdhelper /usr/local/bin
+sudo chmod a+x /usr/local/bin/qcdscript
+echo "alias qcd='source /usr/local/bin/qcdscript'" >> $HOME/.bashrc
+source $HOME/.bashrc
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
