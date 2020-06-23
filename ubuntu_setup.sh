@@ -1275,7 +1275,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Makagiga Java-based PIM/RSS feed reader from package
 APP_NAME=Makagiga
 APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
-APP_VERSION=6.10
+APP_VERSION=6.11-beta
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -14356,22 +14356,22 @@ cd /tmp/${FILE_NAME}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install Videomass2 GUI front-end for FFmpeg from package
-APP_NAME=Videomass2
+# Install Videomass GUI front-end for FFmpeg from package
+APP_NAME=Videomass
 APP_GUI_NAME="GUI front-end for FFmpeg."
 APP_GUI_CATEGORIES="Multimedia;Accessories;"
 APP_GUI_KEYWORDS="FFmpeg;Video;Audio;Converter;"
-APP_VERSION=2.1.3
+APP_VERSION=2.8.8
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install python3-wxgtk4.0 ffmpeg -y
 sudo pip3 install pypubsub youtube-dl
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}2/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 sudo python3 ./setup.py install
-sudo cp ./art/icons/videomass.png /usr/share/pixmaps/${APP_NAME,,}.png
+sudo cp /tmp/${FILE_NAME}/videomass3/art/icons/videomass.png /usr/share/pixmaps/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -15927,7 +15927,7 @@ sudo python3 setup.py install
 # Install fre:ac audio converter and CD ripper from AppImage
 APP_NAME="fre:ac"
 APP_GUI_NAME="Audio converter and CD ripper."
-APP_VERSION=1.1
+APP_VERSION=1.1.2
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -22775,7 +22775,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Clementine cross-platform music player/organizer from Debian package
 APP_NAME=Clementine
 APP_GUI_NAME="Cross-platform music player/organizer."
-APP_VERSION=1.4.0rc1-271-g56ed6d4f7
+APP_VERSION=1.4.0rc1-280-gcf279e6f4
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo)$ ]]; then  # 20.04
 	DISTRIB_VERSION=focal
@@ -23855,6 +23855,37 @@ sudo chmod 755 /usr/local/bin/${APP_NAME,,}
 sudo ln -f -sv /usr/local/bin/${APP_NAME,,} /usr/local/bin/pacman || true
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install xlunch minimalist GUI application launcher for X11 from source
+APP_NAME=xlunch
+APP_GUI_NAME="Minimalist GUI application launcher for X11."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Launcher;"
+APP_VERSION=4.5.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libimlib2-dev libx11-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Tomas-M/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+sudo cp /tmp/${FILE_NAME}/docs/favicon.ico /usr/local/share/icons/hicolor/scalable/apps/${APP_NAME,,}.ico
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/bin
+Exec=xlunch
+Icon=/usr/local/share/icons/hicolor/scalable/apps/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
