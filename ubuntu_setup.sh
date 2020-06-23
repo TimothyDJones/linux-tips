@@ -23937,3 +23937,15 @@ cd /tmp/${FILE_NAME}
 autoreconf -i && ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install ProcDump command-line process management and debugging tool from Debian package
+APP_NAME=ProcDump
+APP_GUI_NAME="Command-line process management and debugging tool."
+APP_VERSION=1.1.1
+BUILD_NBR=220
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-${BUILD_NBR}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/microsoft/ProcDump-for-Linux/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
