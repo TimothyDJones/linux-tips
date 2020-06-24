@@ -5492,19 +5492,20 @@ xdg-open http://localhost/${APP_NAME,,}/installation/setup.php &
 # Install PySolFC Python-based Solitaire card game
 APP_NAME=PySolFC
 APP_GUI_NAME="Python-based Solitaire card game"
-APP_VERSION=2.6.1
+APP_VERSION=2.10.0
 APP_EXT=tar.xz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y python3-pip
 sudo pip3 install random2 sgmllib3k
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 sudo python3 ./setup.py install
 # Install card sets
-curl -o /tmp/${APP_NAME}-Cardsets-2.0.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-Cardsets-2.0.${APP_EXT}
+curl -o /tmp/${APP_NAME}-Cardsets-2.0.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-Cardsets-2.0.tar.bz2
 cd /tmp
-dtrx -n /tmp/${APP_NAME}-Cardsets-2.0.${APP_EXT}
+dtrx -n /tmp/${APP_NAME}-Cardsets-2.0.tar.bz2
 cd /tmp/${APP_NAME}-Cardsets-2.0
 sudo cp -R /tmp/${APP_NAME}-Cardsets-2.0/* /usr/local/share/${APP_NAME}
 cd $HOME
