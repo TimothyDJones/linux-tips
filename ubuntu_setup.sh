@@ -23986,3 +23986,35 @@ echo "alias qcd='source /usr/local/bin/qcdscript'" >> $HOME/.bashrc
 source $HOME/.bashrc
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Xcoral minimalist GUI text editor from source
+APP_NAME=Xcoral
+APP_GUI_NAME="Minimalist GUI text editor."
+APP_GUI_CATEGORIES="Development;Programming;Accessories;"
+APP_GUI_KEYWORDS="Editor;"
+APP_VERSION=3.49.8
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libx11-dev libxft-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://xcoral.free.fr/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/xcoral
+#Icon=/usr/local/share/icons/hicolor/scalable/apps/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
