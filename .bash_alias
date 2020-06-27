@@ -14,6 +14,11 @@ function mcd() {
 	cd $1
 }
 
+# Use xdg-open in a subshell, derived output and detached
+function open() {
+    (nohup xdg-open "$1" >/dev/null 2>&1 &)
+}
+
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
