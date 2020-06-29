@@ -5304,7 +5304,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Domination (Risk-style world conquest) Java-based game
 APP_NAME=Domination
 APP_GUI_NAME="Risk-style world conquest game built with Java"
-APP_VERSION=1.2.1
+APP_VERSION=1.2.2
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_install_${APP_VERSION}.${APP_EXT}
 sudo java -jar /tmp/${APP_NAME,,}.${APP_EXT}
