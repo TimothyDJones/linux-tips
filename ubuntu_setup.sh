@@ -24053,3 +24053,34 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install MariaDB Explorer cross-platform Qt-based GUI MariaDB/MySQL database manager from package
+APP_NAME=MariaDB-Explorer
+APP_GUI_NAME="Cross-platform Qt-based GUI MariaDB/MySQL database manager."
+APP_GUI_CATEGORIES="Development;Programming;Accessories;"
+APP_GUI_KEYWORDS="Database;SQL;MySQL"
+APP_VERSION=257
+APP_EXT=run
+FILE_NAME=${APP_NAME}-LinuxInstaller-r${APP_VERSION}
+sudo apt-get install -y build-essential libx11-dev libxft-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+chmod +x /tmp/${FILE_NAME}.${APP_EXT}
+sudo /tmp/${FILE_NAME}.${APP_EXT}
+sudo ln -s /opt/${APP_NAME}/${APP_NAME}.sh /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME}
+Exec=/opt/${APP_NAME}/${APP_NAME}.sh
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
