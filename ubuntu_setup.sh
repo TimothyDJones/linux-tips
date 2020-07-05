@@ -562,7 +562,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=2.0.5
+APP_VERSION=2.0.6
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -2823,18 +2823,20 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install CopyMastro file move/copy utility
 APP_NAME=CopyMastro
-APP_VERSION=2.1.8
+APP_GUI_NAME="File move/copy utility."
+APP_VERSION=3.0.0
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-qt5-${KERNEL_TYPE}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt5-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-mv ${APP_NAME,,}* ${APP_NAME,,}
-sudo mv ${APP_NAME,,} /opt
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=File copy/move utility
+Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME,,}
 Exec=/opt/${APP_NAME,,}/${APP_NAME}
 Icon=/opt/${APP_NAME,,}/${APP_NAME}.png
@@ -3784,7 +3786,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install CherryTree hierarchical notepad/text editor from package
 # https://www.giuspen.com/cherrytree/
 APP_NAME=cherrytree
-APP_VERSION=0.39.1-0
+APP_VERSION=0.39.4-0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.giuspen.com/software/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -5304,7 +5306,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Domination (Risk-style world conquest) Java-based game
 APP_NAME=Domination
 APP_GUI_NAME="Risk-style world conquest game built with Java"
-APP_VERSION=1.2.1
+APP_VERSION=1.2.2
 APP_EXT=jar
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_install_${APP_VERSION}.${APP_EXT}
 sudo java -jar /tmp/${APP_NAME,,}.${APP_EXT}
@@ -23731,7 +23733,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install ugrep ultra fast grep with interactive query UI from source
 APP_NAME=ugrep
-APP_VERSION=2.2.1
+APP_VERSION=2.3.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libbz2-dev libz-dev liblzma-dev libpcre2-dev libboost-regex-dev
@@ -23984,6 +23986,38 @@ sudo cp /tmp/${FILE_NAME}/linux_amd64/bin/qcdhelper /usr/local/bin
 sudo chmod a+x /usr/local/bin/qcdscript
 echo "alias qcd='source /usr/local/bin/qcdscript'" >> $HOME/.bashrc
 source $HOME/.bashrc
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Xcoral minimalist GUI text editor from source
+APP_NAME=Xcoral
+APP_GUI_NAME="Minimalist GUI text editor."
+APP_GUI_CATEGORIES="Development;Programming;Accessories;"
+APP_GUI_KEYWORDS="Editor;"
+APP_VERSION=3.49.8
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libx11-dev libxft-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://xcoral.free.fr/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/xcoral
+#Icon=/usr/local/share/icons/hicolor/scalable/apps/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
