@@ -5493,7 +5493,7 @@ xdg-open http://localhost/${APP_NAME,,}/installation/setup.php &
 # Install PySolFC Python-based Solitaire card game
 APP_NAME=PySolFC
 APP_GUI_NAME="Python-based Solitaire card game"
-APP_VERSION=2.10.0
+APP_VERSION=2.10.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y python3-pip
