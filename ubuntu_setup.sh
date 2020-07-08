@@ -747,7 +747,7 @@ APP_NAME=KeePassXC
 APP_VERSION=2.6.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
-LIBCRYPT20_VERSION=1.8.5-3ubuntu1
+LIBCRYPT20_VERSION=1.8.5-5ubuntu2
 curl -o /tmp/libgcrypt20-dev.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20-dev_${LIBCRYPT20_VERSION}_${KERNEL_TYPE}.deb
 curl -o /tmp/libgcrypt20.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20_${LIBCRYPT20_VERSION}_${KERNEL_TYPE}.deb
 sudo gdebi -n /tmp/libgcrypt20.deb
