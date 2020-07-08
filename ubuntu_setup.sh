@@ -514,7 +514,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.106.5.0-1
+APP_VERSION=1.106.6.1-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -1747,7 +1747,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install ZenTao project management tool from Debian package
 APP_NAME=ZenTaoPMS
-APP_VERSION=12.0stable
+APP_VERSION=12.3.3.int
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/zentao/${FILE_NAME}.${APP_EXT}
@@ -5033,7 +5033,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Dooble web browser from package
 APP_NAME=Dooble
-APP_VERSION=2020.01.20
+APP_VERSION=2020.07.07
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -22777,7 +22777,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Clementine cross-platform music player/organizer from Debian package
 APP_NAME=Clementine
 APP_GUI_NAME="Cross-platform music player/organizer."
-APP_VERSION=1.4.0rc1-280-gcf279e6f4
+APP_VERSION=1.4.0rc1-284-g7d28e8700
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo)$ ]]; then  # 20.04
 	DISTRIB_VERSION=focal
