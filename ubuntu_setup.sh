@@ -24059,7 +24059,7 @@ APP_NAME=MariaDB-Explorer
 APP_GUI_NAME="Cross-platform Qt-based GUI MariaDB/MySQL database manager."
 APP_GUI_CATEGORIES="Development;Programming;Accessories;"
 APP_GUI_KEYWORDS="Database;SQL;MySQL"
-APP_VERSION=257
+APP_VERSION=277
 APP_EXT=run
 FILE_NAME=${APP_NAME}-LinuxInstaller-r${APP_VERSION}
 sudo apt-get install -y build-essential libx11-dev libxft-dev
@@ -24175,4 +24175,22 @@ Keywords=REST;API;Testing;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd ${HOME}
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install jtab cross-platform, Rust-based command-line utility to display JSON in tabular format from package
+APP_NAME=jtab
+APP_GUI_NAME="Cross-platform, Rust-based command-line utility to display JSON in tabular format."
+APP_VERSION=0.3.0
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i686
+fi
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-${ARCH_TYPE}-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wlezzar/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
