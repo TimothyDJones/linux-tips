@@ -24194,3 +24194,15 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Great Little Radio Player Internet radio station streamer from Debian package
+APP_NAME="Great Little Radio Player"
+APP_GUI_NAME="Internet radio station streamer."
+APP_VERSION=1.5.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME// /}
+FILE_NAME=${FILE_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/glrp/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
