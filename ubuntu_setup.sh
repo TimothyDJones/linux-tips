@@ -16624,7 +16624,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install OmniDB Django/Python-based web database administration tool from Debian package
 APP_NAME=OmniDB 
 APP_GUI_NAME="Django/Python-based web database administration tool."
-APP_VERSION=2.13.0
+APP_VERSION=2.17.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-app_${APP_VERSION}-debian-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://omnidb.org/dist/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
