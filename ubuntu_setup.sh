@@ -2569,7 +2569,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install XSchem circuit schematic editor from source
 APP_NAME=XSchem
-APP_VERSION=2.9.6
+APP_VERSION=2.9.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y bison flex libxpm-dev libx11-dev tcl8.6-dev tk8.6-dev
