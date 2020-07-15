@@ -23102,7 +23102,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install The-Way Rust-based code snippet manager for terminal from package
 APP_NAME=The-Way
 APP_GUI_NAME="Rust-based code snippet manager for terminal."
-APP_VERSION=0.2.3
+APP_VERSION=0.6.0
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
