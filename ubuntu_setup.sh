@@ -24286,3 +24286,9 @@ cd /tmp/${FILE_NAME}
 make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}
+
+# Install Font Manager simple GUI font manager for Linux from PPA
+# https://github.com/FontManager/font-manager
+sudo add-apt-repository -y ppa:font-manager/staging
+sudo apt-get update -y
+sudo apt-get install -y font-manager
