@@ -8338,12 +8338,13 @@ rm -rf /tmp/${APP_NAME,,}
 # Install RHash cross-platform, shell-based tool for calculating and verifying various hash sums for files from source
 APP_NAME=RHash
 APP_GUI_NAME="Cross-platform, shell-based tool for calculating and verifying various hash sums for files."
-APP_VERSION=1.3.8
+APP_VERSION=1.4.0
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-src.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
