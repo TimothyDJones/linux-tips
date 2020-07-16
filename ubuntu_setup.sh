@@ -24271,3 +24271,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install httpflow command-line tool to capture and dump HTTP stream from source
+APP_NAME=httpflow
+APP_GUI_NAME="Command-line tool to capture and dump HTTP stream."
+APP_VERSION=0.0.9
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libpcap-dev zlib1g-dev libpcre3 libpcre3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/six-ddc/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}
