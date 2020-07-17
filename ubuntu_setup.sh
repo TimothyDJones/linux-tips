@@ -24292,3 +24292,15 @@ sudo rm -rf /tmp/${APP_NAME,,}
 sudo add-apt-repository -y ppa:font-manager/staging
 sudo apt-get update -y
 sudo apt-get install -y font-manager
+
+# Install ProcMon command-line process syscall tracing tool from Debian package
+APP_NAME=ProcMon
+APP_GUI_NAME="Command-line process management and debugging tool."
+APP_VERSION=1.0.0
+BUILD_NBR=291
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-${BUILD_NBR}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/microsoft/"ProcMon-for-Linux"/releases/download/1.0/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
