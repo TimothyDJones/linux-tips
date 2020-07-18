@@ -24304,3 +24304,19 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/microsoft/"ProcMon
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install rc re-implementation of Plan 9 shell from source
+# https://cosine.blue/2019-06-26-rc-shell-setup.html
+APP_NAME=rc
+APP_GUI_NAME="Re-implementation of Plan 9 shell."
+APP_VERSION=1.7.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libpcap-dev zlib1g-dev libpcre3 libpcre3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rakitzis/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}
