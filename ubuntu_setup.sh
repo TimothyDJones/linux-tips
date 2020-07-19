@@ -11116,7 +11116,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install lf cross-platform, Go-based file manager for the shell/console from package
 APP_NAME=lf
 APP_GUI_NAME="Cross-platform, Go-based file manager for the shell/console."
-APP_VERSION=r13
+APP_VERSION=r14
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
@@ -24312,11 +24312,12 @@ APP_GUI_NAME="Re-implementation of Plan 9 shell."
 APP_VERSION=1.7.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y libpcap-dev zlib1g-dev libpcre3 libpcre3-dev
+sudo apt-get install -y libreadline-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rakitzis/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
+autoreconf --force --install && ./configure --with-edit=readline
 make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}
