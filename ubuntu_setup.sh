@@ -1570,12 +1570,20 @@ cd ${APP_NAME}-${APP_VERSION}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install 4Pane file manager from package
-APP_NAME=4pane
-APP_VERSION=5.0
+# Install 4Pane file manager from Debian package
+APP_NAME=4Pane
+APP_VERSION=6.0
 APP_EXT=deb
 source /etc/lsb-release
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L http://cfhcable.dl.sourceforge.net/project/fourpane/${APP_VERSION}/ubuntu%20and%20derivatives/${APP_NAME}_${APP_VERSION}-1unofficial.${DISTRIB_CODENAME}_${KERNEL_TYPE}.${APP_EXT}
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo|fo)$ ]]; then  # 20.04, 19.10
+	DISTRIB_VERSION=eoan
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di)$ ]]; then  # 19.04
+	DISTRIB_VERSION=disco
+else
+	DISTRIB_VERSION=bionic
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1unofficial.${DISTRIB_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/fourpane/${FILE_NAME}.${APP_EXT}
 cd /tmp
 sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
 cd $HOME
