@@ -24,6 +24,12 @@ function coronavirus_cases() {
 	curl -s https://corona-stats.online/GT?minimal=true | head -n 3 | awk '{ print $2 $3 "\t"$5 "\t"$6 "\t" $7 "\t" $8 $9 "\t" $10 $11  }'
 }
 
+# Generate a random alphanumeric password
+function genpass() {
+	local passlen=${1:-32}		# Default length is 32 characters
+	LC_ALL=C tr -cd '[:alnum:]' < /dev/urandom | fold -w $passlen | head -n1
+}
+
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
