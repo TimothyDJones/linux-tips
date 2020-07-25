@@ -24474,3 +24474,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd ${HOME}
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install GJots Python-based hierarchical notepad from package
+APP_NAME=GJots
+APP_GUI_NAME="Python-based hierarchical notepad."
+APP_VERSION=3.1.9
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}2-${APP_VERSION}
+sudo apt-get install -y libgtksourceview-3.0-dev 
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -Rf /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
