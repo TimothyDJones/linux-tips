@@ -1471,23 +1471,32 @@ echo 'source "/usr/local/bin/${APP_NAME}.sh"' >> $HOME/.bashrc
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Qalculate desktop calculator application from source
+# Install Qalculate desktop calculator application from package
 # http://qalculate.github.io/
-APP_NAME=qalculate
-APP_VERSION=0.9.12
-APP_EXT=tar.gz
-# Install dependencies
-sudo apt-get install -y libcln-dev gnuplot-x11 gvfs libxml2-dev libgtk-3-dev
-curl -o /tmp/lib${APP_NAME}.${APP_EXT} -J -L http://cfhcable.dl.sourceforge.net/project/${APP_NAME}/lib${APP_NAME}-${APP_VERSION}.${APP_EXT}
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L http://cfhcable.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}-gtk-${APP_VERSION}.${APP_EXT}
+APP_NAME=Qalculate
+APP_VERSION=3.11.0
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/lib${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n lib${APP_NAME}.${APP_EXT}
-cd /tmp/lib${APP_NAME}/lib${APP_NAME}-${APP_VERSION}
-./configure && make && sudo make install
-cd /tmp
-dtrx -n ${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-gtk-${APP_VERSION}
-./configure && make && sudo make install
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -f /tmp/${FILE_NAME}/${APP_NAME,,}*/qalc* /usr/local/bin
+curl -o /tmp/${APP_NAME,,}.png -J -L https://github.com/${APP_NAME}/${APP_NAME,,}-gtk/raw/master/data/icons/48x48/${APP_NAME,,}.png
+sudo mv /tmp/${APP_NAME,,}.png /usr/share/pixmaps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=Popular SSH client
+GenericName=${APP_NAME}
+Exec=/usr/local/bin/${APP_NAME,,}-gtk
+Icon=/usr/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;
+Keywords=Calculator;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
