@@ -2763,7 +2763,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Only Office Desktop Editor from package
 APP_NAME=onlyoffice-desktopeditors
-APP_VERSION=5.1
+APP_VERSION=5.6
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${KERNEL_TYPE}
 source /etc/lsb-release
