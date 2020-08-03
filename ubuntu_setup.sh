@@ -1270,7 +1270,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Makagiga Java-based PIM/RSS feed reader from package
 APP_NAME=Makagiga
 APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
-APP_VERSION=6.11-beta
+APP_VERSION=6.12
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -8370,7 +8370,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install MarkText Electron-based Markdown editor from package
 APP_NAME=MarkText
 APP_GUI_NAME="Cross-platform, Electron-based Markdown editor."
-APP_VERSION=0.16.1
+APP_VERSION=0.16.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -12394,7 +12394,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install VNote Vim-inspired note-taking application with MarkDown support from App Image
 APP_NAME=VNote
 APP_GUI_NAME="Vim-inspired note-taking application with MarkDown support."
-APP_VERSION=2.9
+APP_VERSION=2.9.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tamlok/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -14013,7 +14013,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=1.0.231
+APP_VERSION=1.0.233
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -14438,7 +14438,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install GNU Spice GUI wxWidgets GUI for NG-Spice and GNU-Cap electronic circuit emulation tools from source
 APP_NAME=gSpiceUI
 APP_GUI_NAME="wxWidgets GUI for NG-Spice and GNU-Cap electronic circuit emulation tools."
-APP_VERSION=1.1.00
+APP_VERSION=1.2.36
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
 sudo apt-get install libpangox-1.0-dev libwxgtk3.0-dev gwave
@@ -19110,7 +19110,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install xsnow desktop decoration from Debian package
 APP_NAME=xsnow
 APP_GUI_NAME=""
-APP_VERSION=2.0.22-1
+APP_VERSION=3.0.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -24508,5 +24508,36 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://zim-wiki.org/downloads/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install QRadioLink multimode SDR transceiver for GNU radio from AppImage
+APP_NAME=QRadioLink
+APP_GUI_NAME="Multimode SDR transceiver for GNU radio."
+APP_GUI_CATEGORIES="Multimedia;"
+APP_GUI_KEYWORDS="Audio;Radio;"
+APP_VERSION=0.8.3-1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
