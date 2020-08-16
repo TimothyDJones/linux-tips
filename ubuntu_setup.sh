@@ -534,7 +534,6 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/reposit
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 ln -s /usr/share/applications/albert.desktop $HOME/.config/autostart/  # Create link to autostart Albert on startup
 
-
 # Install KSnip screenshot utility from Debian package
 APP_NAME=KSnip
 APP_VERSION=1.7.3
@@ -12246,7 +12245,7 @@ sudo apt-get install -y bouml
 # Install Cmajor C#-style programming language and IDE from package
 APP_NAME=Cmajor
 APP_GUI_NAME="C#-style programming language and IDE."
-APP_VERSION=3.5.0
+APP_VERSION=3.6.0
 APP_EXT=tar.bz2
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi|xe|ya|ze|ar)$ ]]; then  # 14.04, 14.10, 15.04, 15.10, 16.04, 16.10, 17.04, 17.10
@@ -24704,3 +24703,13 @@ sudo cp -Rf /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Sharik cross-platform Wifi file-sharing utility from Debian package
+APP_NAME=Sharik
+APP_VERSION=2.4
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
