@@ -24664,3 +24664,17 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/federico-terzi/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Gitoxide Rust-based implementation of Git version control tool from package
+APP_NAME=Gix
+APP_GUI_NAME="Rust-based implementation of Git version control tool."
+APP_VERSION=0.3.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-max-termion-v${APP_VERSION}-x86_64-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Byron/gitoxide/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -Rf /tmp/${FILE_NAME}/${APP_NAME,,}* /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
