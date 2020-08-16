@@ -3082,32 +3082,19 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Treeline tree-structured notepad
+# Install Treeline Python/Qt-based tree-structured notepad from package
 APP_NAME=TreeLine
-APP_VERSION=3.1.1
+APP_GUI_NAME="Python/Qt-based tree-structured notepad"
+APP_VERSION=3.1.3
 APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y python3-pyqt5
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}
-sudo python3 /tmp/${APP_NAME,,}/${APP_NAME}/install.py
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=Python/Qt-based tree-structured notepad
-GenericName=${APP_NAME}
-Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/local/share/icons/treeline/toolbar/32x32/treelogo.png
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Accessories;Office;
-Keywords=Notes;Productivity;Notepad;
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo python3 /tmp/${FILE_NAME}/${APP_NAME}/install.py
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Micro terminal-based text editor from package
 APP_NAME=Micro
