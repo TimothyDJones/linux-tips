@@ -3958,7 +3958,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 
 # Install Admidio organizational management tool
 APP_NAME=admidio
-APP_VERSION=3.3.11
+APP_VERSION=3.3.17
 APP_EXT=zip
 DB_NAME=admidio
 DB_USER=admidio
