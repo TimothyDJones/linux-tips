@@ -738,7 +738,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install KeePassXC password manager from source
 APP_NAME=KeePassXC
-APP_VERSION=2.6.0
+APP_VERSION=2.6.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
 LIBCRYPT20_VERSION=1.8.5-5ubuntu2
