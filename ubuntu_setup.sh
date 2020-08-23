@@ -7695,9 +7695,9 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PeaZip cross-platform archive management utility from Debian package
 APP_NAME=PeaZip
 APP_GUI_NAME="Cross-platform archive management utility."
-APP_VERSION=7.1.1
+APP_VERSION=7.4.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}.LINUX.GTK2-2_all
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.LINUX.x86_64.GTK2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
