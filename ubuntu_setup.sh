@@ -24715,6 +24715,7 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install Gila CMS lightweight PHP/MySQL content management platform from package
+# https://gilacms.com/
 APP_NAME=Gila-CMS
 APP_GUI_NAME="Lightweight PHP/MySQL content management platform."
 APP_VERSION=1.15.3
