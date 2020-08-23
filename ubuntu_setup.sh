@@ -24713,3 +24713,41 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Gila CMS lightweight PHP/MySQL content management platform from package
+APP_NAME=Gila-CMS
+APP_GUI_NAME="Lightweight PHP/MySQL content management platform."
+APP_VERSION=1.15.3
+APP_EXT=tar.gz
+DB_NAME=${APP_NAME,,}
+DB_NAME=${DB_NAME//-/}
+DB_USER=${DB_NAME}
+DB_PASSWORD=${DB_NAME}
+FILE_NAME=v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME//-/}*/* ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+w ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_unicode_ci; CREATE USER '${DB_USER}'@'%' IDENTIFIED WITH mysql_native_password BY '${DB_PASSWORD}'; GRANT USAGE ON *.* TO '${DB_USER}'@'%'; GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%'; FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/index.php?install &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/assets/gila-logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Programming;Development;Internet;
+Keywords=CMS;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
