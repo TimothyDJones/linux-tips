@@ -68,3 +68,5 @@ alias dateiso='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 
 # Git aliases
 alias gitlog='git log --all --decorate --graph --oneline'
+# Undo last commit, but don't throw away your changes.
+alias git-undo="git reset --soft HEAD^"
