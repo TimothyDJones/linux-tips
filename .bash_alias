@@ -30,6 +30,14 @@ function genpass() {
 	LC_ALL=C tr -cd '[:alnum:]' < /dev/urandom | fold -w $passlen | head -n1
 }
 
+# Display headers from a web site/URL (requires cURL)
+function headers() {
+	curl -sv "$@" 2>&1 >/dev/null |
+		grep -v "^\*" |
+		grep -v "^}" |
+		cut -c3-
+}
+
 # Simple command-line calculator
 function = {
 	echo "$@" | bc -l
