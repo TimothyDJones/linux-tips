@@ -24777,3 +24777,16 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install redis-cui simple, visual command line interface for Redis from package
+APP_NAME=redis-cui
+APP_GUI_NAME="Simple, visual command line interface for Redis."
+APP_VERSION=0.2.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}.linux
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/kyai/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+cd /tmp
+sudo cp -f /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
