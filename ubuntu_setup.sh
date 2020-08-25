@@ -3178,9 +3178,9 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install TexStudio cross-platfor Qt-based LaTeX editor from source
+# Install TexStudio cross-platform Qt-based LaTeX editor from source
 APP_NAME=TexStudio
-APP_VERSION=2.12.22
+APP_VERSION=3.0.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_VERSION}
 sudo apt-get install -y libpoppler-qt5-dev libqt5svg5-dev qttools5-dev libgs-dev qtscript5-dev texlive
