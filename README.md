@@ -36,7 +36,7 @@ add Control = Control_R
 ```
 
 ## Enter Unicode characters for keyboard in Linux
-In most applications in Linux, including at the command line, to enter a [Unicode](https://www.rapidtables.com/code/text/unicode-characters.html) character, hold down <Ctrl> and <Shift> plus _u_ and enter the 2- or 4-character *hexadecimal* Unicode code.  When you <Ctrl> and <Shift>, the character will be displayed. For example, to enter superscript 2 (²), which us Unicode 00B2, type <Ctrl>+<Shift>+_u_+B2; for the trademark symbol (™), which Unicode 2122, type <Ctrl>+<Shift>+_u_+2122. Note that you can use the numeric keys across the top of the keyboard or on the numeric keypad (with NumLock enabled).
+In most applications in Linux, including at the command line, to enter a [Unicode](https://www.rapidtables.com/code/text/unicode-characters.html) character, hold down <Ctrl> and <Shift> plus _u_ and enter the 2- or 4-character *hexadecimal* Unicode code.  When you <Ctrl> and <Shift>, the character will be displayed. For example, to enter superscript 2 (²), which is Unicode 00B2, type <Ctrl>+<Shift>+_u_+B2; for the trademark symbol (™), which is Unicode 2122, type <Ctrl>+<Shift>+_u_+2122. Note that you can use the numeric keys across the top of the keyboard or on the numeric keypad (with NumLock enabled).
 
 ## Install packages required to build application from source
 If you want to build an application from source for a new version of an application that has a Ubuntu/Debian package, you can use the `build-dep` utility to install the required dependencies in one go.
