@@ -17802,17 +17802,18 @@ sudo apt-get install -y aria2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/persepolisdm/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
-# Install NSBase cross-platform database alternative to MS Access from Debian package
+# Install NSBase cross-platform database alternative to MS Access built with SQLite from Debian package
 APP_NAME=NSBase
 APP_GUI_NAME="Cross-platform database alternative to MS Access."
-APP_VERSION=V1.0.9
+APP_VERSION=1.6.5
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=linux32-i386
+	APP_VERSION=1.4.1.a
 fi
-FILE_NAME=${APP_NAME,,}-${ARCH_TYPE}-${APP_VERSION}
+FILE_NAME=${APP_NAME,,}-${ARCH_TYPE}-V${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
