@@ -1345,7 +1345,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Ubunsys Ubuntu installer/tweaker from source
 APP_NAME=Ubunsys
 APP_GUI_NAME="Ubuntu installer/tweaker."
-APP_VERSION=2020.05.04
+APP_VERSION=2020.08.25
 APP_EXT=tar.gz
 FILE_NAME=v${APP_VERSION}
 sudo apt-get install qt5-qmake qt5-default -y
