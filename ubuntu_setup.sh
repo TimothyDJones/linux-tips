@@ -24806,3 +24806,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/knqyf263/${APP_NAM
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install FFaudioConverter Qt-based GUI front-end for FFmpeg for audio conversion from source
+APP_NAME=FFaudioConverter
+APP_GUI_NAME="Qt-based GUI front-end for FFmpeg for audio conversion."
+APP_VERSION=0.29
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME}-${APP_VERSION}-src
+sudo apt-get install -y qtbase5-dev qt5-qmake qt5-default qttools5-dev-tools
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Bleuzen/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+qtchooser -run-tool=qmake -qt=5 ${APP_NAME}.pro && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
