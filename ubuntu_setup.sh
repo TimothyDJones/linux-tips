@@ -24853,3 +24853,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install navi interactive cheatsheet tool for the command-line and application launchers from package
+APP_NAME=navi
+APP_GUI_NAME="Interactive cheatsheet tool for the command-line and application launchers."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Productivity;Shell;"
+APP_VERSION=2.10.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/denisidoro/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+echo 'source <(echo "$(navi widget bash)")' >> $HOME/.bashrc
+source $HOME/.bashrc
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
