@@ -24140,7 +24140,7 @@ APP_NAME=Meditor
 APP_GUI_NAME="Java-based symbolic computing library and math editor."
 APP_GUI_CATEGORIES="Development;Programming;Education;Science;Math;"
 APP_GUI_KEYWORDS="Math;Visualization;"
-APP_VERSION=5.4.3
+APP_VERSION=5.4.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/jscl-${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
