@@ -20591,7 +20591,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install 3tdb web-based MySQL/MariaDB database client from package
 APP_NAME=3tdb
 APP_GUI_NAME="Web-based MySQL/MariaDB database client."
-APP_VERSION=6.1-0
+APP_VERSION=6.1-1
 APP_EXT=tar.xz
 DB_NAME=author	# See ../examples/doc/README.TXT for details.
 DB_USER=${APP_NAME,,}
