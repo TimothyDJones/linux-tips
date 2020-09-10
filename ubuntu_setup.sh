@@ -3519,7 +3519,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Voya Media video, music, and picture player from Debian package
 APP_NAME=VoyaMedia
-APP_VERSION=3.1-200
+APP_VERSION=3.1-400
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
