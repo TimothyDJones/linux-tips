@@ -24940,3 +24940,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/schollz/${APP_NAME
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install fastget cross-platform command-line parallel file download utility from Debian package
+APP_NAME=fastget
+APP_VERSION=0.2.0
+APP_EXT=deb
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i386
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/pgollangi/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
