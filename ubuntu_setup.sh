@@ -25037,3 +25037,9 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install SQLite Browser (DB4S) cross-platform SQLite management tool via PPA
+# https://github.com/sqlitebrowser/sqlitebrowser
+sudo apt-add-repository -y ppa:linuxgndu/sqlitebrowser
+sudo apt-get update
+sudo apt-get install -y sqlitebrowser
