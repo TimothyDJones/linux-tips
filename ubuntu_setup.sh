@@ -25093,3 +25093,16 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/LiamRiddell/${APP_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install OpenXP console e-mail client and NNTP news reader tool from package
+APP_NAME=OpenXP
+APP_GUI_NAME="Console e-mail client and NNTP news reader tool."
+APP_VERSION=5.0.46-1
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.x86_64-lnx
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}5/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo /tmp/${FILE_NAME}/install.sh
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
