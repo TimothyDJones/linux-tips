@@ -25182,7 +25182,19 @@ APP_GUI_NAME="Rust-based terminal image viewer."
 APP_VERSION=1.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/atanunq/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/atanunq/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install jot Golang-based terminal notepad from package
+APP_NAME=jot
+APP_GUI_NAME="Golang-based terminal notepad."
+APP_VERSION=0.0.2
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/int3rlop3r/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
 sudo cp /tmp/${FILE_NAME} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}
 cd $HOME
