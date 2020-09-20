@@ -25199,3 +25199,17 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install DuckDB cross-platform SQLite-like database with PostgreSQL functionality from package
+APP_NAME=DuckDB
+APP_GUI_NAME="Cross-platform SQLite-like database with PostgreSQL functionality."
+APP_VERSION=0.2.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_cli-linux-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cwida/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
