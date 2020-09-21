@@ -23978,9 +23978,9 @@ APP_NAME=DailyDesktopWallpaperPlus
 APP_GUI_NAME="Utility to set Bing or Windows Spotlight daily photo as wallpaper."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Wallpaper;"
-APP_VERSION=1.8
+APP_VERSION=2.0
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME}-v${APP_VERSION}-build-x86_64-linux
+FILE_NAME=${APP_NAME}-v${APP_VERSION}-x86_64-linux-build
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
