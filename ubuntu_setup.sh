@@ -25332,3 +25332,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install WezTerm cross-platform, Rust-based, GPU-accelerated terminal tool from Debian package
+APP_NAME=WezTerm
+APP_VERSION=20200909-002054-4c9af461
+APP_EXT=deb
+source  /etc/lsb-release
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.Ubuntu${DISTRIB_RELEASE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wez/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
