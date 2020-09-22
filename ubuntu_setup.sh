@@ -176,6 +176,10 @@ curl -o /tmp/ttf-iosevka-3.0.1.zip -J -L https://github.com/be5invis/Iosevka/rel
 cd /tmp
 dtrx -n /tmp/ttf-iosevka-3.0.1.zip
 sudo cp -R /tmp/ttf-iosevka-3.0.1/* /usr/local/share/fonts
+curl -o /tmp/ttf-iosevka-3.0.1.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2009.14.zip
+cd /tmp
+dtrx -n /tmp/CascadiaCode-2009.14.zip
+sudo cp -R /tmp/CascadiaCode-2009.14/ttf/* /usr/local/share/fonts
 sudo fc-cache -f -v
 
 # Install MongoDB from official repository
@@ -25262,5 +25266,28 @@ APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_${KERNEL_TYPE//i/}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/muesli/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install CoTerminalApps cross-platform, color terminal/console puzzle games from package
+APP_NAME=CoTerminalApps
+APP_GUI_NAME="Cross-platform, , color terminal/console puzzle games."
+APP_VERSION=22sep20
+APP_EXT=7z
+FILE_NAME=co${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/coterm/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/gnu/bin/nexus &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
