@@ -19147,9 +19147,9 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install WebChangeMonitor GUI web page change tracking/monitoriing tool from package
 APP_NAME=WebChangeMonitor
 APP_GUI_NAME="GUI web page change tracking/monitoriing tool."
-APP_VERSION=19_07
+APP_VERSION=20.09
 APP_EXT=zip
-FILE_NAME=${APP_NAME}_${APP_VERSION}
+FILE_NAME=${APP_NAME}_${APP_VERSION//./_}
 sudo apt-get install -y libwxgtk3.0-0v5 libwxbase3.0-0v5
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/webchangemon/${FILE_NAME}.${APP_EXT}
 cd /tmp
