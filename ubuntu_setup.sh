@@ -1571,13 +1571,14 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install vifm file manager from source
 APP_NAME=vifm
-APP_VERSION=0.10.1
+APP_VERSION=0.11
 APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libncursesw5-dev
-curl -o /tmp/${APP_NAME}-${APP_VERSION}.${APP_EXT} -J -L https://ayera.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}-${APP_VERSION}.${APP_EXT}
-cd ${APP_NAME}-${APP_VERSION}
+dtrx -n ${FILE_NAME}.${APP_EXT}
+cd ${FILE_NAME}
 ./configure && make && make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
