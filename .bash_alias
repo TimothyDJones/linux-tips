@@ -44,6 +44,13 @@ function = {
 }
 alias calc="="
 
+# Get public IP address
+function whats-my-ip() {
+    ip=`curl --silent https://httpbin.org/ip | jq -r .origin`
+    echo $ip | xclip -selection clipboard
+    notify-send -t 5000 "$ip copied to clipboard."
+}
+
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
