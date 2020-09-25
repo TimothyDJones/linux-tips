@@ -25298,7 +25298,7 @@ APP_NAME=HTMLEditor
 APP_GUI_NAME="Simple Python/Qt HTML/CSS editor."
 APP_GUI_CATEGORIES="Development;Office"
 APP_GUI_KEYWORDS="HTML;CSS;Editor;"
-APP_VERSION=1.11
+APP_VERSION=2.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y python3-pyqt5.qsci
