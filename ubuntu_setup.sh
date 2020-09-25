@@ -25344,3 +25344,16 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wez/${APP_NAME,,}/
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Bochs x86 PC emulator tool from RPM package
+APP_NAME=Bochs
+APP_VERSION=2.6.11
+APP_EXT=rpm
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.x86_64
+sudo apt-get install -y alien libsoxr-lsr0
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+sudo alien --to-deb --verbose /tmp/${FILE_NAME}.${APP_EXT}  # Convert RPM package to Debian package
+sudo gdebi -n ${APP_NAME,,}_${APP_VERSION}*.deb
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
