@@ -12127,7 +12127,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Ngraph-GTK tool for creating 2D graphs with support for exporting to PostScript, SVG, PNG or PDF from source
 APP_NAME=Ngraph-GTK
 APP_GUI_NAME="Tool for creating 2D graphs with support for exporting to PostScript, SVG, PNG or PDF."
-APP_VERSION=6.07.07
+APP_VERSION=6.08.07
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libgtk-3-dev automake libzip-dev librsvg2-dev libxml2-dev libmagic-dev libgtksourceview-3.0-dev
