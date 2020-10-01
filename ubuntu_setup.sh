@@ -25437,3 +25437,20 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install AnyMeal Qt/SQLite-based desktop recipe tool from source
+APP_NAME=AnyMeal
+APP_GUI_NAME="Qt/SQLite-based desktop recipe tool."
+APP_GUI_CATEGORIES="Office;"
+APP_GUI_KEYWORDS="Recipe;"
+APP_VERSION=1.8
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential flex googletest librecode-dev libsqlite3-dev qt5-default qttools5-dev-tools
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+qtchooser -run-tool=qmake -qt=5 && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
