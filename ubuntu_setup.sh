@@ -23815,9 +23815,14 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Belofte cross-platform Xboard-compatible chess engine from package
 APP_NAME=Belofte
-APP_VERSION=0.9.18
+APP_VERSION=2.0.2
 APP_EXT=N/A
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=32
+fi
+FILE_NAME=${APP_NAME,,}${ARCH_TYPE}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}
 sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
