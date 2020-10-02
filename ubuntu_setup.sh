@@ -25459,3 +25459,15 @@ cd /tmp/${FILE_NAME}
 qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install zoxide Rust-based fast alternative to 'cd' for directory navigation from package
+APP_NAME=zoxide
+APP_VERSION=0.4.3
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-x86_64-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/ajeetdsouza/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo ln -s -f /usr/local/bin/${APP_NAME,,} /usr/local/bin/z
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
