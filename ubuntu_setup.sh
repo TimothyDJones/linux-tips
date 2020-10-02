@@ -25471,3 +25471,17 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 sudo ln -s -f /usr/local/bin/${APP_NAME,,} /usr/local/bin/z
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install tab Rust-based terminal multiplexer (alternative to 'tmux' or 'screen') from package
+APP_NAME=tab
+APP_VERSION=0.3.6
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-x86_64-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/austinjones/${APP_NAME,,}-rs/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+https://github.com/austinjones/tab-rs/releases/download/v0.3.6/tab-x86_64-unknown-linux-gnu.tar.gz
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
