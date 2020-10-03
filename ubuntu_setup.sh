@@ -25485,3 +25485,9 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Pitivi cross-platform, Python-based video editor from Flatpak
+# http://www.pitivi.org/
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y flathub org.pitivi.Pitivi
