@@ -25491,3 +25491,19 @@ rm -rf /tmp/${APP_NAME,,}*
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install -y flathub org.pitivi.Pitivi
+
+# Install Sommelier installer for Windows applications to run under Wine emulator in from source
+APP_NAME=Sommelier
+APP_GUI_NAME="Installer for Windows applications to run under Wine emulator."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Windows;"
+APP_VERSION=5.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/Sommelier/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}
+./configure --enable-ssl --prefix=/usr/local && make && sudo make install_global
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
