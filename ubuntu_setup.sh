@@ -25587,3 +25587,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Keystore Explorer cross-platform, GUI replacement for Java keytool and jarsigner utilities from Debian package
+APP_NAME=Keystore-Explorer
+APP_VERSION=5.4.4
+APP_EXT=deb
+FILE_NAME=kse_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kaikramer/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/kse*
