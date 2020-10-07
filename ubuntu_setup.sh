@@ -4822,22 +4822,22 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install HOFAT (Hash Of File And Text) Java-based hash calculator
 APP_NAME=HOFAT
-APP_VERSION=08-08-18
+APP_VERSION=1.0.26_07-10-20
 APP_EXT=zip
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_bin.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_bin
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
-mv ${APP_NAME,,}_${APP_VERSION}_bin ${APP_NAME,,}
-sudo mv ${APP_NAME,,} /opt
-cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
 # /bin/sh
 cd /opt/${APP_NAME,,}
 PATH=/opt/${APP_NAME,,}:$PATH; export PATH
-java -jar ./${APP_NAME,,}.jar
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}.jar
 cd $HOME
 EOF
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
@@ -4855,7 +4855,7 @@ Keywords=Security;Hash;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Terminus JavaScript/Electron terminal from package
 APP_NAME=Terminus
