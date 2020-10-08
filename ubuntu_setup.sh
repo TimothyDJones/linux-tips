@@ -1881,7 +1881,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Psi XMPP messenger from source
 APP_NAME=psi
-APP_VERSION=1.4
+APP_VERSION=1.5
 APP_EXT=tar.xz
 sudo apt-get install -y libqca2-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
