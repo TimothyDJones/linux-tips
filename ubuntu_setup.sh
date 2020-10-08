@@ -3133,6 +3133,7 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zyedidia/${APP_NAM
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/${APP_NAME,,} /usr/local/bin
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/${APP_NAME,,}.1 /usr/local/man/man1
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
