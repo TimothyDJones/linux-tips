@@ -5196,7 +5196,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install MantisBT web-based bug tracking tool
 APP_NAME=mantisbt
-APP_VERSION=2.9.0
+APP_VERSION=2.24.2
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
