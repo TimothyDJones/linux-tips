@@ -180,6 +180,10 @@ curl -o /tmp/ttf-iosevka-3.0.1.zip -J -L https://downloads.sourceforge.net/casca
 cd /tmp
 dtrx -n /tmp/CascadiaCode-2009.22.zip
 sudo cp -R /tmp/CascadiaCode-2009.22/ttf/* /usr/local/share/fonts
+curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/releases/download/v0.018/JuliaMono.tar.gz
+cd /tmp
+dtrx -n /tmp/JuliaMono.tar.gz
+sudo cp -R /tmp/JuliaMono/*.ttf /usr/local/share/fonts
 sudo fc-cache -f -v
 
 # Install MongoDB from official repository
