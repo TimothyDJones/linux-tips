@@ -13040,9 +13040,9 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install JIVAM cross-platform Java Image Viewer And Manipulator from package
 APP_NAME=JIVAM
 APP_GUI_NAME="Cross-platform Java Image Viewer And Manipulator."
-APP_VERSION=08-08-18
+APP_VERSION=1.0.7
 APP_EXT=zip
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_bin
+FILE_NAME=${APP_NAME,,}_v.${APP_VERSION}_bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
