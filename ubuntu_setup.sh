@@ -10237,8 +10237,8 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 # Install Textosaurus minimalist, cross-platform Qt5/Scintilla-based text editor from AppImage
 APP_NAME=Textosaurus
 APP_GUI_NAME="Minimalist, cross-platform Qt5/Scintilla-based text editor."
-APP_MAJOR_VERSION=0.9.7
-APP_MINOR_VERSION=f0908a3
+APP_MAJOR_VERSION=0.9.13
+APP_MINOR_VERSION=9cb7064
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_MAJOR_VERSION}-${APP_MINOR_VERSION}-linux64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/martinrotter/${APP_NAME,,}/releases/download/${APP_MAJOR_VERSION}/${FILE_NAME}.${APP_EXT}
