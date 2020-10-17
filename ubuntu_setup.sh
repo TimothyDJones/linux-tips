@@ -25183,7 +25183,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install REDUCE cross-platform Lisp-based computer algebra system from Debian package
 APP_NAME=REDUCE
-APP_VERSION=5377
+APP_VERSION=5424
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-complete_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-algebra/${FILE_NAME}.${APP_EXT}
