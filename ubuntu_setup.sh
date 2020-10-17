@@ -25735,3 +25735,18 @@ sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,}.exe /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install 2048 terminal-based puzzle game from source
+APP_NAME=2048
+APP_GUI_NAME="Terminal-based puzzle game."
+APP_VERSION=master
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}.cpp-master
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/plibither8/2048.cpp/archive/master.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/
+mkdir -p build && cd build
+cmake ../ && cmake --build . && sudo cmake --build . --target install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
