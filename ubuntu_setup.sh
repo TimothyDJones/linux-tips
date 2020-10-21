@@ -25750,3 +25750,13 @@ mkdir -p build && cd build
 cmake ../ && cmake --build . && sudo cmake --build . --target install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Tesseract Animator shaded hypercube visualization tool from Debian package
+APP_NAME=g4d
+APP_VERSION=1.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}%20${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/tesseract-animator/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
