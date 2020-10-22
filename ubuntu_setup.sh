@@ -21386,7 +21386,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install EZPwd Golang-based minimalist console password manager with GnuPGP/OpenPGP compatibility from package
 APP_NAME=EZPwd
 APP_GUI_NAME="Golang-based minimalist console password manager with GnuPGP/OpenPGP compatibility."
-APP_VERSION=2.2.1
+APP_VERSION=2.2.2
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_tui_linux
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/jdevelop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
