@@ -1660,25 +1660,6 @@ sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install PythonQt Python binding for Qt (required for ScreenCloud)
-APP_NAME=libpythonqt-qt5
-APP_VERSION=3.0-1
-APP_EXT=deb
-source /etc/lsb-release
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L http://ftp.gwdg.de/pub/opensuse/repositories/home:/olav-st/x${DISTRIB_ID}_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/${APP_NAME}*
-
-# Install ScreenCloud screen capture utility from Debian package
-APP_NAME=screencloud
-APP_VERSION=1.3.0
-APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://pilotfiber.dl.sourceforge.net/project/${APP_NAME}/${APP_VERSION}/linux/${APP_NAME}_${APP_VERSION}-1qt5_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/${APP_NAME}*
-
 # Install Neofetch shell script system information tool
 APP_NAME=neofetch
 APP_VERSION=3.3.0
@@ -25770,3 +25751,35 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/noborus/${APP_NAME
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install ScreenCloud cross-platform screen capture and sharing utility from AppImage
+# https://screencloud.net/
+APP_NAME=ScreenCloud
+APP_GUI_NAME="Cross-platform screen capture and sharing utility."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Screen Capture;"
+APP_VERSION=1.5.3
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-v${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
