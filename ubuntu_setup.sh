@@ -19570,7 +19570,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install mkcert Golang tool for creating SSL certificates for localhost from package
 APP_NAME=mkcert
 APP_GUI_NAME="Golang tool for creating SSL certificates for localhost."
-APP_VERSION=1.4.0
+APP_VERSION=1.4.2
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/FiloSottile/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
