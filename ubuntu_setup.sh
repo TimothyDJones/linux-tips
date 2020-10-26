@@ -25783,3 +25783,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Nat Rust-based 'ls' replacement with same enhanced features from package
+APP_NAME=Nat
+APP_VERSION=1.2.1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}.linux.binary
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/willdoescode/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
