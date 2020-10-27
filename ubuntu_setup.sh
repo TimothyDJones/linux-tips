@@ -8525,13 +8525,15 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Notepadqq simple text editor similar to Notepad++ from package
 APP_NAME=Notepadqq
 APP_GUI_NAME="Simple text editor similar to Notepad++."
-APP_VERSION=1.2.0-1
+APP_VERSION=1.4.4-1
 APP_EXT=deb
 source /etc/lsb-release
-# If our version of Ubuntu is *after* 17.04 (Zesty Zapus),
-# then we use the 17.04 package from PPA.
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ar|bi)$ ]]; then
-	DISTRIB_CODENAME=zesty
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi)$ ]]; then  # 14.04, 14.10, 15.04, 15.10
+	DISTRIB_CODENAME=trusty
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04, 16.10, 17.04, 17.10
+	DISTRIB_CODENAME=xenial
+else    # use Bionic (18.04) version
+    DISTRIB_CODENAME=bionic
 fi
 curl -o /tmp/${APP_NAME,,}-common.${APP_EXT} -J -L https://launchpad.net/~${APP_NAME,,}-team/+archive/ubuntu/${APP_NAME,,}/+files/${APP_NAME,,}-common_${APP_VERSION}~${DISTRIB_CODENAME}1_all.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://launchpad.net/~${APP_NAME,,}-team/+archive/ubuntu/${APP_NAME,,}/+files/${APP_NAME,,}_${APP_VERSION}~${DISTRIB_CODENAME}1_${KERNEL_TYPE}.${APP_EXT}
