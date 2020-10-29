@@ -25811,3 +25811,36 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Seagull Soup cross-platform SDL-based side-scroller shooting game from source
+APP_NAME=SeagullSoup
+APP_GUI_NAME="Cross-platform SDL-based side-scroller shooting game ."
+APP_GUI_CATEGORIES="Entertainment;Games;"
+APP_GUI_KEYWORDS="Games;Side-Scroller;"
+APP_VERSION=2020.10.29
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-sourcecode-${APP_VERSION}
+sudo apt-get install -y libsdl-ttf2.0-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
+make && sudo make install-linux
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/${APP_NAME,,}.ico /usr/local/share/icons/hicolor/48x48/apps/${APP_NAME,,}.ico
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+#Path=
+Exec=/usr/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/hicolor/48x48/apps/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
