@@ -3384,7 +3384,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Minbrowser minimalist web browser from package
 APP_NAME=min
-APP_VERSION=1.6.3
+APP_VERSION=1.16.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/minbrowser/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -25857,8 +25857,13 @@ fi
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/trashhalo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/{FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install FSearch fast file search utility inspired by Everything Search for Windows from PPA
+sudo add-apt-repository ppa:christian-boxdoerfer/fsearch-daily -y
+sudo apt-get update
+sudo apt-get install fsearch-trunk -y
