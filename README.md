@@ -96,6 +96,38 @@ If you get any errors that a repository can't be found (e.g., `The repository 'h
 
 [Reference](https://www.linuxbabe.com/ubuntu/upgrade-ubuntu-18-04-to-ubuntu-19-10-from-command-line)
 
+## Bash script to toggle touchpad on and off
+If you use an external mouse with your laptop, you probably want to disable your touchpad when the mouse is plugged in. Here's how to create a simple Bash script to toggle the touchpad on and off.
+
+At the Bash prompt, run this command to list _all_ of your input devices, such as the keyboard, mouse, and touchpad:
+```bash
+$ xinput
+⎡ Virtual core pointer                      	id=2	[master pointer  (3)]
+⎜   ↳ Virtual core XTEST pointer              	id=4	[slave  pointer  (2)]
+⎜   ↳ USB Optical Mouse                       	id=10	[slave  pointer  (2)]
+⎜   ↳ **SynPS/2 Synaptics TouchPad              	id=12**	[slave  pointer  (2)]
+```
+In this example, the touchpad, has device ID **12**. Next, we check the status (enabled or disabled) for this device:
+```bash
+$ xinput -list-props 12 | grep "Device Enabled"
+	Device Enabled (**116**):	**1**
+```
+Here, the **1** means that the touchpad is _enabled_. Create a script named `touchpad.sh` with the following contents and replace **12** and **116** with the appropriate values for your machine:
+```bash
+#!/bin/bash
+if xinput list-props **12** | grep "Device Enabled (**116**):.*1" >/dev/null
+then
+  xinput disable **12**
+  notify-send -u low -i mouse "Touchpad disabled"
+else
+  xinput enable **12**
+  notify-send -u low -i mouse "Touchpad enabled"
+fi
+```
+Copy `touchpad.sh` to a directory in your `$PATH` and make it executable (`chmod +x touchpad.sh`). Simply run it anytime that you want to toggle the touchpad on or off.
+
+[Reference](http://tuxdiary.com/2016/08/15/toggle-touchpad-ubuntu-16-04/)
+
 ## Disable GPG checking for third-party repositories (PPAs)
 When using third-party repositories (PPAs), you typically need to install GPG key. If you have trouble with GPG keys, you can configure the repository, in `/etc/apt/sources.list` or the custom configuration file in `/etc/apt/sources.list.d/` by adding `trusted=yes` or `allow-insecure=yes`. The difference between them is that `allow-insecure=yes` will prompt you before allowing you to install, but `trusted=yes` won't.
 
