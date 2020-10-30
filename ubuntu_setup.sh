@@ -9404,7 +9404,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Extraterm Electron-based, cross-platform terminal emulator from package
 APP_NAME=Extraterm
 APP_GUI_NAME="Electron-based, cross-platform terminal emulator."
-APP_VERSION=0.41.1
+APP_VERSION=0.54.0
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
