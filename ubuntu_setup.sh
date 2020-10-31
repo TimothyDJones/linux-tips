@@ -17818,7 +17818,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install NSBase cross-platform database alternative to MS Access built with SQLite from Debian package
 APP_NAME=NSBase
 APP_GUI_NAME="Cross-platform database alternative to MS Access."
-APP_VERSION=1.6.5
+APP_VERSION=1.8.0.a
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
