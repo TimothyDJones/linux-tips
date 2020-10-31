@@ -351,9 +351,8 @@ sudo apt-get update
 sudo apt-get -y install apt-fast
 
 # Install Flatpak sandboxed installer utility from PPA
-sudo add-apt-repository -y ppa:alexlarsson/flatpak
-sudo apt-get update -y
-sudo apt-get install -y flatpak
+sudo apt-get install -y flatpak gnome-software-plugin-flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Install bash-it script
 cd $HOME
