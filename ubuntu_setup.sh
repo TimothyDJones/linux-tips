@@ -25736,7 +25736,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Tesseract Animator shaded hypercube visualization tool from Debian package
 APP_NAME=g4d
-APP_VERSION=2.0
+APP_VERSION=2.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}%20${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/tesseract-animator/${FILE_NAME}.${APP_EXT}
