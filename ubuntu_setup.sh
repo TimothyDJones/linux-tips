@@ -25866,3 +25866,19 @@ rm -rf /tmp/${APP_NAME,,}*
 sudo add-apt-repository ppa:christian-boxdoerfer/fsearch-daily -y
 sudo apt-get update
 sudo apt-get install fsearch-trunk -y
+
+# Install ECMA-55 Minimal BASIC compiler from source
+APP_NAME="Minimal BASIC"
+APP_GUI_NAME="ECMA-55 Minimal BASIC compiler."
+APP_VERSION=2.30
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME// /}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/buraphakit/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+cp Makefile.gcc Makefile
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
