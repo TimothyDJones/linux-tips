@@ -16947,7 +16947,7 @@ sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}.deb
 # Install Notable Markdown-based note-taking tool from Debian package
 APP_NAME=Notable
 APP_GUI_NAME="Markdown-based note-taking tool."
-APP_VERSION=1.7.3
+APP_VERSION=1.8.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
