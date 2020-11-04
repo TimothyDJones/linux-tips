@@ -15017,7 +15017,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install Docker from official repository
+# Install Docker Community Edition Stable channel release from official repository
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 # Remove old Docker versions, if any
@@ -15032,6 +15032,19 @@ sudo usermod -aG docker ${USER}  # Add user account to 'docker' group to run com
 su - ${USER}
 id -nG  # Confirm user account added to 'docker' group.
 docker run hello-world  # Confirm Docker installation.
+
+# Install Docker Compose command-line utility for multi-container Docker applications from package
+APP_NAME=Docker-Compose
+APP_GUI_NAME="Command-line utility for multi-container Docker applications."
+APP_VERSION=1.27.4
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-Linux-x86_64
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+sudo cp -R /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Dark Chess (Banqi) Python-based chess variant game from package
 APP_NAME=DarkChess
