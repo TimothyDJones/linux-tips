@@ -1319,11 +1319,12 @@ sudo apt-add-repository -y ppa:jgmath2000/et
 sudo apt-get update
 sudo apt-get install -y et
 
-# Install Gantt Project project management tool
-APP_NAME=ganttproject
-APP_VERSION=2.8.8-r2304-1
+# Install Gantt Project project management tool from Debian package
+APP_NAME=GanntProject
+APP_VERSION=2.8.11-r2396-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 sudo gdebi -n ${APP_NAME}.${APP_EXT}
 cd $HOME
