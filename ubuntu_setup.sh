@@ -184,6 +184,10 @@ curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/rele
 cd /tmp
 dtrx -n /tmp/JuliaMono.tar.gz
 sudo cp -R /tmp/JuliaMono/*.ttf /usr/local/share/fonts
+curl -o /tmp/FantasqueSansMono-NoLoopK.tar.gz -J -L https://github.com/belluzj/fantasque-sans/releases/download/v1.8.0/FantasqueSansMono-NoLoopK.tar.gz
+cd /tmp
+dtrx -n /tmp/FantasqueSansMono-NoLoopK.tar.gz
+sudo cp -R /tmp/FantasqueSansMono-NoLoopK/TTF/*.ttf /usr/local/share/fonts
 sudo fc-cache -f -v
 
 # Install MongoDB from official repository
