@@ -840,14 +840,15 @@ sudo mv /tmp/wp34s.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/wp-34s-emulator*
 
-# Install YouTube-DL-PyTK video downloader from Sourceforge
-curl -o /tmp/youtube-dl-pytk.tar -J -L https://superb-sea2.dl.sourceforge.net/project/youtube-dl-gtk/17.4.16/YouTube-DL-PyTK_17.4.16.tar
-cd /tmp
-dtrx -n /tmp/youtube-dl-pytk.tar
-cd /tmp/youtube-dl-pytk/YouTube-DL-PyTK
-sudo ./install.sh
+# Install YouTube-DL-PyTK GUI front-end for youtube-dl video downloader from Debian package
+APP_NAME=YouTube-DL-PyTK
+APP_VERSION=20.11.8
+APP_EXT=deb
+FILE_NAME=${APP_NAME}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/youtube-dl-gtk/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/youtube-dl-pytk*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install WCD chdir utility from source
 APP_NAME=wcd
