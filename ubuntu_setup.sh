@@ -26133,3 +26133,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Sysbox Golang-based sysadmin/scripting utilities distributed as a single binary from package
+APP_NAME=Sysbox
+APP_VERSION=0.12.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/skx/${APP_NAME,,}/releases/download/release-${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
