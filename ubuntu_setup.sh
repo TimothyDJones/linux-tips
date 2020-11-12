@@ -14377,30 +14377,27 @@ cd /tmp/${FILE_NAME}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install Videomass GUI front-end for FFmpeg from package
+# Install Videomass GUI front-end for FFmpeg from AppImage
 APP_NAME=Videomass
 APP_GUI_NAME="GUI front-end for FFmpeg."
 APP_GUI_CATEGORIES="Multimedia;Accessories;"
 APP_GUI_KEYWORDS="FFmpeg;Video;Audio;Converter;"
-APP_VERSION=3.1.3
-APP_EXT=tar.gz
-FILE_NAME=${APP_NAME}-${APP_VERSION}
-sudo apt-get install python3-wxgtk4.0 ffmpeg -y
-sudo pip3 install pypubsub youtube-dl
+APP_VERSION=3.2.6
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}2/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
-sudo python3 ./setup.py install
-sudo cp /tmp/${FILE_NAME}/videomass3/art/icons/videomass.png /usr/share/pixmaps/${APP_NAME,,}.png
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Path=/usr/local/bin
-Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/share/pixmaps/${APP_NAME,,}.png
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+#Icon=
 Type=Application
 StartupNotify=true
 Terminal=false
