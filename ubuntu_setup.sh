@@ -21645,7 +21645,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://github.com/dino/dino
 APP_NAME=Dino
 APP_GUI_NAME="XMPP/Jabber GTK+/Vala chat client"
-APP_VERSION=0.1.0~git0.20200129.fd9db13
+APP_VERSION=0.2.0~git0.20201112.2a775bc
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 source /etc/lsb-release
