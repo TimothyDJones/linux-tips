@@ -25814,7 +25814,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install YuranPad minimalist text editor from Debian package
 APP_NAME=YuranPad
-APP_VERSION=1.9
+APP_VERSION=2.0
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
