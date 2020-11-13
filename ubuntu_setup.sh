@@ -26186,3 +26186,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/stchris/${APP_NAME
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Shelby Golang-based fast, lightweight, minimal shell prompt from package
+APP_NAME=Shelby
+APP_VERSION=1.0.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/athul/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+echo 'eval "$(shelby init bash)"' >> $HOME/.bashrc
+source $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
