@@ -3796,12 +3796,20 @@ sudo ln -s /opt/komodo-edit/bin/komodo /usr/local/bin/komodo
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install CherryTree hierarchical notepad/text editor from package
+# Install CherryTree hierarchical notepad/text editor from Debian package
 # https://www.giuspen.com/cherrytree/
-APP_NAME=cherrytree
-APP_VERSION=0.99.16-1
+APP_NAME=CherryTree
+source /etc/lsb-release
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(gr)$ ]]; then     # Groovy (20.10)
+	APP_VERSION=0.99.20-2_amd64
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo)$ ]]; then     # Focal (20.04)
+    APP_VERSION=0.99.20-1_amd64
+else
+	APP_VERSION=0.39.4-0_all
+fi
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.giuspen.com/software/${APP_NAME}_${APP_VERSION}_all.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~giuspen/+archive/ubuntu/ppa/+files/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
