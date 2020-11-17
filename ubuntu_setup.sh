@@ -188,6 +188,10 @@ curl -o /tmp/FantasqueSansMono-NoLoopK.tar.gz -J -L https://github.com/belluzj/f
 cd /tmp
 dtrx -n /tmp/FantasqueSansMono-NoLoopK.tar.gz
 sudo cp -R /tmp/FantasqueSansMono-NoLoopK/TTF/*.ttf /usr/local/share/fonts
+curl -o /tmp/xcoralFonts.tar.gz -J -L http://xcoral.free.fr/xcoralFonts.tar.gz
+cd /tmp
+dtrx -n /tmp/xcoralFonts.tar.gz
+sudo cp -R /tmp/xcoralFonts/* /usr/local/share/fonts
 sudo fc-cache -f -v
 
 # Install MongoDB from official repository
