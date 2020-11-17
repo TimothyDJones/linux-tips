@@ -21410,16 +21410,15 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://dystroy.org/broot/
 APP_NAME=Broot
 APP_GUI_NAME="Rust-based command-line directory tree navigation tool with fuzzy-search capability."
-APP_VERSION=1.0.4
+APP_VERSION=1.0.5
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}b/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${FILE_EXT}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/build/x86_64-linux/${APP_NAME,,} /usr/local/bin/
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 /usr/local/bin/${APP_NAME,,} --install
-echo ${HOME}'/.config/'${APP_NAME,,}'/launcher/bash/br' >> ${HOME}/.bashrc
 # Reload Bash configuration
 source $HOME/.bashrc
 cd $HOME
