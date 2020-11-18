@@ -17835,9 +17835,9 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Persepolis Python-based GUI for aria2 download manager from Debian package
 APP_NAME=Persepolis
 APP_GUI_NAME="Python-based GUI for aria2 download manager."
-APP_VERSION=3.2.0.2
+APP_VERSION=3.2.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.2_all
 sudo apt-get install -y aria2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/persepolisdm/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -26225,3 +26225,34 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install gmenu Golang-based console and GUI application launcher from package
+# https://gitlab.com/tslocum/gmenu
+APP_NAME=gmenu
+APP_GUI_NAME="Golang-based console and GUI application launcher."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Launcher;"
+APP_VERSION=0.2.9
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://${APP_NAME,,}.rocketnine.space/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/g* /usr/local/bin
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/gtkmenu
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
