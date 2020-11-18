@@ -192,6 +192,10 @@ curl -o /tmp/xcoralFonts.tar.gz -J -L http://xcoral.free.fr/xcoralFonts.tar.gz
 cd /tmp
 dtrx -n /tmp/xcoralFonts.tar.gz
 sudo cp -R /tmp/xcoralFonts/* /usr/local/share/fonts
+curl -o /tmp/source-code-pro.zip -J -L https://github.com/adobe-fonts/source-code-pro/releases/download/2.032R-ro%2F1.052R-it%2F1.012R-VAR/TTF-source-code-pro-2.032R-ro-1.052R-it.zip
+cd /tmp
+dtrx -n /tmp/source-code-pro.zip
+sudo cp -R /tmp/source-code-pro/TTF/* /usr/local/share/fonts
 sudo fc-cache -f -v
 
 # Install MongoDB from official repository
