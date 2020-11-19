@@ -24945,7 +24945,7 @@ APP_NAME=openkropki
 APP_GUI_NAME="SDL implementation of kropki/tochki puzzle game."
 APP_GUI_CATEGORIES="Entertainment;Games;"
 APP_GUI_KEYWORDS="Puzzle;Dots;"
-APP_VERSION=0.3
+APP_VERSION=0.4
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libsdl2-dev libsdl2-ttf-dev
