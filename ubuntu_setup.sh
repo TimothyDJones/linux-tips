@@ -18201,7 +18201,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install Encryptic Electron-based encryption-focused Markdown note-taking tool from package
 APP_NAME=Encryptic
 APP_GUI_NAME="Electron-based encryption-focused Markdown note-taking tool."
-APP_VERSION=0.0.4
+APP_VERSION=0.1.0
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
