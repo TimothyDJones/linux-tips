@@ -26271,3 +26271,40 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install PiNote cross-platform minimalist text editor from package
+APP_NAME=PiNote
+APP_GUI_NAME="Cross-platform minimalist text editor."
+APP_GUI_CATEGORIES="Development;Programming;Accessories;"
+APP_GUI_KEYWORDS="Text;Editor;"
+APP_VERSION=1.0
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i386
+fi
+FILE_NAME=${APP_NAME}_${APP_VERSION//./_}_Linux_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://sourceforge.net/p/${APP_NAME,,}/code/ci/master/tree/icons/logo.png
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo cp /tmp/${APP_NAME,,}.png /usr/share/pixmaps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
