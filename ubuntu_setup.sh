@@ -17870,17 +17870,17 @@ APP_GUI_NAME="Java-based database ERD, design, and reverse-engineering tool."
 APP_VERSION=2.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64
-sudo apt-get install -y openjdk-11-jre openjfx
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/apricot-db/${FILE_NAME}.${APP_EXT}
+cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mv /tmp/${FILE_NAME}/* /opt
-sudo chmod -R a+w /opt/${APP_NAME,,}
-sudo chmod a+x /opt/${APP_NAME,,}/${APP_NAME,,}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/apricot/* /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/startup.sh
 cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
 PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-/opt/${APP_NAME,,}/${APP_NAME,,}
+/opt/${APP_NAME,,}/startup.sh
 cd $HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
@@ -17891,7 +17891,7 @@ Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
 Icon=
 Type=Application
 StartupNotify=true
