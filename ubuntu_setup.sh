@@ -26309,3 +26309,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install ethr Golang-based command-line network performance measurement tool from package
+APP_NAME=ethr
+APP_VERSION=0.9.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/microsoft/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
