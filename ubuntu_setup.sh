@@ -3106,7 +3106,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Treeline Python/Qt-based tree-structured notepad from package
 APP_NAME=TreeLine
 APP_GUI_NAME="Python/Qt-based tree-structured notepad"
-APP_VERSION=3.1.3
+APP_VERSION=3.1.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y python3-pyqt5
