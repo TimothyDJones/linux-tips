@@ -15589,7 +15589,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Code Notes simple code snippet/Github Gist manager built with Electron and Vue.JS from AppImage
 APP_NAME=Code-Notes
 APP_GUI_NAME="Simple code snippet/Github Gist manager built with Electron and Vue.JS."
-APP_VERSION=1.2.1
+APP_VERSION=1.2.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/lauthieb//${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
