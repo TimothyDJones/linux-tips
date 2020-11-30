@@ -21434,7 +21434,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install massCode Electron-based, cross-platform codes snippet manager/editor from AppImage
 APP_NAME=massCode
 APP_GUI_NAME="Electron-based, cross-platform codes snippet manager/editor."
-APP_VERSION=1.2.0
+APP_VERSION=1.3.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/antonreshetov/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
