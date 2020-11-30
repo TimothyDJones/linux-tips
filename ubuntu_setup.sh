@@ -13250,7 +13250,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Lepton Electron-based Github Gist editor/viewer from Snap package
 APP_NAME=Lepton
 APP_GUI_NAME="Electron-based Github Gist editor/viewer."
-APP_VERSION=1.6.2
+APP_VERSION=1.9.1
 APP_EXT=snap
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/hackjutsu/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo snap install --dangerous /tmp/${APP_NAME,,}.${APP_EXT}
