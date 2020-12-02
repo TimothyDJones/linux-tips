@@ -3315,7 +3315,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PlantUML Java-based UML modeling tool from package
 APP_NAME=PlantUML
 APP_GUI_NAME="Java-based UML modeling tool"
-APP_VERSION=1.2020.19
+APP_VERSION=1.2020.21
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -8778,7 +8778,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PAGE drag-and-drop GUI generator for Python and Tkinter from source
 APP_NAME=PAGE
 APP_GUI_NAME="Drag-and-drop GUI generator for Python and Tkinter."
-APP_VERSION=5.6
+APP_VERSION=6.0
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -17867,7 +17867,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Apricot Java-based database ERD, design, and reverse-engineering tool from package
 APP_NAME=ApricotDB
 APP_GUI_NAME="Java-based database ERD, design, and reverse-engineering tool."
-APP_VERSION=2.4
+APP_VERSION=2.4MR1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/apricot-db/${FILE_NAME}.${APP_EXT}
@@ -19145,7 +19145,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install xsnow desktop decoration from Debian package
 APP_NAME=xsnow
 APP_GUI_NAME=""
-APP_VERSION=3.1.4-1
+APP_VERSION=3.1.7-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -21129,7 +21129,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Mindustry Java-based desktop sandbox tower defense game from package
 APP_NAME=Mindustry
 APP_GUI_NAME="Java-based desktop sandbox tower defense game."
-APP_VERSION="6.0 Build 119 - Beta"
+APP_VERSION="6.0 Build 120.2 - Beta"
 APP_EXT=jar
 FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -23512,7 +23512,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Shutter Encoder cross-platform audio/video encoder/converter from Debian package
 APP_NAME="Shutter Encoder"
 APP_GUI_NAME="Cross-platform audio/video encoder/converter."
-APP_VERSION=14.3
+APP_VERSION=14.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME// /%20}%20"("Linux%20Version%20${APP_VERSION}")"
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.shutterencoder.com/${FILE_NAME}.${APP_EXT}
@@ -23944,7 +23944,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=7.6.79
+APP_VERSION=7.6.80
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
