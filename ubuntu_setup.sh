@@ -485,7 +485,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=7.2.5
+APP_VERSION=7.3.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 sudo apt-get install -y libmysql-java   # Install MySQL JDBC driver
@@ -575,7 +575,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=2.0.10
+APP_VERSION=2.0.11
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -1398,7 +1398,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4203
+APP_VERSION=4.3-4220
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -3253,7 +3253,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Shotcut video editor
 APP_NAME=Shotcut
-APP_VERSION=20.11.14
+APP_VERSION=20.11.28
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -5646,9 +5646,9 @@ mkdir -p release && cd release
 cd $HOME
 rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}*
 
-# Install QDVDAuthor Qt-based DVD authoring tool from package
+# Install QDVDAuthor Qt-based DVD authoring tool from Debian package
 APP_NAME=qdvdauthor
-APP_VERSION=2.3.1-11
+APP_VERSION=2.3.1-12
 APP_EXT=deb
 source /etc/lsb-release
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/tkb/x${DISTRIB_ID}_${DISTRIB_RELEASE}/${KERNEL_TYPE}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
@@ -13250,7 +13250,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Lepton Electron-based Github Gist editor/viewer from Snap package
 APP_NAME=Lepton
 APP_GUI_NAME="Electron-based Github Gist editor/viewer."
-APP_VERSION=1.6.2
+APP_VERSION=1.9.1
 APP_EXT=snap
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/hackjutsu/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo snap install --dangerous /tmp/${APP_NAME,,}.${APP_EXT}
@@ -15589,7 +15589,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Code Notes simple code snippet/Github Gist manager built with Electron and Vue.JS from AppImage
 APP_NAME=Code-Notes
 APP_GUI_NAME="Simple code snippet/Github Gist manager built with Electron and Vue.JS."
-APP_VERSION=1.2.1
+APP_VERSION=1.2.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/lauthieb//${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21129,7 +21129,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Mindustry Java-based desktop sandbox tower defense game from package
 APP_NAME=Mindustry
 APP_GUI_NAME="Java-based desktop sandbox tower defense game."
-APP_VERSION="6.0 Build 117.1 - Beta"
+APP_VERSION="6.0 Build 119 - Beta"
 APP_EXT=jar
 FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -21434,7 +21434,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install massCode Electron-based, cross-platform codes snippet manager/editor from AppImage
 APP_NAME=massCode
 APP_GUI_NAME="Electron-based, cross-platform codes snippet manager/editor."
-APP_VERSION=1.2.0
+APP_VERSION=1.3.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/antonreshetov/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -23836,7 +23836,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Belofte cross-platform Xboard-compatible chess engine from package
 APP_NAME=Belofte
-APP_VERSION=2.0.8
+APP_VERSION=2.0.8.1
 APP_EXT=N/A
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=64
