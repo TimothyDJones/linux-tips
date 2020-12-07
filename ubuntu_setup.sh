@@ -6443,15 +6443,16 @@ source $HOME/.profile
 cd $HOME
 sudo rm -rf /tmp/rust*
 
-# Install Norqualizer command-line audio normalizer/equalizer from source
-APP_NAME=Norqualizer
+# Install NorQualizer command-line audio normalizer/equalizer from source
+APP_NAME=NorQualizer
 APP_GUI_NAME="Cross-platform command-line audio normalizer/equalizer."
-APP_VERSION=130
+APP_VERSION=1.40
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION//./}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 gcc norqualizer.c -o norqualizer
 chmod a+x norqualizall
 sudo cp norqualizall norqualizer /usr/local/bin
