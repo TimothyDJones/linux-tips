@@ -26355,3 +26355,40 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install ImHex cross-platform, multi-purpose hex editor from package
+APP_NAME=ImHex
+APP_GUI_NAME="Cross-platform, multi-purpose hex editor."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Hex Editor;Editor"
+APP_VERSION=1.5.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_${APP_VERSION}_Linux
+sudo apt-get install -y libcapstone3
+sudo ln -s -f /usr/lib/x86_64-linux-gnu/libcapstone.so.3 /usr/lib/x86_64-linux-gnu/libcapstone.so.4
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/WerWolv/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${APP_NAME}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.ico -J -L https://raw.githubusercontent.com/WerWolv/${APP_NAME}/master/icon.ico
+sudo cp -R /tmp/${APP_NAME,,}.ico /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
