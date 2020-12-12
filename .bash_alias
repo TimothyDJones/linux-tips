@@ -76,6 +76,9 @@ alias mkdir='mkdir -pv'
 alias top='htop'
 alias apt-version='apt-cache madison'
 
+# Colorize output of ip command
+alias ip='ip -c'
+
 # Get public IP address
 alias publicip='curl https://ipecho.net/plain; echo'
 
