@@ -26392,3 +26392,38 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install GuidScreener cross-platform GUID/UUID generator from package
+APP_NAME=GuidScreener
+APP_GUI_NAME="Cross-platform GUID/UUID generator."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="GUID;UUID;Generator"
+APP_VERSION=1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}
+curl -o /tmp/libpng12.deb -J -L http://security.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1_${KERNEL_TYPE}.deb
+sudo gdebi -n /tmp/libpng12.deb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://colinjs.com/${APP_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${APP_NAME}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
