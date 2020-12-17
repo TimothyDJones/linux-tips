@@ -24770,7 +24770,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://gilacms.com/
 APP_NAME=Gila-CMS
 APP_GUI_NAME="Lightweight PHP/MySQL content management platform."
-APP_VERSION=2.0.0
+APP_VERSION=2.0.2
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_NAME=${DB_NAME//-/}
