@@ -26489,3 +26489,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install tig ncurses-based text-mode interface for Git from source
+APP_NAME=tig
+APP_GUI_NAME="ncurses-based text-mode interface for Git."
+APP_VERSION=2.5.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jonas/tig/releases/download/${APP_NAME,,}-${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./autogen.sh && ./configure && make prefix=/usr/local && sudo make install prefix=/usr/local
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
