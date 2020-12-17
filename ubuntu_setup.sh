@@ -14400,7 +14400,7 @@ APP_NAME=Videomass
 APP_GUI_NAME="GUI front-end for FFmpeg."
 APP_GUI_CATEGORIES="Multimedia;Accessories;"
 APP_GUI_KEYWORDS="FFmpeg;Video;Audio;Converter;"
-APP_VERSION=3.2.6
+APP_VERSION=3.3.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}2/${FILE_NAME}.${APP_EXT}
