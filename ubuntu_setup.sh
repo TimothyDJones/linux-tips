@@ -517,9 +517,9 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from package
 APP_NAME=Vivaldi
-APP_VERSION=3.2.1967.47-1
+APP_VERSION=3.5.2115.81
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
@@ -555,7 +555,7 @@ ln -s /usr/share/applications/albert.desktop $HOME/.config/autostart/  # Create 
 
 # Install KSnip screenshot utility from Debian package
 APP_NAME=KSnip
-APP_VERSION=1.7.3
+APP_VERSION=1.8.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1398,7 +1398,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4222
+APP_VERSION=4.3-4238
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -1738,7 +1738,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Brave web browser (release channel) from Debian package
 APP_NAME=Brave-Browser
-APP_VERSION=1.18.70
+APP_VERSION=1.18.74
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -2495,7 +2495,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.194
+APP_VERSION=6.4.201
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3315,7 +3315,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PlantUML Java-based UML modeling tool from package
 APP_NAME=PlantUML
 APP_GUI_NAME="Java-based UML modeling tool"
-APP_VERSION=1.2020.22
+APP_VERSION=1.2020.23
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -5003,7 +5003,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.4.2
+APP_VERSION=1.4.3
 APP_EXT=tar.bz2
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -8779,7 +8779,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PAGE drag-and-drop GUI generator for Python and Tkinter from source
 APP_NAME=PAGE
 APP_GUI_NAME="Drag-and-drop GUI generator for Python and Tkinter."
-APP_VERSION=6.0
+APP_VERSION=6.0.1
 APP_EXT=tgz
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -14400,7 +14400,7 @@ APP_NAME=Videomass
 APP_GUI_NAME="GUI front-end for FFmpeg."
 APP_GUI_CATEGORIES="Multimedia;Accessories;"
 APP_GUI_KEYWORDS="FFmpeg;Video;Audio;Converter;"
-APP_VERSION=3.2.6
+APP_VERSION=3.3.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}2/${FILE_NAME}.${APP_EXT}
@@ -21130,7 +21130,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Mindustry Java-based desktop sandbox tower defense game from package
 APP_NAME=Mindustry
 APP_GUI_NAME="Java-based desktop sandbox tower defense game."
-APP_VERSION="6.0 Build 121.2 - Beta"
+APP_VERSION="6.0 Build 121.4 - Beta"
 APP_EXT=jar
 FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -23613,7 +23613,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install HSKinter Python GUI Mandarin Chinese flashcard tool from package
 APP_NAME=HSKinter
 APP_GUI_NAME="Python GUI Mandarin Chinese flashcard tool."
-APP_VERSION=0.4.7
+APP_VERSION=0.4.7.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo pip3 install gTTS playsound
@@ -24770,7 +24770,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://gilacms.com/
 APP_NAME=Gila-CMS
 APP_GUI_NAME="Lightweight PHP/MySQL content management platform."
-APP_VERSION=2.0.0
+APP_VERSION=2.0.2
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_NAME=${DB_NAME//-/}
@@ -25833,7 +25833,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install YuranPad minimalist text editor from Debian package
 APP_NAME=YuranPad
-APP_VERSION=2.1
+APP_VERSION=2.2
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -26427,3 +26427,80 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Go Shred Golang-based, cross-platform command-line secure delete utility from package
+APP_NAME=Go-Shred
+APP_VERSION=N/A
+APP_EXT=zip
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=x86
+fi
+FILE_NAME=${APP_NAME,,}_linux_${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install PianoBooster cross-platform piano and music notation learning tool from AppImage
+# https://www.pianobooster.org/
+APP_NAME=PianoBooster
+APP_GUI_NAME="Cross-platform piano and music notation learning tool."
+APP_GUI_CATEGORIES="Education;"
+APP_GUI_KEYWORDS="Piano;Music;"
+APP_VERSION=1.0.0
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://sourceforge.net/p/pianobooster/code/HEAD/tree/trunk/PianoBooster/src/images/logo64x64.png?format=raw
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}/${APP_NAME,,}.png
+sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install ARITA minimalist audio player for Linux from Debian package
+APP_NAME=ARITA
+APP_VERSION=3.20.10
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install tig ncurses-based text-mode interface for Git from source
+APP_NAME=tig
+APP_GUI_NAME="ncurses-based text-mode interface for Git."
+APP_VERSION=2.5.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jonas/tig/releases/download/${APP_NAME,,}-${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./autogen.sh && ./configure && make prefix=/usr/local && sudo make install prefix=/usr/local
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
