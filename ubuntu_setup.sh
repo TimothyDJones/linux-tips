@@ -9810,11 +9810,11 @@ rm -rf /tmp/${FILE_NAME}*
 # Build instructions based on http://jes.st/2015/compiling-playing-nethack-360-on-ubuntu/
 APP_NAME=Nethack
 APP_GUI_NAME="Text-based RPG."
-APP_VERSION=3.6.2
+APP_VERSION=3.6.6
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION//./}-src
 sudo apt-get install -y flex bison build-essential libncurses5-dev checkinstall
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://nethack.org/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
