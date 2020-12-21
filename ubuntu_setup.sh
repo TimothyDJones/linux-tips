@@ -124,7 +124,7 @@ function pinstall {
 
 # Shortcut for full upgrade including removing unused packages and clearing cache.
 function pupgrade {
-	sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -f && sudo apt-get clean	
+	sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -f && sudo apt-get clean
 }
 EOF
 echo 'source $HOME/.config/apt_pkg_mgmt' >> $HOME/.bashrc
@@ -326,7 +326,7 @@ cd $HOME
 PHP7_VERSION=7.2
 sudo apt-get install -y php${PHP7_VERSION}-bcmath php${PHP7_VERSION}-bz2 php${PHP7_VERSION}-cli php${PHP7_VERSION}-common php${PHP7_VERSION}-curl php${PHP7_VERSION}-gd php${PHP7_VERSION}-json php${PHP7_VERSION}-mbstring  php${PHP7_VERSION}-mysql php${PHP7_VERSION}-readline php${PHP7_VERSION}-sqlite3 php${PHP7_VERSION}-xml php${PHP7_VERSION}-xsl php${PHP7_VERSION}-zip php-xdebug \
 libapache2-mod-php${PHP7_VERSION} libapache2-mod-xsendfile \
-mysql-server  mysql-workbench mycli 
+mysql-server  mysql-workbench mycli
 
 # Install nvm (Node Version Manager) command-line utility for running/managing multiple versions of Node.JS from package
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
@@ -780,7 +780,7 @@ APP_NAME=NewBreeze
 APP_VERSION=v3-rc5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}%20${APP_VERSION}
-sudo apt-get install -y libmagic-dev zlib1g-dev liblzma-dev libbz2-dev libarchive-dev xdg-utils libpoppler-qt5-dev libsource-highlight-dev libpoppler-qt5-dev libdjvulibre-dev libqscintilla2-qt5-dev 
+sudo apt-get install -y libmagic-dev zlib1g-dev liblzma-dev libbz2-dev libarchive-dev xdg-utils libpoppler-qt5-dev libsource-highlight-dev libpoppler-qt5-dev libdjvulibre-dev libqscintilla2-qt5-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -1215,7 +1215,7 @@ sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # Install IT-Edit (Integrated Terminal Editor)
 APP_NAME=it-edit
 APP_VERSION=3.0
-# Enable GNOME 3 PPAs to get latest versions of dependent packages: 
+# Enable GNOME 3 PPAs to get latest versions of dependent packages:
 sudo add-apt-repository -y ppa:gnome3-team/gnome3-staging
 sudo add-apt-repository -y ppa:gnome3-team/gnome3
 sudo apt-get update && sudo apt-get upgrade -y
@@ -1678,7 +1678,7 @@ APP_NAME=neofetch
 APP_VERSION=3.3.0
 APP_EXT=tar.gz
 # Install dependencies
-sudo apt-get install -y imagemagick curl 
+sudo apt-get install -y imagemagick curl
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/dylanaraps/${APP_NAME}/archive/${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME}.${APP_EXT}
@@ -1833,7 +1833,7 @@ curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sysc
 cd /tmp
 dtrx -n ${APP_NAME}.${APP_EXT}
 cd /tmp/${APP_NAME}
-mv ${APP_NAME}-v${APP_VERSION}-lite ${APP_NAME,,} 
+mv ${APP_NAME}-v${APP_VERSION}-lite ${APP_NAME,,}
 sudo mv ${APP_NAME,,} /opt
 sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
@@ -1917,7 +1917,7 @@ cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
 # Install Tilix (formerly Terminix) terminal emulator from PPA
-# https://gnunn1.github.io/tilix-web/ 
+# https://gnunn1.github.io/tilix-web/
 sudo add-apt-repository -y ppa:webupd8team/terminix
 sudo apt-get update
 sudo apt-get install -y tilix
@@ -3315,7 +3315,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PlantUML Java-based UML modeling tool from package
 APP_NAME=PlantUML
 APP_GUI_NAME="Java-based UML modeling tool"
-APP_VERSION=1.2020.23
+APP_VERSION=1.2020.24
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -3420,7 +3420,7 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=polybar
 APP_VERSION=3.0.5
 APP_EXT=tar.gz
-sudo apt-get install -y libcairo2-dev libx11-xcb-dev 
+sudo apt-get install -y libcairo2-dev libx11-xcb-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/gff${APP_VERSION}-src.${APP_EXT}
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}/gff
@@ -3988,7 +3988,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 
 # Install Admidio organizational management tool
 APP_NAME=admidio
-APP_VERSION=3.3.18
+APP_VERSION=4.0.0
 APP_EXT=zip
 DB_NAME=admidio
 DB_USER=admidio
@@ -5090,7 +5090,7 @@ if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=i686
 fi
-sudo apt-get install -y python3 python3-pip 
+sudo apt-get install -y python3 python3-pip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
@@ -5151,7 +5151,7 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=MLTerm
 APP_VERSION=3.8.4
 APP_EXT=tar.gz
-sudo apt-get install -y libfribidi-dev libssh2-1-dev libvte-dev libgdk-pixbuf2.0-dev 
+sudo apt-get install -y libfribidi-dev libssh2-1-dev libvte-dev libgdk-pixbuf2.0-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -5399,7 +5399,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install pgweb cross-platform client for PostgreSQL databases 
+# Install pgweb cross-platform client for PostgreSQL databases
 APP_NAME=pgweb
 APP_GUI_NAME="Cross-platform client for PostgreSQL databases"
 APP_VERSION=0.11.7
@@ -5417,7 +5417,7 @@ cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
 PATH=/opt/${APP_NAME,,}:$PATH; export PATH
-/opt/${APP_NAME,,}/${APP_NAME,,}_${ARCH_TYPE} & 
+/opt/${APP_NAME,,}/${APP_NAME,,}_${ARCH_TYPE} &
 xdg-open http://localhost:8081/ &
 cd $HOME
 EOF
@@ -5495,7 +5495,7 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=ProjectLibre
 APP_VERSION=1.9.2-1
 APP_EXT=deb
-sudo apt-get install openjdk-11-jre 
+sudo apt-get install openjdk-11-jre
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
@@ -5967,7 +5967,7 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/pf
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}
-mv ${APP_NAME}-application_${APP_VERSION}-RELEASE ${APP_NAME,,} 
+mv ${APP_NAME}-application_${APP_VERSION}-RELEASE ${APP_NAME,,}
 sudo mv ${APP_NAME,,} /opt
 cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
 #! /bin/sh
@@ -6544,7 +6544,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install QVGE (Qt Visual Graph Editor) Qt-based 2-D visual graph editor from source
 APP_NAME=QVGE
 APP_GUI_NAME="Cross-platform Qt-based 2-D visual graph editor."
-APP_VERSION=0.6.1
+APP_VERSION=0.6.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}%20${APP_VERSION}
 sudo apt-get install -y qt5-qmake qt5-default libqt5x11extras5-dev
@@ -6928,7 +6928,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Galaxy Forces V2 2D multiplayer (and single-player versus AI) space shooter game 
+# Install Galaxy Forces V2 2D multiplayer (and single-player versus AI) space shooter game
 APP_NAME=GalaxyV2
 APP_GUI_NAME="2D multiplayer (and single-player versus AI) space shooter game."
 APP_VERSION=1.85
@@ -7539,7 +7539,7 @@ curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
-export PREFIX=/usr/local && ./configure.sh && make && sudo make install 
+export PREFIX=/usr/local && ./configure.sh && make && sudo make install
 sudo rm -rf /usr/local/share/applications/instead.desktop
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
@@ -8028,11 +8028,11 @@ sudo chmod a+x ${WWW_HOME}/${APP_NAME,,}
 sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
 sudo find . -type d -name \* -exec chmod 775 {} \;
 sudo find . -type f -exec chmod 664 {} \;
-sudo chmod 774 controller 
-sudo chmod 774 tenants 
-sudo chmod 774 import 
-sudo chmod 774 updatecheck 
-sudo chmod 774 *.sh 
+sudo chmod 774 controller
+sudo chmod 774 tenants
+sudo chmod 774 import
+sudo chmod 774 updatecheck
+sudo chmod 774 *.sh
 sudo chmod 774 setup/*.sh
 sudo cp /etc/php/5.6/apache2/php.ini /tmp/php.ini && sudo chown ${USER}:${USER} /tmp/php.ini
 echo '^M' >> /tmp/php.ini
@@ -8654,7 +8654,7 @@ APP_GUI_NAME="Cross-platform shell and scripting environment."
 APP_VERSION=7.1.0
 APP_EXT=deb
 source /etc/lsb-release
-# PowerShell is only supported on LTS releases 
+# PowerShell is only supported on LTS releases
 if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|xe)$ ]]; then
 	curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}-1.ubuntu.${DISTRIB_RELEASE}_amd64.${APP_EXT}
 	sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -9111,7 +9111,7 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 perl set.pl "debian" && autoreconf --install --force
-./configure --prefix=$HOME/.cache --without-x11 --without-colours && make && 
+./configure --prefix=$HOME/.cache --without-x11 --without-colours && make &&
 make install && mkdir -p $HOME/.pinky
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
@@ -9810,11 +9810,11 @@ rm -rf /tmp/${FILE_NAME}*
 # Build instructions based on http://jes.st/2015/compiling-playing-nethack-360-on-ubuntu/
 APP_NAME=Nethack
 APP_GUI_NAME="Text-based RPG."
-APP_VERSION=3.6.2
+APP_VERSION=3.6.6
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION//./}-src
 sudo apt-get install -y flex bison build-essential libncurses5-dev checkinstall
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://nethack.org/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
@@ -10472,7 +10472,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Battle for Wesnoth high-fantasy themed adventure game from source
 APP_NAME=Wesnoth
 APP_GUI_NAME="High-fantasy themed adventure game."
-APP_VERSION=1.15.6
+APP_VERSION=1.15.8
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
@@ -11279,7 +11279,7 @@ APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo add-apt-repository -y ppa:cdemu/ppa
 sudo apt-get update
-sudo apt-get install -y gcdemu cdemu-daemon cdemu-client 
+sudo apt-get install -y gcdemu cdemu-daemon cdemu-client
 
 # Install Fresh Memory cross-platform flash card learning tool with Spaced Repetition method from Debian package
 # http://fresh-memory.com/
@@ -11759,7 +11759,7 @@ APP_GUI_NAME="Java Swing-based GUI for PGP encrypting/signing."
 APP_VERSION=N/A
 APP_EXT=jar
 FILE_NAME=${APP_NAME}
-sudo apt-get install -y libbcprov-java libbcpg-java 
+sudo apt-get install -y libbcprov-java libbcpg-java
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/my-pgp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
@@ -11911,7 +11911,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install eLogSim digital circuit simulator from package
 APP_NAME=eLogSim
 APP_GUI_NAME="Digital circuit simulator."
-APP_VERSION=3.0.2
+APP_VERSION=3.0.3
 APP_EXT=zip
 FILE_NAME=My${APP_NAME}_${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -14855,7 +14855,7 @@ sudo apt-get install -y cmake
 cd /tmp
 git clone --recursive https://github.com/antonvw/wxExtension.git
 cd wxExtension
-mkdir build && cd build   
+mkdir build && cd build
 cmake .. && make && sudo make install
 
 # Install Namely Java/JavaFX-based multi-file renamer from package
@@ -14964,7 +14964,7 @@ APP_GUI_NAME="3D graphing calculator."
 APP_VERSION=2.1.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME}_${APP_VERSION}_tar_RHFC27
-sudo apt-get install -y libjpeg62 
+sudo apt-get install -y libjpeg62
 sudo ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.1
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
@@ -15004,7 +15004,7 @@ APP_GUI_NAME="Minimalist GUI file manager."
 APP_VERSION=2.7.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME//-/_}_${APP_VERSION}_tar_RHFC27
-sudo apt-get install -y libjpeg62 
+sudo apt-get install -y libjpeg62
 sudo ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.1
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/nps-systemg/${FILE_NAME}.${APP_EXT}
 cd /tmp
@@ -15214,7 +15214,7 @@ source /etc/lsb-release
 # If Ubuntu version is above 16.04 (Xenial), then we use 16.04.
 if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar)$ ]]; then
 	DISTRIB_RELEASE=16.04
-else 
+else
     DISTRIB_RELEASE=18.04
 fi
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_ubuntu${DISTRIB_RELEASE}.${KERNEL_TYPE}
@@ -15745,7 +15745,7 @@ source /etc/lsb-release
 # If Ubuntu version is above 16.04 (Xenial), then we use 16.04.
 if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar|bi|co)$ ]]; then
 	DISTRIB_CODENAME=xenial
-else 
+else
     DISTRIB_CODENAME=trusty
 fi
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
@@ -15870,7 +15870,7 @@ APP_EXT=N/A
 FILE_NAME=N/A
 sudo wget -qO - https://apt.emilengler.com/signkey.asc | sudo apt-key add
 echo "deb [arch=all] https://apt.emilengler.com/ stable main" | sudo tee /etc/apt/sources.list.d/emilengler.list
-sudo apt update 
+sudo apt update
 sudo apt install -y sysget
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
@@ -15884,7 +15884,7 @@ source /etc/lsb-release
 # If Ubuntu version is above 16.04 (Xenial), then we use 16.04.
 if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ar|bi|co)$ ]]; then
 	DISTRIB_CODENAME=artful
-else 
+else
     DISTRIB_CODENAME=zesty
 fi
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-0ubuntu1~0ppa1~${DISTRIB_CODENAME}_${KERNEL_TYPE}
@@ -16508,7 +16508,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
 APP_NAME=TkCVS
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.3.2
+APP_VERSION=9.3.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
@@ -16596,7 +16596,7 @@ cd $HOME
 rm -rf /tmp/*${APP_NAME// /}*
 
 # Install Nuclear cross-platform Electron-based desktop music player focused on streaming from free sources from Debian package
-APP_NAME=Nuclear 
+APP_NAME=Nuclear
 APP_GUI_NAME="Cross-platform Electron-based desktop music player focused on streaming from free sources."
 APP_VERSION=0.4.3
 APP_EXT=deb
@@ -16648,7 +16648,7 @@ APP_GUI_NAME="Ncurses file manager with Vim keybindings."
 APP_VERSION=N/A
 APP_EXT=N/A
 FILE_NAME=N/A
-sudo apt-get install -y libncurses5-dev cmake 
+sudo apt-get install -y libncurses5-dev cmake
 cd /tmp
 git clone https://github.com/mananapr/${APP_NAME,,}
 cd /tmp/${APP_NAME,,}
@@ -16669,7 +16669,7 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install OmniDB Django/Python-based web database administration tool from Debian package
-APP_NAME=OmniDB 
+APP_NAME=OmniDB
 APP_GUI_NAME="Django/Python-based web database administration tool."
 APP_VERSION=2.17.0
 APP_EXT=deb
@@ -16743,7 +16743,7 @@ sudo apt-get install -y mono-devel monodevelop
 cd /tmp
 cat > /tmp/hello_mono.cs << EOF
 using System;
- 
+
 public class HelloWorld
 {
     static public void Main ()
@@ -16915,7 +16915,7 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 
 # Install fnm (Fast Node Manager) Node.js package version manager from package
-APP_NAME=fnm 
+APP_NAME=fnm
 APP_GUI_NAME="Node.js package version manager."
 APP_VERSION=1.0.0
 APP_EXT=zip
@@ -16967,7 +16967,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install QFutureBuilder Qt-based desktop goal tracker from Debian package	
+# Install QFutureBuilder Qt-based desktop goal tracker from Debian package
 APP_NAME=QFutureBuilder
 APP_GUI_NAME="Qt-based desktop goal tracker"
 APP_VERSION=N/A
@@ -17322,7 +17322,7 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/l${
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
-mkdir -p build && cd build 
+mkdir -p build && cd build
 cmake -DCMAKE_BUILD_TYPE=release .. && make clean all && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
@@ -17393,7 +17393,7 @@ APP_VERSION=19.03a
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	sudo dpkg --add-architecture i386  # Add libraries for 32-bit architecture
-	sudo apt-get update -y 
+	sudo apt-get update -y
 	sudo apt-get dist-upgrade -y
 	sudo apt-get install -y libcairo2:i386 libgl1-mesa-glx:i386
 else    # Otherwise use version for 32-bit kernel
@@ -24307,7 +24307,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Glances cross-platform console system monitoring tool from package
 APP_NAME=Glances
 APP_GUI_NAME="Cross-platform console system monitoring tool."
-APP_VERSION=3.1.4
+APP_VERSION=3.1.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nicolargo/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
@@ -24530,7 +24530,7 @@ APP_GUI_NAME="Python-based hierarchical notepad."
 APP_VERSION=3.1.9
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}2-${APP_VERSION}
-sudo apt-get install -y libgtksourceview-3.0-dev 
+sudo apt-get install -y libgtksourceview-3.0-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
