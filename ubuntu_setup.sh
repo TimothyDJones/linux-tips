@@ -26504,3 +26504,14 @@ cd /tmp/${FILE_NAME}
 ./autogen.sh && ./configure && make prefix=/usr/local && sudo make install prefix=/usr/local
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Ferdi cross-platform, Electron-based messaging application integration utility from Debian package
+# https://getferdi.com/
+APP_NAME=Ferdi
+APP_VERSION=5.5.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
