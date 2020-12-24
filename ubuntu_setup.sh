@@ -176,7 +176,7 @@ curl -o /tmp/ttf-iosevka-3.0.1.zip -J -L https://github.com/be5invis/Iosevka/rel
 cd /tmp
 dtrx -n /tmp/ttf-iosevka-3.0.1.zip
 sudo cp -R /tmp/ttf-iosevka-3.0.1/* /usr/local/share/fonts
-curl -o /tmp/ttf-iosevka-3.0.1.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2009.22.zip
+curl -o /tmp/CascadiaCode-2009.22.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2009.22.zip
 cd /tmp
 dtrx -n /tmp/CascadiaCode-2009.22.zip
 sudo cp -R /tmp/CascadiaCode-2009.22/ttf/* /usr/local/share/fonts
