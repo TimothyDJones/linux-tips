@@ -26572,3 +26572,17 @@ rm -rf /tmp/${APP_NAME,,}*
 sudo add-apt-repository ppa:yannubuntu/boot-repair
 sudo apt-get update
 sudo apt-get install -y boot-repair
+
+# Install Terminus monospace font with large character set from source
+APP_NAME=Terminus-Font
+APP_GUI_NAME="Monospace font with large character set."
+APP_VERSION=4.49.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure --prefix=/usr/local && make -j8 && sudo make install fontdir
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
