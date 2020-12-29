@@ -229,3 +229,15 @@ That's it! Now you can transparently work with your S3 buckets just like they ar
 
 [Reference1](https://sysadminxpert.com/how-to-mount-s3-bucket-on-linux-instance/)  
 [Reference2](https://winscp.net/eng/docs/guide_amazon_s3_sftp#mounting)
+
+## Fix HP Pavilion Laptop lockup/freeze problem on idle/inactivity in Linux
+Some HP Pavilion laptops experience problems with freezing after inactivity timeouts or other idle conditions. To prevent such problems, some or all of the following items can help prevent such problems.
+
+- Disable power saving features.
+- Disable screensaver and screen lock features.
+- Add [kernel boot parameters](https://wiki.ubuntu.com/Kernel/KernelBootParameters) to GRUB boot menu options.
+	- `noapic` - Disable APIC (Advanced Programmable Interrupt Controller) support.
+	- `idle=nomwait` - Disable "mwait" for CPU idle state.
+	
+
+[Reference1](https://stackoverflow.com/questions/53001737/what-do-boot-option-noapic-and-noacpi-actually-do)
