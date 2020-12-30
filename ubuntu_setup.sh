@@ -19213,20 +19213,23 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Must install Mono binaries (see above) before installing VCT.
 APP_NAME=VCT
 APP_GUI_NAME=".NET-based cross-platform GUI front-end for ffmpeg."
-APP_VERSION=N/A
+APP_VERSION=1.9.5.7
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_Linux_mono_binary
+sudo apt-get install -y mono-complete ffmpeg
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/videoconvertertranscoder/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -R /tmp/${FILE_NAME}/VCT_mono/* /opt/${APP_NAME,,}
-sudo chmod 777 -R /opt/${APP_NAME,,}
+sudo chmod 775 -R /opt/${APP_NAME,,}
+sudo cp /tmp/${FILE_NAME}/VCT_mono/*.ttf /usr/local/share/fonts
+sudo fc-cache -f -v
 cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
 PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-/opt/${APP_NAME,,}/${APP_NAME}.exe
+mono /opt/${APP_NAME,,}/${APP_NAME}.exe "$@"
 cd $HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
@@ -19237,7 +19240,7 @@ Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/${APP_NAME}.exe
+Exec=/usr/local/bin/${APP_NAME,,}
 #Icon=
 Type=Application
 StartupNotify=true
