@@ -16505,14 +16505,14 @@ cd /tmp/${FILE_NAME}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install TkCVS cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git
-APP_NAME=TkCVS
+# Install TkRev cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git from package
+APP_NAME=TkRev
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.3.3
+APP_VERSION=9.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/tkcvs/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
