@@ -26590,3 +26590,33 @@ cd /tmp/${FILE_NAME}
 ./configure --prefix=/usr/local && make -j8 && sudo make install fontdir
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Code Browser cross-platform code-folding text editor from package
+APP_NAME=Code-Browser
+APP_GUI_NAME="Cross-platform code-folding text editor."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Editor;Text"
+APP_VERSION=7.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64-qt
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://tibleiz.net/download/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/* /
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/hicolor/48x48/apps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
