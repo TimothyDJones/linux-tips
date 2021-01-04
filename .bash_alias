@@ -95,3 +95,8 @@ alias gitlog='git log --all --decorate --graph --oneline'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 # Undo last commit, but don't throw away your changes.
 alias git-undo="git reset --soft HEAD^"
+
+# Run Docker GUI application in container.
+# Specify the Docker container name on command line.
+# Ensure that 'xhost' has been run prior to enable permissions to X11 display.
+alias d-run="docker run --rm -it --net=host --cpuset-cpus 0 --memory 512mb -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY "
