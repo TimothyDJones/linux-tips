@@ -2287,7 +2287,7 @@ sudo mv /tmp/${APP_NAME} /usr/local/bin
 
 # Install Freeplane mind-mapping tool from Debian package
 APP_NAME=Freeplane
-APP_VERSION=1.8.10
+APP_VERSION=1.8.11
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}~upstream-1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -26620,3 +26620,8 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Boot Repair from PPA
+sudo add-apt-repository -y ppa:yann1ck/onedrive
+sudo apt-get update
+sudo apt-get install -y onedrive
