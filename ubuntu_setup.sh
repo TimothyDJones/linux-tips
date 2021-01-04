@@ -488,7 +488,11 @@ APP_NAME=DBeaver
 APP_VERSION=7.3.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
-sudo apt-get install -y libmysql-java   # Install MySQL JDBC driver
+# Install MySQL JDBC drivers from PPA
+curl -o /tmp/mysql-apt-config.deb -J -L https://repo.mysql.com//mysql-apt-config_0.8.16-1_all.deb
+sudo gdebi -n /tmp/mysql-apt-config.deb
+sudo apt-get update
+sudo apt-get install -y mysql-connector-java   # Install MySQL JDBC driver
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
 cd $HOME
