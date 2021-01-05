@@ -26287,7 +26287,7 @@ APP_NAME=PiNote
 APP_GUI_NAME="Cross-platform minimalist text editor."
 APP_GUI_CATEGORIES="Development;Programming;Accessories;"
 APP_GUI_KEYWORDS="Text;Editor;"
-APP_VERSION=1.2
+APP_VERSION=1.3
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
