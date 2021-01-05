@@ -26697,3 +26697,34 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Boop-GTK cross-platform scriptable scratchpad for developers from package
+APP_NAME=Boop-GTK
+APP_GUI_NAME="Cross-platform scriptable scratchpad for developers."
+APP_GUI_CATEGORIES="Development;Programming;Accessories;"
+APP_GUI_KEYWORDS="Notepad;Editor;"
+APP_VERSION=1.6.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}.linux.amd64
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/zoeyfyi/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/zoeyfyi/Boop-GTK/trunk/data/fyi.zoey.Boop-GTK.svg
+sudo cp /tmp/${APP_NAME,,}.svg /usr/share/pixmaps/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/share/pixmaps/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
