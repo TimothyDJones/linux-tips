@@ -24505,7 +24505,7 @@ APP_NAME=PHPShell
 APP_GUI_NAME="Pure PHP remote shell in the browser."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Shell;"
-APP_VERSION=2.5
+APP_VERSION=2.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
