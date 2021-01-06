@@ -20691,14 +20691,17 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install jdTextEdit Python text editor based on Qt and Scintilla from package
 APP_NAME=jdTextEdit
 APP_GUI_NAME="Python text editor based on Qt and Scintilla."
-APP_VERSION=4.0
+APP_VERSION=8.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}-Python
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
-sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/* /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cd /opt/${APP_NAME,,}
+sudo chown -R ${USER}:${USER} /opt/${APP_NAME,,}
+python3 -m venv /opt/${APP_NAME,,}/.venv
 pip3 install -r /opt/${APP_NAME,,}/requirements.txt
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME}.py /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
