@@ -4724,7 +4724,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install SimulIDE electronic circuit simulator
 APP_NAME=SimulIDE
-APP_VERSION=0.4.13-SR5
+APP_VERSION=0.4.14-SR4
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=Lin64
@@ -4733,7 +4733,7 @@ else    # Otherwise use version for 32-bit kernel
 fi
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${ARCH_TYPE}
 sudo apt-get install -y libqt5serialport5
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://mailfence.com/pub/docs/santigoro/web/${APP_NAME}_${APP_VERSION//-SR5/}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://mailfence.com/pub/docs/santigoro/web/${APP_NAME}_${APP_VERSION//-SR4/}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
