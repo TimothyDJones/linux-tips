@@ -26816,3 +26816,10 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wabarc/${APP_NAME,
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install PEDA cross-platform electronic design automation tool from PPA
+# https://sourceforge.net/p/peda/wiki/Home/
+sudo apt-add-repository -y ppa:ppisa/peda
+sudo apt-get update
+sudo apt-get install -y peda
+sudo apt-get autoremove -y -f
