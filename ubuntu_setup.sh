@@ -26823,3 +26823,9 @@ sudo apt-add-repository -y ppa:ppisa/peda
 sudo apt-get update
 sudo apt-get install -y peda
 sudo apt-get autoremove -y -f
+
+# Add XtraDeb PPAs for some popular applications and games that aren't available
+# via standard PPAs, such as Calibre, ScummVM, FileZilla, PyCharm CE, and YouTube-DL.
+# https://launchpad.net/xtradeb
+sudo apt-add-repository -y ppa:xtradeb/apps
+sudo apt-add-repository -y ppa:xtradeb/play
