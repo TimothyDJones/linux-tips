@@ -1271,16 +1271,16 @@ APP_GUI_NAME="Cross-platform Qt-based RSS reader."
 APP_VERSION=N/A
 APP_EXT=deb
 source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo|fo)$ ]]; then  # 19.10, 20.04
-	APP_VERSION=0.19.2-0ubuntu1~eoan
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo|fo|go)$ ]]; then  # 19.10, 20.04, 20.10
+	APP_VERSION=0.19.4-0ubuntu1~eoan
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di)$ ]]; then  # 19.04
-	APP_VERSION=0.19.2-0ubuntu1~disco
+	APP_VERSION=0.19.4-0ubuntu1~disco
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co)$ ]]; then  # 18.04, 18.10
-	APP_VERSION=0.19.2-0ubuntu1~bionic
+	APP_VERSION=0.19.4-0ubuntu1~bionic
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ar)$ ]]; then  # 17.10
 	APP_VERSION=0.18.12-0ubuntu1~artful
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe)$ ]]; then  # 17.10
-	APP_VERSION=0.19.2-0ubuntu1~xenial
+	APP_VERSION=0.19.4-0ubuntu1~xenial
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi|ya|ze)$ ]]; then  # 14.04 - 17.04
 	APP_VERSION=0.18.12-0ubuntu1~trusty
 fi
