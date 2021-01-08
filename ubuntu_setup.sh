@@ -12174,12 +12174,13 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=WordTsar
 APP_GUI_NAME="GTK-based WordStar text editor clone."
 APP_VERSION=0.3.136
-APP_EXT=zip
-FILE_NAME=${APP_NAME}-Linux-${APP_VERSION}
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-x86_64.AppImage
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mv /tmp/${FILE_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+sudo mv /tmp/${FILE_NAME} /usr/local/bin
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
