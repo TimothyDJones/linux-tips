@@ -26830,3 +26830,19 @@ sudo apt-get autoremove -y -f
 # https://launchpad.net/xtradeb
 sudo apt-add-repository -y ppa:xtradeb/apps
 sudo apt-add-repository -y ppa:xtradeb/play
+
+# Install Sakura GTK/VTE terminal from source
+APP_NAME=Sakura
+APP_GUI_NAME="GTK/VTE terminal."
+APP_VERSION=3.7.1
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y cmake libvte-2.91-dev libgtk-3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/${APP_NAME,,}/trunk/${APP_VERSION}/+download/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+cmake .. && make -j8 && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
