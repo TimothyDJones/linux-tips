@@ -26847,3 +26847,23 @@ mkdir build && cd build
 cmake .. && make -j8 && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+
+# Install MarkMyWords minimalist Markdown editor from Debian package
+# https://github.com/voldyman/MarkMyWords
+APP_NAME=MarkMyWords
+APP_VERSION=N/A
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo|fo|go)$ ]]; then  # 19.10, 20.04, 20.10
+	APP_VERSION=0.1-0~170~ubuntu19.10.1
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di)$ ]]; then  # 18.04 - 19.10
+	APP_VERSION=0.1-0~170~ubuntu18.04.1
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04 - 17.10
+	APP_VERSION=0.1-0~170~ubuntu16.04.1
+fi
+FILE_NAME=com.github.voldyman.${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~voldyman/+archive/ubuntu/${APP_NAME,,}/+files/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
