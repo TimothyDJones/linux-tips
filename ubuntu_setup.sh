@@ -3319,7 +3319,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PlantUML Java-based UML modeling tool from package
 APP_NAME=PlantUML
 APP_GUI_NAME="Java-based UML modeling tool"
-APP_VERSION=1.2020.26
+APP_VERSION=1.2021.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -24022,7 +24022,7 @@ APP_NAME=DailyDesktopWallpaperPlus
 APP_GUI_NAME="Utility to set Bing or Windows Spotlight daily photo as wallpaper."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Wallpaper;"
-APP_VERSION=2.2
+APP_VERSION=3.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-v${APP_VERSION}-x86_64-linux-build
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
