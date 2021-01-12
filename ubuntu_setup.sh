@@ -5265,7 +5265,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install EJE (Everyone's Java Editor) minimalist Java IDE
 APP_NAME=EJE
 APP_GUI_NAME="EJE (Everyone's Java Editor)"
-APP_VERSION=4.0
+APP_VERSION=4.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
