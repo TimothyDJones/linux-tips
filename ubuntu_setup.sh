@@ -26920,3 +26920,38 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/tag
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Hearts Qt5-based traditional card game from source
+APP_NAME=Hearts
+APP_GUI_NAME="Qt5-based traditional card game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Cards;Hearts;"
+APP_VERSION=1.6
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y build-essential qt5-default libqt5svg5-dev liballegro5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Rescator7/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 ../Hearts.pro && make -j8
+sudo cp /tmp/${FILE_NAME}/build/${APP_NAME} /usr/local/bin
+sudo cp /tmp/${FILE_NAME}/icons/heart.png /usr/local/share/icons
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME}
+Icon=/usr/local/share/icons/heart.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
