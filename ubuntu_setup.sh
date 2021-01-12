@@ -26905,3 +26905,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Supertag tag-based file system utility built with Rust from AppImage
+APP_NAME=Supertag
+APP_GUI_NAME="Tag-based file system utility built with Rust."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Tag;File;Utility;"
+APP_VERSION=0.1.4
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/amoffat/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/tag
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
