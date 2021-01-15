@@ -8657,11 +8657,11 @@ rm -rf /tmp/${APP_NAME,,}
 # https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
 APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
-APP_VERSION=7.1.0
+APP_VERSION=7.1.1
 APP_EXT=deb
 source /etc/lsb-release
 # PowerShell is only supported on LTS releases
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|xe)$ ]]; then
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo|bi|xe)$ ]]; then
 	curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}-1.ubuntu.${DISTRIB_RELEASE}_amd64.${APP_EXT}
 	sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 else
