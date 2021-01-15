@@ -11681,13 +11681,13 @@ APP_GUI_NAME="Cross-platform console-mode gopher client."
 APP_VERSION=1.2.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y libsdl2-dev
+sudo apt-get install -y libsdl2-dev libncurses-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 cp ./Makefile.lin ./Makefile
-make
+make -j8
 # No 'make install' target, so copy files manually.
 sudo cp ./${APP_NAME,,} /usr/local/bin
 cd $HOME
