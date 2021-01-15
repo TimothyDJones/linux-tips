@@ -19440,7 +19440,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Milkman cross-platform JavaFX-based REST API client from package
 APP_NAME=Milkman
 APP_GUI_NAME="Cross-platform JavaFX-based REST API client."
-APP_VERSION=4.0.0
+APP_VERSION=5.0.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-dist-linux64-bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/warmuuh/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -19448,7 +19448,7 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
-sudo chmod -R 777 /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,}.sh /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${FILE_NAME,,}.desktop << EOF
 [Desktop Entry]
