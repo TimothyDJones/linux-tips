@@ -27009,3 +27009,18 @@ cd /tmp/${FILE_NAME}
 make -j8 && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install cgo terminal Gopher client from source
+APP_NAME=cgo
+APP_GUI_NAME="Terminal Gopher client."
+APP_VERSION=v0.6.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kieselsteini/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}*
+make -j8 && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
