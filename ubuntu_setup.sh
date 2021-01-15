@@ -27024,3 +27024,16 @@ cd /tmp/${FILE_NAME}/${APP_NAME,,}*
 make -j8 && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install phetch Rust-based command-line Gopher client from package
+APP_NAME=phetch
+APP_VERSION=1.1.0
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xvxx/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/local/man/man1
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
