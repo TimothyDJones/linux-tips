@@ -27049,3 +27049,13 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Kinx minimalist OOP scripting language with C-style syntax and built-in REPL from Debian package
+APP_NAME=Kinx
+APP_VERSION=0.18.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-0_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Kray-G/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
