@@ -531,7 +531,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.121.0.0
+APP_VERSION=1.122.0.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -1008,7 +1008,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=10.3
+APP_VERSION=10.3.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -26991,6 +26991,17 @@ APP_VERSION=0.10.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/FreeTubeApp/${APP_NAME,,}/releases/download/v${APP_VERSION}-beta/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Rotki Electron-based cryptocurrency portfolio tracking tool from Debian package
+# https://rotki.com/
+APP_NAME=Rotki
+APP_VERSION=1.12.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-linux_${KERNEL_TYPE}-v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
