@@ -27070,3 +27070,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Kray-G/${APP_NAME,
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install pev cross-platform PE (Portable Executable) binary analysis toolkit from source
+APP_NAME=pev
+APP_GUI_NAME="Cross-platform PE (Portable Executable) binary analysis toolkit."
+APP_VERSION=0.81
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libssl-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${FILE_NAME}
+make -j8 && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
