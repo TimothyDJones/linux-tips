@@ -11678,16 +11678,16 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install Gopherus cross-platform console-mode gopher client from source
 APP_NAME=Gopherus
 APP_GUI_NAME="Cross-platform console-mode gopher client."
-APP_VERSION=1.1
+APP_VERSION=1.2.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y libsdl2-dev
+sudo apt-get install -y libsdl2-dev libncurses-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 cp ./Makefile.lin ./Makefile
-make
+make -j8
 # No 'make install' target, so copy files manually.
 sudo cp ./${APP_NAME,,} /usr/local/bin
 cd $HOME
@@ -19440,7 +19440,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Milkman cross-platform JavaFX-based REST API client from package
 APP_NAME=Milkman
 APP_GUI_NAME="Cross-platform JavaFX-based REST API client."
-APP_VERSION=4.0.0
+APP_VERSION=5.0.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-dist-linux64-bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/warmuuh/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -19448,7 +19448,7 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
-sudo chmod -R 777 /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,}.sh /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${FILE_NAME,,}.desktop << EOF
 [Desktop Entry]
@@ -27020,3 +27020,53 @@ cd /tmp/${FILE_NAME}
 make -j8 && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install cgo terminal Gopher client from source
+APP_NAME=cgo
+APP_GUI_NAME="Terminal Gopher client."
+APP_VERSION=v0.6.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kieselsteini/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}*
+make -j8 && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install phetch Rust-based command-line Gopher client from package
+APP_NAME=phetch
+APP_VERSION=1.1.0
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xvxx/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/local/man/man1
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install nodebook Golang-based multi-language web REPL built on Docker from package
+APP_NAME=nodebook
+APP_VERSION=0.2.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/netgusto/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Kinx minimalist OOP scripting language with C-style syntax and built-in REPL from Debian package
+APP_NAME=Kinx
+APP_VERSION=0.18.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-0_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Kray-G/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
