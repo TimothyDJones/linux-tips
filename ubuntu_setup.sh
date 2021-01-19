@@ -27085,3 +27085,15 @@ cd /tmp/${FILE_NAME}/${FILE_NAME}
 make -j8 && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install wuzz Golang-based cross-platform command-line interactive HTTP inspection tool from package
+APP_NAME=wuzz
+APP_VERSION=0.5.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}_linux_${KERNEL_TYPE//i/}
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
