@@ -27129,3 +27129,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Programmer Calculator simple full-screen ncurses programmer's calculator from source
+APP_NAME=Programmer-Calculator
+APP_GUI_NAME="Simple full-screen ncurses programmer's calculator."
+APP_VERSION=1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/alt-romes/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+gcc main.c -Wall -o pcalc -lncurses && sudo cp pcalc /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
