@@ -25160,9 +25160,9 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install OpenXP console e-mail client and NNTP news reader tool from package
 APP_NAME=OpenXP
 APP_GUI_NAME="Console e-mail client and NNTP news reader tool."
-APP_VERSION=5.0.46-1
+APP_VERSION=5.0.48
 APP_EXT=zip
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}.x86_64-lnx
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-1.x86_64-lnx
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}5/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
