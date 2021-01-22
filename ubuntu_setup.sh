@@ -4770,7 +4770,7 @@ APP_VERSION=5.5
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y libncurses5-dev libncursesw5-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://nano-editor.org/dist/v4/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://nano-editor.org/dist/v5/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
