@@ -23541,7 +23541,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Hearts Qt-based networked card game from source
 APP_NAME=Hearts
 APP_GUI_NAME="Qt-based networked card game."
-APP_VERSION=1.5.2b
+APP_VERSION=1.8.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential qt5-default qttools5-dev-tools liballegro5-dev
