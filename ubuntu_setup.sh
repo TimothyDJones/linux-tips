@@ -26690,7 +26690,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install PropU command-line utility to display detailed information about files, directories, and links from Debian package
 APP_NAME=PropU
-APP_VERSION=1.1
+APP_VERSION=1.2
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
