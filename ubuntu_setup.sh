@@ -27114,3 +27114,20 @@ cd /tmp/${FILE_NAME}
 gcc main.c -Wall -o pcalc -lncurses && sudo cp pcalc /usr/local/bin
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install cmdcalc simple command-line calculator with support for variables and arrays from package
+APP_NAME=cmdcalc
+APP_GUI_NAME="Simple command-line calculator with support for variables and arrays."
+APP_VERSION=2.3
+APP_EXT=N/A
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux32
+fi
+FILE_NAME=${APP_NAME,,}2-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/Benni3D/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
