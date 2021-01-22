@@ -23538,40 +23538,6 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Hearts Qt-based networked card game from source
-APP_NAME=Hearts
-APP_GUI_NAME="Qt-based networked card game."
-APP_VERSION=1.8.5
-APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y build-essential qt5-default qttools5-dev-tools liballegro5-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Rescator7/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}
-mkdir build && cd build
-qtchooser -run-tool=qmake -qt=5 ../${APP_NAME}.pro && make
-sudo mv /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/build/${APP_NAME} /usr/local/bin
-sudo ln -s -f /usr/local/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
-sudo cp /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/SVG-cards/Default/back.png /usr/share/pixmaps/${APP_NAME,,}.png
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=
-Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/share/pixmaps/${APP_NAME,,}.png
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Games;Entertainment;
-Keywords=Cards;Hearts;
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-cd $HOME
-rm -rf /tmp/${APP_NAME}*
-
 # Install Qt JSON diff GUI JSON viewer/comparer from source
 APP_NAME=QTjsonDiff
 APP_VERSION=0.33b
@@ -26930,7 +26896,7 @@ APP_NAME=Hearts
 APP_GUI_NAME="Qt5-based traditional card game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Cards;Hearts;"
-APP_VERSION=1.6
+APP_VERSION=1.8.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y build-essential qt5-default libqt5svg5-dev liballegro5-dev
