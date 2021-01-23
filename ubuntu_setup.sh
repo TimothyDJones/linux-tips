@@ -484,7 +484,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=7.3.2
+APP_VERSION=7.3.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -531,7 +531,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.122.0.4
+APP_VERSION=1.122.1.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -853,7 +853,7 @@ rm -rf /tmp/wp-34s-emulator*
 
 # Install YouTube-DL-PyTK GUI front-end for youtube-dl video downloader from Debian package
 APP_NAME=YouTube-DL-PyTK
-APP_VERSION=20.11.14
+APP_VERSION=21.1.21
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/youtube-dl-gtk/${FILE_NAME}.${APP_EXT}
@@ -1742,7 +1742,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Brave web browser (release channel) from Debian package
 APP_NAME=Brave-Browser
-APP_VERSION=1.19.83
+APP_VERSION=1.19.86
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -2499,7 +2499,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.210
+APP_VERSION=6.4.213
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -5087,7 +5087,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Thonny minimalist Python IDE/editor for beginners from package
 APP_NAME=Thonny
-APP_VERSION=3.2.5
+APP_VERSION=3.3.3
 APP_GUI_NAME="Minimalist Python IDE/editor for beginners."
 APP_EXT=tar.gz
 if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
@@ -8065,7 +8065,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Standard Notes Electron-based secure notepad from App Image
 APP_NAME=Standard-Notes
 APP_GUI_NAME="Electron-based secure notepad."
-APP_VERSION=3.5.14
+APP_VERSION=3.5.15
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=i386
@@ -8657,11 +8657,11 @@ rm -rf /tmp/${APP_NAME,,}
 # https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
 APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
-APP_VERSION=7.1.0
+APP_VERSION=7.1.1
 APP_EXT=deb
 source /etc/lsb-release
 # PowerShell is only supported on LTS releases
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|xe)$ ]]; then
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo|bi|xe)$ ]]; then
 	curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}-1.ubuntu.${DISTRIB_RELEASE}_amd64.${APP_EXT}
 	sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 else
@@ -9568,7 +9568,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Balena Etcher cross-platform Electron-based tool to copy OS images to USB drives from Debian package
 APP_NAME=Balena-Etcher
 APP_GUI_NAME="Cross-platform Electron-based tool to copy OS images to USB drives."
-APP_VERSION=1.5.110
+APP_VERSION=1.5.115
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-electron_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/balena-io/etcher/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -11678,16 +11678,16 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install Gopherus cross-platform console-mode gopher client from source
 APP_NAME=Gopherus
 APP_GUI_NAME="Cross-platform console-mode gopher client."
-APP_VERSION=1.1
+APP_VERSION=1.2.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y libsdl2-dev
+sudo apt-get install -y libsdl2-dev libncurses-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 cp ./Makefile.lin ./Makefile
-make
+make -j8
 # No 'make install' target, so copy files manually.
 sudo cp ./${APP_NAME,,} /usr/local/bin
 cd $HOME
@@ -13356,7 +13356,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install qBittorrent Qt-based Bittorrent client from source
 APP_NAME=qBittorrent
 APP_GUI_NAME="Qt-based Bittorrent client."
-APP_VERSION=4.3.1
+APP_VERSION=4.3.3
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y ${APP_NAME,,}
@@ -14325,9 +14325,9 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Password Keeper-Generator (PKG) Java-based password generator and manager from package
 APP_NAME=PKG
 APP_GUI_NAME="Java-based password generator and manager."
-APP_VERSION=18-09-18
+APP_VERSION=1.0.6
 APP_EXT=zip
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_bin
+FILE_NAME=${APP_NAME,,}_v.${APP_VERSION}_bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/j-${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -14407,7 +14407,7 @@ APP_NAME=Videomass
 APP_GUI_NAME="GUI front-end for FFmpeg."
 APP_GUI_CATEGORIES="Multimedia;Accessories;"
 APP_GUI_KEYWORDS="FFmpeg;Video;Audio;Converter;"
-APP_VERSION=3.3.0
+APP_VERSION=3.3.6
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}2/${FILE_NAME}.${APP_EXT}
@@ -19440,7 +19440,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Milkman cross-platform JavaFX-based REST API client from package
 APP_NAME=Milkman
 APP_GUI_NAME="Cross-platform JavaFX-based REST API client."
-APP_VERSION=4.0.0
+APP_VERSION=5.0.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-dist-linux64-bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/warmuuh/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -19448,7 +19448,7 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
-sudo chmod -R 777 /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,}.sh /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${FILE_NAME,,}.desktop << EOF
 [Desktop Entry]
@@ -23958,7 +23958,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=7.7.8
+APP_VERSION=7.7.18
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -25160,9 +25160,9 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install OpenXP console e-mail client and NNTP news reader tool from package
 APP_NAME=OpenXP
 APP_GUI_NAME="Console e-mail client and NNTP news reader tool."
-APP_VERSION=5.0.46-1
+APP_VERSION=5.0.48
 APP_EXT=zip
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}.x86_64-lnx
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-1.x86_64-lnx
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}5/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -27005,3 +27005,142 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Motsognir minimalist Gopher server from source
+APP_NAME=Motsognir
+APP_GUI_NAME="Minimalist Gopher server."
+APP_VERSION=1.0.13
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make -j8 && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install cgo terminal Gopher client from source
+APP_NAME=cgo
+APP_GUI_NAME="Terminal Gopher client."
+APP_VERSION=v0.6.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kieselsteini/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}*
+make -j8 && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install phetch Rust-based command-line Gopher client from package
+APP_NAME=phetch
+APP_VERSION=1.1.0
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xvxx/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/local/man/man1
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install nodebook Golang-based multi-language web REPL built on Docker from package
+APP_NAME=nodebook
+APP_VERSION=0.2.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/netgusto/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Kinx minimalist OOP scripting language with C-style syntax and built-in REPL from Debian package
+APP_NAME=Kinx
+APP_VERSION=0.18.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-0_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Kray-G/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install pev cross-platform PE (Portable Executable) binary analysis toolkit from source
+APP_NAME=pev
+APP_GUI_NAME="Cross-platform PE (Portable Executable) binary analysis toolkit."
+APP_VERSION=0.81
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libssl-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${FILE_NAME}
+make -j8 && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install wuzz Golang-based cross-platform command-line interactive HTTP inspection tool from package
+APP_NAME=wuzz
+APP_VERSION=0.5.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}_linux_${KERNEL_TYPE//i/}
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install jShellLab MATLAB-like scientific programming environment using Java JShell from package
+APP_NAME=jShellLab
+APP_GUI_NAME="MATLAB-like scientific programming environment using Java JShell."
+APP_GUI_CATEGORIES="Development;Programming;Education"
+APP_GUI_KEYWORDS="Editor;IDE;Java;"
+APP_VERSION=N/A
+APP_EXT=zip
+FILE_NAME=${APP_NAME//j/J}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${FILE_NAME}*/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME}.sh /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
+
+# Install Programmer Calculator simple full-screen ncurses programmer's calculator from source
+APP_NAME=Programmer-Calculator
+APP_GUI_NAME="Simple full-screen ncurses programmer's calculator."
+APP_VERSION=1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/alt-romes/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+gcc main.c -Wall -o pcalc -lncurses && sudo cp pcalc /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
