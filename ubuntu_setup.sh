@@ -27156,3 +27156,35 @@ cd /tmp/${FILE_NAME}
 sudo python3 setup.py install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Screen Translator cross-platform screen capture, OCR, and translation tool from AppImage
+APP_NAME=ScreenTranslator
+APP_GUI_NAME="Cross-platform screen capture, OCR, and translation tool."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="Graphics;OCR;Translation;"
+APP_VERSION=3.1.1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/OneMoreGres/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.ico -J -L https://raw.githubusercontent.com/OneMoreGres/ScreenTranslator/master/share/images/icon.ico
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo cp /tmp/${APP_NAME,,}.ico /usr/local/share/icons
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
