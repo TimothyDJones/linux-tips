@@ -1742,7 +1742,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Brave web browser (release channel) from Debian package
 APP_NAME=Brave-Browser
-APP_VERSION=1.20.88
+APP_VERSION=1.19.86
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -20697,7 +20697,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install jdTextEdit Python text editor based on Qt and Scintilla from package
 APP_NAME=jdTextEdit
 APP_GUI_NAME="Python text editor based on Qt and Scintilla."
-APP_VERSION=8.0
+APP_VERSION=8.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}-Python
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
