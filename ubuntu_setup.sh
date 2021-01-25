@@ -531,7 +531,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.122.1.0
+APP_VERSION=1.122.5.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -2499,7 +2499,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.213
+APP_VERSION=6.4.215
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -4766,11 +4766,11 @@ rm -rf /tmp/${APP_NAME,,}
 # Install GNU nano text editor from source
 APP_NAME=nano
 APP_GUI_NAME="Minimalist console text editor."
-APP_VERSION=5.3
+APP_VERSION=5.5
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
-sudo apt-get install -y libncurses5-dev libncursesw5-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://nano-editor.org/dist/v4/${FILE_NAME}.${APP_EXT}
+sudo apt-get install -y libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://nano-editor.org/dist/v5/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
@@ -7384,7 +7384,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install UNA social-media community management web-based tool (PHP/MySQL)
 APP_NAME=UNA
-APP_VERSION=12.0.0-B1
+APP_VERSION=12.0.0-B2
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -11917,7 +11917,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install eLogSim digital circuit simulator from package
 APP_NAME=eLogSim
 APP_GUI_NAME="Digital circuit simulator."
-APP_VERSION=3.0.3
+APP_VERSION=3.0.4
 APP_EXT=zip
 FILE_NAME=My${APP_NAME}_${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -12288,14 +12288,18 @@ sudo apt-get install -y bouml
 # Install Cmajor C#-style programming language and IDE from package
 APP_NAME=Cmajor
 APP_GUI_NAME="C#-style programming language and IDE."
-APP_VERSION=3.6.0
+APP_VERSION=3.9.0
 APP_EXT=tar.bz2
 source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi|xe|ya|ze|ar)$ ]]; then  # 14.04, 14.10, 15.04, 15.10, 16.04, 16.10, 17.04, 17.10
+if [[ "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi|xe|ya|ze|ar)$ ]]; then  # 14.04, 14.10, 15.04, 15.10, 16.04, 16.10, 17.04, 17.10
 	DISTRIB_RELEASE=14.04
 	APP_VERSION=3.1.0
-else
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di|eo)$ ]]; then
 	DISTRIB_RELEASE=18.04
+    APP_VERSION=3.6.0
+else
+	DISTRIB_RELEASE=20.04
+    APP_VERSION=3.9.0
 fi
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-${DISTRIB_RELEASE}-x86_64-binaries
 sudo apt-get install -y libboost-dev
@@ -20265,7 +20269,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install miniserve Rust-based CLI tool to serve files and directories over HTTP from package
 APP_NAME=miniserve
 APP_GUI_NAME="Rust-based CLI tool to serve files and directories over HTTP."
-APP_VERSION=0.5.0
+APP_VERSION=0.10.4
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-x86_64
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/svenstaro/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
@@ -23526,47 +23530,13 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Shutter Encoder cross-platform audio/video encoder/converter from Debian package
 APP_NAME="Shutter Encoder"
 APP_GUI_NAME="Cross-platform audio/video encoder/converter."
-APP_VERSION=14.5
+APP_VERSION=14.6
 APP_EXT=deb
 FILE_NAME=${APP_NAME// /%20}%20"("Linux%20Version%20${APP_VERSION}")"
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.shutterencoder.com/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
-
-# Install Hearts Qt-based networked card game from source
-APP_NAME=Hearts
-APP_GUI_NAME="Qt-based networked card game."
-APP_VERSION=1.5.2b
-APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y build-essential qt5-default qttools5-dev-tools liballegro5-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Rescator7/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}
-mkdir build && cd build
-qtchooser -run-tool=qmake -qt=5 ../${APP_NAME}.pro && make
-sudo mv /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/build/${APP_NAME} /usr/local/bin
-sudo ln -s -f /usr/local/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
-sudo cp /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/SVG-cards/Default/back.png /usr/share/pixmaps/${APP_NAME,,}.png
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=
-Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/share/pixmaps/${APP_NAME,,}.png
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Games;Entertainment;
-Keywords=Cards;Hearts;
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-cd $HOME
-rm -rf /tmp/${APP_NAME}*
 
 # Install Qt JSON diff GUI JSON viewer/comparer from source
 APP_NAME=QTjsonDiff
@@ -26690,7 +26660,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install PropU command-line utility to display detailed information about files, directories, and links from Debian package
 APP_NAME=PropU
-APP_VERSION=1.1
+APP_VERSION=1.2
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -26926,7 +26896,7 @@ APP_NAME=Hearts
 APP_GUI_NAME="Qt5-based traditional card game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Cards;Hearts;"
-APP_VERSION=1.6
+APP_VERSION=1.8.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y build-essential qt5-default libqt5svg5-dev liballegro5-dev
@@ -27154,3 +27124,20 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install cmdcalc simple command-line calculator with support for variables and arrays from package
+APP_NAME=cmdcalc
+APP_GUI_NAME="Simple command-line calculator with support for variables and arrays."
+APP_VERSION=2.3
+APP_EXT=N/A
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=linux64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=linux32
+fi
+FILE_NAME=${APP_NAME,,}2-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/Benni3D/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
