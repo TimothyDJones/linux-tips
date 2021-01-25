@@ -27141,3 +27141,18 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install vizex Python-based visual disk space usage tool for Linux shell from package
+APP_NAME=vizex
+APP_GUI_NAME="Python-based visual disk space usage tool for Linux shell."
+APP_VERSION=1.5.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y python3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bexxmodd/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo python3 setup.py install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
