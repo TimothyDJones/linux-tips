@@ -9951,7 +9951,7 @@ rm -rf /tmp/${FILE_NAME}*
 # Install KADOS (KAnban Dashboard for Online Scrum) web-based tool for managing Scrum projects with Kanban board
 # http://www.kados.info/
 APP_NAME=KADOS
-APP_VERSION=r10-GreenBee
+APP_VERSION=r11-YellowCat
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
