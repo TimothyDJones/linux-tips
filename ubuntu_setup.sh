@@ -25988,7 +25988,7 @@ APP_NAME=Logisim
 APP_GUI_NAME="Java-based digital logic designer and simulator."
 APP_GUI_CATEGORIES="Development;Electronics;"
 APP_GUI_KEYWORDS="Logic;Simulator;Electronics;"
-APP_VERSION=2.7.9
+APP_VERSION=2.7.10
 APP_EXT=jar
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-ps/${FILE_NAME}.${APP_EXT}
