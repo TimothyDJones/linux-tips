@@ -27216,3 +27216,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Ticker cross-platform, Golang-based terminal stock ticker with live updates from package
+APP_NAME=Ticker
+APP_GUI_NAME="Cross-platform, Golang-based terminal stock ticker with live updates."
+APP_VERSION=2.0.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE//i/}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/achannarasappa/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
