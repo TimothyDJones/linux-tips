@@ -1650,13 +1650,13 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Worker File Manager (For AVFS support install AVFS above.)
 APP_NAME=worker
-APP_VERSION=4.5.1
-APP_EXT=tar.bz2
+APP_VERSION=4.7.0
+APP_EXT=tar.zst
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y liblua5.3-dev
+sudo apt-get install -y liblua5.3-dev zstd
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/workerfm/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+tar -I zstd -xvf /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 # Create icon in menus
