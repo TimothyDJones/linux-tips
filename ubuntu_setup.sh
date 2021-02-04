@@ -23560,7 +23560,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install HSKinter Python GUI Mandarin Chinese flashcard tool from package
 APP_NAME=HSKinter
 APP_GUI_NAME="Python GUI Mandarin Chinese flashcard tool."
-APP_VERSION=0.4.8
+APP_VERSION=0.5.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo pip3 install gTTS playsound
