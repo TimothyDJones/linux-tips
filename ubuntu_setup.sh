@@ -22977,7 +22977,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Circuit Simulator 2019 GUI circuit simulation tool from package
 APP_NAME="Circuit Simulator 2019"
 APP_GUI_NAME="GUI circuit simulation tool."
-APP_VERSION=2.32.0.0
+APP_VERSION=2.46.0.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME// /}_v${APP_VERSION}
 sudo apt-get install -y ngspice okular
