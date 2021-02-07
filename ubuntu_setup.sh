@@ -27244,3 +27244,35 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Quaternion cross-platform Qt5-based client for Matrix messenger platform from AppImage
+APP_NAME=Quaternion
+APP_GUI_NAME="Cross-platform Qt5-based client for Matrix messenger platform."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Messenger;Chat;"
+APP_VERSION=0.0.95-beta3
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/quotient-im/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.ico -J -L https://raw.githubusercontent.com/quotient-im/Quaternion/master/icons/${APP_NAME,,}.ico
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo cp /tmp/${APP_NAME,,}.ico /usr/local/share/icons
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
