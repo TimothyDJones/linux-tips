@@ -21472,9 +21472,9 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install SFTPGo Golang-based highly-configurable SFTP server from package
 APP_NAME=SFTPGo
 APP_GUI_NAME="Golang-based highly-configurable SFTP server."
-APP_VERSION=0.9.5
+APP_VERSION=2.0.0
 APP_EXT=tar.xz
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_x86_64
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_linux_x86_64
 sudo apt-get install sqlite3 openssh-server -y
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/drakkan/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
