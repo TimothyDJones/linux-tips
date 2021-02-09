@@ -27341,3 +27341,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Necros Cavern cross-platform, classic Rogue-like console adventure game from package
+APP_NAME=NCavern
+APP_GUI_NAME="Cross-platform, classic Rogue-like console adventure game."
+APP_VERSION=1.1.4
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_${APP_VERSION//./_}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME}*/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
