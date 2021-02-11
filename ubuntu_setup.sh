@@ -27467,3 +27467,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install textnote simple Golang-based tool for creating and organizing daily notes on the command line from package
+APP_NAME=textnote
+APP_GUI_NAME="Simple Golang-based tool for creating and organizing daily notes on the command line."
+APP_VERSION=1.0.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}_linux_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/dkaslovsky/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+mkdir $HOME/.config/${APP_NAME,,}
+echo 'TEXTNOTE_DIR='$HOME/.config/${APP_NAME,,} >> $HOME/.bashrc
+source $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
