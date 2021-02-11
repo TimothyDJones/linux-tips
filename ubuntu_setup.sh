@@ -27482,3 +27482,22 @@ echo 'TEXTNOTE_DIR='$HOME/.config/${APP_NAME,,} >> $HOME/.bashrc
 source $HOME/.bashrc
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install o minimalist Golang text editor from package
+APP_NAME=o
+APP_GUI_NAME="Minimalist Golang text editor."
+APP_VERSION=2.35.0
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xyproto/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}/${APP_NAME,,}.1.gz
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/local/man/man1
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+mkdir $HOME/.config/${APP_NAME,,}
+echo 'TEXTNOTE_DIR='$HOME/.config/${APP_NAME,,} >> $HOME/.bashrc
+source $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
