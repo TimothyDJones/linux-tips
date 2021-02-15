@@ -19601,9 +19601,9 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install Java Multiprecision Calculator cross-platform calculator based on Java BigDecimal class from package
 APP_NAME="MultiPrecision Calculator"
 APP_GUI_NAME="Cross-platform calculator based on Java BigDecimal class."
-APP_VERSION=20191009
+APP_VERSION=20210213
 APP_EXT=zip
-FILE_NAME=${APP_VERSION}.${APP_NAME// /}.v1.1
+FILE_NAME=${APP_VERSION}.${APP_NAME// /}.v1.2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/javamultiprecis/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -19614,7 +19614,7 @@ cat > /tmp/multicalcu << EOF
 #! /bin/sh
 cd /opt/multicalcu/_binary
 PATH=/opt/multicalcu/_binary:\$PATH; export PATH
-java -jar /opt/multicalcu/_binary/multicalcu-gui-v1.1-SNAPSHOT-all.jar
+java -jar /opt/multicalcu/_binary/multicalcu-gui-v1.2-SNAPSHOT-all.jar
 cd $HOME
 EOF
 sudo mv /tmp/multicalcu /usr/local/bin
@@ -19626,7 +19626,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${FILE_NAME}
 Path=/opt/multicalcu/_binary
-Exec=java -jar /opt/multicalcu/_binary/multicalcu-gui-v1.1-SNAPSHOT-all.jar
+Exec=java -jar /opt/multicalcu/_binary/multicalcu-gui-v1.2-SNAPSHOT-all.jar
 #Icon=
 Type=Application
 StartupNotify=true
