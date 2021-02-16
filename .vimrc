@@ -172,3 +172,7 @@ nmap <leader>l :bnext<CR>                " Next buffer
 nmap <leader>h :bprevious<CR>            " Previous buffer
 nmap <leader>bq :bp <BAR> bd #<CR>       " Close buffer
 nmap <leader>bl :ls<CR>                  " List open buffers
+
+" Miscellaneous key bindings
+noremap <Leader>r :source ~/.vim/vimrc<CR>   " Re-source ~/.vimrc
+nnoremap <Leader><space> :nohlsearch<CR>     " Turn off search highlight
