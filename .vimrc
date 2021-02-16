@@ -32,6 +32,10 @@ set shiftwidth=4
 set softtabstop=4
 set shiftround          " Automatically round indents to multiple of 'shiftwidth'
 
+" Display whitespace characters
+set listchars=tab:→⠀,space:·
+set list
+
 " Enable auto-indent
 set autoindent smartindent
 
