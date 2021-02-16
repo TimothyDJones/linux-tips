@@ -161,3 +161,10 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" Buffer commands
+nmap <leader>T :enew<CR>                 " Open a new/empty buffer
+nmap <leader>l :bnext<CR>                " Next buffer
+nmap <leader>h :bprevious<CR>            " Previous buffer
+nmap <leader>bq :bp <BAR> bd #<CR>       " Close buffer
+nmap <leader>bl :ls<CR>                  " List open buffers
