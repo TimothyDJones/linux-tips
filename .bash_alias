@@ -75,6 +75,7 @@ alias mv='mv -v'
 alias mkdir='mkdir -pv'
 alias top='htop'
 alias apt-version='apt-cache madison'
+alias more='less'
 
 # Colorize output of ip command
 alias ip='ip -c'
