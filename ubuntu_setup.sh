@@ -196,6 +196,10 @@ curl -o /tmp/source-code-pro.zip -J -L https://github.com/adobe-fonts/source-cod
 cd /tmp
 dtrx -n /tmp/source-code-pro.zip
 sudo cp -R /tmp/source-code-pro/TTF/* /usr/local/share/fonts
+curl -o /tmp/courier-prime-code.zip -J -L https://quoteunquoteapps.com/courierprime/downloads/courier-prime-code.zip
+cd /tmp
+dtrx -n /tmp/courier-prime-code.zip
+sudo cp -R /tmp/courier-prime-code/ttf/* /usr/local/share/fonts
 sudo fc-cache -f -v
 
 # Install MongoDB from official repository
