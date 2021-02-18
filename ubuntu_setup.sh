@@ -26309,7 +26309,7 @@ APP_NAME=ImHex
 APP_GUI_NAME="Cross-platform, multi-purpose hex editor."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Hex Editor;Editor"
-APP_VERSION=1.5.0
+APP_VERSION=1.6.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_${APP_VERSION}_Linux
 sudo apt-get install -y libcapstone3
