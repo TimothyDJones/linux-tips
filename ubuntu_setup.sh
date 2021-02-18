@@ -11164,7 +11164,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install lf cross-platform, Go-based file manager for the shell/console from package
 APP_NAME=lf
 APP_GUI_NAME="Cross-platform, Go-based file manager for the shell/console."
-APP_VERSION=r14
+APP_VERSION=r20
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
