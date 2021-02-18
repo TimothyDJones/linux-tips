@@ -27576,3 +27576,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install ThiefMD simple Markdown editor for Linux from Debian package
+APP_NAME=ThiefMD
+APP_GUI_NAME="Simple Markdown editor for Linux."
+APP_GUI_CATEGORIES="Office;Accessories;"
+APP_GUI_KEYWORDS="Markdown;Editor;"
+APP_VERSION=0.1.2
+APP_EXT=deb
+FILE_NAME=com.github.kmwallio.${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kmwallio/${APP_NAME}/releases/download/v${APP_VERSION}-sophistication/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
