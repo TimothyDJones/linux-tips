@@ -27621,3 +27621,26 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Kibi Rust-based command-line text editor in < 1024 lines of code from package
+APP_NAME=Kibi
+APP_GUI_NAME="Rust-based command-line text editor in < 1024 lines of code."
+APP_VERSION=0.2.2
+APP_EXT=tar.gz
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x86_64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i686
+fi
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-${ARCH_TYPE}-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ilai-deutel/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/share/kibi
+sudo cp -R /tmp/${FILE_NAME}/syntax.d /usr/share/kibi
+mkdir -p $HOME/.config/kibi
+cp /tmp/${FILE_NAME}/config_example.ini $HOME/.config/kibi/config.ini
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
