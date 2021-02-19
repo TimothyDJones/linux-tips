@@ -27644,3 +27644,35 @@ mkdir -p $HOME/.config/kibi
 cp /tmp/${FILE_NAME}/config_example.ini $HOME/.config/kibi/config.ini
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Lagrange cross-platform desktop GUI client for browsing Geminispace from AppImage
+APP_NAME=Lagrange
+APP_GUI_NAME="Cross-platform desktop GUI client for browsing Geminispace."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Gemini;Browser"
+APP_VERSION=1.1.3
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/skyjake/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://github.com/skyjake/${APP_NAME,,}/raw/dev/res/${APP_NAME,,}-256.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
