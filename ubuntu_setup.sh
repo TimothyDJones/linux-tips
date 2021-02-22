@@ -1753,7 +1753,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Brave web browser (release channel) from Debian package
 APP_NAME=Brave-Browser
-APP_VERSION=1.20.103
+APP_VERSION=1.20.108
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
