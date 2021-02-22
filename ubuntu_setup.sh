@@ -27727,3 +27727,20 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install NaSC GTK-based interactive calcuator similar to Soulver from source
+APP_NAME=NaSC
+APP_GUI_NAME="GTK-based interactive calcuator similar to Soulver."
+APP_VERSION=0.7.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y gobject-introspection libgee-0.8-dev libwebkit2gtk-4.0-dev libgtksourceview-3.0-dev libcln-dev libgranite-dev libcurl4-openssl-dev libmpfr-dev intltool meson valac
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/parnold-x/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+git clone https://github.com/parnold-x/libqalculate /tmp/${FILE_NAME}/subprojects/libqalculate
+cd /tmp/${FILE_NAME}
+meson build --prefix=/usr/local
+ninja -C build install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
