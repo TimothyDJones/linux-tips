@@ -176,3 +176,7 @@ nmap <leader>bl :ls<CR>                  " List open buffers
 " Miscellaneous key bindings
 noremap <Leader>r :source ~/.vim/vimrc<CR>   " Re-source ~/.vimrc
 nnoremap <Leader><space> :nohlsearch<CR>     " Turn off search highlight
+
+" Display lines longer than 80 characters in red
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
