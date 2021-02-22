@@ -25868,7 +25868,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Bit Golang-based modern command-line Git client from package
 APP_NAME=Bit
-APP_VERSION=0.9.10
+APP_VERSION=1.0.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
