@@ -1,3 +1,5 @@
+set nocompatible        " Disable Vi compatibility to allow Vim advanced features
+
 " Enable 256 colors
 set t_Co=256
 
@@ -33,14 +35,10 @@ set softtabstop=4
 set shiftround          " Automatically round indents to multiple of 'shiftwidth'
 
 " Display whitespace characters
-set listchars=tab:→⠀,space:·
-set list
+set list listchars=tab:→⠀,space:·
 
 " Enable auto-indent
 set autoindent smartindent
-
-" Disable Vi compatibility to allow Vim advanced features
-set nocompatible
 
 " Display command as you type it
 set showcmd
@@ -165,6 +163,9 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+set splitbelow      " Open new split below current buffer.
+set splitright      " Open new split to right of current buffer.
 
 " Buffer commands
 nmap <leader>T :enew<CR>                 " Open a new/empty buffer
