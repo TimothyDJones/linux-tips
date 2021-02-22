@@ -65,6 +65,10 @@ function whats-my-ip() {
     notify-send -t 5000 "$ip copied to clipboard."
 }
 
+function dirsize() {
+    sudo du -cxh -d 1 . | sort -h;
+}
+
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
