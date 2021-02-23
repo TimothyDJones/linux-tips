@@ -181,3 +181,46 @@ nnoremap <Leader><space> :nohlsearch<CR>     " Turn off search highlight
 " Display lines longer than 80 characters in red
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+" File format-specific settings
+" --------------------------------------
+
+" YAML
+autocmd BufRead,BufNewFile *.yml,*.yaml,*.yaml.txt setlocal filetype=yaml
+autocmd FileType yaml setlocal textwidth=64 colorcolumn=65
+
+" MARKDOWN
+autocmd BufRead,BufNewFile *.md,*.mmd,*.mkd,*.mdown,*.markdown,*.markdown.txt setlocal filetype=markdown
+autocmd FileType markdown setlocal textwidth=64 colorcolumn=65 spell
+
+" SHELL
+autocmd FileType sh,bash setlocal 
+    \ tabstop=2 shiftwidth=2 expandtab
+
+" HTML
+autocmd FileType html setlocal 
+    \ tabstop=2 shiftwidth=2 expandtab
+
+" JAVASCRIPT
+autocmd FileType javascript setlocal 
+    \ tabstop=2 shiftwidth=2 expandtab
+
+" GOLANG
+autocmd FileType go setlocal tabstop=4 shiftwidth=4 noexpandtab
+
+" CLOJURE
+autocmd BufRead,BufNewFile *.clj setlocal filetype=clojure
+autocmd FileType clojure setlocal tabstop=2 shiftwidth=2 expandtab
+
+" HEX EDITING
+" vim -b : edit binary using xxd-format!
+augroup Binary
+    au!
+    au BufReadPre  *.bin,*.exe let &bin=1
+    au BufReadPost *.bin,*.exe if &bin | %!xxd
+    au BufReadPost *.bin,*.exe setlocal ft=xxd | endif
+    au BufWritePre *.bin,*.exe if &bin | %!xxd -r
+    au BufWritePre *.bin,*.exe endif
+    au BufWritePost *.bin,*.exe if &bin | %!xxd
+    au BufWritePost *.bin,*.exe setlocal nomod | endif
+augroup END
