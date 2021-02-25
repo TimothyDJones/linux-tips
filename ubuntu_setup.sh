@@ -27794,3 +27794,18 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install tty-solitaire full-color ncurses-based Klondike solitaire card game from source
+APP_NAME=tty-solitaire
+APP_GUI_NAME="Full-color ncurses-based Klondike solitaire card game."
+APP_VERSION=1.3.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mpereira/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
