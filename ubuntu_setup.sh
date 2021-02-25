@@ -8282,7 +8282,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Pidgin cross-platform, multi-service instant messenger (IM) utility from source
 APP_NAME=Pidgin
 APP_GUI_NAME="Cross-platform , multi-service instant messenger (IM) utility."
-APP_VERSION=2.13.0
+APP_VERSION=2.14.1
 APP_EXT=tar.bz2
 # Remove if installed from package
 sudo apt-get remove pidgin*
