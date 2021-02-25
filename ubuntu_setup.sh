@@ -8284,13 +8284,14 @@ APP_NAME=Pidgin
 APP_GUI_NAME="Cross-platform , multi-service instant messenger (IM) utility."
 APP_VERSION=2.14.1
 APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 # Remove if installed from package
 sudo apt-get remove pidgin*
-sudo apt-get install -y libxss-dev intltool libgtkspell-dev libxml2-dev libidn1*-dev libavahi-glib-dev libavahi-client-dev libdbus-glib-1-dev libnm-glib-dev libgnutls28-dev libnss3-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+sudo apt-get install -y libxss-dev intltool libgtkspell-dev libxml2-dev libidn1*-dev libavahi-glib-dev libavahi-client-dev libdbus-glib-1-dev libnm-dev libgnutls28-dev libnss3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./configure --disable-gstreamer --disable-vv --disable-meanwhile --disable-perl --disable-tcl && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
