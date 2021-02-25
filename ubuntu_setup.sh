@@ -27780,3 +27780,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install cproxy simple per application proxy tool using cgroups from package
+APP_NAME=cproxy
+APP_GUI_NAME="Simple per application proxy tool using cgroups."
+APP_VERSION=2.1.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_x86_64-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/NOBLES5E/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
