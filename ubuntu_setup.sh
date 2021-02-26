@@ -2485,12 +2485,14 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install bed (Binary Editor) from source
 APP_NAME=bed
-APP_VERSION=2.27.2
-APP_EXT=tgz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/binaryeditor/${APP_NAME}-${APP_VERSION}.src.${APP_EXT}
+APP_VERSION=3.0.3
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.src
+sudo apt-get install -y build-essential libmagic-dev lynx libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/binaryeditor/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
