@@ -27843,3 +27843,38 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Hathi Download Helper Qt-based tool to download books from Hathi Trust site from source
+APP_NAME="Hathi Download Helper"
+APP_GUI_NAME="Qt-based tool to download books from Hathi Trust site."
+APP_GUI_CATEGORIES="Office;Internet;"
+APP_GUI_KEYWORDS="Books;Download;"
+APP_VERSION=1.2.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME// /}_v${APP_VERSION}
+sudo apt-get install -y libqt5webkit-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME// /}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 .. && make && sudo make install
+sudo cp ${APP_NAME// /} /usr/local/bin
+sudo cp /tmp/${FILE_NAME}/${APP_NAME// /}/images/elephant.png /usr/local/share/icons/hicolor/48x48/apps/${APP_NAME// /}.png
+cat > /tmp/${APP_NAME// /}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+#Path=
+Exec=/usr/local/bin/${APP_NAME// /}
+Icon=/usr/local/share/icons/hicolor/48x48/apps/${APP_NAME// /}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME// /}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME// /}*
