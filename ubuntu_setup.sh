@@ -27827,3 +27827,19 @@ mkdir build && cd build
 qtchooser -run-tool=qmake -qt=5 .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install gEDA PCB printed circuit board GUI layout/design tool from source
+# http://pcb.geda-project.org/
+APP_NAME=PCB
+APP_GUI_NAME="Printed circuit board GUI layout/design tool."
+APP_VERSION=4.3.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libgd-dev libgtkglext1-dev bison flex 
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
