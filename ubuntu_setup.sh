@@ -27919,3 +27919,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Tweak high-performance hex editor from source
+APP_NAME=Tweak
+APP_GUI_NAME="High-performance hex editor."
+APP_VERSION=3.02
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.chiark.greenend.org.uk/~sgtatham/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
