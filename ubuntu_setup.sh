@@ -423,17 +423,18 @@ cd $HOME
 # Install Lite IDE for Go language development from package
 APP_NAME=LiteIDE
 APP_GUI_NAME="IDE for editing and building projects written in the Go programming language"
-APP_VERSION=x37.3
+APP_VERSION=x37.4
 QT_VERSION=qt5.5.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=linux32
+    APP_VERSION=x37.1
 fi
 FILE_NAME=${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-${QT_VERSION}
 sudo apt-get install -y qt5-default
-curl -o /tmp/libpng12-0.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_${KERNEL_TYPE}.deb
+curl -o /tmp/libpng12-0.deb -J -L https://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_${KERNEL_TYPE}.deb
 sudo gdebi -n /tmp/libpng12-0.deb
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${FILE_NAME}-system.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}-system.${APP_EXT}
