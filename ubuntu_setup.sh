@@ -27951,3 +27951,16 @@ mkdir build && cd build
 qtchooser -run-tool=qmake -qt=5 .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install RedDiamond programmer's text editor with EDT keypad navigation based on CopperSpice Qt library from Debian package
+APP_NAME=RedDiamond
+APP_GUI_NAME="Programmer's text editor with EDT keypad navigation based on CopperSpice Qt library."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Editor;"
+APP_VERSION=0.00.001
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
