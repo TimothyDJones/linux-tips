@@ -27964,3 +27964,20 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Oh Golang-based Unix/Linux shell replacement from package
+APP_NAME=Oh
+APP_GUI_NAME="Golang-based Unix/Linux shell replacement."
+APP_VERSION=0.8.0
+APP_EXT=N/A
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=amd64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=386
+fi
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/michaelmacinnis/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
