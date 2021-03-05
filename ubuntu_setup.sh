@@ -707,19 +707,15 @@ rm -rf /tmp/goto*
 # Install Free42 HP-42S calculator simulator from package
 APP_NAME=Free42
 APP_GUI_NAME="Free, cross-platfrom HP-42S calculator simulator."
-APP_VERSION=2.5.23
+APP_VERSION=3.0.1
 APP_EXT=tgz
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=64bit
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=32bit
-fi
 FILE_NAME=${APP_NAME}Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://thomasokken.com/${APP_NAME,,}/download/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/Free42Linux
-sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}* /usr/local/bin
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}bin /usr/local/bin
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}dec /usr/local/bin
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}*.xpm /usr/share/icons/hicolor/128x128/apps
 sudo ln -s /usr/local/bin/${APP_NAME,,}dec /usr/local/bin/${APP_NAME,,}
 # Create icon in menus
 cat > /tmp/${APP_NAME,,}.desktop << EOF
@@ -729,7 +725,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/usr/local/bin/
 Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/local/bin/${APP_NAME,,}icon-128x128.xpm
+Icon=/usr/share/icons/hicolor/128x128/apps/${APP_NAME,,}icon-128x128.xpm
 Type=Application
 StartupNotify=true
 Terminal=false
