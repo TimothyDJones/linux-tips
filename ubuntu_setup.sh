@@ -27997,3 +27997,20 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install cbonsai desktop toy to grow colorful bonsai tree in terminal from source
+APP_NAME=cbonsai
+APP_GUI_NAME="Desktop toy to grow colorful bonsai tree in terminal."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Toy;Fun;"
+APP_VERSION=1.0.0
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
+sudo apt-get install -y libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/jallbrit/${APP_NAME,,}/-/archive/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
