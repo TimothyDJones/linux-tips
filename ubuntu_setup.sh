@@ -11819,7 +11819,7 @@ APP_GUI_NAME="Java-based planetarium software."
 APP_VERSION=N/A
 APP_EXT=jar
 FILE_NAME=${APP_NAME// /}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${FILE_NAME,,}/VirutalCelestialGlobe.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${FILE_NAME,,}.${APP_EXT}
 sudo mkdir -p /opt/${FILE_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${FILE_NAME,,}
 cat > /tmp/${FILE_NAME,,} << EOF
