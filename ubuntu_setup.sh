@@ -18284,7 +18284,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Knobjex wxPython personal information manager (PIM) from package
 APP_NAME=Knobjex
 APP_GUI_NAME="wxPython personal information manager (PIM)."
-APP_VERSION=4.1
+APP_VERSION=4.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_source
 sudo apt-get install -y python3-wxgtk4.0
