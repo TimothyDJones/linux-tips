@@ -28053,3 +28053,34 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${AP
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install lazycli Rust-based tool to turn static command-line tools into interactive TUIs from package
+APP_NAME=lazycli
+APP_GUI_NAME="Rust-based tool to turn static command-line tools into interactive TUIs."
+APP_VERSION=0.1.14
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jesseduffield/${APP_NAME,,}/releases/download/v${APP_VERSION}/lazycli-linux-x64.tar.gz
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install neo-mc Midnight Commander fork with scripting and other enhancements from source
+APP_NAME=neo-mc
+APP_GUI_NAME="Midnight Commander fork with scripting and other enhancements."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="File Manager;Shell"
+APP_VERSION=main
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libncurses-dev libglib2.0-dev libslang2-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./autogen.sh && ./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
