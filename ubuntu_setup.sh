@@ -28084,3 +28084,21 @@ cd /tmp/${FILE_NAME}
 ./autogen.sh && ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install picoc very small C interpreter from source
+APP_NAME=picoc
+APP_GUI_NAME="Very small C interpreter."
+APP_GUI_CATEGORIES="Programming;Development"
+APP_GUI_KEYWORDS="C;Interpreter"
+APP_VERSION=master
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libreadline-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/zsaleeba/${APP_NAME,,}/-/archive/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make
+sudo cp ${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
