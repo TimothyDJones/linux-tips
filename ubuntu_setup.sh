@@ -28102,3 +28102,37 @@ make
 sudo cp ${APP_NAME,,} /usr/local/bin
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install RiteCMS PHP and SQLite content management system (CMS) from package
+APP_NAME=RiteCMS
+APP_GUI_NAME="PHP and SQLite content management system (CMS)."
+APP_GUI_CATEGORIES="Office;"
+APP_GUI_KEYWORDS="CMS;"
+APP_VERSION=3.0.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}
+sudo apt-get install -y php7.4-sqlite3
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,} ${WWW_HOME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R 777 ${WWW_HOME}/${APP_NAME,,}/files ${WWW_HOME}/${APP_NAME,,}/data
+xdg-open http://localhost/${APP_NAME,,}/index.php
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=${WWW_HOME}/${APP_NAME,,}
+Exec=xdg-open ${WWW_HOME}/${APP_NAME,,}/index.php
+Icon=${WWW_HOME}/${APP_NAME,,}/templates/images/${APP_NAME,,}36.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
