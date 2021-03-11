@@ -28206,6 +28206,23 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 mkdir build && cd build
 qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make && sudo make install
-sudo cp ${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install StackAndConquer Qt-based tower conquest board game from source
+APP_NAME=StackAndConquer
+APP_GUI_NAME="Qt-based tower conquest board game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Puzzle;Games;"
+APP_VERSION=0.8.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y qtbase5-dev libqt5svg5-dev qtdeclarative5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ElTh0r0/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
