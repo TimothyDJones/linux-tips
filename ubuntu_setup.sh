@@ -28177,3 +28177,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Deskreen Electron-based tool to make any device with web browser a second screen from Debian package
+APP_NAME=Deskreen
+APP_GUI_NAME="Electron-based tool to make any device with web browser a second screen."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Utility;Screen;"
+APP_VERSION=1.0.11
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/pavlobu/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
