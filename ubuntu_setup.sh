@@ -28190,3 +28190,22 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/pavlobu/${APP_NAME
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install iQPuzzle Qt-based geometric puzzle game from source
+APP_NAME=iQPuzzle
+APP_GUI_NAME="Qt-based geometric puzzle game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Puzzle;Math;"
+APP_VERSION=1.2.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y qtbase5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ElTh0r0/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make && sudo make install
+sudo cp ${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
