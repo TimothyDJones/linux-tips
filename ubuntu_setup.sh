@@ -28226,3 +28226,16 @@ mkdir build && cd build
 qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install flowers3 3D flower screensaver and interactive generator from Debian package
+APP_NAME=flowers3
+APP_GUI_NAME="3D flower screensaver and interactive generator."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Utility;Screen;"
+APP_VERSION=2.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
