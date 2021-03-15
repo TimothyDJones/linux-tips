@@ -28108,7 +28108,7 @@ APP_NAME=RiteCMS
 APP_GUI_NAME="PHP and SQLite content management system (CMS)."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="CMS;"
-APP_VERSION=3.0.0
+APP_VERSION=3.1.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}
 sudo apt-get install -y php7.4-sqlite3
