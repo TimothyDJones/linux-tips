@@ -28259,3 +28259,13 @@ sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/7zz /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Pineapple Pictures cross-platform lightweight image viewer from Debian package
+APP_NAME=Pineapple-Pictures
+APP_VERSION=0.4.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux-$(cat arch)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
