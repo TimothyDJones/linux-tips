@@ -36,8 +36,8 @@ add Control = Control_R
 ```
 
 ## Enter Unicode characters with keyboard in Linux
-In most applications in Linux, including at the command line, to enter a [Unicode](https://www.rapidtables.com/code/text/unicode-characters.html) character, hold down `<LeftCtrl>` and `<Shift>` plus _u_ and enter the 2- or 4-character *hexadecimal* Unicode code.  When you `<LeftCtrl>` and `<Shift>`, the character will be displayed. For example, to enter superscript 2 (²), which is Unicode 00B2, type `<LeftCtrl>`+`<Shift>`+_u_+B2; for the trademark symbol (™), which is Unicode 2122, type `<LeftCtrl>`+`<Shift>`+_u_+2122. Note that you can use the numeric keys across the top of the keyboard or on the numeric keypad (with NumLock enabled).  
-[Reference1](https://twitter.com/brianredbeard/status/1371862052797517825)
+In most applications in Linux, including at the command line, to enter a [Unicode](https://www.rapidtables.com/code/text/unicode-characters.html) character, hold down `<LeftCtrl>` and `<Shift>` plus _u_ and enter the 2- or 4-character *hexadecimal* Unicode code.  When you release `<LeftCtrl>` and `<Shift>`, the character will be displayed. For example, to enter superscript 2 (²), which is Unicode 00B2, type `<LeftCtrl>`+`<Shift>`+_u_+B2; for the trademark symbol (™), which is Unicode 2122, type `<LeftCtrl>`+`<Shift>`+_u_+2122. Note that you can use the numeric keys across the top of the keyboard or on the numeric keypad (with NumLock enabled).  
+[Reference1](https://twitter.com/brianredbeard/status/1371862052797517825)  
 [Reference2](https://old.reddit.com/r/linux/comments/m6dbbm/til_on_linux_one_can_type_arbitrary_unicode/)
 
 ## Install packages required to build application from source in Ubuntu/Debian
