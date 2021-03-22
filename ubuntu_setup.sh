@@ -28325,3 +28325,14 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/${APP_NAME,,}.1 /usr/local/man/man1/
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Sleek cross-platform todo.txt-format to do application from Debian package
+APP_NAME=Sleek
+APP_VERSION=0.9.6
+APP_EXT=deb
+export $(dpkg-architecture)
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${DEB_BUILD_ARCH}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
