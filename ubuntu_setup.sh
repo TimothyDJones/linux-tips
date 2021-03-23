@@ -28351,3 +28351,21 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install WeeChat console IRC chat client from source
+APP_NAME=WeeChat
+APP_GUI_NAME="Console IRC chat client."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="IRC;Chat;Messenger;"
+APP_VERSION=3.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y libaspell-dev libgcrypt20-dev zlib1g-dev asciidoctor libgnutls28-dev pkg-config libcurl4-gnutls-dev libncursesw5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ElTh0r0/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+../autogen.sh && ../configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
