@@ -28336,3 +28336,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install tz Golang-based command-line tool for showing time zone information from package
+APP_NAME=tz
+APP_GUI_NAME="Golang-based command-line tool for showing time zone information."
+APP_VERSION=0.4
+APP_EXT=tar.xz
+export $(dpkg-architecture)
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${DEB_BUILD_ARCH}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/oz/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
