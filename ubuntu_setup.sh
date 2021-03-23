@@ -28361,7 +28361,7 @@ APP_VERSION=3.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libaspell-dev libgcrypt20-dev zlib1g-dev asciidoctor libgnutls28-dev pkg-config libcurl4-gnutls-dev libncursesw5-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ElTh0r0/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
