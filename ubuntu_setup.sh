@@ -3823,9 +3823,9 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=CherryTree
 source /etc/lsb-release
 if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(gr)$ ]]; then     # Groovy (20.10)
-	APP_VERSION=0.99.31-2_amd64
+	APP_VERSION=0.99.33-2_amd64
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo)$ ]]; then     # Focal (20.04)
-    APP_VERSION=0.99.31-1_amd64
+    APP_VERSION=0.99.33-1_amd64
 else
 	APP_VERSION=0.39.4-0_all
 fi
