@@ -19917,7 +19917,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install openTimetool web-based (PHP/MySQL) project time-tracking tool from package
 APP_NAME=openTimetool
 APP_GUI_NAME="Web-based (PHP/MySQL) project time-tracking tool."
-APP_VERSION=2.7.0
+APP_VERSION=2.7.2
 APP_EXT=tar.bz2
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
