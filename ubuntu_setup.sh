@@ -28466,3 +28466,45 @@ sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Bash Command Builder Java-based GUI IDE for building simple Bash scripts from package
+APP_NAME="Bash Command Builder"
+APP_GUI_NAME="Java-based GUI IDE for building simple Bash scripts."
+APP_GUI_CATEGORIES="Development;Programming"
+APP_GUI_KEYWORDS="Shell;Scripting;"
+APP_VERSION=0.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME// /}.v${APP_VERSION}
+SHELL_NAME=bashcb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${SHELL_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${SHELL_NAME}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${SHELL_NAME}
+sudo chmod -R 755 /opt/${SHELL_NAME}
+cat > /tmp/${SHELL_NAME} << EOF
+#! /bin/sh
+cd /opt/${SHELL_NAME}
+PATH=/opt/${SHELL_NAME}:\$PATH; export PATH
+java -jar /opt/${SHELL_NAME}/bcb.jar
+cd $HOME
+EOF
+sudo mv /tmp/${SHELL_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${SHELL_NAME}
+cat > /tmp/${SHELL_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${SHELL_NAME}
+Exec=/usr/local/bin/${SHELL_NAME}
+Icon=/opt/${SHELL_NAME}/bcb.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${SHELL_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME// /}*
