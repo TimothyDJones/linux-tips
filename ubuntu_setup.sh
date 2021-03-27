@@ -21895,7 +21895,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install jSQL Injection Java-based SQL injection and database security testing tool from package
 APP_NAME=jSQL-Injection
 APP_GUI_NAME="Java-based SQL injection and database security testing tool."
-APP_VERSION=0.82
+APP_VERSION=0.84
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ron190/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
