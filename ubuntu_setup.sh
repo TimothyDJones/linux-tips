@@ -2509,12 +2509,12 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.4.229
+APP_VERSION=6.5.37
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
 DB_PASSWORD=${APP_NAME,,}
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-php-71
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libwbxml2-utils tnef
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/group-office/${FILE_NAME}.${APP_EXT}
 cd /tmp
