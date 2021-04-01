@@ -12072,11 +12072,9 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Password Safe cross-platform password manager from Debian package
 APP_NAME=PasswordSafe
 APP_GUI_NAME="Cross-platform password manager."
-APP_VERSION=1.08.1-BETA
+APP_VERSION=1.13
 APP_EXT=deb
-curl -o /tmp/libqrencode3.deb -J -L http://ftp.debian.org/debian/pool/main/q/qrencode/libqrencode3_3.4.4-1+b2_amd64.deb
-sudo gdebi -n /tmp/libqrencode3.deb
-FILE_NAME=${APP_NAME,,}-ubuntu18-${APP_VERSION}.amd64
+FILE_NAME=${APP_NAME,,}-ubuntu20-${APP_VERSION}-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
