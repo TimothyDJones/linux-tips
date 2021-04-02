@@ -14306,9 +14306,9 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Password Keeper-Generator (PKG) Java-based password generator and manager from package
 APP_NAME=PKG
 APP_GUI_NAME="Java-based password generator and manager."
-APP_VERSION=1.0.6
+APP_VERSION=1.0.7
 APP_EXT=zip
-FILE_NAME=${APP_NAME,,}_v.${APP_VERSION}_bin
+FILE_NAME=${APP_NAME,,}_v.${APP_VERSION}_sf-bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/j-${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
