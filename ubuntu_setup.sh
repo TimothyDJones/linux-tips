@@ -28509,3 +28509,20 @@ EOF
 sudo mv /tmp/${SHELL_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME// /}*
+
+# Install di advanced disk information utility from source
+APP_NAME=di
+APP_GUI_NAME="Advanced disk information utility."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Disk;Manager;"
+APP_VERSION=4.50
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${SHELL_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make -e dioptions.dat && make -e && sudo make -e install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
