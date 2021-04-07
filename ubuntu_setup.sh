@@ -20114,10 +20114,9 @@ FILE_NAME=${APP_NAME,,}-x86_64-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jhspetersson/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
-dtrx -n ${APP_NAME,,}.${APP_EXT}
+cp ${FILE_NAME} ${APP_NAME,,}
 chmod a+x ${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 
