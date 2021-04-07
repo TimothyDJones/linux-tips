@@ -28551,3 +28551,17 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install xplr Rust-based console TUI-style file manager from package
+APP_NAME=xplr
+APP_GUI_NAME="Rust-based console TUI-style file manager."
+APP_VERSION=0.3.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sayanarijit/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/*${APP_NAME,,}* /tmp/${APP_NAME}
