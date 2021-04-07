@@ -28535,3 +28535,20 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install vis simple, minimal Vim-like console text editor from source
+APP_NAME=vis
+APP_GUI_NAME="Simple, minimal Vim-like console text editor."
+APP_GUI_CATEGORIES="Accessories;System;Development;Programming"
+APP_GUI_KEYWORDS="Vim;Text;Editor;"
+APP_VERSION=0.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libncursesw5-dev libtermkey-dev libtre-dev libacl1-dev liblua5.3-dev lua-lpeg-dev lua-lpeg-patterns
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/martanne/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
