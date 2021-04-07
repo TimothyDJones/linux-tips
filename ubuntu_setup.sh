@@ -28526,3 +28526,13 @@ cd /tmp/${FILE_NAME}
 make -e dioptions.dat && make -e && sudo make -e install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Debianizer Java-based GUI for building Debian packages from Debian package
+APP_NAME=Debianizer
+APP_VERSION=N/A
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_installer
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
