@@ -4189,14 +4189,14 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Encrypt cross-platform GUI/CLI encryption tool from package
-APP_NAME=encrypt
-APP_VERSION=2017.09
+# Install Encrypt cross-platform GUI/CLI encryption tool from Debian package
+APP_NAME=Encrypt
+APP_VERSION=2020.01
 APP_EXT=deb
-curl -o /tmp/libgcrypt20.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20_1.7.8-2ubuntu1_amd64.deb
-sudo gdebi -n /tmp/libgcrypt20.deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}-1_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-1_${KERNEL_TYPE}
+sudo apt-get install -y libgcrypt20
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
