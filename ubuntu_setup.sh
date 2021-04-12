@@ -4881,7 +4881,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Terminus JavaScript/Electron terminal from Debian package
 APP_NAME=Terminus
-APP_VERSION=1.0.135
+APP_VERSION=1.0.136
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME,,}.${APP_EXT} -J -L https://github.com/Eugeny/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
