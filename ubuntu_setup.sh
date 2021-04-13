@@ -28580,3 +28580,27 @@ sudo cp -R /tmp/${FILE_NAME}/nushell-${APP_VERSION}/* /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/*${APP_NAME,,}* /tmp/${APP_NAME}
+
+# Install diff-so-fancy Perl and shell script diff enhancer from package
+APP_NAME=diff-so-fancy
+APP_GUI_NAME="Perl and shell script diff enhancer."
+APP_VERSION=1.4.0
+APP_EXT=tar.gz
+FILE_NAME=v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/*${APP_NAME,,}*/* /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,} "$@"
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/*${APP_NAME,,}* /tmp/${APP_NAME}
