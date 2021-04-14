@@ -12283,7 +12283,7 @@ elif [[ "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di|eo)$ ]]; then
     APP_VERSION=3.6.0
 else
 	DISTRIB_RELEASE=20.04
-    APP_VERSION=3.9.0
+    APP_VERSION=3.10.0
 fi
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-${DISTRIB_RELEASE}-x86_64-binaries
 sudo apt-get install -y libboost-dev
