@@ -12272,7 +12272,7 @@ sudo apt-get install -y bouml
 # Install Cmajor C#-style programming language and IDE from package
 APP_NAME=Cmajor
 APP_GUI_NAME="C#-style programming language and IDE."
-APP_VERSION=3.9.0
+APP_VERSION=3.10.0
 APP_EXT=tar.bz2
 source /etc/lsb-release
 if [[ "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi|xe|ya|ze|ar)$ ]]; then  # 14.04, 14.10, 15.04, 15.10, 16.04, 16.10, 17.04, 17.10
@@ -12286,14 +12286,12 @@ else
     APP_VERSION=3.10.0
 fi
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-${DISTRIB_RELEASE}-x86_64-binaries
-sudo apt-get install -y libboost-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.bz2
+sudo apt-get install -y libboost-dev libboost-system-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}.tar/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
-sudo ln -s /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.6* /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.64.0
-sudo ln -s /usr/lib/x86_64-linux-gnu/libboost_system.so.1.6* /usr/lib/x86_64-linux-gnu/libboost_system.so.1.64.0
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
 echo 'CMAJOR_ROOT=/opt/'${APP_NAME,,}'; export CMAJOR_ROOT;' >> $HOME/.bashrc
 echo 'PATH=$PATH:$CMAJOR_ROOT/bin' >> $HOME/.bashrc
 echo 'LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CMAJOR_ROOT/lib' >> $HOME/.bashrc
