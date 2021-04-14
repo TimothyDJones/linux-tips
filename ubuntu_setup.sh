@@ -28604,3 +28604,45 @@ sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/*${APP_NAME,,}* /tmp/${APP_NAME}
+
+# Install LuxCal PHP/MySQL event calendar from package
+# https://www.luxsoft.eu/
+APP_NAME=LuxCal
+APP_GUI_NAME="PHP/MySQL event calendar."
+APP_GUI_CATEGORIES="Accessories;Office"
+APP_GUI_KEYWORDS="Calendar;"
+APP_VERSION=5.1.0M
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}
+DB_NAME=${DB_NAME//-/}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}${APP_VERSION//./}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+dtrx -n /tmp/${FILE_NAME}/${FILE_NAME}-calendar.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}-calendar/* ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R a+w ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+# Create database
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_unicode_ci; CREATE USER '${DB_USER}'@'%' IDENTIFIED WITH mysql_native_password BY '${DB_PASSWORD}'; GRANT USAGE ON *.* TO '${DB_USER}'@'%'; GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%'; FLUSH PRIVILEGES;"
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/lcal.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
