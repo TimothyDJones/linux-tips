@@ -243,3 +243,6 @@ Some HP Pavilion laptops experience problems with freezing after inactivity time
 	
 
 [Reference1](https://stackoverflow.com/questions/53001737/what-do-boot-option-noapic-and-noacpi-actually-do)
+
+## Display time and time zone details for system
+For a quick check of the time and time zone details of your Linux system, run the _`timedatectl`_ command. It will show you the current local time, UTC time, RTC (real-time clock from BIOS) and the time zone, along with some additional details. The command can also be used to change these settings. See the [_`timedatectl`_](https://man7.org/linux/man-pages/man1/timedatectl.1.html) `man` page for more information.
