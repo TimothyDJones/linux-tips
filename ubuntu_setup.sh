@@ -28731,3 +28731,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install LTris SDL-based Tetris clone from source
+APP_NAME=LTris
+APP_GUI_NAME="SDL-based Tetris clone."
+APP_VERSION=1.2.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libsdl1.2-dev libsdl-mixer1.2-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/lgames/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make --jobs=$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
