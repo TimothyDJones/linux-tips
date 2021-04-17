@@ -1748,13 +1748,33 @@ mkdir -p build && cd build && cmake .. && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Brave web browser (release channel) from Debian package
+# Install Brave web browser (release channel) from package
 APP_NAME=Brave-Browser
-APP_VERSION=1.22.71
-APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+APP_GUI_CATEGORIES="Internet;Networking"
+APP_GUI_KEYWORDS="Web;Browser;"
+APP_VERSION=1.23.71
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME} /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/product_logo_128.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
