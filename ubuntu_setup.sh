@@ -4881,7 +4881,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Terminus JavaScript/Electron terminal from Debian package
 APP_NAME=Terminus
-APP_VERSION=1.0.136
+APP_VERSION=1.0.137
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME,,}.${APP_EXT} -J -L https://github.com/Eugeny/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27849,7 +27849,7 @@ APP_GUI_NAME="Printed circuit board GUI layout/design tool."
 APP_VERSION=4.3.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y libgd-dev libgtkglext1-dev bison flex 
+sudo apt-get install -y libgd-dev libgtkglext1-dev bison flex
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
