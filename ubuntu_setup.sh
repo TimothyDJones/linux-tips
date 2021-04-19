@@ -28761,3 +28761,32 @@ cd /tmp/${FILE_NAME}
 ./configure && make --jobs=$(nproc) && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install pyhn Python-based console HackerNews reader from source
+APP_NAME=pyhn
+APP_GUI_NAME="Python-based console HackerNews reader."
+APP_VERSION=master
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/TimothyDJones/${APP_NAME,,}/archive/refs/heads/master.zip
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+python3 -m venv .venv && source .venv/bin/activate && python3 -m pip install -r requirements.txt && deactivate
+cd /tmp && mv ${FILE_NAME} ${APP_NAME,,}
+sudo mv ${APP_NAME,,} /opt
+sudo chmod -R 755 /opt/${APP_NAME,,}
+sudo cp /opt/${APP_NAME,,}/scripts/${APP_NAME,,} /opt/${APP_NAME,,}/${APP_NAME,,}.sh
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+source .venv/bin/activate
+./pyhn.sh &
+deactivate
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
