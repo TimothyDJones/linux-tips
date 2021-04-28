@@ -23930,7 +23930,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=7.8.46
+APP_VERSION=7.8.47
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -28849,3 +28849,42 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install icons-in-terminal library to allow use of any font in terminal without patching or replacing fonts from source
+APP_NAME=icons-in-terminal
+APP_GUI_NAME="Library to allow use of any font in terminal without patching or replacing fonts."
+APP_VERSION=master
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y fontforge
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sebastiencs/${APP_NAME,,}/archive/refs/heads/master.zip
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./install.sh
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install CDRTools via PPA
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (gr|hi)$ ]]; then  # 20.10, 21.04
+    DISTRIB_VERSION=focal
+fi
+sudo add-apt-repository -y ppa:brandonsnider/cdrtools
+sudo apt-get update -y
+sudo apt-get install -y cdda2wav mkisofs cdrecord
+
+# Install CliFM CLI-based, ultra-lightweight, lightning fast, and written in C from source
+APP_NAME=CliFM
+APP_GUI_NAME="CLI-based, ultra-lightweight, lightning fast, and written in C."
+APP_VERSION=CliFM
+APP_EXT=tar.gz
+FILE_NAME=v${APP_VERSION}
+sudo apt-get install -y libcap-dev libacl1-dev 
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/leo-arch/${APP_NAME}/archive/refs/tags/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./install.sh
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
