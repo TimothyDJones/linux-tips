@@ -28888,3 +28888,20 @@ cd /tmp/${FILE_NAME}
 ./install.sh
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Xrdp Remote Desktop Protocol server service with basic configuration from repository
+sudo apt-get install -y xrdp
+sudo adduser xrdp ssl-cert
+sudo cp /etc/X11/Xsession /etc/X11/Xsession.xrdp
+sudo bash -c 'echo "unset DBUS_SESSION_BUS_ADDRESS" >> /etc/X11/Xsession'
+sudo bash -c 'echo "unset XDG_RUNTIME_DIR" >> /etc/X11/Xsession'
+echo 'polkit.addRule(function(action, subject) {' >> /tmp/02-allow-colord.conf
+echo 'if ((action.id == "org.freedesktop.color-manager.create-device" || action.id == "org.freedesktop.color-manager.create-profile" || action.id == "org.freedesktop.color-manager.delete-device" || action.id == "org.freedesktop.color-manager.delete-profile" || action.id == "org.freedesktop.color-manager.modify-device" || action.id == "org.freedesktop.color-manager.modify-profile") && subject.isInGroup("{group}"))' >> /tmp/02-allow-colord.conf
+echo '{' >> /tmp/02-allow-colord.conf
+echo 'return polkit.Result.YES;' >> /tmp/02-allow-colord.conf
+echo '}' >> /tmp/02-allow-colord.conf
+echo '});' >> /tmp/02-allow-colord.conf
+sudo cp /tmp/02-allow-colord.conf /etc/polkit-1/localauthority.conf.d/
+sudo systemctl restart xrdp
+sudo systemctl enable xrdp
+
