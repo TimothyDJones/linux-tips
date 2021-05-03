@@ -28905,3 +28905,41 @@ sudo cp /tmp/02-allow-colord.conf /etc/polkit-1/localauthority.conf.d/
 sudo systemctl restart xrdp
 sudo systemctl enable xrdp
 
+# Install WebEditorWeb HTML, CSS, and JavaScript editor in a single HTML file from package
+APP_NAME=WebEditorWeb
+APP_GUI_NAME="HTML, CSS, and JavaScript editor in a single HTML file."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="HTML;Editor;"
+APP_VERSION=210503
+APP_EXT=zip
+FILE_NAME=wew_src-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/public_html/* ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R 755 ${WWW_HOME}/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+xdg-open ${WWW_HOME}/${APP_NAME,,}/index.html
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+#Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=${WWW_HOME}/${APP_NAME,,}/img/wew.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
