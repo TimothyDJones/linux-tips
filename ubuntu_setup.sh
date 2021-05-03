@@ -333,7 +333,7 @@ libapache2-mod-php${PHP7_VERSION} libapache2-mod-xsendfile \
 mysql-server  mysql-workbench mycli
 
 # Install nvm (Node Version Manager) command-line utility for running/managing multiple versions of Node.JS from package
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 source $HOME/.bashrc
 nvm install --lts=dubnium node
 nvm alias default node
