@@ -6797,12 +6797,13 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Java-- minimalist Eclipse-based IDE for learning Java programming
 APP_NAME=JavaMM
 APP_GUI_NAME="Minimalist Eclipse-based IDE for learning Java programming."
-APP_VERSION=1.9.0-v20180112-1030
+APP_VERSION=1.10.0-v20210504-0940
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=x86
+	APP_VERSION=1.10.0-v20181001-1303
 fi
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-ide-${APP_VERSION}-linux.gtk.${ARCH_TYPE}.${APP_EXT}
 cd /tmp
