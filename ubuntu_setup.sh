@@ -28748,7 +28748,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Mailspring Electron-based e-mail client forked from Nylas from Debian package
 APP_NAME=Mailspring
-APP_VERSION=1.9.0
+APP_VERSION=1.9.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
