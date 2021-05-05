@@ -1885,13 +1885,16 @@ rm -rf ${APP_NAME}*
 APP_NAME=exa
 APP_VERSION=0.10.1
 APP_EXT=zip
+FILE_NAME=${APP_NAME}-linux-x86_64-v${APP_VERSION}
 # Dependency on libhttp-parser2.1 below is needed due to problem noted
 # on Github:  https://github.com/ogham/exa/issues/194
-sudo apt-get install -y libhttp-parser2.1
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/ogham/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}-linux-x86_64-${APP_VERSION}.${APP_EXT}
+sudo apt-get install -y libhttp-parser2*
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ogham/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-sudo mv /tmp/${APP_NAME}/${APP_NAME}-linux-x86_64 /usr/local/bin/exa
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/bin/* /usr/local/bin
+sudo cp -R /tmp/${FILE_NAME}/man/* /usr/local/man
+sudo cp -R /tmp/${FILE_NAME}/completions/* /usr/share/bash-completion/completions
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
