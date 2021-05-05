@@ -145,8 +145,8 @@ EOF
 echo 'source $HOME/.config/vim_sh_config' >> $HOME/.bashrc
 source $HOME/.bashrc	# Reload Bash configuration
 
-# Install 'extract.sh' shell function for extracting various compressed formats
-curl -o $HOME/.config/eaxtract.sh -J -L https://raw.githubusercontent.com/xvoland/Extract/master/extract.sh
+# Install 
+curl -o $HOME/.config/extract.sh -J -L https://raw.githubusercontent.com/xvoland/Extract/master/extract.sh
 echo 'source $HOME/.config/extract.sh' >> $HOME/.bashrc
 source $HOME/.bashrc
 
