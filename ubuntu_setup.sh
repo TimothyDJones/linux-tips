@@ -200,7 +200,15 @@ curl -o /tmp/courier-prime-code.zip -J -L https://quoteunquoteapps.com/courierpr
 cd /tmp
 dtrx -n /tmp/courier-prime-code.zip
 sudo cp -R /tmp/courier-prime-code/ttf/* /usr/local/share/fonts
+curl -o /tmp/bitmap-fonts-master.zip -J -L https://github.com/Tecate/bitmap-fonts/archive/refs/heads/master.zip
+cd /tmp
+dtrx -n /tmp/bitmap-fonts-master.zip
+sudo cp -R /tmp/bitmap-fonts-master/bitmap/* /usr/local/share/fonts
 sudo fc-cache -f -v
+# Enable bitmap fonts
+sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
+sudo ln -s /etc/fonts/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d/70-yes-bitmaps.conf
+sudo dpkg-reconfigure fontconfig
 
 # Install MongoDB from official repository
 # https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
