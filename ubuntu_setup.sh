@@ -2137,15 +2137,26 @@ cd $HOME
 rm -rf /tmp/${APP_NAME}*
 kgclock &
 
-# Install uGet GUI download manager
-APP_NAME=uget
-APP_VERSION=2.2.1
+# Install uGet GUI download manager from Debian package
+APP_NAME=uGet
+APP_VERSION=2.2.3
 APP_EXT=deb
-source /etc/os-release   # This config file contains Ubuntu version details.
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/urlget/${APP_NAME}_${APP_VERSION}-0ubuntu0~${UBUNTU_CODENAME}_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+# source /etc/os-release   # This config file contains Ubuntu version details.
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo|fo|gr|hi)$ ]]; then  # 19.10, 20.04, 20.10, 21.04
+	UBUNTU_CODENAME=eoan
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di)$ ]]; then  # 19.04
+	UBUNTU_CODENAME=disco
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co)$ ]]; then  # 18.04
+	UBUNTU_CODENAME=bioic
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04, 16.10, 17.04, 17.10
+	UBUNTU_CODENAME=xenial
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-0ubuntu0~${UBUNTU_CODENAME}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~plushuang-tw/+archive/ubuntu/uget-stable/+files/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Akiee Markdown-based task manager/to do list application
 APP_NAME=akiee
