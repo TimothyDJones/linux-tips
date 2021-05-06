@@ -6800,7 +6800,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Java-- minimalist Eclipse-based IDE for learning Java programming
 APP_NAME=JavaMM
 APP_GUI_NAME="Minimalist Eclipse-based IDE for learning Java programming."
-APP_VERSION=1.10.0-v20210504-0940
+APP_VERSION=1.11.0-v20210506-0739
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
