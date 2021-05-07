@@ -170,6 +170,26 @@ echo '    PIP_REQUIRE_VIRTUALENV="" python3 -m pip "$@"' >> $HOME/.bashrc
 echo '}' >> $HOME/.bashrc
 source $HOME/.bashrc
 
+# Function to create new Python Virtual Environment
+cat >> $HOME/.config/pynewvenv << EOF
+pynewvenv() {
+   local venv_name=\${1:-.venv}
+   python3 -m venv \$venv_name
+   source \$venv_name/bin/activate
+   python3 -m pip install --upgrade pip
+   echo 'black' >> ./requirements-dev.txt
+   echo 'flake8' >> ./requirements-dev.txt
+   echo 'green' >> ./requirements-dev.txt
+   echo 'ipython' >> ./requirements-dev.txt
+   echo 'isort' >> ./requirements-dev.txt
+   echo 'mypy' >> ./requirements-dev.txt
+   echo 'pylint' >> ./requirements-dev.txt
+   python3 -m pip install -r ./requirements-dev.txt
+}
+EOF
+echo 'source $HOME/.config/pynewvenv' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+
 # Install various monospaced fonts for programming
 sudo apt-get install -y fontconfig
 mkdir -p $HOME/.local/share/fonts
