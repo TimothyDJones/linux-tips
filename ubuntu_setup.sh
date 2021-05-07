@@ -29084,3 +29084,25 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://pencil.evolus.vn/ h
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Dynamic Audio Normalizer cross-platform audio normalization tool from package
+APP_NAME="Dynamic Audio Normalizer"
+APP_VERSION=2017-04-14
+APP_EXT=tbz2
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=x64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=i686
+fi
+FILE_NAME=${APP_NAME// /}.${APP_VERSION}.Linux-Ubuntu-${ARCH_TYPE}
+sudo apt-get install -y libsndfile1 libmpg123-0
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/lordmulder/${APP_NAME// /}/releases/download/2.10/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME// /}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME// /}
+sudo chmod -R 755 /opt/${APP_NAME// /}
+_APP_NAME=${APP_NAME// /}
+sudo ln -s /opt/${APP_NAME// /}/${APP_NAME// /}CLI.bin /usr/local/bin/${_APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME// /}*
