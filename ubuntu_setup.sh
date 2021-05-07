@@ -161,6 +161,13 @@ echo 'export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv' >> $HOME/
 echo 'source $HOME/.local/bin/virtualenvwrapper.sh' >> $HOME/.bashrc
 source $HOME/.bashrc
 
+# Prevent use of Python 'pip' command unless in virtual environment
+# 'gpip()' command allows override for global install
+# https://docs.python-guide.org/dev/pip-virtualenv/
+echo 'export PIP_REQUIRE_VIRTUALENV=true' >> $HOME/.bashrc
+echo 'gpip() { PIP_REQUIRE_VIRTUALENV="" python3 -m pip "$@" }' >> $HOME/.bashrc
+source $HOME/.bashrc
+
 # Install various monospaced fonts for programming
 sudo apt-get install -y fontconfig
 mkdir -p $HOME/.local/share/fonts
