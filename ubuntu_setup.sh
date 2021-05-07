@@ -165,7 +165,9 @@ source $HOME/.bashrc
 # 'gpip()' command allows override for global install
 # https://docs.python-guide.org/dev/pip-virtualenv/
 echo 'export PIP_REQUIRE_VIRTUALENV=true' >> $HOME/.bashrc
-echo 'gpip() { PIP_REQUIRE_VIRTUALENV="" python3 -m pip "$@" }' >> $HOME/.bashrc
+echo 'gpip() {' >> $HOME/.bashrc
+echo '    PIP_REQUIRE_VIRTUALENV="" python3 -m pip "$@"' >> $HOME/.bashrc
+echo '}' >> $HOME/.bashrc
 source $HOME/.bashrc
 
 # Install various monospaced fonts for programming
