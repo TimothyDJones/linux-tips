@@ -18467,14 +18467,38 @@ FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/agalwood/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
-# Install Praxis Live Java hybrid visual live programming environment based on Netbeans from Debian package
-APP_NAME=Praxis-Live
+# Install Praxis Live Java hybrid visual live programming environment based on Netbeans from AppImage
+APP_NAME=PraxisLIVE
 APP_GUI_NAME="Java hybrid visual live programming environment based on Netbeans."
-APP_VERSION=4.3.0
-APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_all
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Java;NetBeans;"
+APP_VERSION=5.2.0
+APP_EXT=AppImage
+ICON_EXT=ico
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://raw.githubusercontent.com/praxis-live/praxis-live/master/resources/${APP_NAME,,}.${ICON_EXT}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install sslh protocol multiplexer that allows sharing SSL/HTTPS and SSH on same port from source
 # http://rutschle.net/tech/sslh/README.html
