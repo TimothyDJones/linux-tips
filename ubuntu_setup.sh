@@ -29074,3 +29074,13 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/angrykoala/${APP_N
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Pencil cross-platform GUI prototyping tool from Debian package
+APP_NAME=Pencil
+APP_VERSION=3.1.0.ga
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://pencil.evolus.vn/ https://pencil.evolus.vn/dl/V${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
