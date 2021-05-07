@@ -27566,7 +27566,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install textnote simple Golang-based tool for creating and organizing daily notes on the command line from package
 APP_NAME=textnote
 APP_GUI_NAME="Simple Golang-based tool for creating and organizing daily notes on the command line."
-APP_VERSION=1.0.0
+APP_VERSION=1.2.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/dkaslovsky/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
