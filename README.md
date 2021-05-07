@@ -246,3 +246,20 @@ Some HP Pavilion laptops experience problems with freezing after inactivity time
 
 ## Display time and time zone details for system
 For a quick check of the time and time zone details of your Linux system, run the _`timedatectl`_ command. It will show you the current local time, UTC time, RTC (real-time clock from BIOS) and the time zone, along with some additional details. The command can also be used to change these settings. See the [_`timedatectl`_](https://man7.org/linux/man-pages/man1/timedatectl.1.html) `man` page for more information.
+
+***
+
+## Show processor architecture information and use in shell script
+Many times in a shell script, you may need to differentiate between whether your Linux platform is 32-bit or 64-bit and which processor type/architecture is used. Here are a few commands you can use to get such information.
+
+| Command | Flags | Action | Example Output |
+| :------ | :---- | :----- | :------------- |
+| `uname` | `-m`  | Display machine hardware name | `x86_64` or `i686`|
+| `arch`  |       | Alias for `uname -m` | `x86_64` |
+| `nproc` |       | Display number of CPU cores | `4` |
+| `getconf` | `LONG_BIT` | Displays 32 or 64, depending on address bus | `64` |
+| `lscpu` |       | Detailed information about CPU | N/A |
+| `lshw`  | `-C CPU` | Summary information about CPU | N/A |
+
+
+[Reference1](https://www.tecmint.com/check-linux-cpu-information/)
