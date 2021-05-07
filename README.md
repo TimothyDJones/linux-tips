@@ -261,5 +261,5 @@ Many times in a shell script, you may need to differentiate between whether your
 | `lscpu` |       | Detailed information about CPU | N/A |
 | `lshw`  | `-C CPU` | Summary information about CPU | N/A |
 
-
-[Reference1](https://www.tecmint.com/check-linux-cpu-information/)
+[Reference1](https://www.tecmint.com/check-linux-cpu-information/)  
+[Reference2](https://www.linuxtechi.com/server-cpu-architecture-linux/)
