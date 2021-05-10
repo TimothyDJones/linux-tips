@@ -9216,36 +9216,29 @@ make install && mkdir -p $HOME/.pinky
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install SwitchHosts cross-platform, Electron-based hosts file manager from package
+# Install SwitchHosts cross-platform, Electron-based hosts file manager from AppImage
 APP_NAME=SwitchHosts
 APP_GUI_NAME="Cross-platform, Electron-based hosts file manager."
-APP_MAJOR_VERSION=3.3.12
-APP_MINOR_VERSION=5349
-APP_EXT=zip
-FILE_NAME=${APP_NAME}-linux-x64_v${APP_MAJOR_VERSION}.${APP_MINOR_VERSION}
+APP_GUI_CATEGORIES="System;Networking;"
+APP_GUI_KEYWORDS="Hosts;Privacy;Security;"
+APP_MAJOR_VERSION=4.0.1
+APP_MINOR_VERSION=6051
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}_linux_${APP_MAJOR_VERSION}.${APP_MINOR_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/oldj/${APP_NAME}/releases/download/v${APP_MAJOR_VERSION}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}\!-linux-x64/* /opt/${APP_NAME,,}
-sudo ln -s /opt/${APP_NAME,,}/${APP_NAME}\! /opt/${APP_NAME,,}/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,} << EOF
-#! /bin/sh
-cd /opt/${APP_NAME,,}
-PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-/opt/${APP_NAME,,}/${APP_NAME,,}
-cd $HOME
-EOF
-sudo mv /tmp/${APP_NAME,,} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/oldj/${APP_NAME}/master/assets/app.png
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
-#Icon=/opt/${APP_NAME,,}/icons/yicon.ico
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
