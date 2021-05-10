@@ -29138,3 +29138,11 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install pacstall Arch Linux-style package manager for Ubuntu from package
+APP_NAME=pacstall
+APP_VERSION=N/A
+APP_EXT=N/A
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Henryws/pacstall/master/install.sh)"
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
