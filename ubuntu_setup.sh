@@ -29146,3 +29146,18 @@ APP_EXT=N/A
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Henryws/pacstall/master/install.sh)"
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install kn Rust-based alternative to 'cd' using abbreviations from package
+APP_NAME=kn
+APP_GUI_NAME="Rust-based alternative to 'cd' using abbreviations."
+APP_VERSION=0.2.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-x86_64-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/micouy/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/_${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/_${APP_NAME,,}
+echo 'eval "$(_kn init bash)"' >> $HOME/.bashrc && source $HOME/.bashrc
+cd $HOME
+sudo rm -rf /tmp/*${APP_NAME,,}* /tmp/${APP_NAME}
