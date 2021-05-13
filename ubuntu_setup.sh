@@ -29329,3 +29329,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Dug cross-platform command-line DNS propagation checking tool from Debian package
+APP_NAME=Dug
+APP_VERSION=0.0.72
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}.${APP_VERSION}.linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/unfrl/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
