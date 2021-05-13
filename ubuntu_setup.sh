@@ -29339,3 +29339,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/unfrl/${APP_NAME,,
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install diskgraph console graph of disk I/O in Linux from source
+APP_NAME=diskgraph
+APP_GUI_NAME="Console graph of disk I/O in Linux."
+APP_VERSION=main
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/stolk/${APP_NAME,,}/archive/refs/heads/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo cp ${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
