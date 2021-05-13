@@ -29299,3 +29299,33 @@ cd /tmp/${FILE_NAME}
 ./configure --prefix=/usr/local && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install DFileManager Qt-based Mac-style cross-platform file manager from AppImage
+APP_NAME=DFileManager
+APP_GUI_NAME="Qt-based Mac-style cross-platform file manager."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="File;Manager;"
+APP_VERSION=6117950
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/probonopd/${APP_NAME,,}/releases/download/continuous/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
