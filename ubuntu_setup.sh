@@ -26292,7 +26292,7 @@ APP_NAME=gmenu
 APP_GUI_NAME="Golang-based console and GUI application launcher."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Launcher;"
-APP_VERSION=0.2.9
+APP_VERSION=0.3.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://${APP_NAME,,}.rocketnine.space/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
