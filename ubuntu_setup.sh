@@ -29395,3 +29395,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Lite XL cross-platform lightweight VS Code-style text editor from package
+APP_NAME=Lite-XL
+APP_GUI_NAME="Cross-platform lightweight VS Code-style text editor."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Editor;"
+APP_VERSION=1.16.9
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux-x86-64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/franko/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}/* /usr/local
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
