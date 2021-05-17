@@ -29447,3 +29447,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Key Mapper simple input device (mouse, keyboard, etc.) key/button remapping tool from Debian package
+APP_NAME=Key-Mapper
+APP_VERSION=1.0.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sezanzeb/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
