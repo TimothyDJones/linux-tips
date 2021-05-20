@@ -29598,3 +29598,27 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install ble.sh Bash line editor with syntax highlighting, auto suggestions, vim modes, etc. from package
+APP_NAME=ble.sh
+APP_GUI_NAME="Bash line editor with syntax highlighting, auto suggestions, vim modes, etc."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Shell;Editor;"
+APP_VERSION=0.4.0-devel2
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME//.sh/}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/akinomyoga/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p $HOME/.local/share/blesh
+cp -R /tmp/${FILE_NAME}/* $HOME/.local/share/blesh
+cp $HOME/.bashrc $HOME/.bashrc_$(date +%Y\_%m\_%d)
+# Add to beginning/top of .bashrc
+echo "[[ \$- == *i* ]] && source ~/.local/share/blesh/ble.sh --attach=none" > /tmp/${APP_NAME,,}.tmp
+cat $HOME/.bashrc >> /tmp/${APP_NAME,,}.tmp
+# Add to end/bottom of .bashrc
+echo "[[ \${BLE_VERSION-} ]] && ble-attach" >> /tmp/${APP_NAME,,}.tmp
+cp /tmp/${APP_NAME,,}.tmp $HOME/.bashrc
+source $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
