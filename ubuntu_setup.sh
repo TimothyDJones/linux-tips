@@ -29563,3 +29563,38 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install BitCalculator Qt-based 64-bit number manipulator from source
+APP_NAME=BitCalculator
+APP_GUI_NAME="Qt-based 64-bit number manipulator."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Calculator;"
+APP_VERSION=1.1.1.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_v${APP_VERSION}_Source_Code
+sudo apt-get install -y qtbase5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/v${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/src
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME}.pro && make && sudo make install
+sudo cp /tmp/${FILE_NAME}/src/qrc/ico/main.svg /opt/${APP_NAME}/${APP_NAME}.svg
+sudo ln -s -f /opt/${APP_NAME}/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME}/${APP_NAME}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
