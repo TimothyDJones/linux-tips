@@ -24006,7 +24006,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Krill command-line Ubuntu installer based on Calamares from Debian package
 APP_NAME=Krill
 APP_GUI_NAME="Command-line Ubuntu installer based on Calamares."
-APP_VERSION=0.0.11
+APP_VERSION=0.0.12
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
