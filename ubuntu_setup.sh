@@ -22516,7 +22516,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install gh official Github command-line utility from Debian package
 APP_NAME=gh
 APP_GUI_NAME="Official Github command-line utility."
-APP_VERSION=0.6.4
+APP_VERSION=1.10.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_linux_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cli/cli/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
