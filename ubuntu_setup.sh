@@ -22505,7 +22505,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install KeeWeb cross-platform Electron-based password manager compatible with Keepass from Debian package
 APP_NAME=KeeWeb
 APP_GUI_NAME="Electron-based password manager compatible with Keepass."
-APP_VERSION=1.14.1
+APP_VERSION=1.18.6
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}.linux.x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
