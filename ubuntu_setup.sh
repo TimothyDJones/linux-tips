@@ -22565,7 +22565,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Alaya WebDAV-enabled web/HTTP server focused on sharing directories with WebDAV from source
 APP_NAME=Alaya
 APP_GUI_NAME="WebDAV-enabled web/HTTP server focused on sharing directories with WebDAV."
-APP_VERSION=3.2
+APP_VERSION=4.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
