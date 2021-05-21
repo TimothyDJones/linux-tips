@@ -29622,3 +29622,13 @@ cp /tmp/${APP_NAME,,}.tmp $HOME/.bashrc
 source $HOME/.bashrc
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install ffmpeg-coder FFMpeg command-line helper for video format conversion from Debian package
+APP_NAME=ffmpeg-coder
+APP_VERSION=1.9.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
