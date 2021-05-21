@@ -264,3 +264,4 @@ Many times in a shell script, you may need to differentiate between whether your
 
 [Reference1](https://www.tecmint.com/check-linux-cpu-information/)  
 [Reference2](https://www.linuxtechi.com/server-cpu-architecture-linux/)
+[Reference3](https://stackoverflow.com/questions/45125516/possible-values-for-uname-m/45125525#45125525)
