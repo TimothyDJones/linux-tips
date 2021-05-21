@@ -29662,3 +29662,13 @@ sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install ocenaudio cross-platform minimalist audio editor from Debian package
+APP_NAME=ocenaudio
+APP_VERSION=3.10.7
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_debian9_$(getconf LONG_BIT)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.ocenaudio.com/download https://www.ocenaudio.com/downloads/index.php/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
