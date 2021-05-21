@@ -256,6 +256,7 @@ Many times in a shell script, you may need to differentiate between whether your
 | :------ | :---- | :----- | :------------- |
 | `uname` | `-m`  | Display machine hardware name | `x86_64` or `i686`|
 | `arch`  |       | Alias for `uname -m` | `x86_64` |
+| `dpkg`  | `--print-architecture` | Display machine/platform architecture (Debian/Ubuntu) | `amd64`, `arm64`, `i386` |
 | `nproc` |       | Display number of CPU cores | `4` |
 | `getconf` | `LONG_BIT` | Displays 32 or 64, depending on address bus | `64` |
 | `lscpu` |       | Detailed information about CPU | N/A |
