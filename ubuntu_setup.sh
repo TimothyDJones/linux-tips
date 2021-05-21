@@ -29632,3 +29632,33 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install cli-torrent-dl command-line Python tool to search and download files from major torrent sites from package
+APP_NAME=cli-torrent-dl
+APP_GUI_NAME="Command-line Python tool to search and download files from major torrent sites."
+APP_GUI_CATEGORIES="Networking;Internet;"
+APP_GUI_KEYWORDS="Torrent;Download;"
+APP_VERSION=1.07
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/X0R0X/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p $HOME/.local/${APP_NAME,,}
+cp -R /tmp/${FILE_NAME}/* $HOME/.local/${APP_NAME,,}
+python3 -m venv $HOME/.local/${APP_NAME,,}/.venv
+source $HOME/.local/${APP_NAME,,}/.venv/bin/activate
+python3 -m pip install -r $HOME/.local/${APP_NAME,,}/requirements.txt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd $HOME/.local/${APP_NAME,,}
+PATH=$HOME/.local/${APP_NAME,,}:\$PATH; export PATH
+. $HOME/.local/${APP_NAME,,}/.venv/bin/activate
+python3 $HOME/.local/${APP_NAME,,}/tordl.py "\$@"
+deactivate
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
