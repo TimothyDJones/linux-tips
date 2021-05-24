@@ -23429,7 +23429,7 @@ elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04 - 17.10
 fi
 sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ '${DISTRIB_VERSION}' main'
 sudo apt-get update -y
-sudo apt-get install -y --install-recommends winehq-stable winetricks
+sudo apt-get install -y --install-recommends winehq-stable winetricks q4wine
 
 # Install MyDailyWallpaper daily Bing wallpaper downloader from package
 APP_NAME=MyDailyWallpaper
