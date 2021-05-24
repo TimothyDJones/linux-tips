@@ -26860,7 +26860,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Wayback Golang-based command-line tool to archive web pages to Archive.org, Archive.Today, and IPFS from Debian package
 APP_NAME=Wayback
-APP_VERSION=0.5.3
+APP_VERSION=0.12.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wabarc/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
