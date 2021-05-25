@@ -29706,3 +29706,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install rpg-cli Rust-based gamified 'cd' command replacement from package
+APP_NAME=rpg-cli
+APP_GUI_NAME="Rust-based gamified 'cd' command replacement."
+APP_VERSION=0.2.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-x86_64-unknown-linux-musl
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/facundoolano/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
+sudo cp -R /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
