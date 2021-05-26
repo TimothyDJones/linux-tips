@@ -29739,3 +29739,19 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Setzer Python/GTK-based LaTeX editor for Linux from source
+APP_NAME=Setzer
+APP_GUI_NAME="Python/GTK-based LaTeX editor for Linux."
+APP_VERSION=master
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y meson python3-gi gir1.2-gtk-3.0 gir1.2-gtksource-4 gir1.2-gspell-1 gir1.2-pango-1.0 gir1.2-poppler-0.18 gir1.2-webkit2-4.0 python3-xdg gettext xdg-utils python3-pdfminer python3-cairo
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cvfosammmm/${APP_NAME,,}/archive/refs/heads/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+meson /tmp/${FILE_NAME} --prefix=$HOME/.local && ninja install -C /tmp/${FILE_NAME}/build
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
