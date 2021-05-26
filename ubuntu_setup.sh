@@ -6330,7 +6330,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Damn Cool Editor (DCE) Tcl/Tk plain text editor from source
 APP_NAME=DCE
 APP_GUI_NAME="Tcl/Tk plain text editor."
-APP_VERSION=0.17
+APP_VERSION=1.0
 APP_EXT=tar.gz
 sudo apt-get install -y tcl8.6 tk8.6 tklib tkpng tk-tktray libtk-img tdom tcllib libsqlite3-tcl
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.jmos.net/download/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
