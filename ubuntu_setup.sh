@@ -29755,3 +29755,18 @@ mkdir build && cd build
 meson /tmp/${FILE_NAME} --prefix=$HOME/.local && ninja install -C /tmp/${FILE_NAME}/build
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install GTK Wave Cleaner (GWC) digital audio restoration (dehiss, declick and decrackle) GUI tool from source
+APP_NAME=GTK-Wave-Cleaner
+APP_GUI_NAME="Digital audio restoration (dehiss, declick and decrackle) GUI tool."
+APP_VERSION=0.22-05
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libgtk2.0-dev libfftw3-dev libsndfile1-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/gwc/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
