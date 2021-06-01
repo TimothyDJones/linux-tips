@@ -29824,3 +29824,36 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install LingLibre cross-platform Python language learning tool from package
+APP_NAME=LingLibre
+APP_GUI_NAME="Cross-platform Python language learning tool."
+APP_GUI_CATEGORIES="Education;"
+APP_GUI_KEYWORDS="Language"
+APP_VERSION=2021.05.26
+APP_EXT=tar.gz
+FILE_NAME=exe.linux-x86_64-3.8
+sudo apt-get install -y ghostscript
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/lingl/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
