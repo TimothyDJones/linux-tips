@@ -29770,3 +29770,17 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install fx cross-platform interactive command-line JSON processing tool from package
+APP_NAME=fx
+APP_GUI_NAME="Cross-platform interactive command-line JSON processing tool."
+APP_VERSION=20.0.2
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/antonmedv/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
