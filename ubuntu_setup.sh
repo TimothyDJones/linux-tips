@@ -29857,3 +29857,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Helix cross-platform, Rust-based modal text editor from package
+APP_NAME=Helix
+APP_GUI_NAME="Cross-platform, Rust-based modal text editor."
+APP_VERSION=0.0.6
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/helix-editor/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/hx /usr/local/bin/hx
+sudo ln -s -f /opt/${APP_NAME,,}/hx /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
