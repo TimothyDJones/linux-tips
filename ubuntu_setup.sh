@@ -1191,23 +1191,26 @@ else    # Otherwise use version for 32-bit kernel
 	echo "Sorry...  No 32-bit version of '${APP_NAME}' available."
 fi
 
-# Install xosview X11 performance meter
+# Install xosview X11 performance meter from source
 APP_NAME=xosview
-APP_VERSION=2-2.3.1
+APP_GUI_NAME="X11 Performance Meter"
+APP_VERSION=2.3.2
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME}2-${APP_VERSION}
+sudo apt-get install -y libxpm-dev libxft-dev libx11-dev libxext-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 # Create icon in menus
 cat > /tmp/${APP_NAME}.desktop << EOF
 [Desktop Entry]
-Name=xosview2
-Comment=X11 Performance Meter
-GenericName=X11 Performance Meter
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_GUI_NAME}
 Exec=/usr/local/bin/xosview2
-#Icon=/opt/wp-34s/wp34s-logo.png
+#Icon=
 Type=Application
 StartupNotify=true
 Terminal=false
