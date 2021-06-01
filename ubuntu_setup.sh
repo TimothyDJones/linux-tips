@@ -9225,8 +9225,8 @@ APP_NAME=SwitchHosts
 APP_GUI_NAME="Cross-platform, Electron-based hosts file manager."
 APP_GUI_CATEGORIES="System;Networking;"
 APP_GUI_KEYWORDS="Hosts;Privacy;Security;"
-APP_MAJOR_VERSION=4.0.1
-APP_MINOR_VERSION=6051
+APP_MAJOR_VERSION=4.0.2
+APP_MINOR_VERSION=6057
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}_linux_${APP_MAJOR_VERSION}.${APP_MINOR_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/oldj/${APP_NAME}/releases/download/v${APP_MAJOR_VERSION}/${FILE_NAME}.${APP_EXT}
