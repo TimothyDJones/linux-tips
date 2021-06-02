@@ -29873,3 +29873,19 @@ sudo ln -s -f /opt/${APP_NAME,,}/hx /usr/local/bin/hx
 sudo ln -s -f /opt/${APP_NAME,,}/hx /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install dxtime cross-platform, WxWidgets-based GUI time-tracking tool from source
+APP_NAME=dxtime
+APP_GUI_NAME="Cross-platform, WxWidgets-based GUI time-tracking tool."
+APP_VERSION=1.2.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y cmake libwxgtk3.0-gtk3-dev libsqlite3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p build && cd build
+cmake .. && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
