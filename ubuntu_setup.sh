@@ -29903,3 +29903,30 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install GanTTY Python command-line minimalist project management tool from package
+APP_NAME=GanTTY
+APP_GUI_NAME="Python command-line minimalist project management tool."
+APP_VERSION=master
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/timeopochin/${APP_NAME}/archive/refs/heads/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p $HOME/.local/${APP_NAME,,}
+cp -R /tmp/${FILE_NAME}/* $HOME/.local/${APP_NAME,,}
+python3 -m venv $HOME/.local/${APP_NAME,,}/.venv
+source $HOME/.local/${APP_NAME,,}/.venv/bin/activate
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd $HOME/.local/${APP_NAME,,}
+PATH=$HOME/.local/${APP_NAME,,}:\$PATH; export PATH
+. $HOME/.local/${APP_NAME,,}/.venv/bin/activate
+python3 $HOME/.local/${APP_NAME,,}/main.py "\$@"
+deactivate
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
