@@ -17053,7 +17053,7 @@ sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}.deb
 # Install Klavaro GTK3-based Touch Typing Tutor from source
 APP_NAME=Klavaro
 APP_GUI_NAME="GTK3-based Touch Typing Tutor."
-APP_VERSION=3.12
+APP_VERSION=3.13
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y intltool libgtk-3-dev
