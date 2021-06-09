@@ -562,7 +562,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from package
 APP_NAME=Vivaldi
-APP_VERSION=3.5.2115.81
+APP_VERSION=4.0.2312.24
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
