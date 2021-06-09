@@ -29996,3 +29996,20 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install gshogi cross-platform Python-based GUI Shogi (Japanese Chess) game from package
+APP_NAME=gshogi
+APP_GUI_NAME="Cross-platform Python-based GUI Shogi (Japanese Chess) game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Chess;Board Game;"
+APP_VERSION=0.5.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y python3-gi-cairo gir1.2-rsvg-2.0
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johncheetham/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo python3 ./setup.py install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
