@@ -9485,7 +9485,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install smenu interactive shell script menu tool from source
 APP_NAME=smenu
 APP_GUI_NAME="Interactive shell script menu tool."
-APP_VERSION=0.9.12
+APP_VERSION=0.9.18
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libtinfo-dev lib64tinfo5 libncurses5-dev
