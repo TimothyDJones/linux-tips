@@ -11702,12 +11702,13 @@ APP_GUI_NAME="Cross-platform Qt-based text editor."
 APP_VERSION=60.3.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y qt5-default qt5-qmake
+sudo apt-get install -y qt5-default qt5-qmake libpoppler-qt5-dev libhunspell-dev cmake
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/psemiletov/tea-qt/archive/${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}/${APP_NAME,,}-qt-${APP_VERSION}
-qtchooser -run-tool=qmake -qt=5 src.pro && make && sudo make install
+mkdir -p build && cd build
+cmake .. && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
