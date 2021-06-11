@@ -30013,3 +30013,15 @@ cd /tmp/${FILE_NAME}
 sudo python3 ./setup.py install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install ctop cross-platform, top-like GUI for monitoring performance of containers from package
+APP_NAME=ctop
+APP_GUI_NAME="Cross-platform, top-like GUI for monitoring performance of containers."
+APP_VERSION=0.7.6
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
