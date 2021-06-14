@@ -29223,7 +29223,7 @@ APP_NAME=DirSize
 APP_GUI_NAME="Cross-platform Java-based directory size reporting tool."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="File;System;"
-APP_VERSION=2.2.4
+APP_VERSION=2.2.6
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}r/${FILE_NAME}.${APP_EXT}
