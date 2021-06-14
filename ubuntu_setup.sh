@@ -29970,7 +29970,7 @@ APP_NAME=Lynx
 APP_GUI_NAME="Cross-platform minimalist code editor."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=0.0.1.5
+APP_VERSION=0.0.1.9
 APP_EXT=7z
 FILE_NAME=${APP_NAME}_${APP_VERSION}_linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/lynxcodeeditor/${FILE_NAME}.${APP_EXT}
