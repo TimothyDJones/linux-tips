@@ -30103,3 +30103,22 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install AppImageLauncher Qt-based tool to make AppImage files automatically launchable from Debian package
+APP_NAME=AppImageLauncher
+APP_MAIN_VERSION=2.2.0
+APP_VERSION=${APP_MAIN_VERSION}-travis995.0f91801
+APP_EXT=deb
+source /etc/lsb-release
+# If Ubuntu version is above 16.04 (Xenial) up to 18.04 (Bionic), then we use 16.04.
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar)$ ]]; then   # 16.04 - 17.10
+	DISTRIB_CODENAME=xenial
+# Otherwise, we use Bionic.
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo|fo|gr|hi)$ ]]; then
+	DISTRIB_CODENAME=bionic
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.${DISTRIB_CODENAME}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/TheAssassin/${APP_NAME}/releases/download/v${APP_MAIN_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
