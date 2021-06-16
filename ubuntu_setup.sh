@@ -30073,3 +30073,33 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Station Mauikit-framework Qt terminal tool from AppImage
+APP_NAME=Station
+APP_GUI_NAME="Mauikit-framework Qt terminal tool."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Terminal;Qt;"
+APP_VERSION=1.2.2
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}-stable-v${APP_VERSION}-amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.kde.org/stable/maui/${APP_NAME,,}/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
