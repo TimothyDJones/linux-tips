@@ -30184,3 +30184,25 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install DVDStyler cross-platform, WxWidgets-based GUI DVD authoring tool from source
+APP_NAME=dxtime
+APP_GUI_NAME="Cross-platform, WxWidgets-based GUI DVD authoring tool."
+APP_VERSION=2.2.0
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -yy build-essential libwxgtk3.0-gtk3-dev libwxgtk-media3.0-gtk3-dev libcairo2-dev libpango1.0-dev libexif-dev libudev-dev libdbus-1-dev xmlto dvdauthor growisofs libjpeg62-dev
+# wxSVG package from Ubuntu repositories doesn't work to build DVDStyler, so we must build from source
+curl -o /tmp/wxsvg-1.5.22.tar.bz2 -J -L https://downloads.sourceforge.net/wxsvg/wxsvg-1.5.22.tar.bz2
+cd /tmp
+dtrx -n /tmp/wxsvg-1.5.22.tar.bz2
+cd /tmp/wxsvg-1.5.22
+./autogen.sh && ./configure && make -j$(nproc) && sudo make install
+# Now proceed with build of DVDStyler
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./autogen.sh && ./configure && make -j$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
