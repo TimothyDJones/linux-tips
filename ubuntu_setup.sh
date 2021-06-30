@@ -500,18 +500,20 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install Firejail and Firetools utilities for running applications in isolated memory space from Debian package
-APP_NAME=firejail
-APP_VERSION=0.9.64.4_1
+APP_NAME=Firejail
+APP_VERSION=0.9.66
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
-rm -f /tmp/${APP_NAME}.${APP_EXT}
-APP_NAME=firetools
-APP_VERSION=0.9.64_1
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_1_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
+rm -f /tmp/${APP_NAME,,}*
+APP_NAME=Firetools
+APP_VERSION=0.9.64
 APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/firejail/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
-rm -f /tmp/${APP_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_1_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/firejail/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
+rm -f /tmp/${APP_NAME,,}*
 cd $HOME
 
 # Install Stacer Linux monitoring tool from Debian package
