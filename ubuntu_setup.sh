@@ -24832,7 +24832,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Sharik cross-platform Wifi file-sharing utility from Debian package
 APP_NAME=Sharik
-APP_VERSION=2.5
+APP_VERSION=3.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
