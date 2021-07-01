@@ -3341,9 +3341,12 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Shotcut video editor
+# Install Shotcut cross-platform non-linear video editor from package
 APP_NAME=Shotcut
-APP_VERSION=21.06.15
+APP_GUI_NAME="Cross-platform non-linear video editor."
+APP_GUI_CATEGORIES="Multimedia;Video;"
+APP_GUI_KEYWORDS="Video;Editor;"
+APP_VERSION=21.06.29
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -3359,16 +3362,16 @@ sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME}.app/${APP_NAME,,} /usr/local/bin/${
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=Cross-platform Video Editor
-GenericName=Video Editor
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
 Exec=/opt/${APP_NAME,,}/${APP_NAME}.app/${APP_NAME,,}
 Icon=/opt/${APP_NAME,,}/${APP_NAME}.app/share/icons/hicolor/64x64/apps/org.shotcut.Shotcut.png
 Path=/opt/${APP_NAME,,}/${APP_NAME}.app
 Type=Application
 StartupNotify=true
 Terminal=false
-Categories=Video;Multimedia;
-Keywords=Video;Editor;
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
