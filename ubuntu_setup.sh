@@ -2776,7 +2776,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install qdPM Web-Based Project Management Tool (manual installation)
 APP_NAME=qdPM
-APP_VERSION=9.1
+APP_VERSION=9.2
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
