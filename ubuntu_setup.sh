@@ -29493,7 +29493,7 @@ APP_NAME=FinalShell
 APP_GUI_NAME="Linux application launcher."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Launcher;"
-APP_VERSION=3.9.0
+APP_VERSION=3.9.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_linux-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
