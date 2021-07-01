@@ -5164,7 +5164,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Dooble web browser from Debian package
 APP_NAME=Dooble
-APP_VERSION=2021.02.20
+APP_VERSION=2021.06.20
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/textbrowser/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
