@@ -28259,7 +28259,7 @@ APP_NAME=MathMod
 APP_GUI_NAME="Cross-platform interactive plotting and graphing program."
 APP_GUI_CATEGORIES="Education;Development"
 APP_GUI_KEYWORDS="Math;Graphics;Visualization"
-APP_VERSION=11.0
+APP_VERSION=11.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux64-static
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
