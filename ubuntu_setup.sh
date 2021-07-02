@@ -18320,7 +18320,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # https://github.com/x-jrga/potatosql
 APP_NAME=PotatoSQL
 APP_GUI_NAME="Java-based database design and learning tool."
-APP_VERSION=3.0
+APP_VERSION=4.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
