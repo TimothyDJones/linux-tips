@@ -19627,7 +19627,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install JE Editor minimalist Java text editor from package
 APP_NAME="JE Editor"
 APP_GUI_NAME="Minimalist Java text editor."
-APP_VERSION=5.0
+APP_VERSION=6.0
 APP_EXT=jar
 FILE_NAME=je
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/je-java/${FILE_NAME}.${APP_EXT}
