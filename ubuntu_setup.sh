@@ -30275,3 +30275,17 @@ EOF
 sudo mv /tmp/${APP_NAME// /-}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install gpassmanager cross-platform, Golang-based simple command-line password generator/manager from package
+APP_NAME=gpassmanager
+APP_GUI_NAME="Cross-platform, Golang-based simple command-line password generator/manager."
+APP_VERSION=1.1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux-amd64-v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
