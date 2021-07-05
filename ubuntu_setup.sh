@@ -30243,3 +30243,35 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install The Powder Toy cross-platform desktop 'falling sand' physics simulation from package
+APP_NAME="The Powder Toy"
+APP_GUI_NAME="Cross-platform desktop 'falling sand' physics simulation."
+APP_GUI_CATEGORIES="Education;Science;"
+APP_GUI_KEYWORDS="Science;Physics;Simulation;"
+APP_VERSION=96.0.347b
+APP_EXT=N/A
+FILE_NAME=powder-v${APP_VERSION}-x86_64-lin-gcc-static
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/${APP_NAME// /-}/${APP_NAME// /-}/releases/download/v${APP_VERSION}/${FILE_NAME}
+curl -o /tmp/${APP_NAME// /-}.ico -J -L https://github.com/The-Powder-Toy/The-Powder-Toy/raw/master/resources/icon.ico
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME// /-}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME// /-}.ico /usr/local/share/icons/${APP_NAME// /-}.ico
+cat > /tmp/${APP_NAME// /-}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME// /-}
+Icon=/usr/local/share/icons/${APP_NAME// /-}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME// /-}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
