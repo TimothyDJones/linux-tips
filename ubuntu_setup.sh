@@ -29005,7 +29005,7 @@ APP_NAME=WebEditorWeb
 APP_GUI_NAME="HTML, CSS, and JavaScript editor in a single HTML file."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="HTML;Editor;"
-APP_VERSION=210503
+APP_VERSION=210702
 APP_EXT=zip
 FILE_NAME=wew_src-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
