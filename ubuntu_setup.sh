@@ -26774,7 +26774,7 @@ APP_NAME=Boop-GTK
 APP_GUI_NAME="Cross-platform scriptable scratchpad for developers."
 APP_GUI_CATEGORIES="Development;Programming;Accessories;"
 APP_GUI_KEYWORDS="Notepad;Editor;"
-APP_VERSION=1.6.0
+APP_VERSION=1.7.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}.linux.amd64
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/zoeyfyi/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}
