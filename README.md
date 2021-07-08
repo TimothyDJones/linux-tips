@@ -266,3 +266,10 @@ Many times in a shell script, you may need to differentiate between whether your
 [Reference1](https://www.tecmint.com/check-linux-cpu-information/)  
 [Reference2](https://www.linuxtechi.com/server-cpu-architecture-linux/)  
 [Reference3](https://stackoverflow.com/questions/45125516/possible-values-for-uname-m/45125525#45125525)
+
+## Tidy up your Linux command line history with `HISTIGNORE`
+If you use the Linux command line often, one of the greatest features is the [`history`](https://www.man7.org/linux/man-pages/man3/history.3.html) of commands run. Simply press the up and down arrows to navigate backward and forward through the commands or hit <kbd>Ctrl</kbd>+R to search. However, if you navigate around a lot and list directory contents, your history can filled with extra commands that you aren't likely to want to from history, since they are simple enough to just run again. To prevent history from adding these to your command history, just add the `HISTIGNORE` variable to your `.bashrc` with a list of the commands to ignore separated with colons (`:`). Here's an example:
+```bash
+HISTIGNORE="ls:ls -lrt:[bf]g:history*:exit:*shutdown*:*reboot*:[ \t]*"
+```
+In this example, we ignore `ls` by itself and `ls -lrt`, the `bg` and `fg` commands, `exit`, and anything _starting with_ `history`. Likewise, you can see that we've included "dangerous" commands like `shutdown` and `reboot` that we probably don't want to accidentally run when quickly scrolling through a long history list. And, finally, `[ \t]*` means to ignore any command that you enter that starts with a <kbd>Space</kbd> or <kbd>Tab</kbd> so that you can selectively run a command and have it ignored in the history.
