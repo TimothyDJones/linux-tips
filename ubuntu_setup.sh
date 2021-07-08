@@ -17523,14 +17523,15 @@ sudo -rm -rf /tmp/${APP_NAME}*
 # Install Raven Reader Electron-based RSS news reader from AppImage
 APP_NAME=Raven-Reader
 APP_GUI_NAME="Electron-based RSS news reader."
-APP_VERSION=0.4.4
+APP_VERSION=1.0.63
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mrgodhani/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
-sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo ln -f -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/hello-efficiency-inc/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.png -J -L https://raw.githubusercontent.com/hello-efficiency-inc/raven-reader/master/build/icons/128x128.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -f -s /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME}.png /usr/local/share/icons/${APP_NAME}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -17538,7 +17539,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
 Exec=/usr/local/bin/${APP_NAME,,}
-Icon=
+Icon=/usr/local/share/icons/${APP_NAME}.png
 Type=Application
 StartupNotify=true
 Terminal=false
