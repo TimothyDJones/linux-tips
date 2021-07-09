@@ -24046,7 +24046,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DomTerm combined terminal emulator and REPL console using web technlogies from source
 APP_NAME=DomTerm
-APP_VERSION=2.1
+APP_VERSION=2.9.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y automake libjson-c-dev pkg-config asciidoctor libmagic-dev zlib1g-dev qt5-qmake qt5-default libqt5webengine5 libqt5webchannel5-dev qtwebengine5-dev libwebsockets-dev
