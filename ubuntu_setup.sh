@@ -2300,16 +2300,22 @@ configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Eric Python IDE
-APP_NAME=eric
-APP_VERSION=6-21.7
+# Install Eric Python IDE from package
+APP_NAME=Eric
+APP_VERSION=21.7
 APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}6-${APP_VERSION}
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql python3-pyqt5.qtwebengine python3-pyqt5.qtchart
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${APP_NAME}${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}${APP_VERSION}
-sudo python3 ./install.py
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p $HOME/.local/bin/${APP_NAME,,}
+cd $HOME/.local/bin/${APP_NAME,,}
+cp -R /tmp/${FILE_NAME}/* $HOME/.local/bin/${APP_NAME,,}
+python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
+source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python3 ./install.py
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
