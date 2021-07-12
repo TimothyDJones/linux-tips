@@ -204,7 +204,7 @@ sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
 curl -o /tmp/ttf-iosevka-7.2.8.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v7.2.8/ttf-iosevka-7.2.8.zip
 cd /tmp
 dtrx -n /tmp/ttf-iosevka-7.2.8.zip
-sudo cp -R /tmp/ttf-iosevka-7.2.6/* /usr/local/share/fonts
+sudo cp -R /tmp/ttf-iosevka-7.2.8/* /usr/local/share/fonts
 curl -o /tmp/CascadiaCode-2105.24.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2102.25.zip
 cd /tmp
 dtrx -n /tmp/CascadiaCode-2105.24.zip
