@@ -5630,25 +5630,57 @@ mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIE
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/installation/setup.php &
 
-# Install PySolFC Python-based Solitaire card game
+# Install PySolFC Python-based Solitaire card game from package
 APP_NAME=PySolFC
 APP_GUI_NAME="Python-based Solitaire card game"
-APP_VERSION=2.10.1
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Solitaire;Cards;Games;"
+APP_VERSION=2.12.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y python3-pip
-sudo pip3 install random2 sgmllib3k
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
-sudo python3 ./setup.py install
+mkdir -p $HOME/.local/bin/${APP_NAME,,}
+cd $HOME/.local/bin/${APP_NAME,,}
+cp -R /tmp/${FILE_NAME}/* $HOME/.local/bin/${APP_NAME,,}
+python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
+source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python -m pip3 install random2 sgmllib3k
+python3 $HOME/.local/bin/${APP_NAME,,}/setup.py install
 # Install card sets
-curl -o /tmp/${APP_NAME}-Cardsets-2.0.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-Cardsets-2.0.tar.bz2
+curl -o /tmp/${APP_NAME}-Cardsets-2.1PRE.tar.bz2 -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-Cardsets-2.1PRE.tar.bz2
 cd /tmp
-dtrx -n /tmp/${APP_NAME}-Cardsets-2.0.tar.bz2
-cd /tmp/${APP_NAME}-Cardsets-2.0
-sudo cp -R /tmp/${APP_NAME}-Cardsets-2.0/* /usr/local/share/${APP_NAME}
+dtrx -n /tmp/${APP_NAME}-Cardsets-2.1PRE.tar.bz2
+cd /tmp/${APP_NAME}-Cardsets-2.1PRE
+sudo cp -R /tmp/${APP_NAME}-Cardsets-2.1PRE/* $HOME/.local/bin/${APP_NAME,,}/data
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd \$HOME/.local/bin/${APP_NAME,,}
+. \$HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python \$HOME/.local/bin/${APP_NAME,,}/pysol.py &
+deactivate
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=$HOME/.local/bin/${APP_NAME,,}/data/pysol.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}*
 
