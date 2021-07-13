@@ -21124,8 +21124,8 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Simple Java Image Tool (SJIT) Java command-line tool to analyze, manipulate and convert image files from package
 APP_NAME=SJIT
-APP_GUI_NAME="Rust-based command-line shortcuts for common Git commands."
-APP_VERSION=1.5
+APP_GUI_NAME="Java command-line tool to analyze, manipulate and convert image files."
+APP_VERSION=1.5.2
 APP_EXT=jar
 FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
