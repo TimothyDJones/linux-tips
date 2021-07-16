@@ -73,6 +73,12 @@ alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=au
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 
+# System functions
+# https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions
+alias df="df -Tha --total"
+alias du="du -ach | sort -h"
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+
 alias rm='rm -i -v'
 alias cp='cp -v'
 alias mv='mv -v'
