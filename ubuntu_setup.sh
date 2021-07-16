@@ -20821,7 +20821,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install jdTextEdit Python text editor based on Qt and Scintilla from package
 APP_NAME=jdTextEdit
 APP_GUI_NAME="Python text editor based on Qt and Scintilla."
-APP_VERSION=8.3
+APP_VERSION=9.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}-Python
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
