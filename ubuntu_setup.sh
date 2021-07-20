@@ -1566,41 +1566,47 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install PuTTY SSH client from source.
+# Install PuTTY cross-platform standard GTK SSH client from source.
 # http://www.chiark.greenend.org.uk/~sgtatham/putty/
-APP_NAME=putty
-APP_VERSION=0.70
+APP_NAME=PuTTY
+APP_GUI_NAME="Cross-platform standard GTK SSH client."
+APP_GUI_CATEGORIES="Internet;System;"
+APP_GUI_KEYWORDS="SSH;Terminal;"
+APP_VERSION=0.76
 APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 # Install dependencies
-sudo apt-get install -y libxml2-dev libgtk-3-dev
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://the.earth.li/~sgtatham/${APP_NAME}/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+sudo apt-get install -y libxml2-dev libgtk-3-dev build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://the.earth.li/~sgtatham/${APP_NAME,,}/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+https://the.earth.li/~sgtatham/putty/0.76/putty-0.76.tar.gz
 cd /tmp
-dtrx -n ${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 # Build and copy PNG icons
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}/icons
+cd /tmp/${FILE_NAME}/icons
 make
+sudo mkdir -p /usr/local/share/icons/hicolor/16x16/apps /usr/local/share/icons/hicolor/32x32/apps /usr/local/share/icons/hicolor/48x48/apps
 sudo cp *-16*.png /usr/local/share/icons/hicolor/16x16/apps
 sudo cp *-32*.png /usr/local/share/icons/hicolor/32x32/apps
 sudo cp *-48*.png /usr/local/share/icons/hicolor/48x48/apps
 # Create icon in menus
-cat > /tmp/${APP_NAME}.desktop << EOF
+cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
-Name=PuTTY
-Comment=Popular SSH client
-GenericName=PuTTY
-Exec=putty
-Icon=/usr/local/share/icons/hicolor/32x32/apps/putty-32.png
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/hicolor/32x32/apps/${APP_NAME,,}-32.png
 Type=Application
-StartupNotify=false
+StartupNotify=true
 Terminal=false
-Categories=Accessories;System;
-Keywords=ssh;terminal;
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
 EOF
-sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install whipFTP cross-platform Python-based FTP client from Debian package
 APP_NAME=whipFTP
@@ -30416,3 +30422,19 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Ltxshell command-line tool for launching LaTeX and associated tools (e.g., dvi-viewer, dvips, ps-file-viewer, pdf-file-viewer) from menu from package
+APP_NAME=Ltxshell
+APP_GUI_NAME="Command-line tool for launching LaTeX and associated tools (e.g., dvi-viewer, dvips, ps-file-viewer, pdf-file-viewer) from menu."
+APP_VERSION=1.14
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
