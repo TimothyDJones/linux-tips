@@ -201,10 +201,10 @@ curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack
 cd /tmp
 dtrx -n /tmp/Hack-v3.003-ttf.tar.xz
 sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
-curl -o /tmp/ttf-iosevka-7.2.8.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v7.2.8/ttf-iosevka-7.2.8.zip
+curl -o /tmp/ttf-iosevka-7.3.1.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v7.3.1/ttf-iosevka-7.3.1.zip
 cd /tmp
-dtrx -n /tmp/ttf-iosevka-7.2.8.zip
-sudo cp -R /tmp/ttf-iosevka-7.2.8/* /usr/local/share/fonts
+dtrx -n /tmp/ttf-iosevka-7.3.1.zip
+sudo cp -R /tmp/ttf-iosevka-7.3.1/* /usr/local/share/fonts
 curl -o /tmp/CascadiaCode-2106.17.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2106.17.zip
 cd /tmp
 dtrx -n /tmp/CascadiaCode-2106.17.zip
@@ -2230,7 +2230,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Hyper JS/HTML/CSS Terminal from Debian package
 APP_NAME=Hyper
-APP_VERSION=3.0.2
+APP_VERSION=3.1.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hyper.mirror/${FILE_NAME}.${APP_EXT}
@@ -2591,7 +2591,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.5.63
+APP_VERSION=6.5.67
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -14146,7 +14146,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=2.1.8
+APP_VERSION=2.1.9
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
