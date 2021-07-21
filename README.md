@@ -312,13 +312,13 @@ Historically, remote access on Linux was handled through the [VNC (Virtual Netwo
    ```
 6. Connect to your Ubuntu machine from another machine. If you are connecting from a Windows machine, you can use the standard Remote Desktop client (Start --> Windows Accessories --> Remote Desktop Connection _or_ Start --> Run --> mstsc.exe). Enter the IP address or hostname of your Ubuntu machine to connect. In a few seconds, you'll be prompted to log in; log in using the same **Ubuntu** username and password that you usually use. (You may also be prompted about SSL certificate validation, which you will need to accept.)
 
-For connecting from another Ubuntu (or other Linux) machine, there are various RDP clients that you can use, including:
-   - [Remmina](https://remmina.org/)*
-   - [Vinagre](https://wiki.gnome.org/Apps/Vinagre)*
-   - [TigerVNC](https://tigervnc.org/)* - To use TigerVNC with RDP, enter the IP address or hostname in the _viewer_ connection window followed by **:3389**. This means to connect on TCP port 3389, which is the port that RDP listens on.
-   - [KRDC](https://apps.kde.org/krdc/)*
-   - [X2Go](https://wiki.x2go.org/doku.php)*
-   *Indicates that these are available in standard Ubuntu repositories (i.e., install using `sudo apt-get install`).
+   For connecting from another Ubuntu (or other Linux) machine, there are various RDP clients that you can use, including:
+      - [Remmina](https://remmina.org/)*
+      - [Vinagre](https://wiki.gnome.org/Apps/Vinagre)*
+      - [TigerVNC](https://tigervnc.org/)* - To use TigerVNC with RDP, enter the IP address or hostname in the _viewer_ connection window followed by **:3389**. This means to connect on TCP port 3389, which is the port that RDP listens on.
+      - [KRDC](https://apps.kde.org/krdc/)*
+      - [X2Go](https://wiki.x2go.org/doku.php)*  
+      *Indicates that these are available in standard Ubuntu repositories (i.e., install using `sudo apt-get install`).
 7. If you get a black (blank) screen on the remote machine after logging in remotely, you'll need to make a simple adjustment on the Ubuntu machine (the one that you are accessing remotely) in the script to launches the X11 window manager for XRDP. Do the following:
    ```
    sudo nano /etc/xrdp/startwm.sh
@@ -343,6 +343,6 @@ For connecting from another Ubuntu (or other Linux) machine, there are various R
    ```
    Finally, restart and enable the `xrdp` service to ensure the change takes effect.
 
-[Reference1](https://linuxize.com/post/how-to-install-xrdp-on-ubuntu-18-04/)
-[Reference2](https://www.tecmint.com/install-xrdp-on-ubuntu/)
+[Reference1](https://linuxize.com/post/how-to-install-xrdp-on-ubuntu-18-04/)  
+[Reference2](https://www.tecmint.com/install-xrdp-on-ubuntu/)  
 [Reference3](https://linoxide.com/xrdp-connect-ubuntu-linux-remote-desktop-via-rdp-from-windows/)
