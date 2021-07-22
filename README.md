@@ -285,7 +285,22 @@ Historically, remote access on Linux was handled through the [VNC (Virtual Netwo
    ```
    $ sudo systemctl status xrdp
    ```
-   You should see output similar to the following. The main thing to confirm is that it shows that the service is `active (running)`.
+   You should see output similar to the following. The main thing to confirm is that it shows that the service is `active (running)` next to `Active`.
+   ```
+   ● xrdp.service - xrdp daemon
+     Loaded: loaded (/lib/systemd/system/xrdp.service; enabled; vendor prese>
+     Active: active (running) since Thu 2021-07-22 06:37:19 CDT; 29min ago
+       Docs: man:xrdp(8)
+             man:xrdp.ini(5)
+    Process: 58107 ExecStartPre=/bin/sh /usr/share/xrdp/socksetup (code=exit>
+    Process: 58115 ExecStart=/usr/sbin/xrdp $XRDP_OPTIONS (code=exited, stat>
+   Main PID: 58116 (xrdp)
+      Tasks: 2 (limit: 8740)
+     Memory: 16.6M
+     CGroup: /system.slice/xrdp.service
+             ├─58116 /usr/sbin/xrdp
+             └─58124 /usr/sbin/xrdp
+	```
 3. XRDP uses the `/etc/ssl/private/ssl-cert-snakeoil.key` SSL certificate file for authentication. Access to this file is limited to members of the `ssl-cert` group, so we must add the `xrdp` user to that group with this command:
    ```
    $ sudo adduser xrdp ssl-cert
