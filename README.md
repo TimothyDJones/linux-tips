@@ -361,3 +361,17 @@ Historically, remote access on Linux was handled through the [VNC (Virtual Netwo
 [Reference1](https://linuxize.com/post/how-to-install-xrdp-on-ubuntu-18-04/)  
 [Reference2](https://www.tecmint.com/install-xrdp-on-ubuntu/)  
 [Reference3](https://linoxide.com/xrdp-connect-ubuntu-linux-remote-desktop-via-rdp-from-windows/)
+
+## Prevent laptop from suspending when closing lid in Linux
+If you have an old laptop that you typically access remotely (i.e., via VNC or RDP), then usually you will want to close the lid, but not have the device suspend, so that you can still connect remotely. Some Linux desktop environments (DE) have GUI options to do this, but many don't and, even those that do, use a variety of different techniques (e.g., power management, login, etc.). Here's the most reliable way to do it.
+1. Edit the `logind` service configuration file as root.
+   ```
+   $ sudo nano /etc/systemd/logind.conf
+   ```
+2. Locate the lines under `[Login]` section that _start_ with `HandleLidSwitch` and uncomment them (remove the `#` at the start of the line, if any) and set the value to either `lock` (preferred) or `ignore`. (The current values, as commented out, are the defaults.) The `lock` setting will turn off the display and lock the machine, which will require you to enter your password when you open the lid, while `ignore` does nothing when you close the lid.
+   ```
+   HandleLidSwitch=lock
+   HandleLidSwitchExternalPower=lock
+   HandleLidSwitchDocked=ignore
+   ```
+3. Save the file and _reboot_ the machine for the changes to take effect. (You can actually just restart the `logind` service \[i.e., `sudo systemctl restart logind`\]. However, this will have the effect of logging you out.]
