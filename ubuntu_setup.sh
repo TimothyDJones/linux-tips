@@ -28570,7 +28570,7 @@ APP_NAME=WindTerm
 APP_GUI_NAME="Cross-platform SSH/Telnet/Serial/Shell/Sftp client with Vim keybindings."
 APP_GUI_CATEGORIES="Development;Internet;"
 APP_GUI_KEYWORDS="SSH;Shell;Networking"
-APP_VERSION=2.0.2
+APP_VERSION=2.1.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}_${APP_VERSION}_Linux_Portable
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kingToolbox/${APP_NAME,,}/releases/download/2.0/${FILE_NAME}.${APP_EXT}
