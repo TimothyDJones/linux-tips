@@ -6768,7 +6768,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Flameshot Qt-based GUI/CLI screenshot capture tool from source
 APP_NAME=Flameshot
 APP_GUI_NAME="Qt-based GUI/CLI screenshot capture tool."
-APP_VERSION=0.10.0
+APP_VERSION=0.10.1
 APP_EXT=tar.gz
 sudo apt-get install -y qt5-qmake qt5-default qttools5-dev-tools
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/flameshot-org/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
