@@ -12533,25 +12533,28 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
 
-# Install VNote Vim-inspired note-taking application with MarkDown support from App Image
+# Install VNote Vim-inspired note-taking application with MarkDown support from AppImage
 APP_NAME=VNote
 APP_GUI_NAME="Vim-inspired note-taking application with MarkDown support."
-APP_VERSION=2.9.1
-APP_EXT=AppImage
-FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tamlok/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
-sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+APP_VERSION=3.5.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-linux-x64_v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/vnotex/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/vnotex/${APP_NAME,,}/master/pics/${APP_NAME,,}.png
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${FILE_NAME}.AppImage /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}.AppImage
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.AppImage /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-#Icon=
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
