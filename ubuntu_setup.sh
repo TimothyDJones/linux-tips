@@ -30507,3 +30507,8 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://code.launchpad.net/~peek-deve
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Musicbrainz Picard cross-platform audio tagging tool from PPA
+sudo add-apt-repository -yy ppa:musicbrainz-developers/stable
+sudo apt update
+sudo apt install -yy picard
