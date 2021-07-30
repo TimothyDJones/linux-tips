@@ -12064,7 +12064,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install eLogSim digital circuit simulator from package
 APP_NAME=eLogSim
 APP_GUI_NAME="Digital circuit simulator."
-APP_VERSION=3.0.5
+APP_VERSION=3.0.6
 APP_EXT=zip
 FILE_NAME=My${APP_NAME}_${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
