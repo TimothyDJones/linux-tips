@@ -30629,3 +30629,9 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/atlas-engineer/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Wike desktop Wikipedia reader from PPA
+https://github.com/hugolabe/Wike
+sudo add-apt-repository -yy ppa:apandada1/wike
+sudo apt update
+sudo apt install -yy wike
