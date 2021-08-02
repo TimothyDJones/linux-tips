@@ -30559,3 +30559,47 @@ cd /tmp/${FILE_NAME}
 make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Ganimed cross-platform, Java-based animated GIF/PNG tool from package
+APP_NAME=Ganimed
+APP_GUI_NAME="Cross-platform, Java-based animated GIF/PNG tool."
+APP_GUI_CATEGORIES="Multimedia;Graphics;"
+APP_GUI_KEYWORDS="GIF;PNG;"
+APP_VERSION=1.5.1-alpha
+APP_EXT=jar
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -yy openjfx
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Moon70/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/Moon70/${APP_NAME}/master/src/main/resources/icons/ProgramIcon.png
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar ${FILE_NAME}.${APP_EXT} &
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
