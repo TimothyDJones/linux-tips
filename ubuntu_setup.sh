@@ -11095,11 +11095,11 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Crosswire SWORD Bible research and study platform from source
 APP_NAME=SWORD
 APP_GUI_NAME="Bible research and study platform."
-APP_VERSION=1.8.1
+APP_VERSION=1.9.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y automake libtool libclucene-dev libqt5clucene5 libcurl4-openssl-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://crosswire.org/ftpmirror/pub/sword/source/v1.8/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://crosswire.org/ftpmirror/pub/sword/source/v1.9/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
