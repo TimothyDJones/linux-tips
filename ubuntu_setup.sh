@@ -6181,7 +6181,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Cutterff FFMpeg video cutting utility from package
 APP_NAME=Cutterff
 APP_GUI_NAME="FFMpeg video cutting utility."
-APP_VERSION=0.4
+APP_VERSION=1.0
 APP_EXT=tar.bz2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
