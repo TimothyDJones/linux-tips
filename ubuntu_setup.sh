@@ -29179,7 +29179,7 @@ APP_NAME=JavAstro
 APP_GUI_NAME="Cross-platform Java-based astronomy tools."
 APP_GUI_CATEGORIES="Education;Science;"
 APP_GUI_KEYWORDS="Astronomy;Science;"
-APP_VERSION=2107
+APP_VERSION=2108
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}_${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
