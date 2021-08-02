@@ -11114,7 +11114,7 @@ APP_GUI_NAME="Cross-platform Bible study software using Crosswire SWORD toolkit.
 APP_VERSION=3.0.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y qt5-default cmake libclucene-dev libqt5svg5-dev libqt5webkit5-dev
+sudo apt-get install -y qt5-default cmake libclucene-dev libqt5svg5-dev libqt5webkit5-dev qttools5-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -30618,3 +30618,14 @@ cd /tmp/${FILE_NAME}
 make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Nyxt keyboard-oriented web browser with Vim and Emac keybindings from Debian package
+# https://nyxt.atlas.engineer/
+APP_NAME=Nyxt
+APP_VERSION=2.1.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/atlas-engineer/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
