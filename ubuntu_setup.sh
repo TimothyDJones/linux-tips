@@ -11111,7 +11111,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Crosswire SWORD toolkit must be install FIRST; see above.
 APP_NAME=Bibletime
 APP_GUI_NAME="Cross-platform Bible study software using Crosswire SWORD toolkit."
-APP_VERSION=3.0_beta2
+APP_VERSION=3.0.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qt5-default cmake libclucene-dev libqt5svg5-dev libqt5webkit5-dev
