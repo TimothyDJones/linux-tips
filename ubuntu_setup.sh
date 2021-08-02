@@ -11098,7 +11098,7 @@ APP_GUI_NAME="Bible research and study platform."
 APP_VERSION=1.9.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y automake libtool libclucene-dev libqt5clucene5 libcurl4-openssl-dev
+sudo apt-get install -y automake libtool libclucene-dev libcurl4-openssl-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://crosswire.org/ftpmirror/pub/sword/source/v1.9/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
