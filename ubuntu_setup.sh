@@ -30603,3 +30603,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install mp3guessenc command-line MPEG audio (layer 1/2/3) info scanner from source
+APP_NAME=mp3guessenc
+APP_GUI_NAME="Command-line MPEG audio (layer 1/2/3) info scanner."
+APP_VERSION=0.27.6beta
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
