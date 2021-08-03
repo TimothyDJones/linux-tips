@@ -30635,3 +30635,43 @@ https://github.com/hugolabe/Wike
 sudo add-apt-repository -yy ppa:apandada1/wike
 sudo apt update
 sudo apt install -yy wike
+
+# Install Spyder cross-platform Qt-based Python IDE from PyPI
+APP_NAME=Spyder
+APP_GUI_NAME="Cross-platform Qt-based Python IDE."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Python;IDE;Editor;"
+APP_VERSION=5.1.0
+mkdir -p $HOME/.local/bin/${APP_NAME,,}
+cd $HOME/.local/bin/${APP_NAME,,}
+python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
+source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python3 -m pip install ${APP_NAME,,}
+deactivate
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/bash
+cd $HOME/.local/bin/${APP_NAME,,}
+PATH=$HOME/.local/bin/${APP_NAME,,}:\$PATH; export PATH
+source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+$HOME/.local/bin/${APP_NAME,,}/.venv/bin/${APP_NAME,,} &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=$HOME/.local/bin/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=$HOME/.local/bin/${APP_NAME,,}/.venv/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
