@@ -24445,16 +24445,11 @@ sudo python3 /tmp/${FILE_NAME}/setup.py install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Alacritty cross-platform, GPU-accelerated terminal emulator from Debian package
-APP_NAME=Alacritty
-APP_GUI_NAME="Cross-platform, GPU-accelerated terminal emulator ."
-APP_VERSION=0.4.3
-APP_EXT=deb
-FILE_NAME=${APP_NAME}-v${APP_VERSION}-ubuntu_18_04_${KERNEL_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
-cd $HOME
-sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+# Install Alacritty cross-platform, GPU-accelerated terminal emulator from PPA
+https://github.com/alacritty/alacritty
+sudo add-apt-repository -yy ppa:aslatter/ppa
+sudo apt-get update
+sudo apt-get install -yy alacritty
 
 # Install httpflow command-line tool to capture and dump HTTP stream from source
 APP_NAME=httpflow
