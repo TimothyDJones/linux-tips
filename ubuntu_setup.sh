@@ -30694,3 +30694,17 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Procs Rust-based modern replacement for 'ps' from package
+APP_NAME=Procs
+APP_GUI_NAME="Rust-based modern replacement for 'ps'."
+APP_VERSION=0.11.9
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-lnx
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dalance/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
