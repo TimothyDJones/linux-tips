@@ -69,6 +69,21 @@ function dirsize() {
     sudo du -cxh -d 1 . | sort -h;
 }
 
+# Go up the specified number of directory levels (e.g., "up 4")
+function up() {
+	local d=""
+	limit=$1
+	for ((i=1 ; i <= limit ; i++))
+		do
+			d="$d"/..
+		done
+	d=$(echo $d | sed 's/^\///')
+	if [[ -z "$d" ]]; then
+		d=..
+	fi
+	cd "$d"
+}
+
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
