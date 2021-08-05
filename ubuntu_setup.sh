@@ -30733,3 +30733,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/curlpipe/${APP_NAM
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Msc-generator cross-platform, GTK-based GUI signalling and sequence diagram editor from source
+APP_NAME=Msc-generator
+APP_GUI_NAME="Cross-platform, GTK-based GUI signalling and sequence diagram editor."
+APP_VERSION=6.4.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy debhelper g++-10 automake bison flex libfl-dev texinfo libcairo2-dev libfreetype6-dev libfontconfig help2man libgraphviz-dev texlive texlive-plain-generic libglpk-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
