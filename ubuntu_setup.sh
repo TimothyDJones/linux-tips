@@ -30723,3 +30723,13 @@ cd /tmp/${FILE_NAME}/${APP_NAME,,}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Ox minimalist Rust-based terminal text editor from Debian package
+APP_NAME=Ox
+APP_VERSION=0.2.7
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/curlpipe/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
