@@ -86,7 +86,7 @@ function up() {
 
 # Colorize tail output for log files based on type of message on line
 # https://github.com/cgoldberg/dotfiles/blob/master/.bash_aliases#L548
-ctail () {
+function ctail() {
     tail -f -n 80 "$1" |
         sed --unbuffered \
         -e 's/\(.*FATAL.*\)/\o033[31m\1\o033[39m/' \
@@ -96,6 +96,14 @@ ctail () {
         -e 's/\(.*DEBUG.*\)/\o033[34m\1\o033[39m/' \
         -e 's/\(.*TRACE.*\)/\o033[30m\1\o033[39m/' \
         -e 's/\(.*[Ee]xception.*\)/\o033[39m\1\o033[39m/'
+}
+
+# Search command history by regex (case-insensitive) and show last n matches
+# usage: hs <pattern>
+# https://github.com/cgoldberg/dotfiles/blob/master/.bash_aliases#L271
+function hs() {
+    local n="150"
+    history | grep -i --color=always "$1" | tail -n "$n"
 }
 
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
