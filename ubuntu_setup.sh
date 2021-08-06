@@ -2814,6 +2814,9 @@ APP_GUI_NAME="System utility suite."
 APP_VERSION=4.31.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+WXVERS="3.0"
+LJTVERS="8"
+sudo apt-get install -yy build-essential autoconf automake autotools-dev dh-make debhelper dh-systemd reprepro devscripts fakeroot file gfortran git gnupg fp-compiler lintian patch patchutils pbuilder quilt xutils-dev make gcc g++ zlib1g-dev libbz2-dev libssl-dev libdb-dev libpng-dev libjpeg${LJTVERS}-dev libjpeg-turbo${LJTVERS}-dev libsnmp-dev wx${WXVERS}-headers libwxgtk${WXVERS}-gtk3-dev libwxbase${WXVERS}-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
