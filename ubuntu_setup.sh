@@ -30818,3 +30818,18 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Enigma cross-platform, SDL-based puzzle game based on Oxyd from source
+APP_NAME=Enigma
+APP_GUI_NAME="Cross-platform, SDL-based puzzle game based on Oxyd."
+APP_VERSION=1.2.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy libsdl1.2-dev libsdl-ttf2.0-dev libsdl-mixer1.2-dev libsdl-image1.2-dev libpng-dev libxerces-c-dev zlib1g-dev texi2html curl xdg-utils autoconf graphviz imagemagick
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-game/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
