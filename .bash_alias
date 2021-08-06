@@ -84,6 +84,20 @@ function up() {
 	cd "$d"
 }
 
+# Colorize tail output for log files based on type of message on line
+# https://github.com/cgoldberg/dotfiles/blob/master/.bash_aliases#L548
+ctail () {
+    tail -f -n 80 "$1" |
+        sed --unbuffered \
+        -e 's/\(.*FATAL.*\)/\o033[31m\1\o033[39m/' \
+        -e 's/\(.*ERROR.*\)/\o033[31m\1\o033[39m/' \
+        -e 's/\(.*WARN.*\)/\o033[33m\1\o033[39m/' \
+        -e 's/\(.*INFO.*\)/\o033[32m\1\o033[39m/' \
+        -e 's/\(.*DEBUG.*\)/\o033[34m\1\o033[39m/' \
+        -e 's/\(.*TRACE.*\)/\o033[30m\1\o033[39m/' \
+        -e 's/\(.*[Ee]xception.*\)/\o033[39m\1\o033[39m/'
+}
+
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
