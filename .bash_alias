@@ -129,6 +129,12 @@ alias git-undo="git reset --soft HEAD^"
 # Ensure that 'xhost' has been run prior to enable permissions to X11 display.
 alias d-run="docker run --rm -it --net=host --cpuset-cpus 0 --memory 512mb -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY "
 
+# Open a random 'man' page - Great way to learn new commands
+alias randman="apropos . | shuf -n 1 | awk '{print$1}' | xargs man"
+
+# Display information about Linux distribution, package management, etc.
+alias distinfo="echo /etc/*_ver* /etc/*-rel*; cat /etc/*_ver* /etc/*-rel*"
+
 # Functionalize 'command -v' to allow 'if get_command [command]' idiom
 # https://github.com/rawiriblundell/dotfiles/blob/master/.bashrc
 get_command() {
