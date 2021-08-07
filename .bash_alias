@@ -8,6 +8,10 @@ function weather() {
 	fi
 }
 
+function find_big_files() {
+    find . -size +"$1" -type f -print0 | xargs -0 ls -Ssh | sort -z
+}
+
 # Colorize output of man command
 # http://tuxdiary.com/2016/06/16/color-man-pages/#more-27324
 function man() {
