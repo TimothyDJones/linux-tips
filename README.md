@@ -1,6 +1,33 @@
 # linux-tips
 Collection of tips on Linux (mostly Debian/Ubuntu) helpful to me
 
+## Bash Keyboard Shortcuts
+| Shortcut | Action |
+|:---------|:-------|
+| <kbd>Esc</kbd> + t | Swap the two _words_ before the cursor |
+| <kbd>Ctrl</kbd> + r | Search command history |
+| <kbd>Ctrl</kbd> + g | Cancel command history search without running command |
+| <kbd>Ctrl</kbd> + l | Clear terminal screen |
+| <kbd>Ctrl</kbd> + x | List possible filename completions |
+| <kbd>Ctrl</kbd> + c | Cancels the running command |
+| <kbd>Ctrl</kbd> + z | Suspends the running command |
+| <kbd>Ctrl</kbd> + u | Deletes entire line _before_ the cursor |
+| <kbd>Ctrl</kbd> + k | Deletes entire line _after_ the cursor |
+| <kbd>Ctrl</kbd> + t | Swap the two characters before the cursor |
+| <kbd>Ctrl</kbd> + d | Close the terminal |
+| <kbd>Ctrl</kbd> + f | Go _forward_ one character |
+| <kbd>Ctrl</kbd> + b | Go _back_ one character |
+| <kbd>Ctrl</kbd> + a | Go to the _beginning_ of the line |
+| <kbd>Ctrl</kbd> + e | Go to the _end_ of the line |
+| <kbd>Ctrl</kbd> + w | Delete the _word_ before the cursor |
+| <kbd>Ctrl</kbd> + y | Retrieves the last _word_ deleted or cut |
+| <kbd>Ctrl</kbd> + xx | Toggle between current cursor position and start or end of line |
+| <kbd>Alt</kbd> + u | Capitalize all letters in word after cursor |
+| <kbd>Alt</kbd> + l | Lower case all letters in word after cursor |
+| <kbd>Alt</kbd> + . | Use the last word of the last command |
+
+[Reference1](https://ostechnix.com/list-useful-bash-keyboard-shortcuts/)
+
 ## Basic configuration for new Git repository
 ```bash
 # Set user name and e-mail address (required to do 'commit')
