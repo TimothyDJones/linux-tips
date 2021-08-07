@@ -54,7 +54,9 @@ function headers() {
 
 # Simple command-line calculator
 function = {
-	echo "$@" | bc -l
+    # declare -i i=${1:-$(</dev/stdin)};
+    # echo "$i" | bc -l
+    echo "$@" | bc -l
 }
 alias calc="="
 
