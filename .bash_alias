@@ -120,6 +120,8 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 # Summary of top 10 commands from history
 alias hist_summary='history | awk '\''{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}'\'' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10'
 
+alias hist_summary2="history | awk {'print $2, $3, $4'} | sort | uniq -c | sort -k1 -rn | head -n 30"
+
 alias dateiso='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 
 # Git aliases
