@@ -30869,3 +30869,41 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}*
+
+# Install TriCo cross-platform, Electron-based Excel/CSV-to-MySQL/MongoDB import tool from package
+# https://github.com/ngudbhav/TriCo-electron-app
+APP_NAME=TriCo
+APP_GUI_NAME="Cross-platform, Electron-based Excel/CSV-to-MySQL/MongoDB import tool."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Excel;Spreadsheet;CSV;Database;MySQL;MongoDB;"
+APP_VERSION=3.0.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}-linux
+# Convert APP_NAME to all lowercase and remove whitespace using 'tr'
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/ngudbhav/${APP_NAME}-electron-app/master/images/icons/png/48x48.png
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
