@@ -27674,7 +27674,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install o minimalist Golang text editor from package
 APP_NAME=o
 APP_GUI_NAME="Minimalist Golang text editor."
-APP_VERSION=2.39.2
+APP_VERSION=2.41.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xyproto/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
