@@ -4712,8 +4712,8 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install GtkHash GUI tool for calculating file hashes/checksums from source
-APP_NAME=gtkhash
-APP_VERSION=1.2
+APP_NAME=GtkHash
+APP_VERSION=1.4
 APP_EXT=tar.xz
 sudo apt-get install -y libgcrypt20-dev libb2-dev libssl-dev libcrypto++-dev libmbedtls-dev libmhash-dev nettle-dev intltool
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
