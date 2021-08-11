@@ -575,7 +575,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.140.0.1
+APP_VERSION=1.140.5.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -3224,7 +3224,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Micro terminal-based text editor from package
 APP_NAME=Micro
-APP_VERSION=2.0.9
+APP_VERSION=2.0.10
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
 else    # Otherwise use version for 32-bit kernel
@@ -3917,13 +3917,13 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=CherryTree
 source /etc/lsb-release
 if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(hi)$ ]]; then     # Groovy (21.04)
-    APP_VERSION=0.99.39-3_amd64
+    APP_VERSION=0.99.40-3_amd64
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(gr)$ ]]; then     # Groovy (20.10)
-    APP_VERSION=0.99.39-2_amd64
+    APP_VERSION=0.99.40-2_amd64
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo)$ ]]; then     # Focal (20.04)
-    APP_VERSION=0.99.39-1_amd64
+    APP_VERSION=0.99.40-1_amd64
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo)$ ]]; then  # 18.04 - 19.10
-    APP_VERSION=0.99.39-4_amd64
+    APP_VERSION=0.99.40-4_amd64
 else
     APP_VERSION=0.39.4-0_all
 fi
@@ -11755,7 +11755,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install TEA Qt-based text editor from source
 APP_NAME=TEA
 APP_GUI_NAME="Cross-platform Qt-based text editor."
-APP_VERSION=60.4.0
+APP_VERSION=60.5.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qt5-default qt5-qmake libpoppler-qt5-dev libhunspell-dev cmake
@@ -14158,7 +14158,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=2.1.9
+APP_VERSION=2.2.6
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -25035,7 +25035,7 @@ APP_NAME=navi
 APP_GUI_NAME="Interactive cheatsheet tool for the command-line and application launchers."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Productivity;Shell;"
-APP_VERSION=2.16.0
+APP_VERSION=2.17.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/denisidoro/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27674,7 +27674,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install o minimalist Golang text editor from package
 APP_NAME=o
 APP_GUI_NAME="Minimalist Golang text editor."
-APP_VERSION=2.39.2
+APP_VERSION=2.41.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xyproto/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -30639,7 +30639,7 @@ APP_NAME=Spyder
 APP_GUI_NAME="Cross-platform Qt-based Python IDE."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Python;IDE;Editor;"
-APP_VERSION=5.1.0
+APP_VERSION=5.1.1
 mkdir -p $HOME/.local/bin/${APP_NAME,,}
 cd $HOME/.local/bin/${APP_NAME,,}
 python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
