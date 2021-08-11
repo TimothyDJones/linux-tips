@@ -30923,3 +30923,30 @@ mkdir -p build && cd build
 qtchooser -qt=5 -run-tool=qmake CONFIG+=release PREFIX=/usr/local ../${APP_NAME,,}.pro && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${FILE_NAME}*
+
+# Install up (Ultimate Plumber) Golang-based command-line tool for interactively chaining commands together with pipe (|) from package
+APP_NAME=up
+APP_GUI_NAME="Golang-based command-line tool for interactively chaining commands together with pipe (|)."
+APP_VERSION=0.4
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-ultimate-plumber.mirror/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Kakoune console text editor with Vi keybindings from source
+APP_NAME=Kakoune
+APP_GUI_NAME="Console text editor with Vi keybindings."
+APP_VERSION=2020.09.01
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mawww/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make -j$(nproc) && PREFIX=/usr/local sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
