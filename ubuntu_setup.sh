@@ -30907,3 +30907,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install FusePDF Qt-based cross-platform PDF merging, splitting, and exporting tool from source
+APP_NAME=FusePDF
+APP_GUI_NAME="Qt-based cross-platform PDF merging, splitting, and exporting tool."
+APP_VERSION=2.0.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}%20${APP_VERSION}
+sudo apt-get install -y qtbase5-dev qt5-qmake qt5-default qttools5-dev-tools ghostscript
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/*${APP_NAME,,}*
+mkdir -p build && cd build
+qtchooser -qt=5 -run-tool=qmake CONFIG+=release PREFIX=/usr/local ../${APP_NAME,,}.pro && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${FILE_NAME}*
