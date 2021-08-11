@@ -30950,3 +30950,47 @@ cd /tmp/${FILE_NAME}
 make -j$(nproc) && PREFIX=/usr/local sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install IPCalc cross-platform, Java-based IP address calculator from package
+APP_NAME=IPCalc
+APP_GUI_NAME="Cross-platform, Java-based IP address calculator."
+APP_GUI_CATEGORIES="Internet;Networking;"
+APP_GUI_KEYWORDS="IP;Address;Networking;"
+APP_VERSION=1.2
+APP_EXT=zip
+FILE_NAME=${APP_NAME}
+sudo apt-get install -yy openjdk-11-jre
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-v1-0/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/ipcalc-v1-0/icon
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar ${FILE_NAME}.jar &
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
