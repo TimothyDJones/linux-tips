@@ -4698,9 +4698,9 @@ cat > /tmp/${APP_NAME,,}.desktop << EOF
 Name=Vym (View Your Mind)
 Comment=Mind-mapping tool
 GenericName=Vym
-Path=/usr/local/${APP_NAME,,}
-Exec=/usr/local/${APP_NAME,,}/${APP_NAME,,}
-Icon=/usr/local/${APP_NAME,,}/icons/${APP_NAME,,}.png
+#Path=
+Exec=/usr/bin/${APP_NAME,,}
+Icon=/usr/share/${APP_NAME,,}/icons/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
