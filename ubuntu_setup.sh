@@ -4685,7 +4685,7 @@ sudo apt-get install -y openshot-qt
 
 # Install View Your Mind (VYM) Qt mind-mapping tool from source
 APP_NAME=vym
-APP_VERSION=2.7.1
+APP_VERSION=2.8.8
 APP_EXT=tar.bz2
 sudo apt-get install -y python3-tk qt5-default libqt5svg5-dev libqt5scripttools5 qtscript5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -4698,9 +4698,9 @@ cat > /tmp/${APP_NAME,,}.desktop << EOF
 Name=Vym (View Your Mind)
 Comment=Mind-mapping tool
 GenericName=Vym
-Path=/usr/local/${APP_NAME,,}
-Exec=/usr/local/${APP_NAME,,}/${APP_NAME,,}
-Icon=/usr/local/${APP_NAME,,}/icons/${APP_NAME,,}.png
+#Path=
+Exec=/usr/bin/${APP_NAME,,}
+Icon=/usr/share/${APP_NAME,,}/icons/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
@@ -4712,8 +4712,8 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install GtkHash GUI tool for calculating file hashes/checksums from source
-APP_NAME=gtkhash
-APP_VERSION=1.2
+APP_NAME=GtkHash
+APP_VERSION=1.4
 APP_EXT=tar.xz
 sudo apt-get install -y libgcrypt20-dev libb2-dev libssl-dev libcrypto++-dev libmbedtls-dev libmhash-dev nettle-dev intltool
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -30907,3 +30907,90 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install FusePDF Qt-based cross-platform PDF merging, splitting, and exporting tool from source
+APP_NAME=FusePDF
+APP_GUI_NAME="Qt-based cross-platform PDF merging, splitting, and exporting tool."
+APP_VERSION=2.0.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}%20${APP_VERSION}
+sudo apt-get install -y qtbase5-dev qt5-qmake qt5-default qttools5-dev-tools ghostscript
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/*${APP_NAME,,}*
+mkdir -p build && cd build
+qtchooser -qt=5 -run-tool=qmake CONFIG+=release PREFIX=/usr/local ../${APP_NAME,,}.pro && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${FILE_NAME}*
+
+# Install up (Ultimate Plumber) Golang-based command-line tool for interactively chaining commands together with pipe (|) from package
+APP_NAME=up
+APP_GUI_NAME="Golang-based command-line tool for interactively chaining commands together with pipe (|)."
+APP_VERSION=0.4
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-ultimate-plumber.mirror/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Kakoune console text editor with Vi keybindings from source
+APP_NAME=Kakoune
+APP_GUI_NAME="Console text editor with Vi keybindings."
+APP_VERSION=2020.09.01
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mawww/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make -j$(nproc) && PREFIX=/usr/local sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install IPCalc cross-platform, Java-based IP address calculator from package
+APP_NAME=IPCalc
+APP_GUI_NAME="Cross-platform, Java-based IP address calculator."
+APP_GUI_CATEGORIES="Internet;Networking;"
+APP_GUI_KEYWORDS="IP;Address;Networking;"
+APP_VERSION=1.2
+APP_EXT=zip
+FILE_NAME=${APP_NAME}
+sudo apt-get install -yy openjdk-11-jre
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-v1-0/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/ipcalc-v1-0/icon
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar ${FILE_NAME}.jar &
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
