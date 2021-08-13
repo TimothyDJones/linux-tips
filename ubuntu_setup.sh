@@ -31027,3 +31027,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install PDF Arranger cross-platform Python/GTK tool for splitting, merging, rotating, cropping, and rearranging pages in PDF files from package
+APP_NAME="PDF Arranger"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Python/GTK tool for splitting, merging, rotating, cropping, and rearranging pages in PDF files."
+APP_VERSION=1.7.1
+APP_EXT=tar.gz
+FILE_NAME=${_APP_NAME}-${APP_VERSION}
+sudo apt-get install -yy python3-pip python3-distutils-extra python3-wheel python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-poppler-0.18 python3-setuptools img2pdf
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${_APP_NAME}/${_APP_NAME}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
+python3 -m pip install --user --upgrade /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
