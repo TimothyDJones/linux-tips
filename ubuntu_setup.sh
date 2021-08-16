@@ -575,7 +575,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.140.5.1
+APP_VERSION=1.141.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -8811,7 +8811,7 @@ rm -rf /tmp/${APP_NAME,,}
 # https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
 APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
-APP_VERSION=7.1.3
+APP_VERSION=7.1.4
 APP_EXT=deb
 source /etc/lsb-release
 # PowerShell is only supported on LTS releases
@@ -24064,7 +24064,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=8.1.3
+APP_VERSION=8.1.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -27674,7 +27674,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install o minimalist Golang text editor from package
 APP_NAME=o
 APP_GUI_NAME="Minimalist Golang text editor."
-APP_VERSION=2.41.1
+APP_VERSION=2.41.3
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xyproto/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -29922,7 +29922,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Helix cross-platform, Rust-based modal text editor from package
 APP_NAME=Helix
 APP_GUI_NAME="Cross-platform, Rust-based modal text editor."
-APP_VERSION=0.0.6
+APP_VERSION=0.4.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/helix-editor/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31027,3 +31027,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install PDF Arranger cross-platform Python/GTK tool for splitting, merging, rotating, cropping, and rearranging pages in PDF files from package
+APP_NAME="PDF Arranger"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Python/GTK tool for splitting, merging, rotating, cropping, and rearranging pages in PDF files."
+APP_VERSION=1.7.1
+APP_EXT=tar.gz
+FILE_NAME=${_APP_NAME}-${APP_VERSION}
+sudo apt-get install -yy python3-pip python3-distutils-extra python3-wheel python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-poppler-0.18 python3-setuptools img2pdf
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${_APP_NAME}/${_APP_NAME}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
+python3 -m pip install --user --upgrade /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
