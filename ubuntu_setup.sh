@@ -31050,3 +31050,16 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install sqlite_bro Python/Tk single-file GUI SQLite editor/manager from package
+APP_NAME=sqlite_bro
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Python/Tk single-file GUI SQLite editor/manager."
+APP_VERSION=0.12.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -yy python3-pip python3-tk
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/stonebig/${APP_NAME,,}/archive/refs/tags/V${APP_VERSION}.${APP_EXT}
+python3 -m pip install --user --upgrade /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
