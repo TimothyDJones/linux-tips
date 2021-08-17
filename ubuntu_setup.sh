@@ -16595,7 +16595,7 @@ rm -rf /tmp/${FILE_NAME}*
 # Install Linux Reminders GUI periodic and one-time reminder tool from Debian package
 APP_NAME=Linux-Reminders
 APP_GUI_NAME="GUI periodic and one-time reminder tool."
-APP_VERSION=2.3.4
+APP_VERSION=2.3.6
 APP_EXT=deb
 FILE_NAME=reminders_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
