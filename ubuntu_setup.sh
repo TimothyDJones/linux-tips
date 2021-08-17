@@ -22188,7 +22188,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}* /tmp/${APP_NAME_STRIPPED}*
 
 # Install OpenOrienteering Mapper cross-platform orienteering map editor/viewer from Debian package
 APP_NAME=OpenOrienteering-Mapper
-APP_VERSION=0.9.2-0+27.1
+APP_VERSION=0.9.5-0+33.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 source /etc/lsb-release
