@@ -201,10 +201,10 @@ curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack
 cd /tmp
 dtrx -n /tmp/Hack-v3.003-ttf.tar.xz
 sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
-curl -o /tmp/ttf-iosevka-9.0.1.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v9.0.1/ttf-iosevka-9.0.1.zip
+curl -o /tmp/ttf-iosevka-10.0.0.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v10.0.0/ttf-iosevka-10.0.0.zip
 cd /tmp
-dtrx -n /tmp/ttf-iosevka-9.0.1.zip
-sudo cp -R /tmp/ttf-iosevka-9.0.1/* /usr/local/share/fonts
+dtrx -n /tmp/ttf-iosevka-10.0.0.zip
+sudo cp -R /tmp/ttf-iosevka-10.0.0/* /usr/local/share/fonts
 curl -o /tmp/CascadiaCode-2106.17.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2106.17.zip
 cd /tmp
 dtrx -n /tmp/CascadiaCode-2106.17.zip
@@ -528,7 +528,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=21.1.4
+APP_VERSION=21.1.5
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -1048,7 +1048,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=10.5.5
+APP_VERSION=10.5.7
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1444,7 +1444,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4378
+APP_VERSION=4.3-4379
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -3361,7 +3361,7 @@ APP_NAME=Shotcut
 APP_GUI_NAME="Cross-platform non-linear video editor."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=21.06.29
+APP_VERSION=21.08.11
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -4979,7 +4979,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Tabby (formerly Terminus) JavaScript/Electron terminal from Debian package
 APP_NAME=Tabby
-APP_VERSION=1.0.151
+APP_VERSION=1.0.153
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME,,}.${APP_EXT} -J -L https://github.com/Eugeny/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -14158,7 +14158,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=2.2.6
+APP_VERSION=2.3.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -22267,7 +22267,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://sw.kovidgoyal.net/kitty/
 APP_NAME=Kitty
 APP_GUI_NAME="Cross-platform GPU-based terminal."
-APP_VERSION=0.22.2
+APP_VERSION=0.23.0
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -24437,7 +24437,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Glances cross-platform console system monitoring tool from package
 APP_NAME=Glances
 APP_GUI_NAME="Cross-platform console system monitoring tool."
-APP_VERSION=3.2.2
+APP_VERSION=3.2.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nicolargo/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
@@ -31040,3 +31040,63 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${_APP_NAME}/${_AP
 python3 -m pip install --user --upgrade /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${_APP_NAME}*
+
+# Install Malnotes combination to-do list/note-taking tool from Debian package
+APP_NAME=Malnotes
+APP_VERSION=1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install sqlite_bro Python/Tk single-file GUI SQLite editor/manager from package
+APP_NAME=sqlite_bro
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Python/Tk single-file GUI SQLite editor/manager."
+APP_VERSION=0.12.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -yy python3-pip python3-tk
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/stonebig/${APP_NAME,,}/archive/refs/tags/V${APP_VERSION}.${APP_EXT}
+python3 -m pip install --user --upgrade /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Vieb (Vim Inspired Electron Browser) cross-platform, Chromium-based web browser with Vim keybindings from package
+APP_NAME=Vieb
+APP_GUI_NAME="Cross-platform, Chromium-based web browser with Vim keybindings."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Vim;Browser;Chromium;Web;"
+APP_VERSION=5.3.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Jelmerro/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/Jelmerro/${APP_NAME}/master/app/img/icons/${APP_NAME,,}.svg
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.svg /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
