@@ -5621,7 +5621,7 @@ rm -rf /tmp/*${APP_NAME,,}* /tmp/*${APP_NAME}*
 # Install phpCollab web-based collaboration and project management tool
 # http://www.phpcollab.com/
 APP_NAME=phpCollab
-APP_VERSION=v2.9.0
+APP_VERSION=v2.10.0
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
