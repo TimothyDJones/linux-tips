@@ -23676,17 +23676,15 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Qt JSON diff GUI JSON viewer/comparer from source
 APP_NAME=QTjsonDiff
-APP_VERSION=0.33b
+APP_VERSION=0.60b
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}_refs-heads-master
 sudo apt-get install -y build-essential qt5-default qttools5-dev-tools
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/coozoo/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/coozoo/${APP_NAME,,}/archive/refs/tags/${APP_VERSION}_refs/heads/master.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
-mkdir build && cd build
-qtchooser -run-tool=qmake -qt=5 ../${APP_NAME}.pro && make && sudo make install
-sudo mv /tmp/${FILE_NAME}/build/${APP_NAME} /usr/bin
+qtchooser -run-tool=qmake -qt=5 ${APP_NAME}.pro && make && sudo make install
 sudo ln -s -f /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
@@ -31199,3 +31197,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install Viddy modern Golang-based 'watch' command with time-travel and paging from package
+APP_NAME=Viddy
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Modern Golang-based 'watch' command with time-travel and paging."
+APP_VERSION=0.1.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sachaos/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
