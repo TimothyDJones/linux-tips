@@ -575,7 +575,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.141.0.0
+APP_VERSION=1.141.5.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -5621,7 +5621,7 @@ rm -rf /tmp/*${APP_NAME,,}* /tmp/*${APP_NAME}*
 # Install phpCollab web-based collaboration and project management tool
 # http://www.phpcollab.com/
 APP_NAME=phpCollab
-APP_VERSION=v2.9.0
+APP_VERSION=v2.10.0
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -6110,7 +6110,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install ProjectForge Java-based project management tool
 APP_NAME=ProjectForge
 APP_GUI_NAME="Cross-platform Java-based project management tool."
-APP_VERSION=7.1.2
+APP_VERSION=7.2
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}-application-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/pforge/${FILE_NAME}.${APP_EXT}
@@ -16595,7 +16595,7 @@ rm -rf /tmp/${FILE_NAME}*
 # Install Linux Reminders GUI periodic and one-time reminder tool from Debian package
 APP_NAME=Linux-Reminders
 APP_GUI_NAME="GUI periodic and one-time reminder tool."
-APP_VERSION=2.3.4
+APP_VERSION=2.3.6
 APP_EXT=deb
 FILE_NAME=reminders_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -22188,7 +22188,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}* /tmp/${APP_NAME_STRIPPED}*
 
 # Install OpenOrienteering Mapper cross-platform orienteering map editor/viewer from Debian package
 APP_NAME=OpenOrienteering-Mapper
-APP_VERSION=0.9.2-0+27.1
+APP_VERSION=0.9.5-0+33.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 source /etc/lsb-release
@@ -22267,7 +22267,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://sw.kovidgoyal.net/kitty/
 APP_NAME=Kitty
 APP_GUI_NAME="Cross-platform GPU-based terminal."
-APP_VERSION=0.23.0
+APP_VERSION=0.23.1
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -23676,17 +23676,15 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Qt JSON diff GUI JSON viewer/comparer from source
 APP_NAME=QTjsonDiff
-APP_VERSION=0.33b
+APP_VERSION=0.60b
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}_refs-heads-master
 sudo apt-get install -y build-essential qt5-default qttools5-dev-tools
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/coozoo/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/coozoo/${APP_NAME,,}/archive/refs/tags/${APP_VERSION}_refs/heads/master.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
-mkdir build && cd build
-qtchooser -run-tool=qmake -qt=5 ../${APP_NAME}.pro && make && sudo make install
-sudo mv /tmp/${FILE_NAME}/build/${APP_NAME} /usr/bin
+qtchooser -run-tool=qmake -qt=5 ${APP_NAME}.pro && make && sudo make install
 sudo ln -s -f /usr/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
@@ -27695,7 +27693,7 @@ APP_NAME=Endless-Sky
 APP_GUI_NAME="2D space exploration, trading, and combat game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Space;Trading;RPG;"
-APP_VERSION=0.9.12
+APP_VERSION=0.9.14
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${KERNEL_TYPE}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27827,7 +27825,7 @@ APP_NAME=Lagrange
 APP_GUI_NAME="Cross-platform desktop GUI client for browsing Geminispace."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Gemini;Browser"
-APP_VERSION=1.1.3
+APP_VERSION=1.6.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/skyjake/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -28177,7 +28175,7 @@ APP_NAME=Laravel-Kit
 APP_GUI_NAME="Cross-platform Electron-based desktop tool for managing Laravel applications."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Laravel;"
-APP_VERSION=2.0.1
+APP_VERSION=2.0.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tmdh/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31100,3 +31098,149 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
+# Install Logseq local-first, non-linear, outliner notebook for personal knowledge management from package
+APP_NAME=Logseq
+APP_GUI_NAME="Local-first, non-linear, outliner notebook for personal knowledge management."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="Notepad;Knowledge;Management;"
+APP_VERSION=0.3.3
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}-linux-x64/* /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/resources/app/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install DbGate cross-platform GUI editor/manager for SQL and NoSQL databases from AppImage
+APP_NAME=DbGate
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform GUI editor/manager for SQL and NoSQL databases."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Database;SQL;NoSQL;Editor;"
+APP_VERSION=4.2.7
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux_x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/${APP_NAME,,}/${APP_NAME,,}/master/app/icons/128x128.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install Bdash cross-platform GUI (JavaScript/Electron) minimalist SQL client for data analysis from AppImage
+APP_NAME=Bdash
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="GUI (JavaScript/Electron) minimalist SQL client for data analysis."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Database;SQL;Editor;"
+APP_VERSION=1.11.1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}-app/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/${APP_NAME,,}-app/${APP_NAME,,}/master/build/icon.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install Viddy modern Golang-based 'watch' command with time-travel and paging from package
+APP_NAME=Viddy
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Modern Golang-based 'watch' command with time-travel and paging."
+APP_VERSION=0.1.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sachaos/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install CP Editor cross-platform Qt-based code editor for competitive programming from AppImage
+APP_NAME="CP Editor"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Qt-based code editor for competitive programming."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="IDE;Editor;Programming;"
+APP_VERSION=6.8.4
+APP_EXT=AppImage
+FILE_NAME=${_APP_NAME}-${APP_VERSION}-linux-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${_APP_NAME}/${_APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://raw.githubusercontent.com/${_APP_NAME}/${_APP_NAME}/master/resources/icon.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
