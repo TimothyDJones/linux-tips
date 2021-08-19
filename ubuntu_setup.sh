@@ -11449,44 +11449,48 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
 
-# Install Sohag Developer cross-platform tool for generating Qt C++ classes for data management in PostgreSQL databases from package
-# http://sohag-developer.com/
-APP_NAME=Sohag-Developer
-APP_GUI_NAME="Cross-platformtool for generating Qt C++ classes for data management in PostgreSQL databases."
-APP_VERSION=V3.2
+# Install Sohag Builder (formerly Sohag Developer) cross-platform tool for building Qt/C++ and PHP/Laravel database applications from same codebase from package
+# http://sohagdeveloper.com/
+APP_NAME="Sohag Builder"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform tool for building Qt/C++ and PHP/Laravel database applications from same codebase."
+APP_VERSION=1.0
 APP_EXT=tar.xz
-FILE_NAME=sohagDeveloperLinux_X64_${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${_APP_NAME}${APP_VERSION}-Gnu-Linux-X86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sohag-developer/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://a.fsdn.com/allura/p/sohag-developer/icon
+https://a.fsdn.com/allura/p/sohag-developer/icon
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}/sohag*/* /opt/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,} << EOF
+sudo cp -R /tmp/${FILE_NAME}/* /opt
+sudo cp /tmp/${_APP_NAME}.png /opt/${_APP_NAME}
+sudo chmod -R 755 /opt/${_APP_NAME}
+cat > /tmp/${_APP_NAME} << EOF
 #! /bin/sh
-cd /opt/${APP_NAME,,}
-PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-/opt/${APP_NAME,,}/${APP_NAME,,}
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+${_APP_NAME}.sh
 cd $HOME
 EOF
-sudo mv /tmp/${APP_NAME,,} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,}.desktop << EOF
+sudo mv /tmp/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
-Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Path=/opt/${_APP_NAME}
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/opt/${_APP_NAME}/${_APP_NAME}.png
 Type=Application
 StartupNotify=true
 Terminal=false
 Categories=Development;Programming;
-Keywords=Qt;PostgreSQL;C++;
+Keywords=Qt;PostgreSQL;C++;PHP;Laravel;
 EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/*${APP_NAME}*
+rm -rf /tmp/*${_APP_NAME}*
 
 # Install Clippy cross-platform, Electron-based clipboard manager with persistent history from AppImage
 APP_NAME=Clippy
