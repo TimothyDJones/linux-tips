@@ -330,21 +330,22 @@ xdg-open http://localhost/phpinfo.php &
 sudo phpdismod -s cli xdebug
 
 # Install PHP Composer as global utility
+cd /tmp
 php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
-sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+php /tmp/composer-setup.php --filename=composer
 php -r "unlink('/tmp/composer-setup.php');"
 rm -f /tmp/composer-setup.php
-sudo chmod +x /usr/local/bin/composer
-sudo chown -R $USER:$USER $HOME/.composer
+sudo mv /tmp/composer /usr/local/bin
+sudo chmod a+x /usr/local/bin/composer
 
 # Install Prestissimo Composer plugin for parallel downloads.
-sudo php /usr/local/bin/composer global require hirak/prestissimo
+php composer global require hirak/prestissimo
 
 # Install latest PhpMyAdmin version via Composer
 # https://docs.phpmyadmin.net/en/latest/setup.html#composer
 APP_NAME=phpMyAdmin
 cd ${WWW_HOME}
-sudo composer create-project phpmyadmin/phpmyadmin
+php composer create-project phpmyadmin/phpmyadmin
 sudo chown -R www-data:www-data ${WWW_HOME}
 xdg-open http://localhost/phpmyadmin/setup/index.php
 cat > /tmp/${APP_NAME,,}.desktop << EOF
@@ -358,13 +359,13 @@ Type=Application
 StartupNotify=true
 Terminal=false
 Categories=Development;Programming;
-Keywords=PHP;MySQL;${APP_NAME};
+Keywords=PHP;MySQL;${APP_NAME};Database;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 
 # Install PHP 7.x (optional)
-PHP7_VERSION=7.2
+PHP7_VERSION=7.4
 sudo apt-get install -y php${PHP7_VERSION}-bcmath php${PHP7_VERSION}-bz2 php${PHP7_VERSION}-cli php${PHP7_VERSION}-common php${PHP7_VERSION}-curl php${PHP7_VERSION}-gd php${PHP7_VERSION}-json php${PHP7_VERSION}-mbstring  php${PHP7_VERSION}-mysql php${PHP7_VERSION}-readline php${PHP7_VERSION}-sqlite3 php${PHP7_VERSION}-xml php${PHP7_VERSION}-xsl php${PHP7_VERSION}-zip php-xdebug \
 libapache2-mod-php${PHP7_VERSION} libapache2-mod-xsendfile \
 mysql-server  mysql-workbench mycli
@@ -2075,7 +2076,7 @@ APP_NAME=webTareas
 APP_GUI_NAME="PHP/MySQL-based project management and online office tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project Management;Office;"
-APP_VERSION=2.2p1
+APP_VERSION=2.3
 APP_EXT=zip
 DB_NAME=webtareas
 DB_USER=webtareas
@@ -14158,7 +14159,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=2.3.3
+APP_VERSION=2.3.5
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
