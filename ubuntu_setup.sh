@@ -24225,14 +24225,16 @@ APP_NAME=MariaDB-Explorer
 APP_GUI_NAME="Cross-platform Qt-based GUI MariaDB/MySQL database manager."
 APP_GUI_CATEGORIES="Development;Programming;Accessories;"
 APP_GUI_KEYWORDS="Database;SQL;MySQL"
-APP_VERSION=277
-APP_EXT=run
+APP_VERSION=294
+APP_EXT=sh
 FILE_NAME=${APP_NAME}-LinuxInstaller-r${APP_VERSION}
 sudo apt-get install -y build-essential libx11-dev libxft-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.png -J -L https://sourceforge.net/p/mariadb-explorer/code/HEAD/tree/trunk/images/png/64/server-database.png?format=raw
 chmod +x /tmp/${FILE_NAME}.${APP_EXT}
 sudo /tmp/${FILE_NAME}.${APP_EXT}
 sudo ln -s /opt/${APP_NAME}/${APP_NAME}.sh /usr/local/bin/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME}.png /opt/${APP_NAME}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -24240,7 +24242,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME}
 Exec=/opt/${APP_NAME}/${APP_NAME}.sh
-#Icon=
+Icon=/opt/${APP_NAME}/${APP_NAME}.png
 Type=Application
 StartupNotify=true
 Terminal=false
