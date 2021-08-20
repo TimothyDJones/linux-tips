@@ -576,7 +576,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.141.5.0
+APP_VERSION=1.142.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -1781,7 +1781,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.27.109
+APP_VERSION=1.28.106
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -24225,14 +24225,16 @@ APP_NAME=MariaDB-Explorer
 APP_GUI_NAME="Cross-platform Qt-based GUI MariaDB/MySQL database manager."
 APP_GUI_CATEGORIES="Development;Programming;Accessories;"
 APP_GUI_KEYWORDS="Database;SQL;MySQL"
-APP_VERSION=277
-APP_EXT=run
+APP_VERSION=294
+APP_EXT=sh
 FILE_NAME=${APP_NAME}-LinuxInstaller-r${APP_VERSION}
 sudo apt-get install -y build-essential libx11-dev libxft-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.png -J -L https://sourceforge.net/p/mariadb-explorer/code/HEAD/tree/trunk/images/png/64/server-database.png?format=raw
 chmod +x /tmp/${FILE_NAME}.${APP_EXT}
 sudo /tmp/${FILE_NAME}.${APP_EXT}
 sudo ln -s /opt/${APP_NAME}/${APP_NAME}.sh /usr/local/bin/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME}.png /opt/${APP_NAME}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -24240,7 +24242,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME}
 Exec=/opt/${APP_NAME}/${APP_NAME}.sh
-#Icon=
+Icon=/opt/${APP_NAME}/${APP_NAME}.png
 Type=Application
 StartupNotify=true
 Terminal=false
@@ -25498,7 +25500,7 @@ APP_NAME=pj-ftp-server
 APP_GUI_NAME="Cross-platform, portable Java-based FTP server tool."
 APP_GUI_CATEGORIES="Networking;Internet"
 APP_GUI_KEYWORDS="FTP;"
-APP_VERSION=1.0.40
+APP_VERSION=1.0.47
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v.${APP_VERSION}_bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
