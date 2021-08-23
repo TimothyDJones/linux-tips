@@ -31357,3 +31357,19 @@ cd /tmp/${FILE_NAME}
 make -j$(nproc) && PREFIX=/usr/local sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Korbeaux cross-platform Qt-based comic book (PDF, CBR, CBZ format) reader from source
+APP_NAME=Korbeaux
+APP_GUI_NAME="Cross-platform Qt-based comic book (PDF, CBR, CBZ format) reader."
+APP_VERSION=4.4
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y qt5-default qt5-qmake qtdeclarative5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/lua* && make linux
+cd /tmp/${FILE_NAME}
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make && sudo ./install.sh && sudo cp ./uninstall.sh /usr/local/bin/${APP_NAME,,}_uninstall.sh
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
