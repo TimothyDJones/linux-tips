@@ -29556,13 +29556,16 @@ APP_NAME=NxShell
 APP_GUI_NAME="Cross-platform SSH/SFTP terminal."
 APP_GUI_CATEGORIES="Networking;Internet;"
 APP_GUI_KEYWORDS="SSH;SFTP;"
-APP_VERSION=1.4.0
+APP_VERSION=1.4.2
+DATE_STAMP=202108220452
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME}-${APP_VERSION}
+FILE_NAME=${APP_NAME}-${APP_VERSION}-${DATE_STAMP}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.png -J -L --referer https://github.com/ https://avatars.githubusercontent.com/u/74552956?v=4
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME}.png /usr/local/share/icons/${APP_NAME}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -29570,7 +29573,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/usr/local/bin
 Exec=/usr/local/bin/${APP_NAME,,}
-#Icon=
+Icon=/usr/local/share/icons/${APP_NAME}.png
 Type=Application
 StartupNotify=true
 Terminal=false
@@ -29579,7 +29582,7 @@ Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}*
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DragIt cross-platform LAN file sharing tool from package
 APP_NAME=DragIt
