@@ -31370,6 +31370,8 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}/lua* && make linux
 cd /tmp/${FILE_NAME}
+sed -i.bak 's@Qt::KeepEmptyParts@QString::KeepEmptyParts@g' mainwindow.cpp
+sed -i.bak 's@Qt::SkipEmptyParts@QString::SkipEmptyParts@g' mainwindow.cpp
 qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make && sudo ./install.sh && sudo cp ./uninstall.sh /usr/local/bin/${APP_NAME,,}_uninstall.sh
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
