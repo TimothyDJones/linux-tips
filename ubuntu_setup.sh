@@ -4079,24 +4079,44 @@ mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIE
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 
-# Install Admidio organizational management tool
-APP_NAME=admidio
-APP_VERSION=4.0.7
+# Install Admidio web-based (PHP/MySQL) organizational management tool from package
+APP_NAME=Admidio
+APP_GUI_NAME="Web-based (PHP/MySQL) organizational management tool."
+APP_VERSION=4.0.8
 APP_EXT=zip
-DB_NAME=admidio
-DB_USER=admidio
-DB_PASSWORD=admidio
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+APP_GUI_CATEGORIES="Office;"
+APP_GUI_KEYWORDS="Organization;Management;"
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.${APP_EXT}
-sudo mv /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION} ${WWW_HOME}/${APP_NAME}
-sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
-sudo chmod -R 777 ${WWW_HOME}/${APP_NAME}/adm_my_files
+dtrx -n ${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+sudo chmod -R 777 ${WWW_HOME}/${APP_NAME,,}/adm_my_files
 # Create database
-mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
-mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
-mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_unicode_ci; CREATE USER '${DB_USER}'@'%' IDENTIFIED WITH mysql_native_password BY '${DB_PASSWORD}'; GRANT USAGE ON *.* TO '${DB_USER}'@'%'; GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%'; FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php
+Icon=${WWW_HOME}/${APP_NAME,,}/adm_program/system/logo/favicon.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Shiba JavaScript/Electron Markdown editor with preview from package
 APP_NAME=Shiba
