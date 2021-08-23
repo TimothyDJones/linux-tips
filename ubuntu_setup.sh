@@ -4120,7 +4120,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Shiba JavaScript/Electron Markdown editor with preview from package
 APP_NAME=Shiba
-APP_VERSION=1.1.0
+APP_VERSION=1.2.1
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
