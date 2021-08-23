@@ -5764,7 +5764,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install NGSpice electronic circuit simulation tool from source
 APP_NAME=ngspice
 APP_GUI_NAME="Classic electronic circuit simulation tool."
-APP_VERSION=34
+APP_VERSION=35
 APP_EXT=tar.gz
 sudo apt-get install -y libx11-dev libxaw7-dev libreadline6-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -31315,5 +31315,22 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
 mkdir build && cd build
 cmake .. -DWITH_TESTS=OFF && make && sudo make install
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Dungeon Crawl: Stone Soup (DCSS) Rogue-like adventure game with tile graphics from source
+APP_NAME="Stone Soup"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '_')
+APP_GUI_NAME="Rogue-like adventure game with tile graphics."
+APP_VERSION=0.27.1
+APP_EXT=tar.xz
+FILE_NAME=${_APP_NAME}-${APP_VERSION}
+sudo apt install -yy build-essential libncursesw5-dev bison flex liblua5.1-0-dev libsqlite3-dev libz-dev pkg-config python3-yaml binutils-gold python-is-python3
+sudo apt install -yy libsdl2-image-dev libsdl2-mixer-dev libsdl2-dev libfreetype6-dev libpng-dev ttf-dejavu-core advancecomp pngcrush
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/dungeoncrawlstonesoup.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make -j$(nproc) && PREFIX=/usr/local sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
