@@ -31459,3 +31459,37 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install Pinto Web Player cross-platform desktop media player focused on online media from AppImage
+# https://www.pintowebplayer.com/
+APP_NAME="Pinto Web Player"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:blank:]' '-' )
+APP_GUI_NAME="Cross-platform desktop media player focused on online media."
+APP_GUI_CATEGORIES="Multimedia;Audio;Video;"
+APP_GUI_KEYWORDS="Multimedia;Audio;Video;Player;"
+APP_VERSION=1.12.58
+APP_EXT=AppImage
+FILE_NAME=${_APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${_APP_NAME,,}/desktop-app/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://www.pintowebplayer.com/_next/static/images/favicon-1d541999648178c92aa7b1526953cc2d.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME,,}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
