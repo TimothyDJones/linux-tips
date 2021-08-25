@@ -31427,3 +31427,35 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install exatorrent BitTorrent client that can run locally or be hosted on server from package
+APP_NAME=exatorrent
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="BitTorrent client that can run locally or be hosted on server."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="BitTorrent;P2P;"
+APP_VERSION=0.0.1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/varbhat/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+/usr/local/bin/${APP_NAME,,} &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=xdg-open http://127.0.0.1:5000/
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
