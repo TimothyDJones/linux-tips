@@ -14585,7 +14585,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install GNU Spice GUI wxWidgets GUI for NG-Spice and GNU-Cap electronic circuit emulation tools from source
 APP_NAME=gSpiceUI
 APP_GUI_NAME="wxWidgets GUI for NG-Spice and GNU-Cap electronic circuit emulation tools."
-APP_VERSION=1.2.36
+APP_VERSION=1.2.37
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
 sudo apt-get install libpangox-1.0-dev libwxgtk3.0-dev gwave
