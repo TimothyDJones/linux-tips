@@ -112,6 +112,18 @@ function hs() {
     history | grep -i --color=always "$1" | tail -n "$n"
 }
 
+# Convert input string to all only lowercase alphanumeric characters separated with hyphens
+# https://github.com/SixArm/sixarm-unix-shell-functions
+function slugify() {
+    printf %s\\n "$*" | sed 's/[^[:alnum:]]/_/g; s/--*/-/; s/^-*//; s/-*$//;' | tr '[[:upper:]]' '[[:lower:]]'
+}
+
+# Convert input string to all only alphanumeric characters separated with underscores
+# https://github.com/SixArm/sixarm-unix-shell-functions
+function snake_format() {
+    printf %s\\n "$*" | sed 's/[^[:alnum:]]\{1,\}/_/g; s/_\{2,\}/_/g; s/^_\{1,\}//; s/_\{1,\}$//;'
+}
+
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
