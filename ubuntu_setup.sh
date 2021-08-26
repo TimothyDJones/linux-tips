@@ -12693,7 +12693,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Wipe Free Space utility to securely erase free space from source
 APP_NAME=WipeFreeSpace
 APP_GUI_NAME="Utility to securely erase free space."
-APP_VERSION=2.2.2
+APP_VERSION=2.3.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libext2fs-dev
