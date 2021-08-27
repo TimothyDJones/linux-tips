@@ -10886,29 +10886,24 @@ curl -sL https://dl.sinew.in/keys/enpass-linux.key | sudo apt-key add -
 echo "deb http://repo.sinew.in/ stable main" | sudo tee /etc/apt/sources.list.d/enpass.list
 sudo apt-get update && sudo apt-get install -y enpass
 
-# Install Waterfox web browser from package
+# Install Waterfox cross-platform web browser based on Firefox from package
 APP_NAME=Waterfox
-APP_GUI_NAME="Cross-platform web browser."
-APP_VERSION=56.2.1
+APP_GUI_NAME="Cross-platform web browser based on Firefox."
+APP_VERSION=G3.2.5
 APP_EXT=tar.bz2
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x86_64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=x86
-fi
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-${ARCH_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://cdn.waterfox.net/releases/linux64/installer/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mv /tmp/${FILE_NAME}/* /opt
-sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
-Icon=/opt/${APP_NAME,,}/browser/icons/mozicon128.png
+Icon=/opt/${APP_NAME,,}/browser/chrome/icons/default/default128.png
 Type=Application
 StartupNotify=true
 Terminal=false
