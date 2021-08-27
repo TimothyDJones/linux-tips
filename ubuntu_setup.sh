@@ -1019,6 +1019,7 @@ cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Idiomind flash card utility for language learning from Debian package
+# https://github.com/robinpalat/idiomind
 APP_NAME=Idiomind
 APP_VERSION=0.3.0
 APP_EXT=deb
