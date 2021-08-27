@@ -1018,18 +1018,21 @@ sudo ln -s /opt/${APP_NAME,,}/${APP_NAME}.desktop /usr/share/applications/${APP_
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install Idiomind flash card utility
-APP_NAME=idiomind
-APP_VERSION=0.2.9
-curl -o /tmp/${APP_NAME}.deb -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/${APP_VERSION}/${APP_NAME}_${APP_VERSION}_all.deb
-sudo gdebi -n /tmp/${APP_NAME}.deb   # '-n' is non-interactive mode for gdebi
+# Install Idiomind flash card utility for language learning from Debian package
+# https://github.com/robinpalat/idiomind
+APP_NAME=Idiomind
+APP_VERSION=0.3.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=10.5.7
+APP_VERSION=10.5.8
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -10883,29 +10886,24 @@ curl -sL https://dl.sinew.in/keys/enpass-linux.key | sudo apt-key add -
 echo "deb http://repo.sinew.in/ stable main" | sudo tee /etc/apt/sources.list.d/enpass.list
 sudo apt-get update && sudo apt-get install -y enpass
 
-# Install Waterfox web browser from package
+# Install Waterfox cross-platform web browser based on Firefox from package
 APP_NAME=Waterfox
-APP_GUI_NAME="Cross-platform web browser."
-APP_VERSION=56.2.1
+APP_GUI_NAME="Cross-platform web browser based on Firefox."
+APP_VERSION=G3.2.5
 APP_EXT=tar.bz2
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x86_64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=x86
-fi
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-${ARCH_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://cdn.waterfox.net/releases/linux64/installer/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mv /tmp/${FILE_NAME}/* /opt
-sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
-Icon=/opt/${APP_NAME,,}/browser/icons/mozicon128.png
+Icon=/opt/${APP_NAME,,}/browser/chrome/icons/default/default128.png
 Type=Application
 StartupNotify=true
 Terminal=false
@@ -16612,7 +16610,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Vido Python GUI video/audio downloader frontend for youtube-dl from package
 APP_NAME=Vido
 APP_GUI_NAME="Python GUI video/audio downloader frontend for youtube-dl."
-APP_VERSION=1.2.1
+APP_VERSION=1.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18076,7 +18074,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Doffen SSH Tunnel cross-platform SSH terminal, file transfer, and tunnelling tool from AppImage
 APP_NAME=DoffenSSHTunnel
 APP_GUI_NAME="Cross-platform SSH terminal, file transfer, and tunnelling tool."
-APP_VERSION=0.9.36
+APP_VERSION=0.9.41
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -25523,7 +25521,7 @@ APP_NAME=pj-ftp-server
 APP_GUI_NAME="Cross-platform, portable Java-based FTP server tool."
 APP_GUI_CATEGORIES="Networking;Internet"
 APP_GUI_KEYWORDS="FTP;"
-APP_VERSION=1.0.49
+APP_VERSION=1.0.60
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v.${APP_VERSION}_bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -26398,7 +26396,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install yq Golang-based command-line YAML processor from package
 APP_NAME=yq
-APP_VERSION=4.12.0
+APP_VERSION=4.12.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_${KERNEL_TYPE//i/}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/mikefarah/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
@@ -27406,7 +27404,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Ticker cross-platform, Golang-based terminal stock ticker with live updates from package
 APP_NAME=Ticker
 APP_GUI_NAME="Cross-platform, Golang-based terminal stock ticker with live updates."
-APP_VERSION=2.0.3
+APP_VERSION=4.2.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE//i/}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/achannarasappa/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27427,12 +27425,12 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install ht Rust-based HTTPie clone command-line HTTP client from package
-APP_NAME=ht
+# Install xh Rust-based HTTPie clone command-line HTTP client from package
+APP_NAME=xh
 APP_GUI_NAME="Rust-based HTTPie clone command-line HTTP client."
-APP_VERSION=0.4.0
+APP_VERSION=0.12.0
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-x86_64-unknown-linux-musl
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ducaale/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -31460,6 +31458,36 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
+# Install SeaMonkey cross-platform integrated Internet application suite with web browser, email, newsgroup client, feed reader, HTML editor, IRC chat and web development tools from package
+APP_NAME=SeaMonkey
+APP_GUI_NAME="Cross-platform integrated Internet application suite with web browser, email, newsgroup client, feed reader, HTML editor, IRC chat and web development tools."
+APP_GUI_CATEGORIES="Internet;Network;Networking;"
+APP_GUI_KEYWORDS="Browser;RSS;HTML;IRC;Editor;Suite;Email;News;"
+APP_VERSION=2.53.9
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-$(uname -m)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://archive.mozilla.org/pub/seamonkey/releases/${APP_VERSION}/linux-$(uname -m)/en-US/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/* /opt
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/chrome/icons/default/default128.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
 # Install Pinto Web Player cross-platform desktop media player focused on online media from AppImage
 # https://www.pintowebplayer.com/
 APP_NAME="Pinto Web Player"
@@ -31493,3 +31521,36 @@ EOF
 sudo mv /tmp/${_APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}*
+
+# Install Tockler cross-platform minimalist time-tracking tool that uses focus window title from AppImage
+APP_NAME=Tockler
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform minimalist time-tracking tool that uses focus window title."
+APP_GUI_CATEGORIES="Accessories;Office;Programming;Development;"
+APP_GUI_KEYWORDS="Time;Tracking;Project;Management;"
+APP_VERSION=3.19.20
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MayGo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.png -J -L https://raw.githubusercontent.com/MayGo/${APP_NAME,,}/master/electron/shared/img/icon/win/${APP_NAME,,}_icon_big.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME}.png /usr/local/share/icons/${APP_NAME}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
