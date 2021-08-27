@@ -27422,12 +27422,12 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install ht Rust-based HTTPie clone command-line HTTP client from package
-APP_NAME=ht
+# Install xh Rust-based HTTPie clone command-line HTTP client from package
+APP_NAME=xh
 APP_GUI_NAME="Rust-based HTTPie clone command-line HTTP client."
-APP_VERSION=0.4.0
+APP_VERSION=0.12.0
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-x86_64-unknown-linux-musl
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ducaale/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
