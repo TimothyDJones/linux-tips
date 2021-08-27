@@ -3313,7 +3313,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install myNetPCB Java-based PCB layout and schematic capture tool
 APP_NAME=myNetPCB
-APP_VERSION=8.0
+APP_VERSION=8.2
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./_}.${APP_EXT}
 cd /tmp
@@ -12696,7 +12696,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Wipe Free Space utility to securely erase free space from source
 APP_NAME=WipeFreeSpace
 APP_GUI_NAME="Utility to securely erase free space."
-APP_VERSION=2.2.2
+APP_VERSION=2.3.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libext2fs-dev
@@ -14588,7 +14588,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install GNU Spice GUI wxWidgets GUI for NG-Spice and GNU-Cap electronic circuit emulation tools from source
 APP_NAME=gSpiceUI
 APP_GUI_NAME="wxWidgets GUI for NG-Spice and GNU-Cap electronic circuit emulation tools."
-APP_VERSION=1.2.36
+APP_VERSION=1.2.87
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
 sudo apt-get install libpangox-1.0-dev libwxgtk3.0-dev gwave
@@ -27682,7 +27682,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install o minimalist Golang text editor from package
 APP_NAME=o
 APP_GUI_NAME="Minimalist Golang text editor."
-APP_VERSION=2.43.0
+APP_VERSION=2.43.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xyproto/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27935,7 +27935,7 @@ APP_NAME=Propeller
 APP_GUI_NAME="Cross-platform SDL-based side-scroller shooting game ."
 APP_GUI_CATEGORIES="Entertainment;Games;"
 APP_GUI_KEYWORDS="Games;Side-Scroller;"
-APP_VERSION=alpha-prerelease-19
+APP_VERSION=alpha-prerelease-20
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
@@ -31012,7 +31012,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform FFmpeg GUI for video and audio editing and other operations."
 APP_GUI_CATEGORIES="Multimedia;Entertainment;Audio;Video;"
 APP_GUI_KEYWORDS="Audio;Video;FFmpeg;Editing;"
-APP_VERSION=3.37.0
+APP_VERSION=3.38.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mifi/lossless-cut/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
