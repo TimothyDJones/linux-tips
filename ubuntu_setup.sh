@@ -1018,13 +1018,15 @@ sudo ln -s /opt/${APP_NAME,,}/${APP_NAME}.desktop /usr/share/applications/${APP_
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install Idiomind flash card utility
-APP_NAME=idiomind
-APP_VERSION=0.2.9
-curl -o /tmp/${APP_NAME}.deb -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/${APP_VERSION}/${APP_NAME}_${APP_VERSION}_all.deb
-sudo gdebi -n /tmp/${APP_NAME}.deb   # '-n' is non-interactive mode for gdebi
+# Install Idiomind flash card utility for language learning from Debian package
+APP_NAME=Idiomind
+APP_VERSION=0.3.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
