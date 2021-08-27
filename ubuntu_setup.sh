@@ -18076,7 +18076,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Doffen SSH Tunnel cross-platform SSH terminal, file transfer, and tunnelling tool from AppImage
 APP_NAME=DoffenSSHTunnel
 APP_GUI_NAME="Cross-platform SSH terminal, file transfer, and tunnelling tool."
-APP_VERSION=0.9.36
+APP_VERSION=0.9.41
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
