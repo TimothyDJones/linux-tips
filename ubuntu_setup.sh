@@ -201,10 +201,10 @@ curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack
 cd /tmp
 dtrx -n /tmp/Hack-v3.003-ttf.tar.xz
 sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
-curl -o /tmp/ttf-iosevka-10.1.0.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v10.0.0/ttf-iosevka-10.1.0.zip
+curl -o /tmp/ttf-iosevka-10.1.1.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v10.0.0/ttf-iosevka-10.1.1.zip
 cd /tmp
-dtrx -n /tmp/ttf-iosevka-10.1.0.zip
-sudo cp -R /tmp/ttf-iosevka-10.1.0/* /usr/local/share/fonts
+dtrx -n /tmp/ttf-iosevka-10.1.1.zip
+sudo cp -R /tmp/ttf-iosevka-10.1.1/* /usr/local/share/fonts
 curl -o /tmp/CascadiaCode-2106.17.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2106.17.zip
 cd /tmp
 dtrx -n /tmp/CascadiaCode-2106.17.zip
@@ -529,7 +529,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=21.1.5
+APP_VERSION=21.2.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -576,7 +576,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.142.5.0
+APP_VERSION=1.142.6.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -623,7 +623,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=2.1.7
+APP_VERSION=2.1.8
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -1428,7 +1428,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4380
+APP_VERSION=4.3-4381
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -1690,7 +1690,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Worker File Manager (For AVFS support install AVFS above.)
 APP_NAME=worker
-APP_VERSION=4.8.1
+APP_VERSION=4.9.0
 APP_EXT=tar.zst
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y liblua5.3-dev zstd
@@ -4434,7 +4434,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.31.0
+APP_VERSION=1.32.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}-1_${KERNEL_TYPE}
 sudo apt-get install -y libgdk-pixbuf2.0-0
@@ -5031,7 +5031,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install JEditor Java-based text editor
 APP_NAME=jEditor
-APP_VERSION=1.2.8
+APP_VERSION=1.2.9
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_GPL-bin-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -13477,7 +13477,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install qBittorrent Qt-based Bittorrent client from source
 APP_NAME=qBittorrent
 APP_GUI_NAME="Qt-based Bittorrent client."
-APP_VERSION=4.3.7
+APP_VERSION=4.3.8
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y ${APP_NAME,,}
@@ -18622,7 +18622,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install pstoedit PostScript/PDF converter to other vector formats from source
 APP_NAME=pstoedit
 APP_GUI_NAME="PostScript/PDF converter to other vector formats."
-APP_VERSION=3.74
+APP_VERSION=3.76
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y ghostscript
@@ -19300,7 +19300,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install xsnow desktop decoration from Debian package
 APP_NAME=xsnow
 APP_GUI_NAME=""
-APP_VERSION=3.2.3
+APP_VERSION=3.3.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -23736,7 +23736,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install HSKinter Python GUI Mandarin Chinese flashcard tool from package
 APP_NAME=HSKinter
 APP_GUI_NAME="Python GUI Mandarin Chinese flashcard tool."
-APP_VERSION=0.5.0
+APP_VERSION=0.5.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo pip3 install gTTS playsound
@@ -25601,7 +25601,7 @@ APP_NAME=AnyMeal
 APP_GUI_NAME="Qt/SQLite-based desktop recipe tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Recipe;"
-APP_VERSION=1.8
+APP_VERSION=1.14
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential flex googletest librecode-dev libsqlite3-dev qt5-default qttools5-dev-tools
@@ -27116,7 +27116,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Rotki Electron-based cryptocurrency portfolio tracking tool from Debian package
 # https://rotki.com/
 APP_NAME=Rotki
-APP_VERSION=1.19.1
+APP_VERSION=1.20.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-linux_${KERNEL_TYPE}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -27417,7 +27417,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Cryptonose cryptocurrency price monitoring/tracking tool from Debian package
 APP_NAME=Cryptonose
-APP_VERSION=2.21.0
+APP_VERSION=2.21.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -29024,7 +29024,7 @@ sudo apt-get install -y cdda2wav mkisofs cdrecord
 # Install CliFM CLI-based, ultra-lightweight, lightning fast, and written in C from source
 APP_NAME=CliFM
 APP_GUI_NAME="CLI-based, ultra-lightweight, lightning fast, and written in C."
-APP_VERSION=1.1
+APP_VERSION=1.2.1
 APP_EXT=tar.gz
 FILE_NAME=v${APP_VERSION}
 sudo apt-get install -y libcap-dev libacl1-dev 
@@ -29931,7 +29931,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Helix cross-platform, Rust-based modal text editor from package
 APP_NAME=Helix
 APP_GUI_NAME="Cross-platform, Rust-based modal text editor."
-APP_VERSION=0.4.0
+APP_VERSION=0.4.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/helix-editor/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -30948,7 +30948,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Kakoune console text editor with Vi keybindings from source
 APP_NAME=Kakoune
 APP_GUI_NAME="Console text editor with Vi keybindings."
-APP_VERSION=2020.09.01
+APP_VERSION=2021.08.28
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -yy build-essential
@@ -31010,7 +31010,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform FFmpeg GUI for video and audio editing and other operations."
 APP_GUI_CATEGORIES="Multimedia;Entertainment;Audio;Video;"
 APP_GUI_KEYWORDS="Audio;Video;FFmpeg;Editing;"
-APP_VERSION=3.38.0
+APP_VERSION=3.39.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mifi/lossless-cut/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31554,3 +31554,79 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install MultiCopyPaste cross-platform multiple clipboard tool from AppImage
+APP_NAME=MultiCopyPaste
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform multiple clipboard tool."
+APP_GUI_CATEGORIES="Accessories;"
+APP_GUI_KEYWORDS="Clipboard;"
+APP_VERSION=1.2
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME}.png -J -L https://a.fsdn.com/allura/p/multicopypaste/icon
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME}.png /usr/local/share/icons/${APP_NAME}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
+
+# Install Annie Golang-based command-line video download tool from package
+APP_NAME=Annie
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Golang-based command-line video download tool."
+APP_VERSION=0.11.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(getconf LONG_BIT)-bit
+sudo apt-get install -y ffmpeg
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Darktile Golang-based GPU-rendered terminal for tiling window managers from package
+APP_NAME=Darktile
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Golang-based GPU-rendered terminal for tiling window managers."
+APP_VERSION=0.0.10
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-amd64
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/liamg/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install When Golang-based minimalist command-line time zone converter from package
+APP_NAME=When
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Golang-based minimalist command-line time zone converter."
+APP_VERSION=0.1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.linux-amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jupj/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
