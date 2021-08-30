@@ -31541,8 +31541,23 @@ APP_GUI_NAME="Golang-based GPU-rendered terminal for tiling window managers."
 APP_VERSION=0.0.10
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-amd64
-curl -o /tmp/${FILE_NAME} -J -L https://github.com/liamg/${APP_NAME,,}/releases/download/v${APP_VERSION}/darktile-linux-amd64
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/liamg/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
 sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install When Golang-based minimalist command-line time zone converter from package
+APP_NAME=When
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Golang-based minimalist command-line time zone converter."
+APP_VERSION=0.1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.linux-amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jupj/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
