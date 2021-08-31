@@ -2233,23 +2233,50 @@ sudo add-apt-repository -y ppa:pbek/qownnotes
 sudo apt-get update -y
 sudo apt-get install -y qownnotes
 
-# Install Tiki Wiki CMS/groupware
-APP_NAME=tiki
-APP_VERSION=22.1
-APP_EXT=tar.gz
-DB_NAME=tikiwiki
-DB_USER=tikiwiki
-DB_PASSWORD=tikiwiki
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/tikiwiki/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+# Install Tiki Wiki lightweight Wiki CMS/groupware from package
+APP_NAME="Tiki Wiki"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Lightweight Wiki CMS/groupware."
+APP_GUI_CATEGORIES="Office;Accessories;"
+APP_GUI_KEYWORDS="Wiki;CMS;"
+APP_VERSION=23.0
+APP_EXT=tar.xz
+DB_NAME=${_APP_NAME}
+DB_USER=${_APP_NAME}
+DB_PASSWORD=${_APP_NAME}
+FILE_NAME=${_APP_NAME//wiki/}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.${APP_EXT}
-sudo mv /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION} ${WWW_HOME}/${APP_NAME}
-sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${_APP_NAME}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${_APP_NAME}
+sudo chown -R www-data:www-data ${WWW_HOME}/${_APP_NAME}
+sudo chmod 755 ${WWW_HOME}/${_APP_NAME}
 # Create database
-mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
-mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
+mysql -u root -proot -Bse "CREATE USER '${DB_USER}'@'%' IDENTIFIED WITH mysql_native_password BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "GRANT USAGE ON *.* TO '${DB_USER}'@'%';"
+mysql -u root -proot -Bse "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
-xdg-open http://localhost/${APP_NAME,,}/tiki-install.php &
+# mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_unicode_ci; CREATE USER '${DB_USER}'@'%' IDENTIFIED WITH mysql_native_password BY '${DB_PASSWORD}'; GRANT USAGE ON *.* TO '${DB_USER}'@'%'; GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%'; FLUSH PRIVILEGES;"
+xdg-open http://localhost/${_APP_NAME}/tiki-install.php &
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=xdg-open http://localhost/${_APP_NAME}
+Icon=${WWW_HOME}/${_APP_NAME}/img/tiki/tikilogo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
 
 # Install EU-Commander Tcl/Tk file manager
 APP_NAME=eu-comm
