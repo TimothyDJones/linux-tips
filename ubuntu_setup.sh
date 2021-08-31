@@ -15727,7 +15727,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install GXemul full-system computer emulator that emulates processors (ARM, MIPS, M88K, PowerPC, and SuperH) and peripherals from source
 APP_NAME=GXemul
 APP_GUI_NAME="Full-system computer emulator that emulates processors (ARM, MIPS, M88K, PowerPC, and SuperH) and peripherals."
-APP_VERSION=0.6.3
+APP_VERSION=0.7.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libtinfo-dev libncurses-dev
