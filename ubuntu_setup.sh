@@ -3343,7 +3343,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install myNetPCB Java-based PCB layout and schematic capture tool
 APP_NAME=myNetPCB
-APP_VERSION=8.2
+APP_VERSION=8.3
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./_}.${APP_EXT}
 cd /tmp
