@@ -1784,7 +1784,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.28.106
+APP_VERSION=1.29.76
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -3343,7 +3343,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install myNetPCB Java-based PCB layout and schematic capture tool
 APP_NAME=myNetPCB
-APP_VERSION=8.2
+APP_VERSION=8.3
 APP_EXT=zip
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./_}.${APP_EXT}
 cd /tmp
@@ -7703,7 +7703,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install INSTEAD Interactive Fiction interpreter/player from source
 APP_NAME=INSTEAD
 APP_GUI_NAME="Interactive Fiction interpreter/player."
-APP_VERSION=3.3.4
+APP_VERSION=3.4.0
 APP_EXT=tar.gz
 sudo apt-get install -y liblua5.1-dev libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev libsdl2-mixer-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
@@ -16652,7 +16652,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Grip GTK-based CD player, CD ripper, and MP3 encoder from source
 APP_NAME=Grip
 APP_GUI_NAME="GTK-based CD player, CD ripper, and MP3 encoder."
-APP_VERSION=4.2.2
+APP_VERSION=4.2.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libssl-dev libssh2-1-dev libvte-dev libcurl4-openssl-dev libgnomeui-dev
