@@ -31614,3 +31614,17 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install shd Rust-based command-line tool to show HDD SMART parameters from package
+APP_NAME=shd
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust-based command-line tool to show HDD SMART parameters."
+APP_VERSION=0.1.4
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(uname -m)
+sudo apt-get install -y smartmontools
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/alttch/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
