@@ -30721,7 +30721,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Zellij Rust-based terminal multiplexer with layout and plugin systems from package
 APP_NAME=Zellij
 APP_GUI_NAME="Rust-based terminal multiplexer with layout and plugin systems."
-APP_VERSION=0.15.0
+APP_VERSION=0.16.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-x86_64-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zellij-org/zellij/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
