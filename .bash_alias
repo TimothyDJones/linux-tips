@@ -130,6 +130,16 @@ function lstree() {
     ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 }
 
+# Convert between JSON and YAML
+# http://github.com/frgomes/bash-scripts
+function json2yaml {
+  python -c 'import sys, yaml, json; print(yaml.dump(json.loads(sys.stdin.read())))'
+}
+
+function yaml2json {
+  python -c 'import sys, yaml, json; print(json.dumps(yaml.safe_load(sys.stdin.read())))'
+}
+
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
