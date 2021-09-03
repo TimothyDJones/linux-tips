@@ -3109,18 +3109,19 @@ make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Newsboat command-line RSS reader (Newsbeuter replacements) from source
-APP_NAME=newsboat
+# Install Newsboat command-line RSS reader (Newsbeuter replacement) from source
+APP_NAME=Newsboat
 APP_VERSION=2.24
 APP_EXT=tar.gz
-sudo apt-get install -y libcurl4-gnutls-dev libstfl-dev pkg-config libxml2-dev libjson-c-dev libjson0-dev -qq
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/archive/r${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-r${APP_VERSION}
+sudo apt-get install -y libcurl4-gnutls-dev libstfl-dev pkg-config libxml2-dev libjson-c-dev libjson[0-9]*-dev libkrb5-dev asciidoctor -qq
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/archive/r${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-r${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./config.sh && make && sudo make install
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Tiny Scan Java-based disk usage utility
 APP_NAME=TinyScan
