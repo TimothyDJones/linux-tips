@@ -576,7 +576,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.142.6.0
+APP_VERSION=1.143.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -3109,18 +3109,19 @@ make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Newsboat command-line RSS reader (Newsbeuter replacements) from source
-APP_NAME=newsboat
-APP_VERSION=2.12
+# Install Newsboat command-line RSS reader (Newsbeuter replacement) from source
+APP_NAME=Newsboat
+APP_VERSION=2.24
 APP_EXT=tar.gz
-sudo apt-get install -y libcurl4-gnutls-dev libstfl-dev pkg-config libxml2-dev libjson-c-dev libjson0-dev -qq
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/archive/r${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-r${APP_VERSION}
+sudo apt-get install -y libcurl4-gnutls-dev libstfl-dev pkg-config libxml2-dev libjson-c-dev libjson[0-9]*-dev libkrb5-dev asciidoctor -qq
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/archive/r${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-r${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./config.sh && make && sudo make install
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Tiny Scan Java-based disk usage utility
 APP_NAME=TinyScan
@@ -9749,7 +9750,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Balena Etcher cross-platform Electron-based tool to copy OS images to USB drives from Debian package
 APP_NAME=Balena-Etcher
 APP_GUI_NAME="Cross-platform Electron-based tool to copy OS images to USB drives."
-APP_VERSION=1.5.121
+APP_VERSION=1.5.122
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-electron_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/balena-io/etcher/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -25549,7 +25550,7 @@ APP_NAME=pj-ftp-server
 APP_GUI_NAME="Cross-platform, portable Java-based FTP server tool."
 APP_GUI_CATEGORIES="Networking;Internet"
 APP_GUI_KEYWORDS="FTP;"
-APP_VERSION=1.0.68
+APP_VERSION=1.0.78
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v.${APP_VERSION}_bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -26064,7 +26065,7 @@ sudo apt-get install fsearch-trunk -y
 # Install ECMA-55 Minimal BASIC compiler from source
 APP_NAME="Minimal BASIC"
 APP_GUI_NAME="ECMA-55 Minimal BASIC compiler."
-APP_VERSION=2.31
+APP_VERSION=2.40
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME// /}-${APP_VERSION}
 sudo apt-get install -y build-essential
@@ -31745,3 +31746,66 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install BASIC256 cross-platform Qt-based BASIC compiler with interactive IDE from source
+APP_NAME=BASIC256
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="BASIC;IDE;Editor;"
+APP_VERSION=2.0.0.11
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.orig
+sudo apt-get install -y qttools5-dev libespeak-ng-libespeak-dev libqt5serialport5-dev qtmultimedia5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/kidbasic/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}*
+mkdir -p build && cd build
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make && sudo make install
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}*/resources/icons/${APP_NAME,,}.png /usr/share/${APP_NAME,,}/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/bin
+Exec=/usr/bin/${APP_NAME,,}
+Icon=/usr/share/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install AuthPass cross-platform password manager with support for Keepass format password database files from package
+APP_NAME=AuthPass
+APP_GUI_NAME="Cross-platform password manager with support for Keepass format password database files."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Security;Password;"
+APP_VERSION=1.9.3_1848
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,} /opt
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/data/flutter_assets/assets/images/logo_icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
