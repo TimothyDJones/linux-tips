@@ -26061,7 +26061,7 @@ sudo apt-get install fsearch-trunk -y
 # Install ECMA-55 Minimal BASIC compiler from source
 APP_NAME="Minimal BASIC"
 APP_GUI_NAME="ECMA-55 Minimal BASIC compiler."
-APP_VERSION=2.31
+APP_VERSION=2.40
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME// /}-${APP_VERSION}
 sudo apt-get install -y build-essential
