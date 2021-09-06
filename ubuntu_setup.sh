@@ -637,13 +637,14 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Otter Browser cross-platform Qt5-based web browser with Opera 12.x-style UI from source
 APP_NAME=Otter-Browser
-APP_VERSION=1.0.81-dev380
+APP_VERSION=1.0.81-dev400
 APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev libqt5svg5-dev qtwebengine5-dev qtdeclarative5-dev qml-module-qtgstreamer libqt5qml5 ibqt5gstreamer-dev libgstreamer1.0-dev gstreamer1.0-qt5 cmake  # Qt5 development packages needed to build from source
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 mkdir build && cd build
 cmake .. && make && sudo make install
 cd $HOME
@@ -5520,7 +5521,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=21.6
+APP_VERSION=21.7
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
