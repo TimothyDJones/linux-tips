@@ -1973,7 +1973,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Sidu database web GUI
 APP_NAME=sidu
-APP_VERSION=60
+APP_VERSION=62
 APP_EXT=zip
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}${APP_VERSION}.${APP_EXT}
 cd /tmp
