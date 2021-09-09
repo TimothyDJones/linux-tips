@@ -31827,3 +31827,34 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install GtkRadio minimalist Internet radio player from package
+APP_NAME=GtkRadio
+APP_GUI_NAME="Minimalist Internet radio player."
+APP_GUI_CATEGORIES="Internet;Multimedia;Audio;"
+APP_GUI_KEYWORDS="Radio;Streaming;"
+APP_VERSION=N/A
+APP_EXT=tar.xz
+FILE_NAME=Radio
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/gtk-radio/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/radio /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Exec=/opt/${APP_NAME,,}/radio
+Icon=/opt/${APP_NAME,,}/kaa.kalexal.Radio.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
