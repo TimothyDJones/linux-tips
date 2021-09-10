@@ -4995,7 +4995,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Tabby (formerly Terminus) JavaScript/Electron terminal from Debian package
 APP_NAME=Tabby
-APP_VERSION=1.0.156
+APP_VERSION=1.0.157
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME,,}.${APP_EXT} -J -L https://github.com/Eugeny/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
