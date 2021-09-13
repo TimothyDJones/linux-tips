@@ -4694,11 +4694,6 @@ sudo add-apt-repository -y ppa:js-reynaud/kicad-4
 sudo apt update
 sudo apt install -y kicad
 
-# Install OpenShot video editor from PPA
-sudo add-apt-repository -y ppa:openshot.developers/ppa
-sudo apt-get update
-sudo apt-get install -y openshot-qt
-
 # Install View Your Mind (VYM) Qt mind-mapping tool from source
 APP_NAME=vym
 APP_VERSION=2.8.8
@@ -31873,3 +31868,36 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install OpenShot cross-platform non-linear video editor from AppImage
+APP_NAME=OpenShot
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform non-linear video editor."
+APP_GUI_CATEGORIES="Multimedia;Video;"
+APP_GUI_KEYWORDS="Video;Editor;"
+APP_VERSION=2.6.1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(uname -m)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME,,}-qt//releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/${APP_NAME}/${APP_NAME,,}-qt/develop/images/${APP_NAME,,}.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
