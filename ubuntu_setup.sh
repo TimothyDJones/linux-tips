@@ -233,6 +233,10 @@ curl -o /tmp/bitmap-fonts-master.zip -J -L https://github.com/Tecate/bitmap-font
 cd /tmp
 dtrx -n /tmp/bitmap-fonts-master.zip
 sudo cp -R /tmp/bitmap-fonts-master/bitmap/* /usr/local/share/fonts
+curl -o /tmp/IBM_Plex_TrueType.zip -J -L https://github.com/IBM/plex/releases/download/v5.2.1/TrueType.zip
+cd /tmp
+dtrx -n /tmp/IBM_Plex_TrueType.zip
+sudo cp -R /tmp/IBM_Plex_TrueType/TrueType/IBM-Plex-Mono /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
