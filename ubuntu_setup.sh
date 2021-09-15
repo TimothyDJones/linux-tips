@@ -11466,7 +11466,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 APP_NAME="Sohag Builder"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform tool for building Qt/C++ and PHP/Laravel database applications from same codebase."
-APP_VERSION=1.0
+APP_VERSION=1.1
 APP_EXT=tar.xz
 FILE_NAME=${_APP_NAME}${APP_VERSION}-Gnu-Linux-X86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sohag-developer/${FILE_NAME}.${APP_EXT}
