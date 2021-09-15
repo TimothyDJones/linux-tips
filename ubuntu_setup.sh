@@ -10358,7 +10358,7 @@ cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
 PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-/opt/${APP_NAME,,}/${APP_NAME}.jre9.sh "\$1"
+/opt/${APP_NAME,,}/${APP_NAME}.sh "\$1"
 cd $HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
@@ -10369,7 +10369,7 @@ Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/${APP_NAME}.jre9.sh "\$1"
+Exec=/opt/${APP_NAME,,}/${APP_NAME}.sh "\$1"
 Icon=/opt/${APP_NAME,,}/resources/images/winicon.ico
 Type=Application
 StartupNotify=true
