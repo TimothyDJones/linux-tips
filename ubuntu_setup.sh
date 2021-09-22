@@ -32050,3 +32050,18 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}*
+
+# Install yed (Your Editor) fast, customizable text editor with zero dependencies from source
+APP_NAME=yed
+APP_GUI_NAME="Fast, customizable text editor with zero dependencies."
+APP_VERSION=master
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://codeload.github.com/kammerdienerb/${APP_NAME,,}/${APP_EXT}/refs/heads/${APP_VERSION}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo ./install.sh -c release -p /usr/local
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
