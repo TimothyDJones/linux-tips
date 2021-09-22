@@ -237,6 +237,10 @@ curl -o /tmp/IBM_Plex_TrueType.zip -J -L https://github.com/IBM/plex/releases/do
 cd /tmp
 dtrx -n /tmp/IBM_Plex_TrueType.zip
 sudo cp -R /tmp/IBM_Plex_TrueType/TrueType/IBM-Plex-Mono /usr/local/share/fonts
+curl -o /tmp/JetBrainsMono-2.242.zip -J -L https://downloads.sourceforge.net/jetbrains-mono.mirror/JetBrainsMono-2.242.zip
+cd /tmp
+dtrx -n /tmp/JetBrainsMono-2.242.zip
+sudo cp -R /tmp/JetBrainsMono-2.242/fonts/ttf/* /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
