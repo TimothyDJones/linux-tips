@@ -12782,7 +12782,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install gdcalc console and GTK+ financial, statistics, scientific and programmer's calculator from source
 APP_NAME=gdcalc
 APP_GUI_NAME="Console and GTK+ financial, statistics, scientific and programmer's calculator."
-APP_VERSION=2.17
+APP_VERSION=2.20
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libgnomeui-dev
