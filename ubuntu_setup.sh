@@ -8060,7 +8060,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install pgFormatter PostgreSQL and other DB SQL syntax beautifier from source
 APP_NAME=pgFormatter
 APP_GUI_NAME="PostgreSQL and other DB SQL syntax beautifier."
-APP_VERSION=3.0
+APP_VERSION=5.1
 APP_EXT=tar.gz
 sudo apt-get install -y git-svn unixodbc unixodbc-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
