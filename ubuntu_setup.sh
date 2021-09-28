@@ -29497,13 +29497,28 @@ APP_NAME=Lite-XL
 APP_GUI_NAME="Cross-platform lightweight VS Code-style text editor."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=1.16.9
+APP_VERSION=2.0.2
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-linux-x86-64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/franko/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-linux-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}/* /usr/local
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
