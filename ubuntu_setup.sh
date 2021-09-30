@@ -32103,3 +32103,19 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Multitextor cross-platform console-mode text editor from source
+APP_NAME=Multitextor
+APP_GUI_NAME="Cross-platform console-mode text editor."
+APP_VERSION=2.0.0-beta1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential cmake libncursesw5-dev libgpm-dev gpm
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/vikonix/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+cmake -B _build -S .. && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
