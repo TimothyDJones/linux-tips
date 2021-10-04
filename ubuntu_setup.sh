@@ -3446,7 +3446,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PlantUML Java-based UML modeling tool from package
 APP_NAME=PlantUML
 APP_GUI_NAME="Java-based UML modeling tool"
-APP_VERSION=1.2021.10
+APP_VERSION=1.2021.11
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
