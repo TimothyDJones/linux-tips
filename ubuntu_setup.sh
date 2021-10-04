@@ -32103,3 +32103,36 @@ mkdir build && cd build
 cmake -B _build -S .. && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Blink Qt-based GUI of indexed grep for source code, files locator, search and replace from AppImage
+APP_NAME=Blink
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Qt-based GUI of indexed grep for source code, files locator, search and replace."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Search;"
+APP_VERSION=1.6.3
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ychclone/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/ychclone/${APP_NAME,,}/master/blinkAppImage/usr/share/icons/hicolor/128x128/${APP_NAME,,}.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
