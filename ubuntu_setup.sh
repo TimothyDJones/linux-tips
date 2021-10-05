@@ -18463,15 +18463,20 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 
-# Install Gaphor simple Python UML modeling tool from package
+# Install Gaphor simple Python UML modeling tool from AppImage
 APP_NAME=Gaphor
 APP_GUI_NAME="Simple Python UML modeling tool."
-APP_VERSION=1.1.1
-APP_EXT=whl
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-py3-none-any
-sudo apt-get install -y python3-setuptools python3-pip python3-wheel
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="UML;Modeling;"
+APP_VERSION=2.6.4
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-sudo pip3 install /tmp/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/${APP_NAME,,}/${APP_NAME,,}/master/logos/${APP_NAME,,}-48x48.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -18479,12 +18484,12 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/usr/local/bin
 Exec=/usr/local/bin/${APP_NAME,,}
-#Icon=
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
-Categories=Development;Programming;
-Keywords=UML;Modeling;
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
