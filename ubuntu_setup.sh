@@ -32136,3 +32136,15 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install System Monitoring Center Python/Gtk system performance and usage monitoring tool from Debian package
+# https://kod.pardus.org.tr/Hakan/system-monitoring-center
+APP_NAME="System Monitoring Center"
+APP_VERSION=0.1.18-beta
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_EXT=deb
+FILE_NAME=${_APP_NAME}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${_APP_NAME}*
