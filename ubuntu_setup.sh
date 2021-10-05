@@ -537,7 +537,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=21.2.1
+APP_VERSION=21.2.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -621,7 +621,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install CopyQ clipboard manager from Debian package
 APP_NAME=CopyQ
-APP_VERSION=4.0.0
+APP_VERSION=5.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_10-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1043,7 +1043,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=10.6.1
+APP_VERSION=10.6.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -3446,7 +3446,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PlantUML Java-based UML modeling tool from package
 APP_NAME=PlantUML
 APP_GUI_NAME="Java-based UML modeling tool"
-APP_VERSION=1.2021.10
+APP_VERSION=1.2021.11
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -3656,7 +3656,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install PDF Split and Merge (PDFsam) editor from Debian package
 APP_NAME=PDFSam
-APP_VERSION=4.2.6
+APP_VERSION=4.2.7
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
@@ -6062,7 +6062,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install WackoWiki PHP-based lightweight wiki tool
 APP_NAME=wacko
-APP_VERSION=r6.1.0
+APP_VERSION=r6.1.1
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -12779,33 +12779,17 @@ sudo python3 ./setup.py install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install gdcalc console and GTK+ financial, statistics, scientific and programmer's calculator from source
+# Install gdcalc console and GTK+ financial, statistics, scientific and programmer's calculator from RPM package
 APP_NAME=gdcalc
 APP_GUI_NAME="Console and GTK+ financial, statistics, scientific and programmer's calculator."
-APP_VERSION=2.20
-APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y libgnomeui-dev
+APP_VERSION=3.0
+APP_EXT=rpm
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-1
+sudo apt-get -y alien
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
-./autogen.sh && ./configure --prefix=/usr/local && make && sudo make install
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=/usr/local/bin
-Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/local/share/icons/${APP_NAME,,}.png
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Accessories;Programming;
-Keywords=Calculator;
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo alien /tmp/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}*.deb
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
@@ -14182,7 +14166,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=2.3.5
+APP_VERSION=2.4.9
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -18529,7 +18513,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Hypernomicon Java-based research tracking database with built-in PDF viewer from package
 APP_NAME=Hypernomicon
 APP_GUI_NAME="Java-based research tracking database with built-in PDF viewer."
-APP_VERSION=1.22
+APP_VERSION=1.22.1
 APP_EXT=sh
 FILE_NAME=${APP_NAME}_linux_${APP_VERSION//./_}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -23978,7 +23962,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Belofte cross-platform Xboard-compatible chess engine from package
 APP_NAME=Belofte
-APP_VERSION=2.1.4
+APP_VERSION=2.1.3.1
 APP_EXT=N/A
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=64
@@ -30444,7 +30428,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Kryptor cross-platform, C#/.NET-based command-line file encryption tool from package
 APP_NAME=Kryptor
 APP_GUI_NAME="Cross-platform, C#/.NET-based command-line file encryption tool."
-APP_VERSION=3.0.3
+APP_VERSION=3.0.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/samuel-lucas6/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32103,3 +32087,64 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Multitextor cross-platform console-mode text editor from source
+APP_NAME=Multitextor
+APP_GUI_NAME="Cross-platform console-mode text editor."
+APP_VERSION=2.0.0-beta1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential cmake libncursesw5-dev libgpm-dev gpm
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/vikonix/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+cmake -B _build -S .. && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Blink Qt-based GUI of indexed grep for source code, files locator, search and replace from AppImage
+APP_NAME=Blink
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Qt-based GUI of indexed grep for source code, files locator, search and replace."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Search;"
+APP_VERSION=1.6.3
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ychclone/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/ychclone/${APP_NAME,,}/master/blinkAppImage/usr/share/icons/hicolor/128x128/${APP_NAME,,}.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install System Monitoring Center Python/Gtk system performance and usage monitoring tool from Debian package
+# https://kod.pardus.org.tr/Hakan/system-monitoring-center
+APP_NAME="System Monitoring Center"
+APP_VERSION=0.1.18-beta
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_EXT=deb
+FILE_NAME=${_APP_NAME}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${_APP_NAME}*
