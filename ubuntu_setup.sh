@@ -32136,7 +32136,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install System Monitoring Center Python/Gtk system performance and usage monitoring tool from Debian package
 # https://kod.pardus.org.tr/Hakan/system-monitoring-center
 APP_NAME="System Monitoring Center"
-APP_VERSION=0.1.18-beta
+APP_VERSION=0.1.19-beta
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}_${APP_VERSION}_amd64
