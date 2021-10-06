@@ -25429,7 +25429,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install CoTerminalApps cross-platform, color terminal/console puzzle games from package
 APP_NAME=CoTerminalApps
 APP_GUI_NAME="Cross-platform, , color terminal/console puzzle games."
-APP_VERSION=29sep21
+APP_VERSION=6oct21
 APP_EXT=7z
 FILE_NAME=co${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
