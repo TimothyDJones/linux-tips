@@ -241,6 +241,10 @@ curl -o /tmp/JetBrainsMono-2.242.zip -J -L https://downloads.sourceforge.net/jet
 cd /tmp
 dtrx -n /tmp/JetBrainsMono-2.242.zip
 sudo cp -R /tmp/JetBrainsMono-2.242/fonts/ttf/* /usr/local/share/fonts
+curl -o /tmp/codeface-fonts.tar.xz -J -L https://downloads.sourceforge.net/codeface.mirror/codeface-fonts.tar.xz
+cd /tmp
+dtrx -n /tmp/codeface-fonts.tar.xz
+sudo cp -R /tmp/codeface-fonts/fonts/* /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
