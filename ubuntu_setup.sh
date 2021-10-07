@@ -6506,7 +6506,7 @@ source $HOME/.bashrc	# Reload Bash configuration
 # Install bin64ed Qt-based Base64 file encoder/decoder from source
 APP_NAME=bin64ed
 APP_GUI_NAME="Cross-platform Qt-based Base64 file encoder/decoder."
-APP_VERSION=2.0
+APP_VERSION=2.0.1
 APP_EXT=tar.bz2
 sudo apt-get install -y qt5-default qt5-qmake
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/base64-binary/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
