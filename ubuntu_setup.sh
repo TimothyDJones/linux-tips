@@ -32148,3 +32148,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${_APP_NAME}*
+
+# Install TutoTerm simple terminal emulator with interactive documentation for novice users from source
+APP_NAME=TutoTerm
+APP_GUI_NAME="Simple terminal emulator with interactive documentation for novice users."
+APP_VERSION=0.7.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libglib2.0-dev libxml2-utils libxml2-dev libvte-2.91-dev libgtk-3-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.savannah.nongnu.org/releases/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
