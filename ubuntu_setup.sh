@@ -6330,10 +6330,10 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install VICE Versatile Commodore Emulator from source
+# Install VICE (Versatile Commodore Emulator) cross-platform retro Commodore computer emulator collection from source
 APP_NAME=VICE
-APP_GUI_NAME="Cross-platform retro Commodore computer emulator."
-APP_VERSION=3.1
+APP_GUI_NAME="Cross-platform retro Commodore computer emulator collection."
+APP_VERSION=3.5
 APP_EXT=tar.gz
 sudo apt-get install -y build-essential autoconf bison flex libreadline-dev libxaw7-dev libpng-dev xa65 texinfo libpulse-dev texi2html libpcap-dev dos2unix libgtk2.0-cil-dev libgtkglext1-dev libvte-dev libvte-dev libavcodec-dev libavformat-dev libswscale-dev libmp3lame-dev libmpg123-dev yasm ffmpeg libx264-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-emu/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
