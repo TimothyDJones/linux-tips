@@ -704,7 +704,7 @@ google-drive-ocamlfuse $HOME/google-drive  # Mount Google Drive to folder.
 # Install MuPDF PDF viewer from source.
 # Install pre-requisite development packages.
 APP_NAME=MuPDF
-APP_VERSION=1.18.0
+APP_VERSION=1.19.0
 APP_EXT=tar.xz
 sudo apt-get install -y libjbig2dec0-dev libfreetype6-dev libftgl-dev libjpeg-dev libopenjp2-7-dev zlib1g-dev xserver-xorg-dev mesa-common-dev libgl1-mesa-dev libxcursor-dev libxrandr-dev libxinerama-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://mupdf.com/downloads/${APP_NAME,,}-${APP_VERSION}-source.${APP_EXT}
