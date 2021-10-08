@@ -32179,3 +32179,14 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Shrink command-line URL shortener with support for variety of services from Debian package
+APP_NAME=Shrink
+APP_VERSION=1.0.0-beta
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION//-/_}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Lil-Nickel/${APP_NAME,,}/releases/download/linux/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${_APP_NAME}*
