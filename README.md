@@ -253,7 +253,7 @@ Mount (re-mount) the file system to ensure that it works properly.
 mount -a
 ```
 
-That's it! Now you can transparently work with your S3 buckets just like they are local files.
+That\'s it! Now you can transparently work with your S3 buckets just like they are local files.
 
 
 [Reference1](https://sysadminxpert.com/how-to-mount-s3-bucket-on-linux-instance/)  
@@ -284,7 +284,8 @@ Many times in a shell script, you may need to differentiate between whether your
 | `uname` | `-m`  | Display machine hardware name | `x86_64` or `i686`|
 | `arch`  |       | Alias for `uname -m` | `x86_64` |
 | `dpkg`  | `--print-architecture` | Display machine/platform architecture (Debian/Ubuntu) | `amd64`, `arm64`, `i386` |
-| `dpkg-architecture` | `--query DEB_BUILD_ARCH_CPU` | Display machine/platform architecture (Debian/Ubuntu) | `amd64`, `arm64`, `i386` |
+| `dpkg-architecture` | `--query DEB_BUILD_**ARCH**_CPU` | Display machine/platform architecture (Debian/Ubuntu) | `amd64`, `arm64`, `i386` |
+| `dpkg-architecture` | `--query DEB_BUILD_**GNU**_CPU` | Display GNU architecture | `x86`, `x86_64` |
 | `nproc` |       | Display number of CPU cores | `4` |
 | `getconf` | `LONG_BIT` | Displays 32 or 64, depending on address bus | `64` |
 | `lscpu` |       | Detailed information about CPU | N/A |
