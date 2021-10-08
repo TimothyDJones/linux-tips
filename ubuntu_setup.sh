@@ -32068,7 +32068,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install JupyterLab App cross-platform, desktop application for JupyterLab from Debian package
 APP_NAME=JupyterLab
-APP_VERSION=3.1.17-1
+APP_VERSION=3.1.18-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-Setup-Debian
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}_app/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
