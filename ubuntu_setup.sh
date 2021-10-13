@@ -1649,7 +1649,7 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 cd /tmp
 dtrx -n ${FILE_NAME}.${APP_EXT}
 cd ${FILE_NAME}
-./configure && make && make install
+./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
