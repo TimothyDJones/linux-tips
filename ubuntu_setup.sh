@@ -26726,7 +26726,7 @@ APP_NAME=Code-Browser
 APP_GUI_NAME="Cross-platform code-folding text editor."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Editor;Text"
-APP_VERSION=7.3
+APP_VERSION=8.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64-qt
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://tibleiz.net/download/${FILE_NAME}.${APP_EXT}
