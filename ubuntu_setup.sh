@@ -32321,3 +32321,15 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Twin Textmode WINdow manager environment from Debian package
+# https://github.com/cosmos72/twin
+APP_NAME=Twin
+APP_VERSION=0.9.0-0ubuntu1
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~eeickmeyer/+archive/ubuntu/${APP_NAME,,}/+files/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${_APP_NAME}*
