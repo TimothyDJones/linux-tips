@@ -21112,7 +21112,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install eDEX-UI Electron-based, fullscreen, cross-platform terminal emulator and system monitor from AppImage
 APP_NAME=eDEX-UI
 APP_GUI_NAME="Electron-based, fullscreen, cross-platform terminal emulator and system monitor."
-APP_VERSION=2.2.7
+APP_VERSION=2.2.8
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
