@@ -18715,7 +18715,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # https://github.com/x-jrga/potatosql
 APP_NAME=FractalZoomer
 APP_GUI_NAME="Java-based fractal generator and explorer tool."
-APP_VERSION=1.0.7.4
+APP_VERSION=1.0.7.9
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/Fractal%20Zoomer.${APP_EXT}
