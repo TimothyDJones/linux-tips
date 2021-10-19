@@ -1048,7 +1048,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=11.1.4
+APP_VERSION=11.1.5
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -30271,7 +30271,7 @@ APP_GUI_NAME="Cross-platform, WxWidgets-based GUI DVD authoring tool."
 APP_VERSION=3.2
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME}-${APP_VERSION}
-sudo apt-get install -yy build-essential libwxgtk3.0-gtk3-dev libwxgtk-media3.0-gtk3-dev libcairo2-dev libpango1.0-dev libexif-dev libudev-dev libdbus-1-dev xmlto dvdauthor growisofs libjpeg62-dev
+sudo apt-get install -yy build-essential flex libwxgtk3.0-gtk3-dev libwxgtk-media3.0-gtk3-dev libcairo2-dev libpango1.0-dev libexif-dev libudev-dev libdbus-1-dev xmlto dvdauthor growisofs libjpeg62-dev libavcodec-dev libavformat-dev libavfilter-dev libswscale-dev
 # wxSVG package from Ubuntu repositories doesn't work to build DVDStyler, so we must build from source
 curl -o /tmp/wxsvg-1.5.22.tar.bz2 -J -L https://downloads.sourceforge.net/wxsvg/wxsvg-1.5.22.tar.bz2
 cd /tmp
