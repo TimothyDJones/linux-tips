@@ -32345,3 +32345,40 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${_APP_NAME}*
+
+# Install QHexEdit2 cross-platform Qt-based minimalist hex editor from source
+APP_NAME=QHexEdit2
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Binary;Editor;"
+APP_VERSION=0.8.9
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y qttools5-dev qtbase5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Simsys/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}*
+mkdir -p build && cd build
+qtchooser -run-tool=qmake -qt=5 /tmp/${FILE_NAME}/src/qhexedit.pro && sudo make
+sudo rm -rf /tmp/${FILE_NAME}/build
+qtchooser -run-tool=qmake -qt=5 /tmp/${FILE_NAME}/example/qhexedit.pro && make
+sudo cp /tmp/${FILE_NAME}/example/qhexedit /usr/local/bin
+sudo chmod +x /usr/local/bin/qhexedit
+sudo cp /tmp/${FILE_NAME}/doc/html/qhexedit.png /usr/local/share/icons/qhexedit.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/qhexedit
+Icon=/usr/local/share/icons/qhexedit.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
