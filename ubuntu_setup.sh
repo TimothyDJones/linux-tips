@@ -10912,10 +10912,10 @@ sudo apt-get update && sudo apt-get install -y enpass
 # Install Waterfox cross-platform web browser based on Firefox from package
 APP_NAME=Waterfox
 APP_GUI_NAME="Cross-platform web browser based on Firefox."
-APP_VERSION=G3.2.5
+APP_VERSION=G4.0.0.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-x86_64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://cdn.waterfox.net/releases/linux64/installer/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/WaterfoxCo/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -R /tmp/${FILE_NAME}/* /opt
@@ -32382,3 +32382,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install GitHub CLI official CLI tool from Debian package
+APP_NAME=gh
+APP_VERSION=2.1.0
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cli/cli/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${_APP_NAME}*
