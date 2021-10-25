@@ -6867,21 +6867,44 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install Block Attack SDL Tetris clone from source
-APP_NAME=BlockAttack
+# Install Block Attack SDL Tetris clone from package
+APP_NAME="Block Attack"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="SDL Tetris clone."
-APP_VERSION=2.3.0
-APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libphysfs-dev libboost-dev libboost-program-options-dev libutfcpp-dev cmake
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+APP_VERSION=2.7.0
+APP_EXT=tar.bz2
+FILE_NAME=${_APP_NAME}-linux-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
-./packdata.sh
-cmake -DCMAKE_BUILD_TYPE=Release . && make && sudo make install
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${_APP_NAME}
+cat > /tmp/${_APP_NAME} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:$PATH; export PATH
+/opt/${_APP_NAME}/${_APP_NAME}
 cd $HOME
-sudo rm -rf /tmp/${APP_NAME,,}*
+EOF
+sudo mv /tmp/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/opt/${_APP_NAME}/${_APP_NAME}
+Icon=/opt/${_APP_NAME}/icons/${_APP_NAME}128.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Puzzle;Arcade;Retro;
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME}*
 
 # Install CrococryptFile Java-based file archiving and encryption utility
 APP_NAME=CrococryptFile
