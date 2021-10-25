@@ -23373,9 +23373,9 @@ APP_NAME=Birdfont
 APP_GUI_NAME="Cross-platform font editor."
 APP_GUI_CATEGORIES="Accessories;Office;System;"
 APP_GUI_KEYWORDS="To Do;Productivity;"
-APP_VERSION=2.29.1
+APP_VERSION=2.29.6
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME}-669f14e-x86_64
+FILE_NAME=${APP_NAME}-7d98817-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johanmattssonm/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
