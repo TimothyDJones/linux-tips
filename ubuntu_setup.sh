@@ -32134,7 +32134,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Qt-based GUI of indexed grep for source code, files locator, search and replace."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Search;"
-APP_VERSION=1.7.3
+APP_VERSION=1.7.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ychclone/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
