@@ -3945,13 +3945,13 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=CherryTree
 source /etc/lsb-release
 if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(hi)$ ]]; then     # Groovy (21.04)
-    APP_VERSION=0.99.41-3_amd64
+    APP_VERSION=0.99.42-3_amd64
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(gr)$ ]]; then     # Groovy (20.10)
-    APP_VERSION=0.99.41-2_amd64
+    APP_VERSION=0.99.42-2_amd64
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo)$ ]]; then     # Focal (20.04)
-    APP_VERSION=0.99.41-1_amd64
+    APP_VERSION=0.99.42-1_amd64
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo)$ ]]; then  # 18.04 - 19.10
-    APP_VERSION=0.99.41-4_amd64
+    APP_VERSION=0.99.42-4_amd64
 else
     APP_VERSION=0.39.4-0_all
 fi
@@ -10912,10 +10912,10 @@ sudo apt-get update && sudo apt-get install -y enpass
 # Install Waterfox cross-platform web browser based on Firefox from package
 APP_NAME=Waterfox
 APP_GUI_NAME="Cross-platform web browser based on Firefox."
-APP_VERSION=G3.2.5
+APP_VERSION=G4.0.0.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-x86_64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://cdn.waterfox.net/releases/linux64/installer/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/WaterfoxCo/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -R /tmp/${FILE_NAME}/* /opt
@@ -17990,13 +17990,13 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install NSBase cross-platform database alternative to MS Access built with SQLite from Debian package
 APP_NAME=NSBase
 APP_GUI_NAME="Cross-platform database alternative to MS Access."
-APP_VERSION=1.9.1
+APP_VERSION=1.9.9
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=linux32-i386
-	APP_VERSION=1.4.1.a
+	APP_VERSION=1.9.9
 fi
 FILE_NAME=${APP_NAME,,}-${ARCH_TYPE}-V${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -23660,10 +23660,10 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install MuWire cross-platform Java-based P2P client with anonymization features from package
 APP_NAME=MuWire
 APP_GUI_NAME="Cross-platform Java-based P2P client with anonymization features."
-APP_VERSION=0.7.1
+APP_VERSION=0.8.10
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://muwire.com/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://muwire.com/downloads/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -24071,7 +24071,11 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
+<<<<<<< HEAD
 APP_VERSION=8.17.3
+=======
+APP_VERSION=8.17.4
+>>>>>>> daily
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -32346,6 +32350,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${_APP_NAME}*
 
+<<<<<<< HEAD
 # Install Cinelerra GG Linux video editing and composition tool from AppImage
 APP_NAME="Cinelerra GG"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
@@ -32378,3 +32383,51 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install QHexEdit2 cross-platform Qt-based minimalist hex editor from source
+APP_NAME=QHexEdit2
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Binary;Editor;"
+APP_VERSION=0.8.9
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y qttools5-dev qtbase5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Simsys/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}*
+mkdir -p build && cd build
+qtchooser -run-tool=qmake -qt=5 /tmp/${FILE_NAME}/src/qhexedit.pro && sudo make
+sudo rm -rf /tmp/${FILE_NAME}/build
+qtchooser -run-tool=qmake -qt=5 /tmp/${FILE_NAME}/example/qhexedit.pro && make
+sudo cp /tmp/${FILE_NAME}/example/qhexedit /usr/local/bin
+sudo chmod +x /usr/local/bin/qhexedit
+sudo cp /tmp/${FILE_NAME}/doc/html/qhexedit.png /usr/local/share/icons/qhexedit.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/qhexedit
+Icon=/usr/local/share/icons/qhexedit.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
+
+# Install GitHub CLI official CLI tool from Debian package
+APP_NAME=gh
+APP_VERSION=2.1.0
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cli/cli/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${_APP_NAME}*
