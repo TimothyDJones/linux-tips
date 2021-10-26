@@ -19699,10 +19699,10 @@ cd $HOME
 # Install StarCalendar international calendar from Debian package
 APP_NAME=StarCal
 APP_GUI_NAME="International calendar."
-APP_VERSION=3.1.4-1
+APP_VERSION=3.1.12
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}3_${APP_VERSION}_all
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}3_${APP_VERSION}-1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ilius/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
