@@ -6170,14 +6170,21 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install Sigil cross-platform ebook (EPUB) editor/creator from PPA
+# Install Sigil cross-platform ebook (EPUB) editor/creator from source
 APP_NAME=Sigil
 APP_GUI_NAME="Cross-platform ebook (EPUB) editor/creator."
-APP_VERSION=0.9.9
-APP_EXT=deb
-sudo apt-add-repository -y ppa:ubuntuhandbook1/sigil
-sudo apt-get update -y
-sudo apt-get install -y sigil
+APP_VERSION=1.8.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y build-essential cmake qtbase5-dev qttools5-dev qttools5-dev-tools qtwebengine5-dev libhunspell-dev libpcre3-dev libminizip-dev python3-dev python3-pip python3-lxml python3-six python3-css-parser python3-dulwich python3-tk python3-pyqt5 python3-pyqt5.qtwebengine python3-html5lib python3-regex python3-pillow python3-cssselect python3-chardet
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://fossies.org/linux/www/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/build-${APP_NAME} && cd /tmp/build-${APP_NAME}
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release /tmp/${FILE_NAME} && make && sudo make install
+cd ${HOME}
+sudo rm -rf /tmp/*${APP_NAME}*
 
 # Install SpaceFM file manager from PPA
 APP_NAME=SpaceFM
