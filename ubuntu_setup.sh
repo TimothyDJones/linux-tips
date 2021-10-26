@@ -12002,7 +12002,7 @@ APP_GUI_NAME="Java-based planetarium software."
 APP_VERSION=1.2.5
 APP_EXT=jar
 FILE_NAME=${APP_NAME// /}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME,,}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${_APP_NAME}.png -J -L https://a.fsdn.com/allura/p/virtualcelestialglobe/icon?1427488845
 sudo mkdir -p /opt/${_APP_NAME}
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /opt/${_APP_NAME}
@@ -32322,7 +32322,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Simple Qt-based typing tutor."
 APP_GUI_CATEGORIES="Accessories;Education;"
 APP_GUI_KEYWORDS="Typing;Tutor;"
-APP_VERSION=1.5.0
+APP_VERSION=1.5.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME}-linux-amd64
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/adazem009/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}
