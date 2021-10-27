@@ -30702,7 +30702,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Nyxt keyboard-oriented web browser with Vim and Emac keybindings from Debian package
 # https://nyxt.atlas.engineer/
 APP_NAME=Nyxt
-APP_VERSION=2.2.0
+APP_VERSION=2.2.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/atlas-engineer/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
