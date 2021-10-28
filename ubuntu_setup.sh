@@ -29502,7 +29502,7 @@ APP_NAME=jNetMap
 APP_GUI_NAME="Cross-platform Java-based GUI network monitoring tool."
 APP_GUI_CATEGORIES="Networking;Internet;"
 APP_GUI_KEYWORDS="Monitoring;Ping;"
-APP_VERSION=0.5.5-694
+APP_VERSION=0.5.5-703
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
