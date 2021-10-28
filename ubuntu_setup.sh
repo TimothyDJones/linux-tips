@@ -245,6 +245,12 @@ curl -o /tmp/codeface-fonts.tar.xz -J -L https://downloads.sourceforge.net/codef
 cd /tmp
 dtrx -n /tmp/codeface-fonts.tar.xz
 sudo cp -R /tmp/codeface-fonts/fonts/* /usr/local/share/fonts
+curl -o /tmp/Hasklig-1.2.zip -J -L https://downloads.sourceforge.net/hasklig.mirror/Hasklig-1.2.zip
+cd /tmp
+dtrx -n /tmp/Hasklig-1.2.zip
+mkdir -p /usr/local/share/fonts/hasklig
+sudo cp -R /tmp/Hasklig-1.2/OTF/* /usr/local/share/fonts/hasklig
+sudo cp -R /tmp/Hasklig-1.2/TTF/* /usr/local/share/fonts/hasklig
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
