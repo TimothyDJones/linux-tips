@@ -205,10 +205,10 @@ curl -o /tmp/ttf-iosevka-10.3.4.zip -J -L https://github.com/be5invis/Iosevka/re
 cd /tmp
 dtrx -n /tmp/ttf-iosevka-10.3.4.zip
 sudo cp -R /tmp/ttf-iosevka-10.3.4/* /usr/local/share/fonts
-curl -o /tmp/CascadiaCode-2106.17.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2106.17.zip
+curl -o /tmp/CascadiaCode-2110.31.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2110.31.zip
 cd /tmp
-dtrx -n /tmp/CascadiaCode-2106.17.zip
-sudo cp -R /tmp/CascadiaCode-2106.17/ttf/* /usr/local/share/fonts
+dtrx -n /tmp/CascadiaCode-2110.31.zip
+sudo cp -R /tmp/CascadiaCode-2110.31/ttf/* /usr/local/share/fonts
 curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/releases/download/v0.018/JuliaMono.tar.gz
 cd /tmp
 dtrx -n /tmp/JuliaMono.tar.gz
