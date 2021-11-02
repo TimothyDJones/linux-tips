@@ -32602,3 +32602,13 @@ do
 done
 cd $HOME
 rm -rf /tmp/*${_APP_NAME}*
+
+# Install Checkitgui Qt-based minimalist file integrity tool from Debian package
+APP_NAME=Checkitgui
+APP_VERSION=0.1.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
