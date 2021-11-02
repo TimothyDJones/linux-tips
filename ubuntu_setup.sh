@@ -30410,7 +30410,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install DVDStyler cross-platform, WxWidgets-based GUI DVD authoring tool from source
 APP_NAME=DVDStyler
 APP_GUI_NAME="Cross-platform, WxWidgets-based GUI DVD authoring tool."
-APP_VERSION=3.2
+APP_VERSION=3.2.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -yy build-essential flex libwxgtk3.0-gtk3-dev libwxgtk-media3.0-gtk3-dev libcairo2-dev libpango1.0-dev libexif-dev libudev-dev libdbus-1-dev xmlto dvdauthor growisofs libjpeg62-dev libavcodec-dev libavformat-dev libavfilter-dev libswscale-dev
