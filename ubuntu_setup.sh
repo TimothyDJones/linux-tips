@@ -12601,7 +12601,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 APP_NAME="HHDB SQL Admin"
 _APP_NAME=hhdb_csadmin
 APP_GUI_NAME="Java-based GUI PostgreSQL client."
-APP_VERSION=6.3_2021-08-12_09_13_45
+APP_VERSION=6.4_2021-11-01_09_11_54
 APP_EXT=zip
 FILE_NAME=HHDBCS_V${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hhdb-admin/${FILE_NAME}.${APP_EXT}
