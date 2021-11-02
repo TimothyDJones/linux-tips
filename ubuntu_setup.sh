@@ -1124,41 +1124,122 @@ sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install PhpWiki
+# Install PhpWiki PHP-based wiki platform with support for multiple databases from package
 # Reference:  https://hostpresto.com/community/tutorials/install-and-configure-phpwiki-on-ubuntu-16-04/
-APP_NAME=phpwiki
-APP_VERSION=1.5.5
-DB_NAME=phpwikidb
-DB_USER=phpwiki
-DB_PASSWORD=phpwiki
-curl -o /tmp/${APP_NAME}.zip -J -L https://versaweb.dl.sourceforge.net/project/${APP_NAME}/PhpWiki%201.5%20%28current%29/${APP_NAME}-${APP_VERSION}.zip
+APP_NAME=PhpWiki
+APP_GUI_NAME="PHP-based wiki platform with support for multiple databases"
+APP_VERSION=1.6.0
+APP_GUI_CATEGORIES="Accessories;Office;Internet;"
+APP_GUI_KEYWORDS="Wiki;Productivity;"
+APP_EXT=zip
+DB_NAME=${APP_NAME,,}db
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.zip
-cd ${APP_NAME}
-mv ${APP_NAME}-${APP_VERSION} ${APP_NAME}
-sudo mv ${APP_NAME} ${WWW_HOME}
-sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
 # sudo ln -s /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME}
 # Create database
-mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
-mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
+mysql -u root -proot -Bse "CREATE USER '${DB_USER}'@'%' IDENTIFIED WITH mysql_native_password BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "GRANT USAGE ON *.* TO '${DB_USER}'@'%'; GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
-# Create configuration file for PhpWiki
-cat > ./config.ini << EOF
+# Import database schema
+mysql -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} < ${WWW_HOME}/${APP_NAME,,}/schemas/mysql-initialize.sql
+# mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_unicode_ci; CREATE USER '${DB_USER}'@'%' IDENTIFIED WITH mysql_native_password BY '${DB_PASSWORD}'; GRANT USAGE ON *.* TO '${DB_USER}'@'%'; GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%'; FLUSH PRIVILEGES;"
+# Create Apache virtual host environment for PhpWiki
+cat > /tmp/${APP_NAME,,}.conf << EOF
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot ${WWW_HOME}/phpwiki
+    ServerName 127.0.0.1
+    ServerAlias localhost
+    <Directory ${WWW_HOME}/phpwiki >
+        Options FollowSymLinks
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+    ErrorLog \${APACHE_LOG_DIR}/phpwiki-error_log
+    CustomLog \${APACHE_LOG_DIR}/phpwiki_custom_log common
+</VirtualHost>
+EOF
+sudo cp /tmp/${APP_NAME,,}.conf /etc/apache2/sites-available
+sudo a2ensite ${APP_NAME,,}.conf
+sudo service apache2 reload
+# Create wiki configuration file
+cat > /tmp/config.ini << EOF
 WIKI_NAME = phpWiki
-ADMIN_USER = admin
-ADMIN_PASSWD = admin
+#Username and password of administrator.
+ADMIN_USER = phpwikiadmin
+ADMIN_PASSWD = admin@123
+#To use plain text passwords, in particular for the ADMIN_PASSWD, set ENCRYPTED_PASSWD to false.
 ENCRYPTED_PASSWD = false
+#If set, reverse dns lookups will be performed to attempt to convert
+#the user's IP number into a host name, in the case where the http server does not do this.
 ENABLE_REVERSE_DNS = true
+# If true, only the admin user can make zip dumps. Otherwise anyone
+# may download all wiki pages as a single zip archive.
 ZIPDUMP_AUTH = false
 ENABLE_RAW_HTML = true
+# If this is set, only pages locked by the Administrator may contain the
+# RawHtml plugin
 ENABLE_RAW_HTML_LOCKEDONLY = true
-
-
+# If this is set, all unsafe html code is stripped automatically (experimental!)
+# See http://chxo.com/scripts/safe_html-test.php
+ENABLE_RAW_HTML_SAFE = true
+# If true, only the admin user or users from localhost (without password) can do:
+INSECURE_ACTIONS_LOCALHOST_ONLY = true
+CACHE_CONTROL = LOOSE
+CACHE_CONTROL_MAX_AGE = 600
+COOKIE_EXPIRATION_DAYS = 365
+DATABASE_TYPE = sql
+# DATABASE_DSN = "mysql://guest@unix(/var/lib/mysql/mysql.sock)/test"
+DATABASE_DSN = "mysql://${DB_USER}:${DB_PASSWORD}@localhost:3306/${DB_NAME}"
+DATABASE_PERSISTENT = false
+DATABASE_SESSION_TABLE = session
+DATABASE_DBA_HANDLER = db4
+DATABASE_TIMEOUT = 12
+MAJOR_MAX_AGE = 32
+MAJOR_KEEP = 8
+MINOR_MAX_AGE = 7
+MINOR_KEEP = 4
+AUTHOR_MAX_AGE = 365
+AUTHOR_KEEP = 8
+AUTHOR_MIN_AGE = 7
+AUTHOR_MAX_KEEP = 20
+ALLOW_ANON_EDIT = true
+ALLOW_BOGO_LOGIN = true
+ALLOW_USER_PASSWORDS = true
+USER_AUTH_POLICY = first-only
+GROUP_METHOD = WIKIPAGE
+DBAUTH_AUTH_CRYPT_METHOD = plain
+DEFAULT_LANGUAGE = en
 EOF
-xdg-open http://localhost/${APP_NAME}/setup &
+sudo cp /tmp/config.ini ${WWW_HOME}/config/config.ini
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+xdg-open http://localhost/${APP_NAME,,}/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+Icon=${WWW_HOME}/${APP_NAME,,}/lcal.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install PWman shell-based password manager
 APP_NAME=pwman
