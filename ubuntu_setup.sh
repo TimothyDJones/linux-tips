@@ -32581,3 +32581,24 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install littleutils collection of small and simple utilities from Debian package
+APP_NAME=littleutils
+APP_VERSION=1.2.5
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-\${i}_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+collection=( base legacy imageutils )
+for i in "${collection[@]}"
+do
+    curl -o /tmp/${APP_NAME,,}-${i}_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${i}_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT}
+    sudo gdebi -n /tmp/${APP_NAME,,}-${i}_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT}
+done
+collection=( docs recompressors )
+for i in "${collection[@]}"
+do
+    curl -o /tmp/${APP_NAME,,}-${i}_${APP_VERSION}-1_all.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${i}_${APP_VERSION}-1_all.${APP_EXT}
+    sudo gdebi -n /tmp/${APP_NAME,,}-${i}_${APP_VERSION}-1_all.${APP_EXT}
+done
+cd $HOME
+rm -rf /tmp/*${_APP_NAME}*
