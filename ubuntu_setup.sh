@@ -8460,17 +8460,19 @@ rm -rf /tmp/${APP_NAME,,}
 # Install SC Calculator cross-platform scientific calculator implemented in C++, Java, and JavaScript from package
 APP_NAME=SCCalculator
 APP_GUI_NAME="Cross-platform scientific calculator implemented in C++, Java, and JavaScript."
-APP_VERSION=1.13
+APP_VERSION=1.18
 APP_EXT=zip
-sudo apt-get install -y qt5-default cutecom gtkwave libelf1
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/calculator${APP_VERSION}.${APP_EXT}
+FILE_NAME=calculator${APP_VERSION}
+sudo apt-get install -y openjdk-11-jre
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,} /opt
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
-PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+PATH=/opt/${APP_NAME,,}/java:\$PATH; export PATH
 java -jar /opt/${APP_NAME,,}/java/calculator.jar
 cd $HOME
 EOF
