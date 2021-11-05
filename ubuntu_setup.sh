@@ -24841,7 +24841,7 @@ APP_NAME=QuickRedis
 APP_GUI_NAME="GUI management tool for Redis."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Redis;Database;"
-APP_VERSION=2.4.1
+APP_VERSION=2.4.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-x86_64
 sudo apt-get install -y redis-server
