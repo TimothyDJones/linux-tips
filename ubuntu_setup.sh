@@ -25098,16 +25098,6 @@ cmake . && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}
 
-# Install DigitalPalette cross-platform tool for generating harmonious colors from color wheel or image from Debian package
-APP_NAME=DigitalPalette
-APP_VERSION=2.3.4
-APP_EXT=deb
-FILE_NAME=${APP_NAME}_v${APP_VERSION}_pre_en_ubuntu_x86_64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/${APP_NAME,,}*
-
 # Install redis-cui simple, visual command line interface for Redis from package
 APP_NAME=redis-cui
 APP_GUI_NAME="Simple, visual command line interface for Redis."
