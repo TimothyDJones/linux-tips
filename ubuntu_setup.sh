@@ -32781,3 +32781,18 @@ do
 done
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install hostscope multi-host Linux monitoring tool from source
+APP_NAME=hostscope
+APP_GUI_NAME="Multi-host Linux monitoring tool."
+APP_VERSION=8.0
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-V${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
