@@ -32765,3 +32765,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install TigerVNC cross-platform server and viewer remote access tool from Debian package
+APP_NAME=TigerVNC
+APP_VERSION=1.12.0-1ubuntu1
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_EXT=deb
+FILE_NAME=N/A
+collection=( xtigervncviewer tigervncserver tigervnc-java )
+for i in "${collection[@]}"
+do
+    FILE_NAME=${i}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+    curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+    sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+done
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
