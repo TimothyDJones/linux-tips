@@ -24556,7 +24556,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://www.tecmint.com/diskonaut-linux-disk-space-navigator/
 APP_NAME=Diskonaut
 APP_GUI_NAME="Command-line disk usage utility."
-APP_VERSION=0.8.0
+APP_VERSION=0.11.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/imsnif/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
