@@ -32812,3 +32812,18 @@ sudo make install /usr/local
 sudo make setuid /usr/local     # Allow btop to always run as root
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install reptyr Linux command-line tool to rehome a process from one shell to another from source
+APP_NAME=reptyr
+APP_GUI_NAME="Linux command-line tool to rehome a process from one shell to another."
+APP_VERSION=0.8.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nelhage/${APP_NAME,,}/archive/refs/tags/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/*${APP_NAME,,}*
+make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
