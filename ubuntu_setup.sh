@@ -595,7 +595,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.148.5.0
+APP_VERSION=1.149.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -2925,7 +2925,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 # Install DK Tools system utility suite from source
 APP_NAME=DKTools
 APP_GUI_NAME="System utility suite."
-APP_VERSION=4.31.1
+APP_VERSION=4.31.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 WXVERS="3.0"
@@ -18195,7 +18195,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Mattermost cross-platform, Electron-based workplace messaging alternative to Slack from Debian package
 APP_NAME=Mattermost
 APP_GUI_NAME="Cross-platform, Electron-based workplace messaging alternative to Slack."
-APP_VERSION=5.0.1
+APP_VERSION=5.0.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-desktop-${APP_VERSION}-linux-${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://releases.mattermost.com/desktop/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -23798,7 +23798,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Shutter Encoder cross-platform audio/video encoder/converter from Debian package
 APP_NAME="Shutter Encoder"
 APP_GUI_NAME="Cross-platform audio/video encoder/converter."
-APP_VERSION=15.5
+APP_VERSION=15.6
 APP_EXT=deb
 FILE_NAME=${APP_NAME// /%20}%20"("Linux%20Version%20${APP_VERSION}")"
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.shutterencoder.com/${FILE_NAME}.${APP_EXT}
@@ -24194,7 +24194,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=8.17.14
+APP_VERSION=8.17.15
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -31615,7 +31615,7 @@ APP_NAME=SeaMonkey
 APP_GUI_NAME="Cross-platform integrated Internet application suite with web browser, email, newsgroup client, feed reader, HTML editor, IRC chat and web development tools."
 APP_GUI_CATEGORIES="Internet;Network;Networking;"
 APP_GUI_KEYWORDS="Browser;RSS;HTML;IRC;Editor;Suite;Email;News;"
-APP_VERSION=2.53.9
+APP_VERSION=2.53.10
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-$(uname -m)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://archive.mozilla.org/pub/seamonkey/releases/${APP_VERSION}/linux-$(uname -m)/en-US/${FILE_NAME}.${APP_EXT}
