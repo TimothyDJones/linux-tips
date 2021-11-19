@@ -8199,7 +8199,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Hydrus Python-based client/server media tagging and sharing tool from package
 APP_NAME=Hydrus
 APP_GUI_NAME="Python-based client/server media tagging and sharing tool."
-APP_VERSION=296
+APP_VERSION=462
 APP_EXT=tar.gz
 sudo apt-get install -y git-svn unixodbc unixodbc-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/hydrusnetwork/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME}.Network.${APP_VERSION}.-.Linux.-.Executable.${APP_EXT}
