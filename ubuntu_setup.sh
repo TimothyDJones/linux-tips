@@ -25330,7 +25330,7 @@ APP_NAME=ActivityWatch
 APP_GUI_NAME="Cross-platform (Python/Qt) time-tracking tool."
 APP_GUI_CATEGORIES="Accessories;Office;Utility"
 APP_GUI_KEYWORDS="Productivity;"
-APP_VERSION=0.9.2
+APP_VERSION=0.11.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
