@@ -8232,7 +8232,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install InfiniTex Electron-based LaTeX source and WYSIWYG editor from AppImage
 APP_NAME=InfiniTex
 APP_GUI_NAME="Electron-based LaTeX source and WYSIWYG editor."
-APP_VERSION=0.9.15
+APP_VERSION=0.9.16
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 sudo apt-get install -y git-svn unixodbc unixodbc-dev
