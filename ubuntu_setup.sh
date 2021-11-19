@@ -25279,7 +25279,7 @@ APP_NAME=PdfJumbler
 APP_GUI_NAME="Java-based tool to rearrange/merge/delete pages from PDF files."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="PDF;Editor;"
-APP_VERSION=0.2.0
+APP_VERSION=0.4.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mgropp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
