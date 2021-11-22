@@ -190,6 +190,11 @@ autocmd BufRead,BufNewFile *.yml,*.yaml,*.yaml.txt setlocal filetype=yaml
 autocmd FileType yaml setlocal textwidth=64 colorcolumn=65
     \ tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
+" PYTHON
+autocmd BufRead,BufNewFile *.py,*.pyc setlocal filetype=python
+autocmd FileType python setlocal textwidth=80 colorcolumn=81
+    \ tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+
 " MARKDOWN
 autocmd BufRead,BufNewFile *.md,*.mmd,*.mkd,*.mdown,*.markdown,*.markdown.txt setlocal filetype=markdown
 autocmd FileType markdown setlocal textwidth=64 colorcolumn=65 spell
