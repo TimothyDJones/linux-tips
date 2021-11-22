@@ -188,6 +188,7 @@ match OverLength /\%81v.\+/
 " YAML
 autocmd BufRead,BufNewFile *.yml,*.yaml,*.yaml.txt setlocal filetype=yaml
 autocmd FileType yaml setlocal textwidth=64 colorcolumn=65
+    \ tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " MARKDOWN
 autocmd BufRead,BufNewFile *.md,*.mmd,*.mkd,*.mdown,*.markdown,*.markdown.txt setlocal filetype=markdown
@@ -195,7 +196,7 @@ autocmd FileType markdown setlocal textwidth=64 colorcolumn=65 spell
 
 " SHELL
 autocmd FileType sh,bash setlocal 
-    \ tabstop=2 shiftwidth=2 expandtab
+    \ tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " HTML
 autocmd FileType html setlocal 
