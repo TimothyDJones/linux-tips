@@ -2711,7 +2711,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.5.85
+APP_VERSION=6.5.86
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3782,7 +3782,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # http://docs.geoserver.org/latest/en/user/installation/linux.html
 APP_NAME=GeoServer
 APP_GUI_NAME="Cross-platform Java-based geospatial server."
-APP_VERSION=2.19.2
+APP_VERSION=2.20.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -8199,7 +8199,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Hydrus Python-based client/server media tagging and sharing tool from package
 APP_NAME=Hydrus
 APP_GUI_NAME="Python-based client/server media tagging and sharing tool."
-APP_VERSION=296
+APP_VERSION=462
 APP_EXT=tar.gz
 sudo apt-get install -y git-svn unixodbc unixodbc-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/hydrusnetwork/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME}.Network.${APP_VERSION}.-.Linux.-.Executable.${APP_EXT}
@@ -8232,7 +8232,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install InfiniTex Electron-based LaTeX source and WYSIWYG editor from AppImage
 APP_NAME=InfiniTex
 APP_GUI_NAME="Electron-based LaTeX source and WYSIWYG editor."
-APP_VERSION=0.9.15
+APP_VERSION=0.9.16
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 sudo apt-get install -y git-svn unixodbc unixodbc-dev
@@ -8271,7 +8271,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Zettlr Electron-based Markdown editor with built-in preview from Debian package
 APP_NAME=Zettlr
 APP_GUI_NAME="Electron-based Markdown editor with built-in preview."
-APP_VERSION=2.0.0
+APP_VERSION=2.0.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -8290,10 +8290,10 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install SmartGit Java-based Git/SVN/Mercurial GUI client from package
+# Install SmartGit Java-based Git/SVN/Mercurial GUI client from Debian package
 APP_NAME=SmartGit
 APP_GUI_NAME="Java-based Git/SVN/Mercurial GUI client."
-APP_VERSION=17.1.5
+APP_VERSION=21.2.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://www.syntevo.com/downloads/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION//./_}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -25246,7 +25246,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install croc cross-platform command-line secure file transfer tool from Debian package
 APP_NAME=croc
-APP_VERSION=8.3.1
+APP_VERSION=9.5.0
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=64bit
@@ -25279,7 +25279,7 @@ APP_NAME=PdfJumbler
 APP_GUI_NAME="Java-based tool to rearrange/merge/delete pages from PDF files."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="PDF;Editor;"
-APP_VERSION=0.2.0
+APP_VERSION=0.4.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mgropp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -25330,7 +25330,7 @@ APP_NAME=ActivityWatch
 APP_GUI_NAME="Cross-platform (Python/Qt) time-tracking tool."
 APP_GUI_CATEGORIES="Accessories;Office;Utility"
 APP_GUI_KEYWORDS="Productivity;"
-APP_VERSION=0.9.2
+APP_VERSION=0.11.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -28549,7 +28549,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install 7-Zip cross-platform decompression utility from package
 APP_NAME=7z
 APP_GUI_NAME="Cross-platform decompression utility."
-APP_VERSION=21.02
+APP_VERSION=21.04
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
