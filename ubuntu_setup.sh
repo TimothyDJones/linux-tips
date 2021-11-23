@@ -18748,7 +18748,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install pstoedit PostScript/PDF converter to other vector formats from source
 APP_NAME=pstoedit
 APP_GUI_NAME="PostScript/PDF converter to other vector formats."
-APP_VERSION=3.77
+APP_VERSION=3.78
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y ghostscript
