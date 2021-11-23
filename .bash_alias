@@ -223,3 +223,8 @@ get_command() {
 }
 alias exists="get_command"
 alias is_command="get_command"
+
+# Always run these commands with 'sudo'
+for cmd in apt-get apt-cache update-grub shutdown reboot ; do
+    alias $cmd="sudo $cmd"
+done; unset cmd
