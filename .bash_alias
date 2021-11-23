@@ -166,6 +166,9 @@ alias ip='ip -c'
 # Get public IP address
 alias publicip='curl https://ipecho.net/plain; echo'
 
+# Another method to get public IP using 'dig'
+alias ext_ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
 # Searchable 'ps' command alias
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
