@@ -114,8 +114,10 @@ set directory=~/.vim/tmp
 " Change to directory contain file when editing
 set autochdir
 
-" Set 1000 commands to undo
+" Set 1000 commands to undo and save to file
 set undolevels=1000
+set undodir=~/.vim/undos
+set undofile
 
 " Keep at least 4 lines above and below the current line
 set scrolloff=4
