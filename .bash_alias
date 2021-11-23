@@ -228,3 +228,6 @@ alias is_command="get_command"
 for cmd in apt-get apt-cache update-grub shutdown reboot ; do
     alias $cmd="sudo $cmd"
 done; unset cmd
+
+# Use Neovim for Vim, if available
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
