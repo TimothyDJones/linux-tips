@@ -595,7 +595,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.149.2.0
+APP_VERSION=1.149.3.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -1531,7 +1531,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4404
+APP_VERSION=4.3-4407
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -3423,7 +3423,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install TexStudio cross-platform Qt-based LaTeX editor from source
 APP_NAME=TexStudio
-APP_VERSION=4.0.3
+APP_VERSION=4.1.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_VERSION}
 sudo apt-get install -y libpoppler-qt5-dev libqt5svg5-dev qttools5-dev libgs-dev qtscript5-dev texlive
@@ -21703,7 +21703,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://dystroy.org/broot/
 APP_NAME=Broot
 APP_GUI_NAME="Rust-based command-line directory tree navigation tool with fuzzy-search capability."
-APP_VERSION=1.7.2
+APP_VERSION=1.7.3
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -24569,7 +24569,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Glances cross-platform console system monitoring tool from package
 APP_NAME=Glances
 APP_GUI_NAME="Cross-platform console system monitoring tool."
-APP_VERSION=3.2.3
+APP_VERSION=3.2.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nicolargo/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
@@ -27253,7 +27253,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Rotki Electron-based cryptocurrency portfolio tracking tool from Debian package
 # https://rotki.com/
 APP_NAME=Rotki
-APP_VERSION=1.22.0
+APP_VERSION=1.22.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-linux_${KERNEL_TYPE}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -27970,7 +27970,7 @@ APP_NAME=Lagrange
 APP_GUI_NAME="Cross-platform desktop GUI client for browsing Geminispace."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Gemini;Browser"
-APP_VERSION=1.6.3
+APP_VERSION=1.8.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/skyjake/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -28549,7 +28549,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install 7-Zip cross-platform decompression utility from package
 APP_NAME=7z
 APP_GUI_NAME="Cross-platform decompression utility."
-APP_VERSION=21.04
+APP_VERSION=21.05
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -30248,7 +30248,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://lucaschess.pythonanywhere.com/
 APP_NAME="Lucas Chess"
 APP_GUI_NAME="Cross-platform, Python-based GUI for 60+ chess engines."
-APP_VERSION=1.28a1
+APP_VERSION=1.29a
 APP_EXT=sh
 FILE_NAME=${APP_NAME// /}R${APP_VERSION//./}_LINUX
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/lucaschessr/${FILE_NAME}.${APP_EXT}
@@ -32082,7 +32082,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Ebook reader emulator with support for PDF, DjVu, EPUB, FB2 and other formats."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Ebook;Reader;"
-APP_VERSION=2021.10.1
+APP_VERSION=2021.11
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-appimage-x86_64-linux-gnu-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32705,7 +32705,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Qt-based cross-platform color editor."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Color;Editor;"
-APP_VERSION=2.4.5_pre
+APP_VERSION=2.4.6_pre
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}_v${APP_VERSION}_en_linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -32868,3 +32868,57 @@ cd /tmp/${FILE_NAME}/*${APP_NAME,,}*
 make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Qhfs Qt-based simple HTTP/HTTPS file server from source
+APP_NAME=Qhfs
+APP_GUI_NAME="Qt-based simple HTTP/HTTPS file server."
+APP_GUI_CATEGORIES="Internet;Networking;"
+APP_GUI_KEYWORDS="File;Sharing;"
+APP_VERSION=0.40_beta
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_${APP_VERSION}
+sudo apt-get install -y build-essential cmake libssl-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+cmake CMakeLists.txt && make && make generate_translation && sudo make install
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${FILE_NAME}/Gui/Resources/Icons/${APP_NAME,,}1.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Pinta cross-platform drawing and image editing tool from Debian package
+# https://www.pinta-project.com/
+APP_NAME=Pinta
+APP_GUI_NAME="Cross-platform drawing and image editing tool."
+APP_VERSION=1.7.1
+APP_EXT=deb
+source /etc/lsb-release
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar)$ ]]; then   # 16.04 - 17.10
+    DISTRIB_CODENAME=xenial
+    APP_VERSION=1.7
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo)$ ]]; then   # 18.04 - 19.10
+	DISTRIB_CODENAME=bionic
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo|gr)$ ]]; then
+	DISTRIB_CODENAME=focal
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-0ppa1~${DISTRIB_CODENAME}1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~pinta-maintainers/+archive/ubuntu/pinta-stable/+files/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
