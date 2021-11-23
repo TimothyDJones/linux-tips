@@ -43,6 +43,9 @@ set autoindent smartindent
 " Display command as you type it
 set showcmd
 
+" Show current mode
+set showmode
+
 " Enable syntax highlighting
 filetype on
 filetype plugin on
