@@ -30,6 +30,7 @@ set expandtab
 set smarttab
 
 " Set tab stops to 4 spaces/characters
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set shiftround          " Automatically round indents to multiple of 'shiftwidth'
