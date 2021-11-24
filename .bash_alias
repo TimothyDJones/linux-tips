@@ -243,3 +243,11 @@ done; unset cmd
 
 # Use Neovim for Vim, if available
 [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+# the `.git` directory, listing directories first. The output gets piped into
+# `less` with options to preserve color and line numbers, unless the output is
+# small enough for one screen.
+function tre() {
+	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
+}
