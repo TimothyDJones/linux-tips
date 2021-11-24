@@ -30,6 +30,7 @@ set expandtab
 set smarttab
 
 " Set tab stops to 4 spaces/characters
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set shiftround          " Automatically round indents to multiple of 'shiftwidth'
@@ -42,6 +43,9 @@ set autoindent smartindent
 
 " Display command as you type it
 set showcmd
+
+" Show current mode
+set showmode
 
 " Enable syntax highlighting
 filetype on
@@ -110,8 +114,10 @@ set directory=~/.vim/tmp
 " Change to directory contain file when editing
 set autochdir
 
-" Set 1000 commands to undo
+" Set 1000 commands to undo and save to file
 set undolevels=1000
+set undodir=~/.vim/undos
+set undofile
 
 " Keep at least 4 lines above and below the current line
 set scrolloff=4

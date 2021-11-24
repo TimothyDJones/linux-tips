@@ -151,6 +151,7 @@ alias lsoct='ls -al --color=auto|awk '\''{k=0;s=0;for(i=0;i<=8;i++){;k+=((substr
 alias df="df -Tha --total"
 alias du="du -ach | sort -h"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias path='printf "%b\n" "${PATH//:/\\n}"' # Pretty print $PATH
 
 alias rm='rm -i -v'
 alias cp='cp -v'
@@ -165,6 +166,9 @@ alias ip='ip -c'
 
 # Get public IP address
 alias publicip='curl https://ipecho.net/plain; echo'
+
+# Another method to get public IP using 'dig'
+alias ext_ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # Searchable 'ps' command alias
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
@@ -223,3 +227,11 @@ get_command() {
 }
 alias exists="get_command"
 alias is_command="get_command"
+
+# Always run these commands with 'sudo'
+for cmd in apt-get apt-cache update-grub shutdown reboot ; do
+    alias $cmd="sudo $cmd"
+done; unset cmd
+
+# Use Neovim for Vim, if available
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"

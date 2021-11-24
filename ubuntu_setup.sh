@@ -2711,7 +2711,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.5.86
+APP_VERSION=6.5.88
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -7673,7 +7673,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install UNA social-media community management web-based tool (PHP/MySQL)
 APP_NAME=UNA
-APP_VERSION=12.1.0
+APP_VERSION=13.0.0-A2
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -16501,7 +16501,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install RTextDoc Java-based editor for structured text, such as LaTeX from package
 APP_NAME=RTextDoc
 APP_GUI_NAME="Java-based editor for structured text, such as LaTeX."
-APP_VERSION=2.3
+APP_VERSION=2.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18748,7 +18748,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install pstoedit PostScript/PDF converter to other vector formats from source
 APP_NAME=pstoedit
 APP_GUI_NAME="PostScript/PDF converter to other vector formats."
-APP_VERSION=3.77
+APP_VERSION=3.78
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y ghostscript
@@ -24194,7 +24194,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=8.17.15
+APP_VERSION=8.17.16
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -32430,7 +32430,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Simple Qt-based typing tutor."
 APP_GUI_CATEGORIES="Accessories;Education;"
 APP_GUI_KEYWORDS="Typing;Tutor;"
-APP_VERSION=1.6.2
+APP_VERSION=2.0.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME}-linux-amd64
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/adazem009/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}
@@ -32922,3 +32922,45 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~pinta-maintain
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Forward Only cross-platform Holocaust simulation real-time strategy game from package
+APP_NAME="Forward Only"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Holocaust simulation real-time strategy game."
+APP_GUI_CATEGORIES="Games;"
+APP_GUI_KEYWORDS="History;Strategy;Simulator;"
+APP_VERSION=0.84
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME// /_}_${APP_VERSION}_manylinux_x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}game/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -R /tmp/${FILE_NAME}/Forward*/* /opt/${_APP_NAME}
+sudo chmod -R 777 /opt/${_APP_NAME}
+cat > /tmp/${_APP_NAME} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+"/opt/${_APP_NAME}/${APP_NAME}" &
+cd $HOME
+EOF
+sudo mv /tmp/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/opt/${_APP_NAME}/teach_shots/locomotive1.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
