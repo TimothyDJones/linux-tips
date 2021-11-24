@@ -32996,3 +32996,22 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Git Interactive Rebase Tool command-line tool for performing interactive rebase in Git from Debian package
+APP_NAME=git-interactive-rebase-tool
+APP_VERSION=2.1.0
+APP_EXT=deb
+source /etc/lsb-release
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar)$ ]]; then   # 16.04 - 17.10
+    DISTRIB_RELEASE=16.04
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo)$ ]]; then   # 18.04 - 19.10
+	DISTRIB_RELEASE=18.04
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo)$ ]]; then
+	DISTRIB_RELEASE=20.04
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(gr|im)$ ]]; then
+	DISTRIB_RELEASE=20.10
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-${DISTRIB_RELEASE}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MitMaro/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
