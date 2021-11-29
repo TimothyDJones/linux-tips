@@ -33015,3 +33015,27 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MitMaro/${APP_NAME
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Cal cross-platform Java-based terminal calendar from package
+APP_NAME=Cal
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Java-based terminal calendar."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Calendar;Shell;"
+APP_VERSION=2.3.8
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-fross/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod 666 /usr/local/bin/
+cat > /tmp/${APP_NAME,,}j << EOF
+#! /bin/sh
+cd /usr/local/bin
+PATH=/usr/local/bin:\$PATH; export PATH
+java -jar /usr/local/bin/${FILE_NAME}.${APP_EXT} -n 4
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}j /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}j
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
