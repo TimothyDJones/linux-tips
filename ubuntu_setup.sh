@@ -32906,7 +32906,7 @@ APP_NAME=Qhfs
 APP_GUI_NAME="Qt-based simple HTTP/HTTPS file server."
 APP_GUI_CATEGORIES="Internet;Networking;"
 APP_GUI_KEYWORDS="File;Sharing;"
-APP_VERSION=0.40_beta
+APP_VERSION=4.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_${APP_VERSION}
 sudo apt-get install -y build-essential cmake libssl-dev
