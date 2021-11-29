@@ -32908,7 +32908,7 @@ APP_GUI_CATEGORIES="Internet;Networking;"
 APP_GUI_KEYWORDS="File;Sharing;"
 APP_VERSION=4.0
 APP_EXT=zip
-FILE_NAME=${APP_NAME}_${APP_VERSION}
+FILE_NAME=${APP_NAME}${APP_VERSION}
 sudo apt-get install -y build-essential cmake libssl-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
