@@ -122,6 +122,10 @@ set undofile
 " Keep at least 4 lines above and below the current line
 set scrolloff=4
 
+" Use <Ctrl>+S for "Save"
+nnoremap <C-s> :w<cr>
+inoremap <C-s> <esc>:w<cr>
+
 " Make cursor behave as expected for long lines
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
