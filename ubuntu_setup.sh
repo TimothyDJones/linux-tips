@@ -24711,14 +24711,9 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Poodle cross-platform command-line tool to build API requests from package
 APP_NAME=Poodle
 APP_GUI_NAME="Cross-platform console system monitoring tool."
-APP_VERSION=0.1.6
+APP_VERSION=2.2.3
 APP_EXT=tar.gz
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x86_64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=i386
-fi
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_${ARCH_TYPE}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Clivern/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
