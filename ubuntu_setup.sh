@@ -24844,22 +24844,23 @@ APP_NAME=QRadioLink
 APP_GUI_NAME="Multimode SDR transceiver for GNU radio."
 APP_GUI_CATEGORIES="Multimedia;"
 APP_GUI_KEYWORDS="Audio;Radio;"
-APP_VERSION=0.8.3-5
+APP_VERSION=0.8.6-2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
-sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/qradiolink/qradiolink/next/src/res/icon.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-#Icon=
+Path=/usr/local/bin
+Exec=/usr/local/bin/${FILE_NAME}.${APP_EXT}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
