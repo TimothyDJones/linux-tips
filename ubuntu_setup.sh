@@ -2422,9 +2422,9 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE from package
 APP_NAME=Eric
-APP_VERSION=21.11
+APP_VERSION=21.12
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}6-${APP_VERSION}
+FILE_NAME=${APP_NAME,,}7-${APP_VERSION}
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql python3-pyqt5.qtwebengine python3-pyqt5.qtchart
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/eric-ide/${FILE_NAME}.${APP_EXT}
 cd /tmp
