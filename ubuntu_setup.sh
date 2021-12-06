@@ -459,7 +459,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Google Go language from package
 APP_NAME=go
-APP_VERSION=1.14.1
+APP_VERSION=1.17.4
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
 else    # Otherwise use version for 32-bit kernel
