@@ -193,10 +193,10 @@ source $HOME/.bashrc	# Reload Bash configuration
 # Install various monospaced fonts for programming
 sudo apt-get install -y fontconfig
 mkdir -p $HOME/.local/share/fonts
-curl -o /tmp/Fira_Code_v6.zip -J -L https://github.com/tonsky/FiraCode/releases/download/5.2/Fira_Code_v6.zip
+curl -o /tmp/Fira_Code_v6.1.zip -J -L https://github.com/tonsky/FiraCode/releases/download/6.1/Fira_Code_v6.1.zip
 cd /tmp
-dtrx -n /tmp/Fira_Code_v6.zip
-sudo cp -R /tmp/Fira_Code_v6/ttf/* /usr/local/share/fonts
+dtrx -n /tmp/Fira_Code_v6.1.zip
+sudo cp -R /tmp/Fira_Code_v6.1/ttf/* /usr/local/share/fonts
 curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.xz
 cd /tmp
 dtrx -n /tmp/Hack-v3.003-ttf.tar.xz
