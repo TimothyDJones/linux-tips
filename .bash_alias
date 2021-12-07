@@ -277,3 +277,30 @@ function 7za() {
 	7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on $@
 }
 
+# Clean file names using various rules
+function clean_file_names() {
+	for i in "$@"
+	do
+		b=$(\
+			echo "$i" | \
+			sed \
+			-e 's%([^()]*)%%g' -e '# Remove all parentheses' \
+			-e's%[♪▶♫♥"»«"]\+%%g' -e '# Removes one or more of various unwanted characters' \
+		  	-e "s%[,']\+%%g" -e '# Remove commas and single quotes' \
+			-e "s%\.\+%.%g" -e '# convert multiple consecutive periods into single period' \
+			-e "s%[:»]\+%_%g" -e '# convert multiple these unwanted characters into single _' \
+			-e "s%&%_and_%g" -e '# convert ampersand ("&") to "_and_"' \
+			-e's%^[-_\. ]\+%%' -e '# Remove dashes, periods, and spaces at beginning' \
+			-e's%-\+%-%g' -e '# convert multiple consecutive dashes into one dash' \
+			-e's%_\{2,99\}%__%g' -e '# convert multiple underscores to one __.' \
+			-e's%\(_-\)\+_%_-_%g' -e '# convert multiple _-_-_ to one __' \
+			-e's% \+% %g' -e '# convert multiple spaces to one space' \
+			-e's% - YouTube%%g' \
+			-e's%[-_ ]\+\(\.[^\.]\+\)$%\1%g' -e'# Remove spaces, periods, dashes, etc. before suffix/extension' \
+			-e's%[-_\. ]\+$%%' -e'# Remove dashes, periods, or whitespace at end (after extension)' \
+		)
+		c=$( echo "$i" | sed -e's%"%\\"%g')
+		[ "$i" != "$b" ] && echo "mv -v -- \"$c\" \"$b\""
+	done
+}
+
