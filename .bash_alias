@@ -251,3 +251,24 @@ done; unset cmd
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
 }
+
+# Show basic information from Wikipedia on command-line topic
+# Requires 'jq'. (Install with 'sudo apt-get install -y jq'.)
+function wikip() {
+	LANG="en"
+	if [[ -z $1 ]]; then
+	  echo -e "No argument specified.\nUsage: wikip TOPIC\n"
+	else
+	  var=$(echo $* | sed 's/ /_/g')             # Transforms 'One Time' to 'One_Time'
+	  wiki_data=$(curl -s "https://"$LANG".m.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&titles="$var"&redirects" | jq '.query.pages | to_entries[0] | .value.extract')
+	  data=$(echo $wiki_data | sed 's/\\\"/"/g') # Removes \" characters
+	  if [[ $data = "null" ]]; then
+		echo "Nothing found. Check query/topic."
+	  else
+		url="https://en.m.wikipedia.org/wiki/"$var
+		echo -e ${data:1:${#data}-2}"\n"
+		echo "See more on "$url
+	  fi
+	fi	
+}
+
