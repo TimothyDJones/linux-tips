@@ -33147,3 +33147,37 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
+# Install QEFI Entry Manager Qt-based tool to set EFI entry to boot from on next system start from AppImage
+APP_NAME="QEFI Entry Manager"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Qt-based tool to set EFI entry to boot from on next system start."
+APP_GUI_CATEGORIES="System;"
+APP_GUI_KEYWORDS="EFI;Boot;"
+APP_VERSION=0.1.1
+APP_EXT=AppImage
+FILE_NAME=$(echo ${APP_NAME} | tr '[:blank:]' '_')_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)_${APP_EXT}
+curl -o /tmp/${FILE_NAME}.zip -J -L https://github.com/Inokinoki/${_APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.zip
+curl -o /tmp/${_APP_NAME}.png -J -L https://raw.githubusercontent.com/Inokinoki/${_APP_NAME}/master/cc.inoki.qefientrymanager.png
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.zip
+echo "$PASSWORD" | sudo -S -k cp /tmp/${FILE_NAME}/*$(dpkg-architecture --query DEB_BUILD_GNU_CPU).${APP_EXT} /usr/local/bin/${_APP_NAME}.${APP_EXT}
+echo "$PASSWORD" | sudo -S -k chmod +x /usr/local/bin/${_APP_NAME}.${APP_EXT}
+echo "$PASSWORD" | sudo -S -k ln -s -f /usr/local/bin/${_APP_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+echo "$PASSWORD" | sudo -S -k mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=echo "$PASSWORD" | sudo -S -k /usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/${FILE_NAME}*
