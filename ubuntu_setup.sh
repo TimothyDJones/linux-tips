@@ -5130,7 +5130,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install BashStyle-NG graphical tool for managing Bash and other shell tools from package
 APP_NAME=BashStyle-NG
-APP_VERSION=10.7.2
+APP_VERSION=10.7.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1nano_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://apt.nanolx.org/pool/main/b/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
