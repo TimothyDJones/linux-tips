@@ -33181,3 +33181,19 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/${FILE_NAME}*
+
+# Install llama cross-platform terminal file manager from package
+APP_NAME=llama
+APP_GUI_NAME="Cross-platform terminal file manager."
+APP_VERSION=1.0.2
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/antonmedv/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+echo "$PASSWORD" | sudo cp -R /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+echo "$PASSWORD" | sudo chmod +x /usr/local/bin/${APP_NAME,,}
+echo 'function ll {' >> $HOME/.bashrc
+echo '  cd "$(/usr/local/bin/'${APP_NAME,,}' "$@")"' >> $HOME/.bashrc
+echo '}' >> $HOME/.bashrc
+source $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
