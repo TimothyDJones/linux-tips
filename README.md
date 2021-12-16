@@ -416,3 +416,16 @@ sudo update-grub
 The changes will take effect the next time you reboot the HyperV VM.
 
 [Reference](https://arcanecode.com/2020/12/28/adjust-the-screen-resolution-of-an-ubuntu-hyper-v-virtual-machine/)
+
+## Command line options for extracting files with `tar`
+The [`tar`](https://man7.org/linux/man-pages/man1/tar.1.html) command line utility is the _de facto_ standard in Linux for compressing/uncompressing files. Here are the most common command line options.
+| Option | Long Option | Description |
+| :----- | :---------- | :---------- |
+| `-x`   | `--extract` | Extract files from archive. | 
+| `-f`   | `--file`    | Specify name of file to extract. |
+| `-v`   | `--verbose` | List all files processed and result for each. |
+| `-j`   | `--bzip2`   | Extract `bzip2` compressed file. |
+| `-J`   | `--xz`      | Extract `xz` compressed file. |
+| `-z`   | `--gunzip`  | Extract `gzip` compressed file. |
+| `-Z`   | `--uncompress` | Extract `zip` compressed file. |
+| N/A    | `--zstd`    | Extract `zstd` compressed file. |
