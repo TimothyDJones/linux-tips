@@ -30,6 +30,7 @@ set expandtab
 set smarttab
 
 " Set tab stops to 4 spaces/characters
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set shiftround          " Automatically round indents to multiple of 'shiftwidth'
@@ -42,6 +43,9 @@ set autoindent smartindent
 
 " Display command as you type it
 set showcmd
+
+" Show current mode
+set showmode
 
 " Enable syntax highlighting
 filetype on
@@ -110,11 +114,17 @@ set directory=~/.vim/tmp
 " Change to directory contain file when editing
 set autochdir
 
-" Set 1000 commands to undo
+" Set 1000 commands to undo and save to file
 set undolevels=1000
+set undodir=~/.vim/undos
+set undofile
 
 " Keep at least 4 lines above and below the current line
 set scrolloff=4
+
+" Use <Ctrl>+S for "Save"
+nnoremap <C-s> :w<cr>
+inoremap <C-s> <esc>:w<cr>
 
 " Make cursor behave as expected for long lines
 inoremap <Down> <C-o>gj
@@ -188,6 +198,12 @@ match OverLength /\%81v.\+/
 " YAML
 autocmd BufRead,BufNewFile *.yml,*.yaml,*.yaml.txt setlocal filetype=yaml
 autocmd FileType yaml setlocal textwidth=64 colorcolumn=65
+    \ tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
+" PYTHON
+autocmd BufRead,BufNewFile *.py,*.pyc setlocal filetype=python
+autocmd FileType python setlocal textwidth=80 colorcolumn=81
+    \ tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " MARKDOWN
 autocmd BufRead,BufNewFile *.md,*.mmd,*.mkd,*.mdown,*.markdown,*.markdown.txt setlocal filetype=markdown
@@ -195,7 +211,7 @@ autocmd FileType markdown setlocal textwidth=64 colorcolumn=65 spell
 
 " SHELL
 autocmd FileType sh,bash setlocal 
-    \ tabstop=2 shiftwidth=2 expandtab
+    \ tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " HTML
 autocmd FileType html setlocal 

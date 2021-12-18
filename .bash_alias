@@ -90,15 +90,68 @@ function up() {
 	cd "$d"
 }
 
+# Colorize tail output for log files based on type of message on line
+# https://github.com/cgoldberg/dotfiles/blob/master/.bash_aliases#L548
+function ctail() {
+    tail -f -n 80 "$1" |
+        sed --unbuffered \
+        -e 's/\(.*FATAL.*\)/\o033[31m\1\o033[39m/' \
+        -e 's/\(.*ERROR.*\)/\o033[31m\1\o033[39m/' \
+        -e 's/\(.*WARN.*\)/\o033[33m\1\o033[39m/' \
+        -e 's/\(.*INFO.*\)/\o033[32m\1\o033[39m/' \
+        -e 's/\(.*DEBUG.*\)/\o033[34m\1\o033[39m/' \
+        -e 's/\(.*TRACE.*\)/\o033[30m\1\o033[39m/' \
+        -e 's/\(.*[Ee]xception.*\)/\o033[39m\1\o033[39m/'
+}
+
+# Search command history by regex (case-insensitive) and show last n matches
+# usage: hs <pattern>
+# https://github.com/cgoldberg/dotfiles/blob/master/.bash_aliases#L271
+function hs() {
+    local n="150"
+    history | grep -i --color=always "$1" | tail -n "$n"
+}
+
+# Convert input string to all only lowercase alphanumeric characters separated with hyphens
+# https://github.com/SixArm/sixarm-unix-shell-functions
+function slugify() {
+    printf %s\\n "$*" | sed 's/[^[:alnum:]]/_/g; s/--*/-/; s/^-*//; s/-*$//;' | tr '[[:upper:]]' '[[:lower:]]'
+}
+
+# Convert input string to all only alphanumeric characters separated with underscores
+# https://github.com/SixArm/sixarm-unix-shell-functions
+function snake_format() {
+    printf %s\\n "$*" | sed 's/[^[:alnum:]]\{1,\}/_/g; s/_\{2,\}/_/g; s/^_\{1,\}//; s/_\{1,\}$//;'
+}
+
+# List files in current directory and sub-directories displayed as a tree
+# https://github.com/SixArm/sixarm_unix_shell_scripts/blob/main/ls-tree
+function lstree() {
+    ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+}
+
+# Convert between JSON and YAML
+# http://github.com/frgomes/bash-scripts
+function json2yaml {
+  python -c 'import sys, yaml, json; print(yaml.dump(json.loads(sys.stdin.read())))'
+}
+
+function yaml2json {
+  python -c 'import sys, yaml, json; print(json.dumps(yaml.safe_load(sys.stdin.read())))'
+}
+
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
+# octal file modes through http://stackoverflow.com/questions/1795976/can-the-unix-list-command-ls-output-numerical-chmod-permissions
+alias lsoct='ls -al --color=auto|awk '\''{k=0;s=0;for(i=0;i<=8;i++){;k+=((substr($1,i+2,1)~/[rwxst]/)*2^(8-i));};j=4;for(i=4;i<=10;i+=3){;s+=((substr($1,i,1)~/[stST]/)*j);j/=2;};if(k){;printf("%0o%0o ",s,k);};print;}'\'''
 
 # System functions
 # https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions
 alias df="df -Tha --total"
 alias du="du -ach | sort -h"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias path='printf "%b\n" "${PATH//:/\\n}"' # Pretty print $PATH
 
 alias rm='rm -i -v'
 alias cp='cp -v'
@@ -113,6 +166,14 @@ alias ip='ip -c'
 
 # Get public IP address
 alias publicip='curl https://ipecho.net/plain; echo'
+
+# Another method to get public IP using 'dig'
+alias ext_ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+# View HTTP traffic
+# https://github.com/lacymorrow/dotfiles/blob/master/.aliases
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Searchable 'ps' command alias
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
@@ -140,6 +201,9 @@ alias randman="apropos . | shuf -n 1 | awk '{print$1}' | xargs man"
 
 # Display information about Linux distribution, package management, etc.
 alias distinfo="echo /etc/*_ver* /etc/*-rel*; cat /etc/*_ver* /etc/*-rel*"
+
+# URL-encode strings
+alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 
 # Functionalize 'command -v' to allow 'if get_command [command]' idiom
 # https://github.com/rawiriblundell/dotfiles/blob/master/.bashrc
@@ -173,3 +237,72 @@ get_command() {
 }
 alias exists="get_command"
 alias is_command="get_command"
+
+# Always run these commands with 'sudo'
+for cmd in apt-get apt-cache update-grub shutdown reboot ; do
+    alias $cmd="sudo $cmd"
+done; unset cmd
+
+# Use Neovim for Vim, if available
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+# the `.git` directory, listing directories first. The output gets piped into
+# `less` with options to preserve color and line numbers, unless the output is
+# small enough for one screen.
+function tre() {
+	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
+}
+
+# Show basic information from Wikipedia on command-line topic
+# Requires 'jq'. (Install with 'sudo apt-get install -y jq'.)
+function wikip() {
+	LANG="en"
+	if [[ -z $1 ]]; then
+	  echo -e "No argument specified.\nUsage: wikip TOPIC\n"
+	else
+	  var=$(echo $* | sed 's/ /_/g')             # Transforms 'One Time' to 'One_Time'
+	  wiki_data=$(curl -s "https://"$LANG".m.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&titles="$var"&redirects" | jq '.query.pages | to_entries[0] | .value.extract')
+	  data=$(echo $wiki_data | sed 's/\\\"/"/g') # Removes \" characters
+	  if [[ $data = "null" ]]; then
+		echo "Nothing found. Check query/topic."
+	  else
+		url="https://en.m.wikipedia.org/wiki/"$var
+		echo -e ${data:1:${#data}-2}"\n"
+		echo "See more on "$url
+	  fi
+	fi	
+}
+
+# Create 7z archive with some reasonable defaults
+function 7za() {
+	7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on $@
+}
+
+# Clean file names using various rules
+function clean_file_names() {
+	for i in "$@"
+	do
+		b=$(\
+			echo "$i" | \
+			sed \
+			-e 's%([^()]*)%%g' -e '# Remove all parentheses' \
+			-e's%[♪▶♫♥"»«"]\+%%g' -e '# Removes one or more of various unwanted characters' \
+		  	-e "s%[,']\+%%g" -e '# Remove commas and single quotes' \
+			-e "s%\.\+%.%g" -e '# convert multiple consecutive periods into single period' \
+			-e "s%[:»]\+%_%g" -e '# convert multiple these unwanted characters into single _' \
+			-e "s%&%_and_%g" -e '# convert ampersand ("&") to "_and_"' \
+			-e's%^[-_\. ]\+%%' -e '# Remove dashes, periods, and spaces at beginning' \
+			-e's%-\+%-%g' -e '# convert multiple consecutive dashes into one dash' \
+			-e's%_\{2,99\}%__%g' -e '# convert multiple underscores to one __.' \
+			-e's%\(_-\)\+_%_-_%g' -e '# convert multiple _-_-_ to one __' \
+			-e's% \+% %g' -e '# convert multiple spaces to one space' \
+			-e's% - YouTube%%g' \
+			-e's%[-_ ]\+\(\.[^\.]\+\)$%\1%g' -e'# Remove spaces, periods, dashes, etc. before suffix/extension' \
+			-e's%[-_\. ]\+$%%' -e'# Remove dashes, periods, or whitespace at end (after extension)' \
+		)
+		c=$( echo "$i" | sed -e's%"%\\"%g')
+		[ "$i" != "$b" ] && echo "mv -v -- \"$c\" \"$b\""
+	done
+}
+
