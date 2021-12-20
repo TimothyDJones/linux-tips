@@ -25816,10 +25816,10 @@ APP_NAME=Sommelier
 APP_GUI_NAME="Installer for Windows applications to run under Wine emulator."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Windows;"
-APP_VERSION=5.2
+APP_VERSION=8.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/Sommelier/archive/v${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}
