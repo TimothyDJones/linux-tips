@@ -33197,3 +33197,17 @@ echo '}' >> $HOME/.bashrc
 source $HOME/.bashrc
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install chmod-cli cross-platform interactive terminal/TUI tool for generating chmod configurations from package
+APP_NAME=chmod-cli
+APP_GUI_NAME="Cross-platform interactive terminal/TUI tool for generating chmod configurations."
+APP_VERSION=0.2.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Mayowa-Ojo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+echo "$PASSWORD" | sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+echo "$PASSWORD" | sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
