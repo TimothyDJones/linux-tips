@@ -25970,7 +25970,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Toml Bombadil Rust-based dot file manager from package
 APP_NAME=Bombadil
-APP_VERSION=1.11.2
+APP_VERSION=2.1.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/oknozor/toml-${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
