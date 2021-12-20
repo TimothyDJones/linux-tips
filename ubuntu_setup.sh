@@ -25832,7 +25832,7 @@ APP_NAME=FreeFileSync
 APP_GUI_NAME="Cross-platform, folder comparison and synchronization software."
 APP_GUI_CATEGORIES="Accessories;System"
 APP_GUI_KEYWORDS="Backup;File Management;"
-APP_VERSION=11.2
+APP_VERSION=11.15
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}_${APP_VERSION}_Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://freefilesync.org/download/${FILE_NAME}.${APP_EXT}
