@@ -25960,7 +25960,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Codex Notes cross-platform, Markdown notepad for programmers from Debian package
 APP_NAME=Codex
-APP_VERSION=1.0.1
+APP_VERSION=1.4.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.codexnotes.com/download/${FILE_NAME}.${APP_EXT}
