@@ -25793,7 +25793,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install tab Rust-based terminal multiplexer (alternative to 'tmux' or 'screen') from package
 APP_NAME=tab
-APP_VERSION=0.5.1
+APP_VERSION=0.5.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/austinjones/${APP_NAME,,}-rs/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
