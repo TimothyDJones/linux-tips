@@ -389,7 +389,7 @@ libapache2-mod-php${PHP7_VERSION} libapache2-mod-xsendfile \
 mysql-server  mysql-workbench mycli
 
 # Install nvm (Node Version Manager) command-line utility for running/managing multiple versions of Node.JS from package
-APP_VERSION=0.39.0
+APP_VERSION=0.39.1
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v${APP_VERSION}/install.sh | bash
 source $HOME/.bashrc
 nvm install --lts=dubnium node
@@ -595,7 +595,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.152.0.2
+APP_VERSION=1.152.0.6
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -1531,7 +1531,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4419
+APP_VERSION=4.3-4421
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2246,7 +2246,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=9.3.5
+APP_VERSION=9.4.0
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -2500,7 +2500,7 @@ sudo mv /tmp/${APP_NAME} /usr/local/bin
 
 # Install Freeplane mind-mapping tool from Debian package
 APP_NAME=Freeplane
-APP_VERSION=1.9.11
+APP_VERSION=1.9.12
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}~upstream-1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -3748,7 +3748,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install PDF Split and Merge (PDFsam) editor from Debian package
 APP_NAME=PDFSam
-APP_VERSION=4.2.9
+APP_VERSION=4.2.10
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
@@ -4138,7 +4138,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Kid3 cross-platform audio tag editor from package
 APP_NAME=Kid3
 APP_GUI_NAME="Cross-platform audio tag editor."
-APP_VERSION=3.8.6
+APP_VERSION=3.9.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -7102,7 +7102,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install DB Tarzan Java-based database client from Debian package
 APP_NAME=DBTarzan
 APP_GUI_NAME="Java-based database client."
-APP_VERSION=1.25
+APP_VERSION=1.26
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -14294,7 +14294,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=2.5.12
+APP_VERSION=2.6.10
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -19427,7 +19427,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install xsnow desktop decoration from Debian package
 APP_NAME=xsnow
 APP_GUI_NAME=""
-APP_VERSION=3.4.1
+APP_VERSION=3.4.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -24303,7 +24303,7 @@ APP_NAME=DailyDesktopWallpaperPlus
 APP_GUI_NAME="Utility to set Bing or Windows Spotlight daily photo as wallpaper."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Wallpaper;"
-APP_VERSION=3.5
+APP_VERSION=3.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-v${APP_VERSION}-x86_64-linux-build
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -25660,9 +25660,9 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install WezTerm cross-platform, Rust-based, GPU-accelerated terminal tool from Debian package
 APP_NAME=WezTerm
-APP_VERSION=20210814-124438-54e29167
+APP_VERSION=20211205-192649-672c1cc1
 APP_EXT=deb
-source  /etc/lsb-release
+source /etc/lsb-release
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.Ubuntu${DISTRIB_RELEASE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wez/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -25671,9 +25671,9 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Bochs x86 PC emulator tool from RPM package
 APP_NAME=Bochs
-APP_VERSION=2.6.11
+APP_VERSION=2.7
 APP_EXT=rpm
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}.x86_64
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-1.x86_64
 sudo apt-get install -y alien libsoxr-lsr0
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
@@ -25687,7 +25687,7 @@ APP_NAME=pj-ftp-server
 APP_GUI_NAME="Cross-platform, portable Java-based FTP server tool."
 APP_GUI_CATEGORIES="Networking;Internet"
 APP_GUI_KEYWORDS="FTP;"
-APP_VERSION=1.0.82
+APP_VERSION=1.0.83
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v.${APP_VERSION}_bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -25793,7 +25793,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install tab Rust-based terminal multiplexer (alternative to 'tmux' or 'screen') from package
 APP_NAME=tab
-APP_VERSION=0.5.1
+APP_VERSION=0.5.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/austinjones/${APP_NAME,,}-rs/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -25816,10 +25816,10 @@ APP_NAME=Sommelier
 APP_GUI_NAME="Installer for Windows applications to run under Wine emulator."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Windows;"
-APP_VERSION=5.2
+APP_VERSION=8.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/Sommelier/archive/v${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}
@@ -25832,7 +25832,7 @@ APP_NAME=FreeFileSync
 APP_GUI_NAME="Cross-platform, folder comparison and synchronization software."
 APP_GUI_CATEGORIES="Accessories;System"
 APP_GUI_KEYWORDS="Backup;File Management;"
-APP_VERSION=11.2
+APP_VERSION=11.15
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}_${APP_VERSION}_Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://freefilesync.org/download/${FILE_NAME}.${APP_EXT}
@@ -25960,7 +25960,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Codex Notes cross-platform, Markdown notepad for programmers from Debian package
 APP_NAME=Codex
-APP_VERSION=1.0.1
+APP_VERSION=1.4.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.codexnotes.com/download/${FILE_NAME}.${APP_EXT}
@@ -25970,7 +25970,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Toml Bombadil Rust-based dot file manager from package
 APP_NAME=Bombadil
-APP_VERSION=1.11.2
+APP_VERSION=2.1.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/oknozor/toml-${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -25986,7 +25986,7 @@ APP_NAME=Kanboard
 APP_GUI_NAME="PHP/SQLite-based project management tool based on Kanban methodology."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Kanban;Project Management;"
-APP_VERSION=1.2.18
+APP_VERSION=1.2.21
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}%20v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -26027,7 +26027,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Dayon Java-based remote access utility from Debian package
 APP_NAME=Dayon
-APP_VERSION=1.10.2
+APP_VERSION=11.0.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}active/${FILE_NAME}.${APP_EXT}
@@ -26077,7 +26077,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install ov cross-platform, feature-rich terminal pager ("less" or "more" replacement) from Debian package
 APP_NAME=ov
-APP_VERSION=0.6.2
+APP_VERSION=0.9.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/noborus/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -28598,7 +28598,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Pineapple Pictures cross-platform lightweight image viewer from Debian package
 APP_NAME=Pineapple-Pictures
-APP_VERSION=0.5.2
+APP_VERSION=0.5.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux-$(arch)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -32111,7 +32111,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Ebook reader emulator with support for PDF, DjVu, EPUB, FB2 and other formats."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Ebook;Reader;"
-APP_VERSION=2021.11
+APP_VERSION=2021.12
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-appimage-x86_64-linux-gnu-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32304,7 +32304,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install System Monitoring Center Python/Gtk system performance and usage monitoring tool from Debian package
 # https://kod.pardus.org.tr/Hakan/system-monitoring-center
 APP_NAME="System Monitoring Center"
-APP_VERSION=0.3.0~beta1
+APP_VERSION=0.3.1~beta1
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}_${APP_VERSION}_amd64
@@ -33195,5 +33195,19 @@ echo 'function ll {' >> $HOME/.bashrc
 echo '  cd "$(/usr/local/bin/'${APP_NAME,,}' "$@")"' >> $HOME/.bashrc
 echo '}' >> $HOME/.bashrc
 source $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install chmod-cli cross-platform interactive terminal/TUI tool for generating chmod configurations from package
+APP_NAME=chmod-cli
+APP_GUI_NAME="Cross-platform interactive terminal/TUI tool for generating chmod configurations."
+APP_VERSION=0.2.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Mayowa-Ojo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+echo "$PASSWORD" | sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+echo "$PASSWORD" | sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
