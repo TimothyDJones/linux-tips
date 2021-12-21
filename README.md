@@ -429,3 +429,12 @@ The [`tar`](https://man7.org/linux/man-pages/man1/tar.1.html) command line utili
 | `-z`   | `--gunzip`  | Extract `gzip` compressed file. |
 | `-Z`   | `--uncompress` | Extract `zip` compressed file. |
 | N/A    | `--zstd`    | Extract `zstd` compressed file. |
+
+## Launch `tmux` automatically when opening terminal/shell
+If you typically run `tmux` immediately after opening a new terminal window or interactive shell, you can make this automatic. Just add the following lines to your `.bashrc` or `.bash_profile`.
+```bash
+# Start tmux automatically if interactive session and not already running
+if command -v tmux > /dev/null; then
+	[[ $- == *i* ]] && [[ ! $TERM =~ screen ]] && [[ -z $TMUX ]] && exec tmux new-session
+fi 
+```
