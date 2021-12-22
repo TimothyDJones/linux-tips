@@ -33226,3 +33226,36 @@ echo "$PASSWORD" | sudo chmod +x /usr/local/bin/btm
 echo "$PASSWORD" | sudo cp -R /tmp/${FILE_NAME}/completion/btm.bash /etc/bash_completion.d/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install GJID Sokoban-style nuclear waste disposal puzzle game from source
+APP_NAME=GJID
+APP_GUI_NAME="Sokoban-style nuclear waste disposal puzzle game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Sokoban;Puzzle;"
+APP_VERSION=3.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libxcb1-dev libxcb-render0-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/msharov/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+sudo cp /tmp/${FILE_NAME}/data/logo.xpm /usr/local/share/icons/${APP_NAME,,}.xpm
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.xpm
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
