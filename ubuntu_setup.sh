@@ -33259,3 +33259,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Nice Editor (ne) ncurses-based minimalist text editor from source
+APP_NAME=ne
+APP_GUI_NAME="ncurses-based minimalist text editor."
+APP_VERSION=3.3.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libncursesw5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://ne.di.unimi.it/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make build && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
