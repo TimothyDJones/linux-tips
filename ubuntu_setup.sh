@@ -26562,7 +26562,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install yq Golang-based command-line YAML processor from package
 APP_NAME=yq
-APP_VERSION=4.16.1
+APP_VERSION=4.16.2
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_${KERNEL_TYPE//i/}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/mikefarah/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
@@ -33209,5 +33209,20 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 echo "$PASSWORD" | sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 echo "$PASSWORD" | sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install bottom cross-platform GUI terminal system monitor from package
+APP_NAME=bottom
+APP_GUI_NAME="Cross-platform GUI terminal system monitor."
+APP_VERSION=0.6.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ClementTsang/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+echo "$PASSWORD" | sudo cp -R /tmp/${FILE_NAME}/btm /usr/local/bin/btm
+echo "$PASSWORD" | sudo chmod +x /usr/local/bin/btm
+echo "$PASSWORD" | sudo cp -R /tmp/${FILE_NAME}/completion/btm.bash /etc/bash_completion.d/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
