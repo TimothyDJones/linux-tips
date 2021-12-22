@@ -10526,7 +10526,7 @@ rm -rf /tmp/*${APP_NAME},,*
 # Install dotProject web-based tool for project management including Gantt charts
 # https://dotproject.net/
 APP_NAME=dotProject
-APP_VERSION=2.1.9
+APP_VERSION=2.2.0
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
