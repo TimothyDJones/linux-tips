@@ -60,7 +60,8 @@ function headers() {
 function = {
     # declare -i i=${1:-$(</dev/stdin)};
     # echo "$i" | bc -l
-    echo "$@" | bc -l
+    scale=${SCALE:-6}	# Use $SCALE or default of 6 digits of precision
+    echo "scale=$scale; $@" | bc -l
 }
 alias calc="="
 
