@@ -28080,7 +28080,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install NaSC GTK-based interactive calcuator similar to Soulver from source
 APP_NAME=NaSC
 APP_GUI_NAME="GTK-based interactive calcuator similar to Soulver."
-APP_VERSION=0.7.5
+APP_VERSION=0.8.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y gobject-introspection libgee-0.8-dev libwebkit2gtk-4.0-dev libgtksourceview-3.0-dev libcln-dev libgranite-dev libcurl4-openssl-dev libmpfr-dev intltool meson valac
