@@ -306,3 +306,33 @@ function clean_file_names() {
 	done
 }
 
+# Convert datetime to Unix epoch timestamp
+# Examples:
+#    $ date2epoch "2021-03-01 00:00:00+0600"
+#    1614535200
+#
+#    $ date2epoch	# Shows current time
+#    1640213943
+# https://github.com/thombashi/dotfiles/blob/master/.functions.sh
+date2epoch() {
+	if [ "$1" != "" ]; then
+		\date +%s -d "$1"
+	else
+		\date +%s
+	fi
+}
+
+# Convert Unix epoch timestamp to datetime
+# Example:
+#    $ epoch2date 1234567890
+#    2009-02-13 17:31:30-06:00
+#
+# https://github.com/thombashi/dotfiles/blob/master/.functions.sh
+epoch2date() {
+	if [ "$1" == "" ]; then
+		echo "Usage: ${FUNCNAME[0]} EPOCH_TIME" 1>&2
+		return 22
+	fi
+	
+	\date -d @"$1" --rfc-3339=seconds
+}

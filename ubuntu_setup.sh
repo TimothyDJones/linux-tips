@@ -2837,7 +2837,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install QPDF PDF utility from source
 APP_NAME=QPDF
-APP_VERSION=10.4.0
+APP_VERSION=10.5.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y zlib1g-dev libjpeg62-dev
@@ -3476,7 +3476,7 @@ APP_NAME=Shotcut
 APP_GUI_NAME="Cross-platform non-linear video editor."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=21.10.31
+APP_VERSION=21.12.21
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -9864,7 +9864,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Balena Etcher cross-platform Electron-based tool to copy OS images to USB drives from Debian package
 APP_NAME=Balena-Etcher
 APP_GUI_NAME="Cross-platform Electron-based tool to copy OS images to USB drives."
-APP_VERSION=1.7.1
+APP_VERSION=1.7.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-electron_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/balena-io/etcher/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -10526,7 +10526,7 @@ rm -rf /tmp/*${APP_NAME},,*
 # Install dotProject web-based tool for project management including Gantt charts
 # https://dotproject.net/
 APP_NAME=dotProject
-APP_VERSION=2.1.9
+APP_VERSION=2.2.0
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -14858,7 +14858,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install TurboVNC remote desktop tool from Debian package
 APP_NAME=TurboVNC
 APP_GUI_NAME="remote desktop tool."
-APP_VERSION=2.2.6
+APP_VERSION=2.2.7
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -23831,7 +23831,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Shutter Encoder cross-platform audio/video encoder/converter from Debian package
 APP_NAME="Shutter Encoder"
 APP_GUI_NAME="Cross-platform audio/video encoder/converter."
-APP_VERSION=15.6
+APP_VERSION=15.7
 APP_EXT=deb
 FILE_NAME=${APP_NAME// /%20}%20"("Linux%20Version%20${APP_VERSION}")"
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.shutterencoder.com/${FILE_NAME}.${APP_EXT}
@@ -25816,7 +25816,7 @@ APP_NAME=Sommelier
 APP_GUI_NAME="Installer for Windows applications to run under Wine emulator."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Windows;"
-APP_VERSION=8.9
+APP_VERSION=8.10
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
@@ -26805,7 +26805,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Ferdi cross-platform, Electron-based messaging application integration utility from Debian package
 # https://getferdi.com/
 APP_NAME=Ferdi
-APP_VERSION=5.6.3
+APP_VERSION=5.6.5
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -31888,7 +31888,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=gdu
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based command-line tool to list files in directories with large number of files."
-APP_VERSION=5.6.2
+APP_VERSION=5.12.1
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}_linux_$(dpkg --print-architecture)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dundee/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31968,8 +31968,8 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Qt-based RSS/ATOM/JSON feed reader."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="RSS;Feed;Reader;"
-APP_VERSION=4.0.2
-BUILD_NUMBER=0178a046
+APP_VERSION=4.0.4
+BUILD_NUMBER=9855b8a
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-${BUILD_NUMBER}-linux64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/martinrotter/${_APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32958,7 +32958,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Holocaust simulation real-time strategy game."
 APP_GUI_CATEGORIES="Games;"
 APP_GUI_KEYWORDS="History;Strategy;Simulator;"
-APP_VERSION=0.84
+APP_VERSION=0.85
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME// /_}_${APP_VERSION}_manylinux_x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}game/${FILE_NAME}.${APP_EXT}
@@ -33226,3 +33226,51 @@ echo "$PASSWORD" | sudo chmod +x /usr/local/bin/btm
 echo "$PASSWORD" | sudo cp -R /tmp/${FILE_NAME}/completion/btm.bash /etc/bash_completion.d/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install GJID Sokoban-style nuclear waste disposal puzzle game from source
+APP_NAME=GJID
+APP_GUI_NAME="Sokoban-style nuclear waste disposal puzzle game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Sokoban;Puzzle;"
+APP_VERSION=3.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libxcb1-dev libxcb-render0-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/msharov/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+sudo cp /tmp/${FILE_NAME}/data/logo.xpm /usr/local/share/icons/${APP_NAME,,}.xpm
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.xpm
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Nice Editor (ne) ncurses-based minimalist text editor from source
+APP_NAME=ne
+APP_GUI_NAME="ncurses-based minimalist text editor."
+APP_VERSION=3.3.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libncursesw5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://ne.di.unimi.it/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make build && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
