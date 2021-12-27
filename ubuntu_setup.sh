@@ -33301,7 +33301,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="TCL-based GUI front-end to OpenSSL encryption methods."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="Security;Encryption;"
-APP_VERSION=0.99.9b
+APP_VERSION=1.01
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
