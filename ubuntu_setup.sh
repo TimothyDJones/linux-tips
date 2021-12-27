@@ -23970,7 +23970,7 @@ APP_NAME=Responsively
 APP_GUI_NAME="Cross-platform web browser for responsive web app testing."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Web Design;Testing;"
-APP_VERSION=0.5.0
+APP_VERSION=0.18.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}App-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/manojVivek/${APP_NAME,,}-app/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
