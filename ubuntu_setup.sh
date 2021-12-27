@@ -595,7 +595,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.152.0.6
+APP_VERSION=1.152.1.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -767,7 +767,7 @@ rm -rf /tmp/goto*
 # Install Free42 HP-42S calculator simulator from package
 APP_NAME=Free42
 APP_GUI_NAME="Free, cross-platfrom HP-42S calculator simulator."
-APP_VERSION=3.0.7
+APP_VERSION=3.0.8
 APP_EXT=tgz
 FILE_NAME=${APP_NAME}Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://thomasokken.com/${APP_NAME,,}/download/${FILE_NAME}.${APP_EXT}
@@ -16278,7 +16278,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Trilium Notes Electron-based hierarchical note taking application from Debian package
 APP_NAME=Trilium
 APP_GUI_NAME="Electron-based hierarchical note taking application."
-APP_VERSION=0.48.8
+APP_VERSION=0.48.9
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zadam/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -25597,7 +25597,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install CoTerminalApps cross-platform, color terminal/console puzzle games from package
 APP_NAME=CoTerminalApps
 APP_GUI_NAME="Cross-platform, , color terminal/console puzzle games."
-APP_VERSION=5nov21
+APP_VERSION=23dec21
 APP_EXT=7z
 FILE_NAME=co${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -27583,7 +27583,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Cryptonose cryptocurrency price monitoring/tracking tool from Debian package
 APP_NAME=Cryptonose
-APP_VERSION=2.22.0
+APP_VERSION=2.22.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -28080,7 +28080,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install NaSC GTK-based interactive calcuator similar to Soulver from source
 APP_NAME=NaSC
 APP_GUI_NAME="GTK-based interactive calcuator similar to Soulver."
-APP_VERSION=0.7.5
+APP_VERSION=0.8.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y gobject-introspection libgee-0.8-dev libwebkit2gtk-4.0-dev libgtksourceview-3.0-dev libcln-dev libgranite-dev libcurl4-openssl-dev libmpfr-dev intltool meson valac
@@ -33274,3 +33274,36 @@ cd /tmp/${FILE_NAME}
 make build && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install oslcrypt TCL-based GUI front-end to OpenSSL encryption methods from AppImage
+APP_NAME=oslcrypt
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="TCL-based GUI front-end to OpenSSL encryption methods."
+APP_GUI_CATEGORIES="Internet;System;"
+APP_GUI_KEYWORDS="Security;Encryption;"
+APP_VERSION=0.99.9b
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-Linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/${APP_NAME,,}-LINUX.appimage /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}-LINUX.appimage
+sudo ln -s -f /usr/local/bin/${APP_NAME,,}-LINUX.appimage /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
