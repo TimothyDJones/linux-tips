@@ -548,7 +548,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=21.3.1
+APP_VERSION=21.3.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -767,7 +767,7 @@ rm -rf /tmp/goto*
 # Install Free42 HP-42S calculator simulator from package
 APP_NAME=Free42
 APP_GUI_NAME="Free, cross-platfrom HP-42S calculator simulator."
-APP_VERSION=3.0.8
+APP_VERSION=3.0.9
 APP_EXT=tgz
 FILE_NAME=${APP_NAME}Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://thomasokken.com/${APP_NAME,,}/download/${FILE_NAME}.${APP_EXT}
@@ -1422,7 +1422,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Makagiga Java-based PIM/RSS feed reader from package
 APP_NAME=Makagiga
 APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
-APP_VERSION=6.16
+APP_VERSION=6.18
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1531,7 +1531,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4421
+APP_VERSION=4.3-4429
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2711,7 +2711,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.5.94
+APP_VERSION=6.5.95
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3476,7 +3476,7 @@ APP_NAME=Shotcut
 APP_GUI_NAME="Cross-platform non-linear video editor."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=21.12.21
+APP_VERSION=21.12.24
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -5092,7 +5092,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Tabby (formerly Terminus) JavaScript/Electron terminal from Debian package
 APP_NAME=Tabby
-APP_VERSION=1.0.168
+APP_VERSION=1.0.169
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME,,}.${APP_EXT} -J -L https://github.com/Eugeny/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -6152,26 +6152,46 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install WackoWiki PHP-based lightweight wiki tool
-APP_NAME=wacko
-APP_VERSION=r6.1.4
+# Install WackoWiki PHP-based lightweight wiki tool from package
+APP_NAME=Wacko
+APP_GUI_NAME="PHP-based lightweight wiki tool."
+APP_GUI_CATEGORIES="Internet;Office;"
+APP_GUI_KEYWORDS="Wiki;"
+APP_VERSION=6.1.5
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
 DB_PASSWORD=${APP_NAME,,}
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}wiki/${APP_NAME,,}.${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}.${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}wiki/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,}.${APP_VERSION}/${APP_NAME,,} ${WWW_HOME}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}wiki-${APP_VERSION}/${APP_NAME,,} ${WWW_HOME}
 sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
 sudo chmod -R a+x ${WWW_HOME}/${APP_NAME,,}
 sudo chmod -R a+r ${WWW_HOME}/${APP_NAME,,}
 # Create database
-mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
-mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
+mysql -u root -proot -Bse "CREATE USER '${DB_USER}'@'%' IDENTIFIED WITH mysql_native_password BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "GRANT USAGE ON *.* TO '${DB_USER}'@'%'; GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/index.php &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=xdg-open http://localhost/${APP_NAME,,}/index.php &
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+
 
 # Install CuteCODE minimalist Tcl-based text editor
 APP_NAME=CuteCODE
@@ -7882,7 +7902,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install phpSysInfo web-based Linux system information utility
 APP_NAME=phpSysInfo
-APP_VERSION=3.3.4
+APP_VERSION=3.4.0
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -9086,7 +9106,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PAGE drag-and-drop GUI generator for Python and Tkinter from package
 APP_NAME=PAGE
 APP_GUI_NAME="Drag-and-drop GUI generator for Python and Tkinter."
-APP_VERSION=6.2
+APP_VERSION=7.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls
@@ -9931,7 +9951,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install tkdiff Tcl-based text file difference viewer/editor from source
 APP_NAME=tkdiff
 APP_GUI_NAME="Tcl-based text file difference viewer/editor."
-APP_VERSION=5.2.1
+APP_VERSION=5.3
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION/./-}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib
@@ -10688,9 +10708,9 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install MindForger notepad and Markdown editor/IDE with built-in preview from Debian package
 APP_NAME=MindForger
 APP_GUI_NAME="Notepad and Markdown editor/IDE with built-in preview."
-APP_VERSION=1.50.0-1
+APP_VERSION=1.52.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
@@ -21736,7 +21756,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://dystroy.org/broot/
 APP_NAME=Broot
 APP_GUI_NAME="Rust-based command-line directory tree navigation tool with fuzzy-search capability."
-APP_VERSION=1.7.5
+APP_VERSION=1.8.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -23950,7 +23970,7 @@ APP_NAME=Responsively
 APP_GUI_NAME="Cross-platform web browser for responsive web app testing."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Web Design;Testing;"
-APP_VERSION=0.5.0
+APP_VERSION=0.18.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}App-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/manojVivek/${APP_NAME,,}-app/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -24119,7 +24139,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Belofte cross-platform Xboard-compatible chess engine from package
 APP_NAME=Belofte
-APP_VERSION=2.1.4
+APP_VERSION=2.1.5
 APP_EXT=N/A
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=64
@@ -24227,7 +24247,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=8.17.16
+APP_VERSION=9.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -25781,7 +25801,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install zoxide Rust-based fast alternative to 'cd' for directory navigation from package
 APP_NAME=zoxide
-APP_VERSION=0.7.9
+APP_VERSION=0.8.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/ajeetdsouza/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
@@ -28099,7 +28119,7 @@ APP_NAME=Propeller
 APP_GUI_NAME="Cross-platform SDL-based side-scroller shooting game ."
 APP_GUI_CATEGORIES="Entertainment;Games;"
 APP_GUI_KEYWORDS="Games;Side-Scroller;"
-APP_VERSION=alpha-prerelease-20
+APP_VERSION=2021-12-24
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
@@ -30277,7 +30297,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://lucaschess.pythonanywhere.com/
 APP_NAME="Lucas Chess"
 APP_GUI_NAME="Cross-platform, Python-based GUI for 60+ chess engines."
-APP_VERSION=1.29c
+APP_VERSION=1.30
 APP_EXT=sh
 FILE_NAME=${APP_NAME// /}R${APP_VERSION//./}_LINUX
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/lucaschessr/${FILE_NAME}.${APP_EXT}
@@ -32111,7 +32131,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Ebook reader emulator with support for PDF, DjVu, EPUB, FB2 and other formats."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Ebook;Reader;"
-APP_VERSION=2021.12
+APP_VERSION=2021.12.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-appimage-x86_64-linux-gnu-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -33281,7 +33301,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="TCL-based GUI front-end to OpenSSL encryption methods."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="Security;Encryption;"
-APP_VERSION=0.99.9b
+APP_VERSION=1.01
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
