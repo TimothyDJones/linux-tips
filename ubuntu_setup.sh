@@ -13577,7 +13577,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install bs1770gain audio loudness scanner/normalizer from package
 APP_NAME=bs1770gain
 APP_GUI_NAME="Audio loudness scanner/normalizer."
-APP_VERSION=0.5.0-beta-5
+APP_VERSION=0.7.0
 APP_EXT=tar.bz2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
