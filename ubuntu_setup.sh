@@ -13577,23 +13577,17 @@ rm -rf /tmp/*${APP_NAME}*
 # Install bs1770gain audio loudness scanner/normalizer from package
 APP_NAME=bs1770gain
 APP_GUI_NAME="Audio loudness scanner/normalizer."
-APP_VERSION=0.7.0
+APP_VERSION=0.8.3
 APP_EXT=tar.bz2
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=linux64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=linux32
-fi
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-debian-9-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://pbelkner.de/projects/files/${APP_NAME,,}/${APP_NAME,,}/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/bin/* /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/doc /opt/${APP_NAME,,}
 sudo ln -f -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
-rm -rf /tmp/*${APP_NAME}*
+rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Haxima (a.k.a. Nazghul) retro Ultima-style RPG from Git repository
 APP_NAME=Haxima
