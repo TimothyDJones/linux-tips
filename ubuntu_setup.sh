@@ -30592,8 +30592,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Contour modern C++ terminal with graphics support from Debian package
 APP_NAME=Contour
-APP_MAIN_VERSION=0.1.1
-APP_VERSION=${APP_MAIN_VERSION}-132
+APP_VERSION=0.2.3.182
 APP_EXT=deb
 source /etc/lsb-release
 # If Ubuntu version is above 16.04 (Xenial) up to 18.04 (Bionic), then we use 16.04.
@@ -30604,7 +30603,7 @@ elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo|gr|hi)$ ]]; then
 	DISTRIB_VERSION=20_04
 fi
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-ubuntu_${DISTRIB_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}-terminal/${APP_NAME,,}/releases/download/v${APP_MAIN_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}-terminal/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
