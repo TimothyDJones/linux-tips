@@ -30505,7 +30505,7 @@ APP_NAME="The Powder Toy"
 APP_GUI_NAME="Cross-platform desktop 'falling sand' physics simulation."
 APP_GUI_CATEGORIES="Education;Science;"
 APP_GUI_KEYWORDS="Science;Physics;Simulation;"
-APP_VERSION=96.0.349
+APP_VERSION=96.2.350
 APP_EXT=N/A
 FILE_NAME=powder-v${APP_VERSION}-x86_64-lin-gcc-static
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/${APP_NAME// /-}/${APP_NAME// /-}/releases/download/v${APP_VERSION}/${FILE_NAME}
