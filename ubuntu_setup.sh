@@ -13539,7 +13539,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install AsciidocFX JavaFX-based book/document editor to build PDF, EPUB, Mobi and HTML books from package
 APP_NAME=AsciidocFX
 APP_GUI_NAME="JavaFX-based book/document editor to build PDF, EPUB, Mobi and HTML books."
-APP_VERSION=1.6.9
+APP_VERSION=1.7.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}_Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
