@@ -30703,14 +30703,11 @@ APP_VERSION=1.5.1-0~ppa28
 APP_EXT=deb
 source /etc/lsb-release
 # If Ubuntu version is above 16.04 (Xenial) up to 18.04 (Bionic), then we use 16.04.
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo)$ ]]; then   # 18.04 - 19.10
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo|fo|gr|hi|im|ja)$ ]]; then   # 18.04 - 22.04
 	DISTRIB_VERSION=${DISTRIB_RELEASE}
-# Otherwise, we use Bionic.
-elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo|gr|hi)$ ]]; then
-	DISTRIB_VERSION=20.04
 fi
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}~ubuntu${DISTRIB_VERSION}.1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://code.launchpad.net/~peek-developers/+archive/ubuntu/stable/+files/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~peek-developers/+archive/ubuntu/stable/+files/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
