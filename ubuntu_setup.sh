@@ -30722,7 +30722,7 @@ APP_NAME=Passky
 APP_GUI_NAME="Cross-platform Javascript/Electron desktop tool for online password manager."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Password;Security;"
-APP_VERSION=2.0.5
+APP_VERSION=5.0.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Rabbit-Company/${APP_NAME}-Desktop/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
