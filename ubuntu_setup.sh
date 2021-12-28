@@ -30665,7 +30665,7 @@ APP_NAME=Lorien
 APP_GUI_NAME="Cross-platform, Godot-based infinite canvas drawing/note-taking tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Drawing;"
-APP_VERSION=0.3.0
+APP_VERSION=0.4.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}_v${APP_VERSION}_Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mbrlabs/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
