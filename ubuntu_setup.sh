@@ -12743,9 +12743,9 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Open Visual Traceroute Java-based GUI traceroute utility from Debian package
 APP_NAME=OVTR
 APP_GUI_NAME="Java-based GUI traceroute utility."
-APP_VERSION=1.7.0-1
+APP_VERSION=2.0.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|bi)$ ]]; then  # 18.04
     # Install gksu package from 17.10 (Artful)
