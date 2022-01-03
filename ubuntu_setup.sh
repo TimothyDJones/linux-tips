@@ -22402,7 +22402,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://pyspread.gitlab.io/
 APP_NAME=PySpread
 APP_GUI_NAME="Cross-platform Qt-based desktop spreadsheet that uses Python expessions."
-APP_VERSION=2.0.1
+APP_VERSION=2.0.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y python3-enchant python3-pyqt5 python3-numpy python3-pyqt5.qtsvg
