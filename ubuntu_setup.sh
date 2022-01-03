@@ -26841,7 +26841,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Ferdi cross-platform, Electron-based messaging application integration utility from Debian package
 # https://getferdi.com/
 APP_NAME=Ferdi
-APP_VERSION=5.6.5
+APP_VERSION=5.6.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
