@@ -30631,7 +30631,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Kryptor cross-platform, C#/.NET-based command-line file encryption tool from package
 APP_NAME=Kryptor
 APP_GUI_NAME="Cross-platform, C#/.NET-based command-line file encryption tool."
-APP_VERSION=3.0.4
+APP_VERSION=3.1.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/samuel-lucas6/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
