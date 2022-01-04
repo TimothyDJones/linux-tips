@@ -22468,14 +22468,9 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://sw.kovidgoyal.net/kitty/
 APP_NAME=Kitty
 APP_GUI_NAME="Cross-platform GPU-based terminal."
-APP_VERSION=0.23.1
+APP_VERSION=0.24.0
 APP_EXT=txz
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x86_64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=i686
-fi
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt-get install -y python3-enchant python3-pyqt5 python3-numpy python3-pyqt5.qtsvg
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 cd /tmp
