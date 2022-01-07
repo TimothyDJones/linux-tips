@@ -24436,7 +24436,7 @@ APP_NAME=MariaDB-Explorer
 APP_GUI_NAME="Cross-platform Qt-based GUI MariaDB/MySQL database manager."
 APP_GUI_CATEGORIES="Development;Programming;Accessories;"
 APP_GUI_KEYWORDS="Database;SQL;MySQL"
-APP_VERSION=294
+APP_VERSION=372
 APP_EXT=sh
 FILE_NAME=${APP_NAME}-LinuxInstaller-r${APP_VERSION}
 sudo apt-get install -y build-essential libx11-dev libxft-dev
