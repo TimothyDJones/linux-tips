@@ -14676,7 +14676,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Hashrat file hash tool with support for many hash algorithms from source
 APP_NAME=Hashrat
 APP_GUI_NAME="File hash tool with support for many hash algorithms."
-APP_VERSION=1.11
+APP_VERSION=1.14
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
