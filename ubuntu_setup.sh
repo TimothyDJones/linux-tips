@@ -11418,12 +11418,11 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install Meld GUI file diff/merge utility from source
 APP_NAME=Meld
 APP_GUI_NAME="Cross-platform, file diff/merge utility."
-APP_VERSION=3.18.2
+APP_VERSION=3.21.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y meld python3-cairo-dev libgtksourceview-3.0-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.gnome.org/sources/${APP_NAME,,}/${APP_VERSION//.2/}/${FILE_NAME}.${APP_EXT}
-https://download.gnome.org/sources/meld//meld-3.18.2.tar.xz
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://fossies.org/linux/misc/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
