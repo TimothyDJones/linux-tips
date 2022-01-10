@@ -6937,19 +6937,18 @@ cd /tmp/${FILE_NAME}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install Miller text processor which combines functions of awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON from source
+# Install Miller text processor which combines functions of awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON from package
 APP_NAME=miller
 APP_GUI_NAME="Text processor which combines functions of awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON."
-APP_VERSION=5.10.3
+APP_VERSION=6.0.0
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/johnkerl/${APP_NAME,,}/releases/download/v${APP_VERSION}/mlr-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johnkerl/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/mlr-${APP_VERSION}
-./configure --prefix=/usr/local && make
-# 'make install' doesn't work, so we manually install files
-sudo cp doc/mlr.1 /usr/share/man/man1
-sudo cp c/mlr c/mlrg c/mlrp c/parsing/lemon /usr/local/bin
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME}/mlr /usr/local/bin
+sudo ln -s -f /usr/local/bin/mlr /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
