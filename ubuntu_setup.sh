@@ -33402,7 +33402,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install MTR combination traceroute and ping from source
 APP_NAME=MTR
 APP_GUI_NAME="Combination traceroute and ping."
-APP_VERSION=0.94
+APP_VERSION=0.95
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
