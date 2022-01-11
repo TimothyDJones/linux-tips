@@ -15253,7 +15253,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Leibnitz 3D graphing calculator from package
 APP_NAME=Leibnitz
 APP_GUI_NAME="3D graphing calculator."
-APP_VERSION=2.1.0
+APP_VERSION=3.0.1
 APP_EXT=tgz
 FILE_NAME=${APP_NAME}_${APP_VERSION}_tar_RHFC27
 sudo apt-get install -y libjpeg62
