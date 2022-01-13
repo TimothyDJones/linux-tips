@@ -206,6 +206,9 @@ alias distinfo="echo /etc/*_ver* /etc/*-rel*; cat /etc/*_ver* /etc/*-rel*"
 # URL-encode strings
 alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 
+# Set some helpful defaults for nano
+alias nano='nano --smarthome --multibuffer --const --autoindent --suspend --linenumbers'
+
 # Functionalize 'command -v' to allow 'if get_command [command]' idiom
 # https://github.com/rawiriblundell/dotfiles/blob/master/.bashrc
 get_command() {
