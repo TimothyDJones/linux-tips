@@ -79,6 +79,23 @@ where `PKG_NAME` is the package name, such as `vim-common`.
 To avoid getting prompted for password when running commands with [`sudo`](https://manpages.ubuntu.com/manpages/precise/en/man8/sudo.8.html), one common option is to append `NOPASSWD:ALL` to your user name in the `/etc/sudoers` file. Obviously, this is a security risk. Instead, you can run the `sudo` command with the `-s` ("session") flag to allow the `sudo` session to be persistent until your close the terminal (end the session). To explicitly end the session run `sudo -k` ("kill").  
 [Reference](https://vitux.com/how-to-specify-time-limit-for-a-sudo-session/)
 
+## Change default editor for `visudo`
+By default, Linux systems use the `$VISUAL` or `$EDITOR` environment variables (usually defined in your `~/.bashrc` file or `/etc/profile`) as the default editor the [`visudo`](https://linux.die.net/man/8/visudo) command. If you'd prefer to use a different editor, such as [nano](https://nano-editor.org/), you can use either of these methods.
+1. To **temporarily** use a different editor, run:
+```console
+$ sudo EDITOR=/path/to/editor visudo
+```
+For example, to use `nano`, you would run:
+```console
+$ sudo EDITOR=nano visudo
+```
+2. To **permanently** change the default editor, edit the `/etc/sudoers` file (you can use the _temporary_ method above!) and add the following line to the file near the top, but _after_ `Defaults env_reset`:
+```console
+Defaults    editor=/path/to/editor
+```
+
+[Reference1](https://unix.stackexchange.com/questions/4408/how-to-set-visudo-to-use-a-different-editor-than-the-default-on-fedora)
+
 ## Upgrade Ubuntu to non-LTS version via command line
 By default, most installations of Ubuntu are configured to upgrade only to LTS (long-term support) distribution releases, which come out every two years (e.g., 18.04, 20.04, etc.).  If you want to upgrade your Ubuntu installation to a non-LTS release (e.g., from Bionic Beaver [18.04] to Eoan Ermine [19.10]) you can do so via command line.  Here's how.
 
