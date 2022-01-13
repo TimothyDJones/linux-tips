@@ -26819,7 +26819,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install tig ncurses-based text-mode interface for Git from source
 APP_NAME=tig
 APP_GUI_NAME="ncurses-based text-mode interface for Git."
-APP_VERSION=2.5.1
+APP_VERSION=2.5.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libncurses-dev
