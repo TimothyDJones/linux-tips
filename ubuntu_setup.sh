@@ -33458,3 +33458,17 @@ sudo cp /tmp/${FILE_NAME} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install refmt Rust-based CLI JSON-YAML format conversion tool from package
+APP_NAME=refmt
+APP_GUI_NAME="Rust-based CLI JSON-YAML format conversion tool."
+APP_VERSION=0.2.3-alpha
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/yoshihitoh/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
