@@ -7714,9 +7714,9 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from package
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=2.15
+APP_VERSION=2.16
 APP_EXT=zip
-FILE_NAME=${APP_NAME}_V${APP_VERSION//./}_LinuxMint183_64bit
+FILE_NAME=${APP_NAME}_V${APP_VERSION//./}_LinuxMint193_64bit
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
