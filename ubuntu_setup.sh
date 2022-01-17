@@ -26887,14 +26887,9 @@ rm -rf /tmp/${_APP_NAME}*
 # Install Restish Golang-based command-line REST API client from package
 # https://rest.sh
 APP_NAME=Restish
-APP_VERSION=0.4.5
+APP_VERSION=0.9.2
 APP_EXT=tar.gz
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x86_64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=i386
-fi
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${ARCH_TYPE}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/danielgtaylor/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
