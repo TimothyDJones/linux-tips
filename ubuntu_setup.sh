@@ -4008,22 +4008,25 @@ sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Komodo Edit editor from package
+# Install Komodo Edit full-featured editor supporting variety of programming languages from package
 APP_NAME=Komodo-Edit
-APP_VERSION_MAJOR=11.0.1
-APP_VERSION_MINOR=18119
+APP_GUI_NAME="Full-featured editor supporting variety of programming languages."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Editor;IDE"
+APP_VERSION=12.0.1-18441
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=x86
 fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://downloads.activestate.com/Komodo/releases/${APP_VERSION_MAJOR}/${APP_NAME}-${APP_VERSION_MAJOR}-${APP_VERSION_MINOR}-linux-${ARCH_TYPE}.${APP_EXT}
+FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://downloads.activestate.com/Komodo/releases/12.0.1/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION_MAJOR}-${APP_VERSION_MINOR}-linux-${ARCH_TYPE}
-sudo ./install.sh /opt/komodo-edit
-sudo ln -s /opt/komodo-edit/bin/komodo /usr/local/bin/komodo
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo /tmp/${FILE_NAME}/install.sh /opt/${APP_NAME,,}
+sudo ln -s /opt/${APP_NAME,,}/bin/komodo /usr/local/bin/komodo
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
