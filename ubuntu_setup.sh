@@ -33499,3 +33499,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/tea
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install keynav keyboard pointer navigation tool from source
+APP_NAME=keynav
+APP_GUI_NAME="Keyboard pointer navigation tool."
+APP_VERSION=master
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libcairo2-dev libxinerama-dev libxdo-dev libxrandr-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jordansissel/${APP_NAME,,}/archive/refs/heads/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
