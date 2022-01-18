@@ -3003,11 +3003,11 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Only Office Desktop Editor from package
 APP_NAME=onlyoffice-desktopeditors
-APP_VERSION=5.6
+APP_VERSION=7.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${KERNEL_TYPE}
 source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ze|ar|bi)$ ]]; then
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ze|ar|bi|co|di|eo|fo|gr|hi)$ ]]; then
 	DISTRIB_RELEASE=16
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(vi|wi)$ ]]; then
 	DISTRIB_RELEASE=14
