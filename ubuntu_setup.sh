@@ -3279,14 +3279,16 @@ sudo ln -s /opt/${APP_NAME}/${APP_NAME}.py /usr/local/bin/${APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Monitorix system monitoring utility from package
-APP_NAME=monitorix
-APP_VERSION=3.10.1
+# Install Monitorix system monitoring utility from Debian package
+# https://www.monitorix.org/
+APP_NAME=Monitorix
+APP_VERSION=3.14.0
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.{APP_NAME,,}.org/{APP_NAME,,}_{APP_VERSION}-izzy1_all.deb
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-izzy1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://apt.izzysoft.de/ubuntu/dists/generic/index.php?file=${FILE_NAME}.${APP_EXT};dirnum=1
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Notes note-taking application from package
 APP_NAME=notes
