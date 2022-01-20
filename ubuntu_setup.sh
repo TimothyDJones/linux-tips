@@ -23865,7 +23865,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Shutter Encoder cross-platform audio/video encoder/converter from Debian package
 APP_NAME="Shutter Encoder"
 APP_GUI_NAME="Cross-platform audio/video encoder/converter."
-APP_VERSION=15.7
+APP_VERSION=15.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME// /%20}%20"("Linux%20Version%20${APP_VERSION}")"
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.shutterencoder.com/${FILE_NAME}.${APP_EXT}
