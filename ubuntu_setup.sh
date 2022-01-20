@@ -4941,7 +4941,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Angry IP Scanner from package
 APP_NAME=ipscan
-APP_VERSION=3.7.6
+APP_VERSION=3.8.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
