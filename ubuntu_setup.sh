@@ -595,7 +595,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.153.5.0
+APP_VERSION=1.155.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.fosshub.com/${APP_NAME}.html "https://www.fosshub.com/${APP_NAME}.html?dwl=${FILE_NAME}.${APP_EXT}"
@@ -1054,7 +1054,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=12.0
+APP_VERSION=12.1.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1531,7 +1531,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4436
+APP_VERSION=4.3-4455
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2246,7 +2246,7 @@ xdg-open http://localhost/${APP_NAME}/setup.php &
 
 # Install ProjeQtor web-based project management tool
 APP_NAME=projeqtor
-APP_VERSION=9.4.1
+APP_VERSION=9.4.2
 APP_EXT=zip
 DB_NAME=projeqtor
 DB_USER=projeqtor
@@ -3003,11 +3003,11 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Only Office Desktop Editor from package
 APP_NAME=onlyoffice-desktopeditors
-APP_VERSION=5.6
+APP_VERSION=7.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${KERNEL_TYPE}
 source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ze|ar|bi)$ ]]; then
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ze|ar|bi|co|di|eo|fo|gr|hi)$ ]]; then
 	DISTRIB_RELEASE=16
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(vi|wi)$ ]]; then
 	DISTRIB_RELEASE=14
@@ -3279,14 +3279,16 @@ sudo ln -s /opt/${APP_NAME}/${APP_NAME}.py /usr/local/bin/${APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Monitorix system monitoring utility from package
-APP_NAME=monitorix
-APP_VERSION=3.10.1
+# Install Monitorix system monitoring utility from Debian package
+# https://www.monitorix.org/
+APP_NAME=Monitorix
+APP_VERSION=3.14.0
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.{APP_NAME,,}.org/{APP_NAME,,}_{APP_VERSION}-izzy1_all.deb
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-izzy1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://apt.izzysoft.de/ubuntu/dists/generic/index.php?file=${FILE_NAME}.${APP_EXT};dirnum=1
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Notes note-taking application from package
 APP_NAME=notes
@@ -4008,22 +4010,25 @@ sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Komodo Edit editor from package
+# Install Komodo Edit full-featured editor supporting variety of programming languages from package
 APP_NAME=Komodo-Edit
-APP_VERSION_MAJOR=11.0.1
-APP_VERSION_MINOR=18119
+APP_GUI_NAME="Full-featured editor supporting variety of programming languages."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Editor;IDE"
+APP_VERSION=12.0.1-18441
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
 	ARCH_TYPE=x86
 fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://downloads.activestate.com/Komodo/releases/${APP_VERSION_MAJOR}/${APP_NAME}-${APP_VERSION_MAJOR}-${APP_VERSION_MINOR}-linux-${ARCH_TYPE}.${APP_EXT}
+FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://downloads.activestate.com/Komodo/releases/12.0.1/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION_MAJOR}-${APP_VERSION_MINOR}-linux-${ARCH_TYPE}
-sudo ./install.sh /opt/komodo-edit
-sudo ln -s /opt/komodo-edit/bin/komodo /usr/local/bin/komodo
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo /tmp/${FILE_NAME}/install.sh /opt/${APP_NAME,,}
+sudo ln -s /opt/${APP_NAME,,}/bin/komodo /usr/local/bin/komodo
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
@@ -4936,7 +4941,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Angry IP Scanner from package
 APP_NAME=ipscan
-APP_VERSION=3.7.6
+APP_VERSION=3.8.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -7714,9 +7719,9 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from package
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=2.15
+APP_VERSION=2.16
 APP_EXT=zip
-FILE_NAME=${APP_NAME}_V${APP_VERSION//./}_LinuxMint183_64bit
+FILE_NAME=${APP_NAME}_V${APP_VERSION//./}_LinuxMint193_64bit
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -8366,7 +8371,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Standard Notes Electron-based secure notepad from App Image
 APP_NAME=Standard-Notes
 APP_GUI_NAME="Electron-based secure notepad."
-APP_VERSION=3.9.13
+APP_VERSION=3.9.15
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=i386
@@ -10793,7 +10798,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Battle for Wesnoth high-fantasy themed adventure game from source
 APP_NAME=Wesnoth
 APP_GUI_NAME="High-fantasy themed adventure game."
-APP_VERSION=1.16.1
+APP_VERSION=1.16.2
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
@@ -13306,7 +13311,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Converseen Qt-based bulk image converting/resizing tool from source
 APP_NAME=Converseen
 APP_GUI_NAME="Qt-based bulk image converting/resizing tool."
-APP_VERSION=0.9.9.2
+APP_VERSION=0.9.9.4
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libmagick++-dev cmake qttools5-dev-tools qttools5-dev
@@ -18541,10 +18546,10 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # https://github.com/x-jrga/potatosql
 APP_NAME=PotatoSQL
 APP_GUI_NAME="Java-based database design and learning tool."
-APP_VERSION=4.0
+APP_VERSION=0.10
 APP_EXT=zip
-FILE_NAME=${APP_NAME}-${APP_VERSION//./}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME}-${APP_VERSION//0./}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xjrga/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -20493,7 +20498,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install TaskUnifier cross-platform, Electron-based GTD task manager from package
 APP_NAME=TaskUnifier
 APP_GUI_NAME="Cross-platform, Electron-based GTD task manager."
-APP_VERSION=1.2.10
+APP_VERSION=1.2.11
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-app-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -23845,7 +23850,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install MuWire cross-platform Java-based P2P client with anonymization features from package
 APP_NAME=MuWire
 APP_GUI_NAME="Cross-platform Java-based P2P client with anonymization features."
-APP_VERSION=0.8.10
+APP_VERSION=0.8.11
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://muwire.com/downloads/${FILE_NAME}.${APP_EXT}
@@ -23859,14 +23864,15 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Shutter Encoder cross-platform audio/video encoder/converter from Debian package
 APP_NAME="Shutter Encoder"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform audio/video encoder/converter."
-APP_VERSION=15.7
+APP_VERSION=15.8
 APP_EXT=deb
-FILE_NAME=${APP_NAME// /%20}%20"("Linux%20Version%20${APP_VERSION}")"
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.shutterencoder.com/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME// /%20}%20${APP_VERSION}%20Linux%2064bits
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+sudo rm -rf /tmp/${APP_NAME// /%20}*
 
 # Install Qt JSON diff GUI JSON viewer/comparer from source
 APP_NAME=QTjsonDiff
@@ -24256,7 +24262,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=9.0.6
+APP_VERSION=9.0.7
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -25236,7 +25242,7 @@ APP_NAME=navi
 APP_GUI_NAME="Interactive cheatsheet tool for the command-line and application launchers."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Productivity;Shell;"
-APP_VERSION=2.18.0
+APP_VERSION=2.19.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/denisidoro/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -26843,49 +26849,53 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install Veneta Viewer image viewer and image sequence player from package
-APP_NAME=Veneta-Viewer
+APP_NAME="Veneta Viewer"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Image viewer and image sequence player."
 APP_GUI_CATEGORIES="Graphics;Multimedia;"
 APP_GUI_KEYWORDS="Viewer"
-APP_VERSION=1.2.3
-APP_EXT=tar.gz
-FILE_NAME=Veneta_viewer_linux_x64
+APP_VERSION=1.3.1
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME// /}_Linux-${APP_VERSION}_X64
 sudo apt-get install -y ffmpeg libglew2.1 libfreeimage3
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo cp -R /tmp/${FILE_NAME}/build*/bin/* /opt/${APP_NAME,,}
-sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME//-} /usr/local/bin/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,}.desktop << EOF
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${_APP_NAME}
+cat > /tmp/${_APP_NAME} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+/opt/${_APP_NAME}/${APP_NAME// /} &
+cd \$HOME
+EOF
+sudo mv /tmp/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/usr/local/bin
-Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/opt/${APP_NAME,,}/bitmap/app_icon.xpm
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/opt/${_APP_NAME}/bitmap/app_icon.xpm
 Type=Application
 StartupNotify=true
 Terminal=false
 Categories=${APP_GUI_CATEGORIES}
 Keywords=${APP_GUI_KEYWORDS}
 EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}*
+rm -rf /tmp/${_APP_NAME}*
 
 # Install Restish Golang-based command-line REST API client from package
 # https://rest.sh
 APP_NAME=Restish
-APP_VERSION=0.4.5
+APP_VERSION=0.9.2
 APP_EXT=tar.gz
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x86_64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=i386
-fi
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${ARCH_TYPE}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/danielgtaylor/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -28028,7 +28038,7 @@ APP_NAME=Lagrange
 APP_GUI_NAME="Cross-platform desktop GUI client for browsing Geminispace."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Gemini;Browser"
-APP_VERSION=1.8.3
+APP_VERSION=1.10.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/skyjake/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -29219,7 +29229,7 @@ sudo apt-get install -y cdda2wav mkisofs cdrecord
 # Install CliFM CLI-based, ultra-lightweight, lightning fast, and written in C from source
 APP_NAME=CliFM
 APP_GUI_NAME="CLI-based, ultra-lightweight, lightning fast, and written in C."
-APP_VERSION=1.3
+APP_VERSION=1.4
 APP_EXT=tar.gz
 FILE_NAME=v${APP_VERSION}
 sudo apt-get install -y libcap-dev libacl1-dev 
@@ -31216,7 +31226,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform FFmpeg GUI for video and audio editing and other operations."
 APP_GUI_CATEGORIES="Multimedia;Entertainment;Audio;Video;"
 APP_GUI_KEYWORDS="Audio;Video;FFmpeg;Editing;"
-APP_VERSION=3.39.0
+APP_VERSION=3.42.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mifi/lossless-cut/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32329,7 +32339,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install System Monitoring Center Python/Gtk system performance and usage monitoring tool from Debian package
 # https://kod.pardus.org.tr/Hakan/system-monitoring-center
 APP_NAME="System Monitoring Center"
-APP_VERSION=1.0.0
+APP_VERSION=1.1.0
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}_${APP_VERSION}_amd64
@@ -33306,7 +33316,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="TCL-based GUI front-end to OpenSSL encryption methods."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="Security;Encryption;"
-APP_VERSION=1.01
+APP_VERSION=2.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -33493,3 +33503,28 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Alex313031/${APP_N
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install OnlyOffice Community Server office and collaboration suite from Debian package
+APP_NAME=OnlyOffice-CommunityServer
+APP_VERSION=11.6.0.1620
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/teamlab/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install keynav keyboard pointer navigation tool from source
+APP_NAME=keynav
+APP_GUI_NAME="Keyboard pointer navigation tool."
+APP_VERSION=master
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libcairo2-dev libxinerama-dev libxdo-dev libxrandr-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jordansissel/${APP_NAME,,}/archive/refs/heads/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
