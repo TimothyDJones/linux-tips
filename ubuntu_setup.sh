@@ -20609,7 +20609,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install miniserve Rust-based CLI tool to serve files and directories over HTTP from package
 APP_NAME=miniserve
 APP_GUI_NAME="Rust-based CLI tool to serve files and directories over HTTP."
-APP_VERSION=0.14.0
+APP_VERSION=0.18.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-x86_64
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/svenstaro/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
