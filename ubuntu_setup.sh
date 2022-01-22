@@ -19208,8 +19208,8 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Kiwix offline Wikipedia downloader/reader desktop client from AppImage
 APP_NAME=Kiwix
 APP_GUI_NAME="Offline Wikipedia downloader/reader desktop client."
-APP_VERSION=2.0.3
-APP_EXT=AppImage
+APP_VERSION=2.1.0
+APP_EXT=appimage
 FILE_NAME=${APP_NAME,,}-desktop_x86_64_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT,,}
 sudo mkdir -p /opt/${APP_NAME,,}
