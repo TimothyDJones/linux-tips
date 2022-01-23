@@ -656,7 +656,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Otter Browser cross-platform Qt5-based web browser with Opera 12.x-style UI from source
 APP_NAME=Otter-Browser
-APP_VERSION=1.0.81-dev400
+APP_VERSION=1.0.81-dev420
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qt5-default libqt5multimedia5 qtmultimedia5-dev libqt5xmlpatterns5-dev libqt5webkit5-dev libqt5svg5-dev qtwebengine5-dev qtdeclarative5-dev qml-module-qtgstreamer libqt5qml5 ibqt5gstreamer-dev libgstreamer1.0-dev gstreamer1.0-qt5 cmake  # Qt5 development packages needed to build from source
