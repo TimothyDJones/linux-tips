@@ -25944,7 +25944,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Keystore Explorer cross-platform, GUI replacement for Java keytool and jarsigner utilities from Debian package
 APP_NAME=Keystore-Explorer
-APP_VERSION=5.5.0
+APP_VERSION=5.5.1
 APP_EXT=deb
 FILE_NAME=kse_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kaikramer/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
