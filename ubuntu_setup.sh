@@ -33831,3 +33831,13 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install UnixTree XTree-style console file manager from Debian package
+APP_NAME=UnixTree
+APP_VERSION=3.0.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_VERSION}-1_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
