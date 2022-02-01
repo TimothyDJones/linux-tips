@@ -33871,3 +33871,19 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install far2l Linux port/fork of Windows Far Manager file manager from source
+APP_NAME=far2l
+APP_GUI_NAME="Linux port/fork of Windows Far Manager file manager."
+APP_VERSION=v_2.4.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y gawk m4 libwxgtk3.0-gtk3-dev libx11-dev libxi-dev libpcre3-dev libxerces-c-dev libspdlog-dev libuchardet-dev libssh-dev libssl-dev libsmbclient-dev libnfs-dev libneon27-dev libarchive-dev cmake g++
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/elfmz/${APP_NAME,,}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p build && cd build
+cmake -DUSEWX=yes -DPYTHON=yes -DCALC=yes -DCOLORER=yes -DCOMPARE=yes -DDRAWLINE=yes -DEDITORCOMP=yes -DFARFTP=yes -DINCSRCH=yes -DNETROCKS=yes -DSIMPLEINDENT=yes -DCMAKE_BUILD_TYPE=Release .. && make -j$(nproc --all) && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
