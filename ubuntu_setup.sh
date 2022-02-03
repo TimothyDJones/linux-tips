@@ -33938,3 +33938,20 @@ sudo chmod a+x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/wg
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install dvt command-line multi-purpose/function development tools utility from package
+APP_NAME=dvt
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Command-line multi-purpose/function development tools utility."
+APP_VERSION=1.0.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/ludovicianul/${APP_NAME,,}/releases/download/${APP_NAME,,}-${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${FILE_NAME}
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+dvt generate-completion >> ~/.config/dvt_autocomplete
+echo 'source $HOME/.config/dvt_autocomplete' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
