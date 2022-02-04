@@ -2244,23 +2244,45 @@ mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 mysql --host=localhost --user=webcollab --password=webcollab webcollab < ${WWW_HOME}/${APP_NAME}/db/schema_mysql_innodb.sql
 xdg-open http://localhost/${APP_NAME}/setup.php &
 
-# Install ProjeQtor web-based project management tool
-APP_NAME=projeqtor
-APP_VERSION=9.4.2
+# Install ProjeQtOr web-based project management tool from package
+APP_NAME=ProjeQtOr
+APP_GUI_NAME="Web-based project management tool."
+APP_GUI_CATEGORIES="Office;"
+APP_GUI_KEYWORDS="Project;Management;"
+APP_VERSION=9.4.3
 APP_EXT=zip
-DB_NAME=projeqtor
-DB_USER=projeqtor
-DB_PASSWORD=projeqtor
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/projectorria/${APP_NAME}V${APP_VERSION}.${APP_EXT}
+DB_NAME=${APP_NAME,,}
+DB_USER=${APP_NAME,,}
+DB_PASSWORD=${APP_NAME,,}
+FILE_NAME=${APP_NAME,,}V${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/projectorria/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,} ${WWW_HOME}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/* ${WWW_HOME}
 sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
 # Create database
-mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
-mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
+mysql -u root -proot -Bse "CREATE USER '${DB_USER}'@'%' IDENTIFIED WITH mysql_native_password BY '${DB_PASSWORD}';"
+mysql -u root -proot -Bse "GRANT USAGE ON *.* TO '${DB_USER}'@'%'; GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 xdg-open http://localhost/${APP_NAME,,}/ &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=xdg-open http://localhost/${APP_NAME,,}/
+Icon=${WWW_HOME}/${APP_NAME,,}/view/img/logoMedium.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install kgclock desktop clock
 APP_NAME=kgclock
