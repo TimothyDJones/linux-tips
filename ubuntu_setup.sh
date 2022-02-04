@@ -7619,7 +7619,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Pioneer space adventure game from package
 APP_NAME=Pioneer
 APP_GUI_NAME="Cross-platform space adventure game."
-APP_VERSION=20180203
+APP_VERSION=20220203
 APP_EXT=tar.bz2
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
