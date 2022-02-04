@@ -32723,7 +32723,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Microsoft Edge cross-platform web browser (stable branch) from Debian package
 APP_NAME="Microsoft Edge"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
-APP_VERSION=95.0.1020.40
+APP_VERSION=98.0.1108.43
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}-stable_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://packages.microsoft.com/repos/edge/pool/main/m/${_APP_NAME}-stable/${FILE_NAME}.${APP_EXT}
