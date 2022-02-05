@@ -13242,14 +13242,9 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Double Commander dual-pane canonical file manager from package
 APP_NAME=DoubleCmd
 APP_GUI_NAME="Dual-pane canonical file manager."
-APP_VERSION=1.0.3
+APP_VERSION=1.0.4
 APP_EXT=tar.xz
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x86_64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=i386
-fi
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}.qt5.${ARCH_TYPE}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.qt.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
