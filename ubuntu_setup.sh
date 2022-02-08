@@ -25638,7 +25638,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install duf (Disk Usage/Free Utility) GUI console disk usage utility from Debian package
 APP_NAME=duf
-APP_VERSION=0.8.0
+APP_VERSION=0.8.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_${KERNEL_TYPE//i/}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/muesli/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
