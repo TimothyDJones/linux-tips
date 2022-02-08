@@ -34025,3 +34025,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/muesli/${APP_NAME,
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Atlas Golang-based command-line multi-database management tool from package
+# https://github.com/ariga/atlas
+APP_NAME=Atlas
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Golang-based command-line multi-database management tool."
+APP_VERSION=0.3.3
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-amd64-v${APP_VERSION}
+curl -o /tmp/${FILE_NAME} -J -L https://release.ariga.io/atlas/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${FILE_NAME}
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
