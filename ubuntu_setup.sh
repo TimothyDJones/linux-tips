@@ -8124,7 +8124,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Flare SDL-based 2-D adventure RPG from source
 APP_NAME=Flare
 APP_GUI_NAME="SDL-based 2-D adventure RPG."
-APP_VERSION=1.13
+APP_VERSION=1.13.04
 APP_EXT=tar.gz
 sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev cmake
 curl -o /tmp/${APP_NAME,,}-engine.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-game/${APP_NAME,,}-engine-v${APP_VERSION}.${APP_EXT}
