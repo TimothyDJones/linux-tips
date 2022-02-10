@@ -34106,3 +34106,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Photo-Manager Java-based photo/image editor and manager from Debian package
+APP_NAME=Photo-Manager
+APP_GUI_NAME="Java-based photo/image editor and manager."
+APP_VERSION=1.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/dj-${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
