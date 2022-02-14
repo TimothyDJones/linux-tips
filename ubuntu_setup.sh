@@ -34161,3 +34161,34 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME// /%20}* /tmp/${_APP_NAME}*
+
+# Install Molasses cross-platform Gopher and Gemini browser from package
+APP_NAME=Molasses
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Gopher and Gemini browser."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Gopher;Gemini;Browser;"
+APP_VERSION=0.6.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jjsimpso/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION} /usr
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+#Path=
+Exec=/usr/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
