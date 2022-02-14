@@ -26038,7 +26038,7 @@ APP_NAME=Kanboard
 APP_GUI_NAME="PHP/SQLite-based project management tool based on Kanban methodology."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Kanban;Project Management;"
-APP_VERSION=1.2.21
+APP_VERSION=1.2.22
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}%20v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
