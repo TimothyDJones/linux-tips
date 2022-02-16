@@ -7741,7 +7741,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from package
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=2.18
+APP_VERSION=2.19
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_V${APP_VERSION//./}_LinuxMint193_64bit
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -12896,6 +12896,50 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install && sudo ldconfig
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Wipe Free Space GUI 2 Java GUI for free space eraser from package
+APP_NAME="Wipe Free Space GUI 2"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Java GUI for free space eraser."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Disk;Management;Security;"
+APP_VERSION=1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME// /}-${APP_VERSION}-bin
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME//gui2/}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://wipefreespace.sourceforge.io/img/wfs-icon.png
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME// /}-${APP_VERSION}/* /opt/${_APP_NAME}
+sudo cp /tmp/${_APP_NAME}.png /opt/${_APP_NAME}
+sudo chmod -R 777 /opt/${_APP_NAME}
+cat > /tmp/${_APP_NAME} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+java -jar -Duser.language=en -Duser.country=US /opt/${_APP_NAME}/dist/${APP_NAME// /}.jar &
+cd \$HOME
+EOF
+sudo mv /tmp/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/opt/${_APP_NAME}/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME}*
 
 # Install meo geo-aware journal and personal information manager (PIM) from AppImage
 APP_NAME=meo
@@ -21140,7 +21184,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install Delta language-enabled syntax-highlighting diff for Git from package
 APP_NAME=Delta
 APP_GUI_NAME="Language-enabled syntax-highlighting diff for Git."
-APP_VERSION=0.11.2
+APP_VERSION=0.12.0
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -24279,7 +24323,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=9.0.20-4
+APP_VERSION=9.0.21-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -26614,7 +26658,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install yq Golang-based command-line YAML processor from package
 APP_NAME=yq
-APP_VERSION=4.19.1
+APP_VERSION=4.20.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_${KERNEL_TYPE//i/}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/mikefarah/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
@@ -34192,3 +34236,77 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Rabbit Remote Control cross-platform remote control tool with support for VNC, RDP, SSH, Telnet, etc. from Debian package
+APP_NAME="Rabbit Remote Control"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform remote control tool with support for VNC, RDP, SSH, Telnet, etc."
+APP_VERSION=0.0.14
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo|go|hi)$ ]]; then # 20.04 and above
+	DISTRIB_VERSION=20.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di|eo)$ ]]; then # 18.04 - 19.10
+	DISTRIB_VERSION=18.04
+fi
+FILE_NAME=${_APP_NAME}_${APP_VERSION}_amd64_Ubuntu-${DISTRIB_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
+
+# Install BitLogic Java computer algebra calculator from package
+APP_NAME=BitLogic
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Java computer algebra calculator."
+APP_GUI_CATEGORIES="Science;Education;Accessories;"
+APP_GUI_KEYWORDS="Calculator;Math;"
+APP_VERSION=1.5.6
+APP_EXT=zip
+FILE_NAME=${APP_NAME//B/b}Arch_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/bitlogic/icon?51b9899c4a7194247f2845c2791f49c9680d6133d4f1328504ab5bc4ef714b54
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME//B/b}Arch/* /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo chmod -R 777 /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME//B/b}*
+
+# Install Min fast, minimal web browser focused on privacy/security from Debian package
+APP_NAME=Min
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Fast, minimal web browser focused on privacy/security."
+APP_VERSION=1.23.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
