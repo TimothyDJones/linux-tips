@@ -34254,3 +34254,47 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${_APP_NAME}*
+
+# Install BitLogic Java computer algebra calculator from package
+APP_NAME=BitLogic
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Java computer algebra calculator."
+APP_GUI_CATEGORIES="Science;Education;Accessories;"
+APP_GUI_KEYWORDS="Calculator;Math;"
+APP_VERSION=1.5.6
+APP_EXT=zip
+FILE_NAME=${APP_NAME//B/b}Arch_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/bitlogic/icon?51b9899c4a7194247f2845c2791f49c9680d6133d4f1328504ab5bc4ef714b54
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/${APP_NAME//B/b}Arch/* /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo chmod -R 777 /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME//B/b}*
