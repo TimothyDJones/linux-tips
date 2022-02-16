@@ -34236,3 +34236,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Rabbit Remote Control cross-platform remote control tool with support for VNC, RDP, SSH, Telnet, etc. from Debian package
+APP_NAME="Rabbit Remote Control"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform remote control tool with support for VNC, RDP, SSH, Telnet, etc."
+APP_VERSION=0.0.14
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo|go|hi)$ ]]; then # 20.04 and above
+	DISTRIB_VERSION=20.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di|eo)$ ]]; then # 18.04 - 19.10
+	DISTRIB_VERSION=18.04
+fi
+FILE_NAME=${_APP_NAME}_${APP_VERSION}_amd64_Ubuntu-${DISTRIB_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
