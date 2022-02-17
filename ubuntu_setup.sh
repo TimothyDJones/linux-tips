@@ -34256,7 +34256,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Java computer algebra calculator."
 APP_GUI_CATEGORIES="Science;Education;Accessories;"
 APP_GUI_KEYWORDS="Calculator;Math;"
-APP_VERSION=1.5.6
+APP_VERSION=1.5.7
 APP_EXT=zip
 FILE_NAME=${APP_NAME//B/b}Arch_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
