@@ -31861,14 +31861,14 @@ cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
 # Install Annie Golang-based command-line video download tool from package
-APP_NAME=Annie
+APP_NAME=Lux
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based command-line video download tool."
-APP_VERSION=0.11.0
+APP_VERSION=0.13.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(getconf LONG_BIT)-bit
 sudo apt-get install -y ffmpeg
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/annie.mirror/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
