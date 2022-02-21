@@ -12699,7 +12699,7 @@ cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME}
 PATH=/opt/${APP_NAME}:\$PATH; export PATH
-java -jar /opt/${APP_NAME}/${APP_NAME}.jar
+java -jar /opt/${APP_NAME}/${APP_NAME}_64.jar
 cd $HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
