@@ -18552,7 +18552,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install ripgrep command-line file search tool that recursively traverses directory structure from Debian package
 APP_NAME=ripgrep
 APP_GUI_NAME="Command-line file search tool that recursively traverses directory structure."
-APP_VERSION=11.0.1
+APP_VERSION=13.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/BurntSushi/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
