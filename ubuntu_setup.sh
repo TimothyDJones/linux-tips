@@ -34584,3 +34584,45 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Code Master cross-platform, Java-based Mastermind game from package
+APP_NAME="Code Master"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '_')
+APP_GUI_NAME="Cross-platform, Java-based Mastermind game."
+APP_GUI_CATEGORIES="Games;"
+APP_GUI_KEYWORDS="Puzzle;Mastermind;"
+APP_VERSION=3.2.1
+APP_EXT=zip
+FILE_NAME=${_APP_NAME}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME//_/-}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${_APP_NAME}
+sudo chmod -R 777 /opt/${_APP_NAME}
+cat > /tmp/${_APP_NAME//_/-} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+java -jar /opt/${_APP_NAME}/${_APP_NAME//_/}.jar $* &
+cd \$HOME
+EOF
+sudo mv /tmp/${_APP_NAME//_/-} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME//_/-}
+cat > /tmp/${_APP_NAME//_/-}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/usr/local/bin/${_APP_NAME//_/-}
+Icon=/opt/code_master/src/codemaster/ui/images/${_APP_NAME//_/}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME//_/-}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME//_/-}* /tmp/${_APP_NAME}*
