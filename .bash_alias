@@ -340,3 +340,25 @@ epoch2date() {
 	
 	\date -d @"$1" --rfc-3339=seconds
 }
+
+# Create and attach to new tmux session with specified parameters.
+# Defaults to session named "new" in ${HOME} directory with window
+# named "main".
+#
+# https://tech.serhatteker.com/post/2022-02/tmux-new-session/
+#
+# Usage:
+#   $ tnew
+#   $ tnew remote ~/path/to/dir
+#   $ tnew remote ~/path/to/dir window_name
+tnew() {
+	local session_name="${1:-new}"
+	local session-dir=${2:-~/}
+	local session_window_name="${3:-main}"
+	
+	tmux new-session \
+		-d \
+		-s ${session_name} \
+		-c ${session_dir} \
+		-n ${session_window_name}
+}
