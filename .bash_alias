@@ -353,7 +353,7 @@ epoch2date() {
 #   $ tnew remote ~/path/to/dir window_name
 tnew() {
 	local session_name="${1:-new}"
-	local session-dir=${2:-~/}
+	local session_dir=${2:-~/}
 	local session_window_name="${3:-main}"
 	
 	tmux new-session \
