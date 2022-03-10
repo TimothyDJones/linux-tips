@@ -34591,7 +34591,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '_')
 APP_GUI_NAME="Cross-platform, Java-based Mastermind game."
 APP_GUI_CATEGORIES="Games;"
 APP_GUI_KEYWORDS="Puzzle;Mastermind;"
-APP_VERSION=3.2.1
+APP_VERSION=3.2.2
 APP_EXT=zip
 FILE_NAME=${_APP_NAME}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME//_/-}/${FILE_NAME}.${APP_EXT}
