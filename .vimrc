@@ -1,5 +1,8 @@
 set nocompatible        " Disable Vi compatibility to allow Vim advanced features
 
+" Allow saving of files as sudo, if forgot to run using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 " Enable 256 colors
 set t_Co=256
 
