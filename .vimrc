@@ -13,6 +13,7 @@ set number relativenumber
 set textwidth=80
 highlight ColorColumn ctermbg=LightGrey guibg=LightGrey
 set colorcolumn=80
+set wrap
 
 " Change color of line numbers for easier reading
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
