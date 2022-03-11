@@ -34659,3 +34659,35 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Simple Wallpaper Changer cross-platform, Electron-based desktop wallpaper manager from package
+APP_NAME="Simple Wallpaper Changer"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Electron-based desktop wallpaper manager."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Wallpaper;"
+APP_VERSION=1.1.1
+APP_EXT=zip
+FILE_NAME=linux_zip-${_APP_NAME}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -R /tmp/${FILE_NAME}/${_APP_NAME}*/* /opt/${_APP_NAME}
+sudo chmod -R 777 /opt/${_APP_NAME}
+sudo ln -s -f /opt/${_APP_NAME}/${_APP_NAME} /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/opt/${_APP_NAME}/resources/app/src/assets/logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME//_/-}* /tmp/${_APP_NAME}*
