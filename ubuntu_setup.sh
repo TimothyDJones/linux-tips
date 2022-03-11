@@ -9293,10 +9293,10 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install BlueGriffon cross-platform EPUB and web editor/IDE from package
+# Install BlueGriffon cross-platform EPUB and web editor/IDE from Debian package
 APP_NAME=BlueGriffon
 APP_GUI_NAME="Cross-platform EPUB and web editor/IDE."
-APP_VERSION=3.0.1
+APP_VERSION=3.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.Ubuntu16.04-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://${APP_NAME,,}.org/freshmeat/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
