@@ -34691,3 +34691,13 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME//_/-}* /tmp/${_APP_NAME}*
+
+# Install Mailspring cross-platform, fast, lean e-mail client from Debian package
+APP_NAME=Mailspring
+APP_VERSION=1.10.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
