@@ -34701,3 +34701,17 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Macchina Rust-based command-line system information tool from package
+APP_NAME=Macchina
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust-based command-line system information tool."
+APP_VERSION=6.0.6
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/${APP_NAME}-CLI/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${FILE_NAME}
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
