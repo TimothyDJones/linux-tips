@@ -34730,3 +34730,18 @@ sudo cp /tmp/${FILE_NAME}/${_APP_NAME} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${_APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install lfs Rust-based command-line Linux file system information utility from package
+APP_NAME=lfs
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Rust-based command-line Linux file system information utility."
+APP_VERSION=2.5.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/build/x86_64-unknown-linux-musl/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
