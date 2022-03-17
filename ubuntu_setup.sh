@@ -9004,24 +9004,11 @@ rm -rf /tmp/${APP_NAME,,}
 # https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
 APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
-APP_VERSION=7.2.1
+APP_VERSION=7.2.2
 APP_EXT=deb
-source /etc/lsb-release
-# PowerShell is only supported on LTS releases
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo|bi|xe)$ ]]; then
-	curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}-1.ubuntu.${DISTRIB_RELEASE}_amd64.${APP_EXT}
-	sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
-else
-	echo "Your version (" ${DISTRIB_RELEASE} ") of Ubuntu does not support installing PowerShell from package.  We will install from binary distribution."
-	sudo apt-get install -y libunwind8 libicu*
-	curl -o /tmp/${APP_NAME,,}.tar.gz https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME,,}-${APP_VERSION}-linux-x64.tar.gz
-	cd /tmp
-	dtrx -n /tmp/${APP_NAME,,}.tar.gz
-	sudo mv /tmp/${APP_NAME,,} /opt
-	sudo chmod +x /opt/${APP_NAME,,}/pwsh
-	sudo ln -s /opt/${APP_NAME,,}/pwsh /usr/local/bin/pwsh
-	sudo ln -s /opt/${APP_NAME,,}/pwsh /usr/local/bin/powershell
-fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1.${APP_EXT}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
