@@ -20681,7 +20681,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Ag cross-platform, GTK-based GUI and command-line anagram generator from package
 APP_NAME=Ag
 APP_GUI_NAME="Cross-platform, GTK-based GUI and command-line anagram generator."
-APP_VERSION=1.2
+APP_VERSION=1.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-gtk
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}1/${FILE_NAME}.${APP_EXT}
