@@ -34969,3 +34969,48 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Ward Java lightweight GUI system monitoring tool from package
+APP_NAME=Ward
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Java lightweight GUI system monitoring tool."
+APP_GUI_CATEGORIES="System;"
+APP_GUI_KEYWORDS="Monitoring;"
+APP_VERSION=2.1.7
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/AntonyLeons/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.ico -J -L https://raw.githubusercontent.com/AntonyLeons//${APP_NAME}/main/src/main/resources/static/img/ico/favicon.ico
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}* /opt/${APP_NAME,,}
+sudo chmod -R 777 /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+WARD_NAME=localhost
+WARD_THEME=light
+WARD_PORT=4000
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} &
+xdg-open http://localhost:4000/
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
