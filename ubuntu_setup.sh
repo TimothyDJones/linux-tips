@@ -18035,7 +18035,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Etcher cross-platform, Electron-based tool for writing ISO images to SD cards/USB drives from Debian package
 APP_NAME=Etcher
 APP_GUI_NAME="Cross-platform, Electron-based tool for writing ISO images to SD cards/USB drives."
-APP_VERSION=1.5.19
+APP_VERSION=1.7.8
 APP_EXT=deb
 FILE_NAME=balena-${APP_NAME,,}-electron_${APP_VERSION}_${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/balena-io/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
