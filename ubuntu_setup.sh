@@ -31060,7 +31060,7 @@ APP_NAME="FTP Rush"
 APP_GUI_NAME="Cross-platform, free FTP/SFTP/FTPS and cloud storage client."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="FTP;Cloud;"
-APP_VERSION=3.4.0
+APP_VERSION=3.5.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME// /}_linux
 # Convert APP_NAME to all lowercase and remove whitespace using 'tr'
