@@ -26647,7 +26647,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install yq Golang-based command-line YAML processor from package
 APP_NAME=yq
-APP_VERSION=4.23.1
+APP_VERSION=4.24.2
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_${KERNEL_TYPE//i/}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/mikefarah/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
