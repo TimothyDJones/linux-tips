@@ -35024,3 +35024,18 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+# Install warpd modal X/Windows keyboard driven interface for cursor manipulation from source
+APP_NAME=warpd
+APP_GUI_NAME="Modal X/Windows keyboard driven interface for cursor manipulation."
+APP_VERSION=v1.0.2-beta
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y libxi-dev libxinerama-dev libxft-dev libxfixes-dev libxtst-dev libx11-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rvaiya/${APP_NAME,,}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}*
+make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
