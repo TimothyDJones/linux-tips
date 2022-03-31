@@ -12,6 +12,13 @@ function find_big_files() {
     find . -size +"$1" -type f -print0 | xargs -0 ls -Ssh | sort -z
 }
 
+# Emulate the "pbcopy" and "pbpaste" commands from Mac OS X
+if ! [ -x "$(command -v xclip)" ]; then
+    sudo apt install -y xclip
+fi
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
 # Colorize output of man command
 # http://tuxdiary.com/2016/06/16/color-man-pages/#more-27324
 function man() {
@@ -161,6 +168,10 @@ alias mkdir='mkdir -pv'
 alias top='htop'
 alias apt-version='apt-cache madison'
 alias more='less'
+
+# Copy public and private SSH keys to clipboard
+alias pubkey="more ~/.ssh/id_ed25519.pub | pbcopy | echo ' => Public key copied to clipboard.'"
+alias prikey="more ~/.ssh/id_ed25519 | pbcopy | echo ' => Private key copied to clipboard.'"
 
 # Colorize output of ip command
 alias ip='ip -c'
