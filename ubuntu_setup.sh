@@ -34500,7 +34500,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Universal application store with support for AppImage, FlatPak, and Snaps."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Package;"
-APP_VERSION=2.0.3
+APP_VERSION=2.1.0
 APP_EXT=tar.gz
 FILE_NAME=${_APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${_APP_NAME}/${_APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
