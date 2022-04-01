@@ -130,6 +130,9 @@ set scrolloff=4
 nnoremap <C-s> :w<cr>
 inoremap <C-s> <esc>:w<cr>
 
+" Remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
 " Make cursor behave as expected for long lines
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
