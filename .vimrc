@@ -7,7 +7,7 @@ cmap w!! w !sudo tee > /dev/null %
 set t_Co=256
 
 " Show line numbers
-set number relativenumber
+set number relativenumber numberwidth=5
 
 " Wrap text after 80 characters and highlight column 80
 set textwidth=80
