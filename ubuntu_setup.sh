@@ -34193,7 +34193,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Gopher and Gemini browser."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Gopher;Gemini;Browser;"
-APP_VERSION=0.6.4
+APP_VERSION=0.6.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jjsimpso/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
