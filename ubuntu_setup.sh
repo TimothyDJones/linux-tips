@@ -23085,17 +23085,17 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Armagetron Advanced cross-platform SDL-based 3D Tron lightcycle game from source
 APP_NAME=ArmagetronAd
 APP_GUI_NAME="Cross-platform SDL-based 3D Tron lightcycle game."
-APP_VERSION=0.2.8.3.5
-APP_EXT=tar.bz2
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}.src
+APP_VERSION=0.2.9.1.0
+APP_EXT=tbz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install build-essential libxml2-dev libsdl1.2-dev libsdl2-dev libsdl-image1.2-dev libjpeg8-dev -y
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
+cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 sudo ln -s -f /usr/local/share/games/${APP_NAME,,}/desktop/large/${APP_NAME,,}.png /usr/share/applications/${APP_NAME,,}.png
-sudo ln -s -f /usr/local/share/games/${APP_NAME,,}/desktop/${APP_NAME,,}.desktop /usr/share/applications/${APP_NAME,,}.desktop
+sudo ln -s -f /usr/local/share/games/${APP_NAME,,}/desktop/*${APP_NAME,,}.desktop /usr/share/applications/${APP_NAME,,}.desktop
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
