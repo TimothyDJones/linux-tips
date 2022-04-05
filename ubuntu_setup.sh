@@ -3414,17 +3414,13 @@ sudo apt-get install -y smuxi
 # Install Textadept minimalist cross-platform text editor from package
 APP_NAME=Textadept
 APP_GUI_NAME="Minimalist cross-platform text editor"
-APP_VERSION=10.8
+APP_VERSION=11.3
 APP_EXT=tgz
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x86_64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=i386
-fi
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}.${ARCH_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://foicica.com/${APP_NAME,,}/download/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/orbitalquark/${APP_NAME,,}/releases/download/textadept_${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 sudo ln -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
