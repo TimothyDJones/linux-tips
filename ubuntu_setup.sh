@@ -2605,36 +2605,68 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Franz messenger consolidator tool
+# Install Franz messenger consolidator tool from AppImage
 APP_NAME=Franz
-APP_VERSION=4.0.4
-APP_EXT=tgz
-	if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
-		ARCH_TYPE=x64
-	else    # Otherwise use version for 32-bit kernel
-		ARCH_TYPE=ia32
-	fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/meetfranz/franz-app/releases/download/${APP_VERSION}/${APP_NAME}-linux-${ARCH_TYPE}-${APP_VERSION}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo mv franz /opt
+APP_GUI_CATEGORIES="Accessories;Internet;"
+APP_GUI_KEYWORDS="Messenger;Chat;"
+APP_VERSION=5.9.1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/meetfranz/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/meetfranz/${APP_NAME,,}/master/build-helpers/images/icon.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
-Name=Franz
-Comment=Cross-platform message consolidation tool
-GenericName=Messenger
-Exec=/opt/${APP_NAME,,}/${APP_NAME}
-#Icon=/opt/${APP_NAME}/themes/default/wicon.xbm
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
-Terminal=true
-Categories=Accessories;Internet;
-Keywords=Messenger;Chat;
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-sudo ln -s /opt/${APP_NAME,,}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
+
+APP_NAME=PsTube
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Electron-based desktop email client."
+APP_GUI_CATEGORIES="Accessories;Internet;"
+APP_GUI_KEYWORDS="Messenger;Chat;"
+APP_VERSION=2.0.0
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/prateekmedia/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://github.com/meetfranz/${APP_NAME,,}/blob/master/build-helpers/images/icon.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Sciter Notes notepad utility
 APP_NAME=sciter-notes
