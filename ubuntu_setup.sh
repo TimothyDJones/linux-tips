@@ -709,16 +709,17 @@ mkdir $HOME/google-drive   # Create directory to use as mount point for Google D
 google-drive-ocamlfuse $HOME/google-drive  # Mount Google Drive to folder.
 
 # Install MuPDF PDF viewer from source.
-# Install pre-requisite development packages.
 APP_NAME=MuPDF
-APP_VERSION=1.19.0
+APP_VERSION=1.19.1
 APP_EXT=tar.xz
-sudo apt-get install -y libjbig2dec0-dev libfreetype6-dev libftgl-dev libjpeg-dev libopenjp2-7-dev zlib1g-dev xserver-xorg-dev mesa-common-dev libgl1-mesa-dev libxcursor-dev libxrandr-dev libxinerama-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://mupdf.com/downloads/${APP_NAME,,}-${APP_VERSION}-source.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-source
+sudo apt install -y libjbig2dec0-dev libfreetype6-dev libftgl-dev libjpeg-dev libopenjp2-7-dev zlib1g-dev xserver-xorg-dev mesa-common-dev libgl1-mesa-dev libxcursor-dev libxrandr-dev libxinerama-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://mupdf.com/downloads/archive/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}-source
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 make && sudo make prefix=/usr/local install
+sudo ln -s /usr/local/bin/mupdf-gl /usr/local/bin/mupdf
 # Create icon in menus
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
@@ -734,7 +735,6 @@ Categories=Utility;Office;
 Keywords=PDF;
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-sudo ln -s /usr/local/bin/mupdf-gl /usr/local/bin/mupdf
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
