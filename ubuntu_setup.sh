@@ -16909,7 +16909,7 @@ sudo chmod -R a+w /opt/${APP_NAME,,}
 # Install Kitchen Garden Aid Java-based garden/small farm planning/layout tool from package
 APP_NAME="Kitchen Garden Aid"
 APP_GUI_NAME="Java-based garden/small farm planning/layout tool."
-APP_VERSION=2.2.12
+APP_VERSION=3.0.1
 APP_EXT=tgz
 FILE_NAME=${APP_NAME// /}-Linux-${APP_VERSION}
 sudo apt-get install -y openjdk-11-jre openjfx
