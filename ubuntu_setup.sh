@@ -35199,3 +35199,45 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME// /}* /tmp/${_APP_NAME}*
+
+# Install JMusicPlayer Java lightweight GUI music player from package
+APP_NAME=JMusicPlayer
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Java lightweight GUI music player."
+APP_GUI_CATEGORIES="Multimedia;Audio;"
+APP_GUI_KEYWORDS="Music;Player;Audio;"
+APP_VERSION=20220411
+APP_EXT=7z
+FILE_NAME=${APP_VERSION}.${APP_NAME}.v1.0
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}2/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod -R 777 /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}/_binary:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/_binary/${APP_NAME,,}-main-v1.0-SNAPSHOT-all.jar &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/_source/apps/music/player/v1.0/JMusicPlayer/src/main/resources/com/frojasg1/applications/jmusicplayer/resources/play.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
