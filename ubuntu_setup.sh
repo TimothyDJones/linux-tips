@@ -18920,17 +18920,15 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
 # Install Fractal Zoomer Java-based fractal generator and explorer tool from package
-# https://github.com/x-jrga/potatosql
 APP_NAME=FractalZoomer
 APP_GUI_NAME="Java-based fractal generator and explorer tool."
-APP_VERSION=1.0.8.0
+APP_VERSION=1.0.8.1
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/Fractal%20Zoomer.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
 sudo chmod -R a+w /opt/${APP_NAME,,}
-
 cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
