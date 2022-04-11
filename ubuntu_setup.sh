@@ -251,6 +251,11 @@ dtrx -n /tmp/Hasklig-1.2.zip
 mkdir -p /usr/local/share/fonts/hasklig
 sudo cp -R /tmp/Hasklig-1.2/OTF/* /usr/local/share/fonts/hasklig
 sudo cp -R /tmp/Hasklig-1.2/TTF/* /usr/local/share/fonts/hasklig
+curl -o /tmp/martian-mono-0.9.0-otf.zip -J -L https://github.com/evilmartians/mono/releases/download/v0.9.0/martian-mono-0.9.0-otf.zip
+cd /tmp
+dtrx -n /tmp/martian-mono-0.9.0-otf.zip
+sudo mkdir -p /usr/local/share/fonts/martianmono
+sudo cp -R /tmp/martian-mono-0.9.0-otf/*.otf /usr/local/share/fonts/martianmono
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
