@@ -28982,7 +28982,7 @@ sudo rm -rf /tmp/*${APP_NAME,,}* /tmp/${APP_NAME}
 # Install Nushell Rust-based minimalist shell from package
 APP_NAME=nu
 APP_GUI_NAME="Rust-based minimalist shell."
-APP_VERSION=0.60.0
+APP_VERSION=0.61.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION//./_}_linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nushell/nushell/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
