@@ -11095,7 +11095,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Pixelitor cross-platform, Java-based image editor from package
 APP_NAME=Pixelitor
 APP_GUI_NAME="Cross-platform, Java-based image editor."
-APP_VERSION=4.2.2
+APP_VERSION=4.3.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
