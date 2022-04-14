@@ -3100,10 +3100,10 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install CopyMastro file move/copy utility
+# Install CopyMastro file move/copy utility from package
 APP_NAME=CopyMastro
 APP_GUI_NAME="File move/copy utility."
-APP_VERSION=4.2.3
+APP_VERSION=4.2.8
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt5-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
