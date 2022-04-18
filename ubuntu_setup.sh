@@ -35293,3 +35293,15 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}* /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Whinny Rust-based command-line minimalist system information tool from package
+APP_NAME=Whinny
+APP_GUI_NAME="Rust-based command-line minimalist system information tool."
+APP_VERSION=1.0.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}.unix.executable
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/dankthropod/${APP_NAME,,}/releases/download/v1.0.0/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
