@@ -3470,22 +3470,27 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install myNetPCB Java-based PCB layout and schematic capture tool
+# Install myNetPCB Java-based PCB layout and schematic capture tool from package
 APP_NAME=myNetPCB
-APP_VERSION=8.5
+APP_VERSION=8.7
 APP_EXT=zip
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}_${APP_VERSION//./_}.${APP_EXT}
+FILE_NAME=${APP_NAME}_${APP_VERSION//./_}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/mynetpcb/icon?1621505490
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,} /opt
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/bin/${APP_NAME}.sh
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=Java-based PCB layout and schematic capture tool
 GenericName=${APP_NAME}
-Exec=sh /opt/${APP_NAME,,}/bin/${APP_NAME}.sh
-#Icon=
-Path=/opt/${APP_NAME,,}/bin
+Exec=/opt/${APP_NAME,,}/bin/${APP_NAME}.sh
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Path=/opt/${APP_NAME,,}/bin;/opt/${APP_NAME,,}/lib
 Type=Application
 StartupNotify=true
 Terminal=false
