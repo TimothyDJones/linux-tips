@@ -23904,7 +23904,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install MuWire cross-platform Java-based P2P client with anonymization features from package
 APP_NAME=MuWire
 APP_GUI_NAME="Cross-platform Java-based P2P client with anonymization features."
-APP_VERSION=0.8.11
+APP_VERSION=0.8.12
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://muwire.com/downloads/${FILE_NAME}.${APP_EXT}
