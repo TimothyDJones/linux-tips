@@ -9904,7 +9904,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Balena Etcher cross-platform Electron-based tool to copy OS images to USB drives from Debian package
 APP_NAME=Balena-Etcher
 APP_GUI_NAME="Cross-platform Electron-based tool to copy OS images to USB drives."
-APP_VERSION=1.7.8
+APP_VERSION=1.7.9
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-electron_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/balena-io/etcher/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
