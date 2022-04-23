@@ -4581,7 +4581,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.35.0
+APP_VERSION=1.36.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}-1_${KERNEL_TYPE}
 sudo apt-get install -y libgdk-pixbuf2.0-0
