@@ -8513,7 +8513,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install SC Calculator cross-platform scientific calculator implemented in C++, Java, and JavaScript from package
 APP_NAME=SCCalculator
 APP_GUI_NAME="Cross-platform scientific calculator implemented in C++, Java, and JavaScript."
-APP_VERSION=1.20
+APP_VERSION=1.22
 APP_EXT=zip
 FILE_NAME=calculator${APP_VERSION}
 sudo apt-get install -y openjdk-11-jre
