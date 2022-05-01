@@ -35473,3 +35473,9 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/man8/* /usr/share/man/man
 sudo chmod +x /usr/local/bin/${APP_NAME,,}*
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install StackAndConquer tower conquest board game from PPA
+# https://github.com/ElTh0r0/stackandconquer
+sudo add-apt-repository -y ppa:elthoro/stackandconquer
+sudo apt update -y
+sudo apt install -y stackandconquer
