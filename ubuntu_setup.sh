@@ -19174,7 +19174,7 @@ rm -rf /tmp/*${APP_NAME}*
 
 # Install phpIPAM open-source PHP/MySQL-based IP address management tool (manual installation)
 APP_NAME=phpIPAM
-APP_VERSION=1.4
+APP_VERSION=1.5
 APP_EXT=tar
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
