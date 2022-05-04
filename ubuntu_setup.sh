@@ -35777,3 +35777,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Monotty Desktopio terminal multiplexer with window manager and session sharing from package
+APP_NAME=VTM
+APP_GUI_NAME="Terminal multiplexer with window manager and session sharing."
+APP_VERSION=0.7.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/netxs-group/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+https://github.com/netxs-group/vtm/releases/download/v0.7.4/vtm_linux_amd64.tar.gz
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
