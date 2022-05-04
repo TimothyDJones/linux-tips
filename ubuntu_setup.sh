@@ -8566,7 +8566,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install iTop web-based ITSM and CMDB tool
 APP_NAME=iTop
-APP_VERSION=2.4.1-3714
+APP_VERSION=3.0.1-9191
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
