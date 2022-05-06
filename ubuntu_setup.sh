@@ -35871,3 +35871,9 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install RESP.app (formerly RedisDesktopManager) cross-platform, Qt-based GUI management tool for Redis from Flatpak
+# https://github.com/uglide/RedisDesktopManager
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y flathub app.resp.RESP
