@@ -6946,7 +6946,7 @@ APP_NAME=Flameshot
 APP_GUI_NAME="Qt-based GUI/CLI screenshot capture tool."
 APP_VERSION=11.0.0
 APP_EXT=tar.gz
-sudo apt-get install -y qt5-qmake qt5-default qttools5-dev-tools
+sudo apt-get install -y qt5-qmake qtbase5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/flameshot-org/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
