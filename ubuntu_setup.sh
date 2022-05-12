@@ -35516,7 +35516,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Webman Golang-based command-line package manager from package
 APP_NAME=Webman
 APP_GUI_NAME="Golang-based command-line package manager."
-APP_VERSION=0.1.1
+APP_VERSION=0.4.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/candrewlee14/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
