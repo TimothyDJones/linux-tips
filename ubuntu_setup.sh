@@ -617,7 +617,7 @@ sudo apt-get update -y
 # Install Albert application launcher from Debian package
 # http://sourcedigit.com/22129-linux-quick-launcher-ubuntu-albert-best-linux-launcher/
 APP_NAME=Albert
-APP_VERSION=0.16.1
+APP_VERSION=0.17.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 source /etc/lsb-release
@@ -36058,3 +36058,18 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}*
+
+# Install termdbms Golang-based terminal UI client for SQLite DBs and CSV files from package
+APP_NAME=termdbms
+APP_GUI_NAME="Golang-based terminal UI client for SQLite DBs and CSV files."
+APP_VERSION=0.9-alpha
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_linux_x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mathaou/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+https://github.com/mathaou/termdbms/releases/download/v0.9-alpha/termdbms_linux_x64.zip
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/build/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
