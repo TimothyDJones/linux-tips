@@ -35285,10 +35285,10 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 
-# Install era clock/stopwatch with rainy theme for terminal from source
+# Install era clock/stopwatch with rainy theme for terminal from package
 APP_NAME=era
 APP_GUI_NAME="Clock/stopwatch with rainy theme for terminal."
-APP_VERSION=0.1.0
+APP_VERSION=0.1.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kyoheiu/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
