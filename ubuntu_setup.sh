@@ -12397,7 +12397,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}* /tmp/libqrencode3.deb
 # Install Paperboy shell/console-based PDF management utility from package
 APP_NAME=PBoy
 APP_GUI_NAME="Shell/console-based PDF management utility."
-APP_VERSION=1.0.0
+APP_VERSION=1.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/2mol/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
