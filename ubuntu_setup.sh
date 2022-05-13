@@ -9501,7 +9501,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Tweet Tray cross-platform, Electron-based Twitter client from package
 APP_NAME=Tweet-Tray
 APP_GUI_NAME="Cross-platform, Electron-based Twitter client."
-APP_VERSION=1.1.1
+APP_VERSION=1.1.5
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jonathontoon/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
