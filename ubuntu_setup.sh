@@ -8775,7 +8775,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install fmedia cross-platform fast media player/recorder/converter from package
 APP_NAME=fmedia
 APP_GUI_NAME="Cross-platform fast media player/recorder/converter."
-APP_VERSION=1.23.1
+APP_VERSION=1.27.2
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/stsaz/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
