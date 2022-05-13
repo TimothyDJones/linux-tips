@@ -9743,7 +9743,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install DeaDBeeF minimalist audio player from Debian package
 APP_NAME=DeaDBeeF
 APP_GUI_NAME="Minimalist audio player."
-APP_VERSION=1.8.7
+APP_VERSION=1.9.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-static_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
