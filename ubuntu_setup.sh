@@ -28315,7 +28315,7 @@ APP_NAME=Mapton
 APP_GUI_NAME="Java-based desktop mapping tool with support for multiple map and search providers."
 APP_GUI_CATEGORIES="Education;"
 APP_GUI_KEYWORDS="Maps;GIS;"
-APP_VERSION=2.1.1
+APP_VERSION=2.2.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/trixon/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
