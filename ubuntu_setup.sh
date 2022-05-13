@@ -8988,7 +8988,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install QtChess cross-platform, peer-to-peer Qt/OpenGL chess program from Debian package
 APP_NAME=QtChess
 APP_GUI_NAME="Cross-platform , peer-to-peer Qt/OpenGL chess program."
-APP_VERSION=2021.03.15
+APP_VERSION=2021.12.25
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}_amd64
 sudo apt-get install -y qt5-default
