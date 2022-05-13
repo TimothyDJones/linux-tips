@@ -10249,7 +10249,7 @@ rm -rf /tmp/${FILE_NAME}*
 # Install Turing cross-platform, Qt-based Python IDE from package
 APP_NAME=Turing
 APP_GUI_NAME="Cross-platform, Qt-based Python IDE."
-APP_VERSION=0.8
+APP_VERSION=0.11
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}-nix
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/TuringApp/${APP_NAME}/releases/download/v${APP_VERSION}-beta/${FILE_NAME}.${APP_EXT}
