@@ -11426,7 +11426,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Yosoro cross-platform, Electron-based desktop notepad with Markdown support and One Drive cloud backup from package
 APP_NAME=Yosoro
 APP_GUI_NAME="Cross-platform, Electron-based desktop notepad with Markdown support and One Drive cloud backup."
-APP_VERSION=1.0.6
+APP_VERSION=1.1.7
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-linux-x64-deb-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/IceEnd/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
