@@ -28246,7 +28246,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install FeatherPad Qt-based minimalist text editor from source
 APP_NAME=FeatherPad
 APP_GUI_NAME="Qt-based minimalist text editor."
-APP_VERSION=0.17.2
+APP_VERSION=1.2.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y libx11-dev qtbase5-dev libqt5x11extras5-dev libqt5svg5-dev libhunspell-dev qttools5-dev-tools
