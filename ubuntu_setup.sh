@@ -33162,7 +33162,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based desktop GUI for podman container manager."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Containers;"
-APP_VERSION=4.1.0-rc.2
+APP_VERSION=4.1.0
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/iongion/${_APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
