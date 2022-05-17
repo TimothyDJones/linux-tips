@@ -34650,7 +34650,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Electron-based desktop wallpaper manager."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Wallpaper;"
-APP_VERSION=1.1.4
+APP_VERSION=1.1.5
 APP_EXT=zip
 FILE_NAME=linux_zip-${_APP_NAME}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
