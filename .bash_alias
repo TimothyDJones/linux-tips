@@ -211,6 +211,9 @@ alias publicip='curl https://ipecho.net/plain; echo'
 # Another method to get public IP using 'dig'
 alias ext_ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
+# Show WiFi access points
+alias wifi_ap="nmcli dev wifi list"
+
 # View HTTP traffic
 # https://github.com/lacymorrow/dotfiles/blob/master/.aliases
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
