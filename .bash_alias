@@ -194,7 +194,7 @@ alias lsoct='ls -al --color=auto|awk '\''{k=0;s=0;for(i=0;i<=8;i++){;k+=((substr
 # https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions
 alias df="df -Tha --total"
 alias du="du -ach | sort -h"
-alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias pl="ps -eH -o user,pid,ppid,pgid,%cpu,%mem,vsz,rss,tty,stat,etime,args | less -S"  # process list
 alias path='printf "%b\n" "${PATH//:/\\n}"' # Pretty print $PATH
 
 alias rm='rm -i -v'
