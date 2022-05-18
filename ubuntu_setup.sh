@@ -8552,7 +8552,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Tiled Qt-based map tile editor from source
 APP_NAME=Tiled
 APP_GUI_NAME="Cross-platform Qt-based map tile editor."
-APP_VERSION=1.4.3
+APP_VERSION=1.8.5
 APP_EXT=tar.gz
 sudo apt-get install -y qt5-default qttools5-dev-tools zlib1g-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}%20${APP_VERSION}.${APP_EXT}
