@@ -12,6 +12,13 @@ function find_big_files() {
     find . -size +"$1" -type f -print0 | xargs -0 ls -Ssh | sort -z
 }
 
+# Find file functions
+# https://github.com/adsr/dotfiles/blob/master/bashrc
+function ff()  { local IFS='*'; local patt="$*"; find . -iwholename "*${patt}*"; }
+function fo()  { ff "$@" | head -n1; }
+function fd()  { local IFS='*'; local patt="$*"; find . -type d -iname "*${patt}*"; }
+function fcd() { local d=$(fd "$@" | head -n1); [ -n "$d" ] && cd "$d"; }
+
 # Emulate the "pbcopy" and "pbpaste" commands from Mac OS X
 if ! [ -x "$(command -v xclip)" ]; then
     sudo apt install -y xclip
