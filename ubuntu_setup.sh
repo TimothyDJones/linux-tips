@@ -9856,7 +9856,7 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
-cd $HOMlE
+cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
 # Install Umbrella Note Electron-based minimalist notepad/journal utility from package
@@ -36134,3 +36134,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install mle simple console text editor from source
+APP_NAME=mle
+APP_GUI_NAME="Simple console text editor."
+APP_VERSION=1.4.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential libpcre3-dev liblua5.3-dev libtermbox-dev uthash-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/adsr/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
