@@ -36149,3 +36149,18 @@ cd /tmp/${FILE_NAME}
 make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install radio-cli Rust-based command-line Internet radio client with YouTube support from package
+APP_NAME=radio-cli
+APP_GUI_NAME="Rust-based command-line Internet radio client with YouTube support."
+APP_VERSION=2.0.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
+sudo apt install -y mpv yt-dlp
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/margual56/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
