@@ -8400,14 +8400,9 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Standard Notes Electron-based secure notepad from App Image
 APP_NAME=Standard-Notes
 APP_GUI_NAME="Electron-based secure notepad."
-APP_VERSION=3.14.1
+APP_VERSION=3.20.0
 APP_EXT=AppImage
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=i386
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=x86_64
-fi
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/standardnotes/desktop/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
