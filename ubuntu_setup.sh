@@ -36212,3 +36212,35 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME//./}*
+
+# Install Portable Text Encryption (PTE) cross-platform TCL-based GUI text encryption tool from package
+APP_NAME=PTE
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '-' '_')
+APP_GUI_NAME="Cross-platform TCL-based GUI text encryption tool."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Encryption;"
+APP_VERSION=3.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/portable-text-encryptor/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/linux/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
