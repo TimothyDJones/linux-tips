@@ -18321,7 +18321,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Yet Another Python Sudoku (YAPySudoku) puzzle game built with wxPython and Pygame from package
 APP_NAME=YAPySudoku
 APP_GUI_NAME="Puzzle game built with wxPython and Pygame."
-APP_VERSION=4.0.2
+APP_VERSION=4.0.4
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y python3-pygame python3-wxgtk4.0
