@@ -485,7 +485,7 @@ cd $HOME
 # Install Lite IDE for Go language development from package
 APP_NAME=LiteIDE
 APP_GUI_NAME="IDE for editing and building projects written in the Go programming language"
-APP_VERSION=x37.4
+APP_VERSION=x38.0
 QT_VERSION=qt5.5.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
