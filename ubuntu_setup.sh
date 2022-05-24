@@ -34846,7 +34846,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform P2P secure messenger."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Chat;Messenger;"
-APP_VERSION=1.5.0
+APP_VERSION=1.6.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}.Chat-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}-App/${APP_NAME}/releases/download/v${APP_VERSION}-release/${FILE_NAME}.${APP_EXT}
