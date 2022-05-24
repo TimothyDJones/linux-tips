@@ -36255,3 +36255,24 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/SinadShan/${APP_NA
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Kapow cross-platform Qt-based minimalist time-tracking tool from Debian package
+APP_NAME=Kapow
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=1.6.0-0+2.1
+APP_EXT=deb
+source /etc/lsb-release
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ja)$ ]]; then  # 22.04
+	DISTRIB_VERSION=xUbuntu_22.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo|gr|hi)$ ]]; then  # 20.04 - 21.10
+	DISTRIB_VERSION=xUbuntu_20.04
+	APP_VERSION=1.5.10-0+1.2
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di|eo)$ ]]; then  # 18.04 - 19.10
+	DISTRIB_VERSION=xUbuntu_18.04
+	APP_VERSION=1.5.10-0+1.1
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/repositories/home:/gottcode/${DISTRIB_VERSION}/amd64/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
