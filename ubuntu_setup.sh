@@ -1632,21 +1632,21 @@ rm -rf /tmp/${APP_NAME}*
 # Install Qalculate desktop calculator application from package
 # http://qalculate.github.io/
 APP_NAME=Qalculate
-APP_VERSION=4.0.0
+APP_VERSION=4.2.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/lib${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://github.com/${APP_NAME}/${APP_NAME,,}-gtk/raw/master/data/icons/48x48/${APP_NAME,,}.png
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo cp -f /tmp/${FILE_NAME}/${APP_NAME,,}*/qalc* /usr/local/bin
-curl -o /tmp/${APP_NAME,,}.png -J -L https://github.com/${APP_NAME}/${APP_NAME,,}-gtk/raw/master/data/icons/48x48/${APP_NAME,,}.png
+sudo cp -a -f /tmp/${FILE_NAME}/${APP_NAME,,}*/qalc* /usr/local/bin
 sudo mv /tmp/${APP_NAME,,}.png /usr/share/pixmaps/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
-Comment=Popular SSH client
+Comment=Desktop calculator
 GenericName=${APP_NAME}
-Exec=/usr/local/bin/${APP_NAME,,}-gtk
+Exec=/usr/local/bin/${APP_NAME,,}
 Icon=/usr/share/pixmaps/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
