@@ -36276,3 +36276,20 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.opensuse.org/reposit
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Liquid Prompt full-featured adaptive command prompt for Bash and Zsh from package
+APP_NAME="Liquid Prompt"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Full-featured adaptive command prompt for Bash and Zsh."
+APP_VERSION=2.1.1
+APP_EXT=tar.gz
+FILE_NAME=${_APP_NAME}-v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/liquid-prompt.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p ~/bin
+cp -R -a /tmp/${FILE_NAME}/${_APP_NAME} ~/bin
+echo 'source $HOME/bin/'${_APP_NAME}'/'${_APP_NAME} >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME}*
