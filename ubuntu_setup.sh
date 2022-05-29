@@ -1664,7 +1664,7 @@ APP_NAME=PuTTY
 APP_GUI_NAME="Cross-platform standard GTK SSH client."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="SSH;Terminal;"
-APP_VERSION=0.76
+APP_VERSION=0.77
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 # Install dependencies
