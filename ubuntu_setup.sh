@@ -36320,3 +36320,14 @@ sudo cp -R -a /tmp/${FILE_NAME}/${APP_NAME,,}/* /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/e /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}*
+
+# Install HTTPie Python-based human-friendly command-line HTTP client from Debian package
+APP_NAME=HTTPie
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=3.2.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
