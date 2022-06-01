@@ -27034,7 +27034,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Tapper keyboard layout switcher for X Windows/Wayland from source
 APP_NAME=Tapper
 APP_GUI_NAME="Keyboard layout switcher for X Windows/Wayland."
-APP_VERSION=0.5.0-0.vdb.1
+APP_VERSION=0.6.0-0.vdb.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/kbd-${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
