@@ -12381,9 +12381,9 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Password Safe cross-platform password manager from Debian package
 APP_NAME=PasswordSafe
 APP_GUI_NAME="Cross-platform password manager."
-APP_VERSION=1.14
+APP_VERSION=1.15
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-ubuntu20-${APP_VERSION}-amd64
+FILE_NAME=${APP_NAME,,}-ubuntu22-${APP_VERSION}-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
