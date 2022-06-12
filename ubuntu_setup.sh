@@ -1712,7 +1712,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install XML Tree Editor cross-platform tree-view XML editor from Debian package
 APP_NAME=XMLTreeEdit
-APP_VERSION=0.1.0.35
+APP_VERSION=0.1.0.36
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-qt5_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}or/${FILE_NAME}.${APP_EXT}
