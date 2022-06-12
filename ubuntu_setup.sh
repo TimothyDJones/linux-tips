@@ -18710,7 +18710,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install LSD (LSDeluxe) Rust-based next-generation 'ls' command from Debian package
 APP_NAME=LSD
 APP_GUI_NAME="Rust-based next-generation 'ls' command."
-APP_VERSION=0.21.0
+APP_VERSION=0.22.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
