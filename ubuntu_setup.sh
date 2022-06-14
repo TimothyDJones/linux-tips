@@ -35472,9 +35472,9 @@ sudo apt install -y stackandconquer
 # Install Red Panda cross-platform lightweight C/C++ IDE from Debian package
 APP_NAME="Red Panda"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=1.0.6
+APP_VERSION=1.1.0
 APP_EXT=deb
-FILE_NAME=${_APP_NAME}-cpp_ubuntu20.04_${APP_VERSION}-1_amd64
+FILE_NAME=${_APP_NAME}-cpp_ubuntu20.11_${APP_VERSION}-1_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}-cpp/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
