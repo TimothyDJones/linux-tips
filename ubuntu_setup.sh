@@ -24636,11 +24636,10 @@ APP_NAME=BuckwheatCsv
 APP_GUI_NAME="Minimalist GUI viewer for large CSV files."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="CSV;Spreadsheet;"
-APP_VERSION=1.3
-APP_EXT=tar.bz2
-FILE_NAME=${APP_NAME}-${APP_VERSION}-debian10-lmde4-x64
+APP_VERSION=2.0.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}_${APP_VERSION}_Debian_11_bullseye_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-https://master.dl.sourceforge.net/project/buckwheatcsv/v1.3/BuckwheatCsv-1.3-debian10-lmde4-x64.tar.bz2
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -R /tmp/${FILE_NAME}/${APP_NAME} /usr/local/bin
