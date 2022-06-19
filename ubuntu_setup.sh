@@ -36218,7 +36218,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '-' '_')
 APP_GUI_NAME="Cross-platform TCL-based GUI text encryption tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Encryption;"
-APP_VERSION=4.0
+APP_VERSION=8.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/portable-text-encryptor/${FILE_NAME}.${APP_EXT}
