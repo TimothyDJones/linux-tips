@@ -33552,7 +33552,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Thorium Browser fork of Chromium browser with performance enhancements from Debian package
 APP_NAME=Thorium
 APP_GUI_NAME="Fork of Chromium browser with performance enhancements."
-APP_VERSION=99.0.4821.0
+APP_VERSION=105.0.5127.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-browser_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Alex313031/${APP_NAME}/releases/download/M${APP_VERSION}/${FILE_NAME}.${APP_EXT}
