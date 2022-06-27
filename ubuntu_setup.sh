@@ -16585,7 +16585,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install RTextDoc Java-based editor for structured text, such as LaTeX from package
 APP_NAME=RTextDoc
 APP_GUI_NAME="Java-based editor for structured text, such as LaTeX."
-APP_VERSION=2.4
+APP_VERSION=2.5
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
