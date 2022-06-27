@@ -2546,32 +2546,6 @@ echo '## Load HyperJump Bash bookmark tool' >> $HOME/.bashrc
 echo 'source $HOME/bin/'${APP_NAME} >> $HOME/.bashrc
 source $HOME/bin/${APP_NAME}	# Activate HyperJump immediately
 
-# Install trolCommander (muCommander) file manager
-APP_NAME=trolcommander
-APP_VERSION=0_9_9
-APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://github.com/trol73/mucommander/releases/download/v0.9.9/${APP_NAME}-${APP_VERSION}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}
-mv trolCommander-${APP_VERSION} ${APP_NAME}
-sudo mv ${APP_NAME} /opt
-cat > /tmp/${APP_NAME}.desktop << EOF
-[Desktop Entry]
-Name=trolCommander
-Comment=trolCommander (muCommander) Java File Manager
-GenericName=File Manager
-Exec=/opt/${APP_NAME}/${APP_NAME}.sh
-#Icon=/opt/${APP_NAME}/themes/default/wicon.xbm
-Type=Application
-StartupNotify=true
-Terminal=true
-Categories=Accessories;System;
-Keywords=File;Manager;
-EOF
-sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
-sudo ln -s /opt/${APP_NAME}/${APP_NAME}.sh /usr/local/bin/${APP_NAME}
-
 # Install Feng Office
 APP_NAME=fengoffice
 APP_VERSION=3.5.1.5
