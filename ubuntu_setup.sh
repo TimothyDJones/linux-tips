@@ -36675,3 +36675,17 @@ cp -a /tmp/${FILE_NAME}/share/${APP_NAME}/config $HOME/.config/ptSh/.config
 sudo chown -R ${USER}:${USER} $HOME/.config/ptSh
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME//./}*
+
+# Install tone cross-platform, C#/.NET tool for viewing/editing audio file metadata from package
+APP_NAME=tone
+APP_GUI_NAME="Cross-platform, C#/.NET tool for viewing/editing audio file metadata."
+APP_VERSION=0.0.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sandreas/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME//./}*
