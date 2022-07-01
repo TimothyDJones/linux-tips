@@ -36674,3 +36674,18 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Newsraft simple console RSS news aggregator from source
+APP_NAME=Newsraft
+APP_GUI_NAME="Simple console RSS news aggregator."
+APP_VERSION=0.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential libncursesw6 libsqlite3-dev libcurl4-openssl-dev libexpat1-dev libyajl-dev libgumbo-dev meson scdoc
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://codeberg.org/grisha/${APP_NAME,,}/archive/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
+meson setup builddir && meson compile -C builddir && sudo meson install -C builddir
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
