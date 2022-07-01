@@ -36689,3 +36689,19 @@ cd /tmp/${FILE_NAME}/${APP_NAME,,}
 meson setup builddir && meson compile -C builddir && sudo meson install -C builddir
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Sampler Golang-based tool for shell commands execution, visualization and alerting with YAML configuration from package
+APP_NAME=Sampler
+APP_GUI_NAME="Golang-based tool for shell commands execution, visualization and alerting with YAML configuration."
+APP_VERSION=1.1.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-amd64
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/sqshq/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+curl -o /tmp/${APP_NAME,,}_config.yml -J -L https://raw.githubusercontent.com/sqshq/${APP_NAME,,}/master/example.yml
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cp /tmp/${APP_NAME,,}_config.yml $HOME/.config
+sampler -c $HOME/.config/${APP_NAME,,}_config.yml
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME//./}*
