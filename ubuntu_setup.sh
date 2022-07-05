@@ -34735,7 +34735,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install mrViewer cross-platform image viewer and audio/video player from Debian package
 APP_NAME=mrViewer
-APP_VERSION=6.2.0
+APP_VERSION=6.2.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-v${APP_VERSION}-Linux-64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
