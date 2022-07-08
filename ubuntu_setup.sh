@@ -1277,7 +1277,7 @@ if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	Terminal=false
 	Categories=Utility;
 	Keywords=file_management;
-	EOF
+EOF
 	sudo mv /tmp/${APP_NAME}.desktop /usr/share/applications/
 	cd $HOME
 	rm -rf /tmp/${APP_NAME}*
@@ -1288,7 +1288,7 @@ fi
 # Install xosview X11 performance meter from source
 APP_NAME=xosview
 APP_GUI_NAME="X11 Performance Meter"
-APP_VERSION=2.3.2
+APP_VERSION=2.3.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}2-${APP_VERSION}
 sudo apt-get install -y libxpm-dev libxft-dev libx11-dev libxext-dev
