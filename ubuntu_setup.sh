@@ -36128,7 +36128,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install mle simple console text editor from source
 APP_NAME=mle
 APP_GUI_NAME="Simple console text editor."
-APP_VERSION=1.4.3
+APP_VERSION=1.5.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y build-essential libpcre3-dev liblua5.3-dev libtermbox-dev uthash-dev
