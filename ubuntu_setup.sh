@@ -36198,7 +36198,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install gotz Golang-based command-line tool to display world time zones graphically from package
 APP_NAME=gotz
 APP_GUI_NAME="Golang-based command-line tool to display world time zones graphically."
-APP_VERSION=0.1.3
+APP_VERSION=0.1.5
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/merschformann/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
