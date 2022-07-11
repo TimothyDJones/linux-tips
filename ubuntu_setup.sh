@@ -36143,7 +36143,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install radio-cli Rust-based command-line Internet radio client with YouTube support from package
 APP_NAME=radio-cli
 APP_GUI_NAME="Rust-based command-line Internet radio client with YouTube support."
-APP_VERSION=2.0.1
+APP_VERSION=2.1.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 sudo apt install -y mpv yt-dlp
