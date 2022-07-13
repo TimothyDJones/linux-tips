@@ -1827,7 +1827,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Neofetch shell script system information tool
 APP_NAME=neofetch
-APP_VERSION=3.3.0
+APP_VERSION=7.1.0
 APP_EXT=tar.gz
 # Install dependencies
 sudo apt-get install -y imagemagick curl
