@@ -36967,5 +36967,10 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
+echo 'tere() {' >> $HOME/.bashrc
+echo '    local result=$(/usr/local/bin/tere "$@")' >> $HOME/.bashrc
+echo '    [ -n "$result" ] && cd -- "$result"' >> $HOME/.bashrc
+echo '}' >> $HOME/.bashrc
+source $HOME/.bashrc
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}*
