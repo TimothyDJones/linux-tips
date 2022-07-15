@@ -36866,8 +36866,40 @@ APP_VERSION=2022.4.126
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/patrikx3/redis-ui/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-https://github.com/patrikx3/redis-ui/releases/download/v2022.4.126/P3X-Redis-UI-2022.4.126.AppImage
 curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/patrikx3/redis-ui/master/src/electron/images/128x128.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install mediaChips cross-platform, Electron-based desktop video library manager/player from AppImage
+APP_NAME=mediaChips
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform, Electron-based desktop video library manager/player."
+APP_GUI_CATEGORIES="Entertainment;Accessories;"
+APP_GUI_KEYWORDS="Video;Player;"
+APP_VERSION=0.11.2
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}.v${APP_VERSION}.Linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/mediachips/icon?d36c259cc1ddc54dbe9d4ed7532c4334ca5a9c4484aa53d612b5087b9446da4e
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
