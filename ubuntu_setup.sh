@@ -1059,7 +1059,11 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
+<<<<<<< HEAD
 APP_VERSION=12.5.2
+=======
+APP_VERSION=12.5.3
+>>>>>>> master
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -4555,7 +4559,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Crystal Facet UML tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.38.0
+APP_VERSION=1.39.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}-1_${KERNEL_TYPE}
 sudo apt-get install -y libgdk-pixbuf2.0-0
@@ -7414,7 +7418,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install usql cross-platform command-line SQL client in Go
 APP_NAME=usql
 APP_GUI_NAME="Cross-platform command-line SQL client in Go."
-APP_VERSION=0.9.2
+APP_VERSION=0.11.0
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -12971,7 +12975,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Timeline Project Python-based GUI timeline tool from source
 APP_NAME=Timeline
 APP_GUI_NAME="Python-based GUI timeline tool."
-APP_VERSION=2.6.0
+APP_VERSION=2.7.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y python3-wxgtk4.0 python3-pip python3-wxgtk-media4.0 python3-wxgtk-webview4.0
@@ -21270,7 +21274,11 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
+<<<<<<< HEAD
 APP_VERSION=6.0.0
+=======
+APP_VERSION=6.1.0
+>>>>>>> master
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -27351,7 +27359,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Rotki Electron-based cryptocurrency portfolio tracking tool from Debian package
 # https://rotki.com/
 APP_NAME=Rotki
-APP_VERSION=1.24.1
+APP_VERSION=1.25.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-linux_${KERNEL_TYPE}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -28168,7 +28176,7 @@ APP_NAME=Propeller
 APP_GUI_NAME="Cross-platform SDL-based side-scroller shooting game ."
 APP_GUI_CATEGORIES="Entertainment;Games;"
 APP_GUI_KEYWORDS="Games;Side-Scroller;"
-APP_VERSION=2022-03-26
+APP_VERSION=2022-07-17
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
@@ -30346,7 +30354,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://lucaschess.pythonanywhere.com/
 APP_NAME="Lucas Chess"
 APP_GUI_NAME="Cross-platform, Python-based GUI for 60+ chess engines."
-APP_VERSION=2.01c
+APP_VERSION=2.02
 APP_EXT=sh
 FILE_NAME=${APP_NAME// /}R0${APP_VERSION//./_}_LINUX
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/lucaschessr/${FILE_NAME}.${APP_EXT}
