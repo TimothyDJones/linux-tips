@@ -13182,10 +13182,20 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install LazyGit Go-based shell GUI for Git from PPA
-sudo add-apt-repository -y ppa:lazygit-team/daily
-sudo apt-get update -y
-sudo apt-get install -y lazygit
+# Install LazyGit cross-platform Golang-based shell GUI for Git from package
+APP_NAME=LazyGit
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Golang-based shell GUI for Git."
+APP_VERSION=0.35
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install UMLet Java-based UML diagram tool from package
 APP_NAME=UMLet
