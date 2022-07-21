@@ -32154,7 +32154,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=gobang
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based cross-platform TUI database management tool."
-APP_VERSION=0.1.0-alpha.3
+APP_VERSION=0.1.0-alpha.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(uname -m)-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/TaKO8Ki/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
