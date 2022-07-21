@@ -37032,3 +37032,18 @@ sudo cp -a -R /tmp/${FILE_NAME}/* /
 sudo ln -s -f /usr/bin/${APP_NAME,,}i /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}*
+
+# Install jless command-line JSON viewer from package
+APP_NAME=jless
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Command-line JSON viewer."
+APP_VERSION=0.8.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/PaulJuliusMartinez/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
