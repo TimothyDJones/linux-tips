@@ -37062,3 +37062,35 @@ cd /tmp/${FILE_NAME}/${APP_NAME,,}
 ./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Tachash GUI hashing tool with support for many algorithms from package
+APP_NAME=Tachash
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="GUI hashing tool with support for many algorithms."
+APP_GUI_CATEGORIES="Programming;Development;Accessories;"
+APP_GUI_KEYWORDS="Hashing;"
+APP_VERSION=1.11
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R -a /tmp/${FILE_NAME}/linux/${APP_NAME,,}-linux  /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}-linux
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}-linux
+#Icon=
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
