@@ -37100,3 +37100,9 @@ sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install -y flathub com.raggesilver.BlackBox
+
+# Install dpScreenOCR open-source Tesseract-based screen OCR tool with support for over 100 languages from PPA
+# https://danpla.github.io/dpscreenocr/
+sudo add-apt-repository -y ppa:daniel.p/dpscreenocr
+sudo apt update -y
+sudo apt install -y dpscreenocr
