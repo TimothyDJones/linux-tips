@@ -37094,3 +37094,9 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install Black Box GTK4 Terminal Application from Flatpak
+# https://www.omgubuntu.co.uk/2022/07/blackbox-gtk4-terminal-emulator-for-gnome
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y flathub com.raggesilver.BlackBox
