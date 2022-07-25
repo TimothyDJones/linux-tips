@@ -37106,3 +37106,14 @@ sudo flatpak install -y flathub com.raggesilver.BlackBox
 sudo add-apt-repository -y ppa:daniel.p/dpscreenocr
 sudo apt update -y
 sudo apt install -y dpscreenocr
+
+# Install deb-get tool to provide 'apt-get' style functionality from Debian packages from third-party repositories from Debian package
+APP_NAME=deb-get
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=0.3.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wimpysworld/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
