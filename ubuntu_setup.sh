@@ -37150,3 +37150,18 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME// /-}* /tmp/${_APP_NAME}*
+
+# Install MenuLibre GTK-based advanced FreeDesktop.org compliant menu editor from source
+APP_NAME=MenuLibre
+APP_GUI_NAME="GTK-based advanced FreeDesktop.org compliant menu editor."
+APP_VERSION=2.2.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y gir1.2-gtk-3.0 intltool libgnome-menu-3-dev python-gi-dev python3 python3-distutils-extra python3-psutil
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bluesabre/${APP_NAME,,}/releases/download/${FILE_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo python3 setup.py install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
