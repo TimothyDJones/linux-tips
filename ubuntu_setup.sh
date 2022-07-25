@@ -37117,3 +37117,36 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wimpysworld/${APP_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Linwood Butterfly cross-platform, free-form notepad tool from AppImage
+APP_NAME="Linwood Butterfly"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, free-form notepad tool."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="Notepad;Editor;"
+APP_VERSION=1.3.2
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME// /-}-linux-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/LinwoodCloud/Butterfly/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://raw.githubusercontent.com/LinwoodCloud/Butterfly/develop/app/images/logo.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME// /-}* /tmp/${_APP_NAME}*
