@@ -37199,3 +37199,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install mtm (Micro Terminal Multiplexer) tiny terminal multiplexer from source
+APP_NAME=mtm
+APP_GUI_NAME="Tiny terminal multiplexer."
+APP_VERSION=1.2.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/deadpixi/${APP_NAME,,}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
