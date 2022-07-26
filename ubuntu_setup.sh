@@ -26278,9 +26278,10 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install FSearch fast file search utility inspired by Everything Search for Windows from PPA
-sudo add-apt-repository ppa:christian-boxdoerfer/fsearch-daily -y
-sudo apt-get update
-sudo apt-get install fsearch-trunk -y
+# https://github.com/cboxdoerfer/fsearch
+sudo add-apt-repository ppa:christian-boxdoerfer/fsearch-stable -y
+sudo apt update
+sudo apt install fsearch -y
 
 # Install ECMA-55 Minimal BASIC compiler from source
 APP_NAME="Minimal BASIC"
