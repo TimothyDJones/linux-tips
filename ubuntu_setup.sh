@@ -28973,7 +28973,7 @@ sudo rm -rf /tmp/*${APP_NAME,,}* /tmp/${APP_NAME}
 # Install Nushell Rust-based minimalist shell from package
 APP_NAME=nu
 APP_GUI_NAME="Rust-based minimalist shell."
-APP_VERSION=0.66.1
+APP_VERSION=0.66.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nushell/nushell/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37341,3 +37341,46 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Retroplanet Navigator Python/Qtwebengine-based web browser from package
+APP_NAME="Retroplanet Navigator"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Python/Qtwebengine-based web browser."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Web;Browser;"
+APP_VERSION=2.1
+APP_EXT=tar.gz
+FILE_NAME=$(echo ${APP_NAME} | tr '[:blank:]' '_')-${APP_VERSION}
+sudo apt install -y python3-pyqt5 python3-pyqt5.qtwebengine
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://www.lagrottadelpipistrello.altervista.org/retroplanet/files/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/*/* /opt/${_APP_NAME}
+sudo chown -R ${USER}:${USER} /opt/${_APP_NAME}
+cat > /tmp/${_APP_NAME} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+python3 /opt/${_APP_NAME}/$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-').py &
+cd \$HOME
+EOF
+sudo mv /tmp/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/opt/${_APP_NAME}/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
