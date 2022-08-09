@@ -10912,7 +10912,7 @@ sudo pip3 install ${APP_NAME,,}
 # https://github.com/milind-brahme/query-light
 APP_NAME=RecordEditor
 APP_GUI_NAME="Java-based, GUI CSV/XML file editor."
-APP_VERSION=0.99a
+APP_VERSION=0.992a
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_USB_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/record-editor/${FILE_NAME}.${APP_EXT}
