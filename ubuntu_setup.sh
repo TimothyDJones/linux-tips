@@ -30958,7 +30958,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Procs Rust-based modern replacement for 'ps' from package
 APP_NAME=Procs
 APP_GUI_NAME="Rust-based modern replacement for 'ps'."
-APP_VERSION=0.11.9
+APP_VERSION=0.13.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-lnx
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dalance/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37573,3 +37573,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install amber Rust-based command-line source code search-and-replace tool from package
+APP_NAME=amber
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust-based command-line source code search-and-replace tool."
+APP_VERSION=0.5.9
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-lnx
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dalance/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME//er/}* /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME//er/}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
