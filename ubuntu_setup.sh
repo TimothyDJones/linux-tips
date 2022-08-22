@@ -233,7 +233,7 @@ curl -o /tmp/bitmap-fonts-master.zip -J -L https://github.com/Tecate/bitmap-font
 cd /tmp
 dtrx -n /tmp/bitmap-fonts-master.zip
 sudo cp -R /tmp/bitmap-fonts-master/bitmap/* /usr/local/share/fonts
-curl -o /tmp/IBM_Plex_TrueType.zip -J -L https://github.com/IBM/plex/releases/download/v6.0.2/TrueType.zip
+curl -o /tmp/IBM_Plex_TrueType.zip -J -L https://github.com/IBM/plex/releases/download/v6.1.0/TrueType.zip
 cd /tmp
 dtrx -n /tmp/IBM_Plex_TrueType.zip
 sudo cp -R /tmp/IBM_Plex_TrueType/TrueType/IBM-Plex-Mono /usr/local/share/fonts
@@ -589,7 +589,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from Debian package
 APP_NAME=Vivaldi
-APP_VERSION=5.3.2679.70
+APP_VERSION=5.4.2753.37
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -715,7 +715,7 @@ google-drive-ocamlfuse $HOME/google-drive  # Mount Google Drive to folder.
 
 # Install MuPDF PDF viewer from source.
 APP_NAME=MuPDF
-APP_VERSION=1.20.0
+APP_VERSION=1.20.3
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-source
 sudo apt install -y libjbig2dec0-dev libfreetype6-dev libftgl-dev libjpeg-dev libopenjp2-7-dev zlib1g-dev xserver-xorg-dev mesa-common-dev libgl1-mesa-dev libxcursor-dev libxrandr-dev libxinerama-dev
@@ -772,7 +772,7 @@ rm -rf /tmp/goto*
 # Install Free42 HP-42S calculator simulator from package
 APP_NAME=Free42
 APP_GUI_NAME="Free, cross-platfrom HP-42S calculator simulator."
-APP_VERSION=3.0.13
+APP_VERSION=3.0.14
 APP_EXT=tgz
 FILE_NAME=${APP_NAME}Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://thomasokken.com/${APP_NAME,,}/download/${FILE_NAME}.${APP_EXT}
@@ -1892,7 +1892,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.42.88
+APP_VERSION=1.42.97
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -10609,13 +10609,13 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install X11-Basic cross-platform Basic interpreter with graphics support from Debian package
 APP_NAME=x11basic
 APP_GUI_NAME="Cross-platform Basic interpreter with graphics support."
-APP_VERSION=1.27-60
+APP_VERSION=1.28-65
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}-unstable
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/x11-basic/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282832/libreadline6-dev_6.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
-curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282834/libreadline6_6sudo ln -s /opt/${APP_NAME,,}/bin/${APP_NAME,,}.sh /usr/local/bin/${APP_NAME,,}.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/libreadline6.${APP_EXT}
+curl -o /tmp/libreadline6-dev.${APP_EXT} -J -L http://launchpadlibrarian.net/236282832/libreadline6-dev_6.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
+curl -o /tmp/libreadline6.${APP_EXT} -J -L http://launchpadlibrarian.net/236282834/libreadline6_6.3-8ubuntu2_${KERNEL_TYPE}.${APP_EXT}
+sudo gdebi -n /tmp/libreadline6-dev.${APP_EXT}
 sudo gdebi -n /tmp/libreadline6.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
@@ -11032,7 +11032,7 @@ sudo apt-get update && sudo apt-get install -y enpass
 # Install Waterfox cross-platform web browser based on Firefox from package
 APP_NAME=Waterfox
 APP_GUI_NAME="Cross-platform web browser based on Firefox."
-APP_VERSION=G4.1.3.2
+APP_VERSION=G4.1.4
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/WaterfoxCo/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -11399,7 +11399,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install Meld GUI file diff/merge utility from source
 APP_NAME=Meld
 APP_GUI_NAME="Cross-platform, file diff/merge utility."
-APP_VERSION=3.21.2
+APP_VERSION=3.21.3
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y meld python3-cairo-dev libgtksourceview-3.0-dev
@@ -20226,7 +20226,7 @@ sudo flatpak install -y flathub org.gabmus.gnome-feeds
 # Install Starship minimal, customizable shell prompt from package
 APP_NAME=Starship
 APP_GUI_NAME="Minimal, customizable shell prompt."
-APP_VERSION=1.10.0
+APP_VERSION=1.10.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21761,7 +21761,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install PmWiki PHP-based wiki tool from package
 APP_NAME=PmWiki
 APP_GUI_NAME="PHP-based wiki tool."
-APP_VERSION=2.3.8
+APP_VERSION=2.3.9
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 if ![ -x "$(command -v php)" ]; then
@@ -23251,7 +23251,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install GitUI cross-platform console GUI for Git version control from package
 APP_NAME=GitUI
 APP_GUI_NAME="Cross-platform console GUI for Git version control."
-APP_VERSION=0.13.0
+APP_VERSION=0.21.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/extrawurst/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -26728,7 +26728,7 @@ APP_NAME=ImHex
 APP_GUI_NAME="Cross-platform, multi-purpose hex editor."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Hex Editor;Editor"
-APP_VERSION=1.19.3
+APP_VERSION=1.21.2
 APP_EXT=zip
 FILE_NAME=Linux.AppImage
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/WerWolv/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27353,7 +27353,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Rotki Electron-based cryptocurrency portfolio tracking tool from Debian package
 # https://rotki.com/
 APP_NAME=Rotki
-APP_VERSION=1.25.1
+APP_VERSION=1.25.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-linux_${KERNEL_TYPE}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -29829,8 +29829,8 @@ APP_NAME=NxShell
 APP_GUI_NAME="Cross-platform SSH/SFTP terminal."
 APP_GUI_CATEGORIES="Networking;Internet;"
 APP_GUI_KEYWORDS="SSH;SFTP;"
-APP_VERSION=1.6.2
-DATE_STAMP=202207161400
+APP_VERSION=1.6.3
+DATE_STAMP=202208141318
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-${DATE_STAMP}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -30958,7 +30958,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Procs Rust-based modern replacement for 'ps' from package
 APP_NAME=Procs
 APP_GUI_NAME="Rust-based modern replacement for 'ps'."
-APP_VERSION=0.11.9
+APP_VERSION=0.13.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-lnx
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dalance/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32526,7 +32526,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Simple Qt-based typing tutor."
 APP_GUI_CATEGORIES="Accessories;Education;"
 APP_GUI_KEYWORDS="Typing;Tutor;"
-APP_VERSION=4.1.0
+APP_VERSION=4.2.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME}-linux-amd64
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/adazem009/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}
@@ -35303,7 +35303,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based 2D jump-and-run puzzle platformer game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Puzzle;Arcade;"
-APP_VERSION=1.2.229
+APP_VERSION=1.2.265
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/divVerent/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -35469,9 +35469,9 @@ sudo apt install -y stackandconquer
 # Install Red Panda cross-platform lightweight C/C++ IDE from Debian package
 APP_NAME="Red Panda"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=1.1.0
+APP_VERSION=1.2
 APP_EXT=deb
-FILE_NAME=${_APP_NAME}-cpp_ubuntu20.11_${APP_VERSION}-1_amd64
+FILE_NAME=${_APP_NAME}-cpp_${APP_VERSION}-1_ubuntu20.04lts_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}-cpp/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
@@ -36513,7 +36513,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, self-hosted web comic and ebook reader."
 APP_GUI_CATEGORIES="Office;Internet;"
 APP_GUI_KEYWORDS="Comics;Ebook;Reader;"
-APP_VERSION=0.5.4.2
+APP_VERSION=0.5.5
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -37585,3 +37585,48 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install amber Rust-based command-line source code search-and-replace tool from package
+APP_NAME=amber
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust-based command-line source code search-and-replace tool."
+APP_VERSION=0.5.9
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-lnx
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dalance/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME//er/}* /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME//er/}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install gip Rust-based command-line tool to check external IP address via multiple providers from package
+APP_NAME=gip
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust-based command-line tool to check external IP address via multiple providers."
+APP_VERSION=0.6.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-lnx
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dalance/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}* /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install tickrs Rust-based command-line stock ticker from package
+APP_NAME=tickrs
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust-based command-line stock ticker."
+APP_VERSION=0.14.6
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tarkah/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}* /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
