@@ -3716,7 +3716,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install dxirc Fox/Qt IRC client from source
 APP_NAME=dxirc
-APP_VERSION=1.40.0
+APP_VERSION=1.40.1
 APP_EXT=tar.gz
 sudo apt-get install -y libfox-1.6-dev qt5-qmake libqt5multimedia5 qtmultimedia5-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
