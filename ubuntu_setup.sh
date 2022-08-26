@@ -20889,13 +20889,13 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Snowflake cross-platform, Java-based GUI SSH client with many built-in tools from Debian package
+# Install Muon (formerly Snowflake) cross-platform, Java-based GUI SSH/SFTP client with many built-in tools from Debian package
 APP_NAME=Snowflake
-APP_GUI_NAME="Cross-platform, Java-based GUI SSH client with many built-in tools."
-APP_VERSION=1.0-1
+APP_GUI_NAME="Cross-platform, Java-based GUI SSH/SFTP client with many built-in tools."
+APP_VERSION=1.0.4
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/subhra74/${APP_NAME,,}/releases/download/v${APP_VERSION//-/.}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-setup-amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/subhra74/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
