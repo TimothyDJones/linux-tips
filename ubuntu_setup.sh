@@ -553,7 +553,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=22.1.4
+APP_VERSION=22.1.5
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -589,7 +589,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from Debian package
 APP_NAME=Vivaldi
-APP_VERSION=5.4.2753.37
+APP_VERSION=5.4.2753.40
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -600,7 +600,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.168.6.1
+APP_VERSION=1.169.0.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_$(dpkg-architecture --query DEB_HOST_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1536,7 +1536,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4516
+APP_VERSION=4.3-4518
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -1632,7 +1632,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Qalculate desktop calculator application from package
 # http://qalculate.github.io/
 APP_NAME=Qalculate
-APP_VERSION=4.2.0
+APP_VERSION=4.3.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/lib${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -2350,7 +2350,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Hyper JS/HTML/CSS Terminal from Debian package
 APP_NAME=Hyper
-APP_VERSION=3.2.3
+APP_VERSION=3.3.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg --print-architecture)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hyper.mirror/${FILE_NAME}.${APP_EXT}
@@ -2369,7 +2369,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Lightweight Wiki CMS/groupware."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="Wiki;CMS;"
-APP_VERSION=24.0
+APP_VERSION=24.1
 APP_EXT=tar.xz
 DB_NAME=${_APP_NAME}
 DB_USER=${_APP_NAME}
@@ -2712,7 +2712,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.6.110
+APP_VERSION=6.6.114
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3542,7 +3542,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PlantUML Java-based UML modeling tool from package
 APP_NAME=PlantUML
 APP_GUI_NAME="Java-based UML modeling tool"
-APP_VERSION=1.2022.6
+APP_VERSION=1.2022.7
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -3716,7 +3716,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install dxirc Fox/Qt IRC client from source
 APP_NAME=dxirc
-APP_VERSION=1.40.0
+APP_VERSION=1.40.1
 APP_EXT=tar.gz
 sudo apt-get install -y libfox-1.6-dev qt5-qmake libqt5multimedia5 qtmultimedia5-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -6938,7 +6938,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Miller text processor which combines functions of awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON from package
 APP_NAME=miller
 APP_GUI_NAME="Text processor which combines functions of awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON."
-APP_VERSION=6.3.0
+APP_VERSION=6.4.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johnkerl/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -7405,7 +7405,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install usql cross-platform command-line SQL client in Go
 APP_NAME=usql
 APP_GUI_NAME="Cross-platform command-line SQL client in Go."
-APP_VERSION=0.12.0
+APP_VERSION=0.12.13
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -13331,7 +13331,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Converseen Qt-based bulk image converting/resizing tool from source
 APP_NAME=Converseen
 APP_GUI_NAME="Qt-based bulk image converting/resizing tool."
-APP_VERSION=0.9.9.6
+APP_VERSION=0.9.9.7
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libmagick++-dev cmake qttools5-dev-tools qttools5-dev
@@ -13666,7 +13666,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install qBittorrent Qt-based Bittorrent client from source
 APP_NAME=qBittorrent
 APP_GUI_NAME="Qt-based Bittorrent client."
-APP_VERSION=4.4.3.1
+APP_VERSION=4.4.4
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y ${APP_NAME,,}
@@ -15374,7 +15374,7 @@ docker run hello-world  # Confirm Docker installation.
 # Install Docker Compose command-line utility for multi-container Docker applications from package
 APP_NAME=Docker-Compose
 APP_GUI_NAME="Command-line utility for multi-container Docker applications."
-APP_VERSION=2.10.0
+APP_VERSION=2.10.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -19484,7 +19484,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install xsnow desktop decoration from Debian package
 APP_NAME=xsnow
 APP_GUI_NAME=""
-APP_VERSION=3.5.1
+APP_VERSION=3.5.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -20889,13 +20889,13 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Snowflake cross-platform, Java-based GUI SSH client with many built-in tools from Debian package
+# Install Muon (formerly Snowflake) cross-platform, Java-based GUI SSH/SFTP client with many built-in tools from Debian package
 APP_NAME=Snowflake
-APP_GUI_NAME="Cross-platform, Java-based GUI SSH client with many built-in tools."
-APP_VERSION=1.0-1
+APP_GUI_NAME="Cross-platform, Java-based GUI SSH/SFTP client with many built-in tools."
+APP_VERSION=1.0.4
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/subhra74/${APP_NAME,,}/releases/download/v${APP_VERSION//-/.}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-setup-amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/subhra74/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
@@ -21761,7 +21761,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install PmWiki PHP-based wiki tool from package
 APP_NAME=PmWiki
 APP_GUI_NAME="PHP-based wiki tool."
-APP_VERSION=2.3.9
+APP_VERSION=2.3.10
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 if ![ -x "$(command -v php)" ]; then
@@ -23890,7 +23890,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install MuWire cross-platform Java-based P2P client with anonymization features from package
 APP_NAME=MuWire
 APP_GUI_NAME="Cross-platform Java-based P2P client with anonymization features."
-APP_VERSION=0.8.12
+APP_VERSION=0.8.13
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://muwire.com/downloads/${FILE_NAME}.${APP_EXT}
@@ -24138,7 +24138,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install ugrep ultra fast grep with interactive query UI from source
 APP_NAME=ugrep
-APP_VERSION=3.9.1
+APP_VERSION=3.9.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libbz2-dev libz-dev liblzma-dev libpcre2-dev libboost-regex-dev
@@ -24302,7 +24302,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=9.2.2
+APP_VERSION=9.2.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -26637,7 +26637,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install yq Golang-based command-line YAML processor from package
 APP_NAME=yq
-APP_VERSION=4.27.2
+APP_VERSION=4.27.3
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_${KERNEL_TYPE//i/}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/mikefarah/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
@@ -29261,7 +29261,7 @@ sudo apt-get install -y cdda2wav mkisofs cdrecord
 # Install CliFM CLI-based, ultra-lightweight, lightning fast, and written in C from source
 APP_NAME=CliFM
 APP_GUI_NAME="CLI-based, ultra-lightweight, lightning fast, and written in C."
-APP_VERSION=1.6
+APP_VERSION=1.7
 APP_EXT=tar.gz
 FILE_NAME=v${APP_VERSION}
 sudo apt-get install -y libcap-dev libacl1-dev 
@@ -33025,7 +33025,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Holocaust simulation real-time strategy game."
 APP_GUI_CATEGORIES="Games;"
 APP_GUI_KEYWORDS="History;Strategy;Simulator;"
-APP_VERSION=0.88
+APP_VERSION=0.91
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME// /_}_${APP_VERSION}_manylinux_x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}game/${FILE_NAME}.${APP_EXT}
@@ -35303,7 +35303,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based 2D jump-and-run puzzle platformer game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Puzzle;Arcade;"
-APP_VERSION=1.2.265
+APP_VERSION=1.2.280
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/divVerent/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -36068,7 +36068,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install fq Golang-based command-line tool for working with binary data (media, packet captures, etc.) similar to jq from package
 APP_NAME=fq
 APP_GUI_NAME="fq Golang-based command-line tool for working with binary data (media, packet captures, etc.) similar to jq."
-APP_VERSION=0.0.8
+APP_VERSION=0.0.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-tool.mirror/${FILE_NAME}.${APP_EXT}
@@ -37630,3 +37630,69 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}* /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}*
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install GrabSCR Python-based screenshot tool from AppImage
+APP_NAME=GrabSCR
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Python-based screenshot tool."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Screenshot;"
+APP_VERSION=0.0.7
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/thepeshka/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://images.pling.com/img/00/00/50/02/87/1887189/icon-5.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install A Photo Tool Libre minimalist Qt-based image viewer/editor from AppImage
+APP_NAME="A Photo Tool Libre"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Minimalist Qt-based image viewer/editor."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Graphics;Viewer;Editor;"
+APP_VERSION=1.0.3-2
+APP_EXT=AppImage
+FILE_NAME=${_APP_NAME}_${APP_VERSION}_x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/aphototool/${APP_NAME// /-}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://raw.githubusercontent.com/aphototool/${APP_NAME// /-}/main/pics/APhotoToolLibreIcon.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
