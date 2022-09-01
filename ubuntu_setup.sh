@@ -4544,19 +4544,18 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Crystal Facet UML tool from package
+# Install Crystal Facet UML modeling tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.39.0
+APP_VERSION=1.40.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME}_${APP_VERSION}-1_${KERNEL_TYPE}
-sudo apt-get install -y libgdk-pixbuf2.0-0
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME}-${APP_VERSION}-0.x86_64
+sudo apt-get install -y libgdk-pixbuf2.0-0 alien
+curl -o /tmp/${FILE_NAME}.rpm -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.rpm
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
-sudo cp -r * /
+sudo alien /tmp/${FILE_NAME}.rpm
+sudo gdebi -n /tmp/${APP_NAME,,}*.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,} /tmp/crystal_facet*
+rm -rf /tmp/${APP_NAME,,}* /tmp/crystal_facet*
 
 # Install Java Fabled Lands role-playing game
 APP_NAME=JaFL
