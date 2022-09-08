@@ -33183,7 +33183,7 @@ rm -rf /tmp/${_APP_NAME}*
 # Install Erin Electron-based desktop wallpaper changer from AppImage
 APP_NAME=Erin
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
-APP_GUI_NAME="Electron-based desktop GUI for podman container manager."
+APP_GUI_NAME="Electron-based desktop wallpaper changer."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Wallpaper;"
 APP_VERSION=2.1.5
