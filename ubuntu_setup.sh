@@ -3291,15 +3291,38 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Notes note-taking application from package
-APP_NAME=notes
-APP_VERSION=1.0.0
-APP_EXT=deb
-source /etc/lsb-release
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}-${DISTRIB_CODENAME}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+# Install Notes cross-platform note-taking application from AppImage
+APP_NAME=Notes
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform note-taking application."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="Notepad;Productivity;"
+APP_VERSION=2.0.0
+APP_EXT=appimage
+FILE_NAME=${APP_NAME}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/notes/icon?1662674662
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Freemind Java-based mind mapping application
 APP_NAME=freemind
