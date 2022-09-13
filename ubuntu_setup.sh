@@ -37747,3 +37747,18 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}* /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}*
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install hnterm Hacker News in the terminal from source
+APP_NAME=hnterm
+APP_GUI_NAME="Hacker News in the terminal."
+APP_VERSION=0.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y cmake libncurses-dev libcurl4-openssl-dev
+cd /tmp
+git clone https://github.com/ggerganov/${APP_NAME,,} --recursive
+cd /tmp/${APP_NAME,,}
+mkdir build && cd build
+cmake .. && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
