@@ -37762,3 +37762,38 @@ mkdir build && cd build
 cmake .. && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Zametek ProjectPlan cross-platform MS Project-style GUI project management tool from package
+APP_NAME="Zametek ProjectPlan"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '.')
+APP_GUI_NAME="Cross-platform MS Project-style GUI project management tool."
+APP_GUI_CATEGORIES="Office;Accessories;"
+APP_GUI_KEYWORDS="Project;Management;"
+APP_VERSION=0.7.0
+APP_EXT=zip
+FILE_NAME=ProjectPlan-v${APP_VERSION}.linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/countincognito/${APP_NAME// /.}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -R -a /tmp/${FILE_NAME}/linux-x64/*  /opt/${_APP_NAME}
+sudo chown -R ${USER}:${USER} /opt/${_APP_NAME}
+sudo chmod +x /opt/${_APP_NAME}/${APP_NAME// /.}
+sudo ln -s -f /opt/${_APP_NAME}/${APP_NAME// /.} /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/opt/${_APP_NAME}/${APP_NAME// /.}
+Icon=/opt/${_APP_NAME}/Icons/zpp.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME// /.}* /tmp/${_APP_NAME}*
