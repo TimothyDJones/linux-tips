@@ -25316,25 +25316,6 @@ source $HOME/.bashrc
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Notes cross-platform (Qt5) GUI notepad from Debian package
-# https://github.com/nuttyartist/notes
-APP_NAME=Notes
-APP_VERSION=1.5.0
-APP_EXT=deb
-source /etc/lsb-release
-# If Ubuntu version is above 16.04 (Xenial) up to 18.04 (Bionic), then we use 16.04.
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar)$ ]]; then
-	DISTRIB_CODENAME=xenial
-# Otherwise, we use Bionic.
-elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo|fo)$ ]]; then
-	DISTRIB_CODENAME=bionic
-fi
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}-${DISTRIB_CODENAME}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/${APP_NAME,,}*
-
 # Install openkropki SDL implementation of kropki/tochki puzzle game from source
 APP_NAME=openkropki
 APP_GUI_NAME="SDL implementation of kropki/tochki puzzle game."
