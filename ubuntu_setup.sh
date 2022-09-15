@@ -37778,3 +37778,21 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME// /.}* /tmp/${_APP_NAME}*
+
+# Install bat Rust-based cat(1) clone with syntax highlighting and Git integration from package
+# https://github.com/sharkdp/bat
+APP_NAME=bat
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust-based cat(1) clone with syntax highlighting and Git integration."
+APP_VERSION=0.22.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/share/man/man1
+sudo mandb --quiet
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
