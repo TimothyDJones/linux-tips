@@ -37796,3 +37796,19 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/share/man/man1
 sudo mandb --quiet
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install ifshow command-line network interface status display tool from source
+APP_NAME=ifshow
+APP_GUI_NAME="Command-line network interface status display tool."
+APP_VERSION=1.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y cmake build-essential libpci-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/awgn/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+cmake .. && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
