@@ -589,7 +589,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from Debian package
 APP_NAME=Vivaldi
-APP_VERSION=5.4.2753.40
+APP_VERSION=5.4.2753.51
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -1892,7 +1892,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.43.89
+APP_VERSION=1.43.93
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -2712,7 +2712,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.6.115
+APP_VERSION=6.6.118
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2838,7 +2838,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install QPDF PDF utility from source
 APP_NAME=QPDF
-APP_VERSION=11.0.0
+APP_VERSION=11.1.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y zlib1g-dev libjpeg62-dev
@@ -4569,7 +4569,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Crystal Facet UML modeling tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.40.0
+APP_VERSION=1.41.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}-0.x86_64
 sudo apt-get install -y libgdk-pixbuf2.0-0 alien
@@ -5251,7 +5251,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.6.1
+APP_VERSION=1.6.2
 APP_EXT=tar.bz2
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -5621,7 +5621,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=22.6
+APP_VERSION=22.7
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -7921,7 +7921,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install phpSysInfo web-based Linux system information utility
 APP_NAME=phpSysInfo
-APP_VERSION=3.4.1
+APP_VERSION=3.4.2
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -10797,7 +10797,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Battle for Wesnoth high-fantasy themed adventure game from source
 APP_NAME=Wesnoth
 APP_GUI_NAME="High-fantasy themed adventure game."
-APP_VERSION=1.17.7
+APP_VERSION=1.17.8
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
@@ -13354,7 +13354,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Converseen Qt-based bulk image converting/resizing tool from source
 APP_NAME=Converseen
 APP_GUI_NAME="Qt-based bulk image converting/resizing tool."
-APP_VERSION=0.9.9.7
+APP_VERSION=0.9.9.8
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libmagick++-dev cmake qttools5-dev-tools qttools5-dev
@@ -14497,7 +14497,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install xonsh alternative, cross-platform Python-based console shell from package
 APP_NAME=xonsh
 APP_GUI_NAME="Alternative, cross-platform Python-based console shell."
-APP_VERSION=0.13.0
+APP_VERSION=0.13.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -14940,7 +14940,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install TurboVNC remote desktop tool from Debian package
 APP_NAME=TurboVNC
 APP_GUI_NAME="remote desktop tool."
-APP_VERSION=2.2.7
+APP_VERSION=3.0.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -15397,7 +15397,7 @@ docker run hello-world  # Confirm Docker installation.
 # Install Docker Compose command-line utility for multi-container Docker applications from package
 APP_NAME=Docker-Compose
 APP_GUI_NAME="Command-line utility for multi-container Docker applications."
-APP_VERSION=2.10.1
+APP_VERSION=2.11.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -18919,7 +18919,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Fractal Zoomer Java-based fractal generator and explorer tool from package
 APP_NAME=FractalZoomer
 APP_GUI_NAME="Java-based fractal generator and explorer tool."
-APP_VERSION=1.0.8.1
+APP_VERSION=1.0.8.3
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/Fractal%20Zoomer.${APP_EXT}
@@ -21294,7 +21294,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=6.4.0
+APP_VERSION=6.5.0
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -21838,7 +21838,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://dystroy.org/broot/
 APP_NAME=Broot
 APP_GUI_NAME="Rust-based command-line directory tree navigation tool with fuzzy-search capability."
-APP_VERSION=1.14.2
+APP_VERSION=1.14.3
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -23929,7 +23929,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 APP_NAME="Shutter Encoder"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform audio/video encoder/converter."
-APP_VERSION=16.2
+APP_VERSION=16.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME// /%20}%20${APP_VERSION}%20Linux%2064bits
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
@@ -25317,25 +25317,6 @@ source $HOME/.bashrc
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Notes cross-platform (Qt5) GUI notepad from Debian package
-# https://github.com/nuttyartist/notes
-APP_NAME=Notes
-APP_VERSION=1.5.0
-APP_EXT=deb
-source /etc/lsb-release
-# If Ubuntu version is above 16.04 (Xenial) up to 18.04 (Bionic), then we use 16.04.
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar)$ ]]; then
-	DISTRIB_CODENAME=xenial
-# Otherwise, we use Bionic.
-elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo|fo)$ ]]; then
-	DISTRIB_CODENAME=bionic
-fi
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}-${DISTRIB_CODENAME}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/${APP_NAME,,}*
-
 # Install openkropki SDL implementation of kropki/tochki puzzle game from source
 APP_NAME=openkropki
 APP_GUI_NAME="SDL implementation of kropki/tochki puzzle game."
@@ -25694,7 +25675,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install CoTerminalApps cross-platform, color terminal/console puzzle games from package
 APP_NAME=CoTerminalApps
 APP_GUI_NAME="Cross-platform, , color terminal/console puzzle games."
-APP_VERSION=23dec21
+APP_VERSION=16sep22
 APP_EXT=7z
 FILE_NAME=co${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -29852,8 +29833,8 @@ APP_NAME=NxShell
 APP_GUI_NAME="Cross-platform SSH/SFTP terminal."
 APP_GUI_CATEGORIES="Networking;Internet;"
 APP_GUI_KEYWORDS="SSH;SFTP;"
-APP_VERSION=1.6.4
-DATE_STAMP=202208271125
+APP_VERSION=1.8.0
+DATE_STAMP=202209161235
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-${DATE_STAMP}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -35326,7 +35307,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based 2D jump-and-run puzzle platformer game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Puzzle;Arcade;"
-APP_VERSION=1.2.321
+APP_VERSION=1.2.331
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/divVerent/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -36355,7 +36336,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Radare cross-platform reverse-engineering framework from Debian package
 APP_NAME=Radare2
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=5.7.4
+APP_VERSION=5.7.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -37746,5 +37727,103 @@ cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}* /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install hnterm Hacker News in the terminal from source
+APP_NAME=hnterm
+APP_GUI_NAME="Hacker News in the terminal."
+APP_VERSION=0.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y cmake libncurses-dev libcurl4-openssl-dev
+cd /tmp
+git clone https://github.com/ggerganov/${APP_NAME,,} --recursive
+cd /tmp/${APP_NAME,,}
+mkdir build && cd build
+cmake .. && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Zametek ProjectPlan cross-platform MS Project-style GUI project management tool from package
+APP_NAME="Zametek ProjectPlan"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '.')
+APP_GUI_NAME="Cross-platform MS Project-style GUI project management tool."
+APP_GUI_CATEGORIES="Office;Accessories;"
+APP_GUI_KEYWORDS="Project;Management;"
+APP_VERSION=0.7.0
+APP_EXT=zip
+FILE_NAME=ProjectPlan-v${APP_VERSION}.linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/countincognito/${APP_NAME// /.}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -R -a /tmp/${FILE_NAME}/linux-x64/*  /opt/${_APP_NAME}
+sudo chown -R ${USER}:${USER} /opt/${_APP_NAME}
+sudo chmod +x /opt/${_APP_NAME}/${APP_NAME// /.}
+sudo ln -s -f /opt/${_APP_NAME}/${APP_NAME// /.} /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/opt/${_APP_NAME}/${APP_NAME// /.}
+Icon=/opt/${_APP_NAME}/Icons/zpp.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME// /.}* /tmp/${_APP_NAME}*
+
+# Install bat Rust-based cat(1) clone with syntax highlighting and Git integration from package
+# https://github.com/sharkdp/bat
+APP_NAME=bat
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust-based cat(1) clone with syntax highlighting and Git integration."
+APP_VERSION=0.22.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/share/man/man1
+sudo mandb --quiet
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install ifshow command-line network interface status display tool from source
+APP_NAME=ifshow
+APP_GUI_NAME="Command-line network interface status display tool."
+APP_VERSION=1.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y cmake build-essential libpci-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/awgn/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+cmake .. && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install ytt Golang-based YAML templating tool that works on YAML structure instead of text from package
+# https://carvel.dev/ytt/
+APP_NAME=ytt
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Golang-based YAML templating tool that works on YAML structure instead of text."
+APP_VERSION=0.43.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
