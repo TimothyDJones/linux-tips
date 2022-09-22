@@ -32903,7 +32903,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Java-based GUI database client."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Database;JDBC;Client;"
-APP_VERSION=13.0.3
+APP_VERSION=14.0
 APP_EXT=tar.gz
 FILE_NAME=dbvis_linux_${APP_VERSION//./_}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://fossies.org/linux/misc/${FILE_NAME}.${APP_EXT}
