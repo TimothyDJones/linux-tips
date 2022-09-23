@@ -8321,10 +8321,10 @@ rm -rf /tmp/${APP_NAME}*
 # Install Bitwarden Electron-based desktop/online password manager from Debian package
 APP_NAME=Bitwarden
 APP_GUI_NAME="Electron-based desktop/online password manager."
-APP_VERSION=1.23.0
+APP_VERSION=2022.9.1
 APP_EXT=deb
-FILE_NAME=${APP_NAME}-${APP_VERSION}-amd64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-client-apps.mirror/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
