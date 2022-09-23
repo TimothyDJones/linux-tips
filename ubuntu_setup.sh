@@ -8310,7 +8310,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Zettlr Electron-based Markdown editor with built-in preview from Debian package
 APP_NAME=Zettlr
 APP_GUI_NAME="Electron-based Markdown editor with built-in preview."
-APP_VERSION=2.2.5
+APP_VERSION=2.3.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
