@@ -5293,7 +5293,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Sqlectron Electron-based database manager for PostgreSQL, MySQL, and MS SQL Server from package
 APP_NAME=Sqlectron
-APP_VERSION=1.29.0
+APP_VERSION=1.38.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}-gui/releases/download/v${APP_VERSION}/${APP_NAME,,}_${APP_VERSION}_amd64.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
