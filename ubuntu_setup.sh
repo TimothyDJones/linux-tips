@@ -37989,3 +37989,36 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME// /-}* /tmp/${_APP_NAME}*
+
+# Install Fluent Reader cross-platform Electron-based RSS reader/aggregator from AppImage
+APP_NAME="Fluent Reader"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Electron-based RSS reader/aggregator."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="RSS;News;Reader;"
+APP_VERSION=1.1.2
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME// /.}.${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://a.fsdn.com/allura/mirror/fluent-reader/icon?81f7415c8770bd037a549fada715ab80995e13228d5409f27573945f285f9db3
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME// /-}* /tmp/${_APP_NAME}*
