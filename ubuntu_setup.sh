@@ -33334,7 +33334,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Nice Editor (ne) ncurses-based minimalist text editor from source
 APP_NAME=ne
 APP_GUI_NAME="ncurses-based minimalist text editor."
-APP_VERSION=3.3.1
+APP_VERSION=3.3.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libncursesw5-dev
