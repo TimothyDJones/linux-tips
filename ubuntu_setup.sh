@@ -15191,10 +15191,10 @@ APP_NAME=Syncped
 APP_GUI_NAME="wxWidgets-based text editor."
 APP_VERSION=N/A
 APP_EXT=N/A
-sudo apt-get install -y cmake
+sudo apt-get install -y cmake libboost-dev
 cd /tmp
-git clone --recursive https://github.com/antonvw/wxExtension.git
-cd wxExtension
+git clone --recursive https://github.com/antonvw/wex.git
+cd wex
 mkdir build && cd build
 cmake .. && make && sudo make install
 
