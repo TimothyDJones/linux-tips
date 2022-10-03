@@ -31402,9 +31402,9 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform GUI editor/manager for SQL and NoSQL databases."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Database;SQL;NoSQL;Editor;"
-APP_VERSION=4.8.8
+APP_VERSION=5.1.4
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux_x86_64
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/${APP_NAME,,}/${APP_NAME,,}/master/app/icons/128x128.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
