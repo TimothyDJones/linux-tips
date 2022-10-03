@@ -10501,6 +10501,7 @@ APP_GUI_NAME="Cross-platform, Java-based multi-database (MySQL/PostgreSQL/Oracle
 APP_VERSION=0.3.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}${APP_VERSION}
+sudo apt install -y openjdk-11-jre openjfx
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
