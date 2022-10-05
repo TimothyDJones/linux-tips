@@ -28425,7 +28425,7 @@ APP_NAME=Laravel-Kit
 APP_GUI_NAME="Cross-platform Electron-based desktop tool for managing Laravel applications."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Laravel;"
-APP_VERSION=2.0.4
+APP_VERSION=2.0.7
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tmdh/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
