@@ -119,8 +119,14 @@ set directory=~/.vim/tmp
 set autochdir
 
 " Set 1000 commands to undo and save to file
+if !isdirectory($HOME."/.vim")
+  call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo-dir")
+  call mkdir($HOME."/.vim/undo-dir", "", 0700)
+endif
 set undolevels=1000
-set undodir=~/.vim/undos
+set undodir=~/.vim/undo-dir
 set undofile
 
 " Keep at least 4 lines above and below the current line
