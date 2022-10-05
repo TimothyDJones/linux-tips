@@ -38235,3 +38235,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install shmoji tiny shell-based emoji picker from package
+APP_NAME=shmoji
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Tiny shell-based emoji picker."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+sudo apt install -y rofi xdotool
+curl -o /tmp/${FILE_NAME} -J -L https://raw.githubusercontent.com/biox/${APP_NAME,,}/main/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
