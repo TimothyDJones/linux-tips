@@ -412,3 +412,13 @@ tnew() {
 		-c ${session_dir} \
 		-n ${session_window_name}
 }
+
+# Some convenient 'ls' aliases
+# detailed list in alphabetical order
+alias lss='ls --group-directories-first --color=always --time-style=+"%Y-%m-%d %I:%M:%S %p" -lhF'
+# detailed list in reverse time order
+alias ltr='ls --group-directories-first --color=always --time-style=+"%Y-%m-%d %I:%M:%S %p" -lhFtr'
+# simple list in reverse time order
+alias 1tr='ls --group-directories-first --color=always -1Ftr'
+# just filenames in alphabetical order
+alias lsf='ls --group-directories-first --color=always -F'
