@@ -33914,7 +33914,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install far2l Linux port/fork of Windows Far Manager file manager from source
 APP_NAME=far2l
 APP_GUI_NAME="Linux port/fork of Windows Far Manager file manager."
-APP_VERSION=v_2.4.0
+APP_VERSION=v_2.4.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y gawk m4 libwxgtk3.0-gtk3-dev libx11-dev libxi-dev libpcre3-dev libxerces-c-dev libspdlog-dev libuchardet-dev libssh-dev libssl-dev libsmbclient-dev libnfs-dev libneon27-dev libarchive-dev cmake g++
