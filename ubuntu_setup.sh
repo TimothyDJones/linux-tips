@@ -27945,7 +27945,7 @@ APP_NAME=Endless-Sky
 APP_GUI_NAME="2D space exploration, trading, and combat game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Space;Trading;RPG;"
-APP_VERSION=0.9.15
+APP_VERSION=0.9.16
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${KERNEL_TYPE}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
