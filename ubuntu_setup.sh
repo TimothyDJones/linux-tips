@@ -35025,7 +35025,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install warpd modal X/Windows keyboard driven interface for cursor manipulation from source
 APP_NAME=warpd
 APP_GUI_NAME="Modal X/Windows keyboard driven interface for cursor manipulation."
-APP_VERSION=v1.0.2-beta
+APP_VERSION=v1.3.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y libxi-dev libxinerama-dev libxft-dev libxfixes-dev libxtst-dev libx11-dev
