@@ -394,7 +394,7 @@ libapache2-mod-php${PHP7_VERSION} libapache2-mod-xsendfile \
 mysql-server  mysql-workbench mycli
 
 # Install nvm (Node Version Manager) command-line utility for running/managing multiple versions of Node.JS from package
-APP_VERSION=0.39.1
+APP_VERSION=0.39.2
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v${APP_VERSION}/install.sh | bash
 source $HOME/.bashrc
 nvm install --lts=dubnium node
@@ -553,7 +553,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=22.2.1
+APP_VERSION=22.2.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -1059,7 +1059,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=12.7.2
+APP_VERSION=12.7.3
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1536,7 +1536,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4522
+APP_VERSION=4.3-4526
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -1892,7 +1892,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.44.109
+APP_VERSION=1.44.112
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -2254,7 +2254,7 @@ APP_NAME=ProjeQtOr
 APP_GUI_NAME="Web-based project management tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project;Management;"
-APP_VERSION=10.1.1
+APP_VERSION=10.1.2
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2712,7 +2712,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.6.120
+APP_VERSION=6.6.121
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -6179,7 +6179,7 @@ APP_NAME=Wacko
 APP_GUI_NAME="PHP-based lightweight wiki tool."
 APP_GUI_CATEGORIES="Internet;Office;"
 APP_GUI_KEYWORDS="Wiki;"
-APP_VERSION=6.1.13
+APP_VERSION=6.1.14
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -7714,7 +7714,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install UNA social-media community management web-based tool (PHP/MySQL)
 APP_NAME=UNA
-APP_VERSION=13.0.0-B3
+APP_VERSION=13.0.0-B4
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -8204,7 +8204,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=5.3.0
+APP_VERSION=5.3.1
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}${APP_VERSION//./}
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
@@ -9956,7 +9956,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install tkdiff Tcl-based text file difference viewer/editor from source
 APP_NAME=tkdiff
 APP_GUI_NAME="Tcl-based text file difference viewer/editor."
-APP_VERSION=5.5.2
+APP_VERSION=5.5.3
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION/./-}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib
@@ -21297,7 +21297,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=6.6.0
+APP_VERSION=6.7.0
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -21841,7 +21841,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://dystroy.org/broot/
 APP_NAME=Broot
 APP_GUI_NAME="Rust-based command-line directory tree navigation tool with fuzzy-search capability."
-APP_VERSION=1.16.0
+APP_VERSION=1.16.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -24328,7 +24328,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=9.2.7
+APP_VERSION=9.3.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -28459,7 +28459,7 @@ APP_NAME=Electerm
 APP_GUI_NAME="Electron-based integrated terminal/SSH/SFTP client."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Terminal;SSH;SFTP;"
-APP_VERSION=1.23.6
+APP_VERSION=1.23.15
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31333,7 +31333,7 @@ APP_NAME=Vieb
 APP_GUI_NAME="Cross-platform, Chromium-based web browser with Vim keybindings."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Vim;Browser;Chromium;Web;"
-APP_VERSION=9.2.1
+APP_VERSION=9.3.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Jelmerro/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32533,7 +32533,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Simple Qt-based typing tutor."
 APP_GUI_CATEGORIES="Accessories;Education;"
 APP_GUI_KEYWORDS="Typing;Tutor;"
-APP_VERSION=4.3.2
+APP_VERSION=4.3.3
 APP_EXT=N/A
 FILE_NAME=${APP_NAME}-linux-amd64
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/adazem009/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}
@@ -33914,7 +33914,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install far2l Linux port/fork of Windows Far Manager file manager from source
 APP_NAME=far2l
 APP_GUI_NAME="Linux port/fork of Windows Far Manager file manager."
-APP_VERSION=v_2.4.0
+APP_VERSION=v_2.4.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y gawk m4 libwxgtk3.0-gtk3-dev libx11-dev libxi-dev libpcre3-dev libxerces-c-dev libspdlog-dev libuchardet-dev libssh-dev libssl-dev libsmbclient-dev libnfs-dev libneon27-dev libarchive-dev cmake g++
@@ -38317,3 +38317,83 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install genact cross-platform shell-based nonsense activity generator from package
+APP_NAME=genact
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform shell-based nonsense activity generator."
+APP_VERSION=1.2.2
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install PQMusic Python/Qt-based, minimalist music player from AppImage
+APP_NAME=PQMusic
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Python/Qt-based, minimalist music player."
+APP_GUI_CATEGORIES="AudioVideo;Multimedia;"
+APP_GUI_KEYWORDS="Music;Player;"
+APP_VERSION=1.2.1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+sudo apt install -y python3-dbus.mainloop.pyqt5
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/son-link/${APP_NAME}/releases/download/v.${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/son-link/${APP_NAME}/main/bin/io.sonlink.${APP_NAME,,}.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install just project-specific command runner with make-like syntax from package
+APP_NAME=just
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Project-specific command runner with make-like syntax."
+APP_VERSION=1.5.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/casey/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/local/man/man1
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+sudo mandb
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install joshuto Rust-based ranger-like terminal file manager from package
+APP_NAME=joshuto
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust-based ranger-like terminal file manager."
+APP_VERSION=0.9.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kamiyaa/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
