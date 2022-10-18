@@ -38467,7 +38467,7 @@ cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
 PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-java -jar /opt/${APP_NAME,,}/${APP_NAME}.jar &
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.jar &
 cd \$HOME
 EOF
 sudo mv /tmp/${APP_NAME,,} /usr/local/bin
@@ -38479,7 +38479,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
 Exec=/usr/local/bin/${APP_NAME,,}
-Icon=
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
