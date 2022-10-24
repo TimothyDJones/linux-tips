@@ -8404,8 +8404,8 @@ cat > /tmp/${APP_NAME,,}.desktop << EOF
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+Path=/usr/local/bin/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
 Icon=/usr/local/share/icons/${APP_NAME,,}.svg
 Type=Application
 StartupNotify=true
