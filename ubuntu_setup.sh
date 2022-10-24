@@ -8386,17 +8386,19 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Standard Notes Electron-based secure notepad from App Image
+# Install Standard Notes Electron-based secure notepad from AppImage
 APP_NAME=Standard-Notes
 APP_GUI_NAME="Electron-based secure notepad."
-APP_VERSION=3.22.11
+APP_VERSION=3.23.246
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/standardnotes/desktop/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/standardnotes/app/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/standardnotes/app/main/packages/icons/src/Icons/ic-sn-logo-full.svg
 sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
-sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo cp -R -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -8404,7 +8406,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
 Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-#Icon=
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
 Type=Application
 StartupNotify=true
 Terminal=false
