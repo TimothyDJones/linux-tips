@@ -24929,7 +24929,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Zim Python-based desktop wiki from Debian package
 APP_NAME=Zim
 APP_GUI_NAME="Python-based desktop wiki."
-APP_VERSION=0.74.3
+APP_VERSION=0.75.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://zim-wiki.org/downloads/${FILE_NAME}.${APP_EXT}
