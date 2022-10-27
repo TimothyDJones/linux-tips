@@ -25217,11 +25217,11 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install neix RSS/Atom news reader for terminal from source
 APP_NAME=neix
 APP_GUI_NAME="RSS/Atom news reader for terminal."
-APP_VERSION=0.1.1
+APP_VERSION=0.1.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y cmake
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tomschwarz/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/qw3rtty/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
