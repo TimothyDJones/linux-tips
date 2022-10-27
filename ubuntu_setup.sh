@@ -25149,7 +25149,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install gotop terminal-based, graphical performance monitoring utility built with Golang from package
 APP_NAME=gotop
 APP_GUI_NAME="Terminal-based, graphical performance monitoring utility built with Golang."
-APP_VERSION=4.0.1
+APP_VERSION=4.2.0
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
