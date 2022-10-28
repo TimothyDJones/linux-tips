@@ -16133,7 +16133,7 @@ cd $HOME
 # Install Archiver Golang-based multi-format archiver/extractor from package
 APP_NAME=Archiver
 APP_GUI_NAME="Golang-based multi-format archiver/extractor."
-APP_VERSION=3.5.0
+APP_VERSION=3.5.1
 APP_EXT=N/A
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
