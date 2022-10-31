@@ -31208,7 +31208,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Kakoune console text editor with Vi keybindings from source
 APP_NAME=Kakoune
 APP_GUI_NAME="Console text editor with Vi keybindings."
-APP_VERSION=2021.11.08
+APP_VERSION=2022.10.31
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -yy build-essential
