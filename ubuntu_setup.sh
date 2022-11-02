@@ -20269,7 +20269,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Swifty lightweight, cross-platform, Electron-based password manager from Debian package
 APP_NAME=Swifty
 APP_GUI_NAME="Lightweight, cross-platform, Electron-based password manager."
-APP_VERSION=0.2.0
+APP_VERSION=0.6.7
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/swiftyapp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
