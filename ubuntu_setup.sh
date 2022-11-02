@@ -28953,7 +28953,7 @@ APP_NAME=vis
 APP_GUI_NAME="Simple, minimal Vim-like console text editor."
 APP_GUI_CATEGORIES="Accessories;System;Development;Programming"
 APP_GUI_KEYWORDS="Vim;Text;Editor;"
-APP_VERSION=0.7
+APP_VERSION=0.8
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libncursesw5-dev libtermkey-dev libtre-dev libacl1-dev liblua5.3-dev lua-lpeg-dev lua-lpeg-patterns
