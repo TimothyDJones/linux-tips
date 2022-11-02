@@ -20287,7 +20287,7 @@ sudo flatpak install -y flathub org.gnome.FeedReader
 # https://www.nift.cc/
 APP_NAME=NSM
 APP_GUI_NAME="Cross-platform web site generation and management framework."
-APP_VERSION=1.8
+APP_VERSION=2.4.12
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
