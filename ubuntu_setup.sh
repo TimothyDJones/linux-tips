@@ -9646,8 +9646,8 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Hale Studio cross-platform, Java-based interactive tool for data transformation and visualization from package
 APP_NAME=Hale-Studio
 APP_GUI_NAME="Cross-platform, Java-based interactive tool for data transformation and visualization."
-APP_VERSION=3.3.2
-APP_EXT=tar.gz
+APP_VERSION=4.1.0
+APP_EXT=tar
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
 else    # Otherwise use version for 32-bit kernel
