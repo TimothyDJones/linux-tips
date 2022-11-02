@@ -9617,7 +9617,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Miam-Player cross-platform Qt-based audio player from source
 APP_NAME=Miam-Player
 APP_GUI_NAME="Cross-platform Qt-based audio player."
-APP_VERSION=0.8.0
+APP_VERSION=0.9.0
 APP_EXT=tar.gz
 sudo apt-get install -y build-essential qt5-qmake qttools5-dev qttools5-dev-tools libqtav-dev libtag1-dev libqt5multimedia5 qtmultimedia5-dev libqt5x11extras5-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/MBach/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
