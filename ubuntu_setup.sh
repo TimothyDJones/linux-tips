@@ -20471,11 +20471,11 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install BIC minimalist C interpreter and REPL from source
 APP_NAME=BIC
 APP_GUI_NAME="Minimalist C interpreter and REPL."
-APP_VERSION=N/A
-APP_EXT=zip
-FILE_NAME=${APP_NAME,,}-master
+APP_VERSION=1.0.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
 sudo apt-get install -y build-essential libreadline-dev autoconf-archive libgmp-dev expect flex bison automake m4 libtool pkg-config
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/hexagonal-sun/${APP_NAME,,}/archive/master.zip
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/hexagonal-sun/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
