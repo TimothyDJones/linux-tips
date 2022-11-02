@@ -20426,7 +20426,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install Ulauncher GTK+ Linux application launcher from Debian package
 APP_NAME=Ulauncher
 APP_GUI_NAME="GTK+ Linux application launcher."
-APP_VERSION=5.14.5
+APP_VERSION=5.15.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/${APP_VERSION//.b/-b}/${FILE_NAME}.${APP_EXT}
