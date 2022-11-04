@@ -2337,7 +2337,7 @@ sudo apt-get install -y xiphos
 
 # Install Roamer text-based file manager
 APP_NAME=roamer
-APP_VERSION=0.2.0
+APP_VERSION=0.3.2
 APP_ACCT=abaldwin88
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -Lk https://github.com/${APP_ACCT}/${APP_NAME}/tarball/v${APP_VERSION}
