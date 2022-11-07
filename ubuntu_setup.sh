@@ -553,7 +553,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=22.2.3
+APP_VERSION=22.2.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -1536,7 +1536,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4532
+APP_VERSION=4.3-4536
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2527,7 +2527,7 @@ sudo mv /tmp/${APP_NAME} /usr/local/bin
 
 # Install Freeplane mind-mapping tool from Debian package
 APP_NAME=Freeplane
-APP_VERSION=1.10.4
+APP_VERSION=1.10.5
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}~upstream-1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -4475,7 +4475,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Rufas Slider puzzle game from source
 APP_NAME=RufasSlider
 APP_GUI_NAME="Klotsky-style slider puzzle game."
-APP_VERSION=22oct22
+APP_VERSION=7nov22
 APP_EXT=7z
 FILE_NAME=rs${APP_VERSION}
 sudo apt-get install -y qttools5-dev qttools5-dev-tools cmake
@@ -4569,7 +4569,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Crystal Facet UML modeling tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.42.0
+APP_VERSION=1.43.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}-0.x86_64
 sudo apt-get install -y libgdk-pixbuf2.0-0 alien
@@ -22539,7 +22539,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://sw.kovidgoyal.net/kitty/
 APP_NAME=Kitty
 APP_GUI_NAME="Cross-platform GPU-based terminal."
-APP_VERSION=0.26.4
+APP_VERSION=0.26.5
 APP_EXT=txz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt-get install -y python3-enchant python3-pyqt5 python3-numpy python3-pyqt5.qtsvg
@@ -25543,7 +25543,7 @@ APP_NAME=pj-net-tools
 APP_GUI_NAME="Java GUI networking utilities with tabbed interface."
 APP_GUI_CATEGORIES="Internet;System;Accessories;"
 APP_GUI_KEYWORDS="Networking;"
-APP_VERSION=1.0.74
+APP_VERSION=1.0.82
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -28744,7 +28744,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Sleek cross-platform todo.txt-format to do application from Debian package
 APP_NAME=Sleek
-APP_VERSION=1.2.8
+APP_VERSION=1.2.9
 APP_EXT=deb
 export $(dpkg-architecture)
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${DEB_BUILD_ARCH}
@@ -31374,7 +31374,7 @@ APP_NAME=Logseq
 APP_GUI_NAME="Local-first, non-linear, outliner notebook for personal knowledge management."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Knowledge;Management;"
-APP_VERSION=0.3.3
+APP_VERSION=0.8.10
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31852,7 +31852,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Lux
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based command-line video download tool."
-APP_VERSION=0.15.0
+APP_VERSION=0.16.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(getconf LONG_BIT)-bit
 sudo apt-get install -y ffmpeg
@@ -32950,7 +32950,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=btop
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Minimalist command-line resource monitor tool."
-APP_VERSION=1.2.12
+APP_VERSION=1.2.13
 APP_EXT=tbz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/aristocratos/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -35481,7 +35481,7 @@ sudo apt install -y stackandconquer
 # Install Red Panda cross-platform lightweight C/C++ IDE from Debian package
 APP_NAME="Red Panda"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=2.1-2
+APP_VERSION=2.3-1
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}-cpp_${APP_VERSION}_amd64_ubuntu20.04
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}-cpp/${FILE_NAME}.${APP_EXT}
@@ -38852,3 +38852,38 @@ sudo chmod a+x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Passy cross-platform Flutter-based password manager with synchronization capability from AppImage
+APP_NAME=Passy
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Flutter-based password manager with synchronization capability."
+APP_GUI_CATEGORIES="Internet;System;Accessories;"
+APP_GUI_KEYWORDS="Password;Security;"
+APP_VERSION=1.2.0
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-v${APP_VERSION}-Linux-${APP_EXT}
+curl -o /tmp/${FILE_NAME}.zip -J -L https://github.com/GlitterWare/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.zip
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/GlitterWare/${APP_NAME}/main/assets/images/icon48.png
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.zip
+sudo cp /tmp/${FILE_NAME}/${APP_NAME}-v${APP_VERSION}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME}-v${APP_VERSION}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${APP_NAME}-v${APP_VERSION}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
