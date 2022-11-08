@@ -9889,12 +9889,13 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install Balena Etcher cross-platform Electron-based tool to copy OS images to USB drives from Debian package
+# https://github.com/balena-io/etcher
 APP_NAME=Balena-Etcher
 APP_GUI_NAME="Cross-platform Electron-based tool to copy OS images to USB drives."
-APP_VERSION=1.7.9
+APP_VERSION=1.8.13
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-electron_${APP_VERSION}_${KERNEL_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/balena-io/etcher/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/etcher.mirror/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
@@ -18029,15 +18030,6 @@ APP_VERSION=1.3.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}_${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/denysdovhan/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
-
-# Install Etcher cross-platform, Electron-based tool for writing ISO images to SD cards/USB drives from Debian package
-APP_NAME=Etcher
-APP_GUI_NAME="Cross-platform, Electron-based tool for writing ISO images to SD cards/USB drives."
-APP_VERSION=1.7.8
-APP_EXT=deb
-FILE_NAME=balena-${APP_NAME,,}-electron_${APP_VERSION}_${ARCH_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/balena-io/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
 # Install SQLite-New cross-platform Qt-based SQLite GUI manager from source
