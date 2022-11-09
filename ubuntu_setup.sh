@@ -9892,7 +9892,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/balena-io/etcher
 APP_NAME=Balena-Etcher
 APP_GUI_NAME="Cross-platform Electron-based tool to copy OS images to USB drives."
-APP_VERSION=1.8.13
+APP_VERSION=1.9.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/etcher.mirror/${FILE_NAME}.${APP_EXT}
