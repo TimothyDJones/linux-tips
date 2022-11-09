@@ -24028,15 +24028,15 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install GRIEF cross-platform console text editor from source
 APP_NAME=GRIEF
-APP_VERSION=master
-APP_EXT=zip
+APP_VERSION=3.2.2-build24
+APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y build-essential
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/adamyg/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+sudo apt-get install -y build-essential flex bison
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/adamyg/${APP_NAME,,}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
-./configure_new && make && sudo make install
+./configure_new && make release build && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
