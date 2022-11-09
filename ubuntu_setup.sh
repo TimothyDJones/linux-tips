@@ -23974,7 +23974,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Secret minimalist command-line password manager from package
 APP_NAME=Secret
 APP_GUI_NAME="Minimalist command-line password manager."
-APP_VERSION=0.9
+APP_VERSION=0.12
 APP_EXT=bin
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
