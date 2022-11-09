@@ -23936,7 +23936,7 @@ sudo rm -rf /tmp/${APP_NAME// /%20}*
 
 # Install Qt JSON diff GUI JSON viewer/comparer from source
 APP_NAME=QTjsonDiff
-APP_VERSION=0.60b
+APP_VERSION=0.62b
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}_refs-heads-master
 sudo apt-get install -y build-essential qt5-default qttools5-dev-tools
