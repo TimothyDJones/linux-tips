@@ -31614,7 +31614,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Korbeaux cross-platform Qt-based comic book (PDF, CBR, CBZ format) reader from source
 APP_NAME=Korbeaux
 APP_GUI_NAME="Cross-platform Qt-based comic book (PDF, CBR, CBZ format) reader."
-APP_VERSION=4.4
+APP_VERSION=4.8
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qt5-default qt5-qmake qtdeclarative5-dev
