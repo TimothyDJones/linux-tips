@@ -256,6 +256,10 @@ cd /tmp
 dtrx -n /tmp/martian-mono-0.9.0-otf.zip
 sudo mkdir -p /usr/local/share/fonts/martianmono
 sudo cp -R /tmp/martian-mono-0.9.0-otf/*.otf /usr/local/share/fonts/martianmono
+curl -o /tmp/ArrowType-Recursive-1.085.zip -J -L https://downloads.sourceforge.net/recursive-sans-mono.mirror/ArrowType-Recursive-1.085.zip
+cd /tmp
+dtrx -n /tmp/ArrowType-Recursive-1.085.zip
+sudo cp -R /tmp/ArrowType-Recursive-1.085/Recursive_Code/* /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
