@@ -264,6 +264,10 @@ curl -o /tmp/CozetteFonts.zip -J -L https://downloads.sourceforge.net/cozette.mi
 cd /tmp
 dtrx -n /tmp/CozetteFonts.zip
 sudo cp -R /tmp/CozetteFonts/*.ttf /usr/local/share/fonts
+curl -o /tmp/VictorMonoAll.zip -J -L https://rubjo.github.io/victor-mono/VictorMonoAll.zip
+cd /tmp
+dtrx -n /tmp/VictorMonoAll.zip
+sudo cp -R /tmp/VictorMonoAll/TTF/*.ttf /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
