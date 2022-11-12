@@ -38921,7 +38921,6 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
-
 # Install GitVersion C#/.NET-based tool for calculating semantic version from repository Git history from package
 APP_NAME=GitVersion
 APP_GUI_NAME="C#/.NET-based tool for calculating semantic version from repository Git history."
@@ -38935,3 +38934,20 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Nonpareil HP calculator emulator from source
+APP_NAME=Nonpareil
+APP_GUI_NAME="HP calculator emulator."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y scons flex bison netpbm libxml2-dev libsdl1.2-dev zlib1g-dev libgtk2.0-dev
+sudo apt install -y libcanberra-gtk-module libcanberra-gtk3-module
+cd /tmp
+git clone https://git.code.sf.net/p/${APP_NAME,,}-ubuntu/code ${APP_NAME,,}-ubuntu-code
+cd /tmp/${APP_NAME,,}-ubuntu-code
+sudo scons install && sudo scons -c
+sudo cp HP-12C_icon.png /usr/share/icons
+sudo cp HP-12C.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
