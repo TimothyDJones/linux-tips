@@ -34228,7 +34228,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Rabbit Remote Control"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform remote control tool with support for VNC, RDP, SSH, Telnet, etc."
-APP_VERSION=0.0.24
+APP_VERSION=0.0.25
 APP_EXT=deb
 source /etc/lsb-release
 if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo|go|hi)$ ]]; then # 20.04 and above
