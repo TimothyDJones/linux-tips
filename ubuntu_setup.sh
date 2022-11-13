@@ -12008,7 +12008,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install Gopherus cross-platform console-mode gopher client from source
 APP_NAME=Gopherus
 APP_GUI_NAME="Cross-platform console-mode gopher client."
-APP_VERSION=1.2.1
+APP_VERSION=1.2.2
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libsdl2-dev libncurses-dev
