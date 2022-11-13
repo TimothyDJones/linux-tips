@@ -26650,7 +26650,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install yq Golang-based command-line YAML processor from package
 APP_NAME=yq
-APP_VERSION=4.30.1
+APP_VERSION=4.30.2
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_${KERNEL_TYPE//i/}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/mikefarah/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
@@ -36258,7 +36258,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 
-# Install eSearch cross-platform screen capture tool with OCR capability from Debian package
+# Install -a from Debian package
 APP_NAME=eSearch
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_VERSION=1.9.3
