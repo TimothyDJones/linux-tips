@@ -38963,3 +38963,16 @@ sudo cp HP-12C_icon.png /usr/share/icons
 sudo cp HP-12C.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install subnets Rust-based command-line tool to analyze and calculate IPv4 addresses and subnet masks from package
+APP_NAME=subnets
+APP_GUI_NAME="Rust-based command-line tool to analyze and calculate IPv4 addresses and subnet masks."
+APP_VERSION=1.1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/margual56/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
