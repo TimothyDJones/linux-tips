@@ -36035,7 +36035,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '-' '_')
 APP_GUI_NAME="GUI tool for managing remote terminal sessions and automation."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="SSH;Shell;Automation;"
-APP_VERSION=6.3.2-2
+APP_VERSION=6.4.0-1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION//-2/}/${FILE_NAME}.${APP_EXT}
