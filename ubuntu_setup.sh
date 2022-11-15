@@ -284,6 +284,10 @@ curl -o /tmp/MapleMono-NF.zip -J -L https://downloads.sourceforge.net/maple-font
 cd /tmp
 dtrx -n /tmp/MapleMono-NF.zip
 sudo cp -R /tmp/MapleMono-NF/*.ttf /usr/local/share/fonts
+curl -o /tmp/fragment-mono-fonts.zip -J -L https://github.com/weiweihuanghuang/fragment-mono/releases/download/1.011/fragment-mono-fonts.zip
+cd /tmp
+dtrx -n /tmp/fragment-mono-fonts.zip
+sudo cp -R /tmp/fragment-mono-fonts/fonts/out/ttf/*.ttf /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
