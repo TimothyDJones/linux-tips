@@ -39068,3 +39068,19 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Doer Qt-based minimalist desktop notepad from source
+APP_NAME=Doer
+APP_GUI_NAME="Qt-based minimalist desktop notepad."
+APP_VERSION=1.1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y libx11-dev qtbase5-dev libqt5x11extras5-dev libqt5svg5-dev libhunspell-dev qttools5-dev-tools
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Y2Z/${APP_NAME}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 .. && make -j$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
