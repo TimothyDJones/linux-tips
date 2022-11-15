@@ -38992,3 +38992,28 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Slider Puzzles cross-platform, color terminal/console puzzle games from package
+APP_NAME="Slider Puzzles"
+APP_GUI_NAME="Cross-platform, color terminal/console puzzle games."
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=15nov22
+APP_EXT=7z
+FILE_NAME=puz${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/sliderPuzzles/* /opt/${_APP_NAME}
+sudo chown -R ${USER}:${USER} /opt/${_APP_NAME}
+cat > /tmp/${_APP_NAME} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}/bin/gnu
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+/opt/${_APP_NAME}/bin/gnu/nexus
+cd /opt/${_APP_NAME}
+EOF
+sudo mv /tmp/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/puz*
