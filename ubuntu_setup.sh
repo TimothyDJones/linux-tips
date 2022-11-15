@@ -38949,6 +38949,7 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
 # Install GitVersion C#/.NET-based tool for calculating semantic version from repository Git history from package
 APP_NAME=GitVersion
 APP_GUI_NAME="C#/.NET-based tool for calculating semantic version from repository Git history."
@@ -39017,3 +39018,36 @@ sudo mv /tmp/${_APP_NAME} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${_APP_NAME}
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/puz*
+
+# Install Pulse Browser fork of Firefox web browser for enhanced focus and work productivity from package
+APP_NAME="Pulse Browser"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Fork of Firefox web browser for enhanced focus and work productivity."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Firefox;Browser;"
+APP_VERSION=1.0.0-a.31
+APP_EXT=tar.bz2
+FILE_NAME=${_APP_NAME}.linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${_APP_NAME}/browser/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R -a /tmp/${FILE_NAME}/* /opt
+sudo chown -R ${USER}:${USER} /opt/${_APP_NAME}
+sudo ln -s -f /opt/${_APP_NAME}/${_APP_NAME} /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/opt/${_APP_NAME}/browser/chrome/icons/default/default48.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
