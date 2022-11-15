@@ -268,10 +268,14 @@ curl -o /tmp/VictorMonoAll.zip -J -L https://rubjo.github.io/victor-mono/VictorM
 cd /tmp
 dtrx -n /tmp/VictorMonoAll.zip
 sudo cp -R /tmp/VictorMonoAll/TTF/*.ttf /usr/local/share/fonts
-curl -o /tmp/3270_fonts_d916271.zip -J -L https://downloads.sourceforge.net/cozette.mirror/3270_fonts_d916271.zip
+curl -o /tmp/3270_fonts_d916271.zip -J -L https://downloads.sourceforge.net/threetwoseven0font.mirror/3270_fonts_d916271.zip
 cd /tmp
 dtrx -n /tmp/3270_fonts_d916271.zip
 sudo cp -R /tmp/3270_fonts_d916271/*.ttf /usr/local/share/fonts
+curl -o /tmp/scientifica.tar -J -L https://downloads.sourceforge.net/scientifica.mirror/scientifica.tar
+cd /tmp
+dtrx -n /tmp/scientifica.tar
+sudo cp -R /tmp/scientifica/ttf/*.ttf /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
