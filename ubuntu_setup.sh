@@ -276,6 +276,14 @@ curl -o /tmp/scientifica.tar -J -L https://downloads.sourceforge.net/scientifica
 cd /tmp
 dtrx -n /tmp/scientifica.tar
 sudo cp -R /tmp/scientifica/ttf/*.ttf /usr/local/share/fonts
+curl -o /tmp/MapleMono.zip -J -L https://downloads.sourceforge.net/maple-font.mirror/MapleMono.zip
+cd /tmp
+dtrx -n /tmp/MapleMono.zip
+sudo cp -R /tmp/MapleMono/*.ttf /usr/local/share/fonts
+curl -o /tmp/MapleMono-NF.zip -J -L https://downloads.sourceforge.net/maple-font.mirror/MapleMono-NF.zip
+cd /tmp
+dtrx -n /tmp/MapleMono-NF.zip
+sudo cp -R /tmp/MapleMono-NF/*.ttf /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
