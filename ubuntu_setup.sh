@@ -209,7 +209,7 @@ curl -o /tmp/CascadiaCode-2111.01.zip -J -L https://downloads.sourceforge.net/ca
 cd /tmp
 dtrx -n /tmp/CascadiaCode-2111.01.zip
 sudo cp -R /tmp/CascadiaCode-2111.01/ttf/* /usr/local/share/fonts
-curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/releases/download/v0.043/JuliaMono.tar.gz
+curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/releases/download/v0.046/JuliaMono.tar.gz
 cd /tmp
 dtrx -n /tmp/JuliaMono.tar.gz
 sudo cp -R /tmp/JuliaMono/*.ttf /usr/local/share/fonts
