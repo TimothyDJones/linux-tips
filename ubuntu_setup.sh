@@ -1012,14 +1012,15 @@ sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Coypu To Do list
-APP_NAME=coypu
+# Install Coypu text-editor-style weekly planner from Debian package
+APP_NAME=Coypu
 APP_VERSION=1.3.0
-curl -o /tmp/${APP_NAME}.deb -J -L https://download.coypu.co/download/linux_deb
-cd /tmp
-sudo gdebi -n coypu.deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
+APP_EXT=deb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bartkozal/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -f /tmp/coypu*
+rm -f /tmp/${APP_NAME,,}*
 
 # Install calc shell calculator from source
 APP_NAME=calc
