@@ -1782,13 +1782,19 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install 4Pane file manager from Debian package
 APP_NAME=4Pane
-APP_VERSION=7.0
+APP_VERSION=8.0
 APP_EXT=deb
 source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (gr)$ ]]; then  # 20.10
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ja)$ ]]; then  # 22.04
+    DISTRIB_VERSION=jammy
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ki)$ ]]; then  # 22.10
+    DISTRIB_VERSION=kinetic
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (gr|hi)$ ]]; then  # 20.10, 21.04
     DISTRIB_VERSION=groovy
+    APP_VERSION=7.0
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo)$ ]]; then  # 20.04
     DISTRIB_VERSION=focal
+    APP_VERSION=7.0
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo)$ ]]; then  # 19.10
 	DISTRIB_VERSION=eoan
     APP_VERSION=6.0
@@ -1800,9 +1806,9 @@ else
     APP_VERSION=6.0
 fi
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1unofficial.${DISTRIB_VERSION}_${KERNEL_TYPE}
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/fourpane/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/fourpane/${FILE_NAME}.${APP_EXT}
 cd /tmp
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
