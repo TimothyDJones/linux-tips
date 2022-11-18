@@ -987,7 +987,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install tmux terminal multiplexer from source
 APP_NAME=tmux
-APP_VERSION=3.2a
+APP_VERSION=3.3a
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 APP_EXT=tar.gz
 sudo apt-get install -y libevent-dev libncurses5-dev
