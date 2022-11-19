@@ -28754,10 +28754,10 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install wutag Rust-based command-line tool for organizing files by tags (xattrs) from package
 APP_NAME=wutag
 APP_GUI_NAME="Rust-based command-line tool for organizing files by tags (xattrs)."
-APP_VERSION=0.3.0
+APP_VERSION=0.5.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(arch)-unknown-linux
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wojciechkepka/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/vv9k/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
