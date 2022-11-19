@@ -39100,3 +39100,9 @@ mkdir build && cd build
 qtchooser -run-tool=qmake -qt=5 .. && make -j$(nproc) && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install pods Rust-based Podman desktop GUI application from Flatpak
+# https://github.com/marhkb/pods
+sudo apt install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+sudo flatpak install flathub-beta com.github.marhkb.Pods
