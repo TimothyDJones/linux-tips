@@ -39174,3 +39174,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install git-bug Golang-based cross-platform offline-first bug tracker embedded in Git from package
+APP_NAME=git-bug
+APP_GUI_NAME="Golang-based cross-platform offline-first bug tracker embedded in Git."
+APP_VERSION=0.8.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
