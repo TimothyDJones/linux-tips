@@ -22994,7 +22994,7 @@ APP_NAME=MeowSQL
 APP_GUI_NAME="Cross-platform, Qt-based HeidiSQL clone with support for MySQL, PostgreSQL, and SQLite."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Database;SQL;"
-APP_VERSION=0.4.2
+APP_VERSION=0.4.17
 APP_EXT=AppImage
 FILE_NAME=Linux_${APP_NAME}_${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ragnar-lodbrok/meow-sql/releases/download/v${APP_VERSION}-alpha/${FILE_NAME}.${APP_EXT}
