@@ -209,7 +209,7 @@ curl -o /tmp/CascadiaCode-2111.01.zip -J -L https://downloads.sourceforge.net/ca
 cd /tmp
 dtrx -n /tmp/CascadiaCode-2111.01.zip
 sudo cp -R /tmp/CascadiaCode-2111.01/ttf/* /usr/local/share/fonts
-curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/releases/download/v0.043/JuliaMono.tar.gz
+curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/releases/download/v0.046/JuliaMono.tar.gz
 cd /tmp
 dtrx -n /tmp/JuliaMono.tar.gz
 sudo cp -R /tmp/JuliaMono/*.ttf /usr/local/share/fonts
@@ -632,7 +632,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.176.1.0
+APP_VERSION=1.177.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_$(dpkg-architecture --query DEB_HOST_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -987,7 +987,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install tmux terminal multiplexer from source
 APP_NAME=tmux
-APP_VERSION=3.2a
+APP_VERSION=3.3a
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 APP_EXT=tar.gz
 sudo apt-get install -y libevent-dev libncurses5-dev
@@ -1001,23 +1001,26 @@ rm -rf /tmp/tmux*
 
 # Install Ranger CLI file manager from source
 APP_NAME=ranger
-APP_VERSION=1.8.1
-curl -o /tmp/${APP_NAME}.tar.gz -J -L http://nongnu.org/ranger/ranger-stable.tar.gz
+APP_VERSION=1.9.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.tar.gz
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Coypu To Do list
-APP_NAME=coypu
+# Install Coypu text-editor-style weekly planner from Debian package
+APP_NAME=Coypu
 APP_VERSION=1.3.0
-curl -o /tmp/${APP_NAME}.deb -J -L https://download.coypu.co/download/linux_deb
-cd /tmp
-sudo gdebi -n coypu.deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
+APP_EXT=deb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bartkozal/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -f /tmp/coypu*
+rm -f /tmp/${APP_NAME,,}*
 
 # Install calc shell calculator from source
 APP_NAME=calc
@@ -1779,13 +1782,19 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install 4Pane file manager from Debian package
 APP_NAME=4Pane
-APP_VERSION=7.0
+APP_VERSION=8.0
 APP_EXT=deb
 source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (gr)$ ]]; then  # 20.10
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ja)$ ]]; then  # 22.04
+    DISTRIB_VERSION=jammy
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ki)$ ]]; then  # 22.10
+    DISTRIB_VERSION=kinetic
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (gr|hi)$ ]]; then  # 20.10, 21.04
     DISTRIB_VERSION=groovy
+    APP_VERSION=7.0
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo)$ ]]; then  # 20.04
     DISTRIB_VERSION=focal
+    APP_VERSION=7.0
 elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo)$ ]]; then  # 19.10
 	DISTRIB_VERSION=eoan
     APP_VERSION=6.0
@@ -1797,9 +1806,9 @@ else
     APP_VERSION=6.0
 fi
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1unofficial.${DISTRIB_VERSION}_${KERNEL_TYPE}
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/fourpane/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/fourpane/${FILE_NAME}.${APP_EXT}
 cd /tmp
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
@@ -1924,7 +1933,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.45.123
+APP_VERSION=1.45.127
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -2286,7 +2295,7 @@ APP_NAME=ProjeQtOr
 APP_GUI_NAME="Web-based project management tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project;Management;"
-APP_VERSION=10.1.2
+APP_VERSION=10.1.3
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2744,7 +2753,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.6.128
+APP_VERSION=6.6.131
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -5040,7 +5049,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install GNU nano text editor from source
 APP_NAME=nano
 APP_GUI_NAME="Minimalist console text editor."
-APP_VERSION=6.3
+APP_VERSION=7.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y libncurses-dev
@@ -13101,7 +13110,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install SQLiteStudio Qt-based SQLite database GUI client from package
 APP_NAME=SQLiteStudio
 APP_GUI_NAME="Qt-based SQLite database GUI client."
-APP_VERSION=3.3.3
+APP_VERSION=3.4.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/pawelsalawa/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -18306,7 +18315,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Mattermost cross-platform, Electron-based workplace messaging alternative to Slack from Debian package
 APP_NAME=Mattermost
 APP_GUI_NAME="Cross-platform, Electron-based workplace messaging alternative to Slack."
-APP_VERSION=5.2.0
+APP_VERSION=5.2.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-desktop-${APP_VERSION}-linux-${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://releases.mattermost.com/desktop/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21615,7 +21624,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install McFly replacement for <Ctrl>+R search of command-line history from package
 APP_NAME=McFly
 APP_GUI_NAME="Replacement for <Ctrl>+R search of command-line history."
-APP_VERSION=0.4.1
+APP_VERSION=0.6.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -21725,7 +21734,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Glow Golang-based command-line markdown renderer from Debian package
 APP_NAME=Glow
 APP_GUI_NAME="Golang-based command-line markdown renderer."
-APP_VERSION=1.4.0
+APP_VERSION=1.4.1
 APP_EXT=deb
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
@@ -21738,10 +21747,10 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install What Rust-based terminal tool to check what is taking up your bandwidth from package
-APP_NAME=What
+# Install bandwhich Rust-based terminal tool to check what is taking up your bandwidth from package
+APP_NAME=bandwhich
 APP_GUI_NAME="Rust-based terminal tool to check what is taking up your bandwidth."
-APP_VERSION=0.5.1
+APP_VERSION=0.20.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/imsnif/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -23984,7 +23993,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Beekeeper Studio cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server) from Debian package
 APP_NAME=Beekeeper-Studio
 APP_GUI_NAME="Cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server)."
-APP_VERSION=3.7.4
+APP_VERSION=3.7.9
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31362,7 +31371,7 @@ APP_NAME=Vieb
 APP_GUI_NAME="Cross-platform, Chromium-based web browser with Vim keybindings."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Vim;Browser;Chromium;Web;"
-APP_VERSION=9.3.0
+APP_VERSION=9.4.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Jelmerro/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38158,7 +38167,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=rqlite
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Distributed version of SQLite database."
-APP_VERSION=7.10.1
+APP_VERSION=7.11.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -39002,9 +39011,9 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Slider Puzzles"
 APP_GUI_NAME="Cross-platform, color terminal/console puzzle games."
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=15nov22
+APP_VERSION=16nov22
 APP_EXT=7z
-FILE_NAME=puz${APP_VERSION}
+FILE_NAME=asl${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -39175,6 +39184,45 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
 
+# Install RufasCube cross-platform OpenGL Rubik's Cube-style puzzle game from package
+APP_NAME=RufasCube
+APP_GUI_NAME="Cross-platform OpenGL Rubik's Cube-style puzzle game."
+APP_VERSION=16nov22
+APP_EXT=7z
+FILE_NAME=rc${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}/rcube/* /opt/${APP_NAME,,}
+sudo chown -R ${USER}:${USER} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/cube_gnu
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/rufasok_gnu
+Icon=/opt/${APP_NAME,,}/cube.app/Contents/Resources/rufascube.icns
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Games;Entertainment;
+Keywords=Cube;Puzzle;
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
 # Install git-bug Golang-based cross-platform offline-first bug tracker embedded in Git from package
 APP_NAME=git-bug
 APP_GUI_NAME="Golang-based cross-platform offline-first bug tracker embedded in Git."
@@ -39185,5 +39233,19 @@ curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.
 sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Curlie Golang-based command-line frontend to curl that offers ease-of-use of HTTPie from package
+APP_NAME=Curlie
+APP_GUI_NAME="Golang-based command-line frontend to curl that offers ease-of-use of HTTPie."
+APP_VERSION=1.6.9
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rs/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
