@@ -5374,7 +5374,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Thonny minimalist Python IDE/editor for beginners from package
 APP_NAME=Thonny
-APP_VERSION=3.3.13
+APP_VERSION=4.0.1
 APP_GUI_NAME="Minimalist Python IDE/editor for beginners."
 APP_EXT=tar.gz
 if [[ $(uname -m | grep '64') ]]; then  # Check for 64-bit Linux kernel
