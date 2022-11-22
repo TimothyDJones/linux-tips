@@ -39264,3 +39264,22 @@ cd /tmp/${FILE_NAME}
 ./configure && make -j$(nproc) && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install BurgerSpace clone of BurgerTime retro arcade game from source
+APP_NAME=BurgerSpace
+APP_GUI_NAME="Clone of BurgerTime retro arcade game."
+APP_VERSION=1.9.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libsdl-image1.2-dev libsdl-mixer1.2-dev
+curl -o /tmp/flatzebra-0.1.7.tar.gz -J -L http://perso.b2b2c.ca/~sarrazip/dev/flatzebra-0.1.7.tar.gz
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://perso.b2b2c.ca/~sarrazip/dev/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/flatzebra-0.1.7.tar.gz
+cd /tmp/flatzebra-0.1.7
+./configure && make -j(nproc) && sudo make install && sudo ldconfig
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make -j$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
