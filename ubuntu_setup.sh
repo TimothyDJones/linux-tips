@@ -33297,7 +33297,7 @@ rm -rf /tmp/${_APP_NAME}* /tmp/${FILE_NAME}*
 # Install llama cross-platform terminal file manager from package
 APP_NAME=llama
 APP_GUI_NAME="Cross-platform terminal file manager."
-APP_VERSION=1.0.2
+APP_VERSION=1.2.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/antonmedv/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
