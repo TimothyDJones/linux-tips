@@ -33265,7 +33265,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Qt-based tool to set EFI entry to boot from on next system start."
 APP_GUI_CATEGORIES="System;"
 APP_GUI_KEYWORDS="EFI;Boot;"
-APP_VERSION=0.1.1
+APP_VERSION=0.3.0
 APP_EXT=AppImage
 FILE_NAME=$(echo ${APP_NAME} | tr '[:blank:]' '_')_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)_${APP_EXT}
 curl -o /tmp/${FILE_NAME}.zip -J -L https://github.com/Inokinoki/${_APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.zip
