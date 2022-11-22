@@ -39283,3 +39283,18 @@ cd /tmp/${FILE_NAME}
 ./configure && make -j$(nproc) && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Clipboard tool to cut, copy, and paste files from the terminal from package
+APP_NAME=Clipboard
+APP_GUI_NAME="Tool to cut, copy, and paste files from the terminal."
+APP_VERSION=0.1.0
+APP_EXT=zip
+GITHUB_USER=Slackadays
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${GITHUB_USER}/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
