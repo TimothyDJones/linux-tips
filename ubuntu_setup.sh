@@ -19612,7 +19612,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Must install Mono binaries (see above) before installing VCT.
 APP_NAME=VCT
 APP_GUI_NAME=".NET-based cross-platform GUI front-end for ffmpeg."
-APP_VERSION=1.9.5.7
+APP_VERSION=1.9.7
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_Linux_mono_binary
 sudo apt-get install -y mono-complete ffmpeg
