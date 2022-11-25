@@ -39298,3 +39298,28 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Apktool Java-based tool for reverse engineering Android APK files from package
+APP_NAME=Apktool
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Java-based tool for reverse engineering Android APK files."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Android;APK;"
+APP_VERSION=2.7.0
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R -a /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chown -R ${USER}:${USER} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=`pwd`:\$PATH; export PATH
+exec java -Xmx512M -Dfile.encoding=utf-8 -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} "$@" &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
