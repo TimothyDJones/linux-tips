@@ -29867,20 +29867,21 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install NxShell cross-platform SSH/SFTP terminal from AppImage
+# https://github.com/nxshell/nxshell
 APP_NAME=NxShell
 APP_GUI_NAME="Cross-platform SSH/SFTP terminal."
-APP_GUI_CATEGORIES="Networking;Internet;"
-APP_GUI_KEYWORDS="SSH;SFTP;"
-APP_VERSION=1.8.0
-DATE_STAMP=202209161235
+APP_GUI_CATEGORIES="Networking;Internet;System;"
+APP_GUI_KEYWORDS="Shell;SSH;SFTP;"
+APP_VERSION=1.9.0
+DATE_STAMP=202211250327
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME}-${APP_VERSION}-${DATE_STAMP}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${APP_NAME}.png -J -L --referer https://github.com/ https://avatars.githubusercontent.com/u/74552956?v=4
+FILE_NAME=${APP_NAME}-x86_64-linux-${APP_VERSION}-${DATE_STAMP}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/${APP_NAME,,}/icon?1669358095
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
-sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME}.png /usr/local/share/icons/${APP_NAME}.png
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -29888,7 +29889,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/usr/local/bin
 Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/local/share/icons/${APP_NAME}.png
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
