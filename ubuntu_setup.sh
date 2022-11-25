@@ -39339,3 +39339,17 @@ cd /tmp/${FILE_NAME}/${APP_NAME,,}
 make -j$(nproc) ${APP_NAME,,} && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install colorgrep Golang-based grep tool that displays matched patterns in specified color from package
+APP_NAME=colorgrep
+APP_GUI_NAME="Golang-based grep tool that displays matched patterns in specified color."
+APP_VERSION=0.0.3
+APP_EXT=N/A
+GITHUB_USER=alexcb
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/${GITHUB_USER}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
