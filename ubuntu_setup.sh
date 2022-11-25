@@ -39323,3 +39323,18 @@ sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install SpaceZero 2D real-time strategy (RTS) space combat game from source
+APP_NAME=SpaceZero
+APP_GUI_NAME="2D real-time strategy (RTS) space combat game."
+APP_VERSION=0.86.01
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libgtk2.0-dev libglib2.0-dev libopenal-dev libalut-dev libvorbis-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
+make -j$(nproc) ${APP_NAME,,} && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
