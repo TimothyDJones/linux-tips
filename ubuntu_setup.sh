@@ -22225,7 +22225,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Repeat Java-based record/replay automation utility from package
 APP_NAME=Repeat
 APP_GUI_NAME="Java-based record/replay automation utility."
-APP_VERSION=5.4.1
+APP_VERSION=5.7
 APP_EXT=jar
 FILE_NAME=${APP_NAME}_${APP_VERSION//./_}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/repeat1/${FILE_NAME}.${APP_EXT}
