@@ -46,9 +46,9 @@ git remote add origin https://github.com/user/repo_name.git
 ```bash
 sudo usermod -a -G groupnames username
 ```
-`-a` - <em>append</em> groups to group user belongs to (instead of overwrite).  
-`groupnames` - a comma-separated (no spaces!) list of group names to add user to.  
-User <em>must</em> log out and back in for group membership updates to be applied.  
+`-a` - <em>append</em> groups to group user belongs to (instead of overwrite).
+`groupnames` - a comma-separated (no spaces!) list of group names to add user to.
+User <em>must</em> log out and back in for group membership updates to be applied.
 [Reference](http://askubuntu.com/a/79566)
 
 ## Swap the `Caps Lock` and `(Right) Control` keys on keyboard
@@ -63,8 +63,8 @@ add Control = Control_R
 ```
 
 ## Enter Unicode characters with keyboard in Linux
-In most applications in Linux, including at the command line, to enter a [Unicode](https://www.rapidtables.com/code/text/unicode-characters.html) character, hold down `<LeftCtrl>` and `<Shift>` plus _u_ and enter the 2- or 4-character *hexadecimal* Unicode code.  When you release `<LeftCtrl>` and `<Shift>`, the character will be displayed. For example, to enter superscript 2 (²), which is Unicode 00B2, type `<LeftCtrl>`+`<Shift>`+_u_+B2; for the trademark symbol (™), which is Unicode 2122, type `<LeftCtrl>`+`<Shift>`+_u_+2122. Note that you can use the numeric keys across the top of the keyboard or on the numeric keypad (with NumLock enabled).  
-[Reference1](https://twitter.com/brianredbeard/status/1371862052797517825)  
+In most applications in Linux, including at the command line, to enter a [Unicode](https://www.rapidtables.com/code/text/unicode-characters.html) character, hold down `<LeftCtrl>` and `<Shift>` plus _u_ and enter the 2- or 4-character *hexadecimal* Unicode code.  When you release `<LeftCtrl>` and `<Shift>`, the character will be displayed. For example, to enter superscript 2 (²), which is Unicode 00B2, type `<LeftCtrl>`+`<Shift>`+_u_+B2; for the trademark symbol (™), which is Unicode 2122, type `<LeftCtrl>`+`<Shift>`+_u_+2122. Note that you can use the numeric keys across the top of the keyboard or on the numeric keypad (with NumLock enabled).
+[Reference1](https://twitter.com/brianredbeard/status/1371862052797517825)
 [Reference2](https://old.reddit.com/r/linux/comments/m6dbbm/til_on_linux_one_can_type_arbitrary_unicode/)
 
 ## Install packages required to build application from source in Ubuntu/Debian
@@ -72,11 +72,11 @@ If you want to build an application from source for a new version of an applicat
 ```bash
 sudo apt-get build-dep PKG_NAME
 ```
-where `PKG_NAME` is the package name, such as `vim-common`.  
+where `PKG_NAME` is the package name, such as `vim-common`.
 [Reference](https://wiki.debian.org/BuildingTutorial#Get_the_build_dependencies)
 
 ## "Safe" alternative to bypassing password prompt for `sudo`
-To avoid getting prompted for password when running commands with [`sudo`](https://manpages.ubuntu.com/manpages/precise/en/man8/sudo.8.html), one common option is to append `NOPASSWD:ALL` to your user name in the `/etc/sudoers` file. Obviously, this is a security risk. Instead, you can run the `sudo` command with the `-s` ("session") flag to allow the `sudo` session to be persistent until your close the terminal (end the session). To explicitly end the session run `sudo -k` ("kill").  
+To avoid getting prompted for password when running commands with [`sudo`](https://manpages.ubuntu.com/manpages/precise/en/man8/sudo.8.html), one common option is to append `NOPASSWD:ALL` to your user name in the `/etc/sudoers` file. Obviously, this is a security risk. Instead, you can run the `sudo` command with the `-s` ("session") flag to allow the `sudo` session to be persistent until your close the terminal (end the session). To explicitly end the session run `sudo -k` ("kill").
 [Reference](https://vitux.com/how-to-specify-time-limit-for-a-sudo-session/)
 
 ## Change default editor for `visudo`
@@ -148,15 +148,15 @@ If you use an external mouse with your laptop, you probably want to disable your
 At the Bash prompt, run this command to list _all_ of your input devices, such as the keyboard, mouse, and touchpad:
 ```bash
 $ xinput
-⎡ Virtual core pointer                      	id=2	[master pointer  (3)]
-⎜   ↳ Virtual core XTEST pointer              	id=4	[slave  pointer  (2)]
-⎜   ↳ USB Optical Mouse                       	id=10	[slave  pointer  (2)]
-⎜   ↳ **SynPS/2 Synaptics TouchPad              	id=12**	[slave  pointer  (2)]
+⎡ Virtual core pointer                          id=2    [master pointer  (3)]
+⎜   ↳ Virtual core XTEST pointer                id=4    [slave  pointer  (2)]
+⎜   ↳ USB Optical Mouse                         id=10   [slave  pointer  (2)]
+⎜   ↳ **SynPS/2 Synaptics TouchPad                  id=12** [slave  pointer  (2)]
 ```
 In this example, the touchpad, has device ID **12**. Next, we check the status (enabled or disabled) for this device:
 ```bash
 $ xinput -list-props 12 | grep "Device Enabled"
-	Device Enabled (**116**):	**1**
+    Device Enabled (**116**):   **1**
 ```
 Here, the **1** means that the touchpad is _enabled_. Create a script named `touchpad.sh` with the following contents and replace **12** and **116** with the appropriate values for your machine:
 ```bash
@@ -273,7 +273,7 @@ mount -a
 That\'s it! Now you can transparently work with your S3 buckets just like they are local files.
 
 
-[Reference1](https://sysadminxpert.com/how-to-mount-s3-bucket-on-linux-instance/)  
+[Reference1](https://sysadminxpert.com/how-to-mount-s3-bucket-on-linux-instance/)
 [Reference2](https://winscp.net/eng/docs/guide_amazon_s3_sftp#mounting)
 
 ## Fix HP Pavilion Laptop lockup/freeze problem on idle/inactivity in Linux
@@ -282,9 +282,9 @@ Some HP Pavilion laptops experience problems with freezing after inactivity time
 - Disable power saving features.
 - Disable screensaver and screen lock features.
 - Add [kernel boot parameters](https://wiki.ubuntu.com/Kernel/KernelBootParameters) to GRUB boot menu options.
-	- `noapic` - Disable APIC (Advanced Programmable Interrupt Controller) support.
-	- `idle=nomwait` - Disable "mwait" for CPU idle state.
-	
+    - `noapic` - Disable APIC (Advanced Programmable Interrupt Controller) support.
+    - `idle=nomwait` - Disable "mwait" for CPU idle state.
+
 
 [Reference1](https://stackoverflow.com/questions/53001737/what-do-boot-option-noapic-and-noacpi-actually-do)
 
@@ -308,8 +308,8 @@ Many times in a shell script, you may need to differentiate between whether your
 | `lscpu` |       | Detailed information about CPU | N/A |
 | `lshw`  | `-C CPU` | Summary information about CPU | N/A |
 
-[Reference1](https://www.tecmint.com/check-linux-cpu-information/)  
-[Reference2](https://www.linuxtechi.com/server-cpu-architecture-linux/)  
+[Reference1](https://www.tecmint.com/check-linux-cpu-information/)
+[Reference2](https://www.linuxtechi.com/server-cpu-architecture-linux/)
 [Reference3](https://stackoverflow.com/questions/45125516/possible-values-for-uname-m/45125525#45125525)
 
 ## Tidy up your Linux command line history with `HISTIGNORE`
@@ -345,7 +345,7 @@ Historically, remote access on Linux was handled through the [VNC (Virtual Netwo
      CGroup: /system.slice/xrdp.service
              ├─58116 /usr/sbin/xrdp
              └─58124 /usr/sbin/xrdp
-	```
+    ```
 3. XRDP uses the `/etc/ssl/private/ssl-cert-snakeoil.key` SSL certificate file for authentication. Access to this file is limited to members of the `ssl-cert` group, so we must add the `xrdp` user to that group with this command:
    ```
    $ sudo adduser xrdp ssl-cert
@@ -377,7 +377,7 @@ Historically, remote access on Linux was handled through the [VNC (Virtual Netwo
       - [Vinagre](https://wiki.gnome.org/Apps/Vinagre)*
       - [TigerVNC](https://tigervnc.org/)* - To use TigerVNC with RDP, enter the IP address or hostname in the _viewer_ connection window followed by **:3389**. This means to connect on TCP port 3389, which is the port that RDP listens on.
       - [KRDC](https://apps.kde.org/krdc/)*
-      - [X2Go](https://wiki.x2go.org/doku.php)*  
+      - [X2Go](https://wiki.x2go.org/doku.php)*
       *Indicates that these are available in standard Ubuntu repositories (i.e., install using `sudo apt-get install`).
 7. If you get a black (blank) screen on the remote machine after logging in remotely, you'll need to make a simple adjustment on the Ubuntu machine (the one that you are accessing remotely) in the script to launches the X11 window manager for XRDP. Do the following:
    ```
@@ -403,8 +403,8 @@ Historically, remote access on Linux was handled through the [VNC (Virtual Netwo
    ```
    Finally, restart and enable the `xrdp` service to ensure the change takes effect.
 
-[Reference1](https://linuxize.com/post/how-to-install-xrdp-on-ubuntu-18-04/)  
-[Reference2](https://www.tecmint.com/install-xrdp-on-ubuntu/)  
+[Reference1](https://linuxize.com/post/how-to-install-xrdp-on-ubuntu-18-04/)
+[Reference2](https://www.tecmint.com/install-xrdp-on-ubuntu/)
 [Reference3](https://linoxide.com/xrdp-connect-ubuntu-linux-remote-desktop-via-rdp-from-windows/)
 
 ## Prevent laptop from suspending when closing lid in Linux
@@ -438,7 +438,7 @@ The changes will take effect the next time you reboot the HyperV VM.
 The [`tar`](https://man7.org/linux/man-pages/man1/tar.1.html) command line utility is the _de facto_ standard in Linux for compressing/uncompressing files. Here are the most common command line options.
 | Option | Long Option | Description |
 | :----- | :---------- | :---------- |
-| `-x`   | `--extract` | Extract files from archive. | 
+| `-x`   | `--extract` | Extract files from archive. |
 | `-f`   | `--file`    | Specify name of file to extract. |
 | `-v`   | `--verbose` | List all files processed and result for each. |
 | `-j`   | `--bzip2`   | Extract `bzip2` compressed file. |
@@ -452,8 +452,8 @@ If you typically run `tmux` immediately after opening a new terminal window or i
 ```bash
 # Start tmux automatically if interactive session and not already running
 if command -v tmux > /dev/null; then
-	[[ $- == *i* ]] && [[ ! $TERM =~ screen ]] && [[ -z $TMUX ]] && exec tmux new-session
-fi 
+    [[ $- == *i* ]] && [[ ! $TERM =~ screen ]] && [[ -z $TMUX ]] && exec tmux new-session
+fi
 ```
 
 ## Rebase local Git repository from upstream
@@ -481,16 +481,76 @@ git fetch upstream main
 git rebase upstream/main
 ```
 4. Now, you must decide if you want to merge changes from your **remote** `main` or overwrite them with the rebased update from the `upstream` repository.
-	a. If you want to merge changes from your **remote** `main`:
-	```bash
-	git pull origin main
-	```
-	You will be prompted to merge and enter a commit message. If any merge conflicts occur, you must resolve them.
-	b. If you want to overwrite your **remote** `main` changes:
-	```bash
-	git push -u origin main --force
-	```
+    a. If you want to merge changes from your **remote** `main`:
+    ```bash
+    git pull origin main
+    ```
+    You will be prompted to merge and enter a commit message. If any merge conflicts occur, you must resolve them.
+    b. If you want to overwrite your **remote** `main` changes:
+    ```bash
+    git push -u origin main --force
+    ```
 
 Your local and remote `main` branches forked from `upstream` are now synced with `upstream` and you can proceed with additional work against it.
 
 [Reference1](https://timonweb.com/misc/how-to-update-a-forked-repo-from-an-upstream-with-git-rebase-or-merge/)
+
+
+## Extract files from various types of archives at command prompt
+In most cases, I prefer to use the [`dtrx`](https://github.com/dtrx-py/dtrx) tool to extract archives. It automatically determines the archive type and extracts the file based on the determined type. However, if you are on a machine that doesn't have `dtrx`, it's useful to know the common commands to extract most archives.
+
+| Extension | Extract Command | Notes/Comments |
+| :-------- | :-------------- | :------------- |
+| `tar.gz`  | `tar xzf`       |                |
+| `tgz`     | `tar xzf`       |                |
+| `tar`     | `tar xf`        |                |
+| `tar.bz2` | `tar xjf`       |                |
+| `tbz2`    | `tar xjf`       |                |
+| `tar.xz`  | `tar xf`        | `tar` will auto-detect compression. |
+| `xz`      | `unxz`          | [xz](https://tukaani.org/xz/format.html) format |
+| `zip`     | `unzip`         |                |
+| `tar.zst` | `tar -I=unzstd xf |              |
+| `zst`     | `unzstd`        | [Zstandard](https://facebook.github.io/zstd/) format |
+| `Z`       | `uncompress`    |                |
+| `7z`      | `7z x`          | [7-Zip](https://7-zip.org/) format |
+
+Notes:
+- The [`tar`](https://man7.org/linux/man-pages/man1/tar.1.html) command can include the `v` option for `verbose` for additional details. For example, `tar xzvf` for verbose option when extracting a `tar.gz` archive.
+- These commands will extract the files in the **current** directory. To extract using `tar` into a specific directory use the `-C` option with the desired fully-qualified path. For example, `tar xzf file.tar.gz -C ~/Documents`.
+- Typically, `tar` will auto-detect the compression format, if any, used in an archive, so you can usually simply use `tar xf` on most any `tar` archive and it will extract it properly. (The `zstd` format is one notable exception.)
+
+[Reference1](https://linuxopsys.com/topics/tar-command-in-linux)
+
+### An `extract()` shell function for decompressing archives
+Using the rules specified above, we can build a bash shell function to extract most of the common archives in Linux. Just add this function to your `.bashrc` or `.bash_profile` configure file in your home directory. And ensure that you have the appropriate decompression tools installed; most Linux distributions already have them. Here are the commands to install them on a few common Linux distributions.
+- Ubuntu/Debian/Linux Mint
+```bash
+sudo apt install -y zlib1g bzip2 zstd xz-utils 7zip unrar-free tar tarlz gzip
+```
+- CentOS/Redhat Linux/Fedora
+```bash
+sudo dnf install
+```
+- Archlinux/EndeavourOS
+```bash
+sudo pacman -
+
+```bash
+# Extract common archive files by file extension
+function extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.gz|*.tgz)     tar xzf $1          ;;
+            *.tar|*.tar.xz)     tar xf $1           ;;
+            *.tar.bz2|*.tbz2)   tar xjf $1          ;;
+            *.xz)               unxz $1             ;;
+            *.zip)              unzip $1            ;;
+            *.Z)                uncompress $1       ;;
+            *.tar.zst)          tar -I=unzstd xf $1 ;;
+            *.zst)              unzstd $1           ;;
+            *.7z)               7z x $1             ;;
+        esac
+    else
+        echo "'$1' is not valid archive file."
+    fi
+}
