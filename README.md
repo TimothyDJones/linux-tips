@@ -501,18 +501,18 @@ In most cases, I prefer to use the [`dtrx`](https://github.com/dtrx-py/dtrx) too
 
 | Extension | Extract Command | Notes/Comments |
 | :-------- | :-------------- | :------------- |
-| `tar.gz`  | `tar xzf`       |                |
-| `tgz`     | `tar xzf`       |                |
-| `tar`     | `tar xf`        |                |
-| `tar.bz2` | `tar xjf`       |                |
-| `tbz2`    | `tar xjf`       |                |
-| `tar.xz`  | `tar xf`        | `tar` will auto-detect compression. |
-| `xz`      | `unxz`          | [xz](https://tukaani.org/xz/format.html) format |
-| `zip`     | `unzip`         |                |
-| `tar.zst` | `tar -I=unzstd xf |              |
-| `zst`     | `unzstd`        | [Zstandard](https://facebook.github.io/zstd/) format |
-| `Z`       | `uncompress`    |                |
-| `7z`      | `7z x`          | [7-Zip](https://7-zip.org/) format |
+| `tar.gz`  | `tar xzf archive.tar.gz`       |                |
+| `tgz`     | `tar xzf archive.tgz`       |                |
+| `tar`     | `tar xf archive.tar`        |                |
+| `tar.bz2` | `tar xjf archive.tar.bz2`       |                |
+| `tbz2`    | `tar xjf archive.tbz2`       |                |
+| `tar.xz`  | `tar xf archive.tar.xz`        | `tar` will auto-detect compression. |
+| `xz`      | `unxz archive.xz`          | [xz](https://tukaani.org/xz/format.html) format |
+| `zip`     | `unzip archive.zip`         |                |
+| `tar.zst` | `tar -I=unzstd xf archive.tar.zst` |              |
+| `zst`     | `unzstd archive.zst`        | [Zstandard](https://facebook.github.io/zstd/) format |
+| `Z`       | `uncompress archive.Z`    |                |
+| `7z`      | `7z x archive.7z`          | [7-Zip](https://7-zip.org/) format |
 
 Notes:
 - The [`tar`](https://man7.org/linux/man-pages/man1/tar.1.html) command can include the `v` option for `verbose` for additional details. For example, `tar xzvf` for verbose option when extracting a `tar.gz` archive.
@@ -534,6 +534,7 @@ sudo dnf install
 - Archlinux/EndeavourOS
 ```bash
 sudo pacman -
+```
 
 ```bash
 # Extract common archive files by file extension
@@ -554,3 +555,4 @@ function extract() {
         echo "'$1' is not valid archive file."
     fi
 }
+```
