@@ -17838,7 +17838,7 @@ sudo -rm -rf /tmp/${APP_NAME}*
 # Install Raven Reader Electron-based RSS news reader from AppImage
 APP_NAME=Raven-Reader
 APP_GUI_NAME="Electron-based RSS news reader."
-APP_VERSION=1.0.63
+APP_VERSION=1.0.78
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/hello-efficiency-inc/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
