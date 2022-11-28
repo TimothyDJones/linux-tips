@@ -632,7 +632,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.177.0.0
+APP_VERSION=1.177.1.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_$(dpkg-architecture --query DEB_HOST_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1094,7 +1094,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=12.8.1
+APP_VERSION=12.8.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -2295,7 +2295,7 @@ APP_NAME=ProjeQtOr
 APP_GUI_NAME="Web-based project management tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project;Management;"
-APP_VERSION=10.1.3
+APP_VERSION=10.1.4
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2753,7 +2753,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.6.134
+APP_VERSION=6.6.135
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -15444,7 +15444,7 @@ docker run hello-world  # Confirm Docker installation.
 # Install Docker Compose command-line utility for multi-container Docker applications from package
 APP_NAME=Docker-Compose
 APP_GUI_NAME="Command-line utility for multi-container Docker applications."
-APP_VERSION=2.12.2
+APP_VERSION=2.13.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -19327,7 +19327,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Tartube PyGTK GUI frontend for youtube-dl for video download from package
 APP_NAME=Tartube
 APP_GUI_NAME="PyGTK GUI frontend for youtube-dl for video download."
-APP_VERSION=2.4.093
+APP_VERSION=2.4.165
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -21332,7 +21332,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=6.8.0
+APP_VERSION=6.9.0
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -27384,7 +27384,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install FreeTube Electron-based privacy-focused YouTube player from Debian package
 # https://freetubeapp.io/
 APP_NAME=FreeTube
-APP_VERSION=0.10.0
+APP_VERSION=0.18.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/FreeTubeApp/${APP_NAME,,}/releases/download/v${APP_VERSION}-beta/${FILE_NAME}.${APP_EXT}
@@ -29867,20 +29867,21 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install NxShell cross-platform SSH/SFTP terminal from AppImage
+# https://github.com/nxshell/nxshell
 APP_NAME=NxShell
 APP_GUI_NAME="Cross-platform SSH/SFTP terminal."
-APP_GUI_CATEGORIES="Networking;Internet;"
-APP_GUI_KEYWORDS="SSH;SFTP;"
-APP_VERSION=1.8.0
-DATE_STAMP=202209161235
+APP_GUI_CATEGORIES="Networking;Internet;System;"
+APP_GUI_KEYWORDS="Shell;SSH;SFTP;"
+APP_VERSION=1.9.0
+DATE_STAMP=202211250327
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME}-${APP_VERSION}-${DATE_STAMP}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${APP_NAME}.png -J -L --referer https://github.com/ https://avatars.githubusercontent.com/u/74552956?v=4
+FILE_NAME=${APP_NAME}-x86_64-linux-${APP_VERSION}-${DATE_STAMP}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/${APP_NAME,,}/icon?1669358095
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
-sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME}.png /usr/local/share/icons/${APP_NAME}.png
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -29888,7 +29889,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/usr/local/bin
 Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/local/share/icons/${APP_NAME}.png
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
@@ -32944,7 +32945,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Java-based GUI database client."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Database;JDBC;Client;"
-APP_VERSION=14.0.1
+APP_VERSION=14.0.2
 APP_EXT=tar.gz
 FILE_NAME=dbvis_linux_${APP_VERSION//./_}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://fossies.org/linux/misc/${FILE_NAME}.${APP_EXT}
@@ -37436,7 +37437,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based desktop encrypted note-taking tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Security;"
-APP_VERSION=2.2.3
+APP_VERSION=2.2.6
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}_linux_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/streetwriters/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38185,7 +38186,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based, cross-platform minimal GUI color identification tool."
 APP_GUI_CATEGORIES="Accessories;Development;Programming;"
 APP_GUI_KEYWORDS="Color;Picker;"
-APP_VERSION=2.1.0
+APP_VERSION=2.2.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Toinane/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -39313,3 +39314,43 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Apktool Java-based tool for reverse engineering Android APK files from package
+APP_NAME=Apktool
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Java-based tool for reverse engineering Android APK files."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Android;APK;"
+APP_VERSION=2.7.0
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R -a /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo chown -R ${USER}:${USER} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=`pwd`:\$PATH; export PATH
+exec java -Xmx512M -Dfile.encoding=utf-8 -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} "$@" &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install SpaceZero 2D real-time strategy (RTS) space combat game from source
+APP_NAME=SpaceZero
+APP_GUI_NAME="2D real-time strategy (RTS) space combat game."
+APP_VERSION=0.86.01
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libgtk2.0-dev libglib2.0-dev libopenal-dev libalut-dev libvorbis-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
+make -j$(nproc) ${APP_NAME,,} && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
