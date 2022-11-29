@@ -519,7 +519,8 @@ Notes:
 - These commands will extract the files in the **current** directory. To extract using `tar` into a specific directory use the `-C` option with the desired fully-qualified path. For example, `tar xzf file.tar.gz -C ~/Documents`.
 - Typically, `tar` will auto-detect the compression format, if any, used in an archive, so you can usually simply use `tar xf` on most any `tar` archive and it will extract it properly. (The `zstd` format is one notable exception.)
 
-[Reference1](https://linuxopsys.com/topics/tar-command-in-linux)
+[Reference1](https://linuxopsys.com/topics/tar-command-in-linux)  
+[Reference2](https://linuxize.com/post/how-to-create-and-extract-archives-using-the-tar-command-in-linux/)
 
 ### An `extract()` shell function for decompressing archives
 Using the rules specified above, we can build a bash shell function to extract most of the common archives in Linux. Just add this function to your `.bashrc` or `.bash_profile` configure file in your home directory. And ensure that you have the appropriate decompression tools installed; most Linux distributions already have them. Here are the commands to install them on a few common Linux distributions.
