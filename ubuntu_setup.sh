@@ -39368,3 +39368,13 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Drawing simple image editor in the style of MS Paint from PPA
+# https://github.com/maoschanz/drawing
+APP_NAME=Drawing
+APP_GUI_NAME="Simple image editor in the style of MS Paint."
+APP_VERSION=1.0.1
+APP_EXT=deb
+sudo add-apt-repository -y ppa:cartes/${APP_NAME,,}
+sudo apt-get update
+sudo apt-get install -y ${APP_NAME,,}
