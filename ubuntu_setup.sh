@@ -39378,3 +39378,37 @@ APP_EXT=deb
 sudo add-apt-repository -y ppa:cartes/${APP_NAME,,}
 sudo apt-get update
 sudo apt-get install -y ${APP_NAME,,}
+
+# Install Altair cross-platform Electron-based GUI GraphQL client from AppImage
+# https://github.com/altair-graphql/altair/
+APP_NAME=Altair
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Electron-based GUI GraphQL client."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="GraphQL;Web Services;HTTP;"
+APP_VERSION=5.0.8
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_x86_64_linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}-graphql/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/${APP_NAME,,}-graphql/${APP_NAME,,}/master/icons/android-icon-96x96.png
+sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
