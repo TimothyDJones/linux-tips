@@ -20057,9 +20057,9 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install Java Multiprecision Calculator cross-platform calculator based on Java BigDecimal class from package
 APP_NAME="MultiPrecision Calculator"
 APP_GUI_NAME="Cross-platform calculator based on Java BigDecimal class."
-APP_VERSION=20220109
+APP_VERSION=2022-12-04
 APP_EXT=7z
-FILE_NAME=${APP_VERSION}.${APP_NAME// /}.v1.2
+FILE_NAME=${APP_VERSION//-/}.${APP_NAME// /}.v1.2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/javamultiprecis/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -35248,9 +35248,9 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Java lightweight GUI music player."
 APP_GUI_CATEGORIES="Multimedia;Audio;"
 APP_GUI_KEYWORDS="Music;Player;Audio;"
-APP_VERSION=20221204
+APP_VERSION=2022-12-04
 APP_EXT=7z
-FILE_NAME=${APP_VERSION}.${APP_NAME}.v1.0
+FILE_NAME=${APP_VERSION//-/}.${APP_NAME}.v1.0
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}2/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
