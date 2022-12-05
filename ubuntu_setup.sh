@@ -4913,7 +4913,7 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=ChessPDFBrowser
 APP_GUI_NAME="Java-based tool to work with chess PDF books and PGNs."
 APP_VERSION=1.20
-APP_DATE=2022-01-09
+APP_DATE=2022-12-04
 APP_EXT=7z
 FILE_NAME=${APP_DATE//-/}.${APP_NAME}.v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}1/${FILE_NAME}.${APP_EXT}
