@@ -2002,7 +2002,7 @@ sudo rm -rf ${APP_NAME}*
 
 # Install Red Notebook cross-platform journey/diary/PIM from source
 APP_NAME=rednotebook
-APP_VERSION=2.27.1
+APP_VERSION=2.27.2
 APP_EXT=tar.gz
 sudo apt-get install -y python3-enchant gir1.2-webkit2-4.0 python3-pip python3-yaml  # Install dependencies
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -2490,7 +2490,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE from package
 APP_NAME=Eric
-APP_VERSION=22.11.1
+APP_VERSION=22.12
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}7-${APP_VERSION}
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql python3-pyqt5.qtwebengine python3-pyqt5.qtchart
@@ -9933,7 +9933,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/balena-io/etcher
 APP_NAME=Balena-Etcher
 APP_GUI_NAME="Cross-platform Electron-based tool to copy OS images to USB drives."
-APP_VERSION=1.10.2
+APP_VERSION=1.10.6
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/etcher.mirror/${FILE_NAME}.${APP_EXT}
@@ -22506,7 +22506,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://pyspread.gitlab.io/
 APP_NAME=PySpread
 APP_GUI_NAME="Cross-platform Qt-based desktop spreadsheet that uses Python expessions."
-APP_VERSION=2.1
+APP_VERSION=2.1.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y python3-enchant python3-pyqt5 python3-numpy python3-pyqt5.qtsvg
@@ -32161,7 +32161,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform non-linear video editor."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=2.6.1
+APP_VERSION=3.0.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(uname -m)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME,,}-qt//releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32224,7 +32224,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Ebook reader emulator with support for PDF, DjVu, EPUB, FB2 and other formats."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Ebook;Reader;"
-APP_VERSION=2022.10
+APP_VERSION=2022.11
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-appimage-x86_64-linux-gnu-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38168,7 +38168,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=rqlite
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Distributed version of SQLite database."
-APP_VERSION=7.11.0
+APP_VERSION=7.12.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
