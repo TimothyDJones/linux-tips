@@ -37485,7 +37485,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Python-based GUI multi-format package manager for Linux with support for AppImage, Debian and Arch Linux packages (including AUR), Flatpak, and Snap."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Package;Manager;"
-APP_VERSION=0.10.3
+APP_VERSION=0.10.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/vinifmor/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
