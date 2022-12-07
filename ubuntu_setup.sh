@@ -3324,7 +3324,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Monitorix system monitoring utility from Debian package
 # https://www.monitorix.org/
 APP_NAME=Monitorix
-APP_VERSION=3.14.0
+APP_VERSION=3.15.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-izzy1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://apt.izzysoft.de/ubuntu/dists/generic/index.php?file=${FILE_NAME}.${APP_EXT};dirnum=1
