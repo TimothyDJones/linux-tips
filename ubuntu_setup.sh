@@ -39254,7 +39254,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install psmisc small Linux system utilities that use proc file system from source
 APP_NAME=psmisc
 APP_GUI_NAME="Small Linux system utilities that use proc file system."
-APP_VERSION=23.5
+APP_VERSION=23.6
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
