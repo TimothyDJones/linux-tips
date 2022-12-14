@@ -26693,7 +26693,7 @@ APP_NAME=PiNote
 APP_GUI_NAME="Cross-platform minimalist text editor."
 APP_GUI_CATEGORIES="Development;Programming;Accessories;"
 APP_GUI_KEYWORDS="Text;Editor;"
-APP_VERSION=1.3.5
+APP_VERSION=1.3.6
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_${APP_VERSION//./_}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
