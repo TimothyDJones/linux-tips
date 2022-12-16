@@ -39607,3 +39607,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install GRV Golang-based command-line GUI interface to Git repositories from package
+# https://github.com/rgburke/grv
+APP_NAME=GRV
+APP_GUI_NAME="Golang-based command-line GUI interface to Git repositories."
+APP_VERSION=0.3.2
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_linux64
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
