@@ -39636,3 +39636,34 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${_APP_NAME}
 cd $HOME
 sudo rm -rf /tmp/posh*
+
+# Install Dragonfly Navigator minimalist Python-based two-pane file manager from package
+APP_NAME="Dragonfly Navigator"
+APP_GUI_NAME="Minimalist Python-based two-pane file manager."
+APP_VERSION=22.10.1
+APP_EXT=tar.gz
+FILE_NAME=dragonfly_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+sudo apt install -y python3-pyqt5 python3-pil
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/suncore/dflynav/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt
+sudo chown -R ${USER}:${USER} /opt/dragonfly
+sudo ln -s -f /opt/dragonfly/dragonfly /usr/local/bin/dragonfly
+cat > /tmp/dragonfly.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/dragonfly
+Exec=/opt/dragonfly/dragonfly
+Icon=/opt/dragonfly/icons/dragonfly.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Accessories;System;
+Keywords=File;Manager;
+EOF
+sudo mv /tmp/dragonfly.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
