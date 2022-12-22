@@ -39708,3 +39708,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install GrassFeeder Rust-based GTK RSS/Atom news reader/aggregator from Debian package
+APP_NAME=GrassFeeder
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust-based GTK RSS/Atom news reader/aggregator."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="RSS;News;"
+APP_VERSION=0.1.5
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-debian11
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/schleglermarcus/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
