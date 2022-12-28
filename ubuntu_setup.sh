@@ -39722,3 +39722,38 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/schleglermarcus/${
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install StatAnt Qt-based spreadsheet-style statistical calculation tool from source
+APP_NAME=StatAnt
+APP_GUI_NAME="Qt-based spreadsheet-style statistical calculation tool."
+APP_GUI_CATEGORIES="Accessories;Office;Science;"
+APP_GUI_KEYWORDS="Data;Science;Spreadsheet;Statistics;"
+APP_VERSION=1.2
+APP_EXT=tar
+FILE_NAME=${APP_NAME,,}_source
+sudo apt-get install -y qt5-default qt5-qmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 .. && make
+sudo cp -a /tmp/${FILE_NAME}/build/${APP_NAME,,} /usr/local/bin  # No 'install' target for make
+sudo cp -a /tmp/${FILE_NAME}/images/icon.png /usr/local/share/pixmaps/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/pixmaps/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
