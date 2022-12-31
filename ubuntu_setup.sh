@@ -12484,9 +12484,9 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=XFE
 APP_GUI_NAME="GUI file manager."
 APP_VERSION=1.45
-APP_EXT=tar.gz
+APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y libcups2-dev libcupsimage2-dev libfox-1.6-0 libfox-1.6-dev libjbig-dev libjpeg-dev libjpeg-turbo8-dev libjpeg8-dev liblzma-dev libtiff-dev libtiff5-dev libtiffxx5 libxcb-util-dev
+sudo apt-get install -y libcups2-dev libcupsimage2-dev libfox-1.6-0 libfox-1.6-dev libjbig-dev libjpeg-dev libjpeg-turbo8-dev libjpeg8-dev liblzma-dev libtiff-dev libtiff5-dev libtiffxx5 libxcb-util-dev intltool libx11-xcb-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -39791,3 +39791,19 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME// /-}*
+
+# Install MinEd text editor with Unicode and CJK support from source
+# https://mined.github.io/
+APP_NAME=MinEd
+APP_GUI_NAME="Text editor with Unicode and CJK support."
+APP_VERSION=2022.27
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make -j$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
