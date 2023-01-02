@@ -34655,7 +34655,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform GUI font editor and converter."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Font;Typography;Editor;"
-APP_VERSION=2022-03-08-582bd41
+APP_VERSION=2023-01-01-a1dad3e
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
