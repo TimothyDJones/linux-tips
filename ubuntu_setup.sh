@@ -33044,26 +33044,12 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install Pinta cross-platform drawing and image editing tool from Debian package
+# Install Pinta cross-platform drawing and image editing tool from Flatpak
 # https://www.pinta-project.com/
-APP_NAME=Pinta
-APP_GUI_NAME="Cross-platform drawing and image editing tool."
-APP_VERSION=1.7.1
-APP_EXT=deb
-source /etc/lsb-release
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar)$ ]]; then   # 16.04 - 17.10
-    DISTRIB_CODENAME=xenial
-    APP_VERSION=1.7
-elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo)$ ]]; then   # 18.04 - 19.10
-	DISTRIB_CODENAME=bionic
-elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo|gr)$ ]]; then
-	DISTRIB_CODENAME=focal
-fi
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}-0ppa1~${DISTRIB_CODENAME}1_all
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~pinta-maintainers/+archive/ubuntu/pinta-stable/+files/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/*${APP_NAME,,}*
+# https://github.com/PintaProject/Pinta
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y flathub com.github.PintaProject.Pinta
 
 # Install Forward Only cross-platform Holocaust simulation real-time strategy game from package
 APP_NAME="Forward Only"
