@@ -1917,7 +1917,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install HTTraQt web scraper tool from source
 APP_NAME=httraqt
-APP_VERSION=1.4.9
+APP_VERSION=1.4.11
 APP_EXT=tar.gz
 sudo apt-get install -y libhttrack-dev  # Install HTTrack dependency
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://sourceforge.net/projects/${APP_NAME}/files/latest/download
