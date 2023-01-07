@@ -8792,7 +8792,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install CryptMount encrypted file system mounting tool from Debian package
 APP_NAME=CryptMount
 APP_GUI_NAME="Encrypted file system mounting tool."
-APP_VERSION=6.0.0
+APP_VERSION=6.1.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
