@@ -39869,3 +39869,42 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install Twice Crosses Circles cross-platform tic-tac-toe puzzle game with modified rules from package
+APP_NAME=twicc
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform tic-tac-toe puzzle game with modified rules."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Puzzle;Games;"
+APP_VERSION=1.5
+APP_EXT=7z
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=l64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=l32
+fi
+FILE_NAME=${APP_NAME//wi/}-${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/${APP_NAME,,}/icon?7c5a06b53cf8f26a8b108210dab02726f04cf611f4a0018e85c4648e4d76b764
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R -a /tmp/${FILE_NAME}/${APP_NAME//wi/}.run  /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME//wi/}.run
+sudo ln -s -f /usr/local/bin/${APP_NAME//wi/}.run /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME,,//nd/}*
