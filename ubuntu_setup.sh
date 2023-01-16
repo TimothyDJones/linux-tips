@@ -237,10 +237,10 @@ curl -o /tmp/IBM_Plex_TrueType.zip -J -L https://github.com/IBM/plex/releases/do
 cd /tmp
 dtrx -n /tmp/IBM_Plex_TrueType.zip
 sudo cp -R /tmp/IBM_Plex_TrueType/TrueType/IBM-Plex-Mono /usr/local/share/fonts
-curl -o /tmp/JetBrainsMono-2.242.zip -J -L https://downloads.sourceforge.net/jetbrains-mono.mirror/JetBrainsMono-2.242.zip
+curl -o /tmp/JetBrainsMono-2.304.zip -J -L https://downloads.sourceforge.net/jetbrains-mono.mirror/JetBrainsMono-2.304.zip
 cd /tmp
-dtrx -n /tmp/JetBrainsMono-2.242.zip
-sudo cp -R /tmp/JetBrainsMono-2.242/fonts/ttf/* /usr/local/share/fonts
+dtrx -n /tmp/JetBrainsMono-2.304.zip
+sudo cp -R /tmp/JetBrainsMono-2.304/fonts/ttf/* /usr/local/share/fonts
 curl -o /tmp/codeface-fonts.tar.xz -J -L https://downloads.sourceforge.net/codeface.mirror/codeface-fonts.tar.xz
 cd /tmp
 dtrx -n /tmp/codeface-fonts.tar.xz
