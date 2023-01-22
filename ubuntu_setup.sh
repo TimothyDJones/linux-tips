@@ -7983,9 +7983,9 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 # Install PICSimLab wxWidgets-based real-time PIC and Arduino microcontroller simulator laboratory from package
 APP_NAME=PICSimLab
 APP_GUI_NAME="Cross-platform real-time PIC and Arduino microcontroller simulator laboratory."
-APP_VERSION=0.8.11
+APP_VERSION=0.8.12_230120
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Ubuntu_18.04.6_LTS_amd64
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Ubuntu_20.04.5_LTS_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/picsim/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
