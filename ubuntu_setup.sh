@@ -517,7 +517,7 @@ cd $HOME
 # Install Lite IDE for Go language development from package
 APP_NAME=LiteIDE
 APP_GUI_NAME="IDE for editing and building projects written in the Go programming language"
-APP_VERSION=x38.0
+APP_VERSION=x38.1
 QT_VERSION=qt5.5.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
@@ -632,7 +632,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.182.0.1
+APP_VERSION=1.182.2.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_$(dpkg-architecture --query DEB_HOST_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -669,7 +669,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install CopyQ clipboard manager from Debian package
 APP_NAME=CopyQ
-APP_VERSION=6.3.2
+APP_VERSION=6.4.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_10-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1094,7 +1094,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=14.1
+APP_VERSION=14.1.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1571,7 +1571,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4575
+APP_VERSION=4.3-4576
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2753,7 +2753,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.6.145
+APP_VERSION=6.6.146
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -5049,7 +5049,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install GNU nano text editor from source
 APP_NAME=nano
 APP_GUI_NAME="Minimalist console text editor."
-APP_VERSION=7.1
+APP_VERSION=7.2
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y libncurses-dev
@@ -13110,7 +13110,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install SQLiteStudio Qt-based SQLite database GUI client from package
 APP_NAME=SQLiteStudio
 APP_GUI_NAME="Qt-based SQLite database GUI client."
-APP_VERSION=3.4.1
+APP_VERSION=3.4.3
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/pawelsalawa/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -13401,7 +13401,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Converseen Qt-based bulk image converting/resizing tool from source
 APP_NAME=Converseen
 APP_GUI_NAME="Qt-based bulk image converting/resizing tool."
-APP_VERSION=0.9.10.0
+APP_VERSION=0.9.10.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libmagick++-dev cmake qttools5-dev-tools qttools5-dev
@@ -14558,7 +14558,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Rukovoditel web-based (PHP/MySQL) project management tool from package
 APP_NAME=Rukovoditel
 APP_GUI_NAME="Web-based (PHP/MySQL) project management tool."
-APP_VERSION=3.3
+APP_VERSION=3.3.1
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -16407,7 +16407,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Trilium Notes Electron-based hierarchical note taking application from Debian package
 APP_NAME=Trilium
 APP_GUI_NAME="Electron-based hierarchical note taking application."
-APP_VERSION=0.58.5
+APP_VERSION=0.58.7
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zadam/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21050,7 +21050,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install onefetch Rust command-line tool to provide summary of Git repository from package
 APP_NAME=onefetch
 APP_GUI_NAME="Rust command-line tool to provide summary of Git repository."
-APP_VERSION=2.14.2
+APP_VERSION=2.15.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/o2sh/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21588,7 +21588,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Mindustry Java-based desktop sandbox tower defense game from package
 APP_NAME=Mindustry
 APP_GUI_NAME="Java-based desktop sandbox tower defense game."
-APP_VERSION=141.1
+APP_VERSION=141.3
 APP_EXT=jar
 FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Anuken/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -23977,7 +23977,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Beekeeper Studio cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server) from Debian package
 APP_NAME=Beekeeper-Studio
 APP_GUI_NAME="Cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server)."
-APP_VERSION=3.7.10
+APP_VERSION=3.8.9
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -30926,7 +30926,7 @@ APP_NAME=Spyder
 APP_GUI_NAME="Cross-platform Qt-based Python IDE."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Python;IDE;Editor;"
-APP_VERSION=5.4.1
+APP_VERSION=5.4.2
 mkdir -p $HOME/.local/bin/${APP_NAME,,}
 cd $HOME/.local/bin/${APP_NAME,,}
 python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
@@ -31741,7 +31741,7 @@ APP_NAME=SeaMonkey
 APP_GUI_NAME="Cross-platform integrated Internet application suite with web browser, email, newsgroup client, feed reader, HTML editor, IRC chat and web development tools."
 APP_GUI_CATEGORIES="Internet;Network;Networking;"
 APP_GUI_KEYWORDS="Browser;RSS;HTML;IRC;Editor;Suite;Email;News;"
-APP_VERSION=2.53.14
+APP_VERSION=2.53.15
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-$(uname -m)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://archive.mozilla.org/pub/seamonkey/releases/${APP_VERSION}/linux-$(uname -m)/en-US/${FILE_NAME}.${APP_EXT}
@@ -35319,7 +35319,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based 2D jump-and-run puzzle platformer game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Puzzle;Arcade;"
-APP_VERSION=1.3.103
+APP_VERSION=1.3.143
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/divVerent/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37407,7 +37407,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based desktop encrypted note-taking tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Security;"
-APP_VERSION=2.4.0
+APP_VERSION=2.4.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}_linux_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/streetwriters/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37975,7 +37975,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based Markdown editor with preview."
 APP_GUI_CATEGORIES="Office;Development;Programming;"
 APP_GUI_KEYWORDS="Markdown;Editor;"
-APP_VERSION=3.47.0
+APP_VERSION=3.48.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /-}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
@@ -38863,7 +38863,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Flutter-based password manager with synchronization capability."
 APP_GUI_CATEGORIES="Internet;System;Accessories;"
 APP_GUI_KEYWORDS="Password;Security;"
-APP_VERSION=1.2.0
+APP_VERSION=1.3.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-v${APP_VERSION}-Linux-${APP_EXT}
 curl -o /tmp/${FILE_NAME}.zip -J -L https://github.com/GlitterWare/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.zip
@@ -39471,7 +39471,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # Install Babashka native binary Clojure REPL and interpreter for scripting from package
 APP_NAME=Babashka
 APP_GUI_NAME="Native binary Clojure REPL and interpreter for scripting."
-APP_VERSION=1.0.169
+APP_VERSION=1.0.170
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -39597,7 +39597,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Oh My Posh"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform tool for customizing command prompt with colors and themes."
-APP_VERSION=13.5.0
+APP_VERSION=13.6.0
 APP_EXT=N/A
 FILE_NAME=posh-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/ohmyposh-dev.mirror/${FILE_NAME}
@@ -40058,3 +40058,74 @@ sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install R-P-S-L-S cross-platform Rock, Paper, Scissors, Lizard, Spock extension to traditional game from package
+APP_NAME=RPSLS
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Rock, Paper, Scissors, Lizard, Spock extension to traditional game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Games;Fun;"
+APP_VERSION=1.5
+APP_EXT=7z
+if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
+	ARCH_TYPE=l64
+else    # Otherwise use version for 32-bit kernel
+	ARCH_TYPE=l32
+fi
+FILE_NAME=${APP_NAME,,}${ARCH_TYPE}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/r-p-s-l-s/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/r-p-s-l-s/icon?05a72d2c2511ff8e155cab6058cc9f052afa0a47ef318f7d76163fe28dc5cc53
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R -a /tmp/${FILE_NAME}/${APP_NAME,,}.run  /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}.run
+sudo ln -s -f /usr/local/bin/${APP_NAME,,}.run /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME,,//nd/}*
+
+# Install Dbmate cross-platform, Golang-based, command-line data migration tool that supports MySQL, PostgreSQL, SQLite, and ClickHouse from package
+# https://github.com/amacneil/dbmate
+APP_NAME=Dbmate
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Golang-based, command-line data migration tool that supports MySQL, PostgreSQL, SQLite, and ClickHouse."
+APP_VERSION=1.16.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${_APP_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Gource source control repository visualization tool from source
+# https://github.com/acaudwell/Gource
+APP_NAME=Gource
+APP_GUI_NAME="Source control repository visualization tool."
+APP_VERSION=0.54
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libsdl2-dev libsdl2-image-dev libpcre2-dev libfreetype6-dev libglew-dev libglm-dev libboost-filesystem-dev libpng-dev libtinyxml-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure --with-tinyxml && make -j$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
