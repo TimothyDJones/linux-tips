@@ -39641,7 +39641,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Eschecs UCI chess GUI written in Pascal with several included chess engines from package
 APP_NAME=Eschecs
 APP_GUI_NAME="UCI chess GUI written in Pascal with several included chess engines."
-APP_VERSION=5.1.4
+APP_VERSION=5.1.5
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION//./}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
