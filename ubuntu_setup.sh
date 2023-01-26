@@ -565,7 +565,7 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}   # '-n' is non-interactive mode for gdebi
 rm -f /tmp/${APP_NAME,,}*
 APP_NAME=Firetools
-APP_VERSION=0.9.64
+APP_VERSION=0.9.72
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/firejail/${FILE_NAME}.${APP_EXT}
