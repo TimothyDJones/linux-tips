@@ -40204,3 +40204,19 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install TMSU Golang-based command-line file tagging tool from package
+# https://github.com/oniony/TMSU
+APP_NAME=TMSU
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Golang-based ping tool with color output."
+APP_VERSION=0.7.5
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-x86_64-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/bin/* /usr/local/bin
+sudo cp -a /tmp/${FILE_NAME}/man/* /usr/local/man/man1
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
