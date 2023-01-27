@@ -40220,3 +40220,18 @@ sudo cp -a /tmp/${FILE_NAME}/bin/* /usr/local/bin
 sudo cp -a /tmp/${FILE_NAME}/man/* /usr/local/man/man1
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Turbo experimental text editor based on Scintilla and Turbo Vision from source
+APP_NAME=Turbo
+APP_GUI_NAME="Experimental text editor based on Scintilla and Turbo Vision."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo apt-get install -y build-essential cmake gettext-base git libgpm-dev libmagic-dev libncursesw5-dev xsel
+cd /tmp
+git clone --recursive https://github.com/magiblot/turbo.git
+cd /tmp/${APP_NAME,,}
+cmake . -DCMAKE_BUILD_TYPE=Release && cmake --build . -- -j$(nproc) && sudo cp ${APP_NAME,,} /usr/local/bin
+sudo cp doc/${APP_NAME,,}.1 /usr/local/man/man1
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
