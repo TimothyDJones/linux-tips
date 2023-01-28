@@ -40251,3 +40251,15 @@ sudo cp -a /tmp/${FILE_NAME}/lib${APP_NAME,,}.so /usr/lib/x86_64-linux-gnu
 sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install mrViewer 2 cross-platform multimedia viewer/player from Debian package
+APP_NAME=mrViewer2
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform multimedia viewer/player."
+APP_VERSION=0.3.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_VERSION}-Linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mrv2/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
