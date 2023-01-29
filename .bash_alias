@@ -184,6 +184,10 @@ function colors() {
 	done
 }
 
+# Experimental command-line search engine
+# Example: rip "q=software testing"
+alias rip="curl -G -H 'Accept: text/plain' --url https://dontbeevil.rip/search --data-urlencode "
+
 alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
