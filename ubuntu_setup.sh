@@ -7346,14 +7346,18 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Git Town shell-based Git workflow enhancement from package
+# Install Git Town shell-based Git workflow enhancement tool from package
 APP_NAME=Git-Town
-APP_VERSION=6.0.0
-APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/Originate/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}-amd64.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+APP_VERSION=7.9.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_intel_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+sudo rm -rf /tmp/${APP_NAME,,}
 
 # Install SMath Studio WYSIWYG math editor
 APP_NAME=SMathStudio
