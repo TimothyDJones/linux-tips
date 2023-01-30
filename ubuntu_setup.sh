@@ -40301,3 +40301,18 @@ sudo cp -a /tmp/${FILE_NAME}/completions/${APP_NAME,,}.bash /usr/share/bash-comp
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install GoReplay Golang-based tool for capturing and replaying live HTTP traffic for system testing from package
+APP_NAME=GoReplay
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Golang-based tool for capturing and replaying live HTTP traffic for system testing."
+APP_VERSION=1.3.3
+APP_EXT=tar.gz
+FILE_NAME=gor_${APP_VERSION}_x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/buger/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/gor /usr/local/bin
+sudo ln -s -f /usr/local/bin/gor /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
