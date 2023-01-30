@@ -30674,7 +30674,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Contour modern C++ terminal with graphics support from Debian package
 APP_NAME=Contour
-APP_VERSION=0.3.5.238
+APP_VERSION=0.3.10.257
 APP_EXT=deb
 source /etc/lsb-release
 # If Ubuntu version is above 18.04 (Bionic) up to 19.10 (Eoan), then we use 18.04.
@@ -37567,7 +37567,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Java-based desktop text editor with live preview, string interpolation, and formulas from."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=2.10.0
+APP_VERSION=3.2.0
 APP_EXT=bin
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/DaveJarvis/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
