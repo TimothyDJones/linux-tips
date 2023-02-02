@@ -40345,3 +40345,19 @@ sudo cp -a /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install pdfcook command-line PDF editor from source
+APP_NAME=pdfcook
+APP_GUI_NAME="Command-line PDF editor."
+APP_VERSION=0.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential
+https://github.com/ksharindam/pdfcook/archive/refs/tags/v0.4.tar.gz
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ksharindam/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/src
+make -j$(nproc) && sudo make install && sudo make installman
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
