@@ -40361,3 +40361,42 @@ cd /tmp/${FILE_NAME}/src
 make -j$(nproc) && sudo make install && sudo make installman
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install QReadable library and command line tool for running Readability.js with Qt's Javascript engine from PPA
+# https://invent.kde.org/ccarney/qreadable
+sudo add-apt-repository -y ppa:cscarney/syndic
+sudo apt update -y
+sudo apt install -y qreadable
+
+# Install Caesium Image Compressor cross-platform image compressor that reduces file size while preserving image quality from AppImage
+APP_NAME="Caesium Image Compressor"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform image compressor that reduces file size while preserving image quality."
+APP_GUI_CATEGORIES="Graphics;Accessories;"
+APP_GUI_KEYWORDS="Graphics;Compressor;"
+APP_VERSION=2.2.1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME// /_}-v${APP_VERSION}-Qt6.2-ubu-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/larygwil/${_APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://raw.githubusercontent.com/larygwil/${_APP_NAME}/main/resources/icons/logo.png
+sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME}*
