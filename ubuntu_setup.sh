@@ -40416,3 +40416,19 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Qmcalc programmable scientific calculator with graphical function plotter from RPM package
+# https://www.cybernadian.net/software.html#Qmcalc
+APP_NAME=Qmcalc
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Programmable scientific calculator with graphical function plotter."
+APP_VERSION=2.8
+APP_EXT=rpm
+sudo apt-get install -y alien gdebi
+FILE_NAME=${APP_NAME,,}-linux.bin-${APP_VERSION}-1.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}2/${FILE_NAME}.${APP_EXT}
+cd /tmp
+sudo alien --scripts /tmp/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}*.deb
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
