@@ -2330,15 +2330,40 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install kgclock desktop clock
+# Install kgclock GUI desktop clock from package
 APP_NAME=kgclock
-APP_VERSION=1.2-1
-APP_EXT=deb
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME}.${APP_EXT}
+APP_GUI_NAME="GUI desktop clock"
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Clock;Reminder;"
+APP_VERSION=20211213-1
+APP_EXT=tar
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/TARBALL
+sudo install -m 755 -s ${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/${APP_NAME,,}
+sudo install -m 644 ${APP_NAME,,}.png /usr/local/share/${APP_NAME,,}
+sudo install -m 644 bell.wav /usr/local/share/${APP_NAME,,}
+sudo install -m 644 beep.wav /usr/local/share/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo install -m 644 /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME}*
-kgclock &
+sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install uGet GUI download manager from Debian package
 APP_NAME=uGet
