@@ -40490,3 +40490,19 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}*
+
+# Install XFile minimalist canonical X11/Motif file manager from source
+# https://fastestcode.org/xfile.html
+APP_NAME=XFile
+APP_GUI_NAME="Minimalist canonical X11/Motif file manager."
+APP_VERSION=1.0-beta
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-src-${APP_VERSION}
+sudo apt-get install -y build-essential libx11-dev libmotif-dev libxpm-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}manager/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-beta
+make -j$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
