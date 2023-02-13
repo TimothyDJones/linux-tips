@@ -40506,3 +40506,38 @@ cd /tmp/${FILE_NAME}/${APP_NAME,,}-beta
 make -j$(nproc) && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Simple Sokoban minimalist SDL2-based puzzle game from source
+APP_NAME="Simple Sokoban"
+APP_GUI_NAME="Minimalist SDL2-based puzzle game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Sokoban;Puzzle;"
+APP_VERSION=1.0.2
+APP_EXT=tar.xz
+FILE_NAME=simplesok-${APP_VERSION}
+sudo apt-get install -y build-essential libsdl2-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/simplesok/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make -j$(nproc)
+sudo mkdir -p /opt/simplesok
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/simplesok
+sudo ln -s -f /opt/simplesok/simplesok /usr/local/bin/simplesok
+cat > /tmp/simplesok.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/simplesok
+Exec=/opt/simplesok/simplesok
+Icon=/opt/simplesok/simplesok.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/simplesok.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/simplesok*
