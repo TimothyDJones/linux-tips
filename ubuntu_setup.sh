@@ -2335,8 +2335,8 @@ APP_NAME=kgclock
 APP_GUI_NAME="GUI desktop clock"
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Clock;Reminder;"
-APP_VERSION=20211213-1
-APP_EXT=tar
+APP_VERSION=1.2
+APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
@@ -2347,6 +2347,8 @@ sudo mkdir -p /usr/local/share/${APP_NAME,,}
 sudo install -m 644 ${APP_NAME,,}.png /usr/local/share/${APP_NAME,,}
 sudo install -m 644 bell.wav /usr/local/share/${APP_NAME,,}
 sudo install -m 644 beep.wav /usr/local/share/${APP_NAME,,}
+sudo install -m 644 kgbell1.wav /usr/local/share/${APP_NAME,,}
+sudo install -m 644 kgbell2.wav /usr/local/share/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
