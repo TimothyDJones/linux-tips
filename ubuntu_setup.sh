@@ -958,7 +958,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install BeeBEEP LAN messenger from package
 APP_NAME=BeeBEEP
 APP_GUI_NAME="Cross-platform secure LAN messenger."
-APP_VERSION=5.8.4
+APP_VERSION=5.8.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-qt5-${KERNEL_TYPE}
 sudo apt-get install -y qt5-default libqt5xml5 libphonon4qt5-4 libhunspell-1.7-0 libxcb-screensaver0 phonon-backend-gstreamer libavahi-compat-libdnssd1 libqt5multimedia5
