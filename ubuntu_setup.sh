@@ -40543,3 +40543,19 @@ EOF
 sudo mv /tmp/simplesok.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/simplesok*
+
+# Install mob Golang-based command-line tool for efficient pair programming with Git from package
+# https://github.com/remotemobprogramming/mob
+APP_NAME=mob
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Golang-based command-line tool for efficient pair programming with Git."
+APP_VERSION=4.3.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/fast-git-handover-${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
