@@ -1825,7 +1825,7 @@ fi
 
 # Install AVFS virtual file system from source
 APP_NAME=AVFS
-APP_VERSION=1.1.4
+APP_VERSION=1.1.5
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libfuse-dev libarchive-dev
