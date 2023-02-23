@@ -27738,7 +27738,7 @@ APP_NAME=Quaternion
 APP_GUI_NAME="Cross-platform Qt5-based client for Matrix messenger platform."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Messenger;Chat;"
-APP_VERSION=0.0.95-beta3
+APP_VERSION=0.0.95.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/quotient-im/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
