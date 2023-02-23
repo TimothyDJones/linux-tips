@@ -27587,7 +27587,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install vizex Python-based visual disk space usage tool for Linux shell from package
 APP_NAME=vizex
 APP_GUI_NAME="Python-based visual disk space usage tool for Linux shell."
-APP_VERSION=1.5.1
+APP_VERSION=2.1.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y python3-dev
