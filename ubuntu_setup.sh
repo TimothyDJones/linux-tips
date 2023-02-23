@@ -27771,7 +27771,7 @@ APP_NAME=HyperKeys
 APP_GUI_NAME="Keyboard shortcut utility."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Keyboard;"
-APP_VERSION=1.1.11-rc1
+APP_VERSION=1.3.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION//-rc1/}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xurei/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
