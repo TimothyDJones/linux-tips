@@ -27545,7 +27545,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Programmer Calculator simple full-screen ncurses programmer's calculator from source
 APP_NAME=Programmer-Calculator
 APP_GUI_NAME="Simple full-screen ncurses programmer's calculator."
-APP_VERSION=1.0
+APP_VERSION=3.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libncurses-dev
