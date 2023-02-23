@@ -27475,7 +27475,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Kinx minimalist OOP scripting language with C-style syntax and built-in REPL from Debian package
 APP_NAME=Kinx
-APP_VERSION=0.18.0
+APP_VERSION=1.1.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-0_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Kray-G/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
