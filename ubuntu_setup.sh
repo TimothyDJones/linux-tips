@@ -27634,7 +27634,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install smug cross-platform, Golang-based session manager for tmux from package
 APP_NAME=smug
 APP_GUI_NAME="Cross-platform, Golang-based session manager for tmux."
-APP_VERSION=0.1.7
+APP_VERSION=0.3.3
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
