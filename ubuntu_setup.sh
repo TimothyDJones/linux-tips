@@ -27604,7 +27604,7 @@ APP_NAME=ScreenTranslator
 APP_GUI_NAME="Cross-platform screen capture, OCR, and translation tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Graphics;OCR;Translation;"
-APP_VERSION=3.2.1
+APP_VERSION=3.3.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/OneMoreGres/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
