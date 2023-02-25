@@ -9884,7 +9884,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Luna Electron-based GUI for Node.JS/NPM package management from package
 APP_NAME=Luna
 APP_GUI_NAME="Electron-based GUI for Node.JS/NPM package management."
-APP_VERSION=3.0.0
+APP_VERSION=3.4.6
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rvpanoz/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
