@@ -9871,13 +9871,13 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Ironclad Go-based, minimalist command line password manager from package
 APP_NAME=Ironclad
 APP_GUI_NAME="Go-based, minimalist command line password manager."
-APP_VERSION=1.0.0
+APP_VERSION=2.5.0
 APP_EXT=zip
-FILE_NAME=linux
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/dmulholland/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dmulholl/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,}/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
