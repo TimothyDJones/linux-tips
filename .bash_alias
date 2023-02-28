@@ -231,8 +231,8 @@ alias wifi_ap="nmcli dev wifi list"
 
 # View HTTP traffic
 # https://github.com/lacymorrow/dotfiles/blob/master/.aliases
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias sniff="sudo ngrep -d 'eth0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i eth0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Searchable 'ps' command alias
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
