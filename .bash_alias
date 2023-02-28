@@ -222,6 +222,10 @@ alias publicip='curl https://ipecho.net/plain; echo'
 # Another method to get public IP using 'dig'
 alias ext_ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
+# Get local IP address
+# https://github.com/jpbruinsslot/dotfiles/blob/master/files/alias/.alias
+alias localip="sudo ifconfig | grep -Eo 'inet (addr:)?([0-9]*\\.){3}[0-9]*' | grep -Eo '([0-9]*\\.){3}[0-9]*' | grep -v '127.0.0.1'"
+
 # Show WiFi access points
 alias wifi_ap="nmcli dev wifi list"
 
