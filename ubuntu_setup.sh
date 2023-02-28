@@ -32303,7 +32303,7 @@ APP_GUI_NAME="Golang-based Slack client for the terminal."
 APP_VERSION=0.5.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
-curl -o /tmp/${FILE_NAME} -J -L https://github.com/erroneousboat/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/jpbruinsslot/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
 sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
