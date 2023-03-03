@@ -10427,7 +10427,7 @@ rm -rf /tmp/${FILE_NAME}*
 # Install FileRunner cross-platform, two-pane file manager with built-in FTP/SFTP client from package
 APP_NAME=FileRunner
 APP_GUI_NAME="Cross-platform, two-pane file manager with built-in FTP/SFTP client."
-APP_VERSION=22.05.31.13-2
+APP_VERSION=23.03.01.16-2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
