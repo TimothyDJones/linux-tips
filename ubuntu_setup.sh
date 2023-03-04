@@ -32925,7 +32925,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install TigerVNC cross-platform server and viewer remote access tool from Debian package
 APP_NAME=TigerVNC
-APP_VERSION=1.12.0-1ubuntu1
+APP_VERSION=1.13.1-1ubuntu1
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_EXT=deb
 FILE_NAME=N/A
