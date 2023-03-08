@@ -40809,3 +40809,18 @@ cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
 ./configure && make -j$(nproc) && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install bfs variant of 'find' command that does breadth-first search (BFS) from source
+APP_NAME=bfs
+APP_GUI_NAME="Variant of 'find' command that does breadth-first search (BFS)."
+APP_VERSION=2.6.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential acl libacl1-dev attr libattr1-dev libcap2-bin libcap-dev libonig-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tavianator/${APP_NAME,,}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make -j$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
