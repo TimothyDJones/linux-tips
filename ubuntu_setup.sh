@@ -27359,7 +27359,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install vgrep Golang-based command-line pager for grep from package
 APP_NAME=vgrep
-APP_VERSION=2.5.1
+APP_VERSION=2.6.1
 APP_EXT=N/A
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
