@@ -27377,10 +27377,10 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Sunflower dual-pane Python/GTK-based minimalist file manager from Debian package
 # http://sunflower-fm.org/
 APP_NAME=Sunflower
-APP_VERSION=0.4.62-2
+APP_VERSION=0.5.63
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}.all
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MeanEYE/${APP_NAME,,}/releases/download/0.4-62/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-1.all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MeanEYE/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
