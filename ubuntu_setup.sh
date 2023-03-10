@@ -27202,7 +27202,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install pcopy Golang-based command-line tool to copy-paste text between machines from Debian package
 APP_NAME=pcopy
-APP_VERSION=0.4.4
+APP_VERSION=0.6.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/binwiederhier/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
