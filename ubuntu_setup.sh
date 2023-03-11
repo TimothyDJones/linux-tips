@@ -632,7 +632,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.186.2.0
+APP_VERSION=1.187.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_$(dpkg-architecture --query DEB_HOST_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1933,7 +1933,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.48.171
+APP_VERSION=1.49.120
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -7017,7 +7017,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Dibuja lightweight image editor similar to MS Paint from source
 APP_NAME=Dibuja
 APP_GUI_NAME="Lightweight image editor similar to MS Paint."
-APP_VERSION=0.12.0
+APP_VERSION=0.22.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y intltool libgtk2.0-dev libbabl-dev libgegl-dev libexiv2-dev
@@ -7335,7 +7335,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Galaxy Forces V2 2D multiplayer (and single-player versus AI) space shooter game
 APP_NAME=GalaxyV2
 APP_GUI_NAME="2D multiplayer (and single-player versus AI) space shooter game."
-APP_VERSION=1.85
+APP_VERSION=1.86
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -28498,7 +28498,7 @@ APP_NAME=Electerm
 APP_GUI_NAME="Electron-based integrated terminal/SSH/SFTP client."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Terminal;SSH;SFTP;"
-APP_VERSION=1.25.16
+APP_VERSION=1.25.20
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31308,7 +31308,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform FFmpeg GUI for video and audio editing and other operations."
 APP_GUI_CATEGORIES="Multimedia;Entertainment;Audio;Video;"
 APP_GUI_KEYWORDS="Audio;Video;FFmpeg;Editing;"
-APP_VERSION=3.52.0
+APP_VERSION=3.53.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mifi/lossless-cut/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
