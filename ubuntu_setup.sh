@@ -32581,19 +32581,20 @@ sudo ln -s -f /usr/local/bin/${APP_NAME,,}_linux_$(dpkg-architecture --query DEB
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Open Typer simple Qt-based typing tutor from package
+# Install Open Typer simple Qt-based typing tutor from AppImage
 APP_NAME=Open-Typer
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Simple Qt-based typing tutor."
 APP_GUI_CATEGORIES="Accessories;Education;"
 APP_GUI_KEYWORDS="Typing;Tutor;"
-APP_VERSION=4.4.4
-APP_EXT=N/A
-FILE_NAME=${APP_NAME}-linux-amd64
-curl -o /tmp/${FILE_NAME} -J -L https://github.com/adazem009/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}
-curl -o /tmp/${APP_NAME,,}.ico -J -L https://raw.githubusercontent.com/adazem009/${APP_NAME}/master/res/images/icon.ico
-sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
-sudo chmod +x /usr/local/bin/${APP_NAME,,}
+APP_VERSION=5.0.1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.ico -J -L https://raw.githubusercontent.com/${APP_NAME}/${APP_NAME}/master/app/res/icons/icon.ico
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
 sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.ico /usr/local/share/icons/${APP_NAME,,}.ico
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
