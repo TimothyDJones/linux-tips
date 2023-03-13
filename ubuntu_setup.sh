@@ -1022,18 +1022,19 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -f /tmp/${APP_NAME,,}*
 
-# Install calc shell calculator from source
+# Install calc arbitrary precision command-line calculator from source
 APP_NAME=calc
-APP_VERSION=2.12.6.0
+APP_VERSION=2.14.1.5
 APP_EXT=tar.bz2
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://cytranet.dl.sourceforge.net/project/${APP_NAME}/${APP_NAME}/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential libreadline-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n ${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 make && make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
-
 
 # Install Leanote Desktop app
 APP_NAME=leanote-desktop
