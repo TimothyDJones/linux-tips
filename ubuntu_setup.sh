@@ -496,7 +496,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Google Go language (stable version) from package
 APP_NAME=go
-APP_VERSION=1.19.6
+APP_VERSION=1.19.7
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
 else    # Otherwise use version for 32-bit kernel
@@ -621,7 +621,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from Debian package
 APP_NAME=Vivaldi
-APP_VERSION=5.6.2867.40
+APP_VERSION=5.7.2921.63
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -1094,7 +1094,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=14.3.3
+APP_VERSION=14.3.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1667,7 +1667,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Qalculate desktop calculator application from package
 # http://qalculate.github.io/
 APP_NAME=Qalculate
-APP_VERSION=4.5.1
+APP_VERSION=4.6.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/lib${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -2295,7 +2295,7 @@ APP_NAME=ProjeQtOr
 APP_GUI_NAME="Web-based project management tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project;Management;"
-APP_VERSION=10.2.2
+APP_VERSION=10.2.3
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2437,7 +2437,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Lightweight Wiki CMS/groupware."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="Wiki;CMS;"
-APP_VERSION=25.0
+APP_VERSION=25.1
 APP_EXT=tar.xz
 DB_NAME=${_APP_NAME}
 DB_USER=${_APP_NAME}
@@ -2767,7 +2767,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Saga GIS application from source
 APP_NAME=saga
-APP_VERSION=8.3.0
+APP_VERSION=8.5.1
 APP_EXT=tar.gz
 sudo apt-get install -y libwxgtk3.0-dev python-wxgtk3.0 postgresql-server-dev-all libgdal-dev libpqxx-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/saga-gis/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -2780,7 +2780,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.7.16
+APP_VERSION=6.7.18
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3359,17 +3359,19 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Notes cross-platform note-taking application from AppImage
+# Install Notes cross-platform Qt-based note-taking application from AppImage
+# https://www.get-notes.com/
+# https://github.com/nuttyartist/notes
 APP_NAME=Notes
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_GUI_NAME="Cross-platform note-taking application."
+APP_GUI_NAME="Cross-platform Qt-based note-taking application."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Productivity;"
-APP_VERSION=2.0.0
+APP_VERSION=2.1.0
 APP_EXT=appimage
-FILE_NAME=${APP_NAME}-x86_64
+FILE_NAME=${APP_NAME}_${APP_VERSION}-Qt5.15.2-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/notes/icon?1662674662
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/notes/icon?1678301736
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
@@ -3633,7 +3635,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PlantUML Java-based UML modeling tool from package
 APP_NAME=PlantUML
 APP_GUI_NAME="Java-based UML modeling tool"
-APP_VERSION=1.2023.2
+APP_VERSION=1.2023.4
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -6247,7 +6249,7 @@ APP_NAME=Wacko
 APP_GUI_NAME="PHP-based lightweight wiki tool."
 APP_GUI_CATEGORIES="Internet;Office;"
 APP_GUI_KEYWORDS="Wiki;"
-APP_VERSION=6.1.18
+APP_VERSION=6.1.19
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -7501,7 +7503,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install usql cross-platform command-line SQL client in Go
 APP_NAME=usql
 APP_GUI_NAME="Cross-platform command-line SQL client in Go."
-APP_VERSION=0.13.7
+APP_VERSION=0.13.10
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -8276,7 +8278,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=5.3.3
+APP_VERSION=5.3.4
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}${APP_VERSION//./}
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
@@ -9773,10 +9775,10 @@ sudo python3 ./install.py
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Opera web browser from package
+# Install Opera web browser (stable release) from package
 APP_NAME=Opera
 APP_GUI_NAME=""
-APP_VERSION=52.0.2871.40
+APP_VERSION=96.0.4693.50
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download3.operacdn.com/pub/${APP_NAME,,}/desktop/${APP_VERSION}/linux/${FILE_NAME}.${APP_EXT}
@@ -9828,36 +9830,23 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Extraterm Electron-based, cross-platform terminal emulator from package
 APP_NAME=Extraterm
 APP_GUI_NAME="Electron-based, cross-platform terminal emulator."
-APP_VERSION=0.59.3
+APP_VERSION=0.70.0
 APP_EXT=zip
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=ia32
-fi
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${ARCH_TYPE}
+FILE_NAME=${APP_NAME,,}qt-${APP_VERSION}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sedwards2009/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
-sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,} << EOF
-#! /bin/sh
-cd /opt/${APP_NAME,,}
-PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-/opt/${APP_NAME,,}/${APP_NAME,,}
-cd $HOME
-EOF
-sudo mv /tmp/${APP_NAME,,} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,}qt /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Path=/opt/${APP_NAME}
-Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
-Icon=/opt/${APP_NAME,,}/resources/app/${APP_NAME,,}/resources/logo/${APP_NAME,,}_small_logo.ico
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}qt
+Icon=/opt/${APP_NAME,,}/main/resources/logo/${APP_NAME,,}_small_logo_256x256.png
 Type=Application
 StartupNotify=true
 Terminal=false
@@ -10427,7 +10416,7 @@ rm -rf /tmp/${FILE_NAME}*
 # Install FileRunner cross-platform, two-pane file manager with built-in FTP/SFTP client from package
 APP_NAME=FileRunner
 APP_GUI_NAME="Cross-platform, two-pane file manager with built-in FTP/SFTP client."
-APP_VERSION=23.03.01.16-2
+APP_VERSION=23.03.07.16-2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -12529,7 +12518,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install WordTsar GTK-based WordStar text editor clone from AppImage
 APP_NAME=WordTsar
 APP_GUI_NAME="GTK-based WordStar text editor clone."
-APP_VERSION=0.3.562
+APP_VERSION=0.3.719
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -21363,7 +21352,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=6.13.0
+APP_VERSION=6.14.0
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -23982,7 +23971,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 APP_NAME="Shutter Encoder"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform audio/video encoder/converter."
-APP_VERSION=16.8
+APP_VERSION=16.9
 APP_EXT=deb
 FILE_NAME=${APP_NAME// /%20}%20${APP_VERSION}%20Linux%2064bits
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
@@ -24378,7 +24367,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=9.3.30
+APP_VERSION=9.4.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -25326,7 +25315,7 @@ APP_NAME=Cryptomator
 APP_GUI_NAME="GUI-based client-side file encryption tool for cloud storage services."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Encryption;"
-APP_VERSION=1.6.17
+APP_VERSION=1.7.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -26785,7 +26774,7 @@ APP_NAME=ImHex
 APP_GUI_NAME="Cross-platform, multi-purpose hex editor."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Hex Editor;Editor"
-APP_VERSION=1.21.2
+APP_VERSION=1.27.1
 APP_EXT=zip
 FILE_NAME=Linux.AppImage
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/WerWolv/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -26914,7 +26903,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install tig ncurses-based text-mode interface for Git from source
 APP_NAME=tig
 APP_GUI_NAME="ncurses-based text-mode interface for Git."
-APP_VERSION=2.5.5
+APP_VERSION=2.5.8
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libncurses-dev
@@ -26982,7 +26971,7 @@ rm -rf /tmp/${_APP_NAME}*
 # Install Restish Golang-based command-line REST API client from package
 # https://rest.sh
 APP_NAME=Restish
-APP_VERSION=0.9.4
+APP_VERSION=0.17.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/danielgtaylor/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27149,7 +27138,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Hurl Rust-based command-line HTTP scripting tool from package
 # https://hurl.dev
 APP_NAME=Hurl
-APP_VERSION=1.6.1
+APP_VERSION=2.0.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Orange-OpenSource/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27195,7 +27184,7 @@ rm -rf /tmp/*${APP_NAME}*
 
 # Install Devlog Golang-based command-line notepad/journal with Markdown support from package
 APP_NAME=Devlog
-APP_VERSION=1.0.0
+APP_VERSION=1.0.3
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -27213,7 +27202,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install pcopy Golang-based command-line tool to copy-paste text between machines from Debian package
 APP_NAME=pcopy
-APP_VERSION=0.4.4
+APP_VERSION=0.6.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/binwiederhier/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27223,7 +27212,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Wayback Golang-based command-line tool to archive web pages to Archive.org, Archive.Today, and IPFS from Debian package
 APP_NAME=Wayback
-APP_VERSION=0.12.1
+APP_VERSION=0.18.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wabarc/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27370,7 +27359,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install vgrep Golang-based command-line pager for grep from package
 APP_NAME=vgrep
-APP_VERSION=2.5.1
+APP_VERSION=2.6.1
 APP_EXT=N/A
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -27388,10 +27377,10 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Sunflower dual-pane Python/GTK-based minimalist file manager from Debian package
 # http://sunflower-fm.org/
 APP_NAME=Sunflower
-APP_VERSION=0.4.62-2
+APP_VERSION=0.5.63
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}.all
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MeanEYE/${APP_NAME,,}/releases/download/0.4-62/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-1.all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MeanEYE/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
@@ -27450,7 +27439,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install phetch Rust-based command-line Gopher client from package
 APP_NAME=phetch
-APP_VERSION=1.1.0
+APP_VERSION=1.2.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xvxx/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31901,7 +31890,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Lux
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based command-line video download tool."
-APP_VERSION=0.16.0
+APP_VERSION=0.17.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(getconf LONG_BIT)-bit
 sudo apt-get install -y ffmpeg
@@ -35351,7 +35340,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based 2D jump-and-run puzzle platformer game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Puzzle;Arcade;"
-APP_VERSION=1.3.359
+APP_VERSION=1.3.367
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/divVerent/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38170,7 +38159,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=rqlite
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Distributed version of SQLite database."
-APP_VERSION=7.13.1
+APP_VERSION=7.14.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40794,3 +40783,34 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install bvi hex editor with vi keybindings from source
+# https://bvi.sourceforge.net/
+APP_NAME=bvi
+APP_GUI_NAME="Hex editor with vi keybindings."
+APP_VERSION=1.4.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.src
+sudo apt-get install -y build-essential libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
+./configure && make -j$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install bfs variant of 'find' command that does breadth-first search (BFS) from source
+APP_NAME=bfs
+APP_GUI_NAME="Variant of 'find' command that does breadth-first search (BFS)."
+APP_VERSION=2.6.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential acl libacl1-dev attr libattr1-dev libcap2-bin libcap-dev libonig-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tavianator/${APP_NAME,,}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make -j$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
