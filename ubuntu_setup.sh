@@ -3955,7 +3955,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 
 # Install Pentobi Blokus-style board game from source
 APP_NAME=pentobi
-APP_VERSION=23.0
+APP_VERSION=23.1
 APP_EXT=tar.xz
 sudo apt-get install -y g++ make cmake qttools5-dev qttools5-dev-tools libqt5svg5-dev
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -35341,7 +35341,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based 2D jump-and-run puzzle platformer game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Puzzle;Arcade;"
-APP_VERSION=1.3.367
+APP_VERSION=1.3.372
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/divVerent/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
