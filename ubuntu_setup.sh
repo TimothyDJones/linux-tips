@@ -13282,7 +13282,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install UMLet Java-based UML diagram tool from package
 APP_NAME=UMLet
 APP_GUI_NAME="Java-based UML diagram tool."
-APP_VERSION=14.3
+APP_VERSION=15.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-standalone-${APP_VERSION}.0
 sudo apt-get install -y idle3
