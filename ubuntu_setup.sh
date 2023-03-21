@@ -40030,7 +40030,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Qt-based Apt GUI manager/Synaptic alternative."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Apt;Synaptic;"
-APP_VERSION=0.01
+APP_VERSION=0.02
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
