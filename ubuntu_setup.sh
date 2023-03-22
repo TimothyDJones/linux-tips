@@ -29877,8 +29877,8 @@ APP_NAME=NxShell
 APP_GUI_NAME="Cross-platform SSH/SFTP terminal."
 APP_GUI_CATEGORIES="Networking;Internet;System;"
 APP_GUI_KEYWORDS="Shell;SSH;SFTP;"
-APP_VERSION=1.9.0
-DATE_STAMP=202211250327
+APP_VERSION=1.9.3
+DATE_STAMP=202303220832
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64-linux-${APP_VERSION}-${DATE_STAMP}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
