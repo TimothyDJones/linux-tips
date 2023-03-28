@@ -21194,7 +21194,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://taskell.app/
 APP_NAME=Taskell
 APP_GUI_NAME="Haskell-based Command-line Kanban board/task manager with support for Github projects."
-APP_VERSION=1.7.1
+APP_VERSION=1.11.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}_x86-64-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/smallhadroncollider/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
