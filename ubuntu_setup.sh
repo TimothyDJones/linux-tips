@@ -17784,7 +17784,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install ff Rust-based, cross-platform CLI file finder from package
 APP_NAME=ff
 APP_GUI_NAME="Rust-based, cross-platform CLI file finder."
-APP_VERSION=0.1.1
+APP_VERSION=0.1.8
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
