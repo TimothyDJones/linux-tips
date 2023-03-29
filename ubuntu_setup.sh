@@ -17325,7 +17325,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install fnm (Fast Node Manager) Node.js package version manager from package
 APP_NAME=fnm
 APP_GUI_NAME="Node.js package version manager."
-APP_VERSION=1.0.0
+APP_VERSION=1.33.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Schniz/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
