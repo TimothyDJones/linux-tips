@@ -16951,7 +16951,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://www.linuxlinks.com/headset-youtube-reddit-desktop-music-player/
 APP_NAME=Headset
 APP_GUI_NAME="Cross-platform Electron-based Youtube/Reddit desktop music player."
-APP_VERSION=2.1.1
+APP_VERSION=4.2.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 sudo apt-get install -y libgconf2-4
