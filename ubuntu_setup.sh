@@ -17198,7 +17198,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install JIBS (Java Image Browser Sorter) image viewer focused on image sorting from package
 APP_NAME=JIBS
 APP_GUI_NAME="Image viewer focused on image sorting."
-APP_VERSION=3.2.1
+APP_VERSION=3.4.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME}-legacy-Java8-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/img-browse-sort/${FILE_NAME}.${APP_EXT}
