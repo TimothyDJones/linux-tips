@@ -17755,7 +17755,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Colon Electron-based flexible text editor and hybrid IDE from AppImage
 APP_NAME=Colon
 APP_GUI_NAME="Electron-based flexible text editor and hybrid IDE."
-APP_VERSION=1.4.2
+APP_VERSION=1.4.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Chhekur/colon-ide/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
