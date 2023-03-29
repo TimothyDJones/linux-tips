@@ -17822,40 +17822,35 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install REDasm interactive, multiarchitecture, Qt-based disassembler from package
+# Install REDasm interactive, multiarchitecture, Qt-based disassembler from AppImage
+# https://redasm.io/
 APP_NAME=REDasm
 APP_GUI_NAME="Interactive, multiarchitecture, Qt-based disassembler."
-APP_VERSION=2.0
-APP_EXT=zip
-FILE_NAME=${APP_NAME}_${APP_VERSION}_Linux_x86_64
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Disassembly;"
+APP_VERSION=3.0_BETA5
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}_${APP_VERSION}_Linux_AMD64
 sudo apt-get install -y qt5-default libqt5webengine5 libqt5webenginewidgets5
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://redasm.io/download/1/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,} << EOF
-#! /bin/sh
-cd /opt/${APP_NAME,,}
-PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-/opt/${APP_NAME,,}/${APP_NAME}
-cd $HOME
-EOF
-sudo mv /tmp/${APP_NAME,,} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/REDasmOrg/${APP_NAME}/releases/download/v3.0.0-beta5/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/REDasmOrg/${APP_NAME}/master/res/logo.png
+sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/${APP_NAME}
-Icon=
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
-Categories=Development;Programming;
-Keywords=Assembly;Debugging;
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
