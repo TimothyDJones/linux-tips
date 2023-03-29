@@ -17006,7 +17006,7 @@ rm -rf /tmp/*${APP_NAME// /}*
 # Install Nuclear cross-platform Electron-based desktop music player focused on streaming from free sources from Debian package
 APP_NAME=Nuclear
 APP_GUI_NAME="Cross-platform Electron-based desktop music player focused on streaming from free sources."
-APP_VERSION=0.6.9
+APP_VERSION=fd06a3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nukeop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
