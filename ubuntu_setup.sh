@@ -5324,13 +5324,15 @@ rm -rf /tmp/${_APP_NAME//-/}*
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.6.2
+APP_VERSION=1.6.3
 APP_EXT=tar.bz2
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${APP_NAME}-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y cmake build-essential qtbase5-dev qttools5-dev libqt5x11extras5-dev qtmultimedia5-dev libcdio-dev libsoxr-dev libpulse-dev libjack-dev libogg-dev libvorbis-dev libcurl4-openssl-dev libwavpack-dev libavformat-dev libmpeg3-dev libcddb2-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-dev/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
-cmake ./ -DCMAKE_INSTALL_PREFIX=/usr && make && sudo make install INSTALL_ROOT=/usr
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+cmake ./ -DCMAKE_INSTALL_PREFIX=/usr/local && make && sudo make install INSTALL_ROOT=/usr/local
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
