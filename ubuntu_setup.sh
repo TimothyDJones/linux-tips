@@ -40947,3 +40947,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install ReacType cross-platform, prototyping tool for React/TypeScript applications with drag-and-drop interactive canvas from Debian package
+# https://github.com/open-source-labs/ReacType
+APP_NAME=ReacType
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform, prototyping tool for React/TypeScript applications with drag-and-drop interactive canvas."
+APP_VERSION=14.0.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux.deb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}-v${APP_VERSION}.deb
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
