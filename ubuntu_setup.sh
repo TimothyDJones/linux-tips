@@ -29188,7 +29188,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install LTris SDL-based Tetris clone from source
 APP_NAME=LTris
 APP_GUI_NAME="SDL-based Tetris clone."
-APP_VERSION=1.2.3
+APP_VERSION=1.2.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libsdl1.2-dev libsdl-mixer1.2-dev
