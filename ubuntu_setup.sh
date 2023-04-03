@@ -40962,3 +40962,18 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}/${APP_NAME,,}-v${APP_VERSION}.deb
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install LBreakoutHD SDL-based HD Breakout game from source
+APP_NAME=LBreakoutHD
+APP_GUI_NAME="SDL-based HD Breakout game."
+APP_VERSION=1.1.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y build-essential libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev libsdl2-mixer-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/lgames/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make --jobs=$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
