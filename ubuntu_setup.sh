@@ -28731,7 +28731,7 @@ APP_NAME=Focalboard
 APP_GUI_NAME="Cross-platform project status board tool."
 APP_GUI_CATEGORIES="Development;Programming"
 APP_GUI_KEYWORDS="Scrum;Kanban;Project Management"
-APP_VERSION=7.9.2
+APP_VERSION=7.9.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mattermost/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
