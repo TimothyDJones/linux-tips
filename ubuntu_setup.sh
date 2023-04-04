@@ -40914,14 +40914,14 @@ sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
 
-# Install SiYuan cross-platform Electron-based notepad and personal knowledge-management tool with markdown support AppImage
+# Install SiYuan cross-platform Electron-based notepad and personal knowledge-management tool with markdown support from AppImage
 # https://github.com/siyuan-note/siyuan
 APP_NAME=SiYuan
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based notepad and personal knowledge-management tool with markdown support."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Markdown;"
-APP_VERSION=2.8.2
+APP_VERSION=2.8.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
