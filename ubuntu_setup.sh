@@ -40560,7 +40560,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Java-based data analysis and cleansing tool."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Data;Management;"
-APP_VERSION=3.7.0
+APP_VERSION=3.7.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
