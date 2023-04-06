@@ -7338,7 +7338,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Galaxy Forces V2 2D multiplayer (and single-player versus AI) space shooter game
 APP_NAME=GalaxyV2
 APP_GUI_NAME="2D multiplayer (and single-player versus AI) space shooter game."
-APP_VERSION=1.86
+APP_VERSION=2.00
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
