@@ -41041,3 +41041,38 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}*
+
+# Install X-Pipe Java-based command-line connection manager and file manager for local and remote file systems from package
+APP_NAME=X-Pipe
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '-' )
+APP_GUI_NAME="Java-based command-line connection manager and file manager for local and remote file systems."
+APP_GUI_CATEGORIES="Internet;System;"
+APP_GUI_KEYWORDS="File;Manager;"
+APP_VERSION=0.5.35
+APP_EXT=tar.gz
+FILE_NAME=${_APP_NAME}-portable-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${_APP_NAME}-io/${_APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -R -a /tmp/${FILE_NAME}/${_APP_NAME}-${APP_VERSION}/* /opt/${_APP_NAME}
+sudo cp -a /tmp/${FILE_NAME}/${_APP_NAME}-${APP_VERSION}/cli/man/*.1 /usr/local/man/man1
+sudo cp -a /tmp/${FILE_NAME}/${_APP_NAME}-${APP_VERSION}/cli/${_APP_NAME}_completion /usr/share/bash-completion/completions
+sudo ln -s -f /opt/${_APP_NAME}/cli/bin/${_APP_NAME} /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/opt/${_APP_NAME}/app/bin/${_APP_NAME}d
+Icon=/opt/${_APP_NAME}/app/lib/${_APP_NAME}d.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
