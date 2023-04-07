@@ -41028,3 +41028,16 @@ sudo apt-get install ca-certificates
 sudo echo >/etc/apt/sources.list.d/nuitka.list "deb https://nuitka.net/deb/stable/$CODENAME $CODENAME main"
 sudo apt-get update
 sudo apt-get install nuitka
+
+# Install Pass Simple cross-platform Qt-based GUI for standard Unix/Linux password store from Debian package
+# https://github.com/shemeshg/pass-simple-qt
+APP_NAME="Pass Simple"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Qt-based GUI for standard Unix/Linux password store."
+APP_VERSION=0.44
+APP_EXT=deb
+FILE_NAME=${_APP_NAME}-${APP_VERSION}-Linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME}*
