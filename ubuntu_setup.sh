@@ -10676,7 +10676,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install sqlitebiter cross-platform CLI tool to convert CSV/Excel/HTML/JSON/LTSV/Markdown/SQLite/SSV/TSV/Google-Sheets to a SQLite database file from Debian package
 APP_NAME=sqlitebiter
 APP_GUI_NAME="Cross-platform, CLI tool to convert CSV/Excel/HTML/JSON/LTSV/Markdown/SQLite/SSV/TSV/Google-Sheets to a SQLite database file ."
-APP_VERSION=0.35.2
+APP_VERSION=0.36.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/thombashi/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
