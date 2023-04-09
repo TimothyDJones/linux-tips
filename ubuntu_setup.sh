@@ -11043,7 +11043,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install tmount minimalist block device/removable media mounting utility from source
 APP_NAME=tmount
 APP_GUI_NAME="Minimalist block device/removable media mounting utility."
-APP_VERSION=0.0.7
+APP_VERSION=0.0.10
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y qtbase5-dev qt5-qmake qt5-default qttools5-dev-tools udevil libudev-dev
