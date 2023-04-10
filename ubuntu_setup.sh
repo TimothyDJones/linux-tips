@@ -585,7 +585,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=23.0.1
+APP_VERSION=23.0.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -632,7 +632,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.190.0.0
+APP_VERSION=1.190.1.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_$(dpkg-architecture --query DEB_HOST_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -10676,7 +10676,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install sqlitebiter cross-platform CLI tool to convert CSV/Excel/HTML/JSON/LTSV/Markdown/SQLite/SSV/TSV/Google-Sheets to a SQLite database file from Debian package
 APP_NAME=sqlitebiter
 APP_GUI_NAME="Cross-platform, CLI tool to convert CSV/Excel/HTML/JSON/LTSV/Markdown/SQLite/SSV/TSV/Google-Sheets to a SQLite database file ."
-APP_VERSION=0.35.2
+APP_VERSION=0.36.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/thombashi/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -11043,7 +11043,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install tmount minimalist block device/removable media mounting utility from source
 APP_NAME=tmount
 APP_GUI_NAME="Minimalist block device/removable media mounting utility."
-APP_VERSION=0.0.7
+APP_VERSION=0.0.10
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y qtbase5-dev qt5-qmake qt5-default qttools5-dev-tools udevil libudev-dev
@@ -11064,7 +11064,7 @@ sudo apt-get install -y ${APP_NAME,,}
 # Install OpenTodoList cross-platform, Qt-based "To Do" list and task management from AppImage
 APP_NAME=OpenTodoList
 APP_GUI_NAME="Cross-platform, Qt-based \"To Do\" list and task management."
-APP_VERSION=3.8.0
+APP_VERSION=3.44.0
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -21073,7 +21073,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install onefetch Rust command-line tool to provide summary of Git repository from package
 APP_NAME=onefetch
 APP_GUI_NAME="Rust command-line tool to provide summary of Git repository."
-APP_VERSION=2.16.0
+APP_VERSION=2.17.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/o2sh/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21355,7 +21355,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=6.15.0
+APP_VERSION=6.15.1
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -21574,7 +21574,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install Gopass minimalist Golang-based GnuPG collaborative password manager from Debian package
 APP_NAME=Gopass
 APP_GUI_NAME="Minimalist Golang-based GnuPG collaborative password manager."
-APP_VERSION=1.15.4
+APP_VERSION=1.15.5
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/gopasspw/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21611,7 +21611,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Mindustry Java-based desktop sandbox tower defense game from package
 APP_NAME=Mindustry
 APP_GUI_NAME="Java-based desktop sandbox tower defense game."
-APP_VERSION=143
+APP_VERSION=143.1
 APP_EXT=jar
 FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Anuken/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -24000,7 +24000,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Beekeeper Studio cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server) from Debian package
 APP_NAME=Beekeeper-Studio
 APP_GUI_NAME="Cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server)."
-APP_VERSION=3.8.9
+APP_VERSION=3.9.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -24206,7 +24206,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install ugrep ultra fast grep with interactive query UI from source
 APP_NAME=ugrep
-APP_VERSION=3.11.1
+APP_VERSION=3.11.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libbz2-dev libz-dev liblzma-dev libpcre2-dev libboost-regex-dev
@@ -24370,7 +24370,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=9.4.4
+APP_VERSION=9.4.5
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -30149,7 +30149,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install fx cross-platform interactive command-line JSON processing tool from package
 APP_NAME=fx
 APP_GUI_NAME="Cross-platform interactive command-line JSON processing tool."
-APP_VERSION=24.0.0
+APP_VERSION=24.1.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/antonmedv/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32168,7 +32168,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform non-linear video editor."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=3.0.0
+APP_VERSION=3.1.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(uname -m)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME,,}-qt//releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -36285,7 +36285,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # Install eSearch OCR screen recognition and search tool from Debian package
 APP_NAME=eSearch
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=1.9.8
+APP_VERSION=1.10.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/e-search/${FILE_NAME}.${APP_EXT}
@@ -37388,7 +37388,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Python/Qtwebengine-based web browser."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=2.2
+APP_VERSION=3.0
 APP_EXT=tar.gz
 FILE_NAME=$(echo ${APP_NAME} | tr '[:blank:]' '_')-${APP_VERSION}
 sudo apt install -y python3-pyqt5 python3-pyqt5.qtwebengine
@@ -37431,7 +37431,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based desktop encrypted note-taking tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Security;"
-APP_VERSION=2.4.11
+APP_VERSION=2.4.12
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}_linux_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/streetwriters/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38162,7 +38162,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=rqlite
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Distributed version of SQLite database."
-APP_VERSION=7.14.0
+APP_VERSION=7.14.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -39621,7 +39621,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Oh My Posh"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform tool for customizing command prompt with colors and themes."
-APP_VERSION=14.27.0
+APP_VERSION=14.29.1
 APP_EXT=N/A
 FILE_NAME=posh-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/ohmyposh-dev.mirror/${FILE_NAME}
@@ -40822,7 +40822,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=2.38.1
+APP_VERSION=2.38.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
