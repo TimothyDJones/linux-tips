@@ -221,10 +221,10 @@ curl -o /tmp/xcoralFonts.tar.gz -J -L http://xcoral.free.fr/xcoralFonts.tar.gz
 cd /tmp
 dtrx -n /tmp/xcoralFonts.tar.gz
 sudo cp -R /tmp/xcoralFonts/* /usr/local/share/fonts
-curl -o /tmp/TTF-source-code-pro-2.038R-ro-1.058R-it.zip -J -L https://downloads.sourceforge.net/source-code-pro.mirror/TTF-source-code-pro-2.038R-ro-1.058R-it.zip
+curl -o /tmp/TTF-source-code-pro-2.038R-ro-1.058R-it.zip -J -L https://downloads.sourceforge.net/source-code-pro.mirror/TTF-source-code-pro-2.042R-u_1.062R-i.zip
 cd /tmp
-dtrx -n /tmp/TTF-source-code-pro-2.038R-ro-1.058R-it.zip
-sudo cp -R /tmp/TTF-source-code-pro-2.038R-ro-1.058R-it/*.ttf /usr/local/share/fonts
+dtrx -n /tmp/TTF-source-code-pro-2.042R-u_1.062R-i.zip
+sudo cp -R /tmp/TTF-source-code-pro-2.042R-u_1.062R-i/*.ttf /usr/local/share/fonts
 curl -o /tmp/courier-prime-code.zip -J -L https://quoteunquoteapps.com/courierprime/downloads/courier-prime-code.zip
 cd /tmp
 dtrx -n /tmp/courier-prime-code.zip
