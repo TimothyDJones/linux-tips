@@ -3922,18 +3922,18 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install TeamPass PHP-based collaborative password manager
 # https://github.com/nilsteampassnet/TeamPass
 APP_NAME=TeamPass
-APP_VERSION=2.1.27.9
+APP_VERSION=3.0.5
 APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
 DB_PASSWORD=${APP_NAME,,}
 sudo apt-get install -y php${PHP5_VERSION}-mcrypt php${PHP5_VERSION}-mbstring php${PHP5_VERSION}-iconv php${PHP5_VERSION}-xml php${PHP5_VERSION}-gd openssl
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://codeload.github.com/nilsteampassnet/${APP_NAME}/${APP_EXT}/${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nilsteampassnet/${APP_NAME}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}
-mv ${APP_NAME}-${APP_VERSION} ${APP_NAME,,}
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} ${WWW_HOME}/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R -a /tmp/${FILE_NAME}/* ${WWW_HOME}/${APP_NAME,,}
 sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
 sudo chmod -R 0777 ${WWW_HOME}/${APP_NAME,,}/includes/config
 sudo chmod -R 0777 ${WWW_HOME}/${APP_NAME,,}/includes/avatars
