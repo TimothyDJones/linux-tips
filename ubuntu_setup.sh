@@ -41165,3 +41165,22 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/GyulyVGC/${APP_NAM
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install KeeperRL SDL-based dungeon exploration game with Rouge-like elements from source
+# https://github.com/miki151/keeperrl
+APP_NAME=KeeperRL
+APP_GUI_NAME="SDL-based dungeon exploration game with Rouge-like elements."
+APP_VERSION="Alpha 36"
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}%20${APP_VERSION// /%20}
+sudo apt-get install -y build-essential libsdl2-dev libsdl2-image-dev libopenal-dev libvorbis-dev libtheora-dev llvm-14 clang-14
+sudo ln -s -f /usr/bin/clang++-14 /usr/bin/clang++
+sudo ln -s -f /usr/bin/clang-14 /usr/bin/clang
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/*${APP_NAME,,}*
+sed -i.bak 's@STEAMWORKS = true@# STEAMWORKS = true@g' Makefile
+make --jobs=$(nproc) OPT=true RELEASE=true && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
