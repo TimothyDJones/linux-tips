@@ -29652,7 +29652,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Snownews console RSS/Atom feed reader from source
 APP_NAME=Snownews
 APP_GUI_NAME="Console RSS/Atom feed reader."
-APP_VERSION=1.9
+APP_VERSION=1.11
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libncurses-dev libcurl4-openssl-dev libssl-dev libxml2-dev 
