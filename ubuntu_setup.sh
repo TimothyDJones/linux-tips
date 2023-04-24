@@ -41233,3 +41233,9 @@ sudo cp -a /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Tuba Vala-based Fediverse client for GNOME from Flatpak
+# https://github.com/GeopJr/Tuba
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y flathub dev.geopjr.Tuba
