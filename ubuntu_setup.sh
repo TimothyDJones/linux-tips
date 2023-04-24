@@ -941,7 +941,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install WCD chdir utility from source
 APP_NAME=wcd
-APP_VERSION=6.0.4
+APP_VERSION=6.0.5
 APP_EXT=tar.gz
 sudo apt-get install -y libncursesw5-dev groff sed build-essential ghostscript po4a
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
