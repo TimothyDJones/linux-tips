@@ -41255,3 +41255,19 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install hex command-line tool to convert binary files between HEX, BIN, and ELF formats from package
+# https://github.com/sibprogrammer/xq
+APP_NAME=hex
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Command-line tool to convert binary files between HEX, BIN, and ELF formats."
+APP_VERSION=2.02
+APP_EXT=tar.gz
+FILE_NAME="${APP_NAME,,}_v${APP_VERSION}_Release_Linux_X86_64_(debian_10.12.0)"
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/intel-hex-file-processing/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}*/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
