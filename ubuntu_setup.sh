@@ -36720,7 +36720,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Newsraft simple console RSS news aggregator from source
 APP_NAME=Newsraft
 APP_GUI_NAME="Simple console RSS news aggregator."
-APP_VERSION=0.3
+APP_VERSION=0.18
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y build-essential libncursesw6 libsqlite3-dev libcurl4-openssl-dev libexpat1-dev libyajl-dev libgumbo-dev meson scdoc
