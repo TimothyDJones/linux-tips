@@ -36904,7 +36904,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Electron-based GUI for Redis."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Redis;Database;"
-APP_VERSION=2022.4.126
+APP_VERSION=2023.4.102
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/patrikx3/redis-ui/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
