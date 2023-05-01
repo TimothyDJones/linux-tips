@@ -36695,7 +36695,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME//./}*
 # Install tone cross-platform, C#/.NET tool for viewing/editing audio file metadata from package
 APP_NAME=tone
 APP_GUI_NAME="Cross-platform, C#/.NET tool for viewing/editing audio file metadata."
-APP_VERSION=0.0.4
+APP_VERSION=0.1.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sandreas/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
