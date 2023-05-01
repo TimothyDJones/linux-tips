@@ -36853,7 +36853,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Astronomical ephemerides calculation tool."
 APP_GUI_CATEGORIES="Education;Accessories;"
 APP_GUI_KEYWORDS="Space;"
-APP_VERSION=0.10.10
+APP_VERSION=0.10.11
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}.AppImage
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
