@@ -41384,3 +41384,22 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Soft Serve Golang-based command-line self-hosted Git server with SSH support from package
+# https://github.com/charmbracelet/soft-serve
+APP_NAME="Soft Serve"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Golang-based command-line self-hosted Git server with SSH support."
+APP_VERSION=0.5.0
+APP_EXT=tar.gz
+FILE_NAME=${_APP_NAME}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/soft /usr/local/bin
+sudo chmod +x /usr/local/bin/soft
+sudo cp -a /tmp/${FILE_NAME}/manpages/${_APP_NAME}.1.gz /usr/local/man/man1
+sudo cp -a /tmp/${FILE_NAME}/completions/${_APP_NAME}.bash /usr/share/bash-completion/completions/${_APP_NAME}
+sudo ln -s -f /usr/local/bin/soft /usr/local/bin/${_APP_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
