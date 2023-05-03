@@ -41326,7 +41326,7 @@ APP_NAME=CubeSolver
 APP_GUI_NAME="Qt-based GUI Rubik's cube solver with fast algorithm."
 APP_GUI_CATEGORIES="Development;Science;"
 APP_GUI_KEYWORDS="Puzzle;Rubik;"
-APP_VERSION=0.2.1
+APP_VERSION=0.2.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y qt5-qmake
