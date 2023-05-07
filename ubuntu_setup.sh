@@ -31647,7 +31647,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Stone Soup"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '_')
 APP_GUI_NAME="Rogue-like adventure game with tile graphics."
-APP_VERSION=0.29.1
+APP_VERSION=0.30.0
 APP_EXT=tar.xz
 FILE_NAME=${_APP_NAME}-${APP_VERSION}
 sudo apt install -yy build-essential libncursesw5-dev bison flex liblua5.1-0-dev libsqlite3-dev libz-dev pkg-config python3-yaml binutils-gold python-is-python3
