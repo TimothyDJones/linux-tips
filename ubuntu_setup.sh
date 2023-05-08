@@ -28051,7 +28051,7 @@ APP_NAME=ThiefMD
 APP_GUI_NAME="Simple Markdown editor for Linux."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="Markdown;Editor;"
-APP_VERSION=0.1.2
+APP_VERSION=0.2.6
 APP_EXT=deb
 FILE_NAME=com.github.kmwallio.${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kmwallio/${APP_NAME}/releases/download/v${APP_VERSION}-sophistication/${FILE_NAME}.${APP_EXT}
@@ -28064,7 +28064,7 @@ APP_NAME=ArchiveWeb.page
 APP_GUI_NAME="Electron-based desktop web recorder/archiver."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Recorder;Archiver"
-APP_VERSION=0.5.8
+APP_VERSION=0.9.8
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/webrecorder/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
