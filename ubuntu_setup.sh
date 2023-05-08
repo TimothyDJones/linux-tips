@@ -679,7 +679,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=2.3.3
+APP_VERSION=2.3.4
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -1463,7 +1463,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Makagiga Java-based PIM/RSS feed reader from package
 APP_NAME=Makagiga
 APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
-APP_VERSION=6.22
+APP_VERSION=6.24
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1572,7 +1572,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4598
+APP_VERSION=4.3-4602
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2518,7 +2518,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE from package
 APP_NAME=Eric
-APP_VERSION=23.4.2
+APP_VERSION=23.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}7-${APP_VERSION}
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql python3-pyqt5.qtwebengine python3-pyqt5.qtchart
@@ -4308,7 +4308,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 # Install Admidio web-based (PHP/MySQL) organizational management tool from package
 APP_NAME=Admidio
 APP_GUI_NAME="Web-based (PHP/MySQL) organizational management tool."
-APP_VERSION=4.2.5
+APP_VERSION=4.2.6
 APP_EXT=zip
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Organization;Management;"
@@ -7506,7 +7506,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install usql cross-platform command-line SQL client in Go
 APP_NAME=usql
 APP_GUI_NAME="Cross-platform command-line SQL client in Go."
-APP_VERSION=0.14.1
+APP_VERSION=0.14.5
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -13270,7 +13270,7 @@ rm -rf /tmp/*${APP_NAME}*
 APP_NAME=LazyGit
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Golang-based shell GUI for Git."
-APP_VERSION=0.37.0
+APP_VERSION=0.38.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -21845,7 +21845,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install PmWiki PHP-based wiki tool from package
 APP_NAME=PmWiki
 APP_GUI_NAME="PHP-based wiki tool."
-APP_VERSION=2.3.22
+APP_VERSION=2.3.23
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 if ![ -x "$(command -v php)" ]; then
@@ -21899,7 +21899,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://dystroy.org/broot/
 APP_NAME=Broot
 APP_GUI_NAME="Rust-based command-line directory tree navigation tool with fuzzy-search capability."
-APP_VERSION=1.21.2
+APP_VERSION=1.21.3
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -23974,7 +23974,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 APP_NAME="Shutter Encoder"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform audio/video encoder/converter."
-APP_VERSION=17.0
+APP_VERSION=17.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME// /%20}%20${APP_VERSION}%20Linux%2064bits
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
@@ -28718,7 +28718,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Pineapple Pictures cross-platform lightweight image viewer from Debian package
 APP_NAME=Pineapple-Pictures
-APP_VERSION=0.6.6
+APP_VERSION=0.6.9
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux-$(arch)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -30489,7 +30489,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install rpncalc cross-platform Java-based command-line RPN calculator from package
 APP_NAME=rpncalc
-APP_VERSION=4.7.0
+APP_VERSION=4.7.7
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-fross/${FILE_NAME}.${APP_EXT}
@@ -35343,7 +35343,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based 2D jump-and-run puzzle platformer game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Puzzle;Arcade;"
-APP_VERSION=1.3.436
+APP_VERSION=1.3.511
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/divVerent/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -36695,7 +36695,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME//./}*
 # Install tone cross-platform, C#/.NET tool for viewing/editing audio file metadata from package
 APP_NAME=tone
 APP_GUI_NAME="Cross-platform, C#/.NET tool for viewing/editing audio file metadata."
-APP_VERSION=0.0.4
+APP_VERSION=0.1.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sandreas/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -36720,7 +36720,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Newsraft simple console RSS news aggregator from source
 APP_NAME=Newsraft
 APP_GUI_NAME="Simple console RSS news aggregator."
-APP_VERSION=0.3
+APP_VERSION=0.18
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y build-essential libncursesw6 libsqlite3-dev libcurl4-openssl-dev libexpat1-dev libyajl-dev libgumbo-dev meson scdoc
@@ -36806,7 +36806,7 @@ sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # Install Muffon Electron/Vue.JS-based desktop music-streaming service player from Debian package
 APP_NAME=Muffon
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.1.0
+APP_VERSION=1.5.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/staniel359/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -36853,7 +36853,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Astronomical ephemerides calculation tool."
 APP_GUI_CATEGORIES="Education;Accessories;"
 APP_GUI_KEYWORDS="Space;"
-APP_VERSION=0.10.10
+APP_VERSION=0.10.11
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}.AppImage
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -36904,7 +36904,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Electron-based GUI for Redis."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Redis;Database;"
-APP_VERSION=2022.4.126
+APP_VERSION=2023.4.102
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/patrikx3/redis-ui/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37001,7 +37001,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 APP_NAME=tere
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Simple command-line file manager intended to replace 'cd + ls'."
-APP_VERSION=1.1.0
+APP_VERSION=1.4.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mgunyho/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37142,7 +37142,7 @@ sudo apt install -y dpscreenocr
 # Install deb-get tool to provide 'apt-get' style functionality from Debian packages from third-party repositories from Debian package
 APP_NAME=deb-get
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.3.3
+APP_VERSION=0.3.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wimpysworld/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37156,11 +37156,11 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, free-form notepad tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Editor;"
-APP_VERSION=1.3.2
+APP_VERSION=1.6.1
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME// /-}-linux-x86_64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/LinwoodCloud/Butterfly/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${_APP_NAME}.png -J -L https://raw.githubusercontent.com/LinwoodCloud/Butterfly/develop/app/images/logo.png
+FILE_NAME=${_APP_NAME}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/LinwoodDev/Butterfly/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://raw.githubusercontent.com/LinwoodDev/Butterfly/develop/app/images/logo.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
@@ -37186,7 +37186,7 @@ rm -rf /tmp/${APP_NAME// /-}* /tmp/${_APP_NAME}*
 # Install MenuLibre GTK-based advanced FreeDesktop.org compliant menu editor from source
 APP_NAME=MenuLibre
 APP_GUI_NAME="GTK-based advanced FreeDesktop.org compliant menu editor."
-APP_VERSION=2.2.3
+APP_VERSION=2.3.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y gir1.2-gtk-3.0 intltool libgnome-menu-3-dev python-gi-dev python3 python3-distutils-extra python3-psutil
@@ -37285,7 +37285,7 @@ APP_NAME=Encrypt0r
 APP_GUI_NAME="Cross-platform Electron-based GUI file encryption/decryption tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Encryption;Security;"
-APP_VERSION=3.10.14
+APP_VERSION=3.11.22
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kunalnagar/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37740,7 +37740,7 @@ rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
 # Install jc Python-based CLI tool and library that converts output from many popular command-line tools and file types to JSON, YAML, or Python dictionary format from package
 # https://github.com/kellyjonbrazil/jc
 APP_NAME=jc
-APP_VERSION=1.23.1
+APP_VERSION=1.23.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-cli.mirror/${FILE_NAME}.${APP_EXT}
@@ -38887,7 +38887,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Flutter-based password manager with synchronization capability."
 APP_GUI_CATEGORIES="Internet;System;Accessories;"
 APP_GUI_KEYWORDS="Password;Security;"
-APP_VERSION=1.3.1
+APP_VERSION=1.4.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-v${APP_VERSION}-Linux-${APP_EXT}
 curl -o /tmp/${FILE_NAME}.zip -J -L https://github.com/GlitterWare/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.zip
@@ -41326,7 +41326,7 @@ APP_NAME=CubeSolver
 APP_GUI_NAME="Qt-based GUI Rubik's cube solver with fast algorithm."
 APP_GUI_CATEGORIES="Development;Science;"
 APP_GUI_KEYWORDS="Puzzle;Rubik;"
-APP_VERSION=0.2.1
+APP_VERSION=0.2.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y qt5-qmake
@@ -41385,3 +41385,87 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${_APP_NAME}*
+
+# Install Draft Notes cross-platform C#-based screen capture tool with built-in annotation functions from package
+APP_NAME="Draft Notes"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform C#-based screen capture tool with built-in annotation functions."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Screen;Capture;Editor;"
+APP_VERSION=2.0
+APP_EXT=7z
+FILE_NAME=Draft_2_0_notes_linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/Draft_notes /usr/local/bin/${_APP_NAME}
+sudo chmod +x /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+#Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Soft Serve Golang-based command-line self-hosted Git server with SSH support from package
+# https://github.com/charmbracelet/soft-serve
+APP_NAME="Soft Serve"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Golang-based command-line self-hosted Git server with SSH support."
+APP_VERSION=0.5.0
+APP_EXT=tar.gz
+FILE_NAME=${_APP_NAME}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/soft /usr/local/bin
+sudo chmod +x /usr/local/bin/soft
+sudo cp -a /tmp/${FILE_NAME}/manpages/${_APP_NAME}.1.gz /usr/local/man/man1
+sudo cp -a /tmp/${FILE_NAME}/completions/${_APP_NAME}.bash /usr/share/bash-completion/completions/${_APP_NAME}
+sudo ln -s -f /usr/local/bin/soft /usr/local/bin/${_APP_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Ellas War Electron-based Ancient Greek-themed role-playing game from AppImage
+APP_NAME="Ellas War"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Electron-based Ancient Greek-themed role-playing game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="History;Games;RPG;"
+APP_VERSION=1.3.5
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME// /}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/V-Paranoiaque/${APP_NAME// /-}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://raw.githubusercontent.com/V-Paranoiaque/${APP_NAME// /-}/master/res/electron/icon.png
+sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME// /}* /tmp/${APP_NAME// /-}*
