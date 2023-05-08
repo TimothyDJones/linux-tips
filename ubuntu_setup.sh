@@ -28021,7 +28021,7 @@ APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Browser;"
 APP_VERSION=continuous
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME//-/_}--x86_64
+FILE_NAME=${APP_NAME//-/_}-1-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/LeFroid/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://github.com/LeFroid/${APP_NAME}/raw/master/data/${APP_NAME,,}.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
