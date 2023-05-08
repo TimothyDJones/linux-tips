@@ -41486,3 +41486,9 @@ echo 'source /usr/local/bin/${APP_NAME,,}.sh' >> $HOME/.bashrc
 source $HOME/.bashrc	# Reload Bash configuration
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Spedread GTK Vala-based minimalist desktop speedreading application from Flatpak
+# https://github.com/Darazaki/Spedread
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y flathub com.github.Darazaki.Spedread
