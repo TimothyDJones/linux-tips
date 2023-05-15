@@ -3614,9 +3614,9 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Dropbox online storage utility from package
+# Install Dropbox online storage utility from Debian package
 APP_NAME=dropbox
-APP_VERSION=2.10.0
+APP_VERSION=2022.12.05
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://linux.dropbox.com/packages/ubuntu/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
