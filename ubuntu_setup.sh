@@ -1934,7 +1934,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.51.110
+APP_VERSION=1.51.114
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -2781,7 +2781,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.7.24
+APP_VERSION=6.7.26
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3574,7 +3574,7 @@ APP_NAME=Shotcut
 APP_GUI_NAME="Cross-platform non-linear video editor."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=22.12.21
+APP_VERSION=23.05.14
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -3607,16 +3607,16 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Nightcode Clojure/Clojurescript IDE from package
 APP_NAME=Nightcode
-APP_VERSION=2.6.0
+APP_VERSION=2.8.3
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/oakes/${APP_NAME}/releases/download/${APP_VERSION}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Dropbox online storage utility from package
+# Install Dropbox online storage utility from Debian package
 APP_NAME=dropbox
-APP_VERSION=2.10.0
+APP_VERSION=2022.12.05
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://linux.dropbox.com/packages/ubuntu/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -3716,9 +3716,9 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install Minbrowser minimalist web browser from package
+# Install Minbrowser minimalist web browser from Debian package
 APP_NAME=min
-APP_VERSION=1.16.0
+APP_VERSION=1.27.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/minbrowser/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -7791,7 +7791,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install UNA social-media community management web-based tool (PHP/MySQL)
 APP_NAME=UNA
-APP_VERSION=13.0.0-RC5
+APP_VERSION=13.0.0-RC6
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -14446,7 +14446,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=2.10.13
+APP_VERSION=2.10.18
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21611,7 +21611,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Mindustry Java-based desktop sandbox tower defense game from package
 APP_NAME=Mindustry
 APP_GUI_NAME="Java-based desktop sandbox tower defense game."
-APP_VERSION=143.1
+APP_VERSION=144
 APP_EXT=jar
 FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Anuken/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -24370,7 +24370,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=9.4.6
+APP_VERSION=9.4.10
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -25583,7 +25583,7 @@ APP_NAME=pj-net-tools
 APP_GUI_NAME="Java GUI networking utilities with tabbed interface."
 APP_GUI_CATEGORIES="Internet;System;Accessories;"
 APP_GUI_KEYWORDS="Networking;"
-APP_VERSION=1.0.89
+APP_VERSION=1.0.90
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -27966,7 +27966,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Orbiton minimalist Golang text editor from package
 APP_NAME=Orbiton
 APP_GUI_NAME="Minimalist Golang text editor."
-APP_VERSION=2.60.4
+APP_VERSION=2.61.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xyproto/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27987,7 +27987,7 @@ APP_NAME=Endless-Sky
 APP_GUI_NAME="2D space exploration, trading, and combat game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Space;Trading;RPG;"
-APP_VERSION=0.9.16.1
+APP_VERSION=0.10.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${KERNEL_TYPE}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -28021,7 +28021,7 @@ APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Browser;"
 APP_VERSION=continuous
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME//-/_}--x86_64
+FILE_NAME=${APP_NAME//-/_}-1-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/LeFroid/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://github.com/LeFroid/${APP_NAME}/raw/master/data/${APP_NAME,,}.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
@@ -28051,7 +28051,7 @@ APP_NAME=ThiefMD
 APP_GUI_NAME="Simple Markdown editor for Linux."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="Markdown;Editor;"
-APP_VERSION=0.1.2
+APP_VERSION=0.2.6
 APP_EXT=deb
 FILE_NAME=com.github.kmwallio.${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kmwallio/${APP_NAME}/releases/download/v${APP_VERSION}-sophistication/${FILE_NAME}.${APP_EXT}
@@ -28064,7 +28064,7 @@ APP_NAME=ArchiveWeb.page
 APP_GUI_NAME="Electron-based desktop web recorder/archiver."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Recorder;Archiver"
-APP_VERSION=0.5.8
+APP_VERSION=0.9.8
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/webrecorder/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -28119,7 +28119,7 @@ APP_NAME=Lagrange
 APP_GUI_NAME="Cross-platform desktop GUI client for browsing Geminispace."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Gemini;Browser"
-APP_VERSION=1.13.8
+APP_VERSION=1.15.9
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/skyjake/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -39621,7 +39621,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Oh My Posh"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform tool for customizing command prompt with colors and themes."
-APP_VERSION=15.5.0
+APP_VERSION=16.2.2
 APP_EXT=N/A
 FILE_NAME=posh-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/ohmyposh-dev.mirror/${FILE_NAME}
@@ -40921,7 +40921,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based notepad and personal knowledge-management tool with markdown support."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Markdown;"
-APP_VERSION=2.8.5
+APP_VERSION=2.8.7
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -41034,7 +41034,7 @@ sudo apt-get install nuitka
 APP_NAME="Pass Simple"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Qt-based GUI for standard Unix/Linux password store."
-APP_VERSION=0.47
+APP_VERSION=0.53
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
@@ -41469,3 +41469,26 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME// /}* /tmp/${APP_NAME// /-}*
+
+# Install IntelliShell Rust-based command-line history enhancement like Intellisense from package
+APP_NAME=Intelli-Shell
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Rust-based command-line history enhancement like Intellisense."
+APP_VERSION=0.2.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/lasantosr/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/* /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}*
+echo 'source /usr/local/bin/${APP_NAME,,}.sh' >> $HOME/.bashrc
+source $HOME/.bashrc	# Reload Bash configuration
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Spedread GTK Vala-based minimalist desktop speedreading application from Flatpak
+# https://github.com/Darazaki/Spedread
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y flathub com.github.Darazaki.Spedread
