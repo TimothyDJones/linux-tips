@@ -41508,3 +41508,16 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Restfox cross-platform offline-first HTTP REST and GraphQL client from Snap package
+# https://github.com/flawiddsouza/Restfox
+APP_NAME=Restfox
+APP_GUI_NAME="Restfox cross-platform offline-first HTTP REST and GraphQL client."
+APP_VERSION=0.0.8
+APP_EXT=snap
+FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+sudo apt-get install -y snapd snapd-xdg-open
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo snap install --dangerous /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
