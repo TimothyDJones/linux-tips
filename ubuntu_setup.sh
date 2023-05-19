@@ -41521,3 +41521,19 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo snap install --dangerous /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Just Fast simple, two-pane, C++-based console file manager from source
+APP_NAME="Just Fast"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Simple, two-pane, C++-based console file manager."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo apt-get install -y build-essential cmake
+cd /tmp
+git clone https://github.com/GiuseppeCesarano/${_APP_NAME}.git
+cd /tmp/${_APP_NAME}
+cmake . -B build -DCMAKE_BUILD_TYPE=Release && cd build && cmake --build .
+sudo cp -a jf /usr/local/bin
+cd $HOME
+rm -rf /tmp/*${_APP_NAME}*
