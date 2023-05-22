@@ -41537,3 +41537,19 @@ cmake . -B build -DCMAKE_BUILD_TYPE=Release && cd build && cmake --build .
 sudo cp -a jf /usr/local/bin
 cd $HOME
 rm -rf /tmp/*${_APP_NAME}*
+
+# Install wxMEdit cross-platform text/hex editor based on MadEdit from source
+# https://github.com/wxMEdit/wxMEdit
+APP_NAME=wxMEdit
+APP_GUI_NAME="Cross-platform text/hex editor based on MadEdit."
+APP_VERSION=3.1.0.90
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y build-essential libgtk-3-dev libwxgtk3.0-gtk3-dev libboost-dev libicu-dev libcurl4-gnutls-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make -j$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
