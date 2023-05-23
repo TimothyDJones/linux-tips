@@ -41553,3 +41553,18 @@ cd /tmp/${FILE_NAME}
 ./configure && make -j$(nproc) && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Roswell cross-platform Lisp environment launcher from package
+APP_NAME=Roswell
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Lisp environment launcher."
+APP_VERSION=22.12.14.113
+APP_EXT=tar.bz2
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}
+sudo make install && ros
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
