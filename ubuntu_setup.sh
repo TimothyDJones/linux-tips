@@ -23874,7 +23874,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://sysadminxpert.com/how-to-mount-s3-bucket-on-linux-instance/
 APP_NAME=s3fs-fuse
 APP_GUI_NAME="File system extension to mount AWS S3 bucket."
-APP_VERSION=1.91
+APP_VERSION=1.92
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y build-essential libcurl4-openssl-dev libxml2-dev mime-support libfuse-dev libssl-dev
