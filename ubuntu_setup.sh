@@ -41689,3 +41689,39 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install ChatGPT cross-platform Rust-based simple GUI tool from AppImage
+# https://github.com/lencx/ChatGPT
+APP_NAME=ChatGPT
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Rust-based simple GUI tool."
+APP_GUI_CATEGORIES="Accessories;System;Development;Programming;"
+APP_GUI_KEYWORDS="ChatGPT;"
+APP_VERSION=1.0.0
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT}.tar.gz -J -L https://downloads.sourceforge.net/${APP_NAME,,}-desktop.mirror/${FILE_NAME}.${APP_EXT}.tar.gz
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/chatgpt-desktop/icon?4914db46a1e9e068e7c201a94b7219cc9358a419dc1f0a5e000540295753bd8e
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}.tar.gz
+sudo cp -a /tmp/${FILE_NAME}*/chat*.${APP_EXT} /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
