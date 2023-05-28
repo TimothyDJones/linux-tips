@@ -10226,9 +10226,9 @@ rm -rf /tmp/${APP_NAME}*
 # Install Digital Logic Design (DLD) Java-based digital circuit designer and simulator from package
 APP_NAME=DLD
 APP_GUI_NAME="Java-based digital circuit designer and simulator."
-APP_VERSION="V 2.0 Beta"
+APP_VERSION=N/A
 APP_EXT=zip
-FILE_NAME=${APP_NAME}%20${APP_VERSION// /%20}
+FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/digitalcircuitdesign/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
