@@ -2596,7 +2596,7 @@ sudo mv /tmp/${APP_NAME} /usr/local/bin
 
 # Install Freeplane mind-mapping tool from Debian package
 APP_NAME=Freeplane
-APP_VERSION=1.11.2
+APP_VERSION=1.11.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}~upstream-1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -2781,7 +2781,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.7.30
+APP_VERSION=6.7.31
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -5324,7 +5324,7 @@ rm -rf /tmp/${_APP_NAME//-/}*
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.6.3
+APP_VERSION=1.6.4
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y cmake build-essential qtbase5-dev qttools5-dev libqt5x11extras5-dev qtmultimedia5-dev libcdio-dev libsoxr-dev libpulse-dev libjack-dev libogg-dev libvorbis-dev libcurl4-openssl-dev libwavpack-dev libavformat-dev libmpeg3-dev libcddb2-dev
@@ -5696,7 +5696,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=23.3
+APP_VERSION=23.4
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -7380,7 +7380,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Git Town shell-based Git workflow enhancement tool from package
 APP_NAME=Git-Town
-APP_VERSION=7.9.0
+APP_VERSION=9.0.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_intel_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -7636,7 +7636,7 @@ cargo install --git https://github.com/jmacdonald/${APP_NAME,,}/ --tag ${APP_VER
 # Install Fractalscope Qt-based fractal explorer from source
 APP_NAME=Fractalscope
 APP_GUI_NAME="Cross-platform Qt-based fractal explorer."
-APP_VERSION=1.4.2
+APP_VERSION=1.5.0
 APP_EXT=tar.gz
 sudo apt-get install -y qt5-default yasm
 # Install MPIR (Multiple Precision Integers and Rationals) LGPL C library
@@ -7813,7 +7813,7 @@ xdg-open http://localhost/${APP_NAME,,}/install &
 # Install VeroRoute Qt-based PCB layout and routing tool from package
 APP_NAME=VeroRoute
 APP_GUI_NAME="Qt-based PCB layout and routing tool."
-APP_VERSION=2.34
+APP_VERSION=2.35
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_V${APP_VERSION//./}_LinuxMint193_64bit
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -21355,7 +21355,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=6.17.0
+APP_VERSION=6.18.0
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -24000,7 +24000,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Beekeeper Studio cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server) from Debian package
 APP_NAME=Beekeeper-Studio
 APP_GUI_NAME="Cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server)."
-APP_VERSION=3.9.8
+APP_VERSION=3.9.14
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32799,7 +32799,7 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=gping
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based cross-platform, terminal ping with graph of results."
-APP_VERSION=1.11.0
+APP_VERSION=1.12.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-Linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -35488,7 +35488,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # Install systeroid Rust-based command-line alternative to sysctl from package
 APP_NAME=systeroid
 APP_GUI_NAME="Rust-based command-line alternative to sysctl."
-APP_VERSION=0.3.0
+APP_VERSION=0.4.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/orhun/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38162,7 +38162,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=rqlite
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Distributed version of SQLite database."
-APP_VERSION=7.18.2
+APP_VERSION=7.19.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40309,7 +40309,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=nFPM
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Golang-based simple, no-dependencies, deb, rpm, apk, and Arch Linux packager."
-APP_VERSION=2.28.0
+APP_VERSION=2.29.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -41034,7 +41034,7 @@ sudo apt-get install nuitka
 APP_NAME="Pass Simple"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Qt-based GUI for standard Unix/Linux password store."
-APP_VERSION=0.53
+APP_VERSION=0.55
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
@@ -41613,3 +41613,142 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Szyszka cross-platform Rust-based simple GUI bulk file renaming tool from AppImage
+APP_NAME=Szyszka
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Rust-based simple GUI bulk file renaming tool."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="File;Rename;"
+APP_VERSION=3.0.0
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}
+sudo apt install -y libgtk-4-bin
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/qarmin/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/qarmin/${APP_NAME,,}/master/data/icons/com.github.qarmin.${APP_NAME,,}.svg
+sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME// /}* /tmp/${APP_NAME// /-}*
+
+# Install ASUD cross-platform Sudoku puzzle assistant from package
+APP_NAME=ASUD
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Sudoku puzzle assistant."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Sudoku;Puzzle;"
+APP_VERSION=25may2023
+APP_EXT=7z
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/${APP_NAME,,}-v${APP_VERSION}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}/sudoku/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/lsudx &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/docs/xwing/sashimiXwing.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Category=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install ChatGPT cross-platform Rust-based simple GUI tool from AppImage
+# https://github.com/lencx/ChatGPT
+APP_NAME=ChatGPT
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Rust-based simple GUI tool."
+APP_GUI_CATEGORIES="Accessories;System;Development;Programming;"
+APP_GUI_KEYWORDS="ChatGPT;"
+APP_VERSION=1.0.0
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT}.tar.gz -J -L https://downloads.sourceforge.net/${APP_NAME,,}-desktop.mirror/${FILE_NAME}.${APP_EXT}.tar.gz
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/chatgpt-desktop/icon?4914db46a1e9e068e7c201a94b7219cc9358a419dc1f0a5e000540295753bd8e
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}.tar.gz
+sudo cp -a /tmp/${FILE_NAME}*/chat*.${APP_EXT} /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install ASCII DASH ncurses console version of Boulderdash game from source
+APP_NAME="ASCII DASH"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Ncurses console version of Boulderdash game."
+APP_VERSION=1.3
+APP_EXT=zip
+FILE_NAME=${APP_NAME// /-}-${APP_VERSION}
+sudo apt install -y build-essential g++ cmake libncurses5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+cmake . && make -j$(nproc)
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${_APP_NAME}
+cat > /tmp/${_APP_NAME} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+/opt/${_APP_NAME}/main &
+cd \$HOME
+EOF
+sudo mv /tmp/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cd $HOME
+rm -rf /tmp/*${APP_NAME// /-}*
