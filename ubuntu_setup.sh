@@ -41782,3 +41782,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}_default.conf /etc/${APP_NAME,,}/default.conf
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Vertopal CLI cross-platform command-line interface to online file conversion utility from package
+APP_NAME="Vertopal CLI"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform command-line interface to online file conversion utility."
+APP_VERSION=1.0.3
+APP_EXT=zip
+FILE_NAME=${_APP_NAME}-v${APP_VERSION}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${_APP_NAME//-cli/} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME}*
