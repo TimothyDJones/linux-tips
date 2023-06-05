@@ -41796,3 +41796,18 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -a /tmp/${FILE_NAME}/${_APP_NAME//-cli/} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}*
+
+# Install cs Golang-based command-line/TUI code search tool from package
+APP_NAME=cs
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Golang-based command-line/TUI code search tool."
+APP_VERSION=1.0.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/boyter/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
