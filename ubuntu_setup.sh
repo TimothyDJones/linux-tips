@@ -41796,3 +41796,37 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -a /tmp/${FILE_NAME}/${_APP_NAME//-cli/} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}*
+
+# Install ShortGPT Lite simple Windows/Linux GUI tool for getting quick, concise answers for OpenAI GPT3/GPT4 LLMs from package
+APP_NAME="ShortGPT Lite"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Simple Windows/Linux GUI tool for getting quick, concise answers for OpenAI GPT3/GPT4 LLMs."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="ChatGPT;LLM;GPT;"
+APP_VERSION=1.0.0
+APP_EXT=zip
+FILE_NAME=${_APP_NAME}-${APP_VERSION}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p /opt/${_APP_NAME}
+sudo cp -R -a /tmp/${FILE_NAME}/${_APP_NAME}-linux /opt/${_APP_NAME}
+sudo chmod +x /opt/${_APP_NAME}/${_APP_NAME//-/_}
+sudo ln -s -f /opt/${_APP_NAME}/${_APP_NAME//-/_} /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/opt/${_APP_NAME}/${_APP_NAME//-/_}
+Icon=/opt/${_APP_NAME}/data/flutter_assets/assets/images/shortgpt-logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME// /}* /tmp/${APP_NAME// /-}*
