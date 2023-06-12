@@ -542,18 +542,26 @@ sudo pacman -
 function extract() {
     if [ -f $1 ] ; then
         case $1 in
-            *.tar.gz|*.tgz)     tar xzf $1          ;;
-            *.tar|*.tar.xz)     tar xf $1           ;;
-            *.tar.bz2|*.tbz2)   tar xjf $1          ;;
-            *.xz)               unxz $1             ;;
-            *.zip)              unzip $1            ;;
-            *.Z)                uncompress $1       ;;
-            *.tar.zst)          tar -I=unzstd xf $1 ;;
-            *.zst)              unzstd $1           ;;
-            *.7z)               7z x $1             ;;
+#            *.tar.gz|*.tgz)     tar xzf $1          ;;
+#            *.tar|*.tar.xz)     tar xf $1           ;;
+#            *.tar.bz2|*.tbz2)   tar xjf $1          ;;
+#            *.xz)               unxz $1             ;;
+#            *.zip)              unzip $1            ;;
+#            *.Z)                uncompress $1       ;;
+#            *.tar.zst)          tar -I=unzstd xf $1 ;;
+#            *.zst)              unzstd $1           ;;
+#            *.7z)               7z x $1             ;;
         esac
     else
         echo "'$1' is not valid archive file."
     fi
 }
 ```
+
+## Best practices for command line `history`
+One of the most powerful, but also most hidden features of the Linux/Unix command line is the [`history`](https://www.gnu.org/software/bash/manual/bash.html#Using-History-Interactively) command. The most commonly used features of the command history are:
+| Shortcut | Action |
+|:---------|:-------|
+|
+
+Generally, the defaults work well, but with a few simple tweaks, you can supercharge 
