@@ -41824,3 +41824,19 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nguermond/${APP_NA
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Rawhide (rh) console tool for searching for files using C-style expressions from source
+APP_NAME=Rawhide
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Console tool for searching for files using C-style expressions."
+APP_VERSION=3.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://raf.org/rawhide/download/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make -j$(nproc) && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
