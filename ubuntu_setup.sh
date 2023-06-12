@@ -22970,7 +22970,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install wxMaxima cross-platform computer algebra system (CAS) from AppImage
 APP_NAME=wxMaxima
 APP_GUI_NAME="Cross-platform computer algebra system (CAS)."
-APP_VERSION=20.04.0
+APP_VERSION=22.09.0-5
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}-developers/docker-${APP_NAME,,}/releases/download/${APP_NAME}-${APP_VERSION}/${FILE_NAME}.${APP_EXT}
