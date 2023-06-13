@@ -260,10 +260,10 @@ curl -o /tmp/ArrowType-Recursive-1.085.zip -J -L https://downloads.sourceforge.n
 cd /tmp
 dtrx -n /tmp/ArrowType-Recursive-1.085.zip
 sudo cp -R /tmp/ArrowType-Recursive-1.085/Recursive_Code/* /usr/local/share/fonts
-curl -o /tmp/CozetteFonts.zip -J -L https://downloads.sourceforge.net/cozette.mirror/CozetteFonts.zip
+curl -o /tmp/CozetteFonts-v-1-20-0.zip -J -L https://downloads.sourceforge.net/cozette.mirror/CozetteFonts-v-1-20-0.zip
 cd /tmp
-dtrx -n /tmp/CozetteFonts.zip
-sudo cp -R /tmp/CozetteFonts/*.ttf /usr/local/share/fonts
+dtrx -n /tmp/CozetteFonts-v-1-20-0.zip
+sudo cp -a -R /tmp/CozetteFonts-v-1-20-0/CozetteFonts/*.ttf /usr/local/share/fonts
 curl -o /tmp/VictorMonoAll.zip -J -L https://rubjo.github.io/victor-mono/VictorMonoAll.zip
 cd /tmp
 dtrx -n /tmp/VictorMonoAll.zip
