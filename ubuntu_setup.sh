@@ -41874,3 +41874,37 @@ cd /tmp/${FILE_NAME}
 ./configure && make -j$(nproc) && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Shell Assistant cross-platform, tabbed SSH/SFTP client, file manager, shell, text editor, and password manager tool from AppImage
+# https://github.com/lencx/ChatGPT
+APP_NAME="Shell Assistant"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]' )
+APP_GUI_NAME="Cross-platform, tabbed SSH/SFTP client, file manager, shell, text editor, and password manager tool."
+APP_GUI_CATEGORIES="Accessories;System;Internet;"
+APP_GUI_KEYWORDS="SSH;SFTP;Editor;Shell;File;Manager;Password;"
+APP_VERSION=0.9.3
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME// /}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://shellassistant.com/install/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://a.fsdn.com/allura/p/shell-assistant/icon?b31c3136f18f7ccc001cda5cda70f89c43bff28e58b38f4ba32e0c1748718ac7
+sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME// /}* /tmp/${_APP_NAME}*
