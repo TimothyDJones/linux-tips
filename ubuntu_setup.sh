@@ -36329,7 +36329,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Liquid Prompt"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Full-featured adaptive command prompt for Bash and Zsh."
-APP_VERSION=2.1.1
+APP_VERSION=2.1.2
 APP_EXT=tar.gz
 FILE_NAME=${_APP_NAME}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/liquid-prompt.mirror/${FILE_NAME}.${APP_EXT}
