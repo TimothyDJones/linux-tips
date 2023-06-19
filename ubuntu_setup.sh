@@ -4123,14 +4123,12 @@ rm -rf /tmp/${APP_NAME,,}
 # https://www.giuspen.com/cherrytree/
 APP_NAME=CherryTree
 source /etc/lsb-release
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(hi)$ ]]; then     # Groovy (21.04)
-    APP_VERSION=0.99.42-3_amd64
-elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(gr)$ ]]; then     # Groovy (20.10)
-    APP_VERSION=0.99.42-2_amd64
-elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo)$ ]]; then     # Focal (20.04)
-    APP_VERSION=0.99.42-1_amd64
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ja|ki|lu)$ ]]; then     # 22.04, 22.10, 23.04
+    APP_VERSION=0.99.55-3_amd64
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo|gr|hi|im)$ ]]; then     # 20.04, 20.10, 21.04, 21.10
+    APP_VERSION=0.99.55-2_amd64
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo)$ ]]; then  # 18.04 - 19.10
-    APP_VERSION=0.99.42-4_amd64
+    APP_VERSION=0.99.55-1_amd64
 else
     APP_VERSION=0.39.4-0_all
 fi
