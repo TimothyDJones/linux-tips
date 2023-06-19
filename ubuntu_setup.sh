@@ -41907,3 +41907,44 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME// /}* /tmp/${_APP_NAME}*
+
+# Install UMHDL cross-platform Java-based IDE for learning digital design using Hardward Description Language (HDL) from package
+APP_NAME=UMHDL
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Java-based IDE for learning digital design using Hardward Description Language (HDL)."
+APP_GUI_CATEGORIES="Programming;Development;Education;"
+APP_GUI_KEYWORDS="Electronics;IDE;Programming;"
+APP_VERSION=2.5
+APP_EXT=bin
+FILE_NAME=${APP_NAME,,}-setup-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+chmod +x /tmp/${FILE_NAME}.${APP_EXT}
+sudo /tmp/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/lsudx &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/${APP_NAME,,}
+Exec=/usr/local/${APP_NAME,,}/${APP_NAME,,}
+Icon=/usr/local/${APP_NAME,,}/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Category=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
