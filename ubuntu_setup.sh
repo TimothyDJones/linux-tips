@@ -4135,7 +4135,7 @@ fi
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~giuspen/+archive/ubuntu/ppa/+files/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
