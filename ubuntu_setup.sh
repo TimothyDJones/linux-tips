@@ -41922,15 +41922,6 @@ cd /tmp
 chmod +x /tmp/${FILE_NAME}.${APP_EXT}
 sudo /tmp/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
-#! /bin/sh
-cd /opt/${APP_NAME,,}
-PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
-/opt/${APP_NAME,,}/lsudx &
-cd \$HOME
-EOF
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
