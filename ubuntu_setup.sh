@@ -18943,7 +18943,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install mtag command-line media tagging utility from source
 APP_NAME=mtag
 APP_GUI_NAME="Command-line media tagging utility."
-APP_VERSION=2.2.4
+APP_VERSION=2.2.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libtag1-dev
