@@ -267,6 +267,9 @@ alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.a
 # Set some helpful defaults for nano
 alias nano='nano --smarthome --multibuffer --const --autoindent --suspend --linenumbers'
 
+# APT (Auto Package Tool) aliases
+alias apt-clean="sudo apt autoremove -f && sudo apt autoclean && sudo apt clean"
+
 # Functionalize 'command -v' to allow 'if get_command [command]' idiom
 # https://github.com/rawiriblundell/dotfiles/blob/master/.bashrc
 get_command() {
