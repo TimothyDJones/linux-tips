@@ -30926,14 +30926,35 @@ make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Nyxt keyboard-oriented web browser with Vim and Emac keybindings from Debian package
+# Install Nyxt cross-platform, keyboard-oriented web browser with Vim and Emac keybindings from package
 # https://nyxt.atlas.engineer/
 APP_NAME=Nyxt
-APP_VERSION=3.0.0
-APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
+APP_GUI_NAME="Cross-platform, keyboard-oriented web browser with Vim and Emac keybindings."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Browser;Vim;Emacs;Lisp;"
+APP_VERSION=3.2.1
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/atlas-engineer/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/atlas-engineer/${APP_NAME,,}/master/assets/${APP_NAME,,}_128x128.png
+cd /tmp
+sudo tar -xvf /tmp/${FILE_NAME}.${APP_EXT} -C /
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+# Path=
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
 
