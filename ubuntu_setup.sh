@@ -6842,28 +6842,20 @@ cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Basilisk Browser cross-platform XUL-based modern web browser from package
+# https://www.basilisk-browser.org/
 APP_NAME=Basilisk
 APP_GUI_NAME="Cross-platform XUL-based modern web browser."
-APP_VERSION=latest
-APP_EXT=tar.bz2
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=linux64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=i686
-fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://us.basilisk-browser.org/release/${APP_NAME,,}-${APP_VERSION}.${ARCH_TYPE}.${APP_EXT}
+APP_GUI_CATEGORIES="Internet;Networking;"
+APP_GUI_KEYWORDS="Browser;Web;XUL;"
+APP_VERSION=20230620160727
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://fossies.org/linux/www/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo mv /tmp/${APP_NAME,,} /opt
-cat > /tmp/${APP_NAME,,} << EOF
-#! /bin/sh
-cd /opt/${APP_NAME,,}
-PATH=/opt/${APP_NAME,,}:$PATH; export PATH
-/opt/${APP_NAME,,}/${APP_NAME,,}
-cd $HOME
-EOF
-sudo mv /tmp/${APP_NAME,,} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}/${APP_NAME,,}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -6871,12 +6863,12 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
 Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
-Icon=/opt/basilisk/browser/icons/mozicon128.png
+Icon=/opt/${APP_NAME,,}/browser/icons/mozicon128.png
 Type=Application
 StartupNotify=true
 Terminal=false
-Categories=Internet;Networking;
-Keywords=Web;Browser;
+Category=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
