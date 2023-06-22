@@ -39519,37 +39519,17 @@ sudo ln -s -f /usr/local/bin/bb /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install Rabbit Calendar cross-platform calendar and task manager from AppImage
+# Install Rabbit Calendar cross-platform calendar and task manager from Debian package
 APP_NAME="Rabbit Calendar"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform calendar and task manager."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Calendar;Productivity;"
-APP_VERSION=1.0.3
-APP_EXT=AppImage
-FILE_NAME=Calendar_v${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.tar.gz -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.tar.gz
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.tar.gz
-sudo cp -a /tmp/${FILE_NAME}/Calendar-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU).${APP_EXT} /usr/local/bin
-sudo chmod +x /usr/local/bin/Calendar-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU).${APP_EXT}
-sudo ln -s -f /usr/local/bin/Calendar-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU).${APP_EXT} /usr/local/bin/${_APP_NAME}
-sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${FILE_NAME}/share/pixmaps/Calendar.png /usr/local/share/icons/${_APP_NAME}.png
-cat > /tmp/${_APP_NAME}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=/usr/local/bin
-Exec=/usr/local/bin/${_APP_NAME}
-Icon=/usr/local/share/icons/${_APP_NAME}.png
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=${APP_GUI_CATEGORIES}
-Keywords=${APP_GUI_KEYWORDS}
-EOF
-sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+APP_VERSION=1.0.9
+APP_EXT=deb
+FILE_NAME=calendar_${APP_VERSION}_ubuntu_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/Calendar* /tmp/${APP_NAME,,}*
 
