@@ -25801,7 +25801,7 @@ APP_NAME=pj-ftp-server
 APP_GUI_NAME="Cross-platform, portable Java-based FTP server tool."
 APP_GUI_CATEGORIES="Networking;Internet"
 APP_GUI_KEYWORDS="FTP;"
-APP_VERSION=1.0.92
+APP_VERSION=1.0.97
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v.${APP_VERSION}_bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -30385,7 +30385,7 @@ sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Lucas Chess cross-platform, Python-based GUI for 60+ chess engines from package
+# Install Lucas Chess cross-platform, Python-based GUI for 60+ chess enginesG from package
 # https://lucaschess.pythonanywhere.com/
 APP_NAME="Lucas Chess"
 APP_GUI_NAME="Cross-platform, Python-based GUI for 60+ chess engines."
