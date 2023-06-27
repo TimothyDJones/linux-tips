@@ -19556,14 +19556,19 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install xsnow desktop decoration from Debian package
+# Install xsnow desktop decoration from source
 APP_NAME=xsnow
 APP_GUI_NAME=""
-APP_VERSION=3.7.4
-APP_EXT=deb
+APP_VERSION=3.7.5
+APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
+sudo apt install -y build-essential libgtk-3-dev libxt-dev libgsl-dev libxpm-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+sudo apt remove -y build-essential libgtk-3-dev libxt-dev libgsl-dev libxpm-dev && sudo apt autoremove -f -y
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
