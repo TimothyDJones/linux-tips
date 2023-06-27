@@ -34837,30 +34837,22 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Flying Carpet cross-platform GUI for file transfer over ad hoc networking from package
+# Install Flying Carpet cross-platform GUI for file transfer over ad hoc networking from AppImage
 APP_NAME="Flying Carpet"
-_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform GUI for file transfer over ad hoc networking."
 APP_GUI_CATEGORIES="Internet;Accessories;System;"
 APP_GUI_KEYWORDS="File;Transfer;"
-APP_VERSION=5.0
-APP_EXT=zip
-FILE_NAME=${APP_NAME// /}Linux
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/spieglt/${APP_NAME// /}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${_APP_NAME}
-sudo cp -R /tmp/${FILE_NAME}/${APP_NAME// /}/* /opt/${_APP_NAME}
-sudo chmod -R 777 /opt/${_APP_NAME}
-cat > /tmp/${_APP_NAME} << EOF
-#! /bin/sh
-cd /opt/${_APP_NAME}
-PATH=/opt/${_APP_NAME}:\$PATH; export PATH
-/opt/${_APP_NAME}/${_APP_NAME} &
-cd \$HOME
-EOF
-sudo mv /tmp/${_APP_NAME} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${_APP_NAME}
+APP_VERSION=7.1.0
+APP_EXT=AppImage
+FILE_NAME=linux_${_APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/spieglt/${_APP_NAME//-/}/releases/download/v${APP_VERSION//.0/}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L  https://raw.githubusercontent.com/spieglt/${_APP_NAME//-/}/main/${APP_NAME// /%20}/src-tauri/icons/128x128.png
+mv /tmp/${FILE_NAME}.${APP_EXT} /tmp/${FILE_NAME//linux_/}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME//linux_/}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME//linux_/}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME//linux_/}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
 cat > /tmp/${_APP_NAME}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -34868,7 +34860,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${_APP_NAME}
 Exec=/usr/local/bin/${_APP_NAME}
-#Icon=
+Icon=/usr/local/share/icons/${_APP_NAME}.png
 Type=Application
 StartupNotify=true
 Terminal=false
@@ -34877,7 +34869,7 @@ Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
-sudo rm -rf /tmp/${APP_NAME// /}*
+sudo rm -rf /tmp/${_APP_NAME}*
 
 # Install aretext Golang-based command-line minimalist text editor with Vim keybindings from package
 APP_NAME=aretext
