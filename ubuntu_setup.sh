@@ -8412,7 +8412,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install i-doit web-based CMDB and IT Documentation Repository
 APP_NAME=i-doit
-APP_VERSION=1.19
+APP_VERSION=25
 APP_EXT=zip
 DB_NAME=${APP_NAME//-/}
 DB_USER=${APP_NAME//-/}
