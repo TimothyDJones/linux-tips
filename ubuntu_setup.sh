@@ -42123,3 +42123,21 @@ step completion bash > /tmp/${FILE_NAME}/${APP_NAME,,}_autocomplete.sh
 source /tmp/${FILE_NAME}/${APP_NAME,,}_autocomplete.sh
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Step-CA cross‐platform, Golang-based, self-hosted X.509/SSH certificate authority from package
+APP_NAME=Step-CA
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Golang-based, self-hosted X.509/SSH certificate authority."
+APP_VERSION=0.24.2
+APP_EXT=tar.gz
+BASE_ARCH=
+FILE_NAME=${APP_NAME,,}_linux_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/smallstep/certificates/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}_${APP_VERSION}/${APP_NAME,,} /usr/local/bin
+# sudo ln -s -f /usr/local/bin/${APP_NAME,,} /usr/local/bin/step
+# Install Step-CA as systemd service.
+sudo useradd --system --home /etc/step-ca --shell /bin/false step
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
