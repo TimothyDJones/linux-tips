@@ -42105,3 +42105,21 @@ sudo cp -a /tmp/${FILE_NAME}/prj /usr/local/bin
 sudo ln -s -f /usr/local/bin/prj /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Step-CLI cross‐platform, Golang-based CLI for working with PKI systems, such as X.509/SSH certificate authorities, etc. from package
+APP_NAME=Step
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Golang-based CLI for working with PKI systems, such as X.509/SSH certificate authorities, etc.."
+APP_VERSION=0.24.4
+APP_EXT=tar.gz
+BASE_ARCH=
+FILE_NAME=${APP_NAME,,}_linux_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/smallstep/cli/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}_${APP_VERSION}/bin/${APP_NAME,,} /usr/local/bin
+# Add auto-complete aliases.
+step completion bash > /tmp/${FILE_NAME}/${APP_NAME,,}_autocomplete.sh
+source /tmp/${FILE_NAME}/${APP_NAME,,}_autocomplete.sh
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
