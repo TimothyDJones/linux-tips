@@ -42193,3 +42193,18 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}/bin/${APP_NAME,,} /usr/local/bin
 sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}/man/man1/${APP_NAME,,}.1 /usr/share/man/man1
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install jql cross‐platform, Rust-based, JSON Query Language tool from package
+APP_NAME=jql
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Rust-based, JSON Query Language tool."
+APP_VERSION=7.0.0
+APP_EXT=tar.gz
+BASE_ARCH=
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/yamafaktory/${APP_NAME,,}/releases/download/${APP_NAME,,}-v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
