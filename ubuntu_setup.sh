@@ -40628,7 +40628,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform canonical file manager with built-in file viewer."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="File;Manager;"
-APP_VERSION=1.6.0
+APP_VERSION=1.7.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /-}-${APP_VERSION}-Linux-Debian
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
