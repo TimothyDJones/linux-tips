@@ -42208,3 +42208,19 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Eagle Mode zoomable UI with file manager, viewers, etc. from package
+APP_NAME="Eagle Mode"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]' )
+APP_GUI_NAME="Zoomable UI with file manager, viewers, etc."
+APP_GUI_CATEGORIES="Accessories;System;Utility;"
+APP_GUI_KEYWORDS="File;Manager;Viewer;"
+APP_VERSION=0.96.1
+APP_EXT=txz
+FILE_NAME=${_APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-1
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R -a /tmp/${FILE_NAME}/usr/* /usr
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME}*
