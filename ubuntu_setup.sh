@@ -2516,7 +2516,7 @@ configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install d from package
+# Install Eric Python IDE from package
 APP_NAME=Eric
 APP_VERSION=23.7
 APP_EXT=tar.gz
