@@ -42177,3 +42177,19 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}_${APP_VERSION}/${APP_NAME,,} /usr/loc
 sudo useradd --system --home /etc/step-ca --shell /bin/false step
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install rtx cross‐platform, Rust-based, polyglot run-time package manager from package
+APP_NAME=rtx
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Rust-based, run-time package manager."
+APP_VERSION=1.32.2
+APP_EXT=tar.xz
+BASE_ARCH=
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jdxcode/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}/bin/${APP_NAME,,} /usr/local/bin
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}/man/man1/${APP_NAME,,}.1 /usr/share/man/man1
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
