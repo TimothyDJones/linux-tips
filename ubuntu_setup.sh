@@ -260,10 +260,10 @@ curl -o /tmp/ArrowType-Recursive-1.085.zip -J -L https://downloads.sourceforge.n
 cd /tmp
 dtrx -n /tmp/ArrowType-Recursive-1.085.zip
 sudo cp -R /tmp/ArrowType-Recursive-1.085/Recursive_Code/* /usr/local/share/fonts
-curl -o /tmp/CozetteFonts-v-1-20-0.zip -J -L https://downloads.sourceforge.net/cozette.mirror/CozetteFonts-v-1-20-0.zip
+curl -o /tmp/CozetteFonts-v-1-20-1.zip -J -L https://downloads.sourceforge.net/cozette.mirror/CozetteFonts-v-1-20-1.zip
 cd /tmp
-dtrx -n /tmp/CozetteFonts-v-1-20-0.zip
-sudo cp -a -R /tmp/CozetteFonts-v-1-20-0/CozetteFonts/*.ttf /usr/local/share/fonts
+dtrx -n /tmp/CozetteFonts-v-1-20-1.zip
+sudo cp -a -R /tmp/CozetteFonts-v-1-20-1/CozetteFonts/*.ttf /usr/local/share/fonts
 curl -o /tmp/VictorMonoAll.zip -J -L https://rubjo.github.io/victor-mono/VictorMonoAll.zip
 cd /tmp
 dtrx -n /tmp/VictorMonoAll.zip
@@ -621,7 +621,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from Debian package
 APP_NAME=Vivaldi
-APP_VERSION=6.1.3035.100
+APP_VERSION=6.1.3035.111
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -679,7 +679,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=2.3.5
+APP_VERSION=2.3.6
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -1095,7 +1095,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=15.0.2
+APP_VERSION=15.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1378,9 +1378,9 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Madedit-Mod text editor from Debian package
 APP_NAME=Madedit-Mod
-APP_VERSION=0.4.19-1
+APP_VERSION=0.4.20-1
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}_Ubuntu19.10
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)_Ubuntu_22_04_2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
@@ -1934,7 +1934,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.52.126
+APP_VERSION=1.52.129
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -2209,7 +2209,7 @@ APP_NAME=webTareas
 APP_GUI_NAME="PHP/MySQL-based project management and online office tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project Management;Office;"
-APP_VERSION=2.4p5
+APP_VERSION=2.4p6
 APP_EXT=zip
 DB_NAME=webtareas
 DB_USER=webtareas
@@ -2781,7 +2781,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.7.35
+APP_VERSION=6.7.37
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3718,7 +3718,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Minbrowser minimalist web browser from Debian package
 APP_NAME=min
-APP_VERSION=1.27.0
+APP_VERSION=1.28.0
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/minbrowser/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
@@ -5850,7 +5850,7 @@ APP_NAME=PySolFC
 APP_GUI_NAME="Python-based Solitaire card game"
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Solitaire;Cards;Games;"
-APP_VERSION=2.20.0
+APP_VERSION=2.20.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y python3-pip
@@ -8412,7 +8412,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install i-doit web-based CMDB and IT Documentation Repository
 APP_NAME=i-doit
-APP_VERSION=1.19
+APP_VERSION=25
 APP_EXT=zip
 DB_NAME=${APP_NAME//-/}
 DB_USER=${APP_NAME//-/}
@@ -9066,7 +9066,7 @@ rm -rf /tmp/${APP_NAME,,}
 # https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
 APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
-APP_VERSION=7.3.4
+APP_VERSION=7.3.5
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1.${APP_EXT}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -15458,7 +15458,7 @@ docker run hello-world  # Confirm Docker installation.
 # Install Docker Compose command-line utility for multi-container Docker applications from package
 APP_NAME=Docker-Compose
 APP_GUI_NAME="Command-line utility for multi-container Docker applications."
-APP_VERSION=2.19.0
+APP_VERSION=2.19.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -18771,7 +18771,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Hypernomicon Java-based research tracking database with built-in PDF viewer from package
 APP_NAME=Hypernomicon
 APP_GUI_NAME="Java-based research tracking database with built-in PDF viewer."
-APP_VERSION=1.25.1
+APP_VERSION=1.26
 APP_EXT=sh
 FILE_NAME=${APP_NAME}_linux_${APP_VERSION//./_}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -19556,14 +19556,19 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install xsnow desktop decoration from Debian package
+# Install xsnow desktop decoration from source
 APP_NAME=xsnow
 APP_GUI_NAME=""
-APP_VERSION=3.7.4
-APP_EXT=deb
+APP_VERSION=3.7.5
+APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
+sudo apt install -y build-essential libgtk-3-dev libxt-dev libgsl-dev libxpm-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+sudo apt remove -y build-essential libgtk-3-dev libxt-dev libgsl-dev libxpm-dev && sudo apt autoremove -f -y
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
@@ -21346,7 +21351,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=6.21.0
+APP_VERSION=6.22.0
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -21957,7 +21962,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install SFTPGo Golang-based highly-configurable SFTP server from package
 APP_NAME=SFTPGo
 APP_GUI_NAME="Golang-based highly-configurable SFTP server."
-APP_VERSION=2.5.2
+APP_VERSION=2.5.3
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_linux_x86_64
 sudo apt-get install sqlite3 openssh-server -y
@@ -27132,7 +27137,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Hurl Rust-based command-line HTTP scripting tool from package
 # https://hurl.dev
 APP_NAME=Hurl
-APP_VERSION=2.0.1
+APP_VERSION=4.0.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Orange-OpenSource/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -27393,7 +27398,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Rotki Electron-based cryptocurrency portfolio tracking tool from Debian package
 # https://rotki.com/
 APP_NAME=Rotki
-APP_VERSION=1.27.1
+APP_VERSION=1.29.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-linux_${KERNEL_TYPE}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -28492,7 +28497,7 @@ APP_NAME=Electerm
 APP_GUI_NAME="Electron-based integrated terminal/SSH/SFTP client."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Terminal;SSH;SFTP;"
-APP_VERSION=1.26.0
+APP_VERSION=1.26.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -28689,7 +28694,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install 7-Zip cross-platform decompression utility from package
 APP_NAME=7z
 APP_GUI_NAME="Cross-platform decompression utility."
-APP_VERSION=22.01
+APP_VERSION=23.01
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -29013,7 +29018,7 @@ sudo rm -rf /tmp/*${APP_NAME,,}* /tmp/${APP_NAME}
 # Install Nushell Rust-based minimalist shell from package
 APP_NAME=nu
 APP_GUI_NAME="Rust-based minimalist shell."
-APP_VERSION=0.80.0
+APP_VERSION=0.82.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nushell/nushell/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -30924,7 +30929,7 @@ APP_NAME=Nyxt
 APP_GUI_NAME="Cross-platform, keyboard-oriented web browser with Vim and Emac keybindings."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Browser;Vim;Emacs;Lisp;"
-APP_VERSION=3.2.1
+APP_VERSION=3.3.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/atlas-engineer/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -34832,30 +34837,22 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Flying Carpet cross-platform GUI for file transfer over ad hoc networking from package
+# Install Flying Carpet cross-platform GUI for file transfer over ad hoc networking from AppImage
 APP_NAME="Flying Carpet"
-_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform GUI for file transfer over ad hoc networking."
 APP_GUI_CATEGORIES="Internet;Accessories;System;"
 APP_GUI_KEYWORDS="File;Transfer;"
-APP_VERSION=5.0
-APP_EXT=zip
-FILE_NAME=${APP_NAME// /}Linux
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/spieglt/${APP_NAME// /}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${_APP_NAME}
-sudo cp -R /tmp/${FILE_NAME}/${APP_NAME// /}/* /opt/${_APP_NAME}
-sudo chmod -R 777 /opt/${_APP_NAME}
-cat > /tmp/${_APP_NAME} << EOF
-#! /bin/sh
-cd /opt/${_APP_NAME}
-PATH=/opt/${_APP_NAME}:\$PATH; export PATH
-/opt/${_APP_NAME}/${_APP_NAME} &
-cd \$HOME
-EOF
-sudo mv /tmp/${_APP_NAME} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${_APP_NAME}
+APP_VERSION=7.1.0
+APP_EXT=AppImage
+FILE_NAME=linux_${_APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/spieglt/${_APP_NAME//-/}/releases/download/v${APP_VERSION//.0/}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L  https://raw.githubusercontent.com/spieglt/${_APP_NAME//-/}/main/${APP_NAME// /%20}/src-tauri/icons/128x128.png
+mv /tmp/${FILE_NAME}.${APP_EXT} /tmp/${FILE_NAME//linux_/}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME//linux_/}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME//linux_/}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME//linux_/}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
 cat > /tmp/${_APP_NAME}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -34863,7 +34860,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${_APP_NAME}
 Exec=/usr/local/bin/${_APP_NAME}
-#Icon=
+Icon=/usr/local/share/icons/${_APP_NAME}.png
 Type=Application
 StartupNotify=true
 Terminal=false
@@ -34872,7 +34869,7 @@ Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
-sudo rm -rf /tmp/${APP_NAME// /}*
+sudo rm -rf /tmp/${_APP_NAME}*
 
 # Install aretext Golang-based command-line minimalist text editor with Vim keybindings from package
 APP_NAME=aretext
@@ -35719,7 +35716,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based desktop diagramming and whiteboarding tool."
 APP_GUI_CATEGORIES="Office;Programming;Development;"
 APP_GUI_KEYWORDS="Diagramming;Drawing;"
-APP_VERSION=21.5.0
+APP_VERSION=21.5.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-desktop.mirror/${FILE_NAME}.${APP_EXT}
@@ -39714,7 +39711,7 @@ APP_NAME=StatAnt
 APP_GUI_NAME="Qt-based spreadsheet-style statistical calculation tool."
 APP_GUI_CATEGORIES="Accessories;Office;Science;"
 APP_GUI_KEYWORDS="Data;Science;Spreadsheet;Statistics;"
-APP_VERSION=3.1
+APP_VERSION=3.1.1
 APP_EXT=tar
 FILE_NAME=${APP_NAME,,}${APP_VERSION//./}_source
 sudo apt-get install -y qt5-default qt5-qmake
@@ -40301,7 +40298,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=nFPM
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Golang-based simple, no-dependencies, deb, rpm, apk, and Arch Linux packager."
-APP_VERSION=2.29.0
+APP_VERSION=2.31.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40913,7 +40910,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based notepad and personal knowledge-management tool with markdown support."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Markdown;"
-APP_VERSION=2.9.2
+APP_VERSION=2.9.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -42128,3 +42125,55 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Projectable cross‐platform, Rust-based development-focused command-line file manager from package
+APP_NAME=Projectable
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Rust-based development-focused command-line file manager."
+APP_VERSION=1.0.0
+APP_EXT=tar.gz
+BASE_ARCH=
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dzfrias/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/prj /usr/local/bin
+sudo ln -s -f /usr/local/bin/prj /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Step-CLI cross‐platform, Golang-based CLI for working with PKI systems, such as X.509/SSH certificate authorities, etc. from package
+APP_NAME=Step
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Golang-based CLI for working with PKI systems, such as X.509/SSH certificate authorities, etc.."
+APP_VERSION=0.24.4
+APP_EXT=tar.gz
+BASE_ARCH=
+FILE_NAME=${APP_NAME,,}_linux_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/smallstep/cli/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}_${APP_VERSION}/bin/${APP_NAME,,} /usr/local/bin
+# Add auto-complete aliases.
+step completion bash > /tmp/${FILE_NAME}/${APP_NAME,,}_autocomplete.sh
+source /tmp/${FILE_NAME}/${APP_NAME,,}_autocomplete.sh
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Step-CA cross‐platform, Golang-based, self-hosted X.509/SSH certificate authority from package
+APP_NAME=Step-CA
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Golang-based, self-hosted X.509/SSH certificate authority."
+APP_VERSION=0.24.2
+APP_EXT=tar.gz
+BASE_ARCH=
+FILE_NAME=${APP_NAME,,}_linux_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/smallstep/certificates/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}_${APP_VERSION}/${APP_NAME,,} /usr/local/bin
+# sudo ln -s -f /usr/local/bin/${APP_NAME,,} /usr/local/bin/step
+# Install Step-CA as systemd service.
+sudo useradd --system --home /etc/step-ca --shell /bin/false step
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
