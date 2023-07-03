@@ -2518,7 +2518,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE from package
 APP_NAME=Eric
-APP_VERSION=23.6
+APP_VERSION=23.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}7-${APP_VERSION}
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql python3-pyqt5.qtwebengine python3-pyqt5.qtchart
@@ -7991,7 +7991,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install phpSysInfo web-based Linux system information utility
 APP_NAME=phpSysInfo
-APP_VERSION=3.4.2
+APP_VERSION=3.4.3
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -32248,7 +32248,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Ebook reader emulator with support for PDF, DjVu, EPUB, FB2 and other formats."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Ebook;Reader;"
-APP_VERSION=2023.04
+APP_VERSION=2023.06
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-appimage-x86_64-linux-gnu-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37440,7 +37440,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based desktop encrypted note-taking tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Security;"
-APP_VERSION=2.5.4
+APP_VERSION=2.5.6
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}_linux_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/streetwriters/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38171,7 +38171,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=rqlite
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Distributed version of SQLite database."
-APP_VERSION=7.21.0
+APP_VERSION=7.21.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -39610,7 +39610,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Oh My Posh"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform tool for customizing command prompt with colors and themes."
-APP_VERSION=17.4.0
+APP_VERSION=17.5.3
 APP_EXT=N/A
 FILE_NAME=posh-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/ohmyposh-dev.mirror/${FILE_NAME}
@@ -40269,7 +40269,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=mrViewer2
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform multimedia viewer/player."
-APP_VERSION=0.6.2
+APP_VERSION=0.6.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mrv2/${FILE_NAME}.${APP_EXT}
@@ -40628,7 +40628,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform canonical file manager with built-in file viewer."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="File;Manager;"
-APP_VERSION=1.6.0
+APP_VERSION=1.7.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /-}-${APP_VERSION}-Linux-Debian
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40811,7 +40811,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=2.40.1
+APP_VERSION=2.41.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -41432,7 +41432,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based Ancient Greek-themed role-playing game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="History;Games;RPG;"
-APP_VERSION=1.3.6
+APP_VERSION=1.3.7
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/V-Paranoiaque/${APP_NAME// /-}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -41643,7 +41643,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Sudoku puzzle assistant."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Sudoku;Puzzle;"
-APP_VERSION=28jun23
+APP_VERSION=01jul23
 APP_EXT=7z
 FILE_NAME=sud${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -41936,7 +41936,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Vue.JS-based simple GUI tool for simultaneous/concurrent interaction with multiple LLMs, including ChatGPT, Bing Chat, Bard, Alpaca, Vicuna, and more."
 APP_GUI_CATEGORIES="Accessories;System;Development;Programming;"
 APP_GUI_KEYWORDS="ChatGPT;LLM;"
-APP_VERSION=1.29.41
+APP_VERSION=1.29.42
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -42090,6 +42090,42 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
+# Install Notepad-- cross-platform Notepad++ text editor clone from AppImage
+APP_NAME="Notepad--"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Notepad++ text editor clone."
+APP_GUI_CATEGORIES="Development;Accessories;"
+APP_GUI_KEYWORDS="Notepad;Editor;"
+APP_VERSION=2.6
+APP_EXT=AppImage
+FILE_NAME=subtwo-v2.3-redhat7.4-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+sudo apt install -y libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/notepad-dd/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.ico -J -L https://gitee.com/cxasm/notepad--/raw/master/src/Resources/nppNewIcon.ico
+cp /tmp/${FILE_NAME}.${APP_EXT} /tmp/${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU).${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.ico /usr/local/share/icons/${APP_NAME,,}.ico
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.ico
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
 # Install Projectable cross‐platform, Rust-based development-focused command-line file manager from package
 APP_NAME=Projectable
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
@@ -42141,6 +42177,53 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}_${APP_VERSION}/${APP_NAME,,} /usr/loc
 sudo useradd --system --home /etc/step-ca --shell /bin/false step
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install rtx cross‐platform, Rust-based, polyglot run-time package manager from package
+APP_NAME=rtx
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Rust-based, run-time package manager."
+APP_VERSION=1.32.2
+APP_EXT=tar.xz
+BASE_ARCH=
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jdxcode/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}/bin/${APP_NAME,,} /usr/local/bin
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}/man/man1/${APP_NAME,,}.1 /usr/share/man/man1
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install jql cross‐platform, Rust-based, JSON Query Language tool from package
+APP_NAME=jql
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Rust-based, JSON Query Language tool."
+APP_VERSION=7.0.0
+APP_EXT=tar.gz
+BASE_ARCH=
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/yamafaktory/${APP_NAME,,}/releases/download/${APP_NAME,,}-v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Eagle Mode zoomable UI with file manager, viewers, etc. from package
+APP_NAME="Eagle Mode"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]' )
+APP_GUI_NAME="Zoomable UI with file manager, viewers, etc."
+APP_GUI_CATEGORIES="Accessories;System;Utility;"
+APP_GUI_KEYWORDS="File;Manager;Viewer;"
+APP_VERSION=0.96.1
+APP_EXT=txz
+FILE_NAME=${_APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-1
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R -a /tmp/${FILE_NAME}/usr/* /usr
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME}*
 
 # Install Cultura cross‐platform, Rust-based trivia tool from package
 APP_NAME=Cultura
