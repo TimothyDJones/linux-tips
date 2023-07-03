@@ -41531,7 +41531,7 @@ rm -rf /tmp/*${_APP_NAME}*
 # https://github.com/wxMEdit/wxMEdit
 APP_NAME=wxMEdit
 APP_GUI_NAME="Cross-platform text/hex editor based on MadEdit."
-APP_VERSION=3.1.0.90-3
+APP_VERSION=3.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y build-essential libgtk-3-dev libwxgtk3.0-gtk3-dev libboost-dev libicu-dev libcurl4-gnutls-dev
