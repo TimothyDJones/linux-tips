@@ -42224,3 +42224,18 @@ dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -R -a /tmp/${FILE_NAME}/usr/* /usr
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME}*
+
+# Install Cultura cross‐platform, Rust-based trivia tool from package
+APP_NAME=Cultura
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Rust-based trivia tool."
+APP_VERSION=1.0.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/antham/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+echo 'source <('${APP_NAME,,}' init bash)' >> $HOME/.bashrc
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
