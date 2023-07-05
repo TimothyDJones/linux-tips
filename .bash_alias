@@ -26,6 +26,25 @@ fi
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
+# Extract common archive files by file extension
+function extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.gz|*.tgz)     tar xzf $1          ;;
+            *.tar|*.tar.xz)     tar xf $1           ;;
+            *.tar.bz2|*.tbz2)   tar xjf $1          ;;
+            *.xz)               unxz $1             ;;
+            *.zip)              unzip $1            ;;
+            *.Z)                uncompress $1       ;;
+            *.tar.zst)          tar -I=unzstd xf $1 ;;
+            *.zst)              unzstd $1           ;;
+            *.7z)               7z x $1             ;;
+        esac
+    else
+        echo "'$1' is not valid archive file."
+    fi
+}
+
 # Colorize output of man command
 # http://tuxdiary.com/2016/06/16/color-man-pages/#more-27324
 function man() {
