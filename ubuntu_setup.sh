@@ -42254,3 +42254,46 @@ sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${FILE_NAME}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Gopeed cross-platform Golang-based multi-protocol download manager from package
+APP_NAME=Gopeed
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Golang-based multi-protocol download manager."
+APP_GUI_CATEGORIES="Internet;System;"
+APP_GUI_KEYWORDS="Download;Manager;P2P;"
+APP_VERSION=1.3.4
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-web-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/GopeedLab/${APP_NAME,,}/main/ui/flutter/assets/icon/icon_1024.png
+cd /tmp
+extract /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.sh << EOF
+#! /bin/sh
+if ! pgrep -x "${APP_NAME,,}" > /dev/null; then
+    /usr/local/bin/gopeed &
+fi
+xdg-open http://localhost:9999/ &
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,}.sh /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}.sh
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}.sh
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
