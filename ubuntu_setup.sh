@@ -42218,3 +42218,18 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 echo 'source <('${APP_NAME,,}' init bash)' >> $HOME/.bashrc
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Locker cross‐platform, Golang-based tool to store secrets on your local file system as key-value pairs from package
+APP_NAME=Locker
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Golang-based tool to store secrets on your local file system as key-value pairs."
+APP_VERSION=0.3.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/lucasepe/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+tar xzf /tmp/${FILE_NAME}.${APP_EXT} -p -C /tmp/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
