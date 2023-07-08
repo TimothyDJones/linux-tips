@@ -13,6 +13,63 @@ function getKernelType() {
 	echo ${KERNEL_TYPE}
 }
 
+# Install PHP, Apache 2, and MySQL Server
+# Non-interactive install of the *DEFAULT* versions of PHP, Apache 2 and MySQL Server
+function install_lamp() {
+export DEBIAN_FRONTEND=noninteractive
+export MYSQL_ROOT_PASSWORD=root
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password '${MYSQL_ROOT_PASSWORD}  # Set MySQL password to 'root'.
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password '${MYSQL_ROOT_PASSWORD}
+sudo apt-get install -y \
+	apache2 \
+	composer \
+	php-bcmath \
+	php-bz2 \
+	php-cli \
+	php-common \
+	php-curl \
+	php-gd \
+	php-json \
+	php-mbstring \
+	php-mysql \
+	php-readline \
+	php-sqlite3 \
+	php-xml \
+	php-xsl \
+	php-zip \
+	php-xdebug \
+	phpliteadmin \
+	phpliteadmin-themes \
+	phpmyadmin \
+	phpsysinfo \
+	libapache2-mod-php \
+	libapache2-mod-xsendfile \
+	mariadb-client \
+	mariadb-server \
+	mycli
+
+# Enable 'modrewrite' Apache module
+sudo a2enmod rewrite
+sudo service apache2 restart  ## Alternate command is 'sudo apachectl restart'
+
+# Add current user to 'www-data' group
+sudo usermod -a -G www-data ${USER}
+
+# Change owner of /var/www/html directory to www-data
+sudo chown -R www-data:www-data /var/www/html
+
+# Create simple 'phpinfo' script in main web server directory
+# Note: Must create file in /tmp and then move because 'sudo cat...' is allowed.
+sudo cat > /tmp/phpinfo.php << EOL
+<?php
+	phpinfo();
+?>
+EOL
+sudo mv /tmp/phpinfo.php ${WWW_HOME}
+sudo chown www-data:www-data ${WWW_HOME}/phpinfo.php
+xdg-open http://localhost/phpinfo.php &
+}
+
 ## Create a MySQL database.
 ## $1 (first parameter) is the database name (also used for username and password)
 ## Assumes that root username and password are root/root.
@@ -325,105 +382,6 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.mongodb.com/compass
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
-
-# Install PHP 5.6, Apache 2, and MySQL Server
-PHP5_VERSION=5.6
-export DEBIAN_FRONTEND=noninteractive
-export MYSQL_ROOT_PASSWORD=root
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password '${MYSQL_ROOT_PASSWORD}  # Set MySQL password to 'root'.
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password '${MYSQL_ROOT_PASSWORD}
-sudo apt-get install -y php${PHP5_VERSION}-bcmath php${PHP5_VERSION}-bz2 php${PHP5_VERSION}-cli php${PHP5_VERSION}-common php${PHP5_VERSION}-curl php${PHP5_VERSION}-gd php${PHP5_VERSION}-json php${PHP5_VERSION}-mbstring php${PHP5_VERSION}-mcrypt php${PHP5_VERSION}-mysql php${PHP5_VERSION}-readline php${PHP5_VERSION}-sqlite3 php${PHP5_VERSION}-xml php${PHP5_VERSION}xsl php${PHP5_VERSION}-zip php-xdebug \
-libapache2-mod-php${PHP5_VERSION} libapache2-mod-xsendfile \
-mysql-server mysql-workbench mycli libcurl3
-
-# Enable 'modrewrite' Apache module
-sudo a2enmod rewrite
-sudo service apache2 restart  ## Alternate command is 'sudo apachectl restart'
-
-# Add current user to 'www-data' group
-sudo usermod -a -G www-data ${USER}
-
-# Change owner of /var/www/html directory to www-data
-sudo chown -R www-data:www-data ${WWW_HOME}
-
-# Enable PHP 5.6 as default version of PHP (if PHP 7.0+ gets installed, as well).
-sudo a2dismod php${PHP7_VERSION} ; sudo a2enmod php${PHP5_VERSION} ; sudo service apache2 restart ; echo 1 | sudo update-alternatives --config php
-
-# Create script to allow switching between PHP 5.6 and 7.2
-cat > /tmp/phpv << EOL
-#! /bin/sh
-if [ "\$1" = "5.6" ] || [ "\$1" = "5" ]; then
-    sudo a2dismod php${PHP7_VERSION}
-    sudo a2enmod php${PHP5_VERSION}
-    sudo service apache2 restart
-    echo 1 | sudo update-alternatives --config php
-elif [ "\$1" = "7.2" ] || [ "\$1" = "7" ]; then
-    sudo a2dismod php${PHP5_VERSION}
-    sudo a2enmod php${PHP7_VERSION}
-    sudo service apache2 restart
-    echo 0 | sudo update-alternatives --config php
-else
-    echo "Invalid option!"
-    echo "phpv 5.6 | 7.2"
-fi
-EOL
-sudo mv /tmp/phpv /usr/local/bin
-sudo chmod +x /usr/local/bin/phpv
-
-# Create simple 'phpinfo' script in main web server directory
-# Note: Must create file in /tmp and then move because 'sudo cat...' is allowed.
-sudo cat > /tmp/phpinfo.php << EOL
-<?php
-	phpinfo();
-?>
-EOL
-sudo mv /tmp/phpinfo.php ${WWW_HOME}
-sudo chown www-data:www-data ${WWW_HOME}/phpinfo.php
-xdg-open http://localhost/phpinfo.php &
-
-# Disable XDebug on CLI to prevent warnings when installing/running Composer
-sudo phpdismod -s cli xdebug
-
-# Install PHP Composer as global utility
-cd /tmp
-php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
-php /tmp/composer-setup.php --filename=composer
-php -r "unlink('/tmp/composer-setup.php');"
-rm -f /tmp/composer-setup.php
-sudo mv /tmp/composer /usr/local/bin
-sudo chmod a+x /usr/local/bin/composer
-
-# Install Prestissimo Composer plugin for parallel downloads.
-php composer global require hirak/prestissimo
-
-# Install latest PhpMyAdmin version via Composer
-# https://docs.phpmyadmin.net/en/latest/setup.html#composer
-APP_NAME=phpMyAdmin
-cd ${WWW_HOME}
-php composer create-project phpmyadmin/phpmyadmin
-sudo chown -R www-data:www-data ${WWW_HOME}
-xdg-open http://localhost/phpmyadmin/setup/index.php
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=PHP-based MySQL manager
-GenericName=${APP_NAME,,}
-Exec=xdg-open http://localhost/${APP_NAME,,}/index.php
-Icon=${WWW_HOME}/${APP_NAME,,}/favicon.ico
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Development;Programming;
-Keywords=PHP;MySQL;${APP_NAME};Database;
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-cd $HOME
-
-# Install PHP 7.x (optional)
-PHP7_VERSION=7.4
-sudo apt-get install -y php${PHP7_VERSION}-bcmath php${PHP7_VERSION}-bz2 php${PHP7_VERSION}-cli php${PHP7_VERSION}-common php${PHP7_VERSION}-curl php${PHP7_VERSION}-gd php${PHP7_VERSION}-json php${PHP7_VERSION}-mbstring  php${PHP7_VERSION}-mysql php${PHP7_VERSION}-readline php${PHP7_VERSION}-sqlite3 php${PHP7_VERSION}-xml php${PHP7_VERSION}-xsl php${PHP7_VERSION}-zip php-xdebug \
-libapache2-mod-php${PHP7_VERSION} libapache2-mod-xsendfile \
-mysql-server  mysql-workbench mycli
 
 # Install nvm (Node Version Manager) command-line utility for running/managing multiple versions of Node.JS from package
 APP_VERSION=0.39.3
