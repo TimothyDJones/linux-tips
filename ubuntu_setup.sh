@@ -2120,16 +2120,37 @@ sudo ln -s /opt/${APP_NAME}/Bible6 /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Sidu database web GUI
-APP_NAME=sidu
-APP_VERSION=63
+# Install Sidu PHP-based database web GUI for MySQL, PostgreSQL, and SQLite from package
+APP_NAME=Sidu
+APP_GUI_NAME="PHP-based database web GUI for MySQL, PostgreSQL, and SQLite."
+APP_GUI_CATEGORIES="Development;Internet;"
+APP_GUI_KEYWORDS="Database;Development;"
+APP_VERSION=2023.0707
 APP_EXT=zip
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}${APP_VERSION}
+sudo apt install apache2 -y
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}
-sudo mv ${APP_NAME}${APP_VERSION} ${WWW_HOME}/${APP_NAME}
-sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME}
+unzip /tmp/${FILE_NAME}.${APP_EXT} -d ${FILE_NAME}
+sudo mkdir -p ${WWW_HOME}/${APP_NAME,,}
+sudo cp -R -a /tmp/${FILE_NAME}/${APP_NAME,,}*/* ${WWW_HOME}/${APP_NAME,,}
+sudo chown -R www-data:www-data ${WWW_HOME}/${APP_NAME,,}
+xdg-open http://localhost/sidu/ &
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+# Path=/usr/local/bin
+Exec=xdg-open http://localhost/sidu/
+Icon=${WWW_HOME}/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
