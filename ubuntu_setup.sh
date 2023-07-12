@@ -345,6 +345,11 @@ curl -o /tmp/fragment-mono-fonts.zip -J -L https://github.com/weiweihuanghuang/f
 cd /tmp
 dtrx -n /tmp/fragment-mono-fonts.zip
 sudo cp -R /tmp/fragment-mono-fonts/fonts/out/ttf/*.ttf /usr/local/share/fonts
+curl -o /tmp/CommitMonoV130-450Regular.otf -J -L https://commitmono.com/src/fonts/CommitMonoV130-450Regular.otf
+curl -o /tmp/CommitMonoV130-450Italic.otf -J -L https://commitmono.com/src/fonts/CommitMonoV130-450Italic.otf
+curl -o /tmp/CommitMonoV130-700Regular.otf -J -L https://commitmono.com/src/fonts/CommitMonoV130-700Regular.otf
+curl -o /tmp/CommitMonoV130-700Italic.otf -J -L https://commitmono.com/src/fonts/CommitMonoV130-700Italic.otf
+sudo cp -R /tmp/CommitMono*.otf /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
