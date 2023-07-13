@@ -263,6 +263,8 @@ alias hist_summary2="history | awk {'print $2, $3, $4'} | sort | uniq -c | sort 
 
 alias dateiso='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 
+# Run nano with sudo using current user's .nanorc.
+alias snano="sudo nano --rcfile=~/.nanorc "
 # Git aliases
 alias gitlog='git log --all --decorate --graph --oneline'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
