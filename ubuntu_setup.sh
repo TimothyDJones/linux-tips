@@ -42447,3 +42447,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Mission Center Rust/GTK4-based Linux GUI system monitor from Flatpak
+APP_NAME="Mission Center"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust/GTK4-based Linux GUI system monitor."
+APP_GUI_CATEGORIES="System;"
+APP_GUI_KEYWORDS="Monitor;"
+APP_VERSION=0.2.0
+APP_EXT=flatpak
+FILE_NAME=${_APP_NAME}
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/mission-center-devs/${_APP_NAME}/-/jobs/4614100203/artifacts/raw/flatpak/${FILE_NAME}.${APP_EXT}
+sudo flatpak install /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
