@@ -42342,3 +42342,38 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install DeepSearch5Plus cross-platform Python/Qt-based recursive search tool that can search inside files from package
+APP_NAME=DeepSearch5Plus
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform Python/Qt-based recursive search tool that can search inside files."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Search;File Manager;"
+APP_VERSION=N/A
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_linux_x32_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/${APP_NAME,,}/icon?413c49cf59750a8f7accb87fd7dafa67f28900b2a9e1a8822199892b70a7ca1e
+cd /tmp
+mkdir /tmp/${FILE_NAME}
+tar -zxf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/${APP_NAME,,} /opt
+sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
