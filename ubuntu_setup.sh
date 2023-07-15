@@ -1058,7 +1058,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=15.1
+APP_VERSION=15.1.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1132,7 +1132,7 @@ rm -rf /tmp/${APP_NAME}*
 # Reference:  https://hostpresto.com/community/tutorials/install-and-configure-phpwiki-on-ubuntu-16-04/
 APP_NAME=PhpWiki
 APP_GUI_NAME="PHP-based wiki platform with support for multiple databases"
-APP_VERSION=1.6.1
+APP_VERSION=1.6.2
 APP_GUI_CATEGORIES="Accessories;Office;Internet;"
 APP_GUI_KEYWORDS="Wiki;Productivity;"
 APP_EXT=zip
@@ -9050,7 +9050,7 @@ rm -rf /tmp/${APP_NAME,,}
 # https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
 APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
-APP_VERSION=7.3.5
+APP_VERSION=7.3.6
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1.${APP_EXT}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -9931,7 +9931,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/balena-io/etcher
 APP_NAME=Balena-Etcher
 APP_GUI_NAME="Cross-platform Electron-based tool to copy OS images to USB drives."
-APP_VERSION=1.18.9
+APP_VERSION=1.18.11
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/etcher.mirror/${FILE_NAME}.${APP_EXT}
@@ -21335,7 +21335,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=6.22.0
+APP_VERSION=6.23.0
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -35502,7 +35502,7 @@ sudo apt install -y stackandconquer
 # Install Red Panda cross-platform lightweight C/C++ IDE from Debian package
 APP_NAME="Red Panda"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=2.21
+APP_VERSION=2.23
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}-cpp_${APP_VERSION}-1_amd64_ubuntu20.04
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}-cpp/${FILE_NAME}.${APP_EXT}
@@ -39506,7 +39506,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform calendar and task manager."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Calendar;Productivity;"
-APP_VERSION=1.0.9
+APP_VERSION=1.0.10
 APP_EXT=deb
 FILE_NAME=calendar_${APP_VERSION}_ubuntu_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
@@ -40282,7 +40282,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=nFPM
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Golang-based simple, no-dependencies, deb, rpm, apk, and Arch Linux packager."
-APP_VERSION=2.31.0
+APP_VERSION=2.32.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40795,7 +40795,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=3.0.0
+APP_VERSION=3.1.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -42359,6 +42359,76 @@ mkdir /tmp/${FILE_NAME}
 tar -zxf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
 sudo cp -a -R /tmp/${FILE_NAME}/${APP_NAME,,} /opt
 sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+
+# Install JookDB cross-platform database GUI with support for many platforms, including MySQL, MariaDB, Oracle, PostgreSQL, SQLite, MongoDB, DM, OceanBase, TiDB and SQLServer from AppImage
+# https://github.com/jooksoft/jookdb
+APP_NAME=JookDB
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform database GUI with support for many platforms, including MySQL, MariaDB, Oracle, PostgreSQL, SQLite, MongoDB, DM, OceanBase, TiDB and SQLServer."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Database;SQL;NoSQL;"
+APP_VERSION=5.21
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_x64
+sudo apt install -y libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://jookdb.com/img/logo.png
+sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Git Credential Manager (GCM) cross‐platform, C#/.NET-based tool to manage credentials for GitHub and other Git hosts from package
+APP_NAME="Git Credential Manager"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, C#/.NET-based tool to manage credentials for GitHub and other Git hosts."
+APP_VERSION=2.2.2
+APP_EXT=tar.gz
+FILE_NAME=gcm-linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+tar xzf /tmp/${FILE_NAME}.${APP_EXT} -p -C /tmp/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME}/${_APP_NAME} /usr/local/bin
+sudo cp -a /tmp/${FILE_NAME}/lib*.so /usr/lib
+sudo ln -s -f /usr/local/bin/${_APP_NAME} /usr/local/bin/gcm
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install MeGit standalone Java-based GTK Git GUI based on EGit from Eclipse project from package
+APP_NAME=MeGit
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Standalone Java-based GTK Git GUI based on EGit from Eclipse project."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Git;Programming;Version Control;"
+APP_VERSION=0.4.0
+APP_EXT=zip
+FILE_NAME=com.eclipsesource.${APP_NAME,,}-linux.gtk.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/${APP_NAME,,}/icon?1f96b5db85de7c347b5d329c7f7b0f460c0cc3b33be6d5d3471f53f4de3fe98f
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+unzip -q /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
@@ -42376,4 +42446,4 @@ Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}*
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
