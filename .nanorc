@@ -24,8 +24,8 @@ set minibar         # Displays file name and other information in the bottom bar
 set titlecolor white,blue   # white, black, blue, green, red, cyan, yellow, magenta
 
 # Enable and set a working backup directory
-set backup                              # Creates backups of your current file.
-set backupdir "~/.cache/nano/backups/"  # The location of the backups.
+# set backup                              # Creates backups of your current file.
+# set backupdir "~/.cache/nano/backups/"  # The location of the backups.
 
 # Shortcut key bindings
 bind ^C copy main       # CTRC+C - Copy
