@@ -40969,7 +40969,7 @@ sudo rm -rf /tmp/${_APP_NAME}*
 APP_NAME=Matterhorn
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Haskell-based command-line client for Mattermost messenger platform."
-APP_VERSION=50200.17.0
+APP_VERSION=50200.19.0
 APP_EXT=tar.bz2
 source /etc/lsb-release
 if [[ "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di|eo)$ ]]; then  # 18.04 - 19.10
