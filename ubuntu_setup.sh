@@ -33455,10 +33455,10 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Privacy-focused fork of Firefox web browser."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Web;Browser;Privacy;Firefox;"
-APP_VERSION=95.0.2
+APP_VERSION=115.0.2-2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/api/v4/projects/24386000/packages/generic/${APP_NAME,,}/${APP_VERSION}-1/LibreWolf.x86_64.AppImage
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/api/v4/projects/24386000/packages/generic/${APP_NAME,,}/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.svg -J -L https://gitlab.com/librewolf-community/branding/-/raw/master/icon/icon.svg
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
