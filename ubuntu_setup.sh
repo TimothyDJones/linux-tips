@@ -39841,7 +39841,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based minimalist weekly planner and to do tool."
 APP_GUI_CATEGORIES="System;Security;Internet;"
 APP_GUI_KEYWORDS="GPG;Security;PGP;"
-APP_VERSION=2.0.10
+APP_VERSION=2.1.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
