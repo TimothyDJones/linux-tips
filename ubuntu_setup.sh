@@ -32850,18 +32850,19 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install VioletPy (a.k.a. Haworthia the Firework) Qt-based cross-platform color editor from package
-APP_NAME=VioletPy
+# Install Rickrack Qt-based cross-platform color palette generator from package
+APP_NAME=Rickrack
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_GUI_NAME="Qt-based cross-platform color editor."
+APP_GUI_NAME="Qt-based cross-platform color palette generator."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Color;Editor;"
-APP_VERSION=2.4.9_pre
+APP_VERSION=2.8.35
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}_v${APP_VERSION}_en_linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p /tmp/${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}/* /opt/${APP_NAME,,}
 sudo chmod -R 777 /opt/${APP_NAME,,}
