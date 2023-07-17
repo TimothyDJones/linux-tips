@@ -4108,11 +4108,11 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=CherryTree
 source /etc/lsb-release
 if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ja|ki|lu)$ ]]; then     # 22.04, 22.10, 23.04
-    APP_VERSION=0.99.55-3_amd64
+    APP_VERSION=1.0.0-3_amd64
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo|gr|hi|im)$ ]]; then     # 20.04, 20.10, 21.04, 21.10
-    APP_VERSION=0.99.55-2_amd64
+    APP_VERSION=1.0.0-2_amd64
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo)$ ]]; then  # 18.04 - 19.10
-    APP_VERSION=0.99.55-1_amd64
+    APP_VERSION=1.0.0-1_amd64
 else
     APP_VERSION=0.39.4-0_all
 fi
