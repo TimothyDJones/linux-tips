@@ -39309,7 +39309,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Java-based tool for reverse engineering Android APK files."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Android;APK;"
-APP_VERSION=2.7.0
+APP_VERSION=2.8.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
