@@ -42464,3 +42464,40 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/mission-center-dev
 sudo flatpak install /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
+
+# Install Dorion cross-platform Rust-based alternative Discord GUI client from package
+APP_NAME=Dorion
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Rust-based alternative Discord GUI client."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Discord;"
+APP_VERSION=0.6.2
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_Amd64_Portable
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/${APP_NAME,,}/icon?40cb9cdb880ed16f66de51f6c044113ae8c9e92075c55181fd265f8d9edb00ac
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+unzip -q /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${APP_NAME,,}
+sudo cp -a -R /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
