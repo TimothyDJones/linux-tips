@@ -42513,3 +42513,19 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/DECE2183/${APP_NAM
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Jujutsu cross‐platform, Rust-based Git-compatible version control tool with nice features from other VCS tools from package
+APP_NAME=Jujutsu
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Git-compatible version control tool with nice features from other VCS tools."
+APP_VERSION=0.8.0
+APP_EXT=tar.gz
+FILE_NAME=jj-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-vcs.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+tar xzf /tmp/${FILE_NAME}.${APP_EXT} -p -C /tmp/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME}/jj /usr/local/bin
+sudo ln -s -f /usr/local/bin/jj /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
