@@ -251,99 +251,76 @@ source $HOME/.bashrc	# Reload Bash configuration
 sudo apt-get install -y fontconfig
 mkdir -p $HOME/.local/share/fonts
 curl -o /tmp/Fira_Code_v6.1.zip -J -L https://github.com/tonsky/FiraCode/releases/download/6.1/Fira_Code_v6.1.zip
-cd /tmp
-dtrx -n /tmp/Fira_Code_v6.1.zip
+mkdir -p /tmp/Fira_Code_v6.1 && unzip /tmp/Fira_Code_v6.1.zip -d /tmp/Fira_Code_v6.1
 sudo cp -R /tmp/Fira_Code_v6.1/ttf/* /usr/local/share/fonts
 curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.xz
-cd /tmp
-dtrx -n /tmp/Hack-v3.003-ttf.tar.xz
+mkdir -p /tmp/Hack-v3.003-ttf && tar -xf /tmp/Hack-v3.003-ttf.tar.xz -C /tmp/Hack-v3.003-ttf
 sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
-curl -o /tmp/ttf-iosevka-15.2.0.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v11.2.0/ttf-iosevka-15.2.0.zip
-cd /tmp
-dtrx -n /tmp/ttf-iosevka-15.2.0.zip
-sudo cp -R /tmp/ttf-iosevka-15.2.0/* /usr/local/share/fonts
+curl -o /tmp/ttf-iosevka-25.0.1.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v25.0.1/ttf-iosevka-25.0.1.zip
+mkdir -p /tmp/ttf-iosevka-25.0.1 && unzip /tmp/ttf-iosevka-25.0.1.zip -d /tmp/ttf-iosevka-25.0.1
+sudo cp -R /tmp/ttf-iosevka-25.0.1/* /usr/local/share/fonts
 curl -o /tmp/CascadiaCode-2111.01.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2111.01.zip
-cd /tmp
-dtrx -n /tmp/CascadiaCode-2111.01.zip
+mkdir -p /tmp/CascadiaCode-2111.01 && unzip /tmp/CascadiaCode-2111.01.zip -d /tmp/CascadiaCode-2111.01
 sudo cp -R /tmp/CascadiaCode-2111.01/ttf/* /usr/local/share/fonts
 curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/releases/download/v0.048/JuliaMono.tar.gz
-cd /tmp
-dtrx -n /tmp/JuliaMono.tar.gz
+mkdir -p /tmp/JuliaMono && tar -xf /tmp/JuliaMono.tar.gz -C /tmp/JuliaMono
 sudo cp -R /tmp/JuliaMono/*.ttf /usr/local/share/fonts
 curl -o /tmp/FantasqueSansMono-NoLoopK.tar.gz -J -L https://github.com/belluzj/fantasque-sans/releases/download/v1.8.0/FantasqueSansMono-NoLoopK.tar.gz
-cd /tmp
-dtrx -n /tmp/FantasqueSansMono-NoLoopK.tar.gz
+mkdir -p /tmp/FantasqueSansMono-NoLoopK && tar -xf /tmp/FantasqueSansMono-NoLoopK.tar.gz -C /tmp/FantasqueSansMono-NoLoopK
 sudo cp -R /tmp/FantasqueSansMono-NoLoopK/TTF/*.ttf /usr/local/share/fonts
 curl -o /tmp/xcoralFonts.tar.gz -J -L http://xcoral.free.fr/xcoralFonts.tar.gz
-cd /tmp
-dtrx -n /tmp/xcoralFonts.tar.gz
+mkdir -p /tmp/xcoralFonts && tar -xf /tmp/xcoralFonts.tar.gz -C /tmp/xcoralFonts
 sudo cp -R /tmp/xcoralFonts/* /usr/local/share/fonts
 curl -o /tmp/TTF-source-code-pro-2.038R-ro-1.058R-it.zip -J -L https://downloads.sourceforge.net/source-code-pro.mirror/TTF-source-code-pro-2.042R-u_1.062R-i.zip
-cd /tmp
-dtrx -n /tmp/TTF-source-code-pro-2.042R-u_1.062R-i.zip
+mkdir -p /tmp/TTF-source-code-pro-2.042R-u_1.062R-i && unzip /tmp/TTF-source-code-pro-2.042R-u_1.062R-i.zip -d /tmp/TTF-source-code-pro-2.042R-u_1.062R-i
 sudo cp -R /tmp/TTF-source-code-pro-2.042R-u_1.062R-i/*.ttf /usr/local/share/fonts
 curl -o /tmp/courier-prime-code.zip -J -L https://quoteunquoteapps.com/courierprime/downloads/courier-prime-code.zip
-cd /tmp
-dtrx -n /tmp/courier-prime-code.zip
+mkdir -p /tmp/courier-prime-code && unzip /tmp/courier-prime-code.zip -d /tmp/courier-prime-code
 sudo cp -R /tmp/courier-prime-code/ttf/* /usr/local/share/fonts
 curl -o /tmp/bitmap-fonts-master.zip -J -L https://github.com/Tecate/bitmap-fonts/archive/refs/heads/master.zip
-cd /tmp
-dtrx -n /tmp/bitmap-fonts-master.zip
+mkdir -p /tmp/bitmap-fonts-master && unzip /tmp/bitmap-fonts-master.zip -d /tmp/bitmap-fonts-master
 sudo cp -R /tmp/bitmap-fonts-master/bitmap/* /usr/local/share/fonts
 curl -o /tmp/IBM_Plex_TrueType.zip -J -L https://github.com/IBM/plex/releases/download/v6.1.0/TrueType.zip
-cd /tmp
-dtrx -n /tmp/IBM_Plex_TrueType.zip
+mkdir -p /tmp/IBM_Plex_TrueType && unzip /tmp/IBM_Plex_TrueType.zip -d /tmp/IBM_Plex_TrueType
 sudo cp -R /tmp/IBM_Plex_TrueType/TrueType/IBM-Plex-Mono /usr/local/share/fonts
 curl -o /tmp/JetBrainsMono-2.304.zip -J -L https://downloads.sourceforge.net/jetbrains-mono.mirror/JetBrainsMono-2.304.zip
-cd /tmp
-dtrx -n /tmp/JetBrainsMono-2.304.zip
+mkdir -p /tmp/JetBrainsMono-2.304 && unzip /tmp/JetBrainsMono-2.304.zip -d /tmp/JetBrainsMono-2.304
 sudo cp -R /tmp/JetBrainsMono-2.304/fonts/ttf/* /usr/local/share/fonts
 curl -o /tmp/codeface-fonts.tar.xz -J -L https://downloads.sourceforge.net/codeface.mirror/codeface-fonts.tar.xz
-cd /tmp
-dtrx -n /tmp/codeface-fonts.tar.xz
+mkdir -p /tmp/codeface-fonts && tar -xf /tmp/codeface-fonts.tar.xz -C /tmp/codeface-fonts
 sudo cp -R /tmp/codeface-fonts/fonts/* /usr/local/share/fonts
 curl -o /tmp/Hasklig-1.2.zip -J -L https://downloads.sourceforge.net/hasklig.mirror/Hasklig-1.2.zip
-cd /tmp
-dtrx -n /tmp/Hasklig-1.2.zip
+mkdir -p /tmp/Hasklig-1.2 && unzip /tmp/Hasklig-1.2.zip -d /tmp/Hasklig-1.2
 mkdir -p /usr/local/share/fonts/hasklig
 sudo cp -R /tmp/Hasklig-1.2/OTF/* /usr/local/share/fonts/hasklig
 sudo cp -R /tmp/Hasklig-1.2/TTF/* /usr/local/share/fonts/hasklig
 curl -o /tmp/martian-mono-0.9.0-otf.zip -J -L https://github.com/evilmartians/mono/releases/download/v0.9.0/martian-mono-0.9.0-otf.zip
-cd /tmp
-dtrx -n /tmp/martian-mono-0.9.0-otf.zip
+mkdir -p /tmp/martian-mono-0.9.0-otf && unzip /tmp/martian-mono-0.9.0-otf.zip -d /tmp/martian-mono-0.9.0-otf
 sudo mkdir -p /usr/local/share/fonts/martianmono
 sudo cp -R /tmp/martian-mono-0.9.0-otf/*.otf /usr/local/share/fonts/martianmono
 curl -o /tmp/ArrowType-Recursive-1.085.zip -J -L https://downloads.sourceforge.net/recursive-sans-mono.mirror/ArrowType-Recursive-1.085.zip
-cd /tmp
-dtrx -n /tmp/ArrowType-Recursive-1.085.zip
+mkdir -p /tmp/ArrowType-Recursive-1.085 && unzip /tmp/ArrowType-Recursive-1.085.zip -d /tmp/ArrowType-Recursive-1.085
 sudo cp -R /tmp/ArrowType-Recursive-1.085/Recursive_Code/* /usr/local/share/fonts
 curl -o /tmp/CozetteFonts-v-1-20-1.zip -J -L https://downloads.sourceforge.net/cozette.mirror/CozetteFonts-v-1-20-1.zip
-cd /tmp
-dtrx -n /tmp/CozetteFonts-v-1-20-1.zip
+mkdir -p /tmp/CozetteFonts-v-1-20-1 && unzip /tmp/CozetteFonts-v-1-20-1.zip -d /tmp/CozetteFonts-v-1-20-1
 sudo cp -a -R /tmp/CozetteFonts-v-1-20-1/CozetteFonts/*.ttf /usr/local/share/fonts
 curl -o /tmp/VictorMonoAll.zip -J -L https://rubjo.github.io/victor-mono/VictorMonoAll.zip
-cd /tmp
-dtrx -n /tmp/VictorMonoAll.zip
+mkdir -p /tmp/VictorMonoAll && unzip /tmp/VictorMonoAll.zip -d /tmp/VictorMonoAll
 sudo cp -R /tmp/VictorMonoAll/TTF/*.ttf /usr/local/share/fonts
 curl -o /tmp/3270_fonts_d916271.zip -J -L https://downloads.sourceforge.net/threetwoseven0font.mirror/3270_fonts_d916271.zip
-cd /tmp
-dtrx -n /tmp/3270_fonts_d916271.zip
+mkdir -p /tmp/3270_fonts_d916271 && unzip /tmp/3270_fonts_d916271.zip -d /tmp/3270_fonts_d916271
 sudo cp -R /tmp/3270_fonts_d916271/*.ttf /usr/local/share/fonts
 curl -o /tmp/scientifica.tar -J -L https://downloads.sourceforge.net/scientifica.mirror/scientifica.tar
-cd /tmp
-dtrx -n /tmp/scientifica.tar
+tar -xf /tmp/scientifica.tar
 sudo cp -R /tmp/scientifica/ttf/*.ttf /usr/local/share/fonts
 curl -o /tmp/MapleMono.zip -J -L https://downloads.sourceforge.net/maple-font.mirror/MapleMono.zip
-cd /tmp
-dtrx -n /tmp/MapleMono.zip
+mkdir -p /tmp/MapleMono && unzip /tmp/MapleMono.zip -d /tmp/MapleMono
 sudo cp -R /tmp/MapleMono/*.ttf /usr/local/share/fonts
 curl -o /tmp/MapleMono-NF.zip -J -L https://downloads.sourceforge.net/maple-font.mirror/MapleMono-NF.zip
-cd /tmp
-dtrx -n /tmp/MapleMono-NF.zip
+mkdir -p /tmp/MapleMono-NF && unzip /tmp/MapleMono-NF.zip -d /tmp/MapleMono-NF
 sudo cp -R /tmp/MapleMono-NF/*.ttf /usr/local/share/fonts
 curl -o /tmp/fragment-mono-fonts.zip -J -L https://github.com/weiweihuanghuang/fragment-mono/releases/download/1.011/fragment-mono-fonts.zip
-cd /tmp
-dtrx -n /tmp/fragment-mono-fonts.zip
+mkdir -p /tmp/fragment-mono-fonts && unzip /tmp/fragment-mono-fonts.zip -d /tmp/fragment-mono-fonts
 sudo cp -R /tmp/fragment-mono-fonts/fonts/out/ttf/*.ttf /usr/local/share/fonts
 curl -o /tmp/CommitMonoV130-450Regular.otf -J -L https://commitmono.com/src/fonts/CommitMonoV130-450Regular.otf
 curl -o /tmp/CommitMonoV130-450Italic.otf -J -L https://commitmono.com/src/fonts/CommitMonoV130-450Italic.otf
