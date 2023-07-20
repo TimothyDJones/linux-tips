@@ -327,6 +327,9 @@ curl -o /tmp/CommitMonoV130-450Italic.otf -J -L https://commitmono.com/src/fonts
 curl -o /tmp/CommitMonoV130-700Regular.otf -J -L https://commitmono.com/src/fonts/CommitMonoV130-700Regular.otf
 curl -o /tmp/CommitMonoV130-700Italic.otf -J -L https://commitmono.com/src/fonts/CommitMonoV130-700Italic.otf
 sudo cp -R /tmp/CommitMono*.otf /usr/local/share/fonts
+curl -o /tmp/monofur.zip -J -L https://dl.dafont.com/dl/?f=monofur
+mkdir -p /tmp/monofur && unzip /tmp/monofur.zip -d /tmp/monofur
+sudo cp -a -R /tmp/monofur/*.ttf /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
