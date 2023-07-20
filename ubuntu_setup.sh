@@ -42508,7 +42508,6 @@ cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install qDesk cross-platform P2P messenger and social media platform from AppImage
-# https://github.com/jooksoft/jookdb
 APP_NAME=qDesk
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform P2P messenger and social media platform."
@@ -42519,7 +42518,7 @@ APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt install -y libfuse2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/qd-app.mirror/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${APP_NAME,,}.png -J -L https://github.com/QuestNetwork/qD/blob/master/dist_archive/ipfs/0.9.4/assets/icon.png
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/QuestNetwork/qD/master/dist_archive/ipfs/0.9.4/assets/icon.png
 sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
@@ -42539,6 +42538,41 @@ Categories=${APP_GUI_CATEGORIES}
 Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Quest Messenger cross-platform P2P messenger and social media platform from AppImage
+https://github.com/QuestNetwork/qd-messages-ts
+APP_NAME="Quest Messenger"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform P2P messenger and social media platform."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="P2P;Messenger;Social Media;"
+APP_VERSION=0.9.2
+APP_EXT=AppImage
+FILE_NAME=${_APP_NAME}-${APP_VERSION}
+sudo apt install -y libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/qd-messages.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://a.fsdn.com/allura/mirror/qd-messages/icon?b97040a1e77af7220ff35c436d8147e66f5a0cb9f8b305ebc5152d697164007d
+sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
