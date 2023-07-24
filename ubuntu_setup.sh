@@ -5191,14 +5191,15 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install JEditor Java-based text editor
+# Install JEditor Java-based text editor from package
 APP_NAME=jEditor
-APP_VERSION=1.2.13
+APP_VERSION=1.2.15
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_GPL-bin-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p /tmp/${FILE_NAME}
+unzip /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,} << EOF
