@@ -42672,3 +42672,18 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install LibreWeb Browser IPFS-based distributed web browser from package
+APP_NAME="LibreWeb Browser"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="IPFS-based distributed web browser."
+APP_VERSION=0.8.6
+APP_EXT=tar.gz
+FILE_NAME=${_APP_NAME}-v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.melroy.org/api/v4/projects/94/packages/generic/${_APP_NAME}/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -R /tmp/${FILE_NAME}/bin/* /usr/bin
+sudo cp -R /tmp/${FILE_NAME}/share/* /usr/share
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
