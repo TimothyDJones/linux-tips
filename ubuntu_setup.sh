@@ -35312,7 +35312,7 @@ sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install git  from AppImage
+# Install AAAAXY Golang-based 2D jump-and-run puzzle platformer game from AppImage
 APP_NAME=AAAAXY
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based 2D jump-and-run puzzle platformer game."
