@@ -16786,14 +16786,20 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Hexyl Rust-based hex viewer for the terminal from Debian package
+# Install Hexyl Rust-based hex viewer for the terminal from package
 APP_NAME=Hexyl
 APP_GUI_NAME="Rust-based hex viewer for the terminal."
 APP_VERSION=0.13.1
-APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/local/share/man/man1
+sudo mandb -q
+sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install ImLab cross-platform scientific image processing tool from package
 APP_NAME=ImLab
