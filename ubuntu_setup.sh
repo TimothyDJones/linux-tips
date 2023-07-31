@@ -313,9 +313,9 @@ sudo cp -R /tmp/3270_fonts_d916271/*.ttf /usr/local/share/fonts
 curl -o /tmp/scientifica.tar -J -L https://downloads.sourceforge.net/scientifica.mirror/scientifica.tar
 tar -xf /tmp/scientifica.tar
 sudo cp -R /tmp/scientifica/ttf/*.ttf /usr/local/share/fonts
-curl -o /tmp/MapleMono.zip -J -L https://downloads.sourceforge.net/maple-font.mirror/MapleMono.zip
-mkdir -p /tmp/MapleMono && unzip /tmp/MapleMono.zip -d /tmp/MapleMono
-sudo cp -R /tmp/MapleMono/*.ttf /usr/local/share/fonts
+curl -o /tmp/MapleMono-ttf.zip -J -L https://downloads.sourceforge.net/maple-font.mirror/MapleMono-ttf.zip
+mkdir -p /tmp/MapleMono-ttf && unzip /tmp/MapleMono-ttf.zip -d /tmp/MapleMono-ttf
+sudo cp -R /tmp/MapleMono-ttf/*.ttf /usr/local/share/fonts
 curl -o /tmp/MapleMono-NF.zip -J -L https://downloads.sourceforge.net/maple-font.mirror/MapleMono-NF.zip
 mkdir -p /tmp/MapleMono-NF && unzip /tmp/MapleMono-NF.zip -d /tmp/MapleMono-NF
 sudo cp -R /tmp/MapleMono-NF/*.ttf /usr/local/share/fonts
