@@ -42823,3 +42823,20 @@ sudo cp -a /tmp/difft /usr/local/bin
 sudo ln -s -f /usr/local/bin/difft /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install D2 cross-platform, Golang-based diagram scripting language that converts text into diagrams from package
+# https://github.com/terrastruct/d2
+APP_NAME=D2
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Golang-based diagram scripting language that converts text into diagrams."
+APP_VERSION=0.6.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-terrastruct.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,}-v${APP_VERSION}/bin/${APP_NAME,,} /usr/local/bin
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp -a /tmp/${APP_NAME,,}-v${APP_VERSION}/man/${APP_NAME,,}.1 /usr/local/share/man/man1
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
