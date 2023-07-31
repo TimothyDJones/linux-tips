@@ -42880,3 +42880,21 @@ sudo mkdir -p /usr/local/share/man/man1
 sudo cp -a /tmp/${APP_NAME,,}-v${APP_VERSION}/man/${APP_NAME,,}.1 /usr/local/share/man/man1
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Dysk Rust-based command-line tool for showing information about Linux file system from package
+APP_NAME=Dysk
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Rust-based command-line tool for showing information about Linux file system."
+APP_VERSION=2.7.1
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+unzip /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME}/build/x86_64-linux/${APP_NAME,,} /usr/local/bin
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp -a /tmp/${FILE_NAME}/build/man/${APP_NAME,,}.1 /usr/local/share/man/man1
+sudo cp -a /tmp/${FILE_NAME}/build/completion/${APP_NAME,,}.bash /etc/bash_completion.d/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
