@@ -41013,7 +41013,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME="Electron Fiddle"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform tool for learning Electron development."
-APP_VERSION=0.32.2
+APP_VERSION=0.34.0
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
