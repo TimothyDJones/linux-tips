@@ -25910,12 +25910,15 @@ cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install zoxide Rust-based fast alternative to 'cd' for directory navigation from package
+# https://github.com/ajeetdsouza/zoxide
 APP_NAME=zoxide
 APP_VERSION=0.9.2
-APP_EXT=N/A
-FILE_NAME=${APP_NAME,,}-x86_64-unknown-linux-gnu
-curl -o /tmp/${FILE_NAME} -J -L https://github.com/ajeetdsouza/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
-sudo cp /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 sudo ln -s -f /usr/local/bin/${APP_NAME,,} /usr/local/bin/z
 cd $HOME
