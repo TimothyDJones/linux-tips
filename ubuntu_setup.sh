@@ -24009,7 +24009,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Beekeeper Studio cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server) from Debian package
 APP_NAME=Beekeeper-Studio
 APP_GUI_NAME="Cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server)."
-APP_VERSION=3.9.18
+APP_VERSION=3.9.20
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
