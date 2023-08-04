@@ -42914,3 +42914,22 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install qemu_mgr command-line menu-based launcher for QEMU virtual machines from source
+APP_NAME=qemu_mgr
+APP_GUI_NAME="Command-line menu-based launcher for QEMU virtual machines."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="QEMU;Shell;Virtualization;"
+APP_VERSION=1.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
+https://github.com/ColumPaget/qemu_mgr/archive/refs/tags/v1.2.tar.gz
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure --enable-ssl --prefix=/usr/local && make
+sudo cp -a ${APP_NAME,,} /usr/local/bin
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
