@@ -4290,7 +4290,7 @@ xdg-open http://localhost/${APP_NAME,,}/dependent/admin/install/index.php &
 # Install Admidio web-based (PHP/MySQL) organizational management tool from package
 APP_NAME=Admidio
 APP_GUI_NAME="Web-based (PHP/MySQL) organizational management tool."
-APP_VERSION=4.2.10
+APP_VERSION=4.2.11
 APP_EXT=zip
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Organization;Management;"
