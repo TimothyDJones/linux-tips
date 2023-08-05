@@ -43003,3 +43003,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install SurrealDB cross-platform, Rust-based NewSQL database server from package
+APP_NAME=SurrealDB
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Rust-based NewSQL database server."
+APP_VERSION=1.0.0-beta.9+20230402
+APP_EXT=tgz
+FILE_NAME=${_APP_NAME//db/}-v${APP_VERSION}.linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${_APP_NAME//db/} /usr/local/bin
+sudo ln -s -f /usr/local/bin/${_APP_NAME//db/} /usr/local/bin/${_APP_NAME}
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME//db/}*
