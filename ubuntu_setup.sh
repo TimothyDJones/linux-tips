@@ -42956,3 +42956,16 @@ cd /tmp/${FILE_NAME}
 sudo cp -a ${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install PDF4QT cross-platform PDF editor/viewer from Debian package
+# https://github.com/JakubMelka/PDF4QT
+APP_NAME=PDF4QT
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform PDF editor/viewer."
+APP_VERSION=1.3.4
+APP_EXT=deb
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
