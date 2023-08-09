@@ -43123,3 +43123,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install UPX (Ultimate Packer for eXecutables) command-line tool for compressing executable/binary files from source
+APP_NAME=UPX
+APP_GUI_NAME="Command-line tool for compressing executable/binary files."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Executable;Compression;"
+APP_VERSION=4.1.0
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
+sudo apt install -y build-essential cmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p build && cd build
+cmake .. && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
