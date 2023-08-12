@@ -3505,7 +3505,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install TexStudio cross-platform Qt-based LaTeX editor from source
 APP_NAME=TexStudio
-APP_VERSION=4.6.2
+APP_VERSION=4.6.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_VERSION}
 sudo apt-get install -y libpoppler-qt5-dev libqt5svg5-dev qttools5-dev libgs-dev qtscript5-dev texlive
