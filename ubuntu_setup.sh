@@ -457,43 +457,35 @@ mkdir -p $HOME/projects/go/bin $HOME/projects/go/pkg $HOME/projects/go/src
 rm -rf /tmp/go*
 cd $HOME
 
-# Install Lite IDE for Go language development from package
+# Install Lite IDE for Go language development from AppImage
 APP_NAME=LiteIDE
 APP_GUI_NAME="IDE for editing and building projects written in the Go programming language"
-APP_VERSION=x38.2
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Golang;Go;IDE;Programming;"
+APP_VERSION=x38.3
 QT_VERSION=qt5.5.1
-APP_EXT=tar.gz
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=linux64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=linux32
-    APP_VERSION=x37.1
-fi
-FILE_NAME=${APP_NAME,,}${APP_VERSION}.${ARCH_TYPE}-${QT_VERSION}
-sudo apt-get install -y qt5-default
-curl -o /tmp/libpng12-0.deb -J -L https://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/libpng12-0.deb
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${FILE_NAME}-system.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}-system.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-dtrx -n /tmp/${FILE_NAME}-system.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo cp -R /tmp/${FILE_NAME}/${APP_NAME,,}/* /opt/${APP_NAME,,}
-sudo ln -s -f /opt/${APP_NAME,,}/bin/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
-# Create icon in menus
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME,,}${APP_VERSION}.linux64-${QT_VERSION}
+sudo apt-get install -y libqt5gui5
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/visualfc/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/visualfc/${APP_NAME,,}/master/build/${APP_NAME,,}.png
+sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Exec=/opt/${APP_NAME,,}/bin/${APP_NAME,,}
-Icon=/opt/${APP_NAME,,}/share/${APP_NAME,,}/welcome/images/liteide128.xpm
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
 Type=Application
-StartupNotify=false
+StartupNotify=true
 Terminal=false
-Categories=Development;Programming;
-Keywords=Golang;Go;IDE;Programming;
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
