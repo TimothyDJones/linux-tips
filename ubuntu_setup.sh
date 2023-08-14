@@ -43148,9 +43148,9 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Java-based clock that shows date and time in dozenal (base twelve)."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Clock;Calendar;"
-APP_VERSION=1207080A
+APP_VERSION=12070812-1
 APP_EXT=jar
-FILE_NAME=${APP_NAME}Deluxe-${APP_VERSION}
+FILE_NAME=${APP_NAME}Deluxe-${APP_VERSION}-java8
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -a -R /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
