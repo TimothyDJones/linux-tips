@@ -770,7 +770,7 @@ rm -rf /tmp/goto*
 # Install Free42 HP-42S calculator simulator from package
 APP_NAME=Free42
 APP_GUI_NAME="Free, cross-platfrom HP-42S calculator simulator."
-APP_VERSION=3.0.20
+APP_VERSION=3.0.21
 APP_EXT=tgz
 FILE_NAME=${APP_NAME}Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://thomasokken.com/${APP_NAME,,}/download/${FILE_NAME}.${APP_EXT}
@@ -1061,7 +1061,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=15.1.4
+APP_VERSION=15.1.5
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -26699,7 +26699,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install yq Golang-based command-line YAML processor from package
 APP_NAME=yq
-APP_VERSION=4.34.2
+APP_VERSION=4.35.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_${KERNEL_TYPE//i/}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/mikefarah/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
@@ -35760,7 +35760,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based desktop diagramming and whiteboarding tool."
 APP_GUI_CATEGORIES="Office;Programming;Development;"
 APP_GUI_KEYWORDS="Diagramming;Drawing;"
-APP_VERSION=21.6.5
+APP_VERSION=21.6.8
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-desktop.mirror/${FILE_NAME}.${APP_EXT}
@@ -36606,7 +36606,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, self-hosted web comic and ebook reader."
 APP_GUI_CATEGORIES="Office;Internet;"
 APP_GUI_KEYWORDS="Comics;Ebook;Reader;"
-APP_VERSION=0.7.6
+APP_VERSION=0.7.7
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -40313,7 +40313,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=mrViewer2
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform multimedia viewer/player."
-APP_VERSION=0.7.0
+APP_VERSION=0.7.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mrv2/${FILE_NAME}.${APP_EXT}
@@ -42001,7 +42001,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Vue.JS-based simple GUI tool for simultaneous/concurrent interaction with multiple LLMs, including ChatGPT, Bing Chat, Bard, Alpaca, Vicuna, and more."
 APP_GUI_CATEGORIES="Accessories;System;Development;Programming;"
 APP_GUI_KEYWORDS="ChatGPT;LLM;"
-APP_VERSION=1.37.57
+APP_VERSION=1.37.58
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -43139,5 +43139,85 @@ tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 mkdir -p build && cd build
 cmake .. && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install UncialClock cross-platform, Java-based clock that shows date and time in dozenal (base twelve) from package
+APP_NAME=UncialClock
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Java-based clock that shows date and time in dozenal (base twelve)."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Clock;Calendar;"
+APP_VERSION=1207080A
+APP_EXT=jar
+FILE_NAME=${APP_NAME}Deluxe-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+# Icon=/opt/${APP_NAME,,}/resources/icon.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Category=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install CommaFeed cross-platform, Java-based RSS feed reader inspired by Google Reader from package
+# https://github.com/Athou/commafeed
+APP_NAME=CommaFeed
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Java-based RSS feed reader inspired by Google Reader."
+APP_GUI_CATEGORIES="Internet;Networking;"
+APP_GUI_KEYWORDS="RSS;News;Aggregator;"
+APP_VERSION=3.8.1
+APP_EXT=jar
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/${APP_NAME,,}/icon?b3d93f25aea7c78dc0210242a097f81192634171820b75ffe9ad593b2e37737d
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${APP_NAME,,}.* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} server &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Category=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
