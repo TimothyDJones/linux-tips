@@ -39873,7 +39873,7 @@ sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # Install kmon Rust-based command-line Linux kernel manager and activity monitor from package
 APP_NAME=kmon
 APP_GUI_NAME="Rust-based command-line Linux kernel manager and activity monitor."
-APP_VERSION=1.6.2
+APP_VERSION=1.6.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/orhun/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
