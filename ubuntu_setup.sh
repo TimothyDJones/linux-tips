@@ -38045,7 +38045,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based Markdown editor with preview."
 APP_GUI_CATEGORIES="Office;Development;Programming;"
 APP_GUI_KEYWORDS="Markdown;Editor;"
-APP_VERSION=3.58.2
+APP_VERSION=3.59.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /-}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
