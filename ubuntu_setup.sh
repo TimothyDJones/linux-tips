@@ -558,7 +558,7 @@ sudo apt-get install -y atom
 APP_NAME=Vivaldi
 APP_VERSION=6.1.3035.302
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}-1_${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
