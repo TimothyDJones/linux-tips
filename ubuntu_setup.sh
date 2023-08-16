@@ -43214,3 +43214,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install halp Rust-based command-line tool for getting help on other command-line tools from package
+APP_NAME=halp
+APP_GUI_NAME="Rust-based command-line tool for getting help on other command-line tools."
+APP_VERSION=0.1.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/orhun/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${APP_NAME,,}-${APP_VERSION}/${APP_NAME,,}* /usr/local/bin
+sudo cp /tmp/${APP_NAME,,}-${APP_VERSION}/man/* /usr/share/man/man1
+sudo cp -R /tmp/${APP_NAME,,}-${APP_VERSION}/completions/${APP_NAME,,}.bash /usr/share/bash-completion/completions
+sudo chmod +x /usr/local/bin/${APP_NAME,,}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
