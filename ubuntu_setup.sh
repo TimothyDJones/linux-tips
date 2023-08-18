@@ -42690,7 +42690,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Rubick
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Electron-based minimalist multi-function desktop tool."
-APP_VERSION=2.4.2
+APP_VERSION=2.4.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rubickCenter/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT} 
