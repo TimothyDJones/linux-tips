@@ -43279,3 +43279,10 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Wildcard Rust/GTK4-based GUI for testing/practicing regular expressions from Flatpak
+# https://github.com/fkinoshita/Wildcard
+APP_NAME=Wildcard
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub com.felipekinoshita.${APP_NAME}
