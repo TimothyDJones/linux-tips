@@ -39426,7 +39426,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based GUI GraphQL client."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="GraphQL;Web Services;HTTP;"
-APP_VERSION=5.0.16
+APP_VERSION=5.2.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_x86_64_linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}-graphql/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
