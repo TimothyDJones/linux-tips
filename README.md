@@ -565,3 +565,14 @@ One of the most powerful, but also most hidden features of the Linux/Unix comman
 |
 
 Generally, the defaults work well, but with a few simple tweaks, you can supercharge 
+
+## Toggle Synaptics Touchpad On/Off
+The Synaptics touchpad can quickly and simply be toggled on and off at the command line using the `synclient` utility.
+```bash
+# Disable touchpad
+synclient TouchpadOff=1
+
+# Enable touchpad
+synclient TouchpadOff=0
+
+[Reference](https://askubuntu.com/a/67721)
