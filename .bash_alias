@@ -26,6 +26,25 @@ fi
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
+# Extract common archive files by file extension
+function extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.gz|*.tgz)     tar xzf $1          ;;
+            *.tar|*.tar.xz)     tar xf $1           ;;
+            *.tar.bz2|*.tbz2)   tar xjf $1          ;;
+            *.xz)               unxz $1             ;;
+            *.zip)              unzip $1            ;;
+            *.Z)                uncompress $1       ;;
+            *.tar.zst)          tar -I=unzstd xf $1 ;;
+            *.zst)              unzstd $1           ;;
+            *.7z)               7z x $1             ;;
+        esac
+    else
+        echo "'$1' is not valid archive file."
+    fi
+}
+
 # Colorize output of man command
 # http://tuxdiary.com/2016/06/16/color-man-pages/#more-27324
 function man() {
@@ -186,13 +205,13 @@ function colors() {
 
 # Experimental command-line search engine
 # Example: rip "q=software testing"
-alias rip="curl -G -H 'Accept: text/plain' --url https://dontbeevil.rip/search --data-urlencode "
+# alias rip="curl -G -H 'Accept: text/plain' --url https://dontbeevil.rip/search --data-urlencode "
 
-alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
-alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
-alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
+#alias ls='ls --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
+#alias ll='ls -lrt --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
+#alias la='ls -la --group-directories-first --time-style=+"%m/%d/%Y %H:%M" --color=auto -F'
 # octal file modes through http://stackoverflow.com/questions/1795976/can-the-unix-list-command-ls-output-numerical-chmod-permissions
-alias lsoct='ls -al --color=auto|awk '\''{k=0;s=0;for(i=0;i<=8;i++){;k+=((substr($1,i+2,1)~/[rwxst]/)*2^(8-i));};j=4;for(i=4;i<=10;i+=3){;s+=((substr($1,i,1)~/[stST]/)*j);j/=2;};if(k){;printf("%0o%0o ",s,k);};print;}'\'''
+#alias lsoct='ls -al --color=auto|awk '\''{k=0;s=0;for(i=0;i<=8;i++){;k+=((substr($1,i+2,1)~/[rwxst]/)*2^(8-i));};j=4;for(i=4;i<=10;i+=3){;s+=((substr($1,i,1)~/[stST]/)*j);j/=2;};if(k){;printf("%0o%0o ",s,k);};print;}'\'''
 
 # System functions
 # https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions
@@ -244,6 +263,8 @@ alias hist_summary2="history | awk {'print $2, $3, $4'} | sort | uniq -c | sort 
 
 alias dateiso='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 
+# Run nano with sudo using current user's .nanorc.
+alias snano="sudo nano --rcfile=~/.nanorc "
 # Git aliases
 alias gitlog='git log --all --decorate --graph --oneline'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"

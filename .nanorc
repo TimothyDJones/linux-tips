@@ -1,0 +1,34 @@
+# References
+# https://bash-prompt.net/guides/nanorc-settings/
+# https://gist.github.com/ShyftXero/a3c481cce0feb57290ddd3288287fc1d
+
+set atblanks        # wrap line at blanks.
+set cutfromcursor   # CTRL+K cuts from cursor position to end of line.
+set nohelp          # Disable the help information (CTRL+G to view the help screen).
+set softwrap        # Enable softwrap of lines.
+# set suspend         # Enables CTRL+Z to suspend nano.
+set tabsize 4       # Sets tab-to-spaces size to 4.
+set tabstospaces    # Converts TAB key press to spaces.
+include "/usr/share/nano/*.nanorc" # Enables the syntax highlighting.
+set speller "aspell -x -c"         # Sets what spelling utility to use.
+set constantshow    # Displays useful information e.g. line number and position in the bottom bar.
+set linenumbers     # Lines are numbered.
+set numbercolor green,normal
+set casesensitive   # Case insensitive search.
+set historylog      # Save the last 100 history searches for later use.
+set positionlog     # Saves the cursor position between editing sessions.
+set zap             # Allows you to highlight text (CTRL+SHIFT+ARROW) and delete it with backspace.
+set autoindent      # A new line will have the same number of leading spaces as the previous one.
+set indicator       # Displays a scroll bar on the right that shows the position and size of the current view port.
+set minibar         # Displays file name and other information in the bottom bar. Removes top bar.
+set titlecolor white,blue   # white, black, blue, green, red, cyan, yellow, magenta
+
+# Enable and set a working backup directory
+# set backup                              # Creates backups of your current file.
+# set backupdir "~/.cache/nano/backups/"  # The location of the backups.
+
+# Shortcut key bindings
+bind ^C copy main       # CTRC+C - Copy
+bind ^V paste all       # CTRL+V - Past
+bind ^F whereis all     # CTRL+F - Find
+bind ^S savefile main   # CTRL+S - Save
