@@ -18788,14 +18788,18 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 
-# Install LSD (LSDeluxe) Rust-based next-generation 'ls' command from Debian package
+# Install LSD (LSDeluxe) Rust-based next-generation 'ls' command from package
 APP_NAME=LSD
 APP_GUI_NAME="Rust-based next-generation 'ls' command."
-APP_VERSION=0.22.0
-APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+APP_VERSION=1.0.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/local/share/man/man1
+sudo cp -a /tmp/${FILE_NAME}/autocomplete/${APP_NAME,,}.bash-completion /etc/bash_completion.d/
+sudo cp -a /tmp/${FILE_NAME}/autocomplete/_${APP_NAME,,} /etc/bash_completion.d/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
