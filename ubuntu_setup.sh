@@ -32312,7 +32312,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Ebook reader emulator with support for PDF, DjVu, EPUB, FB2 and other formats."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Ebook;Reader;"
-APP_VERSION=2023.06.1
+APP_VERSION=2023.08
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-appimage-x86_64-linux-gnu-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
