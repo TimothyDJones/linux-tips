@@ -13094,7 +13094,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Timeline Project Python-based GUI timeline tool from source
 APP_NAME=Timeline
 APP_GUI_NAME="Python-based GUI timeline tool."
-APP_VERSION=2.8.0
+APP_VERSION=2.9.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y python3-wxgtk4.0 python3-pip python3-wxgtk-media4.0 python3-wxgtk-webview4.0
