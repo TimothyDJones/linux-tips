@@ -2639,7 +2639,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 APP_NAME=Franz
 APP_GUI_CATEGORIES="Accessories;Internet;"
 APP_GUI_KEYWORDS="Messenger;Chat;"
-APP_VERSION=5.9.2
+APP_VERSION=5.10.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/meetfranz/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
