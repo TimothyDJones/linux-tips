@@ -4888,14 +4888,16 @@ sudo apt install -y kicad
 
 # Install View Your Mind (VYM) Qt mind-mapping tool from source
 APP_NAME=vym
-APP_VERSION=2.8.8
-APP_EXT=tar.bz2
-sudo apt-get install -y python3-tk qt5-default libqt5svg5-dev libqt5scripttools5 qtscript5-dev
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+APP_VERSION=2.9.22
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential python3-tk qt5-qmake libqt5svg5-dev libqt5scripttools5 qtscript5-dev cmake qttools-dev libdbus-1-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/insilmaril/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}
-qtchooser -run-tool=qmake -qt=5 && make && sudo make install
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 .. && make && sudo make install
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=Vym (View Your Mind)
