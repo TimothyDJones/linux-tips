@@ -17778,7 +17778,7 @@ sudo -rm -rf /tmp/${APP_NAME}*
 # Install Muse Qt-based digital audio workstation (DAW) and MIDI/sudio sequencer with recording and editing capabilities from source
 APP_NAME=Muse
 APP_GUI_NAME="Qt-based digital audio workstation (DAW) and MIDI/sudio sequencer with recording and editing capabilities."
-APP_VERSION=4.0pre2
+APP_VERSION=4.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential cmake libsndfile1-dev libsamplerate0-dev libjack-jackd2-dev ladspa-sdk qt5-default qttools5-dev qttools5-dev-tools liblo-dev dssi-dev lv2-dev libsamplerate0-dev libsndfile1-dev git libfluidsynth-dev libgtkmm-2.4-dev librtaudio-dev libqt5svg5-dev libinstpatch-dev
