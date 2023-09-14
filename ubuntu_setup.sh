@@ -42598,7 +42598,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Rust-based alternative Discord GUI client."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Discord;"
-APP_VERSION=1.1.0
+APP_VERSION=1.2.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_amd64_portable
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
