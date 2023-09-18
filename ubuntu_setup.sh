@@ -38034,7 +38034,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 APP_NAME=jqp
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based TUI playground to experiment with jq."
-APP_VERSION=0.4.0
+APP_VERSION=0.5.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/noahgorstein/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
