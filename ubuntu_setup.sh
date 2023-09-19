@@ -1626,7 +1626,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Qalculate desktop calculator application from package
 # http://qalculate.github.io/
 APP_NAME=Qalculate
-APP_VERSION=4.7.0
+APP_VERSION=4.8.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/lib${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
