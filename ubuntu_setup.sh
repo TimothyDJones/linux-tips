@@ -43596,3 +43596,18 @@ sudo cp /tmp/diffRpn/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install memgaue command-line real-time physical and swap memory monitor tool from package
+APP_NAME=memgauge
+APP_GUI_NAME="Command-line real-time physical and swap memory monitor tool."
+APP_VERSION=1.1.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}	
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,}/${APP_NAME,,}.x86_64 /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}.x86_64
+sudo ln -s -f /usr/local/bin/${APP_NAME,,}.x86_64 /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
