@@ -42388,7 +42388,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Golang-based multi-protocol download manager."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="Download;Manager;P2P;"
-APP_VERSION=1.3.11
+APP_VERSION=1.3.12
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-web-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -43606,7 +43606,7 @@ FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
-sudo cp -a /tmp/${APP_NAME,,}/${APP_NAME,,}.x86_64 /usr/local/bin
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}.x86_64 /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}.x86_64
 sudo ln -s -f /usr/local/bin/${APP_NAME,,}.x86_64 /usr/local/bin/${APP_NAME,,}
 cd $HOME
