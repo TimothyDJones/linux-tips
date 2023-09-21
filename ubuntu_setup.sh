@@ -35891,7 +35891,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Flutter-based music player."
 APP_GUI_CATEGORIES="Audio;Multimedia;"
 APP_GUI_KEYWORDS="Music;Player;"
-APP_VERSION=0.7.0
+APP_VERSION=0.9.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bleonard252/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
