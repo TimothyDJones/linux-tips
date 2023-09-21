@@ -35980,7 +35980,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '_')
 APP_GUI_NAME="Jabber/XMPP desktop client based on Converse.js and Electron."
 APP_GUI_CATEGORIES="Internet;Networking;"
 APP_GUI_KEYWORDS="Messenger;Jabber;XMPP;"
-APP_VERSION=10.0.0
+APP_VERSION=10.1.5
 APP_EXT=tar.gz
 FILE_NAME=${_APP_NAME}-${APP_VERSION}_x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/conversejs/${_APP_NAME//_/-}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
