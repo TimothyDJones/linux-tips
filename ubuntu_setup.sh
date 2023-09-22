@@ -35558,7 +35558,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based desktop Twitter client."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Twitter;Microblogging;"
-APP_VERSION=9.4.4
+APP_VERSION=10.0.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dangeredwolf/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
