@@ -35173,7 +35173,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Cine Encoder media file converter front-end for FFmpeg, MKVToolNix and MediaInfo from Debian package
 APP_NAME="Cine Encoder"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
-APP_VERSION=3.5.4
+APP_VERSION=3.5.5
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}-${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME// /}/${_APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
