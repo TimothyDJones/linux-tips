@@ -35193,7 +35193,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based desktop email client."
 APP_GUI_CATEGORIES="Internet;Multimedia"
 APP_GUI_KEYWORDS="YouTube;Video;"
-APP_VERSION=2.0.0
+APP_VERSION=2.6.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/prateekmedia/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
