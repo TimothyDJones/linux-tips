@@ -43597,7 +43597,7 @@ sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install memgaue command-line real-time physical and swap memory monitor tool from package
+# Install memgauge command-line real-time physical and swap memory monitor tool from package
 APP_NAME=memgauge
 APP_GUI_NAME="Command-line real-time physical and swap memory monitor tool."
 APP_VERSION=1.1.2
@@ -43609,5 +43609,19 @@ tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}.x86_64 /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}.x86_64
 sudo ln -s -f /usr/local/bin/${APP_NAME,,}.x86_64 /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Bunnyfetch Golang-based, command-line minimalist system information tool from package
+APP_NAME=Bunnyfetch
+APP_GUI_NAME="Golang-based, command-line minimalist system information tool."
+APP_VERSION=0.2.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Rosettea/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
