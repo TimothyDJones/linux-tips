@@ -32587,7 +32587,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Electron-based simple desktop music player."
 APP_GUI_CATEGORIES="Entertainment;Audio;Multimedia;"
 APP_GUI_KEYWORDS="Audio;Player;"
-APP_VERSION=0.0.4
+APP_VERSION=10.1.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32653,7 +32653,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=termscp
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based cross-platform, terminal/TUI file transfer and explorer tool with support for SCP/SFTP/FTP/S3."
-APP_VERSION=0.7.0
+APP_VERSION=0.12.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/veeso/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
