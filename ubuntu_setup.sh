@@ -43673,3 +43673,11 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Bavarder Python-based GUI for ChatGPT and other AI chatbot clients from Flatpak
+# https://github.com/Bavarder/Bavarder
+APP_NAME=Bavarder
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+curl -o /tmp/${APP_NAME,,}.flatpak https://codeberg.org/api/packages/${APP_NAME}/generic/${APP_NAME}/164/${APP_NAME,,}.flatpak
+sudo flatpak install /tmp/${APP_NAME,,}.flatpak
