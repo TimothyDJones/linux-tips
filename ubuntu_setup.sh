@@ -32921,7 +32921,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Froxlor
 APP_GUI_CATEGORIES="System;Programming;Development;"
 APP_GUI_KEYWORDS="Server;PHP;"
-APP_VERSION=0.10.30
+APP_VERSION=2.0.23
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 DB_NAME=${APP_NAME,,}
