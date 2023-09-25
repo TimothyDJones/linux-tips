@@ -32809,7 +32809,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install GitHub CLI official CLI tool from Debian package
 APP_NAME=gh
-APP_VERSION=2.1.0
+APP_VERSION=2.35.0
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
