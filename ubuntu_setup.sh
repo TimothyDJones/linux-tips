@@ -11342,11 +11342,11 @@ rm -rf /tmp/*${APP_NAME}*
 # Install dred fast, minimalist cross-platform, GTK+-based text editor from source
 APP_NAME=dred
 APP_GUI_NAME="Environment variable configuration/management utility."
-APP_VERSION=0.4.1
+APP_VERSION=0.4.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libgtk-3-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dr-soft/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mackron/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
