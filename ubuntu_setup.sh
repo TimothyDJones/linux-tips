@@ -32068,7 +32068,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=shd
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based command-line tool to show HDD SMART parameters."
-APP_VERSION=0.1.4
+APP_VERSION=0.1.5
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(uname -m)
 sudo apt-get install -y smartmontools
