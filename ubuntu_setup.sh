@@ -32115,7 +32115,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=gdu
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based command-line tool to list files in directories with large number of files."
-APP_VERSION=5.12.1
+APP_VERSION=5.25.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}_linux_$(dpkg --print-architecture)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dundee/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
