@@ -32053,7 +32053,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=lls
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based command-line tool to list files in directories with large number of files."
-APP_VERSION=0.0.1
+APP_VERSION=0.0.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg --print-architecture)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/catatsuy/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
