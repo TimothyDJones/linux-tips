@@ -32041,7 +32041,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Focus cross-platform, command-line minimalist Pomodoro timer from Debian package
 APP_NAME=Focus
-APP_VERSION=1.1.0
+APP_VERSION=1.3.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ayoisaiah/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
