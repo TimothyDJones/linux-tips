@@ -10728,7 +10728,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install aria2 cross-platform, lightweight multi-protocol & multi-source, cross platform download utility which supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink from source
 APP_NAME=aria2
 APP_GUI_NAME="Cross-platform, lightweight multi-protocol & multi-source, cross platform download utility which supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink."
-APP_VERSION=1.34.0
+APP_VERSION=1.36.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install libssh-dev
@@ -11105,7 +11105,7 @@ sudo apt-get install -y ${APP_NAME,,}
 # Install OpenTodoList cross-platform, Qt-based "To Do" list and task management from AppImage
 APP_NAME=OpenTodoList
 APP_GUI_NAME="Cross-platform, Qt-based \"To Do\" list and task management."
-APP_VERSION=3.44.0
+APP_VERSION=3.45.2
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -11302,11 +11302,11 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Project GoldStars Calculator cross-platform, Java-based command-line and GUI calculators from package
 APP_NAME="Project GoldStars Calculator"
 APP_GUI_NAME="Cross-platform, Java-based command-line and GUI calculators."
-APP_VERSION="2.4 Final Version"
+APP_VERSION=3.2
 APP_EXT=jar
-FILE_NAME=${APP_NAME// /.}.S.${APP_VERSION// /.}
+FILE_NAME=${APP_NAME// /.}.S.${APP_VERSION}.Final.Version
 DIR_NAME=${APP_NAME,,// /}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ShakeelAlibhai/${APP_NAME// /}S/releases/download/v${APP_VERSION// Update /.}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ShakeelAlibhai/${APP_NAME// /}S/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo mkdir /opt/${DIR_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${DIR_NAME,,}
 cat > /tmp/${DIR_NAME,,}.desktop << EOF
@@ -11342,11 +11342,11 @@ rm -rf /tmp/*${APP_NAME}*
 # Install dred fast, minimalist cross-platform, GTK+-based text editor from source
 APP_NAME=dred
 APP_GUI_NAME="Environment variable configuration/management utility."
-APP_VERSION=0.4.1
+APP_VERSION=0.4.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libgtk-3-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dr-soft/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mackron/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
@@ -28585,7 +28585,7 @@ APP_NAME=Electerm
 APP_GUI_NAME="Electron-based integrated terminal/SSH/SFTP client."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Terminal;SSH;SFTP;"
-APP_VERSION=1.32.46
+APP_VERSION=1.33.6
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32041,7 +32041,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Focus cross-platform, command-line minimalist Pomodoro timer from Debian package
 APP_NAME=Focus
-APP_VERSION=1.1.0
+APP_VERSION=1.3.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ayoisaiah/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32053,7 +32053,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=lls
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based command-line tool to list files in directories with large number of files."
-APP_VERSION=0.0.1
+APP_VERSION=0.0.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg --print-architecture)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/catatsuy/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32068,7 +32068,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=shd
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based command-line tool to show HDD SMART parameters."
-APP_VERSION=0.1.4
+APP_VERSION=0.1.5
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(uname -m)
 sudo apt-get install -y smartmontools
@@ -32084,7 +32084,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform hex editor focused on reverse engineering."
 APP_GUI_CATEGORIES="Programming;Development;System;"
 APP_GUI_KEYWORDS="Hex;Hacking;Editor;"
-APP_VERSION=0.3.92
+APP_VERSION=0.60.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/solemnwarning/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32115,7 +32115,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=gdu
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based command-line tool to list files in directories with large number of files."
-APP_VERSION=5.12.1
+APP_VERSION=5.25.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}_linux_$(dpkg --print-architecture)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dundee/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
