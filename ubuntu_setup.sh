@@ -43681,3 +43681,17 @@ sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 curl -o /tmp/${APP_NAME,,}.flatpak https://codeberg.org/api/packages/${APP_NAME}/generic/${APP_NAME}/164/${APP_NAME,,}.flatpak
 sudo flatpak install /tmp/${APP_NAME,,}.flatpak
+
+# Install nav Golang-based, command-line navigator for interactive 'ls' workflows from package
+APP_NAME=nav
+APP_GUI_NAME="Golang-based, command-line navigator for interactive 'ls' workflows."
+APP_VERSION=1.0.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/dkaslovsky/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+cd /tmp
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
