@@ -43689,7 +43689,6 @@ APP_VERSION=1.0.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/dkaslovsky/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
-cd /tmp
 sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
