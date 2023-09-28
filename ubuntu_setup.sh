@@ -21704,7 +21704,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install McFly replacement for <Ctrl>+R search of command-line history from package
 APP_NAME=McFly
 APP_GUI_NAME="Replacement for <Ctrl>+R search of command-line history."
-APP_VERSION=0.6.1
+APP_VERSION=0.8.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
