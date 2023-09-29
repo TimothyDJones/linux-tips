@@ -39701,7 +39701,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Oh My Posh"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform tool for customizing command prompt with colors and themes."
-APP_VERSION=18.10.2
+APP_VERSION=18.10.3
 APP_EXT=N/A
 FILE_NAME=posh-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/ohmyposh-dev.mirror/${FILE_NAME}
@@ -43694,3 +43694,19 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install walk cross-platform terminal navigator from package
+APP_NAME=walk
+APP_GUI_NAME="Cross-platform terminal navigator."
+APP_VERSION=1.6.2
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/antonmedv/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp -R /tmp/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+echo 'function lk {' >> $HOME/.bashrc
+echo '  cd "$(/usr/local/bin/'${APP_NAME,,}' "$@")"' >> $HOME/.bashrc
+echo '}' >> $HOME/.bashrc
+source $HOME/.bashrc
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
