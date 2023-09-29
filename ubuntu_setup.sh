@@ -43710,3 +43710,17 @@ echo '}' >> $HOME/.bashrc
 source $HOME/.bashrc
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install eza Rust-based modern replacement for 'ls' command from package
+APP_NAME=eza
+APP_GUI_NAME="Rust-based modern replacement for 'ls' command."
+APP_VERSION=0.13.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/eza-community/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
