@@ -43724,3 +43724,19 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install MultiOS-USB command-line tool to create USB drive to boot multiple OS images from ISO files from package
+# https://github.com/Mexit/MultiOS-USB
+APP_NAME=MultiOS-USB
+APP_GUI_NAME="Command-line tool to create USB drive to boot multiple OS images from ISO files."
+APP_VERSION=0.6.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}_linux_v${APP_VERSION}	
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${APP_NAME}_v${APP_VERSION}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/installer.sh /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
