@@ -9535,16 +9535,20 @@ rm -rf /tmp/${APP_NAME,,}
 # Install VeraCrypt cross-platform disk encryption utility from Debian package
 APP_NAME=VeraCrypt
 APP_GUI_NAME="Cross-platform disk encryption utility."
-APP_VERSION=1.24
+APP_VERSION=1.26.7
 APP_EXT=deb
 source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (eo)$ ]]; then  # 19.10
-	DIST_VERSION=19.10
-elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (di)$ ]]; then  # 19.04
-	DIST_VERSION=19.04
-elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co)$ ]]; then  # 18.04
+if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ki|lu)$ ]]; then 
+	DIST_VERSION=23.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (gr|hi|im|ja)$ ]]; then  # 22.04 - 
+	DIST_VERSION=22.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (co|di|eo|fo)$ ]]; then  # 20.04 - 21.10
+	DIST_VERSION=20.04
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (ya|ze|ar|bi)$ ]]; then  # 18.04 - 19.10
+	APP_VERSION=1.25.4
 	DIST_VERSION=18.04
-elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe|ya|ze|ar)$ ]]; then  # 16.04, 16.10, 17.04, 17.10
+elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (xe)$ ]]; then  # 16.04, 16.10, 17.04, 17.10
+	APP_VERSION=1.24
 	DIST_VERSION=16.04
 fi
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Ubuntu-${DIST_VERSION}-amd64
