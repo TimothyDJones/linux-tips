@@ -43778,7 +43778,8 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install KiCad electronic design automation suite from PPA
-sudo add-apt-repository -y ppa:js-reynaud/kicad-4
+# Install dmtr network diagnostic tool with functionality of ping and traceroute from PPA
+https://github.com/yvs2014/dmtr
+sudo add-apt-repository -y ppa:lrou2014/dmtr
 sudo apt update
-sudo apt install -y kicad
+sudo apt install -y dmtr
