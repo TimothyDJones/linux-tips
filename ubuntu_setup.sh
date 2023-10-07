@@ -43604,7 +43604,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install memgauge command-line real-time physical and swap memory monitor tool from package
 APP_NAME=memgauge
 APP_GUI_NAME="Command-line real-time physical and swap memory monitor tool."
-APP_VERSION=1.1.2
+APP_VERSION=1.1.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}	
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
