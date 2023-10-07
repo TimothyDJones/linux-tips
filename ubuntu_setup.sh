@@ -43783,3 +43783,44 @@ https://github.com/yvs2014/dmtr
 sudo add-apt-repository -y ppa:lrou2014/dmtr
 sudo apt update
 sudo apt install -y dmtr
+
+# Install Hot Footer Java desktop paper-tape style calculator from package
+APP_NAME="Hot Footer"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Java desktop paper-tape style calculator."
+APP_GUI_CATEGORIES="Accessories;"
+APP_GUI_KEYWORDS="Calculator;"
+APP_VERSION=N/A
+APP_EXT=jar
+FILE_NAME=${APP_NAME// /}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/hot-footer/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.gif -J -L https://downloads.sourceforge.net/hot-footer/calc_icon.gif
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -R /tmp/${FILE_NAME}.${APP_EXT} /opt/${_APP_NAME}
+sudo cp -R /tmp/${_APP_NAME}.gif /opt/${_APP_NAME}
+cat > /tmp/${_APP_NAME} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+java -jar /opt/${_APP_NAME}/${FILE_NAME}.${APP_EXT} &
+cd \$HOME
+EOF
+sudo mv /tmp/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/opt/${_APP_NAME}/${_APP_NAME}.gif
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
