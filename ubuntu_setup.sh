@@ -520,7 +520,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=23.2.1
+APP_VERSION=23.2.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -1053,7 +1053,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=15.2.2
+APP_VERSION=15.2.3
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1530,7 +1530,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4630
+APP_VERSION=4.3-4632
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2889,7 +2889,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install QPDF PDF transformation/manipulation program and library from source
 APP_NAME=QPDF
-APP_VERSION=11.6.0
+APP_VERSION=11.6.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y zlib1g-dev libjpeg62-dev
@@ -5188,7 +5188,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform JavaScript/Electron terminal."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Terminal;Shell;"
-APP_VERSION=1.0.200
+APP_VERSION=1.0.201
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64
 sudo apt install -y libfuse2
@@ -21416,7 +21416,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=6.27.0
+APP_VERSION=6.28.1
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -21646,7 +21646,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Interval RPN Calculator console RPN calculator with interval output from package
 APP_NAME=irpn
 APP_GUI_NAME="Console RPN calculator with interval output."
-APP_VERSION=28sep22
+APP_VERSION=7oct23
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/intervalrpncalculator/${FILE_NAME}.${APP_EXT}
@@ -21978,7 +21978,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://github.com/massCodeIO/massCode
 APP_NAME=massCode
 APP_GUI_NAME="Electron-based, cross-platform codes snippet manager/editor."
-APP_VERSION=3.8.0
+APP_VERSION=3.9.0
 APP_EXT=snap
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt-get install -y snapd snapd-xdg-open
@@ -22069,7 +22069,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install RufasSok cross-platform OpenGL Sokoban game from package
 APP_NAME=RufasSok
 APP_GUI_NAME="Cross-platform OpenGL Sokoban game."
-APP_VERSION=23sep23
+APP_VERSION=9oct23
 APP_EXT=7z
 FILE_NAME=as${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -22640,7 +22640,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://sw.kovidgoyal.net/kitty/
 APP_NAME=Kitty
 APP_GUI_NAME="Cross-platform GPU-based terminal."
-APP_VERSION=0.30.0
+APP_VERSION=0.30.1
 APP_EXT=txz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt-get install -y python3-enchant python3-pyqt5 python3-numpy python3-pyqt5.qtsvg
@@ -24267,7 +24267,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install ugrep ultra fast grep with interactive query UI from source
 APP_NAME=ugrep
-APP_VERSION=4.2.0
+APP_VERSION=4.3.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libbz2-dev libz-dev liblzma-dev libpcre2-dev libboost-regex-dev
@@ -24431,7 +24431,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=9.6.2
+APP_VERSION=9.6.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -32004,7 +32004,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Lux
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based command-line video download tool."
-APP_VERSION=0.20.0
+APP_VERSION=0.21.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(getconf LONG_BIT)-bit
 sudo apt-get install -y ffmpeg
@@ -38103,7 +38103,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based Markdown editor with preview."
 APP_GUI_CATEGORIES="Office;Development;Programming;"
 APP_GUI_KEYWORDS="Markdown;Editor;"
-APP_VERSION=3.61.1
+APP_VERSION=3.62.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /-}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
@@ -39843,7 +39843,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based desktop music player."
 APP_GUI_CATEGORIES="Audio;Entertainment;Multimedia;"
 APP_GUI_KEYWORDS="Music;YouTube;"
-APP_VERSION=1.20.0
+APP_VERSION=2.0.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /-}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40906,7 +40906,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=3.4.9
+APP_VERSION=3.4.10
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -41350,7 +41350,7 @@ sudo flatpak install -y flathub dev.geopjr.Tuba
 APP_NAME=xq
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Golang-based command-line XML/HTML extractor and formatter."
-APP_VERSION=1.2.1
+APP_VERSION=1.2.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-code.mirror/${FILE_NAME}.${APP_EXT}
@@ -41759,7 +41759,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Sudoku puzzle assistant."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Sudoku;Puzzle;"
-APP_VERSION=20sep23
+APP_VERSION=8oct23
 APP_EXT=7z
 FILE_NAME=sud${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -42392,7 +42392,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Golang-based multi-protocol download manager."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="Download;Manager;P2P;"
-APP_VERSION=1.3.12
+APP_VERSION=1.3.13
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-web-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -43604,7 +43604,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install memgauge command-line real-time physical and swap memory monitor tool from package
 APP_NAME=memgauge
 APP_GUI_NAME="Command-line real-time physical and swap memory monitor tool."
-APP_VERSION=1.1.5
+APP_VERSION=1.2.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}	
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
