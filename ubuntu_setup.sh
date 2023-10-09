@@ -41350,7 +41350,7 @@ sudo flatpak install -y flathub dev.geopjr.Tuba
 APP_NAME=xq
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Golang-based command-line XML/HTML extractor and formatter."
-APP_VERSION=1.2.1
+APP_VERSION=1.2.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-code.mirror/${FILE_NAME}.${APP_EXT}
