@@ -21646,7 +21646,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Interval RPN Calculator console RPN calculator with interval output from package
 APP_NAME=irpn
 APP_GUI_NAME="Console RPN calculator with interval output."
-APP_VERSION=28sep22
+APP_VERSION=7oct23
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/intervalrpncalculator/${FILE_NAME}.${APP_EXT}
