@@ -43824,3 +43824,20 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
+
+# Install PipeWalker pipe/network puzzle game from source
+APP_NAME=PipeWalker
+APP_GUI_NAME="Pipe/network puzzle game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Puzzle;Games;"
+APP_VERSION=0.9.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential libsdl1.2-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
