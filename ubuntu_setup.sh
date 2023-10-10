@@ -42085,7 +42085,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Flutter-based canonical file manager."
 APP_GUI_CATEGORIES="Accessories;System;Utility;"
 APP_GUI_KEYWORDS="File;Manager;"
-APP_VERSION=0.2.0
+APP_VERSION=0.2.1
 APP_EXT=zip
 FILE_NAME=com.expidusos.file_manager-linux-x64 
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ExpidusOS/file-manager/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
