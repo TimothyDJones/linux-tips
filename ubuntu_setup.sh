@@ -43841,3 +43841,19 @@ cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install sish Golang-based HTTP(S)/WS(S)/TCP tunnels to localhost using only SSH (ngrok alternative) from package
+# https://github.com/antoniomika/sish
+APP_NAME=sish
+APP_GUI_NAME="HTTP(S)/WS(S)/TCP tunnels to localhost using only SSH (ngrok alternative)."
+APP_VERSION=2.10.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
