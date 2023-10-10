@@ -37173,7 +37173,7 @@ sudo rm -rf /tmp/${_APP_NAME}*
 APP_NAME=jless
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Command-line JSON viewer."
-APP_VERSION=0.8.0
+APP_VERSION=0.9.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/PaulJuliusMartinez/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
