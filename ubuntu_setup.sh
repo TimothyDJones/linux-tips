@@ -43857,3 +43857,18 @@ sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install dsq Golang-based command-line tool to run SQL queries against JSON, CSV, Excel and other data formats from package
+# https://github.com/multiprocessio/dsq
+APP_NAME=dsq
+APP_GUI_NAME="Golang-based command-line tool to run SQL queries against JSON, CSV, Excel and other data formats."
+APP_VERSION=0.23.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-linux-x64-v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+unzip /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
