@@ -20715,7 +20715,7 @@ APP_NAME=HttpToolkit
 APP_GUI_NAME="Electron-based cross-platform HTTP(S) debugging proxy, analyzer and client."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="HTTP;Testing;Web Services;"
-APP_VERSION=1.11.0
+APP_VERSION=1.14.5
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}-desktop/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
