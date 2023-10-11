@@ -43887,3 +43887,9 @@ tar xzf /tmp/${FILE_NAME}.${APP_EXT} -p -C /tmp/${FILE_NAME}
 sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Wildcard Rust-based GTK4 regex testing tool from Flatpak
+# https://github.com/fkinoshita/Wildcard
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y com.felipekinoshita.Wildcard
