@@ -20619,7 +20619,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install FSelect console file search tool with SQL syntax from package
 APP_NAME=FSelect
 APP_GUI_NAME="Console file search tool with SQL syntax."
-APP_VERSION=0.8.1
+APP_VERSION=0.8.4
 APP_EXT=gz
 FILE_NAME=${APP_NAME,,}-x86_64-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jhspetersson/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
