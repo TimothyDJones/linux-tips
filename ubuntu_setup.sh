@@ -20658,7 +20658,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install GORSS console-based RSS/Atom feed reader with theming capability from package
 APP_NAME=GORSS
 APP_GUI_NAME="Console-based RSS/Atom feed reader with theming capability."
-APP_VERSION=0.3
+APP_VERSION=0.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Lallassu/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
