@@ -43893,3 +43893,36 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install -y com.felipekinoshita.Wildcard
+
+# Install Soundscape Qt-based desktop open-source ambient sound tool from package
+APP_NAME=Soundscape
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Qt-based desktop open-source ambient sound tool."
+APP_GUI_CATEGORIES="Accessories;"
+APP_GUI_KEYWORDS="Ambient;Sound;Audio;Productivity;"
+APP_VERSION=1.4.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux
+sudo apt install -y libxcb-cursor0
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ddanilov/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/share/icons/hicolor/scalable/apps/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
