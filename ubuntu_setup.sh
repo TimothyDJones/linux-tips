@@ -13964,7 +13964,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install iMath LibreOffice extension for numeric and symbolic calculations inside a Writer document from Debian package
 APP_NAME=iMath
 APP_GUI_NAME="LibreOffice extension for numeric and symbolic calculations inside a Writer document."
-APP_VERSION=2.3.2
+APP_VERSION=2.3.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/ooo-imath/${FILE_NAME}.${APP_EXT}
