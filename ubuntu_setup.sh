@@ -42586,7 +42586,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust/GTK4-based Linux GUI system monitor."
 APP_GUI_CATEGORIES="System;"
 APP_GUI_KEYWORDS="Monitor;"
-APP_VERSION=0.2.0
+APP_VERSION=0.3.3
 APP_EXT=flatpak
 FILE_NAME=${_APP_NAME}
 sudo apt-get install -y flatpak
