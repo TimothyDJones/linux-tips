@@ -38136,7 +38136,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based RSS reader/aggregator."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="RSS;News;Reader;"
-APP_VERSION=1.1.3
+APP_VERSION=1.1.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /.}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
