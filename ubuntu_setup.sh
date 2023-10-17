@@ -42966,7 +42966,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Dysk
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Rust-based command-line tool for showing information about Linux file system."
-APP_VERSION=2.8.1
+APP_VERSION=2.8.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
