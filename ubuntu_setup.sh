@@ -34216,7 +34216,7 @@ APP_GUI_CATEGORIES="Accessories;Science;Education;"
 APP_GUI_KEYWORDS="Calculator;"
 APP_VERSION=4.1.1
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME}-${APP_VERSION}
+FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bornova/${APP_NAME,,}-calculator/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/bornova/${APP_NAME,,}-calculator/master/src/assets/${APP_NAME,,}.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
