@@ -39338,7 +39338,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Curlie Golang-based command-line frontend to curl that offers ease-of-use of HTTPie from package
 APP_NAME=Curlie
 APP_GUI_NAME="Golang-based command-line frontend to curl that offers ease-of-use of HTTPie."
-APP_VERSION=1.6.9
+APP_VERSION=1.7.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rs/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
