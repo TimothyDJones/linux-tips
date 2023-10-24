@@ -42481,7 +42481,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Python/Qt-based recursive search tool that can search inside files."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Search;File Manager;"
-APP_VERSION=1.5.21
+APP_VERSION=1.6.00
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}_linux_x32_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
