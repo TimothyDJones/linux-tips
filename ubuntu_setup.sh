@@ -11109,7 +11109,7 @@ sudo apt-get install -y ${APP_NAME,,}
 # Install OpenTodoList cross-platform, Qt-based "To Do" list and task management from AppImage
 APP_NAME=OpenTodoList
 APP_GUI_NAME="Cross-platform, Qt-based \"To Do\" list and task management."
-APP_VERSION=3.45.2
+APP_VERSION=3.46.1
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
