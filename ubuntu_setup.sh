@@ -32474,7 +32474,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=crabz
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based cross-platform, fast compression and decompression tool."
-APP_VERSION=0.6.3
+APP_VERSION=0.8.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/sstadick/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
