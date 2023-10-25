@@ -32486,7 +32486,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Multitextor cross-platform console-mode text editor from source
 APP_NAME=Multitextor
 APP_GUI_NAME="Cross-platform console-mode text editor."
-APP_VERSION=2.0.0-beta1
+APP_VERSION=2.0.0-beta2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential cmake libncursesw5-dev libgpm-dev gpm
