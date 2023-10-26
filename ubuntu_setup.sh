@@ -42602,18 +42602,16 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Rust-based alternative Discord GUI client."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Discord;"
-APP_VERSION=1.2.1
-APP_EXT=zip
-FILE_NAME=${APP_NAME}_amd64_portable
+APP_VERSION=1.4.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/${APP_NAME,,}/icon?40cb9cdb880ed16f66de51f6c044113ae8c9e92075c55181fd265f8d9edb00ac
 cd /tmp
 mkdir -p /tmp/${FILE_NAME}
-unzip -q /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 sudo chmod +x /opt/${APP_NAME,,}/${APP_NAME,,}
-sudo cp -a -R /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
@@ -42622,7 +42620,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
 Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
-Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Icon=/opt/${APP_NAME,,}/icons/icon_macos.png
 Type=Application
 StartupNotify=true
 Terminal=false
