@@ -42760,7 +42760,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Joker
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Golang-based simple Clojure interpreter, linter and formatter."
-APP_VERSION=1.3.0
+APP_VERSION=1.3.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
