@@ -43700,7 +43700,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install walk cross-platform terminal navigator from package
 APP_NAME=walk
 APP_GUI_NAME="Cross-platform terminal navigator."
-APP_VERSION=1.6.2
+APP_VERSION=1.7.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/antonmedv/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
