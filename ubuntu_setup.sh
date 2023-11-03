@@ -8692,7 +8692,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 # Install gpsim cross-platform simulator for Microchip's PIC microcontrollers from source
 APP_NAME=gpsim
 APP_GUI_NAME="Cross-platform simulator for Microchip's PIC microcontrollers."
-APP_VERSION=0.31.0
+APP_VERSION=0.32.0
 APP_EXT=tar.gz
 sudo apt-get install -y libreadline-dev libpopt-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
