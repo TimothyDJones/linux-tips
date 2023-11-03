@@ -43309,7 +43309,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Tauri-based desktop application for GPT-3.5/4."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="ChatGPT;LLM;"
-APP_VERSION=1.0.0
+APP_VERSION=1.1.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y libfuse2
