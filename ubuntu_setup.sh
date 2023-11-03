@@ -4639,7 +4639,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Crystal Facet UML modeling tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.52.0
+APP_VERSION=1.53.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}-0.x86_64
 sudo apt-get install -y libgdk-pixbuf2.0-0 alien
@@ -9621,7 +9621,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install fd user-friendly alternative to Linux 'find' from package
 APP_NAME=fd
 APP_GUI_NAME="Cross-platform, user-friendly alternative to Linux 'find'."
-APP_VERSION=8.7.0
+APP_VERSION=8.7.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-musl_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21048,7 +21048,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install WoTerm cross-platform Qt-based SSH client/terminal with session manager from package
 APP_NAME=WoTerm
 APP_GUI_NAME="Cross-platform Qt-based SSH client/terminal with session manager."
-APP_VERSION=9.26.3-202301262039
+APP_VERSION=9.29.5-202310291912
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-x86_64-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
