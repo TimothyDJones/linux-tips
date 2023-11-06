@@ -15455,16 +15455,16 @@ cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
 # Install System G minimalist GUI file manager from package
-APP_NAME=System-G
+APP_NAME=SystemG
 APP_GUI_NAME="Minimalist GUI file manager."
-APP_VERSION=2.7.0
-APP_EXT=tgz
-FILE_NAME=${APP_NAME//-/_}_${APP_VERSION}_tar_RHFC27
+APP_VERSION=3.0.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_ubuntu22_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt-get install -y libjpeg62
 sudo ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.1
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/nps-systemg/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}/${APP_NAME//-/_}-${APP_VERSION}/* /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,} << EOF
