@@ -32910,7 +32910,7 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=gping
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based cross-platform, terminal ping with graph of results."
-APP_VERSION=1.14.0
+APP_VERSION=1.15.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-Linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
