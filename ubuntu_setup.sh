@@ -31490,7 +31490,7 @@ APP_NAME=Vieb
 APP_GUI_NAME="Cross-platform, Chromium-based web browser with Vim keybindings."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Vim;Browser;Chromium;Web;"
-APP_VERSION=10.3.0
+APP_VERSION=10.5.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Jelmerro/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
