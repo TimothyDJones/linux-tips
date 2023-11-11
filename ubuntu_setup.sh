@@ -30237,7 +30237,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install fx cross-platform interactive command-line JSON processing tool from package
 APP_NAME=fx
 APP_GUI_NAME="Cross-platform interactive command-line JSON processing tool."
-APP_VERSION=30.1.1
+APP_VERSION=31.0.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/antonmedv/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
