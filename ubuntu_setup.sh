@@ -37492,7 +37492,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Python/Qtwebengine-based web browser."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=3.1
+APP_VERSION=4.0
 APP_EXT=tar.gz
 FILE_NAME=$(echo ${APP_NAME} | tr '[:blank:]' '_')-${APP_VERSION}
 sudo apt install -y python3-pyqt5 python3-pyqt5.qtwebengine
