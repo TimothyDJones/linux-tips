@@ -43495,7 +43495,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Tauri-based minimalist EPUB ebook reader."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="EPUB;Ebook;Reader;"
-APP_VERSION=0.9.1
+APP_VERSION=0.11.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt install -y libfuse2
