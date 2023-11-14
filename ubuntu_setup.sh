@@ -40366,7 +40366,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform multimedia viewer/player."
 APP_VERSION=0.9.0
 APP_EXT=deb
-FILE_NAME=mrv2-${APP_VERSION}-Linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+FILE_NAME=mrv2-v${APP_VERSION}-Linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mrv2/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
