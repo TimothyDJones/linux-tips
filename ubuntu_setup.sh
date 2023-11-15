@@ -32019,7 +32019,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Darktile
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based GPU-rendered terminal for tiling window managers."
-APP_VERSION=0.0.10
+APP_VERSION=0.0.11
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-amd64
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/liamg/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
