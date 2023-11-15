@@ -31476,7 +31476,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=sqlite_bro
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Python/Tk single-file GUI SQLite editor/manager."
-APP_VERSION=0.12.1
+APP_VERSION=0.12.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -yy python3-pip python3-tk
