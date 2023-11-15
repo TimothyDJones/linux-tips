@@ -31674,7 +31674,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based web browser that aims to reduce tab clutter."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Web;Browser;Tabs;"
-APP_VERSION=1.2.25
+APP_VERSION=1.2.29
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/agata/dl.${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31733,26 +31733,6 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
-
-# Install KeePassXC password manager from AppImage
-APP_NAME=KeePassXC
-APP_VERSION=2.6.6
-APP_EXT=tar.xz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
-LIBCRYPT20_VERSION=1.8.5-5ubuntu2
-curl -o /tmp/libgcrypt20-dev.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20-dev_${LIBCRYPT20_VERSION}_${KERNEL_TYPE}.deb
-curl -o /tmp/libgcrypt20.deb -J -L http://mirrors.kernel.org/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20_${LIBCRYPT20_VERSION}_${KERNEL_TYPE}.deb
-sudo gdebi -n /tmp/libgcrypt20.deb
-sudo gdebi -n /tmp/libgcrypt20-dev.deb
-sudo apt-get install -y libcrypto++-dev libxi-dev libmicrohttpd-dev libxtst-dev qttools5-dev-tools cmake libargon2-0-dev libqrencode-dev libsodium-dev libqt5svg5-dev qt5-default
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/keepassxreboot/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
-mkdir build && cd build
-cmake .. -DWITH_TESTS=OFF && make && sudo make install
-cd $HOME
-rm -rf /tmp/${APP_NAME,,}*
 
 # Install Dungeon Crawl: Stone Soup (DCSS) Rogue-like adventure game with tile graphics from source
 APP_NAME="Stone Soup"
