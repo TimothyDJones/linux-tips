@@ -31811,7 +31811,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform desktop personal Kanban tool."
 APP_GUI_CATEGORIES="Accessories;Office;Programming;Development;"
 APP_GUI_KEYWORDS="Kanban;Project;Management;"
-APP_VERSION=0.5.4
+APP_VERSION=0.11.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-setup-${APP_VERSION}-linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/releases/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
