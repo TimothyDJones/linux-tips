@@ -31625,7 +31625,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=Viddy
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Modern Golang-based 'watch' command with time-travel and paging."
-APP_VERSION=0.1.3
+APP_VERSION=0.4.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sachaos/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
