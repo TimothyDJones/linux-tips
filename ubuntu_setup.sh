@@ -31940,7 +31940,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform minimalist time-tracking tool that uses focus window title."
 APP_GUI_CATEGORIES="Accessories;Office;Programming;Development;"
 APP_GUI_KEYWORDS="Time;Tracking;Project;Management;"
-APP_VERSION=3.19.20
+APP_VERSION=3.21.18
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MayGo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
