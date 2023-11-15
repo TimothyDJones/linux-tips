@@ -31526,7 +31526,7 @@ APP_NAME=Logseq
 APP_GUI_NAME="Local-first, non-linear, outliner notebook for personal knowledge management."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Knowledge;Management;"
-APP_VERSION=0.8.10
+APP_VERSION=0.9.20
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
