@@ -301,9 +301,9 @@ sudo cp -R /tmp/martian-mono-0.9.0-otf/*.otf /usr/local/share/fonts/martianmono
 curl -o /tmp/ArrowType-Recursive-1.085.zip -J -L https://downloads.sourceforge.net/recursive-sans-mono.mirror/ArrowType-Recursive-1.085.zip
 mkdir -p /tmp/ArrowType-Recursive-1.085 && unzip /tmp/ArrowType-Recursive-1.085.zip -d /tmp/ArrowType-Recursive-1.085
 sudo cp -R /tmp/ArrowType-Recursive-1.085/Recursive_Code/* /usr/local/share/fonts
-curl -o /tmp/CozetteFonts-v-1-22-2.zip -J -L https://downloads.sourceforge.net/cozette.mirror/CozetteFonts-v-1-22-2.zip
-mkdir -p /tmp/CozetteFonts-v-1-22-2 && unzip /tmp/CozetteFonts-v-1-22-2.zip -d /tmp/CozetteFonts-v-1-22-2
-sudo cp -a -R /tmp/CozetteFonts-v-1-22-2/CozetteFonts/*.ttf /usr/local/share/fonts
+curl -o /tmp/CozetteFonts-v-1-23-0.zip -J -L https://downloads.sourceforge.net/cozette.mirror/CozetteFonts-v-1-23-0.zip
+mkdir -p /tmp/CozetteFonts-v-1-23-0 && unzip /tmp/CozetteFonts-v-1-23-0.zip -d /tmp/CozetteFonts-v-1-23-0
+sudo cp -a -R /tmp/CozetteFonts-v-1-23-0/CozetteFonts/*.ttf /usr/local/share/fonts
 curl -o /tmp/VictorMonoAll.zip -J -L https://rubjo.github.io/victor-mono/VictorMonoAll.zip
 mkdir -p /tmp/VictorMonoAll && unzip /tmp/VictorMonoAll.zip -d /tmp/VictorMonoAll
 sudo cp -R /tmp/VictorMonoAll/TTF/*.ttf /usr/local/share/fonts
