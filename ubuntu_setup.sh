@@ -1127,7 +1127,7 @@ rm -rf /tmp/${APP_NAME}*
 # Reference:  https://hostpresto.com/community/tutorials/install-and-configure-phpwiki-on-ubuntu-16-04/
 APP_NAME=PhpWiki
 APP_GUI_NAME="PHP-based wiki platform with support for multiple databases"
-APP_VERSION=1.6.2
+APP_VERSION=1.6.3
 APP_GUI_CATEGORIES="Accessories;Office;Internet;"
 APP_GUI_KEYWORDS="Wiki;Productivity;"
 APP_EXT=zip
