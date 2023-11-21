@@ -44345,3 +44345,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install SQ data wrangler cross‐platform, Golang-based command-line tool for SQL-like access to structured data from package
+APP_NAME=SQ
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Golang-based command-line tool for SQL-like access to structured data."
+APP_VERSION=0.44.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sq-data-wrangler.mirror/${FILE_NAME}.${APP_EXT}
+mkdir -p /tmp/${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo cp -R /tmp/${FILE_NAME}/completions/${APP_NAME,,}.bash /usr/share/bash-completion/completions
+sudo cp -R /tmp/${FILE_NAME}/manpages/${APP_NAME,,}.* /usr/share/man/man1
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
