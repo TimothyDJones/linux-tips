@@ -13805,7 +13805,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install qBittorrent Qt-based Bittorrent client from source
 APP_NAME=qBittorrent
 APP_GUI_NAME="Qt-based Bittorrent client."
-APP_VERSION=4.6.0
+APP_VERSION=4.6.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y ${APP_NAME,,}
