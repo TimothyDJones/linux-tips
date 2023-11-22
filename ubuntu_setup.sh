@@ -29489,7 +29489,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install PingMe Golang-based multi-service CLI messenger from package
 APP_NAME=PingMe
-APP_VERSION=0.1.7
+APP_VERSION=0.2.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_Linux_$(arch)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kha7iq/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
