@@ -29534,7 +29534,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Gaucho Electron-based one-click task automation tool from Debian package
 APP_NAME=Gaucho
-APP_VERSION=0.10.2
+APP_VERSION=1.1.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/angrykoala/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
