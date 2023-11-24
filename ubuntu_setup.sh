@@ -4888,7 +4888,7 @@ sudo apt install -y kicad
 
 # Install View Your Mind (VYM) Qt mind-mapping tool from source
 APP_NAME=vym
-APP_VERSION=2.9.22
+APP_VERSION=2.9.26
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y build-essential python3-tk qt5-qmake libqt5svg5-dev libqt5scripttools5 qtscript5-dev cmake qttools-dev libdbus-1-dev
