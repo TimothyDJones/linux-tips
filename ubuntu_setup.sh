@@ -36214,7 +36214,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install fq Golang-based command-line tool for working with binary data (media, packet captures, etc.) similar to jq from package
 APP_NAME=fq
 APP_GUI_NAME="fq Golang-based command-line tool for working with binary data (media, packet captures, etc.) similar to jq."
-APP_VERSION=0.8.0
+APP_VERSION=0.9.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-tool.mirror/${FILE_NAME}.${APP_EXT}
