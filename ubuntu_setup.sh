@@ -19640,7 +19640,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Zola standalone command-line CMS and blogging tool built with Rust from package
 APP_NAME=Zola
 APP_GUI_NAME="Standalone command-line CMS and blogging tool built with Rust."
-APP_VERSION=0.8.0
+APP_VERSION=0.17.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/getzola/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
