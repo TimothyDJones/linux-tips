@@ -20048,7 +20048,7 @@ cd $HOME
 # Install ogl pretty Git log printer command-line tool from package
 APP_NAME=ogl
 APP_GUI_NAME="Pretty Git log printer command-line tool from package."
-APP_VERSION=0.0.1
+APP_VERSION=0.0.2
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/onilton/${APP_NAME,,}/releases/download/v${APP_VERSION}/ogl
