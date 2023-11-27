@@ -19947,7 +19947,7 @@ rm -rf /tmp/${FILE_NAME}*
 # Install tre improved version of 'tree' command built with Rust from package
 APP_NAME=tre
 APP_GUI_NAME="Improved version of 'tree' command built with Rust."
-APP_VERSION=0.2.1
+APP_VERSION=0.4.0
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
