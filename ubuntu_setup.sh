@@ -19826,7 +19826,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install FileCtor Javascript-based file inspector with interactive console from Debian package
 APP_NAME=FileCtor
 APP_GUI_NAME="Javascript-based file inspector with interactive console."
-APP_VERSION=1.1.1
+APP_VERSION=1.4.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_EXT}-x64
 curl -o /tmp/${FILE_NAME}.zip -J -L https://github.com/tomaschyly/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.zip
