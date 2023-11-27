@@ -19758,7 +19758,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install ClipIt GTK+ 2/3 minimalist clipboard manager from source
 APP_NAME=ClipIt
 APP_GUI_NAME="GTK+ 2/3 minimalist clipboard manager."
-APP_VERSION=1.4.4
+APP_VERSION=1.4.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libgtk2.0-dev xdotool autotool intltool
