@@ -19514,7 +19514,7 @@ sudo chmod +x /usr/local/bin/${APP_NAME,,}
 # Install Eva shell/command-line calculator REPL implemented in Rust from package
 APP_NAME=Eva
 APP_GUI_NAME="Shell/command-line calculator REPL implemented in Rust."
-APP_VERSION=0.2.5
+APP_VERSION=0.3.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/NerdyPepper/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
