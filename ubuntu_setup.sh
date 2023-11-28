@@ -44395,3 +44395,21 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install MP3 Diags Qt-based GUI MP3 diagnostic tool and tag editor from source
+APP_NAME=MP3Diags
+APP_GUI_NAME="Qt-based GUI MP3 diagnostic tool and tag editor."
+APP_GUI_CATEGORIES="Audio;Multimedia;"
+APP_GUI_KEYWORDS="MP3;"
+APP_VERSION=1.4.01
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y qtbase5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 ../${APP_NAME,,}.pro && make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
