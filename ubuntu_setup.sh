@@ -16589,7 +16589,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Direnv environment switcher for the shell from package
 APP_NAME=Direnv
 APP_GUI_NAME="Environment switcher for the shell."
-APP_VERSION=2.32.2
+APP_VERSION=2.33.0
 APP_EXT=N/A
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=386
