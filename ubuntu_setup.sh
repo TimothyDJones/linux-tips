@@ -25666,7 +25666,7 @@ APP_NAME=pj-net-tools
 APP_GUI_NAME="Java GUI networking utilities with tabbed interface."
 APP_GUI_CATEGORIES="Internet;System;Accessories;"
 APP_GUI_KEYWORDS="Networking;"
-APP_VERSION=1.0.90
+APP_VERSION=1.0.92
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
