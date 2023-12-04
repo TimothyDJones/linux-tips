@@ -41154,7 +41154,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '-' )
 APP_GUI_NAME="Java-based command-line connection manager and file manager for local and remote file systems."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="File;Manager;"
-APP_VERSION=0.5.35
+APP_VERSION=1.7.8
 APP_EXT=tar.gz
 FILE_NAME=${_APP_NAME}-portable-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${_APP_NAME}-io/${_APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
