@@ -40257,7 +40257,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Nanonote
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Qt-based minimalist desktop notepad."
-APP_VERSION=1.4.0
+APP_VERSION=1.4.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/agateau/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -40443,7 +40443,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=ttop
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Nim-based top-like system monitoring tool with TUI, historical data service and notifications."
-APP_VERSION=1.2.5
+APP_VERSION=1.2.7
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/inv2004/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
