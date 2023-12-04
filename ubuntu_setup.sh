@@ -262,7 +262,7 @@ sudo cp -R /tmp/ttf-iosevka-25.0.1/* /usr/local/share/fonts
 curl -o /tmp/CascadiaCode-2111.01.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2111.01.zip
 mkdir -p /tmp/CascadiaCode-2111.01 && unzip /tmp/CascadiaCode-2111.01.zip -d /tmp/CascadiaCode-2111.01
 sudo cp -R /tmp/CascadiaCode-2111.01/ttf/* /usr/local/share/fonts
-curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/releases/download/v0.051/JuliaMono.tar.gz
+curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/releases/download/v0.052/JuliaMono.tar.gz
 mkdir -p /tmp/JuliaMono && tar -xf /tmp/JuliaMono.tar.gz -C /tmp/JuliaMono
 sudo cp -R /tmp/JuliaMono/*.ttf /usr/local/share/fonts
 curl -o /tmp/FantasqueSansMono-NoLoopK.tar.gz -J -L https://github.com/belluzj/fantasque-sans/releases/download/v1.8.0/FantasqueSansMono-NoLoopK.tar.gz
@@ -1421,7 +1421,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Makagiga Java-based PIM/RSS feed reader from package
 APP_NAME=Makagiga
 APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
-APP_VERSION=6.24
+APP_VERSION=6.26
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -3556,7 +3556,7 @@ APP_NAME=Shotcut
 APP_GUI_NAME="Cross-platform non-linear video editor."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=23.11.04
+APP_VERSION=23.11.29
 APP_EXT=txz
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mltframework/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -44492,3 +44492,37 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install AnyType cross-platform, open-source local-first alternative to Notion/Obsidian from AppImage
+APP_NAME=Anytype
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform, open-source local-first alternative to Notion/Obsidian."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="Notepad;"
+APP_VERSION=0.36.0
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/anyproto/${APP_NAME,,}-ts/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/anyproto/${APP_NAME,,}-ts/main/electron/img/icon128x128.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
