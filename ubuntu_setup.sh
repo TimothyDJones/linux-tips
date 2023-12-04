@@ -44557,3 +44557,46 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install ESC cross-platform, TUI-based RPN calculator from package
+APP_NAME=ESC
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform, TUI-based RPN calculator."
+APP_GUI_CATEGORIES="Accessories;Education;"
+APP_GUI_KEYWORDS="Calculator;RPN;"
+APP_VERSION=1.0.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sobjornstad/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p ${HOME}/bin/${APP_NAME,,}
+cp -a /tmp/${FILE_NAME}/* ${HOME}/bin/${APP_NAME,,}
+python3 -m venv ${HOME}/bin/${APP_NAME,,}/.venv
+source ${HOME}/bin/${APP_NAME,,}/.venv/bin/activate
+python3 -m pip install -r ${HOME}/bin/${APP_NAME,,}/requirements.txt
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd \$HOME/bin/${APP_NAME,,}
+source \$HOME/bin/${APP_NAME,,}/.venv/bin/activate
+python3 -m \$HOME/bin/${APP_NAME,,}/${APP_NAME,,}/__main__.py &
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=${HOME}/bin/${APP_NAME,,}/resources/${APP_NAME,,}-rabbit.jpg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
