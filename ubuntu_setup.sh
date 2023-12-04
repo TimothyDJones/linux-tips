@@ -36306,7 +36306,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install transfer.sh Golang-based command-line simple and fast file transfer tool from package
 APP_NAME=transfer.sh
 APP_GUI_NAME="fq Golang-based command-line simple and fast file transfer tool."
-APP_VERSION=1.4.0
+APP_VERSION=1.6.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME//./}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME//./-}.mirror/${FILE_NAME}.${APP_EXT}
