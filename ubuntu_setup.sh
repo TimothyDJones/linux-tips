@@ -40891,7 +40891,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install bfs variant of 'find' command that does breadth-first search (BFS) from source
 APP_NAME=bfs
 APP_GUI_NAME="Variant of 'find' command that does breadth-first search (BFS)."
-APP_VERSION=2.6.3
+APP_VERSION=3.0.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential acl libacl1-dev attr libattr1-dev libcap2-bin libcap-dev libonig-dev
