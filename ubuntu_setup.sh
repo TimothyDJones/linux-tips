@@ -40459,8 +40459,7 @@ APP_VERSION=0.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
-https://github.com/ksharindam/pdfcook/archive/refs/tags/v0.4.tar.gz
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L f/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ksharindam/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}/src
