@@ -40803,7 +40803,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, PyQt-based minimalist image viewer."
 APP_GUI_CATEGORIES="Accessories;Graphics;"
 APP_GUI_KEYWORDS="Image;Graphics;Viewer;"
-APP_VERSION=0.2.0
+APP_VERSION=0.3.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/rbreu/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
