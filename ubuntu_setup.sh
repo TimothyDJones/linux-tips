@@ -41549,7 +41549,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based Ancient Greek-themed role-playing game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="History;Games;RPG;"
-APP_VERSION=1.3.7
+APP_VERSION=1.4.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/V-Paranoiaque/${APP_NAME// /-}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
