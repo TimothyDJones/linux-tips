@@ -16879,7 +16879,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Hexyl Rust-based hex viewer for the terminal from package
 APP_NAME=Hexyl
 APP_GUI_NAME="Rust-based hex viewer for the terminal."
-APP_VERSION=0.13.1
+APP_VERSION=0.14.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
