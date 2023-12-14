@@ -33003,7 +33003,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Qt-based OCR powered screen-capture tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="OCR;Screen Capture;"
-APP_VERSION=0.4.4
+APP_VERSION=0.5.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dynobo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
