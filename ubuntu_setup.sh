@@ -34216,7 +34216,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Electron-based notepad-style calculator."
 APP_GUI_CATEGORIES="Accessories;Science;Education;"
 APP_GUI_KEYWORDS="Calculator;"
-APP_VERSION=4.3.2
+APP_VERSION=4.3.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bornova/${APP_NAME,,}-calculator/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
