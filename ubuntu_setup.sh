@@ -42557,21 +42557,39 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Mission Center Rust/GTK4-based Linux GUI system monitor from Flatpak
+# Install Mission Center Rust/GTK4-based Linux GUI system monitor from AppImage
 APP_NAME="Mission Center"
-_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-' )
 APP_GUI_NAME="Rust/GTK4-based Linux GUI system monitor."
 APP_GUI_CATEGORIES="System;"
 APP_GUI_KEYWORDS="Monitor;"
-APP_VERSION=0.3.3
-APP_EXT=flatpak
-FILE_NAME=${_APP_NAME}
-sudo apt-get install -y flatpak
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/mission-center-devs/${_APP_NAME}/-/jobs/4614100203/artifacts/raw/flatpak/${FILE_NAME}.${APP_EXT}
-sudo flatpak install /tmp/${FILE_NAME}.${APP_EXT}
+APP_VERSION=0.4.1
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME// /}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+sudo apt-get install -y libfuse
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/mission-center-devs/${_APP_NAME}/-/jobs/5717234189/artifacts/raw/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.svg -J -L https://gitlab.com/mission-center-devs/${_APP_NAME}/-/raw/main/data/icons/hicolor/scalable/apps/io.missioncenter.MissionCenter.svg
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.svg /usr/local/share/icons/${_APP_NAME}.svg
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
-sudo rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
+rm -rf /tmp/${_APP_NAME}*
 
 # Install Dorion cross-platform Rust-based alternative Discord GUI client from package
 APP_NAME=Dorion
