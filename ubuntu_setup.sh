@@ -42563,11 +42563,11 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-' )
 APP_GUI_NAME="Rust/GTK4-based Linux GUI system monitor."
 APP_GUI_CATEGORIES="System;"
 APP_GUI_KEYWORDS="Monitor;"
-APP_VERSION=0.4.1
+APP_VERSION=0.4.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt-get install -y libfuse
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/mission-center-devs/${_APP_NAME}/-/jobs/5717234189/artifacts/raw/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/mission-center-devs/${_APP_NAME}/-/jobs/5758204276/artifacts/raw/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${_APP_NAME}.svg -J -L https://gitlab.com/mission-center-devs/${_APP_NAME}/-/raw/main/data/icons/hicolor/scalable/apps/io.missioncenter.MissionCenter.svg
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
