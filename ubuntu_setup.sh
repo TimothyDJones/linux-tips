@@ -27060,7 +27060,7 @@ rm -rf /tmp/${_APP_NAME}*
 # Install Restish Golang-based command-line REST API client from package
 # https://rest.sh
 APP_NAME=Restish
-APP_VERSION=0.17.0
+APP_VERSION=0.20.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/danielgtaylor/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
