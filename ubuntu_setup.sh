@@ -26458,7 +26458,7 @@ APP_NAME=JavaMod
 APP_GUI_NAME="Minimalist Java-based audio player with support for modfiles."
 APP_GUI_CATEGORIES="Multimedia;"
 APP_GUI_KEYWORDS="Audio;Player;"
-APP_VERSION=2.9
+APP_VERSION=3.7.3
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
