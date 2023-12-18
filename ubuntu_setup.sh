@@ -15417,16 +15417,16 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Leibnitz 3D graphing calculator from package
 APP_NAME=Leibnitz
 APP_GUI_NAME="3D graphing calculator."
-APP_VERSION=3.0.2
-APP_EXT=tgz
-FILE_NAME=${APP_NAME}_${APP_VERSION}_tar_RHFC27
+APP_VERSION=3.0.4
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_ubuntu22_amd64
 sudo apt-get install -y libjpeg62
 sudo ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.1
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}/${APP_NAME}-${APP_VERSION}/* /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
