@@ -15457,7 +15457,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install System G minimalist GUI file manager from package
 APP_NAME=SystemG
 APP_GUI_NAME="Minimalist GUI file manager."
-APP_VERSION=3.0.2
+APP_VERSION=3.0.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_ubuntu22_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt-get install -y libjpeg62
