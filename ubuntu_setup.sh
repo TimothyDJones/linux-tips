@@ -37359,7 +37359,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="JavaScript/Electron desktop password manager."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Password;Security;Manager;"
-APP_VERSION=2.23.1
+APP_VERSION=2.24.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}-desktop/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
