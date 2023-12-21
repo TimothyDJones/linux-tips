@@ -37893,7 +37893,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '.')
 APP_GUI_NAME="Cross-platform MS Project-style GUI project management tool."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="Project;Management;"
-APP_VERSION=0.7.0
+APP_VERSION=0.7.3
 APP_EXT=zip
 FILE_NAME=ProjectPlan-v${APP_VERSION}.linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/countincognito/${APP_NAME// /.}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
