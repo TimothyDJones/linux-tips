@@ -37976,7 +37976,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform collection of offline-first developer tools."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Utilities;"
-APP_VERSION=1.7.0
+APP_VERSION=1.9.1
 APP_EXT=AppImage
 FILE_NAME=dev-tools_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/fosslife/${_APP_NAME}/releases/download/${APP_NAME//-X/}v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
