@@ -38088,7 +38088,7 @@ rm -rf /tmp/${APP_NAME// /-}* /tmp/${_APP_NAME}*
 APP_NAME=fu
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based modern du replacement."
-APP_VERSION=1.0.0
+APP_VERSION=1.0.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Angelmmiguel/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
