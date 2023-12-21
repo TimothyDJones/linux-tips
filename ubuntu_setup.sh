@@ -37816,7 +37816,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Minimalist Qt-based image viewer/editor."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Graphics;Viewer;Editor;"
-APP_VERSION=1.0.3-2
+APP_VERSION=1.0.5-3
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}_${APP_VERSION}_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/aphototool/${APP_NAME// /-}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
