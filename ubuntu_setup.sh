@@ -38764,7 +38764,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Java-based music editor that can display, transpose and print song sheets containing chords and lyrics."
 APP_GUI_CATEGORIES="Entertainment;Audio;Video;Education;"
 APP_GUI_KEYWORDS="Editor;Music;"
-APP_VERSION=10.11
+APP_VERSION=10.12
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
