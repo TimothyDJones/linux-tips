@@ -42838,9 +42838,9 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform enhanced dictionary tool with built-in OCR capability."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Dictionary;OCR;"
-APP_VERSION=3E1FD
+APP_VERSION=3E1FE
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME}++OCR-${APP_VERSION}-Qt-4.8.7-p5-Debian-12-x64-20231120
+FILE_NAME=${APP_NAME}++OCR-${APP_VERSION}-Qt-4.8.7-p5-Debian-12-x64-20231213
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-pro/${FILE_NAME}.${APP_EXT}
 cd /tmp
 sudo tar -xf /tmp/${FILE_NAME}.${APP_EXT}
