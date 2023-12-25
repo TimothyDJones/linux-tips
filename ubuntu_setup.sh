@@ -1798,7 +1798,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Worker File Manager (For AVFS support install AVFS above.)
 APP_NAME=worker
-APP_VERSION=4.12.1
+APP_VERSION=5.0.0
 APP_EXT=tar.zst
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y liblua5.3-dev zstd
