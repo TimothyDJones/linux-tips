@@ -10082,7 +10082,7 @@ sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 # Install FreeBASIC cross-platform BASIC compiler, with syntax similar MS-QuickBASIC and advanced features from package
 APP_NAME=FreeBASIC
 APP_GUI_NAME="Cross-platform BASIC compiler, with syntax similar MS-QuickBASIC and advanced features."
-APP_VERSION=1.10.0
+APP_VERSION=1.10.1
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
