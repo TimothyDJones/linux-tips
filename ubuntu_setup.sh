@@ -42211,7 +42211,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 APP_NAME="Notepad--"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Notepad++ text editor clone."
-APP_VERSION=2.11.0.0
+APP_VERSION=2.12.0.0
 APP_EXT=deb
 FILE_NAME=com.hmja.notepad_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/notepad-dd/${FILE_NAME}.${APP_EXT}
