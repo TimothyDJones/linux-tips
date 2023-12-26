@@ -262,7 +262,7 @@ sudo cp -R /tmp/ttf-iosevka-25.0.1/* /usr/local/share/fonts
 curl -o /tmp/CascadiaCode-2111.01.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2111.01.zip
 mkdir -p /tmp/CascadiaCode-2111.01 && unzip /tmp/CascadiaCode-2111.01.zip -d /tmp/CascadiaCode-2111.01
 sudo cp -R /tmp/CascadiaCode-2111.01/ttf/* /usr/local/share/fonts
-curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/releases/download/v0.052/JuliaMono.tar.gz
+curl -o /tmp/JuliaMono.tar.gz -J -L https://github.com/cormullion/juliamono/releases/download/v0.053/JuliaMono.tar.gz
 mkdir -p /tmp/JuliaMono && tar -xf /tmp/JuliaMono.tar.gz -C /tmp/JuliaMono
 sudo cp -R /tmp/JuliaMono/*.ttf /usr/local/share/fonts
 curl -o /tmp/FantasqueSansMono-NoLoopK.tar.gz -J -L https://github.com/belluzj/fantasque-sans/releases/download/v1.8.0/FantasqueSansMono-NoLoopK.tar.gz
