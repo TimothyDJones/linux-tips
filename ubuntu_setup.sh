@@ -40395,7 +40395,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=nFPM
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Golang-based simple, no-dependencies, deb, rpm, apk, and Arch Linux packager."
-APP_VERSION=2.33.0
+APP_VERSION=2.35.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
