@@ -6017,7 +6017,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install NGSpice electronic circuit simulation tool from source
 APP_NAME=NGSpice
 APP_GUI_NAME="Classic electronic circuit simulation tool."
-APP_VERSION=41
+APP_VERSION=42
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libx11-dev libxaw7-dev libreadline6-dev
