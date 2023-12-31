@@ -21834,7 +21834,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install bandwhich Rust-based terminal tool to check what is taking up your bandwidth from package
 APP_NAME=bandwhich
 APP_GUI_NAME="Rust-based terminal tool to check what is taking up your bandwidth."
-APP_VERSION=0.21.0
+APP_VERSION=0.21.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/imsnif/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
