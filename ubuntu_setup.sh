@@ -44830,7 +44830,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Babyshark
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Terminal-based packet sniffer."
-APP_VERSION=1.1
+APP_VERSION=1.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
