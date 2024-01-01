@@ -26131,7 +26131,7 @@ APP_NAME=JWargames
 APP_GUI_NAME="Simple Java-based games package."
 APP_GUI_CATEGORIES="Games;Entertainment"
 APP_GUI_KEYWORDS="Games;"
-APP_VERSION=1.0.5
+APP_VERSION=1.0.7
 APP_EXT=jar
 FILE_NAME=${APP_NAME}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
