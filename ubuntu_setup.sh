@@ -30803,7 +30803,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Contour modern C++ terminal with graphics support from Debian package
 APP_NAME=Contour
-APP_VERSION=0.4.0.6245
+APP_VERSION=0.4.1.6292
 APP_EXT=deb
 source /etc/lsb-release
 # If Ubuntu version is above 18.04 (Bionic) up to 19.10 (Eoan), then we use 18.04.
