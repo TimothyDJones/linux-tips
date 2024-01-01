@@ -34940,7 +34940,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform GUI for file transfer over ad hoc networking."
 APP_GUI_CATEGORIES="Internet;Accessories;System;"
 APP_GUI_KEYWORDS="File;Transfer;"
-APP_VERSION=7.1.0
+APP_VERSION=8.0.1
 APP_EXT=AppImage
 FILE_NAME=linux_${_APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/spieglt/${_APP_NAME//-/}/releases/download/v${APP_VERSION//.0/}/${FILE_NAME}.${APP_EXT}
