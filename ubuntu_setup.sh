@@ -1892,7 +1892,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.61.104
+APP_VERSION=1.61.109
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -7525,7 +7525,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install usql cross-platform command-line SQL client in Go
 APP_NAME=usql
 APP_GUI_NAME="Cross-platform command-line SQL client in Go."
-APP_VERSION=0.17.0
+APP_VERSION=0.17.2
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -25893,7 +25893,7 @@ APP_NAME=pj-ftp-server
 APP_GUI_NAME="Cross-platform, portable Java-based FTP server tool."
 APP_GUI_CATEGORIES="Networking;Internet"
 APP_GUI_KEYWORDS="FTP;"
-APP_VERSION=1.0.99
+APP_VERSION=1.0.100
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v.${APP_VERSION}_bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -31144,7 +31144,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Procs Rust-based modern replacement for 'ps' from package
 APP_NAME=Procs
 APP_GUI_NAME="Rust-based modern replacement for 'ps'."
-APP_VERSION=0.14.0
+APP_VERSION=0.14.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-lnx
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dalance/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37391,7 +37391,7 @@ APP_NAME=Encrypt0r
 APP_GUI_NAME="Cross-platform Electron-based GUI file encryption/decryption tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Encryption;Security;"
-APP_VERSION=3.11.62
+APP_VERSION=3.11.63
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kunalnagar/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37428,7 +37428,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based desktop 'to do' manager."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="To Do;"
-APP_VERSION=8.1.3
+APP_VERSION=9.0.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/davidsmorais/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37651,7 +37651,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Java-based smart, light, powerful text editor."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=380rc4
+APP_VERSION=384
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/neoedmund/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37816,7 +37816,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Minimalist Qt-based image viewer/editor."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Graphics;Viewer;Editor;"
-APP_VERSION=1.0.3-2
+APP_VERSION=1.0.5-3
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}_${APP_VERSION}_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/aphototool/${APP_NAME// /-}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37861,7 +37861,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=q
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based tiny command line DNS client."
-APP_VERSION=0.8.2
+APP_VERSION=0.19.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/natesales/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37893,7 +37893,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '.')
 APP_GUI_NAME="Cross-platform MS Project-style GUI project management tool."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="Project;Management;"
-APP_VERSION=0.7.0
+APP_VERSION=0.7.3
 APP_EXT=zip
 FILE_NAME=ProjectPlan-v${APP_VERSION}.linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/countincognito/${APP_NAME// /.}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37976,7 +37976,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform collection of offline-first developer tools."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Utilities;"
-APP_VERSION=1.7.0
+APP_VERSION=1.9.1
 APP_EXT=AppImage
 FILE_NAME=dev-tools_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/fosslife/${_APP_NAME}/releases/download/${APP_NAME//-X/}v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38088,7 +38088,7 @@ rm -rf /tmp/${APP_NAME// /-}* /tmp/${_APP_NAME}*
 APP_NAME=fu
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based modern du replacement."
-APP_VERSION=1.0.0
+APP_VERSION=1.0.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Angelmmiguel/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38204,7 +38204,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Qt-based minimalist mind map, diagram, and note-taking tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Mind;Map;Notepad;Productivity;"
-APP_VERSION=3.6.1
+APP_VERSION=4.3.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/juzzlin/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38237,7 +38237,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="GUI and command-line tool for displaying CPU and other system information."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="CPU;System;"
-APP_VERSION=4.4.0
+APP_VERSION=5.0.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/X0rg/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38764,7 +38764,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Java-based music editor that can display, transpose and print song sheets containing chords and lyrics."
 APP_GUI_CATEGORIES="Entertainment;Audio;Video;Education;"
 APP_GUI_KEYWORDS="Editor;Music;"
-APP_VERSION=10.11
+APP_VERSION=10.12
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -41140,7 +41140,7 @@ sudo apt-get install nuitka
 APP_NAME="Pass Simple"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Qt-based GUI for standard Unix/Linux password store."
-APP_VERSION=0.143
+APP_VERSION=0.144
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
@@ -42291,7 +42291,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=jql
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Rust-based, JSON Query Language tool."
-APP_VERSION=7.1.0
+APP_VERSION=7.1.2
 APP_EXT=tar.gz
 BASE_ARCH=
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
@@ -43926,7 +43926,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Online service aggregation tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Productivity;"
-APP_VERSION=6.5.2
+APP_VERSION=6.6.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-linux-Portable-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ferdium/${APP_NAME,,}-app/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -43959,7 +43959,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based cross-platform file manager."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="File;Manager;"
-APP_VERSION=0.1.0
+APP_VERSION=0.1.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/spacedriveapp/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
