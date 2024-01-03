@@ -43523,7 +43523,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Qt-based minimalist image viewer with some basic editing features."
 APP_GUI_CATEGORIES="Accessories;Graphics;"
 APP_GUI_KEYWORDS="Graphics;Viewer;Editor;"
-APP_VERSION=1.0.0
+APP_VERSION=1.1.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}_v${APP_VERSION}_Qt5-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y libfuse2
