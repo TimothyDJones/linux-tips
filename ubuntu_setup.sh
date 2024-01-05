@@ -16669,7 +16669,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Netsurf minimalist GTK web browser from source
 APP_NAME=Netsurf
 APP_GUI_NAME="Minimalist GTK web browser."
-APP_VERSION=3.10
+APP_VERSION=3.11
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-all-${APP_VERSION}
 sudo apt-get install -y build-essential pkg-config gperf libcurl3-dev libpng-dev libjpeg-dev libgtk-3-dev librsvg2-dev libssl-dev bison flex
