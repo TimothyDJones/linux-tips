@@ -33106,7 +33106,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=btop
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Minimalist command-line resource monitor tool."
-APP_VERSION=1.2.13
+APP_VERSION=1.3.0
 APP_EXT=tbz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/aristocratos/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
