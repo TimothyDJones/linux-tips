@@ -32968,7 +32968,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Qt-based cross-platform color palette generator."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Color;Editor;"
-APP_VERSION=2.8.40
+APP_VERSION=2.8.42
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}_v${APP_VERSION}_en_linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
