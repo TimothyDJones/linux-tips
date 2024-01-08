@@ -26247,7 +26247,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Rechne command-line scientific calculator from package
 APP_NAME=Rechne
 APP_GUI_NAME="Command-line scientific calculator."
-APP_VERSION=3.0
+APP_VERSION=3.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}.exe-${APP_VERSION}-linux64-en
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-exe/${FILE_NAME}.${APP_EXT}
