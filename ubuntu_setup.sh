@@ -9105,7 +9105,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install BlueJ educational Java IDE from package
 APP_NAME=BlueJ
 APP_GUI_NAME="Cross-platform educational Java IDE."
-APP_VERSION=5.0.3
+APP_VERSION=5.2.1
 APP_EXT=deb
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L http://www.${APP_NAME,,}.org/download/files/${APP_NAME}-linux-${APP_VERSION//./}.${APP_EXT}
 sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
