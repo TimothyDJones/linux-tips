@@ -44986,3 +44986,20 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Rymdport cross-platform, Golang-based GUI for magic-wormhole for P2P file transer from package
+APP_NAME=Rymdport
+APP_GUI_NAME="Cross-platform, Golang-based GUI for magic-wormhole for P2P file transer."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="P2P;"
+APP_VERSION=3.5.2
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Jacalz/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+tar xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
+cd /tmp/${FILE_NAME}
+sudo make install /tmp/${FILE_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
