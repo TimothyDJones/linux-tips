@@ -2889,7 +2889,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install QPDF PDF transformation/manipulation program and library from source
 APP_NAME=QPDF
-APP_VERSION=11.7.0
+APP_VERSION=11.8.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y zlib1g-dev libjpeg62-dev
