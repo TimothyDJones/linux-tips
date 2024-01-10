@@ -45003,3 +45003,19 @@ cd /tmp/${FILE_NAME}
 sudo make install /tmp/${FILE_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install tmon minimalist system monitor tool for Linux from source
+APP_NAME=tmon
+APP_GUI_NAME="Minimalist system monitor tool for Linux."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Monitor;"
+APP_VERSION=main
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+sudo apt-get install -y libncurses-dev
+cd /tmp
+git clone https://github.com/pondda/${APP_NAME,,}.git
+cd /tmp/${APP_NAME,,}
+make && sudo make install
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
