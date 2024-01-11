@@ -24306,7 +24306,7 @@ APP_NAME=Obsidian
 APP_GUI_NAME="Cross-platform knowledge-base tool using Markdown files."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Markdown;Editor;"
-APP_VERSION=0.12.15
+APP_VERSION=1.5.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/obsidianmd/${APP_NAME,,}-releases/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
