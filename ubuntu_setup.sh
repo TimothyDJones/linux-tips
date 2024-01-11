@@ -45019,3 +45019,17 @@ cd /tmp/${APP_NAME,,}
 make && sudo make install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install vbridge minimalist X/Windows remote access tool from source
+APP_NAME=vbridge
+APP_GUI_NAME="Minimalist X/Windows remote access tool."
+APP_VERSION=master
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential gcc make libcap-dev libkrb5-dev libpam0g-dev libssl-dev libx11-dev libxdamage-dev libxext-dev libxfixes-dev libxi-dev libxrandr-dev libxrender-dev libxtst-dev
+cd /tmp
+git clone https://github.com/angt/${APP_NAME,,}.git
+cd /tmp/${APP_NAME,,}
+make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
