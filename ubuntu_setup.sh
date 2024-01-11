@@ -18610,10 +18610,10 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install jMathPaper Java-based notepad calculator from package
 APP_NAME=jMathPaper
 APP_GUI_NAME="Java-based notepad calculator."
-APP_VERSION=1.3
+APP_VERSION=1.3.1
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-full
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/RobertZenz/${APP_NAME}/uploads/ac8f51c915d564128d9c1692f05db101/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/RobertZenz/${APP_NAME}/uploads/3cff36ff12286098b47b08cc23018b68/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
 sudo chmod a+w /opt/${APP_NAME,,}
