@@ -43284,7 +43284,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install YouTubeDR Golang-based command-line YouTube video downloader from package
 APP_NAME=YouTubeDR
 APP_GUI_NAME="Golang-based command-line YouTube video downloader."
-APP_VERSION=2.8.3
+APP_VERSION=2.10.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kkdai/youtube/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
