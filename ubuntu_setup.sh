@@ -25973,7 +25973,7 @@ APP_NAME=AnyMeal
 APP_GUI_NAME="Qt/SQLite-based desktop recipe tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Recipe;"
-APP_VERSION=1.14
+APP_VERSION=1.23
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential flex googletest librecode-dev libsqlite3-dev qt5-default qttools5-dev-tools
