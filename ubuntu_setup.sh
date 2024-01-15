@@ -43581,7 +43581,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Differential RPN Calculator (DRPN) command-line interactive RPN calculator with error estimate from package
 APP_NAME=DRPN
 APP_GUI_NAME="Command-line interactive RPN calculator with error estimate."
-APP_VERSION=15sep23
+APP_VERSION=15oct23
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}${APP_VERSION}	
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/differential-calculator/${FILE_NAME}.${APP_EXT}
