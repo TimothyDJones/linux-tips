@@ -45142,3 +45142,26 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install qemu_mgr minimalist command-line manager for QEMU from source
+APP_NAME=qemu_mgr
+APP_GUI_NAME="Minimalist command-line manager for QEMU."
+APP_VERSION=1.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential gcc make qemu-system
+cd /tmp
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ColumPaget/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/libUseful-5
+configure && make && sudo make install
+sudo cp -a libUseful-5.8.* /usr/lib
+sudo ln -s -f /usr/lib/libUseful-5.8.so /usr/lib/libUseful-5.so
+sudo ln -s -f /usr/lib/libUseful-5.8.so /usr/lib/libUseful.so
+sudo ln -s -f /usr/lib/libUseful-5.8.a /usr/lib/libUseful-5.a
+sudo ln -s -f /usr/lib/libUseful-5.8.a /usr/lib/libUseful.a
+cd /tmp/${FILE_NAME}
+configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
