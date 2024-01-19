@@ -42290,7 +42290,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=jql
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Rust-based, JSON Query Language tool."
-APP_VERSION=7.1.2
+APP_VERSION=7.1.3
 APP_EXT=tar.gz
 BASE_ARCH=
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
