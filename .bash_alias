@@ -47,6 +47,7 @@ function extract() {
 
 # Colorize output of man command
 # http://tuxdiary.com/2016/06/16/color-man-pages/#more-27324
+# https://hunden.linuxkompis.se/2021/02/17/coloured-manual-pages.html
 function man() {
     env \
     LESS_TERMCAP_mb=$'\e[01;31m' \
