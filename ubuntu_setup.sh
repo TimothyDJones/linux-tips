@@ -41139,7 +41139,7 @@ sudo apt-get install nuitka
 APP_NAME="Pass Simple"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Qt-based GUI for standard Unix/Linux password store."
-APP_VERSION=0.157
+APP_VERSION=0.158
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
