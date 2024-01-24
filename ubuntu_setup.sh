@@ -1466,7 +1466,7 @@ sudo apt-get install -y et
 
 # Install Gantt Project project management tool from Debian package
 APP_NAME=GanttProject
-APP_VERSION=3.2.3200
+APP_VERSION=3.3.3300
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -2185,12 +2185,12 @@ mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 
-# Install WebTareas PHP/MySQL-based project management and online office tool from package.
+# Install WebTareas PHP/MySQL-based project management and online office tool	 from package.
 APP_NAME=webTareas
 APP_GUI_NAME="PHP/MySQL-based project management and online office tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project Management;Office;"
-APP_VERSION=2.5
+APP_VERSION=2.5p1
 APP_EXT=zip
 DB_NAME=webtareas
 DB_USER=webtareas
@@ -7054,7 +7054,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Miller text processor which combines functions of awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON from package
 APP_NAME=miller
 APP_GUI_NAME="Text processor which combines functions of awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON."
-APP_VERSION=6.10.0
+APP_VERSION=6.11.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johnkerl/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -15513,7 +15513,7 @@ docker run hello-world  # Confirm Docker installation.
 # Install Docker Compose command-line utility for multi-container Docker applications from package
 APP_NAME=Docker-Compose
 APP_GUI_NAME="Command-line utility for multi-container Docker applications."
-APP_VERSION=2.24.1
+APP_VERSION=2.24.2
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -22069,7 +22069,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install RufasSok cross-platform OpenGL Sokoban game from package
 APP_NAME=RufasSok
 APP_GUI_NAME="Cross-platform OpenGL Sokoban game."
-APP_VERSION=9oct23
+APP_VERSION=24jan24
 APP_EXT=7z
 FILE_NAME=as${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -23428,7 +23428,7 @@ APP_NAME=GitQlient
 APP_GUI_NAME="Qt-based GUI Git client."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Git;Version Control;"
-APP_VERSION=1.5.0
+APP_VERSION=1.6.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/francescmm/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -28894,7 +28894,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Sleek cross-platform todo.txt-format to do application from Debian package
 APP_NAME=Sleek
-APP_VERSION=2.0.7
+APP_VERSION=2.0.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -28972,7 +28972,7 @@ APP_NAME=WindTerm
 APP_GUI_NAME="Cross-platform SSH/Telnet/Serial/Shell/Sftp client with Vim keybindings."
 APP_GUI_CATEGORIES="Development;Internet;"
 APP_GUI_KEYWORDS="SSH;Shell;Networking"
-APP_VERSION=2.5.0
+APP_VERSION=2.6.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}_${APP_VERSION}_Linux_Portable_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kingToolbox/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38267,7 +38267,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=rqlite
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Distributed version of SQLite database."
-APP_VERSION=8.16.8
+APP_VERSION=8.17.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40365,7 +40365,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=mrViewer2
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform multimedia viewer/player."
-APP_VERSION=1.0.1
+APP_VERSION=1.0.2
 APP_EXT=deb
 FILE_NAME=mrv2-v${APP_VERSION}-Linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mrv2/${FILE_NAME}.${APP_EXT}
@@ -41005,7 +41005,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based notepad and personal knowledge-management tool with markdown support."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Markdown;"
-APP_VERSION=2.12.3
+APP_VERSION=2.12.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -41139,7 +41139,7 @@ sudo apt-get install nuitka
 APP_NAME="Pass Simple"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Qt-based GUI for standard Unix/Linux password store."
-APP_VERSION=0.157
+APP_VERSION=0.159
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
@@ -43232,7 +43232,8 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Java-based RSS feed reader inspired by Google Reader."
 APP_GUI_CATEGORIES="Internet;Networking;"
 APP_GUI_KEYWORDS="RSS;News;Aggregator;"
-APP_VERSION=4.0.0
+APP_VERSION=4.2.0
+APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/${APP_NAME,,}/icon?b3d93f25aea7c78dc0210242a097f81192634171820b75ffe9ad593b2e37737d
@@ -43837,7 +43838,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://github.com/antoniomika/sish
 APP_NAME=sish
 APP_GUI_NAME="HTTP(S)/WS(S)/TCP tunnels to localhost using only SSH (ngrok alternative)."
-APP_VERSION=2.10.1
+APP_VERSION=2.12.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -45039,7 +45040,7 @@ APP_NAME=jDiskMark
 APP_GUI_NAME="Cross-platform Java-based GUI disk benchmarking tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Disk;Performance;"
-APP_VERSION=0.5-beta-1
+APP_VERSION=0.5-beta-2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -45210,6 +45211,40 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install IPFS Desktop cross-platform, Electron-based IPFS desktop client from AppImage
+APP_NAME="IPFS Desktop"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Electron-based IPFS desktop client."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="IPFS;P2P;"
+APP_VERSION=0.33.0
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME=${_APP_NAME}-${APP_VERSION}-linux-x86_64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://a.fsdn.com/allura/mirror/${_APP_NAME}/icon?5d36763ecb910114c93caa234ec4a39743445a4c61f4172f6740509e13683414
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
 
 # Install qemu_mgr minimalist command-line manager for QEMU from source
 APP_NAME=qemu_mgr
