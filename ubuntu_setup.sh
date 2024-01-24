@@ -7054,7 +7054,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Miller text processor which combines functions of awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON from package
 APP_NAME=miller
 APP_GUI_NAME="Text processor which combines functions of awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON."
-APP_VERSION=6.10.0
+APP_VERSION=6.11.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johnkerl/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
