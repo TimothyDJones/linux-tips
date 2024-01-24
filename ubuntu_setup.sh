@@ -23428,7 +23428,7 @@ APP_NAME=GitQlient
 APP_GUI_NAME="Qt-based GUI Git client."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Git;Version Control;"
-APP_VERSION=1.5.0
+APP_VERSION=1.6.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/francescmm/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
