@@ -28534,7 +28534,7 @@ APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Editor;"
 APP_VERSION=3.6.2
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-U20.04-${APP_VERSION}-${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}-U22.04-${APP_VERSION}-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
