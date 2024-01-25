@@ -31793,7 +31793,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install dateutils command-line date and time utilities, including calculation and conversion, from source
 APP_NAME=dateutils
 APP_GUI_NAME="Command-line date and time utilities, including calculation and conversion."
-APP_VERSION=0.4.10
+APP_VERSION=0.4.11
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
