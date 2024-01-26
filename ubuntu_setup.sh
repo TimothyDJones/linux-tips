@@ -41069,7 +41069,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:blank:]' '.')
 APP_GUI_NAME="Cross-platform tool for learning Electron development."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Electron;JavaScript;"
-APP_VERSION=0.35.0
+APP_VERSION=0.36.0
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/electron-fiddle.mirror/${FILE_NAME}.${APP_EXT}
