@@ -280,7 +280,7 @@ sudo cp -R /tmp/courier-prime-code/ttf/* /usr/local/share/fonts
 curl -o /tmp/bitmap-fonts-master.zip -J -L https://github.com/Tecate/bitmap-fonts/archive/refs/heads/master.zip
 mkdir -p /tmp/bitmap-fonts-master && unzip /tmp/bitmap-fonts-master.zip -d /tmp/bitmap-fonts-master
 sudo cp -R /tmp/bitmap-fonts-master/bitmap/* /usr/local/share/fonts
-curl -o /tmp/IBM_Plex_TrueType.zip -J -L https://github.com/IBM/plex/releases/download/v6.1.0/TrueType.zip
+curl -o /tmp/IBM_Plex_TrueType.zip -J -L https://github.com/IBM/plex/releases/download/v6.4.0/TrueType.zip
 mkdir -p /tmp/IBM_Plex_TrueType && unzip /tmp/IBM_Plex_TrueType.zip -d /tmp/IBM_Plex_TrueType
 sudo cp -R /tmp/IBM_Plex_TrueType/TrueType/IBM-Plex-Mono /usr/local/share/fonts
 curl -o /tmp/JetBrainsMono-2.304.zip -J -L https://downloads.sourceforge.net/jetbrains-mono.mirror/JetBrainsMono-2.304.zip
