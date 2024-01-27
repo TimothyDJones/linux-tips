@@ -45353,3 +45353,39 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}*
+
+# Install Musicbrainz Picard cross-platform, PyQt-based audio file tagging tool from package
+APP_NAME=Picard
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform, PyQt-based audio file tagging tool."
+APP_GUI_CATEGORIES="Audio;Multimedia;"
+APP_GUI_KEYWORDS="Tagging;"
+APP_VERSION=2.11
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/metabrainz/${APP_NAME,,}/releases/download/release-${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p ${HOME}/.local/bin/${APP_NAME,,}
+cp -a -R /tmp/${FILE_NAME}/* ${HOME}/.local/bin/${APP_NAME,,}
+python3 -m venv ${HOME}/.local/bin/${APP_NAME,,}/.venv
+source ${HOME}/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python3 -m pip install -r ${HOME}/.local/bin/${APP_NAME,,}/requirements.txt
+sudo ln -s -f ${HOME}/.local/bin/${APP_NAME,,}/.venv/bin/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=${HOME}/.local/bin/${APP_NAME,,}/resources/org.musicbrainz.${APP_NAME}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
