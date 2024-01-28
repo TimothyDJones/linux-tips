@@ -43725,7 +43725,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/Mexit/MultiOS-USB
 APP_NAME=MultiOS-USB
 APP_GUI_NAME="Command-line tool to create USB drive to boot multiple OS images from ISO files."
-APP_VERSION=0.6.3
+APP_VERSION=0.7.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}_linux_v${APP_VERSION}	
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
