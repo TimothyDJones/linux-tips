@@ -44877,7 +44877,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=quardCRT
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Qt-based terminal emulator that supports multiple protocols."
-APP_VERSION=0.4.1
+APP_VERSION=0.4.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_Linux_V${APP_VERSION//./}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
