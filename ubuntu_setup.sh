@@ -2185,12 +2185,12 @@ mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 
-# Install WebTareas PHP/MySQL-based project management and online office tool	 from package.
+# Install WebTareas PHP/MySQL-based project management and online office tool from package.
 APP_NAME=webTareas
 APP_GUI_NAME="PHP/MySQL-based project management and online office tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project Management;Office;"
-APP_VERSION=2.5p1
+APP_VERSION=2.5p2
 APP_EXT=zip
 DB_NAME=webtareas
 DB_USER=webtareas
