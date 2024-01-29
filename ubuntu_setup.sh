@@ -19493,7 +19493,7 @@ sudo chmod +x /usr/local/bin/${APP_NAME,,}
 # Install Foliate simple Javascript-based modern GTK ebook reader from Debian package
 APP_NAME=Foliate
 APP_GUI_NAME="Simple Javascript-based modern GTK ebook reader."
-APP_VERSION=2.6.3
+APP_VERSION=3.0.1
 APP_EXT=deb
 FILE_NAME=com.github.johnfactotum.${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johnfactotum/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
