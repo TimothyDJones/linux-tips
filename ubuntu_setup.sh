@@ -45296,3 +45296,34 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/pen
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install s-tui Python-based command-line system monitoring and stress testing tool from package
+APP_NAME=s-tui
+APP_GUI_NAME="Python-based command-line system monitoring and stress testing tool."
+APP_VERSION=1.1.6
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y python3-pip stress
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/amanusk/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+unzip /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+cd /tmp/${FILE_NAME}/${FILE_NAME}
+mkdir -p $HOME/.local/bin/${APP_NAME,,}
+cd $HOME/.local/bin/${APP_NAME,,}
+cp -a -R /tmp/${FILE_NAME}/${FILE_NAME}/* $HOME/.local/bin/${APP_NAME,,}
+python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
+source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python -m pip install urwid psutil
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd \$HOME/.local/bin/${APP_NAME,,}
+. \$HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python -m s_tui.s_tui
+deactivate
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
