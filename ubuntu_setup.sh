@@ -1053,7 +1053,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=15.6
+APP_VERSION=15.6.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1530,7 +1530,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4708
+APP_VERSION=4.3-4712
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2185,12 +2185,12 @@ mysql -u root -proot -Bse "CREATE DATABASE ${DB_NAME};"
 mysql -u root -proot -Bse "GRANT ALL ON ${DB_USER}.* TO ${DB_NAME}@'%' IDENTIFIED BY '${DB_PASSWORD}';"
 mysql -u root -proot -Bse "FLUSH PRIVILEGES;"
 
-# Install WebTareas PHP/MySQL-based project management and online office tool	 from package.
+# Install WebTareas PHP/MySQL-based project management and online office tool from package.
 APP_NAME=webTareas
 APP_GUI_NAME="PHP/MySQL-based project management and online office tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project Management;Office;"
-APP_VERSION=2.5p1
+APP_VERSION=2.5p2
 APP_EXT=zip
 DB_NAME=webtareas
 DB_USER=webtareas
@@ -2763,7 +2763,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.7.63
+APP_VERSION=6.7.65
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3556,7 +3556,7 @@ APP_NAME=Shotcut
 APP_GUI_NAME="Cross-platform non-linear video editor."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=24.01.13
+APP_VERSION=24.01.28
 APP_EXT=txz
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mltframework/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -5752,7 +5752,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install pgweb cross-platform client for PostgreSQL databases
 APP_NAME=pgweb
 APP_GUI_NAME="Cross-platform client for PostgreSQL databases"
-APP_VERSION=0.14.2
+APP_VERSION=0.14.3
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux_amd64
@@ -14627,7 +14627,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Rukovoditel web-based (PHP/MySQL) project management tool from package
 APP_NAME=Rukovoditel
 APP_GUI_NAME="Web-based (PHP/MySQL) project management tool."
-APP_VERSION=3.4.4
+APP_VERSION=3.5
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -15513,7 +15513,7 @@ docker run hello-world  # Confirm Docker installation.
 # Install Docker Compose command-line utility for multi-container Docker applications from package
 APP_NAME=Docker-Compose
 APP_GUI_NAME="Command-line utility for multi-container Docker applications."
-APP_VERSION=2.24.3
+APP_VERSION=2.24.4
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -19493,7 +19493,7 @@ sudo chmod +x /usr/local/bin/${APP_NAME,,}
 # Install Foliate simple Javascript-based modern GTK ebook reader from Debian package
 APP_NAME=Foliate
 APP_GUI_NAME="Simple Javascript-based modern GTK ebook reader."
-APP_VERSION=2.6.3
+APP_VERSION=3.0.1
 APP_EXT=deb
 FILE_NAME=com.github.johnfactotum.${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johnfactotum/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -28611,7 +28611,7 @@ APP_NAME=Electerm
 APP_GUI_NAME="Electron-based integrated terminal/SSH/SFTP client."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Terminal;SSH;SFTP;"
-APP_VERSION=1.37.126
+APP_VERSION=1.38.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -29874,7 +29874,7 @@ APP_NAME=Lite-XL
 APP_GUI_NAME="Cross-platform lightweight VS Code-style text editor."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=2.1.2
+APP_VERSION=2.1.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -30598,7 +30598,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install rpncalc cross-platform Java-based command-line RPN calculator from package
 APP_NAME=rpncalc
-APP_VERSION=5.1.5
+APP_VERSION=5.1.8
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-fross/${FILE_NAME}.${APP_EXT}
@@ -33691,7 +33691,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install OnlyOffice Community Server office and collaboration suite from Debian package
 APP_NAME=OnlyOffice-CommunityServer
-APP_VERSION=11.6.0.1620
+APP_VERSION=12.0.0.1726
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/teamlab/${FILE_NAME}.${APP_EXT}
@@ -35448,7 +35448,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based 2D jump-and-run puzzle platformer game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Puzzle;Arcade;"
-APP_VERSION=1.4.137
+APP_VERSION=1.4.160
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/divVerent/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37536,7 +37536,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based desktop encrypted note-taking tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Security;"
-APP_VERSION=2.6.14
+APP_VERSION=2.6.15
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}_linux_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/streetwriters/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37722,9 +37722,9 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install PDFGrepGUI simple GUI for pdfgrep for text search inside PDFs from Debian package
 APP_NAME=PDFGrepGUI
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.6.0
+APP_VERSION=0.8.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}V${APP_VERSION//./_}amd64
+FILE_NAME=${APP_NAME,,}V${APP_VERSION//./_}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install pdfgrep -y
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -38104,7 +38104,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based Markdown editor with preview."
 APP_GUI_CATEGORIES="Office;Development;Programming;"
 APP_GUI_KEYWORDS="Markdown;Editor;"
-APP_VERSION=3.65.0
+APP_VERSION=3.67.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /-}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
@@ -39570,7 +39570,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based tool for organizing, annotating and managing local files using tags."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Tags;File;Productivity;"
-APP_VERSION=5.6.2
+APP_VERSION=5.7.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux-x86_64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -41005,7 +41005,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based notepad and personal knowledge-management tool with markdown support."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Markdown;"
-APP_VERSION=2.12.5
+APP_VERSION=2.12.6
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -41139,7 +41139,7 @@ sudo apt-get install nuitka
 APP_NAME="Pass Simple"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Qt-based GUI for standard Unix/Linux password store."
-APP_VERSION=0.162
+APP_VERSION=0.163
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
@@ -42368,7 +42368,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Golang-based multi-protocol download manager."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="Download;Manager;P2P;"
-APP_VERSION=1.5.3
+APP_VERSION=1.5.5
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-web-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -44342,7 +44342,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=SQ
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Golang-based command-line tool for SQL-like access to structured data."
-APP_VERSION=0.46.0
+APP_VERSION=0.47.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sq-data-wrangler.mirror/${FILE_NAME}.${APP_EXT}
@@ -45040,7 +45040,7 @@ APP_NAME=jDiskMark
 APP_GUI_NAME="Cross-platform Java-based GUI disk benchmarking tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Disk;Performance;"
-APP_VERSION=0.5-beta-3
+APP_VERSION=0.5-beta-4
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -45389,3 +45389,45 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install PenGUI Python/Qt GUI front-end to Penguin's Eggs tool to create live CD ISO from current Debian/Ubuntu system from Debian package
+APP_NAME=PenGUI
+APP_GUI_NAME="Python/Qt GUI front-end to Penguin's Eggs tool to create live CD ISO from current Debian/Ubuntu system."
+APP_VERSION=0.2.10
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install s-tui Python-based command-line system monitoring and stress testing tool from package
+APP_NAME=s-tui
+APP_GUI_NAME="Python-based command-line system monitoring and stress testing tool."
+APP_VERSION=1.1.6
+APP_EXT=zip
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y python3-pip stress
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/amanusk/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+unzip /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+cd /tmp/${FILE_NAME}/${FILE_NAME}
+mkdir -p $HOME/.local/bin/${APP_NAME,,}
+cd $HOME/.local/bin/${APP_NAME,,}
+cp -a -R /tmp/${FILE_NAME}/${FILE_NAME}/* $HOME/.local/bin/${APP_NAME,,}
+python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
+source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python -m pip install urwid psutil
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd \$HOME/.local/bin/${APP_NAME,,}
+. \$HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python -m s_tui.s_tui
+deactivate
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
