@@ -32167,7 +32167,7 @@ APP_NAME=AuthPass
 APP_GUI_NAME="Cross-platform password manager with support for Keepass format password database files."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Security;Password;"
-APP_VERSION=1.9.7_1940
+APP_VERSION=1.9.10_1994
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
