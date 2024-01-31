@@ -2753,7 +2753,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Saga GIS application from source
 APP_NAME=saga
-APP_VERSION=9.3.0
+APP_VERSION=9.3.1
 APP_EXT=tar.gz
 sudo apt-get install -y libwxgtk3.0-dev python-wxgtk3.0 postgresql-server-dev-all libgdal-dev libpqxx-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/saga-gis/${APP_NAME}-${APP_VERSION}.${APP_EXT}
