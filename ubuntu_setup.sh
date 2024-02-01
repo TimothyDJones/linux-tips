@@ -37722,7 +37722,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install PDFGrepGUI simple GUI for pdfgrep for text search inside PDFs from Debian package
 APP_NAME=PDFGrepGUI
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.8.0
+APP_VERSION=0.8.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}V${APP_VERSION//./_}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install pdfgrep -y
