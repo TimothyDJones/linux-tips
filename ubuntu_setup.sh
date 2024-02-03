@@ -4946,8 +4946,8 @@ rm -rf /tmp/${APP_NAME,,}
 # Install ChessPDFBrowser Java-based tool to work with chess PDF books and PGNs from package
 APP_NAME=ChessPDFBrowser
 APP_GUI_NAME="Java-based tool to work with chess PDF books and PGNs."
-APP_VERSION=1.20
-APP_DATE=2022-12-04
+APP_VERSION=1.26
+APP_DATE=2024-01-29
 APP_EXT=7z
 FILE_NAME=${APP_DATE//-/}.${APP_NAME}.v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}1/${FILE_NAME}.${APP_EXT}
