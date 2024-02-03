@@ -330,6 +330,9 @@ sudo cp -R /tmp/CommitMono*.otf /usr/local/share/fonts
 curl -o /tmp/monofur.zip -J -L https://dl.dafont.com/dl/?f=monofur
 mkdir -p /tmp/monofur && unzip /tmp/monofur.zip -d /tmp/monofur
 sudo cp -a -R /tmp/monofur/*.ttf /usr/local/share/fonts
+curl -o /tmp/UnifontEX.zip -J -L https://downloads.sourceforge.net/unifontex/UnifontEX.zip
+mkdir -p /tmp/UnifontEX && unzip /tmp/UnifontEX.zip -d /tmp/UnifontEX
+sudo cp -a /tmp/UnifontEX/UnifontEX.ttf /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
