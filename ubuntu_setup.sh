@@ -42524,7 +42524,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Standalone Java-based GTK Git GUI based on EGit from Eclipse project."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Git;Programming;Version Control;"
-APP_VERSION=0.4.0
+APP_VERSION=0.6.0
 APP_EXT=zip
 FILE_NAME=com.eclipsesource.${APP_NAME,,}-linux.gtk.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
