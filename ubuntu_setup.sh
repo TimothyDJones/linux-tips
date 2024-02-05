@@ -15985,7 +15985,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Pennywise Electron-based utility to open any application or web site in floating, stay-on-top window from Debian package
 APP_NAME=Pennywise
 APP_GUI_NAME="Electron-based utility to open any application or web site in floating, stay-on-top window."
-APP_VERSION=0.1.0
+APP_VERSION=0.8.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kamranahmedse/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
