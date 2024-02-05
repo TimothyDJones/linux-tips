@@ -31040,7 +31040,7 @@ APP_NAME=Nyxt
 APP_GUI_NAME="Cross-platform, keyboard-oriented web browser with Vim and Emac keybindings."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Browser;Vim;Emacs;Lisp;"
-APP_VERSION=3.11.1
+APP_VERSION=3.11.2
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/atlas-engineer/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
