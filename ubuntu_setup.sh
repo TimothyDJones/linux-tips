@@ -45463,3 +45463,17 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}*
+
+# Install Zap Golang-based command line AppImage management tool from package
+APP_NAME=Zap
+APP_GUI_NAME="Golang-based command line AppImage management tool."
+APP_GUI_CATEGORIES="System;"
+APP_GUI_KEYWORDS="AppImage;"
+APP_VERSION=2.2.1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/srevinsaju/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
