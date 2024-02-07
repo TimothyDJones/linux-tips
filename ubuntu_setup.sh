@@ -45477,10 +45477,10 @@ sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Furtherance cross-platform, Rust-based offline time tracking tool from package
+# Install Furtherance cross-platform, Rust-based GUI offline time tracking tool from source
 APP_NAME=Furtherance
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_GUI_NAME="Cross-platform, Rust-based offline time tracking tool."
+APP_GUI_NAME="Cross-platform, Rust-based GUI offline time tracking tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Time;Tracking;"
 APP_VERSION=1.8.3
@@ -45490,26 +45490,9 @@ sudo apt install -y libdbus-1-dev libsqlite3-dev libgtk-4-dev libadwaita-1-dev g
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/lakoliu/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
-mkdir -p ${HOME}/.local/bin/${APP_NAME,,}
-cp -a -R /tmp/${FILE_NAME}/* ${HOME}/.local/bin/${APP_NAME,,}
-python3 -m venv ${HOME}/.local/bin/${APP_NAME,,}/.venv
-source ${HOME}/.local/bin/${APP_NAME,,}/.venv/bin/activate
-python3 -m pip install -r ${HOME}/.local/bin/${APP_NAME,,}/requirements.txt
-sudo ln -s -f ${HOME}/.local/bin/${APP_NAME,,}/.venv/bin/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=/usr/local/bin
-Exec=/usr/local/bin/${APP_NAME,,}
-Icon=${HOME}/.local/bin/${APP_NAME,,}/resources/org.musicbrainz.${APP_NAME}.svg
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=${APP_GUI_CATEGORIES}
-Keywords=${APP_GUI_KEYWORDS}
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd /tmp/${APP_NAME,,}
+mkdir build && cd build
+meson .. && ninja && sudo ninja install
+sudo apt remove -y libdbus-1-dev libsqlite3-dev libgtk-4-dev libadwaita-1-dev
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
