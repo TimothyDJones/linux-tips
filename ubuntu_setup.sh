@@ -45496,3 +45496,10 @@ meson .. && ninja && sudo ninja install
 sudo apt remove -y libdbus-1-dev libsqlite3-dev libgtk-4-dev libadwaita-1-dev
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install Monophony GUI tool for streaming music from YouTube outside of browser from Flatpak
+# https://gitlab.com/zehkira/monophony/
+APP_NAME=Monophony
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub io.gitlab.zehkira.${APP_NAME}
