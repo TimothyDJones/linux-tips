@@ -45503,3 +45503,23 @@ APP_NAME=Monophony
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub io.gitlab.zehkira.${APP_NAME}
+
+# Install Errands Python-based GUI offline GUI To Do manager tool from source
+APP_NAME=Errands
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Python-based GUI offline GUI To Do manager tool."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="ToDo;Productivity;"
+APP_VERSION=45.1.9
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt install -y libdbus-1-dev libsqlite3-dev libgtk-4-dev libadwaita-1-dev gettext
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mrvladus/${APP_NAME}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+meson .. && ninja && sudo ninja install
+sudo apt remove -y libdbus-1-dev libsqlite3-dev libgtk-4-dev libadwaita-1-dev
+cd $HOME
+rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
