@@ -45523,3 +45523,15 @@ meson .. && ninja && sudo ninja install
 sudo apt remove -y libdbus-1-dev libsqlite3-dev libgtk-4-dev libadwaita-1-dev
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install Quimup C++/Qt GUI front-end to MPD music player from Debian package
+APP_NAME=Quimup
+APP_GUI_NAME="C++/Qt GUI front-end to MPD music player."
+APP_VERSION=2.0.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_trixie.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+sudo apt install -y mpd
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
