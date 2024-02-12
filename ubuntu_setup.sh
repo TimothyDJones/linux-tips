@@ -2502,7 +2502,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Eric Python IDE from package
 APP_NAME=Eric
-APP_VERSION=24.2
+APP_VERSION=24.2.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}7-${APP_VERSION}
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qsci python3-pyqt5.qtsvg python3-pyqt5.qtsql python3-pyqt5.qtwebengine python3-pyqt5.qtchart
@@ -7238,7 +7238,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install DB Tarzan Java-based database client from Debian package
 APP_NAME=DBTarzan
 APP_GUI_NAME="Java-based database client."
-APP_VERSION=1.32
+APP_VERSION=1.33
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -8176,7 +8176,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PeaZip cross-platform archive management utility from Debian package
 APP_NAME=PeaZip
 APP_GUI_NAME="Cross-platform archive management utility."
-APP_VERSION=9.6.0
+APP_VERSION=9.7.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}.LINUX.GTK2-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -13473,7 +13473,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Converseen Qt-based bulk image converting/resizing tool from source
 APP_NAME=Converseen
 APP_GUI_NAME="Qt-based bulk image converting/resizing tool."
-APP_VERSION=0.12.0.2
+APP_VERSION=0.12.1.0
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libmagick++-dev cmake qttools5-dev-tools qttools5-dev
@@ -19627,7 +19627,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install xsnow desktop decoration from source
 APP_NAME=xsnow
 APP_GUI_NAME=""
-APP_VERSION=3.7.7
+APP_VERSION=3.7.8
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 sudo apt install -y build-essential libgtk-3-dev libxt-dev libgsl-dev libxpm-dev
@@ -25370,7 +25370,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install PET cross-platform command-line snippet manager from Debian package
 APP_NAME=PET
-APP_VERSION=0.6.0
+APP_VERSION=0.6.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/knqyf263/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -26234,7 +26234,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Dayon Java-based remote access utility from Debian package
 APP_NAME=Dayon
-APP_VERSION=13.0.0
+APP_VERSION=13.0.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}active/${FILE_NAME}.${APP_EXT}
@@ -28892,7 +28892,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Sleek cross-platform todo.txt-format to do application from Debian package
 APP_NAME=Sleek
-APP_VERSION=2.0.8
+APP_VERSION=2.0.9
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -33103,7 +33103,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=btop
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Minimalist command-line resource monitor tool."
-APP_VERSION=1.3.0
+APP_VERSION=1.3.1
 APP_EXT=tbz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/aristocratos/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -36656,7 +36656,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, self-hosted web comic and ebook reader."
 APP_GUI_CATEGORIES="Office;Internet;"
 APP_GUI_KEYWORDS="Comics;Ebook;Reader;"
-APP_VERSION=0.7.13
+APP_VERSION=0.7.14
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -37720,7 +37720,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install PDFGrepGUI simple GUI for pdfgrep for text search inside PDFs from Debian package
 APP_NAME=PDFGrepGUI
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.8.2
+APP_VERSION=0.9.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}V${APP_VERSION//./_}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install pdfgrep -y
@@ -38760,7 +38760,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Java-based music editor that can display, transpose and print song sheets containing chords and lyrics."
 APP_GUI_CATEGORIES="Entertainment;Audio;Video;Education;"
 APP_GUI_KEYWORDS="Editor;Music;"
-APP_VERSION=10.12
+APP_VERSION=10.13
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -40903,7 +40903,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=3.10.3
+APP_VERSION=3.10.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -43229,7 +43229,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Java-based RSS feed reader inspired by Google Reader."
 APP_GUI_CATEGORIES="Internet;Networking;"
 APP_GUI_KEYWORDS="RSS;News;Aggregator;"
-APP_VERSION=4.2.1
+APP_VERSION=4.3.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -44339,7 +44339,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=SQ
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Golang-based command-line tool for SQL-like access to structured data."
-APP_VERSION=0.47.3
+APP_VERSION=0.47.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sq-data-wrangler.mirror/${FILE_NAME}.${APP_EXT}
@@ -45535,3 +45535,37 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Simplex Chat cross-platform, minimalist messenger application with no user identifiers from AppImage
+APP_NAME="Simplex Chat"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, minimalist messenger application with no user identifiers."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Messenger;"
+APP_VERSION=5.5.3
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME=simplex-desktop-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${_APP_NAME}/${_APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.svg -J -L https://raw.githubusercontent.com/${_APP_NAME}/${_APP_NAME}/stable/images/logo.svg
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.svg /usr/local/share/icons/${_APP_NAME}.svg
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
