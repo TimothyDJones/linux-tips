@@ -45037,7 +45037,7 @@ APP_NAME=jDiskMark
 APP_GUI_NAME="Cross-platform Java-based GUI disk benchmarking tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Disk;Performance;"
-APP_VERSION=0.5
+APP_VERSION=0.5.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
