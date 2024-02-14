@@ -333,6 +333,9 @@ sudo cp -a -R /tmp/monofur/*.ttf /usr/local/share/fonts
 curl -o /tmp/UnifontEX.zip -J -L https://downloads.sourceforge.net/unifontex/UnifontEX.zip
 mkdir -p /tmp/UnifontEX && unzip /tmp/UnifontEX.zip -d /tmp/UnifontEX
 sudo cp -a /tmp/UnifontEX/UnifontEX.ttf /usr/local/share/fonts
+curl -o /tmp/dejavu-fonts-ttf-2.37.tar.bz2 -J -L https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.tar.bz2
+tar -xf /tmp/dejavu-fonts-ttf-2.37.tar.bz2
+sudo cp -a /tmp/dejavu-fonts-ttf-2.37/ttf/* /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
