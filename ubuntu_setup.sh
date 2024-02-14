@@ -40686,9 +40686,9 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform TeX authoring environment with built-in PDF viewer."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="TeX;Editor;"
-APP_VERSION=0.6.8
+APP_VERSION=0.6.9
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-202402120650-git_68a2e99
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/${APP_NAME,,}/icon?1676750780
 sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
