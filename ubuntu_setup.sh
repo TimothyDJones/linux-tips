@@ -45664,3 +45664,9 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install News Flash GTK RSS feed reader for web-based RSS services from Flatpak
+# https://gitlab.com/news-flash/news_flash_gtk
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y flathub io.gitlab.news_flash.NewsFlash
