@@ -32968,7 +32968,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Qt-based cross-platform color palette generator."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Color;Editor;"
-APP_VERSION=2.8.42
+APP_VERSION=2.9.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}_v${APP_VERSION}_en_linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -45670,3 +45670,20 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install -y flathub io.gitlab.news_flash.NewsFlash
+
+# Install Numbat Rust-based command line calculator and programming language with support for physical dimensions and units from package
+APP_NAME=Numbat
+APP_GUI_NAME="Rust-based command line calculator and programming language with support for physical dimensions and units."
+APP_GUI_CATEGORIES="Accessories;Development;"
+APP_GUI_KEYWORDS="Calculator;"
+APP_VERSION=1.10.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
