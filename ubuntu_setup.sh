@@ -45694,3 +45694,15 @@ APP_NAME=GearLever
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub it.mijorus.${APP_NAME,,}
+
+# Install csBooks cross-platform ebook reader with support for EPUB, PDF, DJVU, MOBI and more from Debian package
+APP_NAME=csBooks
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform ebook reader with support for EPUB, PDF, DJVU, MOBI and more."
+APP_VERSION=8.2.2
+APP_EXT=deb
+FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/caesiumstudio/${APP_NAME}-updates/releases/download/latest/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
