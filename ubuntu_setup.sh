@@ -45687,3 +45687,10 @@ sudo cp -a /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Gear Lever Python-based GUI tool for managing Linux AppImages from Flatpak
+# https://github.com/mijorus/gearlever
+APP_NAME=GearLever
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub it.mijorus.${APP_NAME,,}
