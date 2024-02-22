@@ -45706,3 +45706,10 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/caesiumstudio/${AP
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Quick Lookup JavaScript/GTK-based GUI Wikitionary dictionary tool from Flatpak
+# https://github.com/johnfactotum/quick-lookup
+APP_NAME=QuickLookup
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub com.github.johnfactotum.${APP_NAME,,}
