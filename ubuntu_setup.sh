@@ -25989,7 +25989,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install zoxide Rust-based fast alternative to 'cd' for directory navigation from package
 # https://github.com/ajeetdsouza/zoxide
 APP_NAME=zoxide
-APP_VERSION=0.9.2
+APP_VERSION=0.9.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
