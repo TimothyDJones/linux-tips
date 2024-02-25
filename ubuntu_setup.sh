@@ -45713,3 +45713,16 @@ APP_NAME=QuickLookup
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub com.github.johnfactotum.${APP_NAME,,}
+
+# Install mpm (Meta Package Manager) cross-platform, Python-based command line wrapper for multiple package managers from package
+APP_NAME=mpm
+APP_GUI_NAME="Cross-platform, Python-based command line wrapper for multiple package managers."
+APP_VERSION=5.15.0
+APP_EXT=bin
+FILE_NAME=${APP_NAME,,}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/meta-package-manager.mirror/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
