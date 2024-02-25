@@ -2983,7 +2983,7 @@ xdg-open http://localhost/${APP_NAME,,}/install/index.php &
 # Install DK Tools system utility suite from source
 APP_NAME=DKTools
 APP_GUI_NAME="System utility suite."
-APP_VERSION=4.35.3
+APP_VERSION=4.36.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 WXVERS="3.0"
