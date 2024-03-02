@@ -12557,7 +12557,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install XFE GUI file manager from source
 APP_NAME=XFE
 APP_GUI_NAME="GUI file manager."
-APP_VERSION=1.46
+APP_VERSION=1.46.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libcups2-dev libcupsimage2-dev libfox-1.6-0 libfox-1.6-dev libjbig-dev libjpeg-dev libjpeg-turbo8-dev libjpeg8-dev liblzma-dev libtiff-dev libtiff5-dev libtiffxx5 libxcb-util-dev intltool libx11-xcb-dev
