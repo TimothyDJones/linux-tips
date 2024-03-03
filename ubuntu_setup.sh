@@ -42052,7 +42052,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Vue.JS-based simple GUI tool for simultaneous/concurrent interaction with multiple LLMs, including ChatGPT, Bing Chat, Bard, Alpaca, Vicuna, and more."
 APP_GUI_CATEGORIES="Accessories;System;Development;Programming;"
 APP_GUI_KEYWORDS="ChatGPT;LLM;"
-APP_VERSION=1.58.88
+APP_VERSION=1.59.89
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
