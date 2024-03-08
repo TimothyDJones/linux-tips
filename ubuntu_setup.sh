@@ -3475,7 +3475,7 @@ sudo apt-get install -y smuxi
 # Install Textadept minimalist cross-platform text editor from package
 APP_NAME=Textadept
 APP_GUI_NAME="Minimalist cross-platform text editor"
-APP_VERSION=12.2
+APP_VERSION=12.3
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}.linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/orbitalquark/${APP_NAME,,}/releases/download/textadept_${APP_VERSION}/${FILE_NAME}.${APP_EXT}
