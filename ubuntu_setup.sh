@@ -45393,7 +45393,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # Install PenGUI Python/Qt GUI front-end to Penguin's Eggs tool to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=PenGUI
 APP_GUI_NAME="Python/Qt GUI front-end to Penguin's Eggs tool to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=0.2.10
+APP_VERSION=0.3.02
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
