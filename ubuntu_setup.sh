@@ -27493,7 +27493,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based cryptocurrency portfolio tracking tool."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Blockchain;Cryptocurrency;Bitcoin;"
-APP_VERSION=1.32.1
+APP_VERSION=1.32.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-v${APP_VERSION}
 sudo apt install -y libfuse2
