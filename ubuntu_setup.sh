@@ -39287,7 +39287,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install RufasCube cross-platform OpenGL Rubik's Cube-style puzzle game from package
 APP_NAME=RufasCube
 APP_GUI_NAME="Cross-platform OpenGL Rubik's Cube-style puzzle game."
-APP_VERSION=6oct23
+APP_VERSION=18mar24
 APP_EXT=7z
 FILE_NAME=rc${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
