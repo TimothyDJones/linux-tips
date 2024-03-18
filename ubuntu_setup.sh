@@ -21314,7 +21314,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install Delta language-enabled syntax-highlighting diff for Git from package
 APP_NAME=Delta
 APP_GUI_NAME="Language-enabled syntax-highlighting diff for Git."
-APP_VERSION=0.16.5
+APP_VERSION=0.17.0
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
