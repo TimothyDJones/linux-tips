@@ -44995,7 +44995,7 @@ APP_NAME=Rymdport
 APP_GUI_NAME="Cross-platform, Golang-based GUI for magic-wormhole for P2P file transer."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="P2P;"
-APP_VERSION=3.5.2
+APP_VERSION=3.5.3
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Jacalz/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
