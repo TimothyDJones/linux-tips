@@ -7520,7 +7520,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install QDirStat Qt-based GUI for viewing directory statistics from source
 APP_NAME=QDirStat
 APP_GUI_NAME="Qt-based GUI for viewing directory statistics."
-APP_VERSION=1.4
+APP_VERSION=1.9
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/shundhammer/${APP_NAME,,}/archive/${APP_VERSION}.${APP_EXT}
 cd /tmp
@@ -20379,7 +20379,7 @@ sudo flatpak install -y flathub org.gabmus.gnome-feeds
 # Install Starship minimal, customizable shell prompt from package
 APP_NAME=Starship
 APP_GUI_NAME="Minimal, customizable shell prompt."
-APP_VERSION=1.17.1
+APP_VERSION=1.18.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
