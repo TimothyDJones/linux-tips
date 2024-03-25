@@ -11845,7 +11845,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install gcsf FUSE file system based on Google Drive from package
 APP_NAME=gcsf
 APP_GUI_NAME="FUSE file system based on Google Drive."
-APP_VERSION=0.1.6
+APP_VERSION=0.2.3
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
