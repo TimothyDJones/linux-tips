@@ -12309,7 +12309,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install browsh cross-platform modern browser for shell/console from Debian package
 APP_NAME=browsh
 APP_GUI_NAME="Cross-platform modern browser for shell/console."
-APP_VERSION=1.6.4
+APP_VERSION=1.8.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_linux_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/browsh-org/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
