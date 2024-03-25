@@ -11781,7 +11781,7 @@ rm -rf /tmp/*${_APP_NAME}*
 # Install Clippy cross-platform, Electron-based clipboard manager with persistent history from AppImage
 APP_NAME=Clippy
 APP_GUI_NAME="Cross-platform, Electron-based clipboard manager with persistent history."
-APP_VERSION=1.2.0
+APP_VERSION=1.5.0
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
