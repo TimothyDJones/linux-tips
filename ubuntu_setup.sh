@@ -1536,7 +1536,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4760
+APP_VERSION=4.3-4762
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -2196,7 +2196,7 @@ APP_NAME=webTareas
 APP_GUI_NAME="PHP/MySQL-based project management and online office tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project Management;Office;"
-APP_VERSION=2.6
+APP_VERSION=2.7
 APP_EXT=zip
 DB_NAME=webtareas
 DB_USER=webtareas
@@ -11545,7 +11545,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install Meld GUI file diff/merge utility from source
 APP_NAME=Meld
 APP_GUI_NAME="Cross-platform, file diff/merge utility."
-APP_VERSION=3.21.3
+APP_VERSION=3.22.2
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y meld python3-cairo-dev libgtksourceview-3.0-dev
@@ -11599,7 +11599,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install lf cross-platform, Go-based file manager for the shell/console from package
 APP_NAME=lf
 APP_GUI_NAME="Cross-platform, Go-based file manager for the shell/console."
-APP_VERSION=r27
+APP_VERSION=r31
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
@@ -11781,7 +11781,7 @@ rm -rf /tmp/*${_APP_NAME}*
 # Install Clippy cross-platform, Electron-based clipboard manager with persistent history from AppImage
 APP_NAME=Clippy
 APP_GUI_NAME="Cross-platform, Electron-based clipboard manager with persistent history."
-APP_VERSION=1.2.0
+APP_VERSION=1.5.0
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -11814,7 +11814,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Parlatype GTK+-based audio player for transcription from source
 APP_NAME=Parlatype
 APP_GUI_NAME="GTK+-based audio player for transcription."
-APP_VERSION=1.5.5
+APP_VERSION=4.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential automake autoconf intltool libgirepository1.0-dev libgladeui-dev gtk-doc-tools yelp-tools libgtk-3-dev libgtk-3-0 libgstreamer1.0-dev libgstreamer1.0-0 libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly libreoffice-script-provider-python itstool
@@ -11845,7 +11845,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install gcsf FUSE file system based on Google Drive from package
 APP_NAME=gcsf
 APP_GUI_NAME="FUSE file system based on Google Drive."
-APP_VERSION=0.1.6
+APP_VERSION=0.2.3
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -12035,7 +12035,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install ODrive cross-platform, Electron-based GUI for Google Drive from Debian package
 APP_NAME=ODrive
 APP_GUI_NAME="Cross-platform, Electron-based GUI for Google Drive."
-APP_VERSION=0.2.0
+APP_VERSION=0.2.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/liberodark/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -12309,7 +12309,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install browsh cross-platform modern browser for shell/console from Debian package
 APP_NAME=browsh
 APP_GUI_NAME="Cross-platform modern browser for shell/console."
-APP_VERSION=1.6.4
+APP_VERSION=1.8.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_linux_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/browsh-org/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -13813,7 +13813,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install qBittorrent Qt-based Bittorrent client from source
 APP_NAME=qBittorrent
 APP_GUI_NAME="Qt-based Bittorrent client."
-APP_VERSION=4.6.3
+APP_VERSION=4.6.4
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get build-dep -y ${APP_NAME,,}
@@ -30718,9 +30718,9 @@ APP_NAME="The Powder Toy"
 APP_GUI_NAME="Cross-platform desktop 'falling sand' physics simulation."
 APP_GUI_CATEGORIES="Education;Science;"
 APP_GUI_KEYWORDS="Science;Physics;Simulation;"
-APP_VERSION=97.0.352
+APP_VERSION=98.0.363
 APP_EXT=N/A
-FILE_NAME=powder-v${APP_VERSION}-x86_64-lin-gcc-static
+FILE_NAME=powder-v${APP_VERSION}-x86_64-linux-gnu
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/${APP_NAME// /-}/${APP_NAME// /-}/releases/download/v${APP_VERSION}/${FILE_NAME}
 curl -o /tmp/${APP_NAME// /-}.ico -J -L https://github.com/The-Powder-Toy/The-Powder-Toy/raw/master/resources/icon.ico
 sudo cp /tmp/${FILE_NAME} /usr/local/bin
@@ -39846,7 +39846,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based desktop music player."
 APP_GUI_CATEGORIES="Audio;Entertainment;Multimedia;"
 APP_GUI_KEYWORDS="Music;YouTube;"
-APP_VERSION=3.3.4
+APP_VERSION=3.3.5
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /-}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40908,7 +40908,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=3.11.2
+APP_VERSION=3.11.5
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -41007,7 +41007,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based notepad and personal knowledge-management tool with markdown support."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Markdown;"
-APP_VERSION=3.0.4
+APP_VERSION=3.0.5
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -42054,7 +42054,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Vue.JS-based simple GUI tool for simultaneous/concurrent interaction with multiple LLMs, including ChatGPT, Bing Chat, Bard, Alpaca, Vicuna, and more."
 APP_GUI_CATEGORIES="Accessories;System;Development;Programming;"
 APP_GUI_KEYWORDS="ChatGPT;LLM;"
-APP_VERSION=1.63.96
+APP_VERSION=1.63.97
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -44879,7 +44879,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=quardCRT
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Qt-based terminal emulator that supports multiple protocols."
-APP_VERSION=0.4.3
+APP_VERSION=0.4.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_Linux_V${APP_VERSION//./}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
