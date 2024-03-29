@@ -19632,7 +19632,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install xsnow desktop decoration from source
 APP_NAME=xsnow
 APP_GUI_NAME=""
-APP_VERSION=3.7.8
+APP_VERSION=3.7.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 sudo apt install -y build-essential libgtk-3-dev libxt-dev libgsl-dev libxpm-dev
