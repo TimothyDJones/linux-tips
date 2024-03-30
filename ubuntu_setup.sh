@@ -20379,7 +20379,7 @@ sudo flatpak install -y flathub org.gabmus.gnome-feeds
 # Install Starship minimal, customizable shell prompt from package
 APP_NAME=Starship
 APP_GUI_NAME="Minimal, customizable shell prompt."
-APP_VERSION=1.18.1
+APP_VERSION=1.18.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
