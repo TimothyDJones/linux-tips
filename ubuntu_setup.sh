@@ -5886,7 +5886,7 @@ APP_NAME=PySolFC
 APP_GUI_NAME="Python-based Solitaire card game"
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Solitaire;Cards;Games;"
-APP_VERSION=2.21.0
+APP_VERSION=3.0.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y python3-pip
