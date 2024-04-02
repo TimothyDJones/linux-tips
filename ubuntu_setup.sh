@@ -40593,11 +40593,11 @@ APP_NAME="Simple Sokoban"
 APP_GUI_NAME="Minimalist SDL2-based puzzle game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Sokoban;Puzzle;"
-APP_VERSION=1.0.4
+APP_VERSION=1.0.6
 APP_EXT=tar.xz
 FILE_NAME=simplesok-${APP_VERSION}
 sudo apt-get install -y build-essential libsdl2-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://simplesok.osdn.io/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
