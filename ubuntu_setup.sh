@@ -5226,7 +5226,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Parlatype GTK audio player for transcription from source
 APP_NAME=Parlatype
-APP_VERSION=3.0
+APP_VERSION=4.1
 APP_EXT=tar.gz
 sudo apt-get install -y build-essential automake autoconf intltool libgirepository1.0-dev libgladeui-dev gtk-doc-tools yelp-tools libgtk-3-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/gkarsay/${APP_NAME,,}/releases/download/v${APP_VERSION}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
