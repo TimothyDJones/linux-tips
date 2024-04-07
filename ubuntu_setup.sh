@@ -24574,7 +24574,7 @@ APP_NAME=Xcoral
 APP_GUI_NAME="Minimalist GUI text editor."
 APP_GUI_CATEGORIES="Development;Programming;Accessories;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=4.02.1
+APP_VERSION=4.02.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libx11-dev libxft-dev
