@@ -643,7 +643,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=2.4.2
+APP_VERSION=2.4.3
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -7407,7 +7407,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Git Town shell-based Git workflow enhancement tool from package
 APP_NAME=Git-Town
-APP_VERSION=13.0.1
+APP_VERSION=13.0.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_intel_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -15521,7 +15521,7 @@ docker run hello-world  # Confirm Docker installation.
 # Install Docker Compose command-line utility for multi-container Docker applications from package
 APP_NAME=Docker-Compose
 APP_GUI_NAME="Command-line utility for multi-container Docker applications."
-APP_VERSION=2.26.0
+APP_VERSION=2.26.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -20379,7 +20379,7 @@ sudo flatpak install -y flathub org.gabmus.gnome-feeds
 # Install Starship minimal, customizable shell prompt from package
 APP_NAME=Starship
 APP_GUI_NAME="Minimal, customizable shell prompt."
-APP_VERSION=1.18.1
+APP_VERSION=1.18.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -30345,7 +30345,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Helix cross-platform, Rust-based modal text editor from package
 APP_NAME=Helix
 APP_GUI_NAME="Cross-platform, Rust-based modal text editor."
-APP_VERSION=23.10
+APP_VERSION=24.03
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/helix-editor/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -39708,7 +39708,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Oh My Posh"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform tool for customizing command prompt with colors and themes."
-APP_VERSION=19.18.1
+APP_VERSION=19.19.0
 APP_EXT=N/A
 FILE_NAME=posh-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/ohmyposh-dev.mirror/${FILE_NAME}
@@ -42370,7 +42370,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Golang-based multi-protocol download manager."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="Download;Manager;P2P;"
-APP_VERSION=1.5.5
+APP_VERSION=1.5.6
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-web-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
