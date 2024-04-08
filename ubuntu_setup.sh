@@ -46009,3 +46009,10 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Blanket Python/GTK-based ambient sound audio player to improve focus from Flatpak
+# https://github.com/rafaelmardojai/blanket/
+APP_NAME=Blanket
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub com.rafaelmardojai.${APP_NAME}
