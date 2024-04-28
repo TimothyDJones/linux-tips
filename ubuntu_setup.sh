@@ -28535,7 +28535,7 @@ APP_NAME=RedDiamond
 APP_GUI_NAME="Programmer's text editor with EDT keypad navigation based on CopperSpice Qt library."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=3.6.2
+APP_VERSION=3.6.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-U22.04-${APP_VERSION}-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
