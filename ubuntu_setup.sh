@@ -46054,3 +46054,10 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Planify minimalist task and 'to do' manager from Flatpak
+# https://github.com/alainm23/planify
+APP_NAME=Planify
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub io.github.alainm23.${APP_NAME,,}
