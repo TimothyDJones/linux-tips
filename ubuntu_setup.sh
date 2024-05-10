@@ -46061,3 +46061,19 @@ APP_NAME=Planify
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub io.github.alainm23.${APP_NAME,,}
+
+# Install superfile Golang-based command line file manager from package
+APP_NAME=superfile
+APP_GUI_NAME="Golang-based command line file manager."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="File;Manager;"
+APP_VERSION=1.1.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MHNightCat/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/dist/${FILE_NAME}/spf /usr/local/bin/spf
+sudo ln -s -f /usr/local/bin/spf /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
