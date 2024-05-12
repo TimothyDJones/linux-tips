@@ -40267,13 +40267,13 @@ cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install Jitsi Meet cross-platform Electron-based desktop video conferencing tool from AppImage
-# https://github.com/th-ch/youtube-music/
+# https://github.com/jitsi/jitsi-meet-electron
 APP_NAME="Jitsi Meet"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based desktop video conferencing tool."
 APP_GUI_CATEGORIES="Internet;Networking;"
 APP_GUI_KEYWORDS="Video;Conferencing;"
-APP_VERSION=2024.1.0
+APP_VERSION=2024.5.0
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}-electron.mirror/${FILE_NAME}.${APP_EXT}
