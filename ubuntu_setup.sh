@@ -25073,7 +25073,7 @@ APP_NAME=QRadioLink
 APP_GUI_NAME="Multimode SDR transceiver for GNU radio."
 APP_GUI_CATEGORIES="Multimedia;"
 APP_GUI_KEYWORDS="Audio;Radio;"
-APP_VERSION=0.8.12-2
+APP_VERSION=0.8.13-1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
