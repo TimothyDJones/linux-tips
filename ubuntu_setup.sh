@@ -46217,3 +46217,27 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install wxMP3Gain cross-platform MP3 volume normalizer (free front-end for the MP3gain) from Debian package
+APP_NAME=wxMP3Gain
+APP_VERSION=4.2
+APP_EXT=deb
+source /etc/lsb-release
+# 18.04 - 21.10
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo|fo|gr|hi|im)$ ]]; then
+	DISTRIB_VERSION=focal
+# 22.04 - 22.10
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ja|ki)$ ]]; then
+	DISTRIB_VERSION=jammy
+# 23.10
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ma)$ ]]; then
+	DISTRIB_VERSION=mantic
+# 24.04
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(no)$ ]]; then
+	DISTRIB_VERSION=noble
+fi
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.ppa2.${DISTRIB_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cfgnunes/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
