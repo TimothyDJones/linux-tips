@@ -44265,7 +44265,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform highly configurable and privacy-focused Discord client."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Discord;Messenger;"
-APP_VERSION=1.4.1
+APP_VERSION=1.4.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y libfuse2
