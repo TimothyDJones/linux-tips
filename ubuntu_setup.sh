@@ -46241,3 +46241,10 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cfgnunes/${APP_NAM
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Syndic simple, responsive RSS feed reader from Flatpak
+# https://github.com/cscarney/syndic
+APP_NAME=Syndic
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub com.rocksandpaper.${APP_NAME,,}
