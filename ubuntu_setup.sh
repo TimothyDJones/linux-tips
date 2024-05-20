@@ -28782,7 +28782,7 @@ APP_NAME=StackAndConquer
 APP_GUI_NAME="Qt-based tower conquest board game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Puzzle;Games;"
-APP_VERSION=0.10.0
+APP_VERSION=0.10.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qtbase5-dev libqt5svg5-dev qtdeclarative5-dev
