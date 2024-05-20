@@ -23388,9 +23388,9 @@ rm -rf /tmp/${APP_NAME}*
 # Install GitUI cross-platform console GUI for Git version control from package
 APP_NAME=GitUI
 APP_GUI_NAME="Cross-platform console GUI for Git version control."
-APP_VERSION=0.26.1
+APP_VERSION=0.26.2
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-linux-musl
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/extrawurst/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
