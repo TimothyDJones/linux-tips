@@ -39809,7 +39809,7 @@ APP_NAME=StatAnt
 APP_GUI_NAME="Qt-based spreadsheet-style statistical calculation tool."
 APP_GUI_CATEGORIES="Accessories;Office;Science;"
 APP_GUI_KEYWORDS="Data;Science;Spreadsheet;Statistics;"
-APP_VERSION=3.1.1
+APP_VERSION=3.2.1
 APP_EXT=tar
 FILE_NAME=${APP_NAME,,}${APP_VERSION//./}_source
 sudo apt-get install -y qt5-default qt5-qmake
