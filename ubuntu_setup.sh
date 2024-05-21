@@ -46248,3 +46248,15 @@ APP_NAME=Syndic
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub com.rocksandpaper.${APP_NAME,,}
+
+# Install Clipboard Manager cross-platform, multi-format clipboard manager with persistent history from Debian package
+APP_NAME="Clipboard Manager"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, multi-format clipboard manager with persistent history."
+APP_VERSION=0.1.1_build-1027
+APP_EXT=deb
+FILE_NAME=${_APP_NAME}-linux-x64-v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME//-/}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME}*
