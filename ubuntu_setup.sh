@@ -35815,7 +35815,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based desktop diagramming and whiteboarding tool."
 APP_GUI_CATEGORIES="Office;Programming;Development;"
 APP_GUI_KEYWORDS="Diagramming;Drawing;"
-APP_VERSION=24.4.6
+APP_VERSION=24.4.7
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-desktop.mirror/${FILE_NAME}.${APP_EXT}
