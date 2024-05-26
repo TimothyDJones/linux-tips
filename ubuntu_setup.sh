@@ -10920,7 +10920,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Battle for Wesnoth high-fantasy themed adventure game from source
 APP_NAME=Wesnoth
 APP_GUI_NAME="High-fantasy themed adventure game."
-APP_VERSION=1.18.0
+APP_VERSION=1.19.0
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
@@ -46294,3 +46294,16 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${FILE_NAME}* /tmp/${_APP_NAME}*
+
+# Install Quadrupleback retro arcade game clone of Doubleback game from 1982 from Debian package
+APP_NAME=Quadrupleback
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, multi-format clipboard manager with persistent history."
+APP_VERSION=0.2.0-1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/flatzebra-${APP_VERSION}.${APP_EXT} -J -L http://perso.b2b2c.ca/~sarrazip/dev/flatzebra-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://perso.b2b2c.ca/~sarrazip/dev/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/flatzebra-${APP_VERSION}.${APP_EXT} /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
