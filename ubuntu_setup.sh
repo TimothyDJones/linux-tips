@@ -46267,7 +46267,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '-')
 APP_GUI_NAME="Cross-platform, client-only tool for building developer environments based on a devcontainer.json."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="IDE;Docker;Containers;"
-APP_VERSION=0.5.8
+APP_VERSION=0.5.10
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}-glibc-old_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
