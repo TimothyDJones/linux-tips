@@ -46260,3 +46260,15 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}*
+
+# Install QHexVed cross-platform, hexadecimal editor and analyzer from Debian package
+APP_NAME=QHexVed
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, hexadecimal editor and analyzer."
+APP_VERSION=1.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+sudo rm -rf /tmp/${_APP_NAME}*
