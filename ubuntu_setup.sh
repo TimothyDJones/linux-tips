@@ -30277,7 +30277,7 @@ APP_NAME=WorkerPDF
 APP_GUI_NAME="Cross-platform GUI front-end for converting PDF conversion using GhostScript."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="PDF;Conversion;GhostScript"
-APP_VERSION=0.2.1
+APP_VERSION=0.3.2
 APP_EXT=tgz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
