@@ -41279,7 +41279,7 @@ APP_NAME=KeeperRL
 APP_GUI_NAME="SDL-based dungeon exploration game with Rouge-like elements."
 APP_VERSION="1.0 hotfix 19"
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME}%20${APP_VERSION// /%20}
+FILE_NAME=${APP_NAME}%20${APP_VERSION// /%20}%20source%20code
 sudo apt-get install -y build-essential libsdl2-dev libsdl2-image-dev libopenal-dev libvorbis-dev libtheora-dev llvm-14 clang-14
 sudo ln -s -f /usr/bin/clang++-14 /usr/bin/clang++
 sudo ln -s -f /usr/bin/clang-14 /usr/bin/clang
