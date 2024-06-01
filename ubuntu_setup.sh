@@ -46253,7 +46253,7 @@ sudo flatpak install flathub com.rocksandpaper.${APP_NAME,,}
 APP_NAME="Clipboard Manager"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, multi-format clipboard manager with persistent history."
-APP_VERSION=0.1.1_build-1035
+APP_VERSION=0.1.1_build-1039
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}-linux-x64-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME//-/}/${FILE_NAME}.${APP_EXT}
