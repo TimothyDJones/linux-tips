@@ -41277,7 +41277,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/miki151/keeperrl
 APP_NAME=KeeperRL
 APP_GUI_NAME="SDL-based dungeon exploration game with Rouge-like elements."
-APP_VERSION="Alpha 36"
+APP_VERSION="1.0 hotfix 19"
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}%20${APP_VERSION// /%20}
 sudo apt-get install -y build-essential libsdl2-dev libsdl2-image-dev libopenal-dev libvorbis-dev libtheora-dev llvm-14 clang-14
