@@ -32751,7 +32751,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Linux video editing and composition tool."
 APP_GUI_CATEGORIES="Entertainment;Video;Multimedia;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=20240229
+APP_VERSION=20240531
 APP_EXT=AppImage
 FILE_NAME=CinGG-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://${_APP_NAME}.org/download/images/${FILE_NAME}.${APP_EXT}
