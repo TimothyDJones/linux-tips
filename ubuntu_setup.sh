@@ -18304,9 +18304,9 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Persepolis Python-based GUI for aria2 download manager from Debian package
 APP_NAME=Persepolis
 APP_GUI_NAME="Python-based GUI for aria2 download manager."
-APP_VERSION=3.2.0
+APP_VERSION=4.2.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}.2_all
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}.0_all
 sudo apt-get install -y aria2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/persepolisdm/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
