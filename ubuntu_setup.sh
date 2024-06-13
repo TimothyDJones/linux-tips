@@ -24045,7 +24045,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform audio/video encoder/converter."
 APP_GUI_CATEGORIES="Audio;Video;Multimedia;"
 APP_GUI_KEYWORDS="Converter;Encoder;Decoder;"
-APP_VERSION=18.0
+APP_VERSION=18.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /%20}%20${APP_VERSION}%20Linux%2064bits
 sudo apt install -y libfuse2
