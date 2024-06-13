@@ -46307,3 +46307,10 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://perso.b2b2c.ca/~sarrazip/dev/$
 sudo gdebi -n /tmp/flatzebra-${APP_VERSION}.${APP_EXT} /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Filelight GUI disk usage visualization tool from Flatpak
+# https://apps.kde.org/filelight/
+APP_NAME=Filelight
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub org.kde.${APP_NAME,,}
