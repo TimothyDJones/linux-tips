@@ -46342,3 +46342,10 @@ APP_NAME=Memorize
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub io.github.david_swift.Flashcards
+
+# Install Memorado Python-based minimalist flashcard tool with spaced repitition support from Flatpak
+# https://github.com/wbernard/Memorado
+APP_NAME=Memorado
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub im.bernard.${APP_NAME}
