@@ -46321,3 +46321,17 @@ APP_NAME=QPDFTools
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub br.eng.silas.${APP_NAME,,}
+
+# Install Mousam lightweight weather app build using Gtk4, Libadwaita and Python from Flatpak
+# https://github.com/silash35/qpdftools
+APP_NAME=QPDFTools
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub br.eng.silas.${APP_NAME,,}
+
+# Install Lonewolf Kanban-style desktop 'to do' and task management tool from Flatpak
+# https://github.com/aichingm/Lonewolf
+APP_NAME=Lonewolf
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub site.someones.${APP_NAME}
