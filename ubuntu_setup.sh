@@ -46335,3 +46335,10 @@ APP_NAME=Lonewolf
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub site.someones.${APP_NAME}
+
+# Install Memorize Swift-based minimalist flashcard tool from Flatpak
+# https://github.com/david-swift/Memorize
+APP_NAME=Memorize
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub io.github.david_swift.Flashcards
