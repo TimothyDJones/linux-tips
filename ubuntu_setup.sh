@@ -46314,3 +46314,10 @@ APP_NAME=Filelight
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub org.kde.${APP_NAME,,}
+
+# Install QPDF Tools Qt-based GUI for Ghostscript and QPDF from Flatpak
+# https://github.com/silash35/qpdftools
+APP_NAME=QPDFTools
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub br.eng.silas.${APP_NAME,,}
