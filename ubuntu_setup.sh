@@ -43256,7 +43256,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Java-based RSS feed reader inspired by Google Reader."
 APP_GUI_CATEGORIES="Internet;Networking;"
 APP_GUI_KEYWORDS="RSS;News;Aggregator;"
-APP_VERSION=4.4.0
+APP_VERSION=4.4.1
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
