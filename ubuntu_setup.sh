@@ -45988,7 +45988,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Electron-based lightweight weather forecast and alert tool."
 APP_GUI_CATEGORIES="Accessories;Internet"
 APP_GUI_KEYWORDS="Weather;"
-APP_VERSION=2.0.2
+APP_VERSION=2.1.1
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${_APP_NAME}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
