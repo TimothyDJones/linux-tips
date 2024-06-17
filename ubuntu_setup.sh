@@ -43410,7 +43410,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '_')
 APP_GUI_NAME="Cross-platform, C++/Qt-based desktop application for sending and receiving TCP, UDP, HTTP/HTTPS and SSL packets/requests."
 APP_GUI_CATEGORIES="Networking;Development;Programming;"
 APP_GUI_KEYWORDS="TCP/IP;HTTP;Testing;"
-APP_VERSION=8.6.5
+APP_VERSION=8.7.1
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y libfuse2
