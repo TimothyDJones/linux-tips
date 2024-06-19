@@ -46407,3 +46407,10 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ltiber/${APP_NAME,
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}*
+
+# Install Hexchat cross-platform GTK+ GUI IRC client from Flatpak
+# https://github.com/hexchat/hexchat
+APP_NAME=Hexchat
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub io.github.${APP_NAME}
