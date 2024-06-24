@@ -29078,11 +29078,11 @@ APP_NAME=di
 APP_GUI_NAME="Advanced disk information utility."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Disk;Manager;"
-APP_VERSION=4.50
+APP_VERSION=4.53
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${SHELL_NAME}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/diskinfo-di/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
