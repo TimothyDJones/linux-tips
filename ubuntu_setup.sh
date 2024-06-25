@@ -46414,3 +46414,10 @@ APP_NAME=Hexchat
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub io.github.${APP_NAME}
+
+# Install Kooha Rust-based minimalist screen recording tool from Flatpak
+# https://github.com/SeaDve/Kooha
+APP_NAME=Kooha
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub io.github.seadve.${APP_NAME}
