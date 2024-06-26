@@ -46467,3 +46467,10 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Resources Rust-based system monitoring tool from Flatpak
+# https://github.com/nokyan/resources
+APP_NAME=Resources
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub net.nokyan.${APP_NAME}
