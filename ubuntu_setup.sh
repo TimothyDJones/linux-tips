@@ -18970,7 +18970,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install mtCellEdit lightweight Qt-based spreadsheet program from AppImage
 APP_NAME=mtCellEdit
 APP_GUI_NAME="Lightweight Qt-based spreadsheet program."
-APP_VERSION=3.7
+APP_VERSION=3.8
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-qt4-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/matyler/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
