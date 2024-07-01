@@ -4102,27 +4102,41 @@ sudo ln -s /opt/${APP_NAME,,}/bin/komodo /usr/local/bin/komodo
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install CherryTree hierarchical notepad/text editor from Debian package
+# Install CherryTree hierarchical notepad/text editor from AppImage
 # https://www.giuspen.com/cherrytree/
 APP_NAME=CherryTree
-source /etc/lsb-release
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ma)$ ]]; then     # 23.10
-    APP_VERSION=1.1.2-4_amd64
-elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ja|ki|lu)$ ]]; then     # 22.04, 22.10, 23.04
-    APP_VERSION=1.1.2-3_amd64
-elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo|gr|hi|im)$ ]]; then     # 20.04, 20.10, 21.04, 21.10
-    APP_VERSION=1.1.2-2_amd64
-elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo)$ ]]; then  # 18.04 - 19.10
-    APP_VERSION=1.1.2-1_amd64
-else
-    APP_VERSION=0.39.4-0_all
-fi
-APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://launchpad.net/~giuspen/+archive/ubuntu/ppa/+files/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, hierarchical note taking application, featuring rich text and syntax highlighting."
+APP_GUI_CATEGORIES="Office;Accessories;System;"
+APP_GUI_KEYWORDS="Notepad;"
+APP_VERSION=1.1.4
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.giuspen.net/software/${FILE_NAME}.${APP_EXT}
+/CherryTree-1.1.4-x86_64.AppImage
+curl -o /tmp/${APP_NAME,,}.png -J -L https://www.giuspen.com/icons_softw/${APP_NAME,,}.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Raccoon Java-based Google Play Store and APK downloader utility from package
 APP_NAME=Raccoon
