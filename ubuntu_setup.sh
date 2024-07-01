@@ -17981,7 +17981,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Filetto cross-platform FTP client & server from package
 APP_NAME=Filetto
 APP_GUI_NAME="Cross-platform FTP client & server."
-APP_VERSION=1.0
+APP_VERSION=1.2
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
