@@ -46488,3 +46488,25 @@ APP_NAME=Resources
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub net.nokyan.${APP_NAME}
+
+# Install Password Safe cross-platform GUI password management tool from Debian package
+APP_NAME="Password Safe"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=1.19.1
+APP_EXT=deb
+if [ ! -f /etc/lsb-release ]; then
+	RELEASE_VERSION=debian12
+else
+source /etc/lsb-release
+# 18.04 - 21.10
+if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co|di|eo|fo|gr|hi|im|ja|ki|ma)$ ]]; then
+	RELEASE_VERSION=ubuntu20
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(no)$ ]]; then
+	RELEASE_VERSION=ubuntu24
+fi
+fi
+FILE_NAME=${_APP_NAME}-${RELEASE_VERSION}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
