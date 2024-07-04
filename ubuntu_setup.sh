@@ -46440,9 +46440,9 @@ sudo flatpak install flathub io.github.seadve.${APP_NAME}
 APP_NAME=Quickemu
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform wrapper for QEMU emulator."
-APP_VERSION=4.9.5-1
+APP_VERSION=4.9.6
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
