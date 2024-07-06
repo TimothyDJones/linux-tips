@@ -19141,7 +19141,7 @@ rm -rf /tmp/*${APP_NAME}*
 # https://www.ostechnix.com/how-to-upgrade-everything-using-a-single-command-in-linux/
 APP_NAME=Topgrade
 APP_GUI_NAME="Cross-platform/cross-distribution upgrade manager."
-APP_VERSION=10.1.2
+APP_VERSION=12.0.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/topgrade-rs/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
