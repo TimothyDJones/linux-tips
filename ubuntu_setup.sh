@@ -39270,7 +39270,7 @@ APP_NAME=ChessX
 APP_GUI_NAME="Qt-based chess database and PGN viewer."
 APP_GUI_CATEGORIES="Games;"
 APP_GUI_KEYWORDS="Chess;"
-APP_VERSION=1.5.6
+APP_VERSION=1.6.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qtbase5-dev qttools5-dev-tools libqt5svg5-dev qtmultimedia5-dev
