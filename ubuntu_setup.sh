@@ -526,7 +526,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=24.1.1
+APP_VERSION=24.1.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -14514,7 +14514,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=3.0.10
+APP_VERSION=3.0.13
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -19141,7 +19141,7 @@ rm -rf /tmp/*${APP_NAME}*
 # https://www.ostechnix.com/how-to-upgrade-everything-using-a-single-command-in-linux/
 APP_NAME=Topgrade
 APP_GUI_NAME="Cross-platform/cross-distribution upgrade manager."
-APP_VERSION=10.1.2
+APP_VERSION=12.0.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/topgrade-rs/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -20163,7 +20163,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install Java Multiprecision Calculator cross-platform calculator based on Java BigDecimal class from package
 APP_NAME="MultiPrecision Calculator"
 APP_GUI_NAME="Cross-platform calculator based on Java BigDecimal class."
-APP_VERSION=2022-12-04
+APP_VERSION=2024-07-06
 APP_EXT=7z
 FILE_NAME=${APP_VERSION//-/}.${APP_NAME// /}.v1.2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/javamultiprecis/${FILE_NAME}.${APP_EXT}
@@ -21982,7 +21982,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://dystroy.org/broot/
 APP_NAME=Broot
 APP_GUI_NAME="Rust-based command-line directory tree navigation tool with fuzzy-search capability."
-APP_VERSION=1.39.0
+APP_VERSION=1.39.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -35364,7 +35364,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Java lightweight GUI music player."
 APP_GUI_CATEGORIES="Multimedia;Audio;"
 APP_GUI_KEYWORDS="Music;Player;Audio;"
-APP_VERSION=2023-05-20
+APP_VERSION=2024-07-06
 APP_EXT=7z
 FILE_NAME=${APP_VERSION//-/}.${APP_NAME}.v1.0
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}2/${FILE_NAME}.${APP_EXT}
@@ -36675,7 +36675,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, self-hosted web comic and ebook reader."
 APP_GUI_CATEGORIES="Office;Internet;"
 APP_GUI_KEYWORDS="Comics;Ebook;Reader;"
-APP_VERSION=0.8.0
+APP_VERSION=0.8.2
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -39270,7 +39270,7 @@ APP_NAME=ChessX
 APP_GUI_NAME="Qt-based chess database and PGN viewer."
 APP_GUI_CATEGORIES="Games;"
 APP_GUI_KEYWORDS="Chess;"
-APP_VERSION=1.5.6
+APP_VERSION=1.6.0
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qtbase5-dev qttools5-dev-tools libqt5svg5-dev qtmultimedia5-dev
@@ -39722,7 +39722,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Oh My Posh"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform tool for customizing command prompt with colors and themes."
-APP_VERSION=21.20.1
+APP_VERSION=21.21.1
 APP_EXT=N/A
 FILE_NAME=posh-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/ohmyposh-dev.mirror/${FILE_NAME}
@@ -40410,7 +40410,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=nFPM
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Golang-based simple, no-dependencies, deb, rpm, apk, and Arch Linux packager."
-APP_VERSION=2.35.2
+APP_VERSION=2.38.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40922,7 +40922,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=3.18.1
+APP_VERSION=3.18.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -42792,7 +42792,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Joker
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Golang-based simple Clojure interpreter, linter and formatter."
-APP_VERSION=1.3.5
+APP_VERSION=1.4.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -42875,7 +42875,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform enhanced dictionary tool with built-in OCR capability."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Dictionary;OCR;"
-APP_VERSION=3E23-20240513
+APP_VERSION=3E24-20240618
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}++OCR-${APP_VERSION}-Debian12_Qt-4.8.7-p5-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-pro/${FILE_NAME}.${APP_EXT}
@@ -43292,7 +43292,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Java-based RSS feed reader inspired by Google Reader."
 APP_GUI_CATEGORIES="Internet;Networking;"
 APP_GUI_KEYWORDS="RSS;News;Aggregator;"
-APP_VERSION=4.4.1
+APP_VERSION=4.5.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -44301,7 +44301,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform highly configurable and privacy-focused Discord client."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Discord;Messenger;"
-APP_VERSION=1.4.2
+APP_VERSION=1.5.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y libfuse2
@@ -46566,3 +46566,52 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Pinokio browser-based AI automation platform from AppImage
+# https://pinokio.computer/
+APP_NAME=Pinokio
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Browser-based AI automation platform."
+APP_GUI_CATEGORIES="Internet;System;"
+APP_GUI_KEYWORDS="AI;Automation;"
+APP_VERSION=1.3.4
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/pinokiocomputer/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/pinokiocomputer/${APP_NAME,,}/main/icon.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install jaq Rust-based command-line jq clone focused on correctness, speed, and simplicity from package
+# https://github.com/01mf02/jaq
+APP_NAME=jaq
+APP_GUI_NAME="Rust-based command-line jq clone focused on correctness, speed, and simplicity."
+APP_VERSION=1.5.1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
