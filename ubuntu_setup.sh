@@ -46615,3 +46615,21 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Static Web Server cross-platform, Rust-based high-performance and asynchronous web server for serving static files/assets from package
+# https://github.com/static-web-server/static-web-server
+APP_NAME="Static Web Server"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Rust-based high-performance and asynchronous web server for serving static files/assets."
+APP_GUI_CATEGORIES="Internet;System;"
+APP_GUI_KEYWORDS="HTTP;Server;"
+APP_VERSION=2.32.0
+APP_EXT=tar.gz
+FILE_NAME=${_APP_NAME}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
