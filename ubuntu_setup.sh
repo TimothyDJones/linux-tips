@@ -43616,7 +43616,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Appbatroz
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform desktop application launcher."
-APP_VERSION=1.0
+APP_VERSION=1.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_v${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-linux/${FILE_NAME}.${APP_EXT}
