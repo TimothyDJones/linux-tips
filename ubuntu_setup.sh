@@ -30359,7 +30359,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Helix cross-platform, Rust-based modal text editor from package
 APP_NAME=Helix
 APP_GUI_NAME="Cross-platform, Rust-based modal text editor."
-APP_VERSION=24.03
+APP_VERSION=24.07
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/helix-editor/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
