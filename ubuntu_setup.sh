@@ -1548,7 +1548,7 @@ sudo gdebi -n ${APP_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/libpasastro.* /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 
-# Install Qt Bitcoin Trader from source
+# Install Qt Bitcoin Trader trading client for major cryptocurrency exchanges from source
 APP_NAME=QtBitcoinTrader
 APP_VERSION=1.42.22
 APP_EXT=tar.gz
@@ -1564,15 +1564,15 @@ qtchooser -run-tool=qmake -qt=5 ../${APP_NAME}_Desktop.pro && make && sudo make 
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Bash Snippets (tiny shell scripts for various functions, such as
-# weather, stock prices, etc.)
+# Install Bash Snippets (tiny shell scripts for various functions, such as weather, stock prices, etc.) from package
 APP_NAME=Bash-Snippets
-APP_VERSION=1.7.0
+APP_VERSION=1.23.0
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://codeload.github.com/alexanderepstein/${APP_NAME,,}/${APP_EXT}/v${APP_VERSION}
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/alexanderepstein/Bash-Snippets/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 sudo ./install.sh currency
 sudo ./install.sh stocks
 sudo ./install.sh weather
