@@ -1550,7 +1550,7 @@ rm -rf /tmp/libpasastro.* /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 
 # Install Qt Bitcoin Trader from source
 APP_NAME=QtBitcoinTrader
-APP_VERSION=1.40.50
+APP_VERSION=1.42.22
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 # Install package dependencies
