@@ -46630,3 +46630,20 @@ sudo cp -a /tmp/${FILE_NAME}/${_APP_NAME} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${_APP_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install dyff Golang-based command line diff/comparison tool for YAML and JSON files/data from package
+# https://github.com/homeport/dyff
+APP_NAME=dyff
+APP_GUI_NAME="Golang-based command line diff/comparison tool for YAML and JSON files/data."
+APP_GUI_CATEGORIES="Programming;Development;System;"
+APP_GUI_KEYWORDS="Diff;YAML;JSON;"
+APP_VERSION=1.8.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
