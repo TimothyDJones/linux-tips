@@ -46647,3 +46647,18 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install rucola Rust-based note manager with ability to launch external editors from package
+# https://github.com/Linus-Mussmaecher/rucola
+APP_NAME=rucola
+APP_GUI_NAME="Rust-based note manager with ability to launch external editors."
+APP_VERSION=0.3.3
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-notes-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
