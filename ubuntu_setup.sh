@@ -15037,7 +15037,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install DocSearcher cross-platform indexed search tool for documents from package
 APP_NAME=DocSearcher
 APP_GUI_NAME="Cross-platform indexed search tool for documents."
-APP_VERSION=3.95.2
+APP_VERSION=4.0.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
