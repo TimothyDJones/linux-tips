@@ -1898,7 +1898,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.67.123
+APP_VERSION=1.68.131
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -46666,7 +46666,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install LocalAI Golang-based self-hosted OpenAI-compatible API supporting multiple LLM models from package
 # https://github.com/go-skynet/LocalAI
 APP_NAME="Local-AI"
-_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '-' '[:blank:]')
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '-')
 APP_GUI_NAME="Golang-based self-hosted OpenAI-compatible API supporting multiple LLM models."
 APP_VERSION=2.19.3
 APP_EXT=N/A
