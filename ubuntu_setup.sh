@@ -40160,7 +40160,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Hilbish Golang-based minimalist shell for Lua fans from package
 APP_NAME=Hilbish
 APP_GUI_NAME="Golang-based minimalist shell for Lua fans."
-APP_VERSION=2.3.0
+APP_VERSION=2.3.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Rosettea/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
