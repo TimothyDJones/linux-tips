@@ -33449,7 +33449,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install bottom cross-platform GUI terminal system monitor from package
 APP_NAME=bottom
 APP_GUI_NAME="Cross-platform GUI terminal system monitor."
-APP_VERSION=0.10.1
+APP_VERSION=0.10.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ClementTsang/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
