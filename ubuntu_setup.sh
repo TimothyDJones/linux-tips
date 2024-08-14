@@ -29433,7 +29433,7 @@ sudo apt-get install -y cdda2wav mkisofs cdrecord
 # Install CliFM CLI-based, ultra-lightweight, lightning fast, and written in C from source
 APP_NAME=CliFM
 APP_GUI_NAME="CLI-based, ultra-lightweight, lightning fast, and written in C."
-APP_VERSION=1.19
+APP_VERSION=1.19.11
 APP_EXT=tar.gz
 FILE_NAME=v${APP_VERSION}
 sudo apt-get install -y libcap-dev libacl1-dev 
