@@ -46816,3 +46816,18 @@ sudo cp /tmp/${FILE_NAME}/trip /usr/local/bin
 sudo ln -s -f /usr/local/bin/trip /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Safelock CLI cross-platform, Golang-based command-line fast file encryption (AES-GCM) tool from package
+# https://github.com/mrf345/safelock-cli
+APP_NAME=safelock-cli
+APP_GUI_NAME="Cross-platform, Golang-based command-line fast file encryption (AES-GCM) tool."
+APP_VERSION=0.2.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
