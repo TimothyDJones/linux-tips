@@ -44469,7 +44469,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, open-source Electron-based dark-mode simple PDF reader."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="PDF;Reader;"
-APP_VERSION=2.0.3
+APP_VERSION=2.0.5
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
