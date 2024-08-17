@@ -2283,7 +2283,7 @@ APP_NAME=ProjeQtOr
 APP_GUI_NAME="Web-based project management tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project;Management;"
-APP_VERSION=11.3.0
+APP_VERSION=11.3.1
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -4661,7 +4661,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Crystal Facet UML modeling tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.58.2-1
+APP_VERSION=1.59.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}.x86_64
 sudo apt-get install -y libgdk-pixbuf2.0-0 alien
@@ -5102,7 +5102,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install GNU nano text editor from source
 APP_NAME=nano
 APP_GUI_NAME="Minimalist console text editor."
-APP_VERSION=7.2
+APP_VERSION=8.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y libncurses-dev
@@ -27506,7 +27506,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based cryptocurrency portfolio tracking tool."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Blockchain;Cryptocurrency;Bitcoin;"
-APP_VERSION=1.33.0
+APP_VERSION=1.34.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-v${APP_VERSION}
 sudo apt install -y libfuse2
@@ -32294,7 +32294,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform non-linear video editor."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=3.2.0
+APP_VERSION=3.2.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(uname -m)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME,,}-qt//releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -43613,7 +43613,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Appbatroz
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform desktop application launcher."
-APP_VERSION=1.0
+APP_VERSION=1.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_v${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-linux/${FILE_NAME}.${APP_EXT}
