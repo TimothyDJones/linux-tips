@@ -46781,6 +46781,7 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install Zed Rust-based, cross-platform, Atom-style GUI text editor from package
+# https://zed.dev/docs/linux#downloading-manually
 APP_NAME=Zed
 APP_GUI_NAME="Rust-based, cross-platform, Atom-style GUI text editor."
 APP_VERSION=0.148.1
@@ -46789,6 +46790,11 @@ FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zed-industries/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
-sudo cp -R /tmp/${APP_NAME,,}.app/* /usr/
+mkdir -p ~/.local
+sudo cp -R /tmp/${APP_NAME,,}.app ~/.local
+sudo ln -s -f ~/.local/${APP_NAME,,}.app/bin/${APP_NAME,,} /usr/local/bin
+cp ~/.local/zed.app/share/applications/zed.desktop ~/.local/share/applications/dev.zed.Zed.desktop
+sed -i "s|Icon=zed|Icon=$HOME/.local/zed.app/share/icons/hicolor/512x512/apps/zed.png|g" ~/.local/share/applications/dev.zed.Zed.desktop
+sed -i "s|Exec=zed|Exec=$HOME/.local/zed.app/libexec/zed-editor|g" ~/.local/share/applications/dev.zed.Zed.desktop
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
