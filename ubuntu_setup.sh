@@ -256,9 +256,9 @@ sudo cp -R /tmp/Fira_Code_v6.1/ttf/* /usr/local/share/fonts
 curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.xz
 mkdir -p /tmp/Hack-v3.003-ttf && tar -xf /tmp/Hack-v3.003-ttf.tar.xz -C /tmp/Hack-v3.003-ttf
 sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
-curl -o /tmp/ttf-iosevka-30.3.3.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v30.3.3/ttf-iosevka-30.3.3.zip
-mkdir -p /tmp/ttf-iosevka-30.3.3 && unzip /tmp/ttf-iosevka-30.3.3.zip -d /tmp/ttf-iosevka-30.3.3
-sudo cp -R /tmp/ttf-iosevka-30.3.3/* /usr/local/share/fonts
+curl -o /tmp/ttf-iosevka-31.2.0.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v31.2.0/ttf-iosevka-31.2.0.zip
+mkdir -p /tmp/ttf-iosevka-31.2.0 && unzip /tmp/ttf-iosevka-31.2.0.zip -d /tmp/ttf-iosevka-31.2.0
+sudo cp -R /tmp/ttf-iosevka-31.2.0/* /usr/local/share/fonts
 curl -o /tmp/CascadiaCode-2111.01.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2111.01.zip
 mkdir -p /tmp/CascadiaCode-2111.01 && unzip /tmp/CascadiaCode-2111.01.zip -d /tmp/CascadiaCode-2111.01
 sudo cp -R /tmp/CascadiaCode-2111.01/ttf/* /usr/local/share/fonts
@@ -526,7 +526,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=24.1.3
+APP_VERSION=24.1.5
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -562,7 +562,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from Debian package
 APP_NAME=Vivaldi
-APP_VERSION=6.7.3329.41
+APP_VERSION=6.8.3381.53
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -573,7 +573,7 @@ rm -f /tmp/*${APP_NAME,,}*
 # Install CudaText cross-platform text editor with plug-in extension support from Debian package
 # http://www.uvviewsoft.com/cudatext/
 APP_NAME=CudaText
-APP_VERSION=1.216.0.0
+APP_VERSION=1.216.6.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_gtk2_$(dpkg-architecture --query DEB_HOST_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -590,7 +590,7 @@ sudo apt-get update -y
 # Install Albert application launcher from Debian package
 # http://sourcedigit.com/22129-linux-quick-launcher-ubuntu-albert-best-linux-launcher/
 APP_NAME=Albert
-APP_VERSION=0.24.2
+APP_VERSION=0.25.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 source /etc/lsb-release
@@ -711,7 +711,7 @@ google-drive-ocamlfuse $HOME/google-drive  # Mount Google Drive to folder.
 
 # Install MuPDF PDF viewer from source.
 APP_NAME=MuPDF
-APP_VERSION=1.24.4
+APP_VERSION=1.24.8
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-source
 sudo apt install -y libjbig2dec0-dev libfreetype6-dev libftgl-dev libjpeg-dev libopenjp2-7-dev zlib1g-dev xserver-xorg-dev mesa-common-dev libgl1-mesa-dev libxcursor-dev libxrandr-dev libxinerama-dev
@@ -1059,7 +1059,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=16.4
+APP_VERSION=16.4.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -1536,7 +1536,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Skychart planetarium package from Debian package
 APP_NAME=Skychart
-APP_VERSION=4.3-4874
+APP_VERSION=4.3-4876
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 # libpasastro (Pascal astronomical library) is dependency for Skychart.
@@ -1898,7 +1898,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.68.134
+APP_VERSION=1.68.141
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -2633,7 +2633,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install jEdit Java text editor from Debian package
 APP_NAME=jEdit
-APP_VERSION=5.6.0
+APP_VERSION=5.7.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -3562,7 +3562,7 @@ APP_NAME=Shotcut
 APP_GUI_NAME="Cross-platform non-linear video editor."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=24.04.13
+APP_VERSION=24.08.17
 APP_EXT=txz
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mltframework/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -4567,7 +4567,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Rufas Slider puzzle game from source
 APP_NAME=RufasSlider
 APP_GUI_NAME="Klotsky-style slider puzzle game."
-APP_VERSION=22oct23
+APP_VERSION=17aug24
 APP_EXT=7z
 FILE_NAME=rs${APP_VERSION}
 sudo apt-get install -y qttools5-dev qttools5-dev-tools cmake
@@ -5372,7 +5372,7 @@ rm -rf /tmp/${_APP_NAME//-/}*
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.6.8
+APP_VERSION=1.6.9
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y cmake build-essential qtbase5-dev qttools5-dev libqt5x11extras5-dev qtmultimedia5-dev libcdio-dev libsoxr-dev libpulse-dev libjack-dev libogg-dev libvorbis-dev libcurl4-openssl-dev libwavpack-dev libavformat-dev libmpeg3-dev libcddb2-dev
@@ -5744,7 +5744,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Snd open-source sound editor from source
 APP_NAME=Snd
 APP_GUI_NAME="Popular open-source audio file editor"
-APP_VERSION=24.5
+APP_VERSION=24.6
 APP_EXT=tar.gz
 sudo apt-get install -y libasound2-dev wavpack
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
@@ -6039,7 +6039,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install NGSpice electronic circuit simulation tool from source
 APP_NAME=NGSpice
 APP_GUI_NAME="Classic electronic circuit simulation tool."
-APP_VERSION=42
+APP_VERSION=43
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libx11-dev libxaw7-dev libreadline6-dev
@@ -7418,7 +7418,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Git Town shell-based Git workflow enhancement tool from package
 APP_NAME=Git-Town
-APP_VERSION=14.4.1
+APP_VERSION=15.1.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_intel_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -8192,7 +8192,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PeaZip cross-platform archive management utility from Debian package
 APP_NAME=PeaZip
 APP_GUI_NAME="Cross-platform archive management utility."
-APP_VERSION=9.8.0
+APP_VERSION=9.9.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}.LINUX.GTK2-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -15532,7 +15532,7 @@ docker run hello-world  # Confirm Docker installation.
 # Install Docker Compose command-line utility for multi-container Docker applications from package
 APP_NAME=Docker-Compose
 APP_GUI_NAME="Command-line utility for multi-container Docker applications."
-APP_VERSION=2.29.1
+APP_VERSION=2.29.2
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -16993,7 +16993,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install TkRev cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git from package
 APP_NAME=TkRev
 APP_GUI_NAME="Cross-platform Tcl/Tk client for CVS, RCS, SVN, and Git."
-APP_VERSION=9.4.6
+APP_VERSION=9.4.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 sudo apt-get install -y tcl8.6 tk8.6 tclx8.4 tcllib tklib tkdnd expect tcl-tls  # Install required packages
@@ -17786,7 +17786,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install YouTube-DL-PyTK simple Python/Tkinter GUI for downloading videos from YouTube from package
 APP_NAME=YouTube-DL-PyTK
 APP_GUI_NAME="Simple Python/Tkinter GUI for downloading videos from YouTube."
-APP_VERSION=24.7.7
+APP_VERSION=24.8.18
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}_${APP_VERSION}
 sudo apt-get install -y python3-tk menu
@@ -18409,7 +18409,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Mattermost cross-platform, Electron-based workplace messaging alternative to Slack from Debian package
 APP_NAME=Mattermost
 APP_GUI_NAME="Cross-platform, Electron-based workplace messaging alternative to Slack."
-APP_VERSION=5.8.1
+APP_VERSION=5.9.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-desktop-${APP_VERSION}-linux-${ARCH_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://releases.mattermost.com/desktop/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21665,7 +21665,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Interval RPN Calculator console RPN calculator with interval output from package
 APP_NAME=irpn
 APP_GUI_NAME="Console RPN calculator with interval output."
-APP_VERSION=15oct23
+APP_VERSION=13aug24
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/intervalrpncalculator/${FILE_NAME}.${APP_EXT}
@@ -21979,7 +21979,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://dystroy.org/broot/
 APP_NAME=Broot
 APP_GUI_NAME="Rust-based command-line directory tree navigation tool with fuzzy-search capability."
-APP_VERSION=1.40.0
+APP_VERSION=1.42.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -24308,7 +24308,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install ugrep ultra fast grep with interactive query UI from source
 APP_NAME=ugrep
-APP_VERSION=6.0.0
+APP_VERSION=6.4.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libbz2-dev libz-dev liblzma-dev libpcre2-dev libboost-regex-dev
@@ -24472,7 +24472,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=10.0.21-1
+APP_VERSION=10.0.28-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
@@ -27491,7 +27491,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install FreeTube Electron-based privacy-focused YouTube player from Debian package
 # https://freetubeapp.io/
 APP_NAME=FreeTube
-APP_VERSION=0.21.0
+APP_VERSION=0.21.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/FreeTubeApp/${APP_NAME,,}/releases/download/v${APP_VERSION}-beta/${FILE_NAME}.${APP_EXT}
@@ -28625,7 +28625,7 @@ APP_NAME=Electerm
 APP_GUI_NAME="Electron-based integrated terminal/SSH/SFTP client."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Terminal;SSH;SFTP;"
-APP_VERSION=1.39.88
+APP_VERSION=1.39.103
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -28822,7 +28822,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install 7-Zip cross-platform decompression utility from package
 APP_NAME=7z
 APP_GUI_NAME="Cross-platform decompression utility."
-APP_VERSION=23.01
+APP_VERSION=24.08
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
@@ -28954,7 +28954,7 @@ APP_NAME=Koodo-Reader
 APP_GUI_NAME="Cross-platform Electron-based ebook manager and reader."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="Ebook;Reader;"
-APP_VERSION=1.6.7
+APP_VERSION=1.6.9
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/troyeguo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -29433,7 +29433,7 @@ sudo apt-get install -y cdda2wav mkisofs cdrecord
 # Install CliFM CLI-based, ultra-lightweight, lightning fast, and written in C from source
 APP_NAME=CliFM
 APP_GUI_NAME="CLI-based, ultra-lightweight, lightning fast, and written in C."
-APP_VERSION=1.19
+APP_VERSION=1.20
 APP_EXT=tar.gz
 FILE_NAME=v${APP_VERSION}
 sudo apt-get install -y libcap-dev libacl1-dev 
@@ -29918,7 +29918,7 @@ APP_NAME=JDiskCat
 APP_GUI_NAME="Cross-platform Java-based GUI disk cataloguing tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Disk;Usage;"
-APP_VERSION=1.4.2
+APP_VERSION=1.4.3
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -33449,7 +33449,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install bottom cross-platform GUI terminal system monitor from package
 APP_NAME=bottom
 APP_GUI_NAME="Cross-platform GUI terminal system monitor."
-APP_VERSION=0.10.1
+APP_VERSION=0.10.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ClementTsang/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -33659,7 +33659,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install yt-dlp youtube-dl fork with additional features and fixes from package
 APP_NAME=yt-dlp
 APP_GUI_NAME="youtube-dl fork with additional features and fixes."
-APP_VERSION=2024.08.01
+APP_VERSION=2024.08.06
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
@@ -33695,9 +33695,9 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Thorium Browser fork of Chromium browser with performance enhancements from Debian package
 APP_NAME=Thorium
 APP_GUI_NAME="Fork of Chromium browser with performance enhancements."
-APP_VERSION=105.0.5127.0
+APP_VERSION=126.0.6478.231
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-browser_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+FILE_NAME=${APP_NAME,,}-browser_${APP_VERSION}_AVX
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Alex313031/${APP_NAME}/releases/download/M${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
@@ -34229,7 +34229,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Electron-based notepad-style calculator."
 APP_GUI_CATEGORIES="Accessories;Science;Education;"
 APP_GUI_KEYWORDS="Calculator;"
-APP_VERSION=5.2.1
+APP_VERSION=5.2.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bornova/${APP_NAME,,}-calculator/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -34379,15 +34379,9 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Rabbit Remote Control"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform remote control tool with support for VNC, RDP, SSH, Telnet, etc."
-APP_VERSION=0.0.26
+APP_VERSION=0.0.27
 APP_EXT=deb
-source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (fo|go|hi)$ ]]; then # 20.04 and above
-	DISTRIB_VERSION=20.04
-elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di|eo)$ ]]; then # 18.04 - 19.10
-	DISTRIB_VERSION=18.04
-fi
-FILE_NAME=${_APP_NAME}_${APP_VERSION}_amd64_Ubuntu-${DISTRIB_VERSION}
+FILE_NAME=${_APP_NAME}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
@@ -34919,7 +34913,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Rust-based cross-platform fast text editor."
 APP_GUI_CATEGORIES="Programming;Development;Accessories;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=0.3.0
+APP_VERSION=0.4.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -36404,7 +36398,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # Install eSearch OCR screen recognition and search tool from Debian package
 APP_NAME=eSearch
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=1.12.1
+APP_VERSION=1.12.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/e-search/${FILE_NAME}.${APP_EXT}
@@ -37404,7 +37398,7 @@ APP_NAME=Encrypt0r
 APP_GUI_NAME="Cross-platform Electron-based GUI file encryption/decryption tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Encryption;Security;"
-APP_VERSION=3.12.48
+APP_VERSION=3.12.50
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kunalnagar/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37550,7 +37544,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based desktop encrypted note-taking tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Security;"
-APP_VERSION=3.0.12
+APP_VERSION=3.0.14
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}_linux_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/streetwriters/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38118,7 +38112,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based Markdown editor with preview."
 APP_GUI_CATEGORIES="Office;Development;Programming;"
 APP_GUI_KEYWORDS="Markdown;Editor;"
-APP_VERSION=3.73.1
+APP_VERSION=3.75.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /-}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
@@ -38281,7 +38275,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=rqlite
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Distributed version of SQLite database."
-APP_VERSION=8.26.8
+APP_VERSION=8.28.4
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 cd /tmp
@@ -39719,7 +39713,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Oh My Posh"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform tool for customizing command prompt with colors and themes."
-APP_VERSION=23.3.3
+APP_VERSION=23.6.6
 APP_EXT=N/A
 FILE_NAME=posh-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/ohmyposh-dev.mirror/${FILE_NAME}
@@ -40378,7 +40372,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=mrViewer2
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform multimedia viewer/player."
-APP_VERSION=1.2.1
+APP_VERSION=1.2.3
 APP_EXT=deb
 FILE_NAME=mrv2-v${APP_VERSION}-Linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mrv2/${FILE_NAME}.${APP_EXT}
@@ -40919,7 +40913,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=3.19.1
+APP_VERSION=3.20.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -41018,7 +41012,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based notepad and personal knowledge-management tool with markdown support."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Markdown;"
-APP_VERSION=3.1.2
+APP_VERSION=3.1.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -41631,7 +41625,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/flawiddsouza/Restfox
 APP_NAME=Restfox
 APP_GUI_NAME="Restfox cross-platform offline-first HTTP REST and GraphQL client."
-APP_VERSION=0.18.0
+APP_VERSION=0.23.0
 APP_EXT=snap
 FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt-get install -y snapd snapd-xdg-open
@@ -42225,7 +42219,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Notepad++ text editor clone."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Text;Editor;Notepad;"
-APP_VERSION=2.16
+APP_VERSION=2.18
 APP_EXT=AppImage
 sudo apt install -y libfuse2 libqt5xmlpatterns5
 FILE_NAME=subtwo-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
@@ -42403,7 +42397,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Golang-based multi-protocol download manager."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="Download;Manager;P2P;"
-APP_VERSION=1.5.7
+APP_VERSION=1.5.8
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-web-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -43289,7 +43283,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Java-based RSS feed reader inspired by Google Reader."
 APP_GUI_CATEGORIES="Internet;Networking;"
 APP_GUI_KEYWORDS="RSS;News;Aggregator;"
-APP_VERSION=4.6.0
+APP_VERSION=5.0.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -44145,7 +44139,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=yazi
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Rust-based terminal file manager."
-APP_VERSION=0.1.5
+APP_VERSION=0.3.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sxyazi/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -45017,7 +45011,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, secure Electron/Vue.JS-based notepad with Markdown support."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;"
-APP_VERSION=3.3.0
+APP_VERSION=3.5.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=Beaver-notes-${APP_VERSION}
@@ -45602,7 +45596,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, minimalist messenger application with no user identifiers."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Messenger;"
-APP_VERSION=5.5.3
+APP_VERSION=6.0.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=simplex-desktop-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
@@ -46652,7 +46646,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/Linus-Mussmaecher/rucola
 APP_NAME=rucola
 APP_GUI_NAME="Rust-based note manager with ability to launch external editors."
-APP_VERSION=0.3.6
+APP_VERSION=0.4.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-notes-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -46805,3 +46799,55 @@ APP_NAME=Uno-Calculator
 sudo apt-get install -y snapd snapd-xdg-open
 sudo snap install snapd
 sudo snap install ${APP_NAME,,}
+
+# Install Cartero Rust-based cross-platform GUI HTTP client with support for REST, SOAP or XML-RPC from Flatpak
+# https://github.com/danirod/cartero
+APP_NAME=Cartero
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub es.danirod.${APP_NAME}
+
+# Install git-gone Rust-based tool to remove all local branches that no longer have corresponding upstream/remote from package
+APP_NAME=git-gone
+APP_GUI_NAME="Rust-based tool to remove all local branches that no longer have corresponding upstream/remote."
+APP_VERSION=1.1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/swsnr/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/local/share/man/man1
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Trippy cross-platform, Rust-based combined ping/traceroute network troubleshooting tool from package
+# https://github.com/fujiapple852/trippy
+APP_NAME=Trippy
+APP_GUI_NAME="Cross-platform, Rust-based combined ping/traceroute network troubleshooting tool."
+APP_VERSION=0.11.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/trip /usr/local/bin
+sudo ln -s -f /usr/local/bin/trip /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Safelock CLI cross-platform, Golang-based command-line fast file encryption (AES-GCM) tool from package
+# https://github.com/mrf345/safelock-cli
+APP_NAME=safelock-cli
+APP_GUI_NAME="Cross-platform, Golang-based command-line fast file encryption (AES-GCM) tool."
+APP_VERSION=0.2.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
