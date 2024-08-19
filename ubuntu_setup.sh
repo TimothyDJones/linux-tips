@@ -46798,3 +46798,10 @@ sed -i "s|Icon=zed|Icon=$HOME/.local/zed.app/share/icons/hicolor/512x512/apps/ze
 sed -i "s|Exec=zed|Exec=$HOME/.local/zed.app/libexec/zed-editor|g" ~/.local/share/applications/dev.zed.Zed.desktop
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Uno Calculator cross-platform port of Windows calculator from Snap
+# https://platform.uno/uno-calculator/
+APP_NAME=Uno-Calculator
+sudo apt-get install -y snapd snapd-xdg-open
+sudo snap install snapd
+sudo snap install ${APP_NAME,,}
