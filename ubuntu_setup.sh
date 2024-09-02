@@ -46885,3 +46885,47 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install EdSim51 cross-platform Java-based 8051 microcontroller simulator for education from package
+APP_NAME=EdSim51
+APP_GUI_NAME="Cross-platform Java-based 8051 microcontroller simulator for education."
+APP_GUI_CATEGORIES="Education;Science;"
+APP_GUI_KEYWORDS="Electronics;Microcontroller;"
+APP_VERSION=2.1.35
+APP_EXT=zip
+sudo apt install -y openjdk-17-jre
+FILE_NAME=${APP_NAME,,}di_version_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/${APP_NAME,,}/icon?e60863923fb19c8ce2e03dcfcef2c582767354d8f37705a6b50683ddc2ff5444
+cd /tmp
+unzip /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R /tmp/${APP_NAME,,}di/* /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${APP_NAME,,}di.jar
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+#Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
