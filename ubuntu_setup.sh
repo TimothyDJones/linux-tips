@@ -7973,7 +7973,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install INSTEAD Interactive Fiction interpreter/player from source
 APP_NAME=INSTEAD
 APP_GUI_NAME="Interactive Fiction interpreter/player."
-APP_VERSION=3.5.1
+APP_VERSION=3.5.2
 APP_EXT=tar.gz
 sudo apt-get install -y liblua5.1-dev libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev libsdl2-mixer-dev
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}.${APP_EXT}
