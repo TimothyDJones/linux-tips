@@ -3035,7 +3035,7 @@ xdg-open http://localhost:8080/${APP_NAME,,}/ &
 # Install Squirrel SQL Java-based SQL database client utility from package
 APP_NAME=Squirrel-SQL
 APP_GUI_NAME="Java-based SQL database client utility."
-APP_VERSION=4.7.1
+APP_VERSION=4.8.0
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-standard
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
