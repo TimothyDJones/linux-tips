@@ -46885,3 +46885,20 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install x11-calc X/Windows/C-based HP calculator simulator from source
+APP_NAME=x11-calc
+APP_GUI_NAME="X/Windows/C-based HP calculator simulator."
+APP_VERSION=0.14.156
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
+sudo apt install -yy gcc make libc6-dev libx11-dev xfonts-base
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mike632t/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
