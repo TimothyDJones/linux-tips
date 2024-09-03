@@ -2283,7 +2283,7 @@ APP_NAME=ProjeQtOr
 APP_GUI_NAME="Web-based project management tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project;Management;"
-APP_VERSION=11.3.1
+APP_VERSION=11.3.2
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -3424,7 +3424,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install Micro terminal-based text editor from package
 APP_NAME=Micro
-APP_VERSION=2.0.13
+APP_VERSION=2.0.14
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux64
 else    # Otherwise use version for 32-bit kernel
@@ -4661,7 +4661,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Crystal Facet UML modeling tool from package
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.59.0-1
+APP_VERSION=1.60.0-1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}.x86_64
 sudo apt-get install -y libgdk-pixbuf2.0-0 alien
@@ -9640,7 +9640,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install fd user-friendly alternative to Linux 'find' from package
 APP_NAME=fd
 APP_GUI_NAME="Cross-platform, user-friendly alternative to Linux 'find'."
-APP_VERSION=10.1.0
+APP_VERSION=10.2.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-musl_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sharkdp/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -10931,7 +10931,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Battle for Wesnoth high-fantasy themed adventure game from source
 APP_NAME=Wesnoth
 APP_GUI_NAME="High-fantasy themed adventure game."
-APP_VERSION=1.19.2
+APP_VERSION=1.19.3
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
@@ -14511,7 +14511,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=3.1.3
+APP_VERSION=3.1.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21435,7 +21435,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=7.16.0
+APP_VERSION=7.17.0
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -22659,7 +22659,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://sw.kovidgoyal.net/kitty/
 APP_NAME=Kitten
 APP_GUI_NAME="Cross-platform GPU-based terminal."
-APP_VERSION=0.36.0
+APP_VERSION=0.36.1
 APP_EXT=txz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt-get install -y python3-enchant python3-pyqt5 python3-numpy python3-pyqt5.qtsvg
@@ -28842,7 +28842,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Pineapple Pictures cross-platform lightweight image viewer from Debian package
 APP_NAME=Pineapple-Pictures
-APP_VERSION=0.8.0
+APP_VERSION=0.8.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Ubuntu-22.04-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -30241,11 +30241,11 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Setzer Python/GTK-based LaTeX editor for Linux from source
 APP_NAME=Setzer
 APP_GUI_NAME="Python/GTK-based LaTeX editor for Linux."
-APP_VERSION=master
+APP_VERSION=v66
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y meson python3-gi gir1.2-gtk-3.0 gir1.2-gtksource-4 gir1.2-gspell-1 gir1.2-pango-1.0 gir1.2-poppler-0.18 gir1.2-webkit2-4.0 python3-xdg gettext xdg-utils python3-pdfminer python3-cairo
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cvfosammmm/${APP_NAME,,}/archive/refs/heads/${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cvfosammmm/${APP_NAME,,}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
@@ -31093,7 +31093,7 @@ APP_NAME=Spyder
 APP_GUI_NAME="Cross-platform Qt-based Python IDE."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Python;IDE;Editor;"
-APP_VERSION=5.5.5
+APP_VERSION=5.5.6
 mkdir -p $HOME/.local/bin/${APP_NAME,,}
 cd $HOME/.local/bin/${APP_NAME,,}
 python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
@@ -34229,7 +34229,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Electron-based notepad-style calculator."
 APP_GUI_CATEGORIES="Accessories;Science;Education;"
 APP_GUI_KEYWORDS="Calculator;"
-APP_VERSION=5.2.2
+APP_VERSION=5.2.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bornova/${APP_NAME,,}-calculator/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -35456,7 +35456,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based 2D jump-and-run puzzle platformer game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Puzzle;Arcade;"
-APP_VERSION=1.5.173
+APP_VERSION=1.5.190
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/divVerent/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -39577,7 +39577,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based tool for organizing, annotating and managing local files using tags."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Tags;File;Productivity;"
-APP_VERSION=5.9.1
+APP_VERSION=5.9.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux-x86_64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40793,7 +40793,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Fastfetch
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="C-based, cross-platform, command-line minimalist system information tool."
-APP_VERSION=2.21.3
+APP_VERSION=2.22.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/fastfetch-cli/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -41012,7 +41012,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based notepad and personal knowledge-management tool with markdown support."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Markdown;"
-APP_VERSION=3.1.3
+APP_VERSION=3.1.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -41625,7 +41625,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/flawiddsouza/Restfox
 APP_NAME=Restfox
 APP_GUI_NAME="Restfox cross-platform offline-first HTTP REST and GraphQL client."
-APP_VERSION=0.23.0
+APP_VERSION=0.24.0
 APP_EXT=snap
 FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt-get install -y snapd snapd-xdg-open
@@ -42504,7 +42504,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform database GUI with support for many platforms, including MySQL, MariaDB, Oracle, PostgreSQL, SQLite, MongoDB, DM, OceanBase, TiDB and SQLServer."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Database;SQL;NoSQL;"
-APP_VERSION=6.7
+APP_VERSION=6.10
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_x64
 sudo apt install -y libfuse2
@@ -45596,7 +45596,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, minimalist messenger application with no user identifiers."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Messenger;"
-APP_VERSION=6.0.0
+APP_VERSION=6.0.3
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=simplex-desktop-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
@@ -46778,7 +46778,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://zed.dev/docs/linux#downloading-manually
 APP_NAME=Zed
 APP_GUI_NAME="Rust-based, cross-platform, Atom-style GUI text editor."
-APP_VERSION=0.148.1
+APP_VERSION=0.149.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zed-industries/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -46864,6 +46864,19 @@ sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} --referer https://wavebox.io/download?platform=linux -J -L https://download.${APP_NAME,,}.app/stable/linux/appimage/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/${APP_NAME,,}/waveboxapp/master/icons/app.png
+
+# Install EcoPaste cross-platform, Rust-based clipboard manager from AppImage
+APP_NAME=EcoPaste
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '-' '_' )
+APP_GUI_NAME="Cross-platform, Rust-based clipboard manager."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Clipboard;"
+APP_VERSION=0.0.6
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME=eco-paste_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ayangweb/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/ayangweb/${APP_NAME}/master/public/logo.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
@@ -46961,3 +46974,20 @@ EOF
 sudo install -m 644 /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install x11-calc X/Windows/C-based HP calculator simulator from source
+APP_NAME=x11-calc
+APP_GUI_NAME="X/Windows/C-based HP calculator simulator."
+APP_VERSION=0.14.156
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
+sudo apt install -yy gcc make libc6-dev libx11-dev xfonts-base
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mike632t/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
