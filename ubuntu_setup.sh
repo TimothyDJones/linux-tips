@@ -46991,3 +46991,10 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Forecast Python/GTK-based minimalist desktop weather forecast tool from Flatpak
+# https://github.com/SalaniLeo/Forecast
+APP_NAME=Forecast
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub dev.salaniLeo.${APP_NAME,,}
