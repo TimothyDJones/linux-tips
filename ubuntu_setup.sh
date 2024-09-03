@@ -14511,7 +14511,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=3.1.4
+APP_VERSION=3.1.6
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
