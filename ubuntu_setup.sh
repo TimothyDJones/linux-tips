@@ -46998,3 +46998,10 @@ APP_NAME=Forecast
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub dev.salaniLeo.${APP_NAME,,}
+
+# Install Libre Menu Editor Python/GTK-based Linux shell menu editor from Flatpak
+# https://codeberg.org/libre-menu-editor/libre-menu-editor
+APP_NAME=LibreMenuEditor
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub page.codeberg.libre_menu_editor.${APP_NAME,,}
