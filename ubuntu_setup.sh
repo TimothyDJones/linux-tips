@@ -46991,3 +46991,19 @@ sudo chmod +x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install halloy Rust-based, cross-platform minimalist IRC client from package
+APP_NAME=halloy
+APP_GUI_NAME="Rust-based, cross-platform minimalist IRC client."
+APP_VERSION=2024.11
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/squidowl/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/bin/* /usr/local/bin
+sudo cp -a -R /tmp/${FILE_NAME}/share/* /usr/local/share
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
