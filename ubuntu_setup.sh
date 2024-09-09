@@ -18666,7 +18666,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install ripgrep command-line file search tool that recursively traverses directory structure from Debian package
 APP_NAME=ripgrep
 APP_GUI_NAME="Command-line file search tool that recursively traverses directory structure."
-APP_VERSION=14.0.3
+APP_VERSION=14.1.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/BurntSushi/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -26562,7 +26562,7 @@ APP_NAME=Logisim
 APP_GUI_NAME="Java-based digital logic designer and simulator."
 APP_GUI_CATEGORIES="Development;Electronics;"
 APP_GUI_KEYWORDS="Logic;Simulator;Electronics;"
-APP_VERSION=2.7.11
+APP_VERSION=2.7.12
 APP_EXT=jar
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-ps/${FILE_NAME}.${APP_EXT}
