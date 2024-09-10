@@ -25880,7 +25880,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install WezTerm cross-platform, Rust-based, GPU-accelerated terminal tool from Debian package
 APP_NAME=WezTerm
-APP_VERSION=20211205-192649-672c1cc1
+APP_VERSION=20240203-110809-5046fc22
 APP_EXT=deb
 source /etc/lsb-release
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.Ubuntu${DISTRIB_RELEASE}
