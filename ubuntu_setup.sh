@@ -336,6 +336,9 @@ sudo cp -a /tmp/UnifontEX/UnifontEX.ttf /usr/local/share/fonts
 curl -o /tmp/dejavu-fonts-ttf-2.37.tar.bz2 -J -L https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.tar.bz2
 tar -xf /tmp/dejavu-fonts-ttf-2.37.tar.bz2
 sudo cp -a /tmp/dejavu-fonts-ttf-2.37/ttf/* /usr/local/share/fonts
+curl -o /tmp/spleen-2.1.0.tar.gz -J -L https://downloads.sourceforge.net/spleen.mirror/spleen-2.1.0.tar.gz
+mkdir -p /tmp/spleen-2.1.0 && tar -xf /tmp/spleen-2.1.0.tar.gz -C /tmp/spleen-2.1.0
+sudo cp -R -a /tmp/spleen-2.1.0/* /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
