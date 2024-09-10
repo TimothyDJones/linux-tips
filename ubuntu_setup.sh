@@ -46845,7 +46845,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/mrf345/safelock-cli
 APP_NAME=safelock-cli
 APP_GUI_NAME="Cross-platform, Golang-based command-line fast file encryption (AES-GCM) tool."
-APP_VERSION=0.4.2
+APP_VERSION=0.4.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
