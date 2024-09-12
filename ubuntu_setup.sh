@@ -47072,3 +47072,49 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Tabby cross-platform, self-hosted AI coding assistant from package
+APP_NAME=Tabby
+APP_GUI_NAME="Cross-platform, self-hosted AI coding assistant."
+APP_GUI_CATEGORIES="Education;Programming;"
+APP_GUI_KEYWORDS="AI;Assistant;"
+APP_VERSION=0.17.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-manylinux2014
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}ml.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/tabbyml/icon?0a178c2767d4876de7edc522b18455f39efef4cea4e79a3aa117dd7e503aef8a
+cd /tmp
+unzip /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -R -a /tmp/dist/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo chmod +x /opt/${APP_NAME,,}/${APP_NAME,,} /opt/${APP_NAME,,}/llama-server
+sudo chmod 755 /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/${APP_NAME,,} serve & 
+sleep 2
+xdg-open http://0.0.0.0:8080/
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+#Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
