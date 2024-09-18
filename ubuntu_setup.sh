@@ -44535,13 +44535,16 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform C#-based notepad/text editor."
 APP_GUI_CATEGORIES="Accessories;Development;Programming"
 APP_GUI_KEYWORDS="Notepad;Editor;"
-APP_VERSION=19
-APP_EXT=zip
+APP_VERSION=20
+APP_EXT=tgz
+curl -o /tmp/packages-microsoft-prod.deb -J -L https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb && sudo gdebi -n /tmp/packages-microsoft-prod.deb
+sudo apt-get update && sudo apt-get install -y dotnet-runtime-8.0
 FILE_NAME=${APP_NAME}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/${APP_NAME,,}/${APP_NAME,,}/main/deploy/resources/windows/PackageRoot/Assets/square44x44logo.scale-200.png
 cd /tmp
-unzip /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+mkdir /tmp/${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
