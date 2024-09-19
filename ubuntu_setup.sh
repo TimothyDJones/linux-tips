@@ -22077,9 +22077,9 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Murex Golang-based alternate command shell with focus on scripting from package
 APP_NAME=Murex
 APP_GUI_NAME="Golang-based alternate command shell with focus on scripting."
-APP_VERSION=N/A
+APP_VERSION=6.3.4225
 APP_EXT=gz
-FILE_NAME=${APP_NAME,,}-linux-${KERNEL_TYPE//i/}
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://murex.rocks/bin/latest/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
