@@ -3863,7 +3863,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # http://docs.geoserver.org/latest/en/user/installation/linux.html
 APP_NAME=GeoServer
 APP_GUI_NAME="Cross-platform Java-based geospatial server."
-APP_VERSION=2.25.2
+APP_VERSION=2.26.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
