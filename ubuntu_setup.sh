@@ -47021,3 +47021,17 @@ APP_NAME=LibreMenuEditor
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub page.codeberg.libre_menu_editor.${APP_NAME,,}
+
+# Install uv Rust-based, fast Python package and project manager from package
+APP_NAME=uv
+APP_GUI_NAME="Rust-based, fast Python package and project manager."
+APP_VERSION=0.4.15
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-project-manager.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R /tmp/${FILE_NAME}/* /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
