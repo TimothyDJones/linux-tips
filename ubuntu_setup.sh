@@ -3504,7 +3504,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install TexStudio cross-platform Qt-based LaTeX editor from source
 APP_NAME=TexStudio
-APP_VERSION=4.8.1
+APP_VERSION=4.8.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_VERSION}
 sudo apt-get install -y libpoppler-qt5-dev libqt5svg5-dev qttools5-dev libgs-dev qtscript5-dev texlive
@@ -40913,7 +40913,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=4.1.1
+APP_VERSION=4.2.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
