@@ -256,9 +256,9 @@ sudo cp -R /tmp/Fira_Code_v6.1/ttf/* /usr/local/share/fonts
 curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.xz
 mkdir -p /tmp/Hack-v3.003-ttf && tar -xf /tmp/Hack-v3.003-ttf.tar.xz -C /tmp/Hack-v3.003-ttf
 sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
-curl -o /tmp/ttf-iosevka-31.6.1.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v31.6.0/ttf-iosevka-31.6.1.zip
-mkdir -p /tmp/ttf-iosevka-31.6.1 && unzip /tmp/ttf-iosevka-31.6.1.zip -d /tmp/ttf-iosevka-31.6.1
-sudo cp -R /tmp/ttf-iosevka-31.6.1/* /usr/local/share/fonts
+curl -o /tmp/ttf-iosevka-31.7.0.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v31.7.0/ttf-iosevka-31.7.0.zip
+mkdir -p /tmp/ttf-iosevka-31.7.0 && unzip /tmp/ttf-iosevka-31.7.0.zip -d /tmp/ttf-iosevka-31.7.0
+sudo cp -R /tmp/ttf-iosevka-31.7.0/* /usr/local/share/fonts
 curl -o /tmp/CascadiaCode-2111.01.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2111.01.zip
 mkdir -p /tmp/CascadiaCode-2111.01 && unzip /tmp/CascadiaCode-2111.01.zip -d /tmp/CascadiaCode-2111.01
 sudo cp -R /tmp/CascadiaCode-2111.01/ttf/* /usr/local/share/fonts
@@ -3507,7 +3507,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install TexStudio cross-platform Qt-based LaTeX editor from source
 APP_NAME=TexStudio
-APP_VERSION=4.8.1
+APP_VERSION=4.8.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_VERSION}
 sudo apt-get install -y libpoppler-qt5-dev libqt5svg5-dev qttools5-dev libgs-dev qtscript5-dev texlive
@@ -3866,7 +3866,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # http://docs.geoserver.org/latest/en/user/installation/linux.html
 APP_NAME=GeoServer
 APP_GUI_NAME="Cross-platform Java-based geospatial server."
-APP_VERSION=2.25.2
+APP_VERSION=2.26.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-bin
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -4230,7 +4230,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Kid3 cross-platform audio tag editor from package
 APP_NAME=Kid3
 APP_GUI_NAME="Cross-platform audio tag editor."
-APP_VERSION=3.9.5
+APP_VERSION=3.9.6
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -k -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -13406,7 +13406,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Double Commander dual-pane canonical file manager from package
 APP_NAME=DoubleCmd
 APP_GUI_NAME="Dual-pane canonical file manager."
-APP_VERSION=1.1.16
+APP_VERSION=1.1.18
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.qt.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -18763,7 +18763,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install SOFA Statistics simple statistics, analysis, and reporting tool from Debian package
 APP_NAME=SOFAStatistics
 APP_GUI_NAME="Simple statistics, analysis, and reporting."
-APP_VERSION=1.5.6
+APP_VERSION=1.5.7
 APP_EXT=deb
 FILE_NAME=sofastats-${APP_VERSION}-1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -24105,7 +24105,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME// /%20}*
 # Install Beekeeper Studio cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server) from Debian package
 APP_NAME=Beekeeper-Studio
 APP_GUI_NAME="Cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server)."
-APP_VERSION=4.6.2
+APP_VERSION=4.6.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -33244,6 +33244,7 @@ elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(fo|gr|hi|im)$ ]]; then
 	DISTRIB_RELEASE=20.04
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ ^(ja|ki|lu|ma)$ ]]; then
 	DISTRIB_RELEASE=22.10
+fi
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-${DISTRIB_RELEASE}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MitMaro/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
@@ -36224,7 +36225,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install fq Golang-based command-line tool for working with binary data (media, packet captures, etc.) similar to jq from package
 APP_NAME=fq
 APP_GUI_NAME="fq Golang-based command-line tool for working with binary data (media, packet captures, etc.) similar to jq."
-APP_VERSION=0.12.0
+APP_VERSION=0.13.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-tool.mirror/${FILE_NAME}.${APP_EXT}
@@ -40375,7 +40376,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=mrViewer2
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform multimedia viewer/player."
-APP_VERSION=1.2.7
+APP_VERSION=1.2.8
 APP_EXT=deb
 FILE_NAME=mrv2-v${APP_VERSION}-Linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mrv2/${FILE_NAME}.${APP_EXT}
@@ -44364,7 +44365,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, open-source Electron-based REST and GraphQL API testing tool."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="REST;GraphQL;"
-APP_VERSION=1.29.1
+APP_VERSION=1.30.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)_linux
@@ -47027,6 +47028,20 @@ APP_NAME=LibreMenuEditor
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub page.codeberg.libre_menu_editor.${APP_NAME,,}
+
+# Install uv Rust-based, fast Python package and project manager from package
+APP_NAME=uv
+APP_GUI_NAME="Rust-based, fast Python package and project manager."
+APP_VERSION=0.4.15
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-project-manager.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R /tmp/${FILE_NAME}/* /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install crun cross-platform minimalist OCI container run-time from package
 APP_NAME=crun
