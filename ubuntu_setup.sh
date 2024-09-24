@@ -1901,11 +1901,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-<<<<<<< HEAD
 APP_VERSION=1.70.117
-=======
-APP_VERSION=1.69.168
->>>>>>> 0fb4bf5e (Update Brave web browser (release channel) to version 1.69.168.)
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
