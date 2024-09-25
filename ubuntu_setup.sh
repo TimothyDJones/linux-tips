@@ -47220,3 +47220,37 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Programmer Browser cross-platform, fast-searching, space-saving browser for programmers from AppImage
+APP_NAME="Programmer Browser"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+APP_GUI_NAME="Cross-platform, fast-searching, space-saving browser for programmers."
+APP_GUI_CATEGORIES="Programming;Browser;"
+APP_GUI_KEYWORDS="Internet;"
+APP_VERSION=0.1.8
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME=$(echo ${APP_NAME} | tr -d ' ' )-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/yessGlory17/${_APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://raw.githubusercontent.com/yessGlory17/${_APP_NAME}/refs/heads/main/assets/icon-bg.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.png /usr/local/share/icons/${_APP_NAME}.png
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
