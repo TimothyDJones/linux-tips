@@ -46956,14 +46956,14 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '-' '_' )
 APP_GUI_NAME="Kulina graphics scientific desktop calculator."
 APP_GUI_CATEGORIES="Education;Accessories;System;"
 APP_GUI_KEYWORDS="Calculator;"
-APP_VERSION=20211214-1
-APP_EXT=tar
-FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+APP_VERSION=1.0
+APP_EXT=tgz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/kgcal/${FILE_NAME}.${APP_EXT}
 cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
-sudo install -m 755 -s /tmp/TARBALL/kgcalc /usr/local/bin
-sudo install -m 644 /tmp/TARBALL/kgcalc.png /usr/local/share/icons
+sudo install -m 755 -s /tmp/${FILE_NAME}/kgcalc /usr/local/bin
+sudo install -m 644 /tmp/${FILE_NAME}/kgcalc.png /usr/local/share/icons
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
