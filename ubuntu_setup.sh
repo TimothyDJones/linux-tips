@@ -47314,3 +47314,14 @@ sudo cp -a -R /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}*
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Cadmium Flutter/Dart-based multi-functional programming companion from Debian package
+APP_NAME=Cadmium
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=1.1.8
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/blue-sheep/${APP_NAME,,}/-/jobs/7814125234/artifacts/raw/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
