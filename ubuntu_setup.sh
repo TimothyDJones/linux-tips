@@ -40465,7 +40465,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install pdfcook command-line PDF editor from source
 APP_NAME=pdfcook
 APP_GUI_NAME="Command-line PDF editor."
-APP_VERSION=0.4
+APP_VERSION=0.4.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
