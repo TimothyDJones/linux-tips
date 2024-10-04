@@ -45496,7 +45496,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, React/Rust-based chess GUI and analysis tool."
 APP_GUI_CATEGORIES="Entertainment;Games;"
 APP_GUI_KEYWORDS="Chess;"
-APP_VERSION=0.8.0
+APP_VERSION=0.11.1
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${_APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
