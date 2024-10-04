@@ -45307,7 +45307,7 @@ rm -rf /tmp/${_APP_NAME}*
 # Install qemu_mgr minimalist command-line manager for QEMU from source
 APP_NAME=qemu_mgr
 APP_GUI_NAME="Minimalist command-line manager for QEMU."
-APP_VERSION=1.3
+APP_VERSION=1.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y build-essential gcc make qemu-system
