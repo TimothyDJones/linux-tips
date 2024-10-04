@@ -45140,7 +45140,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Electron-based Discord client."
 APP_GUI_CATEGORIES="Internet;;"
 APP_GUI_KEYWORDS="Messenger;Chat;"
-APP_VERSION=1.5.0
+APP_VERSION=1.5.3
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}
