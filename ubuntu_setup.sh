@@ -45418,7 +45418,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, PyQt-based audio file tagging tool."
 APP_GUI_CATEGORIES="Audio;Multimedia;"
 APP_GUI_KEYWORDS="Tagging;"
-APP_VERSION=2.11
+APP_VERSION=2.12.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/metabrainz/${APP_NAME,,}/releases/download/release-${APP_VERSION}/${FILE_NAME}.${APP_EXT}
