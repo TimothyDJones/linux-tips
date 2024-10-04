@@ -47325,3 +47325,16 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/blue-sheep/${APP_N
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install findwin minimalist tool to find window on any desktop by name from Debian package
+APP_NAME=findwin
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=0.11
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-1.fc23.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+sudo apt install -yy alien
+curl -o /tmp/${FILE_NAME}.rpm -J -L https://als.regnet.cz/${APP_NAME,,}/download/${FILE_NAME}.rpm
+sudo alien /tmp/${FILE_NAME}.rpm
+sudo gdebi -n /tmp/${APP_NAME,,}*.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
