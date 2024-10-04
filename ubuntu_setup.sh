@@ -45332,7 +45332,7 @@ APP_NAME=jqless
 APP_GUI_NAME="Cross-platform, Golang-based TUI for interactive tool for parsing JSON."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="JSON;Shell;"
-APP_VERSION=0.1.3
+APP_VERSION=0.2.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/samsullivan/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
