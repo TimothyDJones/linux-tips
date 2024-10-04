@@ -45208,7 +45208,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Electron-based image upscaler."
 APP_GUI_CATEGORIES="Graphics;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=2.9.8
+APP_VERSION=2.11.5
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
