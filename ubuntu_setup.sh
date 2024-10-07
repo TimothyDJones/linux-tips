@@ -47419,3 +47419,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install eCapture Golang-based SSL/TLS plaintext capture without CA certificate via eBPF from package
+APP_NAME=eCapture
+APP_GUI_NAME="Golang-based SSL/TLS plaintext capture without CA certificate via eBPF."
+APP_VERSION=0.8.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
