@@ -47440,3 +47440,14 @@ APP_NAME=Ptyxis
 sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install flathub app.devsuite.${APP_NAME}
+
+# Install GPU Viewer GUI tool for viewing details of system GPUs from Debian package
+APP_NAME=GPU-Viewer
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=3.02M1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/arunsivaramanneo/${APP_NAME,,}/releases/download/v3.02/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
