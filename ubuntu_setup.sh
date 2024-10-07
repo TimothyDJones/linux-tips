@@ -47433,3 +47433,10 @@ sudo cp -a -R /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}*
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Ptyxis terminal with focus on interaction with containers from Flatpak
+# https://gitlab.gnome.org/chergert/ptyxis
+APP_NAME=Ptyxis
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub app.devsuite.${APP_NAME}
