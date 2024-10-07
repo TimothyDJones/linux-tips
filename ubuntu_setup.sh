@@ -39398,7 +39398,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Clipboard tool to cut, copy, and paste files from the terminal from package
 APP_NAME=Clipboard
 APP_GUI_NAME="Tool to cut, copy, and paste files from the terminal."
-APP_VERSION=0.7.1
+APP_VERSION=0.9.1
 APP_EXT=zip
 GITHUB_USER=Slackadays
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
