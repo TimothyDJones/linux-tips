@@ -47451,3 +47451,17 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/arunsivaramanneo/$
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Shiori Golang-based self-hosted minimalist bookmark manager from package
+APP_NAME=Shiori
+APP_GUI_NAME="Golang-based self-hosted minimalist bookmark manager."
+APP_VERSION=1.7.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)_${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
