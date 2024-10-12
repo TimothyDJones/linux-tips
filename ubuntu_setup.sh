@@ -47419,3 +47419,10 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Warpinator LAN file transfer tool from Flatpak
+# https://github.com/linuxmint/warpinator
+APP_NAME=Warpinator
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub org.x.${APP_NAME}
