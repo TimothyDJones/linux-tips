@@ -1972,7 +1972,7 @@ sudo rm -rf ${APP_NAME}*
 
 # Install Red Notebook cross-platform journey/diary/PIM from source
 APP_NAME=rednotebook
-APP_VERSION=2.33
+APP_VERSION=2.35
 APP_EXT=tar.gz
 sudo apt-get install -y python3-enchant gir1.2-webkit2-4.0 python3-pip python3-yaml  # Install dependencies
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -42190,7 +42190,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Electron-based GUI for online OneNote."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="OneNote;"
-APP_VERSION=2024.10.110
+APP_VERSION=2024.10.117
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/patrikx3/onenote/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
