@@ -29087,7 +29087,7 @@ APP_NAME=di
 APP_GUI_NAME="Advanced disk information utility."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Disk;Manager;"
-APP_VERSION=4.53
+APP_VERSION=4.54
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
