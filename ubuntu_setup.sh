@@ -42223,7 +42223,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Notepad++ text editor clone."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Text;Editor;Notepad;"
-APP_VERSION=2.18
+APP_VERSION=2.20
 APP_EXT=AppImage
 sudo apt install -y libfuse2 libqt5xmlpatterns5
 FILE_NAME=subtwo-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
