@@ -565,7 +565,7 @@ sudo apt-get install -y atom
 
 # Install Vivaldi web browser (stable version) from Debian package
 APP_NAME=Vivaldi
-APP_VERSION=6.9.3447.37
+APP_VERSION=6.9.3447.54
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.vivaldi.com/stable/${FILE_NAME}.${APP_EXT}
@@ -1635,7 +1635,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Qalculate desktop calculator application from package
 # http://qalculate.github.io/
 APP_NAME=Qalculate
-APP_VERSION=5.2.0
+APP_VERSION=5.3.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/lib${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -1901,7 +1901,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.70.126
+APP_VERSION=1.71.114
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -1972,7 +1972,7 @@ sudo rm -rf ${APP_NAME}*
 
 # Install Red Notebook cross-platform journey/diary/PIM from source
 APP_NAME=rednotebook
-APP_VERSION=2.33
+APP_VERSION=2.35
 APP_EXT=tar.gz
 sudo apt-get install -y python3-enchant gir1.2-webkit2-4.0 python3-pip python3-yaml  # Install dependencies
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}.${APP_EXT}
@@ -11192,7 +11192,7 @@ sudo apt-get update && sudo apt-get install -y enpass
 # Install Waterfox cross-platform web browser based on Firefox from package
 APP_NAME=Waterfox
 APP_GUI_NAME="Cross-platform web browser based on Firefox."
-APP_VERSION=G6.0.19
+APP_VERSION=G6.0.20
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.en-US.linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/WaterfoxCo/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -14514,7 +14514,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Joplin cross-platform notepad and "To Do" list tool from AppImage
 APP_NAME=Joplin
 APP_GUI_NAME="Cross-platform notepad and \"To Do\" list tool."
-APP_VERSION=3.1.18
+APP_VERSION=3.1.19
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/laurent22/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -21438,7 +21438,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=7.19.0
+APP_VERSION=7.20.0
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -23445,7 +23445,7 @@ APP_NAME=GitQlient
 APP_GUI_NAME="Qt-based GUI Git client."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Git;Version Control;"
-APP_VERSION=1.6.2
+APP_VERSION=1.6.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/francescmm/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -24583,7 +24583,7 @@ APP_NAME=Xcoral
 APP_GUI_NAME="Minimalist GUI text editor."
 APP_GUI_CATEGORIES="Development;Programming;Accessories;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=4.02.4
+APP_VERSION=4.02.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential libx11-dev libxft-dev
@@ -27504,7 +27504,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based cryptocurrency portfolio tracking tool."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Blockchain;Cryptocurrency;Bitcoin;"
-APP_VERSION=1.35.0
+APP_VERSION=1.35.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-v${APP_VERSION}
 sudo apt install -y libfuse2
@@ -30162,7 +30162,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install ocenaudio cross-platform minimalist audio editor from Debian package
 APP_NAME=ocenaudio
-APP_VERSION=3.14.2
+APP_VERSION=3.14.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_debian9_$(getconf LONG_BIT)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L --referer https://www.ocenaudio.com/download https://www.ocenaudio.com/downloads/index.php/${FILE_NAME}.${APP_EXT}
@@ -31455,7 +31455,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform FFmpeg GUI for video and audio editing and other operations."
 APP_GUI_CATEGORIES="Multimedia;Entertainment;Audio;Video;"
 APP_GUI_KEYWORDS="Audio;Video;FFmpeg;Editing;"
-APP_VERSION=3.61.1
+APP_VERSION=3.63.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mifi/lossless-cut/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31594,7 +31594,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform GUI editor/manager for SQL and NoSQL databases."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Database;SQL;NoSQL;Editor;"
-APP_VERSION=5.5.5
+APP_VERSION=5.5.6
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -32212,7 +32212,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Qt-based RSS/ATOM/JSON feed reader."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="RSS;Feed;Reader;"
-APP_VERSION=4.6.6
+APP_VERSION=4.7.4
 BUILD_NUMBER=6cf2717ed
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-${BUILD_NUMBER}-linux64
@@ -34228,7 +34228,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Electron-based notepad-style calculator."
 APP_GUI_CATEGORIES="Accessories;Science;Education;"
 APP_GUI_KEYWORDS="Calculator;"
-APP_VERSION=5.3.0
+APP_VERSION=5.4.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bornova/${APP_NAME,,}-calculator/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -38274,7 +38274,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=rqlite
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Distributed version of SQLite database."
-APP_VERSION=8.32.2
+APP_VERSION=8.32.3
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 cd /tmp
@@ -39576,7 +39576,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based tool for organizing, annotating and managing local files using tags."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Tags;File;Productivity;"
-APP_VERSION=6.0.1
+APP_VERSION=6.0.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux-x86_64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40912,7 +40912,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=4.4.1
+APP_VERSION=4.4.3a
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -42185,7 +42185,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Electron-based GUI for online OneNote."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="OneNote;"
-APP_VERSION=2024.10.110
+APP_VERSION=2024.10.117
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/patrikx3/onenote/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -42218,7 +42218,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Notepad++ text editor clone."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Text;Editor;Notepad;"
-APP_VERSION=2.18
+APP_VERSION=2.20
 APP_EXT=AppImage
 sudo apt install -y libfuse2 libqt5xmlpatterns5
 FILE_NAME=subtwo-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
@@ -42590,7 +42590,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-' )
 APP_GUI_NAME="Rust/GTK4-based Linux GUI system monitor."
 APP_GUI_CATEGORIES="System;"
 APP_GUI_KEYWORDS="Monitor;"
-APP_VERSION=0.5.2
+APP_VERSION=0.6.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt-get install -y libfuse
@@ -44074,7 +44074,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform two-pane file manager with built-in viewers and archive extractors."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="File;Manager;"
-APP_VERSION=0.9.9.13
+APP_VERSION=0.9.9.14
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.hifile.app/files/${FILE_NAME}.${APP_EXT}
@@ -45914,7 +45914,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Electron-based Github notification tool."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Git;Notification;"
-APP_VERSION=5.9.0
+APP_VERSION=5.16.1
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}
@@ -46860,7 +46860,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '-' '_' )
 APP_GUI_NAME="Cross-platform, custom Chromium-based web browser with advanced support for a variety of online tools."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Browser;Chromium;"
-APP_VERSION=10.128.5-2
+APP_VERSION=10.129.32-2
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
@@ -47027,7 +47027,7 @@ sudo flatpak install flathub page.codeberg.libre_menu_editor.${APP_NAME,,}
 # Install uv Rust-based, fast Python package and project manager from package
 APP_NAME=uv
 APP_GUI_NAME="Rust-based, fast Python package and project manager."
-APP_VERSION=0.4.22
+APP_VERSION=0.4.24
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-project-manager.mirror/${FILE_NAME}.${APP_EXT}
@@ -47474,6 +47474,47 @@ sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/inkdown/icon?a0f80865be438f1b222a60ec10274c61331b8c2effda6bcd87d312b045938cd3
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Warpinator LAN file transfer tool from Flatpak
+# https://github.com/linuxmint/warpinator
+APP_NAME=Warpinator
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub org.x.${APP_NAME}
+
+# Install Pomodorolm cross-platform, minimalist desktop Pomodoro tool from AppImage
+APP_NAME=Pomodorolm
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+APP_GUI_NAME="Cross-platform, minimalist desktop Pomodoro tool."
+APP_GUI_CATEGORIES="Accessories;"
+APP_GUI_KEYWORDS="Pomodoro;"
+APP_VERSION=0.2.1
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/vjousse/${APP_NAME,,}/releases/download/app-v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/vjousse/${APP_NAME,,}/refs/heads/main/src-tauri/icons/128x128%402x.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
