@@ -47499,3 +47499,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install SyncTERM cross-platform terminal for ANSI BBS support connection over telnet, rlogin and SSH from source
+APP_NAME=SyncTERM
+APP_GUI_NAME="Cross-platform terminal for ANSI BBS support connection over telnet, rlogin and SSH."
+APP_VERSION=1.2rc3
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
+sudo apt install -yy build-essential cmake dos2unix libncursesw5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME,,}*
+mkdir build && cd build
+cmake .. && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
