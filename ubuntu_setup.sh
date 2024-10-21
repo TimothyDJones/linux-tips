@@ -47515,3 +47515,17 @@ mkdir build && cd build
 cmake .. && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install rip2 Rust-based alternative to 'rm' with a focus on safety, ergonomics, and performance from package
+APP_NAME=rip
+APP_GUI_NAME="Rust-based alternative to 'rm' with a focus on safety, ergonomics, and performance."
+APP_VERSION=0.8.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-Linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MilesCranmer/rip2/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}*
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
