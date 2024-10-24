@@ -38247,7 +38247,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="GUI and command-line tool for displaying CPU and other system information."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="CPU;System;"
-APP_VERSION=5.0.2
+APP_VERSION=5.1.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/X0rg/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
