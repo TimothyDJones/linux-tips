@@ -45543,7 +45543,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Rust-based GUI offline time tracking tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Time;Tracking;"
-APP_VERSION=1.8.3
+APP_VERSION=24.10.5
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-offline-${APP_VERSION}
 sudo apt install -y libdbus-1-dev libsqlite3-dev libgtk-4-dev libadwaita-1-dev gettext
