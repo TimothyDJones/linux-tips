@@ -42944,7 +42944,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Shell-AI
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Golang-based minimalist AI assistant for the console."
-APP_VERSION=0.3.6
+APP_VERSION=1.1.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ibigio/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
