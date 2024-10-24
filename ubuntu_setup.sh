@@ -42302,11 +42302,11 @@ sudo useradd --system --home /etc/step-ca --shell /bin/false step
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install rtx cross‐platform, Rust-based, polyglot run-time package manager from package
-APP_NAME=rtx
+# Install mise cross‐platform, Rust-based, polyglot run-time package manager from package
+APP_NAME=mise
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Rust-based, run-time package manager."
-APP_VERSION=2023.10.1
+APP_VERSION=2024.10.9
 APP_EXT=tar.xz
 BASE_ARCH=
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-x64
