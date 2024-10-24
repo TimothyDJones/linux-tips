@@ -47570,3 +47570,38 @@ sudo cp -a -R /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME,,}*
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install ExpidusOS Calculator cross-platform Flutter-based calculator from package
+APP_NAME="ExpidusOS Calculator"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Flutter-based calculator."
+APP_GUI_CATEGORIES="Accessories;System;Utility;"
+APP_GUI_KEYWORDS="Calculator;"
+APP_VERSION=0.1.1-alpha
+APP_EXT=tar.gz
+FILE_NAME=com.expidusos.calculator-linux-x64 
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ExpidusOS/calculator/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir ${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C ${FILE_NAME}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${_APP_NAME}
+sudo ln -s -f /opt/${_APP_NAME}/calculator /usr/local/bin/${_APP_NAME}
+sudo ln -s -f /opt/${_APP_NAME}/calculator /usr/local/bin/ecalc
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/opt/${_APP_NAME}/calculator
+Icon=/opt/${_APP_NAME}/data/com.expidusos.calculator.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Category=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME}*
