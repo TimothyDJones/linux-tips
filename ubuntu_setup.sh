@@ -47703,3 +47703,39 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}*
+
+# Install Novabench cross-platform CLI and GUI system benchmark tool from AppImage
+APP_NAME=Novabench
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+APP_GUI_NAME="Cross-platform CLI and GUI system benchmark tool."
+APP_GUI_CATEGORIES="System;"
+APP_GUI_KEYWORDS="Performance;Benchmark;"
+APP_VERSION=5.4.3
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME=${APP_NAME,,}-x64
+curl -o /tmp/${FILE_NAME}.tar.gz -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.tar.gz
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/novabench/icon?3d8584bf37cb8eff10b688b96aa3842e4a682d8722eb90d1de9b4a3736bf8f4a
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.tar.gz
+sudo cp /tmp/${APP_NAME,,}/${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT}
+sudo ln -s -f /usr/local/bin/${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
