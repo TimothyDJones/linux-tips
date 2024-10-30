@@ -42288,7 +42288,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Step-CA
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Golang-based, self-hosted X.509/SSH certificate authority."
-APP_VERSION=0.27.5
+APP_VERSION=0.28.0
 APP_EXT=tar.gz
 BASE_ARCH=
 FILE_NAME=${APP_NAME,,}_linux_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
