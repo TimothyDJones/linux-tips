@@ -27432,7 +27432,7 @@ APP_NAME=Hearts
 APP_GUI_NAME="Qt5-based traditional card game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Cards;Hearts;"
-APP_VERSION=1.8.10
+APP_VERSION=1.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y build-essential qt5-default libqt5svg5-dev liballegro5-dev
