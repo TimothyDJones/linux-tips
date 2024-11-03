@@ -5777,7 +5777,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install pgweb cross-platform client for PostgreSQL databases
 APP_NAME=pgweb
 APP_GUI_NAME="Cross-platform client for PostgreSQL databases"
-APP_VERSION=0.16.1
+APP_VERSION=0.16.2
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux_amd64
