@@ -256,9 +256,9 @@ sudo cp -R /tmp/Fira_Code_v6.1/ttf/* /usr/local/share/fonts
 curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.xz
 mkdir -p /tmp/Hack-v3.003-ttf && tar -xf /tmp/Hack-v3.003-ttf.tar.xz -C /tmp/Hack-v3.003-ttf
 sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
-curl -o /tmp/ttf-iosevka-31.9.0.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v31.9.0/ttf-iosevka-31.9.0.zip
-mkdir -p /tmp/ttf-iosevka-31.9.0 && unzip /tmp/ttf-iosevka-31.9.0.zip -d /tmp/ttf-iosevka-31.9.0
-sudo cp -R /tmp/ttf-iosevka-31.9.0/* /usr/local/share/fonts
+curl -o /tmp/ttf-iosevka-32.0.1.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v32.0.1/ttf-iosevka-32.0.1.zip
+mkdir -p /tmp/ttf-iosevka-32.0.1 && unzip /tmp/ttf-iosevka-32.0.1.zip -d /tmp/ttf-iosevka-32.0.1
+sudo cp -R /tmp/ttf-iosevka-32.0.1/* /usr/local/share/fonts
 curl -o /tmp/CascadiaCode-2111.01.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2111.01.zip
 mkdir -p /tmp/CascadiaCode-2111.01 && unzip /tmp/CascadiaCode-2111.01.zip -d /tmp/CascadiaCode-2111.01
 sudo cp -R /tmp/CascadiaCode-2111.01/ttf/* /usr/local/share/fonts
@@ -529,7 +529,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install DBeaver Java database utility from Debian package
 APP_NAME=DBeaver
-APP_VERSION=24.2.2
+APP_VERSION=24.2.4
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_amd64
 # Install MySQL JDBC drivers from PPA
@@ -646,7 +646,7 @@ rm -f /tmp/${APP_NAME,,}*
 
 # Install Steel Bank Common Lisp (SBCL) from source
 APP_NAME=sbcl
-APP_VERSION=2.4.9
+APP_VERSION=2.4.10
 APP_EXT=tar.bz2
 sudo apt-get install -y sbcl   # Current packaged version of SBCL required to build the updated version from source
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
@@ -5777,7 +5777,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install pgweb cross-platform client for PostgreSQL databases
 APP_NAME=pgweb
 APP_GUI_NAME="Cross-platform client for PostgreSQL databases"
-APP_VERSION=0.16.1
+APP_VERSION=0.16.2
 APP_EXT=zip
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=linux_amd64
@@ -8195,7 +8195,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install PeaZip cross-platform archive management utility from Debian package
 APP_NAME=PeaZip
 APP_GUI_NAME="Cross-platform archive management utility."
-APP_VERSION=9.9.1
+APP_VERSION=10.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}.LINUX.GTK2-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -10934,7 +10934,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Battle for Wesnoth high-fantasy themed adventure game from source
 APP_NAME=Wesnoth
 APP_GUI_NAME="High-fantasy themed adventure game."
-APP_VERSION=1.19.4
+APP_VERSION=1.19.5
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
@@ -14635,7 +14635,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install xonsh alternative, cross-platform Python-based console shell from package
 APP_NAME=xonsh
 APP_GUI_NAME="Alternative, cross-platform Python-based console shell."
-APP_VERSION=0.18.3
+APP_VERSION=0.18.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -24844,7 +24844,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Glances cross-platform console system monitoring tool from package
 APP_NAME=Glances
 APP_GUI_NAME="Cross-platform console system monitoring tool."
-APP_VERSION=4.1.1
+APP_VERSION=4.2.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nicolargo/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
@@ -28092,7 +28092,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Orbiton minimalist Golang text editor from package
 APP_NAME=Orbiton
 APP_GUI_NAME="Minimalist Golang text editor."
-APP_VERSION=2.65.12
+APP_VERSION=2.66.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xyproto/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -28956,7 +28956,7 @@ APP_NAME=Koodo-Reader
 APP_GUI_NAME="Cross-platform Electron-based ebook manager and reader."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="Ebook;Reader;"
-APP_VERSION=1.6.9
+APP_VERSION=1.7.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/troyeguo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -31459,7 +31459,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform FFmpeg GUI for video and audio editing and other operations."
 APP_GUI_CATEGORIES="Multimedia;Entertainment;Audio;Video;"
 APP_GUI_KEYWORDS="Audio;Video;FFmpeg;Editing;"
-APP_VERSION=3.63.0
+APP_VERSION=3.64.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mifi/lossless-cut/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37401,7 +37401,7 @@ APP_NAME=Encrypt0r
 APP_GUI_NAME="Cross-platform Electron-based GUI file encryption/decryption tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Encryption;Security;"
-APP_VERSION=3.12.51
+APP_VERSION=3.12.52
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kunalnagar/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -39580,7 +39580,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based tool for organizing, annotating and managing local files using tags."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Tags;File;Productivity;"
-APP_VERSION=6.0.2
+APP_VERSION=6.0.4
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux-x86_64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40404,7 +40404,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=nFPM
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Golang-based simple, no-dependencies, deb, rpm, apk, and Arch Linux packager."
-APP_VERSION=2.38.0
+APP_VERSION=2.41.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -40916,7 +40916,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=4.5.0
+APP_VERSION=4.5.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -44746,7 +44746,7 @@ APP_NAME=WaveTerm
 APP_GUI_NAME="Cross-platform modern terminal."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Terminal;"
-APP_VERSION=0.9.0
+APP_VERSION=0.9.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64-v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wavetermdev/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
