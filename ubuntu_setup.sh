@@ -43946,7 +43946,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Qt-based desktop open-source ambient sound tool."
 APP_GUI_CATEGORIES="Accessories;"
 APP_GUI_KEYWORDS="Ambient;Sound;Audio;Productivity;"
-APP_VERSION=1.4.9
+APP_VERSION=1.5.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-Linux
 sudo apt install -y libxcb-cursor0
