@@ -47739,3 +47739,9 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Varia cross-platform download manager based on aria2 from Flatpak package
+APP_NAME=Varia
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub io.github.giantpinkrobots.${APP_NAME,,}
