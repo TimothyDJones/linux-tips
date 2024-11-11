@@ -40236,7 +40236,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME,,//nd/}*
 APP_NAME=Dbmate
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Golang-based, command-line data migration tool that supports MySQL, PostgreSQL, SQLite, and ClickHouse."
-APP_VERSION=2.15.0
+APP_VERSION=2.23.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
