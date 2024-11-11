@@ -593,7 +593,7 @@ sudo apt-get update -y
 # Install Albert application launcher from Debian package
 # http://sourcedigit.com/22129-linux-quick-launcher-ubuntu-albert-best-linux-launcher/
 APP_NAME=Albert
-APP_VERSION=0.26.6
+APP_VERSION=0.26.7
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 source /etc/lsb-release
@@ -1901,7 +1901,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.71.121
+APP_VERSION=1.71.123
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -2024,7 +2024,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Super Productivity To Do List and task manager from Debian package
 APP_NAME=superProductivity
-APP_VERSION=10.0.11
+APP_VERSION=10.1.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johannesjo/super-productivity/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -2286,7 +2286,7 @@ APP_NAME=ProjeQtOr
 APP_GUI_NAME="Web-based project management tool."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Project;Management;"
-APP_VERSION=11.4.1
+APP_VERSION=11.4.2
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -2772,7 +2772,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.8.82
+APP_VERSION=6.8.83
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -13406,7 +13406,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Double Commander dual-pane canonical file manager from package
 APP_NAME=DoubleCmd
 APP_GUI_NAME="Dual-pane canonical file manager."
-APP_VERSION=1.1.19
+APP_VERSION=1.1.20
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.qt.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -14649,7 +14649,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Rukovoditel web-based (PHP/MySQL) project management tool from package
 APP_NAME=Rukovoditel
 APP_GUI_NAME="Web-based (PHP/MySQL) project management tool."
-APP_VERSION=3.6
+APP_VERSION=3.6.1
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -15535,7 +15535,7 @@ docker run hello-world  # Confirm Docker installation.
 # Install Docker Compose command-line utility for multi-container Docker applications from package
 APP_NAME=Docker-Compose
 APP_GUI_NAME="Command-line utility for multi-container Docker applications."
-APP_VERSION=2.30.1
+APP_VERSION=2.30.3
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -21438,7 +21438,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Calibre ebook reader, manager, and converter from package
 APP_NAME=Calibre
 APP_GUI_NAME="Ebook reader, manager, and converter."
-APP_VERSION=7.20.0
+APP_VERSION=7.21.0
 APP_EXT=txz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -27508,7 +27508,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based cryptocurrency portfolio tracking tool."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Blockchain;Cryptocurrency;Bitcoin;"
-APP_VERSION=1.35.1
+APP_VERSION=1.36.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-v${APP_VERSION}
 sudo apt install -y libfuse2
@@ -33018,7 +33018,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Qt-based OCR powered screen-capture tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="OCR;Screen Capture;"
-APP_VERSION=0.5.7
+APP_VERSION=0.5.9
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dynobo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -37971,7 +37971,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=ytt
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Golang-based YAML templating tool that works on YAML structure instead of text."
-APP_VERSION=0.50.0
+APP_VERSION=0.51.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -38278,7 +38278,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=rqlite
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Distributed version of SQLite database."
-APP_VERSION=8.32.6
+APP_VERSION=8.33.0
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 cd /tmp
@@ -40236,7 +40236,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME,,//nd/}*
 APP_NAME=Dbmate
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Golang-based, command-line data migration tool that supports MySQL, PostgreSQL, SQLite, and ClickHouse."
-APP_VERSION=2.22.0
+APP_VERSION=2.23.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -40916,7 +40916,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=4.5.1
+APP_VERSION=4.5.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -42322,7 +42322,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=jql
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Rust-based, JSON Query Language tool."
-APP_VERSION=8.0.0
+APP_VERSION=8.0.1
 APP_EXT=tar.gz
 BASE_ARCH=
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
@@ -42674,7 +42674,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Jujutsu
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Git-compatible version control tool with nice features from other VCS tools."
-APP_VERSION=0.19.0
+APP_VERSION=0.23.0
 APP_EXT=tar.gz
 FILE_NAME=jj-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-vcs.mirror/${FILE_NAME}.${APP_EXT}
@@ -43979,7 +43979,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Online service aggregation tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Productivity;"
-APP_VERSION=6.7.7
+APP_VERSION=7.0.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-linux-Portable-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ferdium/${APP_NAME,,}-app/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -44364,7 +44364,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, open-source Electron-based REST and GraphQL API testing tool."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="REST;GraphQL;"
-APP_VERSION=1.34.1
+APP_VERSION=1.34.2
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)_linux
@@ -46637,7 +46637,7 @@ APP_NAME=dyff
 APP_GUI_NAME="Golang-based command line diff/comparison tool for YAML and JSON files/data."
 APP_GUI_CATEGORIES="Programming;Development;System;"
 APP_GUI_KEYWORDS="Diff;YAML;JSON;"
-APP_VERSION=1.9.2
+APP_VERSION=1.9.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -46784,7 +46784,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://zed.dev/docs/linux#downloading-manually
 APP_NAME=Zed
 APP_GUI_NAME="Rust-based, cross-platform, Atom-style GUI text editor."
-APP_VERSION=0.159.10
+APP_VERSION=0.160.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zed-industries/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -47095,7 +47095,7 @@ APP_NAME=Tabby
 APP_GUI_NAME="Cross-platform, self-hosted AI coding assistant."
 APP_GUI_CATEGORIES="Education;Programming;"
 APP_GUI_KEYWORDS="AI;Assistant;"
-APP_VERSION=0.19.0
+APP_VERSION=0.20.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-manylinux2014
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}ml.mirror/${FILE_NAME}.${APP_EXT}
@@ -47142,7 +47142,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '-' '_' )
 APP_GUI_NAME="Cross-platform, minimalist, privacy-focused web browser."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.0.1-a.17
+APP_VERSION=1.0.1-a.19
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}-generic
@@ -47513,7 +47513,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform, minimalist desktop Pomodoro tool."
 APP_GUI_CATEGORIES="Accessories;"
 APP_GUI_KEYWORDS="Pomodoro;"
-APP_VERSION=0.2.1
+APP_VERSION=0.3.1
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
@@ -47544,7 +47544,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install SyncTERM cross-platform terminal for ANSI BBS support connection over telnet, rlogin and SSH from source
 APP_NAME=SyncTERM
 APP_GUI_NAME="Cross-platform terminal for ANSI BBS support connection over telnet, rlogin and SSH."
-APP_VERSION=1.2rc5
+APP_VERSION=1.2rc6
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
 sudo apt install -yy build-essential cmake dos2unix libncursesw5-dev
@@ -47730,6 +47730,47 @@ GenericName=${APP_NAME}
 Path=/usr/local/bin
 Exec=/usr/local/bin/${APP_NAME,,}
 Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Varia cross-platform download manager based on aria2 from Flatpak package
+APP_NAME=Varia
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub io.github.giantpinkrobots.${APP_NAME,,}
+
+# Install GraSSHopper Electron-based cross-platform SSH client from AppImage
+# https://grasshopper.coding.kiwi/
+APP_NAME=GraSSHopper
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+APP_GUI_NAME="Electron-based cross-platform SSH client."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="SSH;"
+APP_VERSION=1.3.1
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Coding-Kiwi/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://grasshopper.coding.kiwi/img/logo.svg
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
 Type=Application
 StartupNotify=true
 Terminal=false
