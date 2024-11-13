@@ -43009,7 +43009,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Rio
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Rust-based hardware-accelerated terminal emulator."
-APP_VERSION=0.0.14
+APP_VERSION=0.1.17
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)_x11
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -47836,11 +47836,11 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Rust-based command-line log file viewer."
 APP_VERSION=4.0.0
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bensadeh/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
-sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
-sudo chmod +x /usr/local/bin/${APP_NAME,,}
+sudo cp -a /tmp/tspin /usr/local/bin
+sudo ln -s -f /usr/local/bin/tspin /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
