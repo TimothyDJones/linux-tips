@@ -46910,7 +46910,7 @@ APP_NAME=EdSim51
 APP_GUI_NAME="Cross-platform Java-based 8051 microcontroller simulator for education."
 APP_GUI_CATEGORIES="Education;Science;"
 APP_GUI_KEYWORDS="Electronics;Microcontroller;"
-APP_VERSION=2.1.35
+APP_VERSION=2.1.38
 APP_EXT=zip
 sudo apt install -y openjdk-17-jre
 FILE_NAME=${APP_NAME,,}di_version_${APP_VERSION}
