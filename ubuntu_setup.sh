@@ -28777,7 +28777,7 @@ APP_NAME=iQPuzzle
 APP_GUI_NAME="Qt-based geometric puzzle game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Puzzle;Math;"
-APP_VERSION=1.4.0
+APP_VERSION=1.4.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qtbase5-dev
