@@ -33662,7 +33662,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install yt-dlp youtube-dl fork with additional features and fixes from package
 APP_NAME=yt-dlp
 APP_GUI_NAME="youtube-dl fork with additional features and fixes."
-APP_VERSION=2024.11.04
+APP_VERSION=2024.11.18
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
@@ -47858,3 +47858,44 @@ tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -a /tmp/${APP_NAME,,}*/${APP_NAME,,} /usr/local/bin
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Netsleuth Python/GTK IP subnet calculator from Flatpak package
+# https://github.com/vmkspv/netsleuth
+APP_NAME=Netsleuth
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub io.github.vmkspv.${APP_NAME,,}
+
+# Install Folio GTK-based Markdown-format note-taking tool from AppImage
+APP_NAME=Folio
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+APP_GUI_NAME="GTK-based Markdown-format note-taking tool."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="Notepad;"
+APP_VERSION=24.13
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/toolstack/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/toolstack/${APP_NAME}/ba052eb6bcd9b377470fd237e7fab7bb19240eb6/data/icons/hicolor/scalable/apps/com.toolstack.${APP_NAME}.svg
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
