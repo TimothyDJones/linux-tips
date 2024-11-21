@@ -30523,7 +30523,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://lucaschess.pythonanywhere.com/
 APP_NAME="Lucas Chess"
 APP_GUI_NAME="Cross-platform, Python-based GUI for 60+ chess engines."
-APP_VERSION=2.17
+APP_VERSION=2.17b
 APP_EXT=sh
 FILE_NAME=${APP_NAME// /}R${APP_VERSION//./_}_LINUX
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/lucaschessr/${FILE_NAME}.${APP_EXT}
