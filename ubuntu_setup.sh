@@ -13200,7 +13200,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install SQLiteStudio Qt-based SQLite database GUI client from package
 APP_NAME=SQLiteStudio
 APP_GUI_NAME="Qt-based SQLite database GUI client."
-APP_VERSION=3.4.5
+APP_VERSION=3.4.6
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/pawelsalawa/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
