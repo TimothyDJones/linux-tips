@@ -40388,7 +40388,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=GoAWK
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Golang-based POSIX-compliant AWK implementation with native CSV support."
-APP_VERSION=1.21.0
+APP_VERSION=1.29.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
