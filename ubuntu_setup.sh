@@ -7195,7 +7195,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install BiglyBT Java-based (Azureus) GUI BitTorrent client
 APP_NAME=BiglyBT
 APP_GUI_NAME="Java-based (Azureus) GUI BitTorrent client."
-APP_VERSION=3.5.0.0
+APP_VERSION=3.7.0.0
 APP_EXT=sh
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/BiglySoftware/${APP_NAME}/releases/download/v${APP_VERSION}/GitHub_${APP_NAME}_Installer.${APP_EXT}
 sudo sh /tmp/${APP_NAME,,}.${APP_EXT}
