@@ -47544,7 +47544,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install SyncTERM cross-platform terminal for ANSI BBS support connection over telnet, rlogin and SSH from source
 APP_NAME=SyncTERM
 APP_GUI_NAME="Cross-platform terminal for ANSI BBS support connection over telnet, rlogin and SSH."
-APP_VERSION=1.2rc6
+APP_VERSION=1.3
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
 sudo apt install -yy build-essential cmake dos2unix libncursesw5-dev
