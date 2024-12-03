@@ -37401,7 +37401,7 @@ APP_NAME=Encrypt0r
 APP_GUI_NAME="Cross-platform Electron-based GUI file encryption/decryption tool."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Encryption;Security;"
-APP_VERSION=3.12.52
+APP_VERSION=3.12.53
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kunalnagar/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
