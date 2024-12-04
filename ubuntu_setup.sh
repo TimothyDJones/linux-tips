@@ -46832,7 +46832,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/fujiapple852/trippy
 APP_NAME=Trippy
 APP_GUI_NAME="Cross-platform, Rust-based combined ping/traceroute network troubleshooting tool."
-APP_VERSION=0.11.0
+APP_VERSION=0.12.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
