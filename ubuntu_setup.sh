@@ -27243,16 +27243,15 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Hurl Rust-based command-line HTTP scripting tool from package
 # https://hurl.dev
 APP_NAME=Hurl
-APP_VERSION=5.0.1
+APP_VERSION=6.0.0
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64-linux
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Orange-OpenSource/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo cp /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}/* /opt/${APP_NAME,,}
-echo 'export PATH="$PATH:/opt/'${APP_NAME,,}'"' >> $HOME/.bashrc
-source $HOME/.bashrc
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${FILE_NAME}/bin/* /usr/local/bin
+sudo cp -R /tmp/${FILE_NAME}/man/* /usr/share/man
+sudo cp /tmp/${FILE_NAME}/completions/hurlfmt.bash /etc/bash_completion.d/hurlfmt
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
