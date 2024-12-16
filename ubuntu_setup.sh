@@ -39120,7 +39120,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Slider Puzzles"
 APP_GUI_NAME="Cross-platform, color terminal/console puzzle games."
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=3jan24
+APP_VERSION=16dec24
 APP_EXT=7z
 FILE_NAME=asl${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
