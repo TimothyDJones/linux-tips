@@ -47972,3 +47972,10 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Tuba Fediverse social networking client from Flatpak
+# https://github.com/GeopJr/Tuba
+APP_NAME=Tuba
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub dev.geopjr.${APP_NAME}
