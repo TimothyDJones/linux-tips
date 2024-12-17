@@ -22091,7 +22091,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install RufasSok cross-platform OpenGL Sokoban game from package
 APP_NAME=RufasSok
 APP_GUI_NAME="Cross-platform OpenGL Sokoban game."
-APP_VERSION=16dec24
+APP_VERSION=17dec24
 APP_EXT=7z
 FILE_NAME=as${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
