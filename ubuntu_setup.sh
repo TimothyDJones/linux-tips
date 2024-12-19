@@ -9668,7 +9668,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Flowblade multitrack non-linear video editor for Linux from package
 APP_NAME=Flowblade
 APP_GUI_NAME="Multitrack non-linear video editor for Linux."
-APP_VERSION=2.8.0.3
+APP_VERSION=2.18
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-1_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/jliljebl/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
