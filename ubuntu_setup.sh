@@ -10124,7 +10124,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install LNAV log file viewer/searcher with syntax highlighting from package
 APP_NAME=LNAV
 APP_GUI_NAME="Log file viewer/searcher with syntax highlighting."
-APP_VERSION=0.12.1
+APP_VERSION=0.12.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-64bit
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/tstack/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
