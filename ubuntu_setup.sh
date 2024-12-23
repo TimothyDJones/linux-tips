@@ -256,9 +256,9 @@ sudo cp -R /tmp/Fira_Code_v6.1/ttf/* /usr/local/share/fonts
 curl -o /tmp/Hack-v3.003-ttf.tar.xz -J -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.xz
 mkdir -p /tmp/Hack-v3.003-ttf && tar -xf /tmp/Hack-v3.003-ttf.tar.xz -C /tmp/Hack-v3.003-ttf
 sudo cp -R /tmp/Hack-v3.003-ttf/* /usr/local/share/fonts
-curl -o /tmp/ttf-iosevka-32.2.1.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v32.2.1/ttf-iosevka-32.2.1.zip
-mkdir -p /tmp/ttf-iosevka-32.2.1 && unzip /tmp/ttf-iosevka-32.2.1.zip -d /tmp/ttf-iosevka-32.2.1
-sudo cp -R /tmp/ttf-iosevka-32.2.1/* /usr/local/share/fonts
+curl -o /tmp/ttf-iosevka-32.3.0.zip -J -L https://github.com/be5invis/Iosevka/releases/download/v32.3.0/ttf-iosevka-32.3.0.zip
+mkdir -p /tmp/ttf-iosevka-32.3.0 && unzip /tmp/ttf-iosevka-32.3.0.zip -d /tmp/ttf-iosevka-32.3.0
+sudo cp -R /tmp/ttf-iosevka-32.3.0/* /usr/local/share/fonts
 curl -o /tmp/CascadiaCode-2111.01.zip -J -L https://downloads.sourceforge.net/cascadia-code.mirror/CascadiaCode-2111.01.zip
 mkdir -p /tmp/CascadiaCode-2111.01 && unzip /tmp/CascadiaCode-2111.01.zip -d /tmp/CascadiaCode-2111.01
 sudo cp -R /tmp/CascadiaCode-2111.01/ttf/* /usr/local/share/fonts
