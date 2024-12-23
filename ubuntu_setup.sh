@@ -47559,7 +47559,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install rip2 Rust-based alternative to 'rm' with a focus on safety, ergonomics, and performance from package
 APP_NAME=rip
 APP_GUI_NAME="Rust-based alternative to 'rm' with a focus on safety, ergonomics, and performance."
-APP_VERSION=0.9.0
+APP_VERSION=0.9.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-Linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-musl
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MilesCranmer/rip2/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
