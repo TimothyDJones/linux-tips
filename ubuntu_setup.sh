@@ -32295,7 +32295,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform non-linear video editor."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=3.2.1
+APP_VERSION=3.3.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(uname -m)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME,,}-qt//releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
