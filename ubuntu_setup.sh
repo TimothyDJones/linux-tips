@@ -48031,3 +48031,24 @@ sudo cp -a -R /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install z simple front-end to various compression and archiving tools from package
+APP_NAME=z
+APP_GUI_NAME="Simple front-end to various compression and archiving tools."
+APP_VERSION=2.7.6
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://kinzler.com/me/z/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd ${FILE_NAME}
+sed -i 's@/usr/local/man/man1@/usr/share/man/man1@g' ./Makefile
+sudo make install
+sudo make install.man
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}-*
+
+
+
+
+
