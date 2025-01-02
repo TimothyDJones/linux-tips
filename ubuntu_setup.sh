@@ -30776,7 +30776,7 @@ APP_NAME=WFDownloader
 APP_GUI_NAME="Cross-platform, Java-based bulk multimedia download tool."
 APP_GUI_CATEGORIES="Internet;Multimedia;"
 APP_GUI_KEYWORDS="Download;Multimedia;"
-APP_VERSION=0.88
+APP_VERSION=0.89
 APP_EXT=zip
 FILE_NAME=${APP_NAME}App_CrossPlatform_BETA
 sudo apt-get install -yy openjfx
