@@ -48047,8 +48047,3 @@ sudo make install
 sudo make install.man
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}-*
-
-
-
-
-
