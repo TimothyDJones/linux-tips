@@ -5375,7 +5375,7 @@ rm -rf /tmp/${_APP_NAME//-/}*
 
 # Install qmmp Qt-based Multimedia Player from source
 APP_NAME=qmmp
-APP_VERSION=1.7.2
+APP_VERSION=1.7.3
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y cmake build-essential qtbase5-dev qttools5-dev libqt5x11extras5-dev qtmultimedia5-dev libcdio-dev libsoxr-dev libpulse-dev libjack-dev libogg-dev libvorbis-dev libcurl4-openssl-dev libwavpack-dev libavformat-dev libmpeg3-dev libcddb2-dev
