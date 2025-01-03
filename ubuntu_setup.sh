@@ -47453,7 +47453,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Shiori Golang-based self-hosted minimalist bookmark manager from package
 APP_NAME=Shiori
 APP_GUI_NAME="Golang-based self-hosted minimalist bookmark manager."
-APP_VERSION=1.7.3
+APP_VERSION=1.7.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
