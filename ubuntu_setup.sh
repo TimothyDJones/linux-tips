@@ -47917,7 +47917,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install ruff Rust-based, fast Python linter from package
 APP_NAME=ruff
 APP_GUI_NAME="Rust-based, fast Python linter."
-APP_VERSION=0.8.0
+APP_VERSION=0.8.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
