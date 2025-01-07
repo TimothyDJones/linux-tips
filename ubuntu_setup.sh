@@ -44363,7 +44363,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, open-source Electron-based REST and GraphQL API testing tool."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="REST;GraphQL;"
-APP_VERSION=1.36.1
+APP_VERSION=1.37.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)_linux
