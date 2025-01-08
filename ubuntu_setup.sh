@@ -45016,7 +45016,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, secure Electron/Vue.JS-based notepad with Markdown support."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;"
-APP_VERSION=3.5.0
+APP_VERSION=3.8.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=Beaver-notes-${APP_VERSION}
