@@ -20330,7 +20330,7 @@ cd $HOME
 # Install Scribus cross-platform desktop publishing tool from AppImage
 APP_NAME=Scribus
 APP_GUI_NAME="Cross-platform desktop publishing tool."
-APP_VERSION=1.6.1
+APP_VERSION=1.6.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
