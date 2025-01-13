@@ -48149,7 +48149,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=gg
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Golang-based game collection for the terminal."
-APP_VERSION=0.4.0
+APP_VERSION=0.5.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/kaamkiya-gg.mirror/${FILE_NAME}
