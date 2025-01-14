@@ -47402,7 +47402,7 @@ APP_NAME=Oculante
 APP_GUI_NAME="Rust-based, GUI image viewer."
 APP_GUI_CATEGORIES="Accessories;Graphics"
 APP_GUI_KEYWORDS="Image;Viewer;"
-APP_VERSION=0.9.1
+APP_VERSION=0.9.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/woelper/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
