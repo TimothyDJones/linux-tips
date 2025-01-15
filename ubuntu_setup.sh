@@ -2772,11 +2772,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-<<<<<<< HEAD
-APP_VERSION=6.8.93
-=======
-APP_VERSION=6.8.94
->>>>>>> daily
+APP_VERSION=6.8.95
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
