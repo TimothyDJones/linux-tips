@@ -44717,7 +44717,7 @@ APP_NAME=PikaTorrent
 APP_GUI_NAME="Cross-platform minimalist BitTorrent client."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="BitTorrent;"
-APP_VERSION=0.9.0
+APP_VERSION=0.10.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/G-Ray/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
