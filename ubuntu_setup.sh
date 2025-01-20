@@ -44399,7 +44399,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=SQ
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Golang-based command-line tool for SQL-like access to structured data."
-APP_VERSION=0.48.4
+APP_VERSION=0.48.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/sq-data-wrangler.mirror/${FILE_NAME}.${APP_EXT}
