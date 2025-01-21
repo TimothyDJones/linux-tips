@@ -46104,7 +46104,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, remote desktop tool."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Remote;"
-APP_VERSION=1.3.6
+APP_VERSION=1.3.7
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
