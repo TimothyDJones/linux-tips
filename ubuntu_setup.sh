@@ -8744,7 +8744,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Pidgin cross-platform, multi-service instant messenger (IM) utility from source
 APP_NAME=Pidgin
 APP_GUI_NAME="Cross-platform , multi-service instant messenger (IM) utility."
-APP_VERSION=2.14.13
+APP_VERSION=2.14.14
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 # Remove if installed from package
