@@ -20910,7 +20910,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Simplenote cross-platform Electron-based React online note-taking tool from Debian package
 APP_NAME=Simplenote
 APP_GUI_NAME="Cross-platform Electron-based React online note-taking tool."
-APP_VERSION=2.21.1
+APP_VERSION=2.23.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-linux-${APP_VERSION}-${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Automattic/${APP_NAME,,}-electron/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
