@@ -42803,7 +42803,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform web browser that supports regular browsing and P2P (BitTorrent, IPFS, etc.)."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="P2P;Browser;"
-APP_VERSION=2.0.0
+APP_VERSION=3.0.3
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y libfuse2
