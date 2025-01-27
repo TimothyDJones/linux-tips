@@ -48338,7 +48338,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform beginner-friendly desktop CAD tool."
 APP_GUI_CATEGORIES="Graphics;Office;"
 APP_GUI_KEYWORDS="CAD;Editor;"
-APP_VERSION=1.7.0
+APP_VERSION=1.7.1
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}
