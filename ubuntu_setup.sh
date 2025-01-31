@@ -27492,7 +27492,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install FreeTube Electron-based privacy-focused YouTube player from Debian package
 # https://freetubeapp.io/
 APP_NAME=FreeTube
-APP_VERSION=0.22.1
+APP_VERSION=0.23.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/FreeTubeApp/${APP_NAME,,}/releases/download/v${APP_VERSION}-beta/${FILE_NAME}.${APP_EXT}
