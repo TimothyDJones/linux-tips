@@ -6427,7 +6427,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Sigil cross-platform ebook (EPUB) editor/creator from source
 APP_NAME=Sigil
 APP_GUI_NAME="Cross-platform ebook (EPUB) editor/creator."
-APP_VERSION=2.4.0
+APP_VERSION=2.4.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y build-essential cmake qtbase5-dev qttools5-dev qttools5-dev-tools qtwebengine5-dev libhunspell-dev libpcre3-dev libminizip-dev python3-dev python3-pip python3-lxml python3-six python3-css-parser python3-dulwich python3-tk python3-pyqt5 python3-pyqt5.qtwebengine python3-html5lib python3-regex python3-pillow python3-cssselect python3-chardet
