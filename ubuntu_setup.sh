@@ -19058,7 +19058,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 # Install Fractal Zoomer Java-based fractal generator and explorer tool from package
 APP_NAME=FractalZoomer
 APP_GUI_NAME="Java-based fractal generator and explorer tool."
-APP_VERSION=1.0.8.8
+APP_VERSION=1.0.9.4
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/Fractal%20Zoomer.${APP_EXT}
