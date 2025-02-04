@@ -48365,3 +48365,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Terminal GPT cross‐platform, Golang-based terminal AI chatbots that do not require API keys from package
+APP_NAME=tgpt
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Golang-based terminal AI chatbots that do not require API keys."
+APP_VERSION=2.9.1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/terminal-gpt.mirror/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
