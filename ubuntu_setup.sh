@@ -41271,7 +41271,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 APP_NAME=Sniffnet
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Rust-based GUI network traffic monitoring tool."
-APP_VERSION=1.3.1
+APP_VERSION=1.3.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_Linux
 sudo apt install -y libpcap0.8
