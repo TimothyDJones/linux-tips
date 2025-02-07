@@ -46432,7 +46432,7 @@ sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 APP_NAME=pwall
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Minimalist photo/video viewer and organizer."
-APP_VERSION=2.2-1
+APP_VERSION=2.3-0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ltiber/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
