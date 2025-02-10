@@ -898,7 +898,7 @@ rm -rf /tmp/wp-34s-emulator*
 
 # Install YouTube-DL-PyTK GUI front-end for youtube-dl video downloader from Debian package
 APP_NAME=yt-dl-pytk
-APP_VERSION=24.11.24
+APP_VERSION=25.02.08
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_noarch
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/youtube-dl-gtk/${FILE_NAME}.${APP_EXT}
@@ -1062,7 +1062,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Jailer cross-platform Java database browser and editor from package
 APP_NAME=Jailer
 APP_GUI_NAME="Cross-platform Java database browser and editor"
-APP_VERSION=16.5.5
+APP_VERSION=16.5.7
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -2024,7 +2024,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Super Productivity To Do List and task manager from Debian package
 APP_NAME=superProductivity
-APP_VERSION=11.1.2
+APP_VERSION=11.1.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/johannesjo/super-productivity/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -5712,7 +5712,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Domination (Risk-style world conquest) Java-based game
 APP_NAME=Domination
 APP_GUI_NAME="Risk-style world conquest game built with Java"
-APP_VERSION=1.3.1
+APP_VERSION=1.3.3
 APP_EXT=jar
 FILE_NAME=${APP_NAME}_install_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -22049,7 +22049,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install SFTPGo Golang-based highly-configurable SFTP server from package
 APP_NAME=SFTPGo
 APP_GUI_NAME="Golang-based highly-configurable SFTP server."
-APP_VERSION=2.6.3
+APP_VERSION=2.6.5
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_linux_x86_64
 sudo apt-get install sqlite3 openssh-server -y
@@ -40374,7 +40374,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=mrViewer2
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform multimedia viewer/player."
-APP_VERSION=1.3.1
+APP_VERSION=1.3.2
 APP_EXT=deb
 FILE_NAME=mrv2-v${APP_VERSION}-Linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/mrv2/${FILE_NAME}.${APP_EXT}
@@ -46783,7 +46783,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://zed.dev/docs/linux#downloading-manually
 APP_NAME=Zed
 APP_GUI_NAME="Rust-based, cross-platform, Atom-style GUI text editor."
-APP_VERSION=0.172.9
+APP_VERSION=0.172.10
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zed-industries/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -47141,7 +47141,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '-' '_' )
 APP_GUI_NAME="Cross-platform, minimalist, privacy-focused web browser."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.7.4b
+APP_VERSION=1.7.6b
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}-generic
