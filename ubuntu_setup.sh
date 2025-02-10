@@ -33898,7 +33898,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Markdown editor with pandoc integration and paginated preview."
 APP_GUI_CATEGORIES="Office;"
 APP_GUI_KEYWORDS="Markdown;Editor;"
-APP_VERSION=0.8.2
+APP_VERSION=0.8.8
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mb21/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
