@@ -48379,3 +48379,32 @@ sudo chmod a+x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Dev Toolbox Python-based all-in-one development tool suite from Flatpak package
+# https://github.com/aleiepure/devtoolbox
+APP_NAME=devtoolbox
+APP_GUI_NAME="Python-based all-in-one development tool suite."
+APP_GUI_CATEGORIES="Programming;Development;System;"
+APP_GUI_KEYWORDS="Utilities;Regex;JSON;YAML;"
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub me.iepure.${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/aleiepure/devtoolbox/38c0478a770bc5b6aad98ed91ec5224926bb5545/data/icons/hicolor/scalable/apps/me.iepure.devtoolbox.svg
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run me.iepure.${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
