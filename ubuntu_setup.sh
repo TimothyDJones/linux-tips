@@ -48408,3 +48408,32 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install ThisWeekInMyLife Kanban-style style personal planner from Flatpak package
+# https://github.com/zhrexl/ThisWeekInMyLife
+APP_NAME=ThisWeekInMyLife
+APP_GUI_NAME="Kanban-style style personal planner."
+APP_GUI_CATEGORIES="Office;Accessories;"
+APP_GUI_KEYWORDS="Kanban;Productivity;Planner;"
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub io.github.zhrexl.${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/zhrexl/ThisWeekInMyLife/a9c6f38fc521542849bc428ab8c101729376e18a/data/icons/hicolor/scalable/apps/io.github.zhrexl.${APP_NAME,,}.svg
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run io.github.zhrexl.${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
