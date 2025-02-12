@@ -498,3 +498,8 @@ alias lsf='ls --group-directories-first --color=always -F'
 # Add an "alert" alias for long-running command.
 # Usage: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Get IPv4 address of specified interface (e.g., "eth0").
+ipv4_addr() {
+	ip addr show $1 | grep 'inet ' | awk '{ print $2; }' | sed 's/\/.*$//'
+}
