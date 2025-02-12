@@ -1430,7 +1430,7 @@ rm -rf /tmp/${APP_NAME}*
 # Install Makagiga Java-based PIM/RSS feed reader from package
 APP_NAME=Makagiga
 APP_GUI_NAME="Cross-platform Java-based PIM/RSS feed reader."
-APP_VERSION=6.28
+APP_VERSION=6.30
 APP_EXT=7z
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
