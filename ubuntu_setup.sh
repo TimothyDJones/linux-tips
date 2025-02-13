@@ -43891,7 +43891,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://github.com/antoniomika/sish
 APP_NAME=sish
 APP_GUI_NAME="HTTP(S)/WS(S)/TCP tunnels to localhost using only SSH (ngrok alternative)."
-APP_VERSION=2.14.0
+APP_VERSION=2.17.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
