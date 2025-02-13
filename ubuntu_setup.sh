@@ -48437,3 +48437,19 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install YTree terminal file manager for browsing file system and archives from source
+# https://www.han.de/~werner/ytree.html
+APP_NAME=YTree
+APP_GUI_NAME="Terminal file manager for browsing file system and archives."
+APP_VERSION=2.10
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy build-essential libreadline-dev libncursesw5-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://fossies.org/linux/misc/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${APP_NAME,,}*
+make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
