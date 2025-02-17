@@ -38358,7 +38358,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Electron-based, cross-platform minimalist music player."
 APP_GUI_CATEGORIES="AudioVideo;Multimedia;"
 APP_GUI_KEYWORDS="Music;Player;"
-APP_VERSION=0.13.1
+APP_VERSION=0.20.7
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/martpie/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
