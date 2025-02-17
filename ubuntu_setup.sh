@@ -48460,12 +48460,12 @@ APP_NAME=HTTPing
 APP_GUI_NAME="Terminal/TUI HTTP connection validation tool."
 APP_VERSION=4.4.0
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME}-v${APP_VERSION}
+FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt install -yy build-essential libncursesw5-dev cmake libssl-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/folkertvanheusden/HTTPing/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
 cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}*
+cd /tmp/${FILE_NAME}
 mkdir build && cd build
 cmake -DUSE_SSL=ON -DUSE_TUI=ON .. && make && sudo make install
 cd $HOME
