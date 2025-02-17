@@ -48465,8 +48465,8 @@ sudo apt install -yy build-essential libncursesw5-dev cmake libssl-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/folkertvanheusden/HTTPing/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
 cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME,,}*
+cd /tmp/${APP_NAME}*
 mkdir build && cd build
 cmake -DUSE_SSL=ON -DUSE_TUI=ON .. && make && sudo make install
 cd $HOME
-sudo rm -rf /tmp/${APP_NAME,,}*
+sudo rm -rf /tmp/${APP_NAME}*
