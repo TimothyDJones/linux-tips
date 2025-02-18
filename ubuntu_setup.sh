@@ -29096,9 +29096,9 @@ FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y build-essential
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/diskinfo-di/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
-make -e dioptions.dat && make -e && sudo make -e install
+make -e PREFIX=/usr/local && sudo make -e PREFIX=/usr/local install
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
 
