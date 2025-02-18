@@ -39627,7 +39627,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform calendar and task manager."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Calendar;Productivity;"
-APP_VERSION=1.0.21
+APP_VERSION=1.0.22
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}_${APP_VERSION}_ubuntu-24.04_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
