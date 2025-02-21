@@ -47094,9 +47094,9 @@ APP_NAME=Tabby
 APP_GUI_NAME="Cross-platform, self-hosted AI coding assistant."
 APP_GUI_CATEGORIES="Education;Programming;"
 APP_GUI_KEYWORDS="AI;Assistant;"
-APP_VERSION=0.24.0
+APP_VERSION=0.25.0
 APP_EXT=zip
-FILE_NAME=${APP_NAME,,}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-manylinux2014
+FILE_NAME=${APP_NAME,,}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-manylinux_2_28
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}ml.mirror/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/mirror/tabbyml/icon?0a178c2767d4876de7edc522b18455f39efef4cea4e79a3aa117dd7e503aef8a
 cd /tmp
