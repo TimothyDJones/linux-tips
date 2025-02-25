@@ -46602,7 +46602,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/01mf02/jaq
 APP_NAME=jaq
 APP_GUI_NAME="Rust-based command-line jq clone focused on correctness, speed, and simplicity."
-APP_VERSION=2.1.0
+APP_VERSION=2.1.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
