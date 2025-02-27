@@ -28909,7 +28909,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Sleek cross-platform todo.txt-format to do application from Debian package
 APP_NAME=Sleek
-APP_VERSION=2.0.17
+APP_VERSION=2.0.18
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
