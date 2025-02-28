@@ -6473,7 +6473,7 @@ APP_NAME=CutterFF
 APP_GUI_NAME="FFMpeg video cutting utility."
 APP_GUI_CATEGORIES="Multimedia;Video;"
 APP_GUI_KEYWORDS="FFMpeg;Video;Editor;"
-APP_VERSION=1.3
+APP_VERSION=1.3.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-static-gtk3
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
