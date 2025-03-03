@@ -22948,7 +22948,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Whalebird cross-platform Electron-based Mastodon desktop client from Debian package
 APP_NAME=Whalebird
 APP_GUI_NAME="Cross-platform Electron-based Mastodon desktop client."
-APP_VERSION=6.1.7
+APP_VERSION=6.2.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/h3poteto/${APP_NAME,,}-desktop/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
