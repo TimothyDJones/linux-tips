@@ -48088,7 +48088,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform screenshot capture tool."
 APP_GUI_CATEGORIES="Accessories;System;Graphics;"
 APP_GUI_KEYWORDS="Screen;Capture;"
-APP_VERSION=3.1.3
+APP_VERSION=3.2.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}_${APP_VERSION}_x64
