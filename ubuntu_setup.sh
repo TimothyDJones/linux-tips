@@ -28957,7 +28957,7 @@ APP_NAME=Koodo-Reader
 APP_GUI_NAME="Cross-platform Electron-based ebook manager and reader."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="Ebook;Reader;"
-APP_VERSION=1.8.4
+APP_VERSION=1.8.6
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/troyeguo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
