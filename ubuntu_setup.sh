@@ -24470,7 +24470,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 # Install Penguin's Eggs command-line utility to create live CD ISO from current Debian/Ubuntu system from Debian package
 APP_NAME=Eggs
 APP_GUI_NAME="Command-line utility to create live CD ISO from current Debian/Ubuntu system."
-APP_VERSION=10.0.60-5
+APP_VERSION=10.0.60-6
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/penguins-eggs/${FILE_NAME}.${APP_EXT}
