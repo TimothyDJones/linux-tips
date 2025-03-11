@@ -41112,14 +41112,14 @@ sudo rm -rf /tmp/${_APP_NAME}*
 APP_NAME=Matterhorn
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Haskell-based command-line client for Mattermost messenger platform."
-APP_VERSION=50200.19.0
+APP_VERSION=90000.1.0
 APP_EXT=tar.bz2
 source /etc/lsb-release
 if [[ "${DISTRIB_CODENAME:0:2}" =~ (bi|co|di|eo)$ ]]; then  # 18.04 - 19.10
 	DISTRO_NBR=18.04-bionic
 elif [[ "${DISTRIB_CODENAME:0:2}" =~ (fo|gr|hi|im)$ ]]; then  # 20.04 - 21.10
 	DISTRO_NBR=20.04-focal
-elif [[ "${DISTRIB_CODENAME:0:2}" =~ (ja|ki)$ ]]; then  # 22.04 - 
+elif [[ "${DISTRIB_CODENAME:0:2}" =~ (ja|ki|lu|ma|no|or|pl)$ ]]; then  # 22.04 - 
 	DISTRO_NBR=22.04-jammy
 fi
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-ubuntu-${DISTRO_NBR}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
