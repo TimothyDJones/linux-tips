@@ -34611,8 +34611,8 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Low-level x86 emulator for 8086 up to Pentium processors."
 APP_GUI_CATEGORIES="Programming;Development;System"
 APP_GUI_KEYWORDS="Emulator;"
-APP_VERSION=3.5
-APP_BUILD=b3777
+APP_VERSION=4.2.1
+APP_BUILD=b6130
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-Linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_BUILD}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
