@@ -35228,7 +35228,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Lightweight, full-featured Qt-based hex editor."
 APP_GUI_CATEGORIES="Development;Programming;System;"
 APP_GUI_KEYWORDS="Hex;Editor;"
-APP_VERSION=3.0.4
+APP_VERSION=3.0.5
 APP_EXT=bz2
 FILE_NAME=${APP_NAME}_${APP_VERSION}_Linux_x64_Qt5.9.6_static_libs
 sudo apt install -y libqt5charts5
