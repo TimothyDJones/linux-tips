@@ -21349,7 +21349,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install WordGrinder a simple, non-WYSIWIG, Unicode-aware word processor for the console from source
 APP_NAME=WordGrinder
 APP_GUI_NAME="A simple, non-WYSIWIG, Unicode-aware word processor for the console."
-APP_VERSION=0.7.2
+APP_VERSION=0.8
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y ninja-build libncursesw5-dev liblua5.2-dev zlib1g-dev libxft-dev
