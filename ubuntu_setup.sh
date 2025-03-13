@@ -34847,7 +34847,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Macchina
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based command-line system information tool."
-APP_VERSION=6.0.6
+APP_VERSION=6.4.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/${APP_NAME}-CLI/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
