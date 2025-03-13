@@ -35070,7 +35070,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based desktop email client."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Email;"
-APP_VERSION=0.0.2-beta
+APP_VERSION=0.0.3-beta
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/raghavyuva/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
