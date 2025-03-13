@@ -35478,7 +35478,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based simple To Do task manager."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="ToDo;Productivity;"
-APP_VERSION=0.1.0
+APP_VERSION=0.2.0
 APP_EXT=AppImage
 FILE_NAME=to-do-rust_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/gustavo-tomas/${APP_NAME}/releases/download/app-v0.2.0/${FILE_NAME}.${APP_EXT}
