@@ -47499,7 +47499,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform, minimalist desktop Pomodoro tool."
 APP_GUI_CATEGORIES="Accessories;"
 APP_GUI_KEYWORDS="Pomodoro;"
-APP_VERSION=0.3.4
+APP_VERSION=0.3.5
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
