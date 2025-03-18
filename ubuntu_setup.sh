@@ -46987,7 +46987,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install halloy Rust-based, cross-platform minimalist IRC client from package
 APP_NAME=halloy
 APP_GUI_NAME="Rust-based, cross-platform minimalist IRC client."
-APP_VERSION=2025.2
+APP_VERSION=2025.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/squidowl/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
