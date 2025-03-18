@@ -48554,3 +48554,30 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Kasasa simple tool to pin a screenshot to the desktop for referencing from Flatpak package
+# https://github.com/KelvinNovais/Kasasa
+APP_NAME=Kasasa
+APP_GUI_NAME="Simple tool to pin a screenshot to the desktop for referencing."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Utilities;Screenshot;"
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install io.github.kelvinnovais.${APP_NAME}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run me.iepure.${APP_NAME}
+# Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
