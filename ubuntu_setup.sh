@@ -46638,7 +46638,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/Linus-Mussmaecher/rucola
 APP_NAME=rucola
 APP_GUI_NAME="Rust-based note manager with ability to launch external editors."
-APP_VERSION=0.4.0
+APP_VERSION=0.5.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-notes-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
