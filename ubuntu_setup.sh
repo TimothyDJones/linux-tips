@@ -13693,20 +13693,17 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install nnn terminal file manager with desktop integration from Debian package
+# Install nnn terminal file manager with desktop integration from package
 APP_NAME=nnn
 APP_GUI_NAME="Terminal file manager with desktop integration."
-APP_VERSION=2.2-1
-APP_EXT=deb
-source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(bi|co)$ ]]; then
-	DISTRIB_RELEASE=18.04
-elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar|)$ ]]; then
-	DISTRIB_RELEASE=16.04
-fi
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_ubuntu${DISTRIB_RELEASE}.${ARCH_TYPE}
+APP_VERSION=5.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-static-${APP_VERSION}.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/nnn-file-browser/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${APP_NAME,,}-static /usr/local/bin
+sudo ln -s -f /usr/local/bin/${APP_NAME,,}-static /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
 
