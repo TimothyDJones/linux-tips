@@ -48622,6 +48622,36 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
+# Install Notejot minimalist desktop notepad from Flatpak package
+# https://github.com/lainsce/notejot
+APP_NAME=Notejot
+APP_GUI_NAME="Minimalist desktop notepad."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="Notepad;"
+FLATPAK_DOMAIN=io.github.lainsce
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install ${FLATPAK_DOMAIN}.${APP_NAME}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/lainsce/notejot/87e1ef8a88b4db5b672ce0dda1f5481ddf0a2ebd/data/icons/io.github.lainsce.${APP_NAME}.svg
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
 # Install ColorCode minimalist Python/GTK-based resistor color code tool from Flatpak package
 # https://github.com/oyajun/color-code
 APP_NAME=ColorCode
