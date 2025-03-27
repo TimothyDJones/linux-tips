@@ -9848,9 +9848,9 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Opera web browser (stable release) from package
 APP_NAME=Opera
 APP_GUI_NAME=""
-APP_VERSION=96.0.4693.50
+APP_VERSION=117.0.5408.154
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}-stable_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download3.operacdn.com/pub/${APP_NAME,,}/desktop/${APP_VERSION}/linux/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
