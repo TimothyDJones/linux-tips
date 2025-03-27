@@ -5978,28 +5978,25 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Gambit Qt5 chess game from source
 APP_NAME=Gambit
 APP_GUI_NAME="Cross-platform Qt5 chess game."
-APP_VERSION=1.0.4
-APP_EXT=tar.xz
-sudo apt-get install -y qtbase5-dev cmake make gcc g++
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}chess/${APP_NAME}-${APP_VERSION}-src.${APP_EXT}
+APP_VERSION=1.0.6
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}-source
+sudo apt-get install -y qt6-base-dev cmake make gcc g++
+curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}chess/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-src
+tar -xf /tmp/${APP_NAME,,}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 cd ./engine/gupta && make release
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-src
-sh clean_all.sh
-. ./setup_env.sh
-c
-b
+cmake . && make
 sudo cp -R gambitchess ./data ./nls ./web ./doc ./artwork ./engine /opt/gambit
-cat > /tmp/${APP_NAME,,}/${APP_NAME,,} << EOF
+cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd /opt/${APP_NAME,,}
 PATH=/opt/${APP_NAME,,}:$PATH; export PATH
 /opt/${APP_NAME,,}/${APP_NAME,,}chess
 cd $HOME
 EOF
-sudo mv /tmp/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin
+sudo cp /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
@@ -40898,7 +40895,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=4.10.5
+APP_VERSION=4.10.6
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
