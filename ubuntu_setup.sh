@@ -6699,7 +6699,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Code::Blocks open-source, cross-platform, WX-based, free C, C++ and Fortran IDE
 APP_NAME=CodeBlocks
 APP_GUI_NAME="Open-source, cross-platform, WX-based, free C, C++ and Fortran IDE."
-APP_VERSION=20.03
+APP_VERSION=25.03
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}_stable
 # Code::Blocks requires at least version 1.62 of Boost C++ libraries
