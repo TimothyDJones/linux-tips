@@ -34378,7 +34378,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Rabbit Remote Control"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform remote control tool with support for VNC, RDP, SSH, Telnet, etc."
-APP_VERSION=0.0.32
+APP_VERSION=0.0.33
 APP_EXT=deb
 FILE_NAME=${_APP_NAME}_${APP_VERSION}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
