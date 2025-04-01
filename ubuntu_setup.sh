@@ -25221,7 +25221,7 @@ APP_NAME=Espanso
 APP_GUI_NAME="Cross-platform Text Expander written in Rust."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Text;Expander;"
-APP_VERSION=2.1.7-beta
+APP_VERSION=2.2.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-X11
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/federico-terzi/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
