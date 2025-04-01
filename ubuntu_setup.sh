@@ -5978,7 +5978,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Gambit Qt5 chess game from source
 APP_NAME=Gambit
 APP_GUI_NAME="Cross-platform Qt5 chess game."
-APP_VERSION=1.0.6
+APP_VERSION=1.0.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}-source
 sudo apt-get install -y qt6-base-dev cmake make gcc g++
