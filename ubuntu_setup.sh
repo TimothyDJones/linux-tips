@@ -32760,7 +32760,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Linux video editing and composition tool."
 APP_GUI_CATEGORIES="Entertainment;Video;Multimedia;"
 APP_GUI_KEYWORDS="Video;Editor;"
-APP_VERSION=20250228
+APP_VERSION=20250331
 APP_EXT=AppImage
 FILE_NAME=CinGG-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://${_APP_NAME}.org/download/images/${FILE_NAME}.${APP_EXT}
@@ -48661,6 +48661,36 @@ sudo apt-get install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install ${FLATPAK_DOMAIN}.${APP_NAME}
 curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/oyajun/color-code/678a3f1fa6f08797efdd3f8e9ed9d501d78f5ab6/data/icons/hicolor/scalable/apps/${FLATPAK_DOMAIN}.${APP_NAME}.svg 
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Text Pieces minimalist Rust/GTK-based text manipulation tool from Flatpak package
+# https://gitlab.com/liferooter/textpieces
+APP_NAME=TextPieces
+APP_GUI_NAME="Minimalist Rust/GTK-based text manipulation tool."
+APP_GUI_CATEGORIES="Accessories;Programming;Development;"
+APP_GUI_KEYWORDS="Text;JSON;YAML;"
+FLATPAK_DOMAIN=io.gitlab.liferooter
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install ${FLATPAK_DOMAIN}.${APP_NAME}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://gitlab.com/liferooter/textpieces/-/raw/main/data/icons/${FLATPAK_DOMAIN}.${APP_NAME}.svg
 sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
