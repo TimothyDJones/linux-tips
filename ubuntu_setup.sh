@@ -48035,10 +48035,10 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform GUI program for interacting with and manipulating JSON files."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="JSON;Editor;"
-APP_VERSION=1.2.0-beta
+APP_VERSION=1.0.1
 APP_EXT=AppImage
 sudo apt install -y libfuse2
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-linux
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/jsonly/icon?d19bf478974d92fbf5f0d847041b21cfe0d9cd21d78a8a9113a4615e3a04b1c1
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
