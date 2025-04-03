@@ -27141,7 +27141,7 @@ APP_NAME=Java-Enigma
 APP_GUI_NAME="Java-based Enigma crypto machine simulator."
 APP_GUI_CATEGORIES="Development;Entertainment;Games;"
 APP_GUI_KEYWORDS="Crypto;Simulator;"
-APP_VERSION=2025-01
+APP_VERSION=2025-04
 APP_EXT=jar
 FILE_NAME=enigma
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
