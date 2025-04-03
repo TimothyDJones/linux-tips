@@ -35306,7 +35306,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Qt-based re-implementation of Notepad++ text editor."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Editor;Notepad;"
-APP_VERSION=0.10
+APP_VERSION=0.11
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dail8859/${APP_NAME// /}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
