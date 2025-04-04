@@ -48814,3 +48814,59 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Mindolph cross-platform personal knowledge base with mind mapping, UML, and more from package
+# https://github.com/mindolph/Mindolph
+APP_NAME=Mindolph
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Java-based CPU info tool."
+APP_GUI_CATEGORIES="Office;System;Accessories;"
+APP_GUI_KEYWORDS="Knowledge;PIM;UML;"
+APP_VERSION=1.12.0
+APP_EXT=jar
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+if ! [ -x "$(command -v java)" ]; then
+	cd /tmp
+	curl -o /tmp/jdk21.tar.gz -J -L https://download.java.net/java/GA/jdk21.0.2/f2283984656d49d69e91c558476027ac/13/GPL/openjdk-21.0.2_linux-x64_bin.tar.gz
+	tar -xf /tmp/jdk21.tar.gz
+	sudo mv /tmp/jdk-21.0.2 /usr/local/jdk21
+	cat > /tmp/jdk21.sh << EOF
+export JAVA_HOME=/usr/local/jdk21
+export PATH=\$PATH:\$JAVA_HOME/bin
+EOF
+	sudo mv /tmp/jdk21.sh /etc/profile.d
+	source /etc/profile.d/jdk21.sh
+	sudo apt install -y libopenjfx-java
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/mindolph/icon?dcb6221fe55f8a7ac6f0fa779482cc202d61e33ca79586c931f99e29eeeb804f
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+java -jar /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
