@@ -638,7 +638,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=CopyQ
 APP_VERSION=10.0.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_10-1_${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Debian_12-1_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 sudo ln -s /usr/local/share/applications/${APP_NAME}.desktop $HOME/.config/autostart/  # Configure CopyQ to autostart on system launch
