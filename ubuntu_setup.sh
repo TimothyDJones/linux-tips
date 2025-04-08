@@ -25745,7 +25745,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install DuckDB cross-platform SQLite-like database with PostgreSQL functionality from package
 APP_NAME=DuckDB
 APP_GUI_NAME="Cross-platform SQLite-like database with PostgreSQL functionality."
-APP_VERSION=1.2.1
+APP_VERSION=1.2.2
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_cli-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cwida/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
