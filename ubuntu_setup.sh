@@ -48035,7 +48035,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform GUI program for interacting with and manipulating JSON files."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="JSON;Editor;"
-APP_VERSION=1.0.1
+APP_VERSION=1.3.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
