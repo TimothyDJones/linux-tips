@@ -38195,7 +38195,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Qt-based minimalist mind map, diagram, and note-taking tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Mind;Map;Notepad;Productivity;"
-APP_VERSION=4.4.0
+APP_VERSION=4.5.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/juzzlin/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
