@@ -47767,7 +47767,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform responsive code editor."
 APP_GUI_CATEGORIES="Programming;Accessories;Development;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=0.7.0
+APP_VERSION=0.7.1
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
