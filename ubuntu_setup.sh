@@ -12842,7 +12842,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # Install VNote Vim-inspired note-taking application with MarkDown support from AppImage
 APP_NAME=VNote
 APP_GUI_NAME="Vim-inspired note-taking application with MarkDown support."
-APP_VERSION=3.5.0
+APP_VERSION=3.19.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64_v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/vnotex/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
