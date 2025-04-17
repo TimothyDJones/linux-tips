@@ -14641,7 +14641,7 @@ sudo python3 ./setup.py install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install Rukovoditel web-based (PHP/MySQL) project management tool from package
+# Install 			 from package
 APP_NAME=Rukovoditel
 APP_GUI_NAME="Web-based (PHP/MySQL) project management tool."
 APP_VERSION=3.6.2
@@ -21977,7 +21977,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://dystroy.org/broot/
 APP_NAME=Broot
 APP_GUI_NAME="Rust-based command-line directory tree navigation tool with fuzzy-search capability."
-APP_VERSION=1.45.1
+APP_VERSION=1.46.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Canop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
