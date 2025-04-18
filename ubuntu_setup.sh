@@ -48508,7 +48508,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform file manager with built-in tagging functionality."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="File;Manager;"
-APP_VERSION=1.3.38
+APP_VERSION=1.3.39
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}
