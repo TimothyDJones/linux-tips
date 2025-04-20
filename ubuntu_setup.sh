@@ -28939,7 +28939,7 @@ APP_NAME=WeeChat
 APP_GUI_NAME="Console IRC chat client."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="IRC;Chat;Messenger;"
-APP_VERSION=4.6.0
+APP_VERSION=4.6.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libaspell-dev libgcrypt20-dev zlib1g-dev asciidoctor libgnutls28-dev pkg-config libcurl4-gnutls-dev libncursesw5-dev
