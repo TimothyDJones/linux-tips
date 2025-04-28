@@ -45899,7 +45899,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Electron-based Github notification tool."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Git;Notification;"
-APP_VERSION=5.16.1
+APP_VERSION=6.3.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}
