@@ -25408,7 +25408,7 @@ APP_NAME=Cryptomator
 APP_GUI_NAME="GUI-based client-side file encryption tool for cloud storage services."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Encryption;"
-APP_VERSION=1.15.3
+APP_VERSION=1.16.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
