@@ -5868,7 +5868,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install ProjectLibre Java-based project management tool from Debian package
 APP_NAME=ProjectLibre
-APP_VERSION=1.9.3
+APP_VERSION=1.9.8
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1
 sudo apt-get install openjdk-11-jre
