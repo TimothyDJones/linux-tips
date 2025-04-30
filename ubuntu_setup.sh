@@ -771,7 +771,7 @@ rm -rf /tmp/goto*
 # Install Free42 HP-42S calculator simulator from package
 APP_NAME=Free42
 APP_GUI_NAME="Free, cross-platfrom HP-42S calculator simulator."
-APP_VERSION=3.3.2
+APP_VERSION=3.3.3
 APP_EXT=tgz
 FILE_NAME=${APP_NAME}Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://thomasokken.com/${APP_NAME,,}/download/${FILE_NAME}.${APP_EXT}
