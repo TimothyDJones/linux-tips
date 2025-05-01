@@ -898,9 +898,9 @@ rm -rf /tmp/wp-34s-emulator*
 
 # Install YouTube-DL-PyTK GUI front-end for youtube-dl video downloader from Debian package
 APP_NAME=yt-dl-pytk
-APP_VERSION=25.02.21
+APP_VERSION=25.05.01
 APP_EXT=deb
-FILE_NAME=${APP_NAME}_${APP_VERSION}_noarch
+FILE_NAME=${APP_NAME/-}_${APP_VERSION}_noarch
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/youtube-dl-gtk/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
