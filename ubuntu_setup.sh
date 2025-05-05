@@ -11875,7 +11875,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Keepboard cross-platform, Java-based clipboard manager from package
 APP_NAME=Keepboard
 APP_GUI_NAME="Cross-platform, Java-based clipboard manager."
-APP_VERSION=5.7
+APP_VERSION=5.8
 APP_EXT=zip
 FILE_NAME=${APP_NAME}_Linux_${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
