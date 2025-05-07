@@ -46765,7 +46765,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://zed.dev/docs/linux#downloading-manually
 APP_NAME=Zed
 APP_GUI_NAME="Rust-based, cross-platform, Atom-style GUI text editor."
-APP_VERSION=0.184.10
+APP_VERSION=0.185.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zed-industries/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
