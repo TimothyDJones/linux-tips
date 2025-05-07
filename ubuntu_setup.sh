@@ -49037,3 +49037,14 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install WhippyTerm cross-platform minimalist console/terminal from Debian package
+APP_NAME=WhippyTerm
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=1.0.3.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/TheBeef/${APP_NAME}/releases/download/Rel_${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
