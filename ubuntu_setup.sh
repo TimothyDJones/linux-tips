@@ -35339,7 +35339,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Java lightweight GUI music player."
 APP_GUI_CATEGORIES="Multimedia;Audio;"
 APP_GUI_KEYWORDS="Music;Player;Audio;"
-APP_VERSION=2024-08-16
+APP_VERSION=2025-05-07
 APP_EXT=7z
 FILE_NAME=${APP_VERSION//-/}.${APP_NAME}.v1.0
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}2/${FILE_NAME}.${APP_EXT}
