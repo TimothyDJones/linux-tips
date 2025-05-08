@@ -48935,7 +48935,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Typhoon cross-platform minimalist GUI weather monitor from Debian package
 APP_NAME=Typhoon
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.9.90
+APP_VERSION=0.9.91
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_all
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/archisman-panigrahi/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
