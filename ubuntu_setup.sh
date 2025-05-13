@@ -49048,3 +49048,33 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/TheBeef/${APP_NAME
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Inspector Gtk4-based GUI for various command-line system monitoring tools from Flatpak package
+# https://github.com/Nokse22/inspector
+APP_NAME=Inspector
+APP_GUI_NAME="Gtk4-based GUI for various command-line system monitoring tools."
+APP_GUI_CATEGORIES="System;"
+APP_GUI_KEYWORDS="Monitoring;"
+FLATPAK_DOMAIN=io.github.nokse22
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install ${FLATPAK_DOMAIN}.${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/Nokse22/inspector/b23a27ceb39325997858ff7860f109eb53cb4e41/data/icons/hicolor/scalable/apps/${FLATPAK_DOMAIN}.${APP_NAME,,}.svg
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
