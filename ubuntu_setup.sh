@@ -18939,7 +18939,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # http://rutschle.net/tech/sslh/README.html
 APP_NAME=sslh
 APP_GUI_NAME="Protocol multiplexer that allows sharing SSL/HTTPS and SSH on same port."
-APP_VERSION=1.20
+APP_VERSION=2.2.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libwrap0-dev libconfig-dev
