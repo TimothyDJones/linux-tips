@@ -49164,3 +49164,33 @@ sudo chmod a+x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Raider Gtk4-based GUI file shredder (secure delete) tool from Flatpak package
+# https://github.com/ADBeveridge/raider
+APP_NAME=Raider
+APP_GUI_NAME="Gtk4-based GUI file shredder (secure delete) tool."
+APP_GUI_CATEGORIES="System;Accessories"
+APP_GUI_KEYWORDS="Secure;Delete;"
+FLATPAK_DOMAIN=com.github.ADBeveridge
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install ${FLATPAK_DOMAIN}.${APP_NAME}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/ADBeveridge/${APP_NAME,,}/1baea142f09ba25225d77517be97d11ef44c883d/data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
