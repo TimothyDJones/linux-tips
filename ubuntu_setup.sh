@@ -47253,7 +47253,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="C#/.NET-based cross-platform text editor/IDE."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Editor;IDE;"
-APP_VERSION=0.8.0
+APP_VERSION=0.9.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
