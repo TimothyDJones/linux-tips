@@ -44174,7 +44174,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, open-source alternative to Notion free-form notepad."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;Productivity;"
-APP_VERSION=0.3.7
+APP_VERSION=0.9.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/AppFlowy-IO/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
