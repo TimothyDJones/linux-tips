@@ -9882,7 +9882,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install ghostwriter Qt-based, cross-platform Markdown editor with built-in preview from source
 APP_NAME=ghostwriter
 APP_GUI_NAME="Qt-based, cross-platform Markdown editor."
-APP_VERSION=2.1.6
+APP_VERSION=2.2.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qt5-default hunspell libhunspell-dev libqt5webkit5-dev
