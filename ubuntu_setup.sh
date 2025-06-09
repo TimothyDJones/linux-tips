@@ -21285,7 +21285,7 @@ sudo rm -rf /tmp/${APP_NAME,,} /tmp/${APP_NAME}
 # Install Guitar Qt-based GUI Git client from AppImage
 APP_NAME=Guitar
 APP_GUI_NAME="Qt-based GUI Git client."
-APP_VERSION=1.2.0
+APP_VERSION=1.3.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-1001631-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/soramimi/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
