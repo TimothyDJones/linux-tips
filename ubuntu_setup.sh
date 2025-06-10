@@ -49259,3 +49259,39 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install NotepadXX cross-platform text editor with advanced features from AppImage
+# https://github.com/raghul-tech/NotepadXX
+APP_NAME=NotepadXX
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+APP_GUI_NAME="Cross-platform text editor with advanced features."
+APP_GUI_CATEGORIES="Accessories;Development;TextEditor;"
+APP_GUI_KEYWORDS="Text;Editor;"
+APP_VERSION=1.2.0
+APP_EXT=AppImage
+sudo apt install -y libfuse2
+FILE_NAME="${APP_NAME}V${APP_VERSION}-Installer(Linux)"
+curl -o /tmp/${FILE_NAME}.tar.gz -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.tar.gz
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.tar.gz
+sudo cp /tmp/${APP_NAME}V${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU).${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME}V${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU).${APP_EXT}
+sudo ln -s -f /usr/local/bin/${APP_NAME}V${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU).${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/img/logo.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
