@@ -32212,8 +32212,8 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Qt-based RSS/ATOM/JSON feed reader."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="RSS;Feed;Reader;"
-APP_VERSION=4.8.4
-BUILD_NUMBER=87f0d37cc
+APP_VERSION=4.8.5
+BUILD_NUMBER=df05aad68
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-${BUILD_NUMBER}-linux64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/martinrotter/${_APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
