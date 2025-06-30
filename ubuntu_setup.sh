@@ -49409,3 +49409,33 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install WSelector Python/Gtk-based for browsing, downloading, and setting wallpapers from Flatpak package
+# https://github.com/Cookiiieee/WSelector
+APP_NAME=WSelector
+APP_GUI_NAME="Python/Gtk-based for browsing, downloading, and setting wallpapers."
+APP_GUI_CATEGORIES="System;Accessories"
+APP_GUI_KEYWORDS="Wallpaper;"
+FLATPAK_DOMAIN=io.github.Cookiiieee
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install ${FLATPAK_DOMAIN}.${APP_NAME}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/Cookiiieee/${APP_NAME,,}/refs/heads/main/icons/icon_1748228995_128x128.png
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
