@@ -49410,7 +49410,7 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install WSelector Python/Gtk-based for browsing, downloading, and setting wallpapers from Flatpak package
+# Install WSelector Python/Gtk-based tool for browsing, downloading, and setting wallpapers from Flatpak package
 # https://github.com/Cookiiieee/WSelector
 APP_NAME=WSelector
 APP_GUI_NAME="Python/Gtk-based for browsing, downloading, and setting wallpapers."
@@ -49430,6 +49430,36 @@ GenericName=${APP_NAME}
 Path=/usr/local/bin
 Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME}
 Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install Egghead JavaScript/Gtk-based simple desktop trivia game from Flatpak package
+# https://github.com/josephmawa/Egghead
+APP_NAME=Egghead
+APP_GUI_NAME="JavaScript/Gtk-based simple desktop trivia game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Trivia;"
+FLATPAK_DOMAIN=io.github.josephmawa
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install ${FLATPAK_DOMAIN}.${APP_NAME}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/josephmawa/${APP_NAME}/7d8992f04bd5e48c8b2981ec40f7e7cdaa4d912c/data/icons/hicolor/scalable/apps/io.github.josephmawa.${APP_NAME}.svg
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
 Type=Application
 StartupNotify=true
 Terminal=false
