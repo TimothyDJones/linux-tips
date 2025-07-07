@@ -32338,7 +32338,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=dust
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based cross-platform disk usage tool with graphical display."
-APP_VERSION=1.2.1
+APP_VERSION=1.2.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(uname -m)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/bootandy/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
