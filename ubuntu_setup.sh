@@ -46965,7 +46965,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install x11-calc X/Windows/C-based HP calculator simulator from source
 APP_NAME=x11-calc
 APP_GUI_NAME="X/Windows/C-based HP calculator simulator."
-APP_VERSION=0.15.161
+APP_VERSION=0.16.172
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
 sudo apt install -yy gcc make libc6-dev libx11-dev xfonts-base
