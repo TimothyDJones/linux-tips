@@ -49606,7 +49606,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform comics and image viewer."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Image;Viewer;Comics;"
-APP_VERSION=1.2.2
+APP_VERSION=1.2.4
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}-x64
