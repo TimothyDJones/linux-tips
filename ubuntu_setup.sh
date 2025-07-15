@@ -49753,3 +49753,18 @@ sudo cp -a /tmp/${FILE_NAME}/dist/gitb /usr/local/bin
 sudo chmod a+x /usr/local/bin/gitb
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install kmonad cross‐platform, Haskell-based advanced keyboard manager from package
+# https://github.com/kmonad/kmonad
+APP_NAME=kmonad
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross‐platform, Haskell-based advanced keyboard manager."
+APP_VERSION=0.4.4
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+cd /tmp
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
