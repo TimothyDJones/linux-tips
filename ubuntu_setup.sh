@@ -49768,3 +49768,16 @@ sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${FILE_NAME}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Dool command-line Linux system monitoring tool from package
+APP_NAME=Dool
+APP_VERSION=1.3.4
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-1.noarch
+sudo apt install -y alien
+curl -o /tmp/${FILE_NAME}.rpm -J -L https://github.com/scottchiefbaker/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.rpm
+cd /tmp
+sudo alien /tmp/${FILE_NAME}.rpm
+sudo gdebi -n /tmp/${APP_NAME,,}*.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
