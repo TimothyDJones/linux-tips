@@ -49797,3 +49797,18 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Linutil distro-agnostic toolbox designed to simplify everyday Linux tasks from package
+# https://github.com/ChrisTitusTech/linutil
+APP_NAME=Linutil
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Distro-agnostic toolbox designed to simplify everyday Linux tasks."
+APP_VERSION=2025.02.13
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/ChrisTitusTech/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
+cd /tmp
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
