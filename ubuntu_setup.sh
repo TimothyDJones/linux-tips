@@ -49534,7 +49534,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Flutter-based download manager."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Download;"
-APP_VERSION=2.3.5
+APP_VERSION=2.3.6
 APP_EXT=tar.xz
 sudo apt install -yy libkeybinder-3.0-0 libayatana-appindicator3-dev
 FILE_NAME=${APP_NAME}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
