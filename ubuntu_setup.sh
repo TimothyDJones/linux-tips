@@ -45331,7 +45331,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Qt-based minimalist image viewer."
 APP_GUI_CATEGORIES="Graphics;"
 APP_GUI_KEYWORDS="Viewer;"
-APP_VERSION=6.1
+APP_VERSION=7.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
