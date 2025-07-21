@@ -49813,3 +49813,21 @@ sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${FILE_NAME}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install nssmitty command-line, menu-driven Linux administration and management tool from package
+# https://github.com/neuts-jl/nssmitty
+APP_NAME=nssmitty
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Command-line, menu-driven Linux administration and management tool."
+APP_VERSION=N/A
+APP_EXT=tar
+FILE_NAME=linux64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo chmod a+x /opt/${APP_NAME,,}/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${FILE_NAME}*
