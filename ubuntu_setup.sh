@@ -48789,7 +48789,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform GUI Neovim client."
 APP_GUI_CATEGORIES="Development;Programming;System;"
 APP_GUI_KEYWORDS="Vim;Neovim;"
-APP_VERSION=0.15.0
+APP_VERSION=0.15.1
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}
