@@ -40867,7 +40867,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # https://bvi.sourceforge.net/
 APP_NAME=bvi
 APP_GUI_NAME="Hex editor with vi keybindings."
-APP_VERSION=1.4.2
+APP_VERSION=1.5.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.src
 sudo apt-get install -y build-essential libncurses-dev
