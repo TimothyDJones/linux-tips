@@ -48922,7 +48922,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Rainfrog
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Rust-based terminal SQLite database editor/manager."
-APP_VERSION=0.3.0
+APP_VERSION=0.3.4
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/achristmascarl/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -50161,7 +50161,8 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/thewizardshell/${A
 cd /tmp
 mkdir -p /tmp/${FILE_NAME}
 unzip /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
-sudo cp -a /tmp/${FILE_NAME}/target/release/${APP_NAME,,} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}-${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}-${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${APP_NAME,,}-${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
