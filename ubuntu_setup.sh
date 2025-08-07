@@ -46135,7 +46135,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Electron-based desktop REST and GraphQL webservice client."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="REST;API;GraphQL;"
-APP_VERSION=2024.3.10
+APP_VERSION=2025.5.6
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
@@ -50226,3 +50226,37 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install TaskLyst cross-platform task management tool from AppImage
+# https://tasklyst.app/
+APP_NAME=TaskLyst
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform task management tool."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="Task;To Do;"
+APP_VERSION=0.1.5
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://${APP_NAME,,}.app/images/logo/logo.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
