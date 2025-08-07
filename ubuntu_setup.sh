@@ -38517,7 +38517,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=joshuto
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Rust-based ranger-like terminal file manager."
-APP_VERSION=0.9.4
+APP_VERSION=0.9.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kamiyaa/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
