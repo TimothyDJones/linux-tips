@@ -50316,3 +50316,51 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install PULS Rust-based modern terminal process monitor from package
+APP_NAME=PULS
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Rust-based modern terminal process monitor."
+APP_VERSION=0.2.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/word-sys/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Howl minimalist text editor from source
+# https://howl.io/
+APP_NAME=Howl
+APP_GUI_NAME="Minimalist text editor."
+APP_GUI_CATEGORIES="Development;Programming;Accessories;"
+APP_GUI_KEYWORDS="Editor;"
+APP_VERSION=0.6
+APP_EXT=tgz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential wget libgtk-3-dev pkg-config
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}-editor/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}/src
+make && sudo make install
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${FILE_NAME}/share/icons/hicolor/scalable/apps/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
