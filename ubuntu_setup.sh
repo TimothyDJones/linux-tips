@@ -45584,7 +45584,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, minimalist messenger application with no user identifiers."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Messenger;"
-APP_VERSION=6.4.2
+APP_VERSION=6.4.3.1
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=simplex-desktop-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
