@@ -50433,3 +50433,38 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Tablecruncher cross-platform, fast GUI CSV editor from package
+APP_NAME=Tablecruncher
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, fast GUI CSV editor."
+APP_GUI_CATEGORIES="Accessories;Office;"
+APP_GUI_KEYWORDS="CSV;"
+APP_VERSION=1.8-beta1
+APP_EXT=zip
+FILE_NAME=${APP_NAME}_v${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/${APP_NAME}/${APP_NAME,,}/refs/heads/main/assets/${APP_NAME,,}.iconset/icon_128x128.png
+cd /tmp
+mkdir -p ${FILE_NAME}
+unzip ${FILE_NAME}.${APP_EXT} -d ${FILE_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/${APP_NAME,,}-linux/${APP_NAME} /usr/local/bin
+sudo ln -s -f /usr/local/bin/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
