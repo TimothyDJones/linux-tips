@@ -50484,3 +50484,35 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}-bin
 sudo ln -s -f /usr/local/bin/${APP_NAME,,}-bin /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Youtube Music Desktop Player cross-platform desktop music player for Youtube from package
+APP_NAME=YTMDPlayer
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform desktop music player for Youtube."
+APP_GUI_CATEGORIES="Accessories;Multimedia;Internet;"
+APP_GUI_KEYWORDS="Audio;Player;"
+APP_VERSION=1.19.0
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME}-v${APP_VERSION}-Linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/youtube-music-desktop-player/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt
+sudo ln -s -f /opt/${APP_NAME}/${APP_NAME} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME}
+Exec=/opt/${APP_NAME}/${APP_NAME}
+Icon=/opt/${APP_NAME}/_internal/resources/icons/logo.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Category=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
