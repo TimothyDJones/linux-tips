@@ -48713,18 +48713,17 @@ cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install FireDragon customized version of Firefox web browser for Linux from AppImage
-# https://github.com/Michal-D4/fileo
 APP_NAME=FireDragon
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Customized version of Firefox web browser for Linux."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="Browser;"
-APP_VERSION=11.30.0-1
+APP_VERSION=12.2.1
 APP_EXT=AppImage
 sudo apt install -y libfuse2
-FILE_NAME=${APP_NAME,,}-v${APP_VERSION}.${APP_EXT,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/garuda-linux/${APP_NAME,,}/builder/-/releases/v${APP_VERSION}/downloads/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${APP_NAME,,}.png -J -L https://gitlab.com/garuda-linux/${APP_NAME,,}/builder/-/raw/main/source_files/browser/branding/${APP_NAME,,}/default48.png
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-${APP_EXT,,}-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gitlab.com/garuda-linux/${APP_NAME,,}/firedragon12/-/releases/v${APP_VERSION}/downloads/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://gitlab.com/garuda-linux/${APP_NAME,,}/firedragon12/-/raw/main/source_files/browser/branding/${APP_NAME,,}/default48.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
