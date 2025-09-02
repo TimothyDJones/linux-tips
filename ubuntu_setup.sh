@@ -47735,7 +47735,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Electron-based cross-platform SSH client."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="SSH;"
-APP_VERSION=1.3.1
+APP_VERSION=2.0.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}
