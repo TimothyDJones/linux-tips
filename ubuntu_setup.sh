@@ -50532,3 +50532,18 @@ sudo cp -a /tmp/${FILE_NAME}/completions/${APP_NAME,,}.bash /usr/share/bash-comp
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Lacy Rust-based minimalist replacement for 'cd' command from package
+APP_NAME=Lacy
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Minimalist replacement for 'cd' command."
+APP_VERSION=0.4.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/timothebot/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+echo 'eval "$(lacy init bash)"' >> $HOME/.bashrc
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
