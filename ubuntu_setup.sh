@@ -48906,7 +48906,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Rain
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Golang-based terminal BitTorrent client."
-APP_VERSION=2.2.1
+APP_VERSION=2.2.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/cenkalti/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
