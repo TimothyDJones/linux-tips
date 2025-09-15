@@ -40898,7 +40898,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=5.5.10
+APP_VERSION=5.5.11
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
@@ -50611,3 +50611,21 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install chr terminal/TUI Turbo Pascal style text editor from source
+# https://github.com/istoph/editor
+APP_NAME=editor
+APP_GUI_NAME="Terminal/TUI Turbo Pascal style text editor."
+APP_VERSION=0.1.80
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy build-essential meson ninja-build pkg-config qt5-qmake qttools5-dev-tools qtbase5-dev libtermpaint-dev libtuiwidgets-dev libposixsignalmanager-dev libkf5syntaxhighlighting-dev libkf5syntaxhighlighting-tools cmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/istoph/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+meson setup _build
+meson compile -Dsyntax_highlighting=true -C _build
+meson install -C _build
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME}*
