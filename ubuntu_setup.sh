@@ -50406,7 +50406,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Kotlin-based minimalist Pomodoro timer tool."
 APP_GUI_CATEGORIES="Accessories;"
 APP_GUI_KEYWORDS="Pomodoro;Productivity;"
-APP_VERSION=1.1.8
+APP_VERSION=1.1.9
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/RedddFoxxyy/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
