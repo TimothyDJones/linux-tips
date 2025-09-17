@@ -3764,12 +3764,45 @@ cd $HOME
 rm -rf /tmp/${APP_NAME}*
 xdg-open http://localhost/${APP_NAME,,}/index.php &
 
-# Install Qutebrowser keyboard-focused minimalist web browser from package
-APP_NAME=qutebrowser
-APP_VERSION=1.0.4
-APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${APP_NAME}_${APP_VERSION}-1_all.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+# Install Qutebrowser cross-platform, Python/Qt-based keyboard-focused minimalist web browser from package
+APP_NAME=Qutebrowser
+APP_GUI_NAME="Cross-platform, Python/Qt-based keyboard-focused minimalist web browser."
+APP_GUI_CATEGORIES="Internet"
+APP_GUI_KEYWORDS="Web;Browser;"
+APP_VERSION=3.5.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p $HOME/bin/${APP_NAME,,}
+cp -R -a /tmp/${FILE_NAME}/* $HOME/bin/${APP_NAME,,}
+cd $HOME/bin/${APP_NAME,,}
+python3 scripts/mkvenv.py
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd \$HOME/bin/${APP_NAME,,}
+PATH=\$HOME/bin/${APP_NAME,,}:\$PATH; export PATH
+\$HOME/bin/${APP_NAME,,}/.venv/bin/python3 -m ${APP_NAME,,} "$@" &
+cd \$HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=\$HOME/bin/${APP_NAME,,}/${APP_NAME,,}/icons/${APP_NAME,,}-128x128.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
