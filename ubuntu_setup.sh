@@ -50754,3 +50754,18 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 echo 'source /usr/bin/jcd_function.sh' >> $HOME/.bashrc
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Shed (Simple Hex Editor) terminal hex editor with pico style interface from source
+APP_NAME=Shed
+APP_GUI_NAME="Terminal hex editor with pico style interface."
+APP_VERSION=1.17
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy build-essential libncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+configure && make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
