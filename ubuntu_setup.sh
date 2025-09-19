@@ -13114,7 +13114,7 @@ APP_NAME=ao
 APP_GUI_NAME="Elegant cross-platform desktop \"to do\" application."
 APP_VERSION=5.6.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_DYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/klauscfhq/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
@@ -15563,7 +15563,7 @@ docker run hello-world  # Confirm Docker installation.
 # Install Docker Compose command-line utility for multi-container Docker applications from package
 APP_NAME=Docker-Compose
 APP_GUI_NAME="Command-line utility for multi-container Docker applications."
-APP_VERSION=2.39.3
+APP_VERSION=2.39.4
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
