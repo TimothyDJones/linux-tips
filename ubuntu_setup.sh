@@ -3275,7 +3275,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Newsboat command-line RSS reader (Newsbeuter replacement) from source
 APP_NAME=Newsboat
-APP_VERSION=2.24
+APP_VERSION=2.41
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-r${APP_VERSION}
 sudo apt-get install -y libcurl4-gnutls-dev libstfl-dev pkg-config libxml2-dev libjson-c-dev libjson[0-9]*-dev libkrb5-dev asciidoctor -qq
