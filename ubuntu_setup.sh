@@ -50793,7 +50793,6 @@ configure && make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-
 # Install leadr Rust-based command-line command manager based on leader key concept from Vim from package
 APP_NAME=leadr
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
@@ -50806,5 +50805,20 @@ sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 echo 'source <(leadr --bash)' >> $HOME/.bashrc
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install Snipt Rust-based command-line text snippet manager/expander from package
+APP_NAME=Snipt
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Rust-based command-line text snippet manager/expander."
+APP_VERSION=0.1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
