@@ -50856,3 +50856,36 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Zutty (Zero-cost Unicode Teletype) terminal emulator for the X Window System from source
+# https://tomscii.sig7.se/zutty/
+APP_NAME=Zutty
+APP_GUI_NAME="Terminal emulator for the X Window System."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Terminal;Shell;"
+APP_VERSION=0.16
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+sudo apt install -yy build-essential pkg-config python3 libegl-dev libfreetype-dev libgles-dev libxmu-dev
+cd /tmp
+git clone -b ${APP_VERSION} https://git.hq.sig7.se/zutty.git
+cd /tmp/${APP_NAME,,}
+./waf configure && ./waf && sudo ./waf install
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}/icons/${APP_NAME,,}_48x48.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
