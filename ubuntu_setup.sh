@@ -50615,7 +50615,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Lacy
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Minimalist replacement for 'cd' command."
-APP_VERSION=0.4.0
+APP_VERSION=0.5.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/timothebot/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
