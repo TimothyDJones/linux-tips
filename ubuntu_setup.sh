@@ -12620,7 +12620,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install WordTsar GTK-based WordStar text editor clone from AppImage
 APP_NAME=WordTsar
 APP_GUI_NAME="GTK-based WordStar text editor clone."
-APP_VERSION=0.3.719
+APP_VERSION=0.4.1505
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
