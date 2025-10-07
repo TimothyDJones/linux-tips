@@ -51254,21 +51254,6 @@ Categories=${APP_GUI_CATEGORIES}
 Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-esktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
-Icon=/opt/${APP_NAME,,}/data/flutter_assets/assets/icons/codes.merritt.Nyrna.png
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=${APP_GUI_CATEGORIES}
-Keywords=${APP_GUI_KEYWORDS}
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
@@ -51284,5 +51269,20 @@ cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install CTC (Coral Terminal Calculator) Golang-based command-line minimalist calculator from package
+# https://github.com/Lich-Corals/coral-ctc-terminal-calculator
+APP_NAME=CTC
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Golang-based command-line minimalist calculator."
+APP_VERSION=0.4.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/coral-ctc-terminal-calculator/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
