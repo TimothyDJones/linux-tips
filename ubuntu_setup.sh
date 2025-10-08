@@ -42282,10 +42282,10 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Notepad++ text editor clone."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Text;Editor;Notepad;"
-APP_VERSION=3.5
+APP_VERSION=3.6
 APP_EXT=AppImage
 sudo apt install -y libfuse2 libqt5xmlpatterns5
-FILE_NAME=subtwo-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+FILE_NAME=ndd-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/notepad-dd/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/notepad-dd/icon?1c622609bc3881c99d944b4753bc1bfb44b4676da9b5f161a8d816a2fa1e8691
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
