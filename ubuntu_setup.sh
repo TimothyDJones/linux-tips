@@ -51009,7 +51009,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Feedr
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Rust-based command-line RSS/Atom feed reader."
-APP_VERSION=0.2.0
+APP_VERSION=0.3.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/bahdotsh/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
