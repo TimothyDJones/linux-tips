@@ -32928,7 +32928,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install littleutils collection of small and simple utilities from Debian package
 APP_NAME=littleutils
-APP_VERSION=1.2.5
+APP_VERSION=1.2.8
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-\${i}_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
