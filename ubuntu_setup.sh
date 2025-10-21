@@ -51679,3 +51679,17 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 echo 'eval "$(atuin init bash)"' >> ~/.bashrc
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Textpod Rust-based simple command-line Markdown-based notepad from package
+APP_NAME=Textpod
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=0.1.5
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-gnu-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/freetonik/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
