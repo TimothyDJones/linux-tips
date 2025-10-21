@@ -1901,7 +1901,7 @@ rm -rf /tmp/${APP_NAME}*
 APP_NAME=Brave-Browser
 APP_GUI_CATEGORIES="Internet;Networking"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.83.118
+APP_VERSION=1.83.119
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brave/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -51651,3 +51651,16 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install oma Rust-based reworked interface for APT Debian/Ubuntu package manager from Debian package
+APP_NAME=oma
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=1.22.2
+APP_EXT=deb
+DISTRO=$(lsb_release -i | cut -f 2 | tr '[:upper:]' '[:lower:]')
+DISTRO_VERSION=$(lsb_release -r | cut -f 2)
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)-${DISTRO}${DISTRO_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/AOSC-Dev/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
