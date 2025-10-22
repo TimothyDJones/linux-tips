@@ -9932,7 +9932,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Extraterm Electron-based, cross-platform terminal emulator from package
 APP_NAME=Extraterm
 APP_GUI_NAME="Electron-based, cross-platform terminal emulator."
-APP_VERSION=0.70.0
+APP_VERSION=0.81.4
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}qt-${APP_VERSION}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sedwards2009/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
