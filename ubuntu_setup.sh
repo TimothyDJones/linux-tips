@@ -25343,7 +25343,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install httpref command line, offline, access to HTTP references from package
 APP_NAME=httpref
 APP_GUI_NAME="Command line, offline, access to HTTP references."
-APP_VERSION=1.5.1
+APP_VERSION=1.6.1
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=amd64
