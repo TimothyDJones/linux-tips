@@ -22075,7 +22075,7 @@ APP_NAME=massCode
 APP_GUI_NAME="Electron-based, cross-platform codes snippet manager/editor."
 APP_GUI_CATEGORIES="Development;Programming;System;"
 APP_GUI_KEYWORDS="Snippet;Manager;"
-APP_VERSION=4.2.0
+APP_VERSION=4.2.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
