@@ -51869,7 +51869,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform GUI audio/video downloader with browser integration."
 APP_GUI_CATEGORIES="Internet;Multimedia;Audio;Video;"
 APP_GUI_KEYWORDS="Audio;Video;Downloader;"
-APP_VERSION=0.3.2
+APP_VERSION=0.3.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)_linux
 sudo apt install -y yt-dlp
