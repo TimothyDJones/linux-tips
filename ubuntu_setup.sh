@@ -52059,3 +52059,17 @@ sudo chmod a+x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install ripgrep-all Rust-based, cross-platform command-line to search in text files, but also in PDFs, ebooks, Office documents, etc. from package
+APP_NAME=ripgrep-all
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=0.10.10
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME//-/_}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-musl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/rga.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/rga* /usr/local/bin
+sudo chmod a+x /usr/local/bin/rga*
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
