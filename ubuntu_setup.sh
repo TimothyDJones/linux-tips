@@ -5140,11 +5140,11 @@ rm -rf /tmp/${APP_NAME,,}
 # Install GNU nano text editor from source
 APP_NAME=nano
 APP_GUI_NAME="Minimalist console text editor."
-APP_VERSION=8.6
+APP_VERSION=8.7
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y libncurses-dev
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://nano-editor.org/dist/v5/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://nano-editor.org/dist/v8/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
