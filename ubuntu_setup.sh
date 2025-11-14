@@ -14696,10 +14696,10 @@ sudo python3 ./setup.py install
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install 			 from package
+# Install Rukovoditel web-based (PHP/MySQL) open-source project management application from package
 APP_NAME=Rukovoditel
 APP_GUI_NAME="Web-based (PHP/MySQL) project management tool."
-APP_VERSION=3.6.2
+APP_VERSION=3.6.3
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
