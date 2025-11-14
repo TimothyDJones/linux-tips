@@ -50589,7 +50589,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform desktop music player for Youtube."
 APP_GUI_CATEGORIES="Accessories;Multimedia;Internet;"
 APP_GUI_KEYWORDS="Audio;Player;"
-APP_VERSION=1.22.0
+APP_VERSION=1.23.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-v${APP_VERSION}-Linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/youtube-music-desktop-player/${FILE_NAME}.${APP_EXT}
