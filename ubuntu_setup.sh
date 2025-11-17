@@ -20432,7 +20432,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install WTF cross-platform terminal-based dashboard utility from package
 APP_NAME=WTF
 APP_GUI_NAME="Cross-platform terminal-based dashboard utility."
-APP_VERSION=0.47.0
+APP_VERSION=0.47.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wtfutil/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
