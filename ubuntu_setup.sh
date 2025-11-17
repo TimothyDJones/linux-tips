@@ -50064,7 +50064,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform Python/GTK GUI for browsing comic strips from GoComics.com."
 APP_GUI_CATEGORIES="Entertainment;Accessories;"
 APP_GUI_KEYWORDS="Comics;"
-APP_VERSION=1.1.1
+APP_VERSION=1.1.3
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME// /_}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
