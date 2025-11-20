@@ -52186,3 +52186,17 @@ sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 /usr/local/bin/${APP_NAME,,} --setup-completions
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install check-projects Golang-based, cross-platform command-line tool to check Git status of multiple projects from package
+APP_NAME=check-projects
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=1.1.2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/uralys/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
