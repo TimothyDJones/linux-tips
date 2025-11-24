@@ -28856,7 +28856,7 @@ APP_NAME=Deskreen
 APP_GUI_NAME="Electron-based tool to make any device with web browser a second screen."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Utility;Screen;"
-APP_VERSION=3.1.9
+APP_VERSION=3.1.11
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-ce_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/pavlobu/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
