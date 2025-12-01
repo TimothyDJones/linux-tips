@@ -3769,7 +3769,7 @@ APP_NAME=Qutebrowser
 APP_GUI_NAME="Cross-platform, Python/Qt-based keyboard-focused minimalist web browser."
 APP_GUI_CATEGORIES="Internet"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=3.6.1
+APP_VERSION=3.6.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
