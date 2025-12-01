@@ -49252,7 +49252,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Edit
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Rust-based Rust-based console editor similar to old MS-DOS Edit."
-APP_VERSION=1.2.0
+APP_VERSION=1.2.1
 APP_EXT=tar.zst
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/microsoft/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
