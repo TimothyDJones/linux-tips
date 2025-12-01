@@ -50470,7 +50470,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform desktop client with support for multiple LLM providers."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="LLM;AI;"
-APP_VERSION=1.5.7
+APP_VERSION=1.7.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y libfuse2
