@@ -50950,7 +50950,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Python/PySide6-based download manager."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Download;"
-APP_VERSION=2.0.0
+APP_VERSION=2.0.8
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-portable-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
