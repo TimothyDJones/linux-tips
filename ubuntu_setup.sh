@@ -44580,7 +44580,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, open-source Electron-based tool to download video and audio from hundreds of sites."
 APP_GUI_CATEGORIES="Audio;Video;Multimedia;"
 APP_GUI_KEYWORDS="Audio;Video;Downloader;"
-APP_VERSION=3.15.1
+APP_VERSION=3.20.2
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}_Linux
