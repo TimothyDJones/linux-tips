@@ -28312,7 +28312,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Kibi Rust-based command-line text editor in < 1024 lines of code from package
 APP_NAME=Kibi
 APP_GUI_NAME="Rust-based command-line text editor in < 1024 lines of code."
-APP_VERSION=0.2.2
+APP_VERSION=0.3.2
 APP_EXT=tar.gz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
