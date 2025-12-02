@@ -24317,14 +24317,16 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install ijq interactive 'jq' JSON query tool from package
 # https://gpanders.com/blog/introducing-ijq/
 APP_NAME=ijq
-APP_VERSION=0.1.0
+APP_VERSION=1.1.2
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}-x86_64-linux-gnu
-npm install -g jq
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://git.sr.ht/~gpanders/${APP_NAME,,}/refs/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+sudo apt install -yy jq
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/gpanders/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${APP_NAME,,}-${APP_VERSION}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/man/man1 && sudo cp /tmp/${APP_NAME,,}-${APP_VERSION}/${APP_NAME,,}.1 /usr/local/man/man1/${APP_NAME,,}.1
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
