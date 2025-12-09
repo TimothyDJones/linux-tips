@@ -29229,7 +29229,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install xplr Rust-based console TUI-style file manager from package
 APP_NAME=xplr
 APP_GUI_NAME="Rust-based console TUI-style file manager."
-APP_VERSION=1.0.1
+APP_VERSION=1.1.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sayanarijit/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
