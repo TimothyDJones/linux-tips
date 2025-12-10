@@ -50986,7 +50986,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Chromium-based web browser with focus on privacy."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Browser;Web;Privacy;"
-APP_VERSION=0.7.2.1
+APP_VERSION=0.7.3.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/imputnet/${APP_NAME,,}-linux/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
