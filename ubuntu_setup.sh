@@ -52385,3 +52385,14 @@ sudo cp -a /tmp/oeis /usr/local/bin
 sudo chmod a+x /usr/local/bin/oeis
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install HeidiSQL cross-platform, lightweight client for multiple SQL databases from Debian package
+APP_NAME=HeidiSQL
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=12.14.1.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
