@@ -38149,9 +38149,9 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Electron-based GUI frontend for youtube-dl."
 APP_GUI_CATEGORIES="Multimedia;Entertainment;Video;"
 APP_GUI_KEYWORDS="Video;Download;"
-APP_VERSION=2.4.0
+APP_VERSION=3.0.1
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME// /-}-${APP_VERSION}
+FILE_NAME=${APP_NAME// /.}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${_APP_NAME}.png -J -L https://a.fsdn.com/allura/mirror/${_APP_NAME}/icon?b5febb7f0cc048efba5c8260f2f50f82bf284b89d1414e9ff94db0c0c4e65d74
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
