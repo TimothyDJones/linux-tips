@@ -52498,3 +52498,27 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}_linux_x64
 sudo ln -s -f /usr/local/bin/${APP_NAME,,}_linux_x64 /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install tvterm terminal emulator built with Turbo Vision from source
+APP_NAME=tvterm
+APP_GUI_NAME="emulator built with Turbo Vision."
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=N/A
+sudo apt install -yy build-essential cmake libvterm-dev libncurses-dev libgpm-dev
+cd /tmp
+git clone https://github.com/magiblot/tvision
+cd /tmp/tvision
+mkdir -p build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake --build .
+sudo make install
+cd /tmp
+git clone https://github.com/magiblot/${APP_NAME}
+cd /tmp/${APP_NAME}
+mkdir -p build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DTVTERM_USE_SYSTEM_LIBVTERM=ON -DTVTERM_USE_SYSTEM_TVISION=ON
+cmake --build .
+sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}* /tmp/tvision*
