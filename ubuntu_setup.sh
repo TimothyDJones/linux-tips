@@ -48924,7 +48924,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Java-based CPU info tool."
 APP_GUI_CATEGORIES="Office;System;Accessories;"
 APP_GUI_KEYWORDS="Knowledge;PIM;UML;"
-APP_VERSION=1.12.12
+APP_VERSION=1.12.13
 APP_EXT=jar
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 if ! [ -x "$(command -v java)" ]; then
