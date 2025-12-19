@@ -52522,3 +52522,33 @@ cmake --build .
 sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/tvision*
+
+# Install Playhouse off-line playground for web design with HTML/CSS/JavaScript from Flatpak package
+# https://github.com/sonnyp/Playhouse
+APP_NAME=Playhouse
+APP_GUI_NAME="Off-line playground for web design with HTML/CSS/JavaScript."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="Web;Design;"
+FLATPAK_DOMAIN=re.sonny
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y ${FLATPAK_DOMAIN}.${APP_NAME}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/sonnyp/${APP_NAME}/2d590be1c7f638c3e5800c65108e5412c3031117/data/icons/re.sonny.${APP_NAME}.svg
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
