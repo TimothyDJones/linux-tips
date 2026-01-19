@@ -50738,7 +50738,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, minimalist ebook reader."
 APP_GUI_CATEGORIES="Accessories;Office"
 APP_GUI_KEYWORDS="Ebook;"
-APP_VERSION=0.9.96
+APP_VERSION=0.9.97
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
