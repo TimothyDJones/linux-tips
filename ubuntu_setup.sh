@@ -52600,3 +52600,17 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/javiermisol/${APP_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install celq Rust-based, cross-platform command-line tool for evaluating Common Expression Language (CEL) expressions from package
+APP_NAME=celq
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=0.2.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/IvanIsCoding/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
