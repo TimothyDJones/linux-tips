@@ -52614,3 +52614,33 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Mousam Python/GTK desktop weather tool from Flatpak package
+# https://github.com/amit9838/mousam
+APP_NAME=Mousam
+APP_GUI_NAME="Python/GTK desktop weather tool."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Weather;"
+FLATPAK_DOMAIN=io.github.amit9838
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y ${FLATPAK_DOMAIN}.${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/amit9838/${APP_NAME,,}/1d5033b27285d489970b1b8c1db2aa11ed44d781/data/icons/hicolor/scalable/apps/${FLATPAK_DOMAIN}.${APP_NAME,,}.svg
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
