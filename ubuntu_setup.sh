@@ -29834,7 +29834,7 @@ APP_NAME=DocFetcher
 APP_GUI_NAME="Cross-platform Java-based file search tool that supports searching inside files."
 APP_GUI_CATEGORIES="System;Accessories;Office;"
 APP_GUI_KEYWORDS="File;Search;"
-APP_VERSION=1.1.26
+APP_VERSION=1.1.27
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}-Linux-64bit-Portable
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
