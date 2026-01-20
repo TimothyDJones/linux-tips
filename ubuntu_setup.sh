@@ -51647,7 +51647,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform pie menu launcher."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Menu;Launcher;"
-APP_VERSION=2.1.2
+APP_VERSION=2.2.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
