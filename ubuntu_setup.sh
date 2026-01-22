@@ -25351,7 +25351,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Gitoxide Rust-based implementation of Git version control tool from package
 APP_NAME=Gix
 APP_GUI_NAME="Rust-based implementation of Git version control tool."
-APP_VERSION=0.45.0
+APP_VERSION=0.50.0
 APP_EXT=tar.gz
 FILE_NAME=gitoxide-max-pure-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/GitoxideLabs/gitoxide/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
