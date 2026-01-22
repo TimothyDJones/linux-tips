@@ -52692,3 +52692,33 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Warehouse Python/GTK desktop tool for managing Flatpaks and Flatpak configuration from Flatpak package
+# https://github.com/flattool/warehouse
+APP_NAME=Warehouse
+APP_GUI_NAME="Python/GTK desktop tool for managing Flatpaks and Flatpak configuration."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Weather;"
+FLATPAK_DOMAIN=io.github.flattool
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y ${FLATPAK_DOMAIN}.${APP_NAME}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/flattool/${APP_NAME,,}/4e45cb52caa7a32717b2037f4b0fb8a331c9e7c6/data/icons/hicolor/scalable/apps/${FLATPAK_DOMAIN}.${APP_NAME,,}.svg
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
