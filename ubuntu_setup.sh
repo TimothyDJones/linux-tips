@@ -52665,7 +52665,7 @@ Categories=${APP_GUI_CATEGORIES}
 Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-cd $HOME
+cd $HOMEhttps://news.ycombinator.com/item?id=46731432
 rm -rf /tmp/${APP_NAME,,}*
 
 # Install dops Golang-based, cross-platform command-line replacement for 'docker ps' from package
@@ -52745,3 +52745,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Whosthere Golang-based, cross-platform command-line LAN discovery tool from package
+APP_NAME=Whosthere
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=0.2.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ramonvermeulen/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
