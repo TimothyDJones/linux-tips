@@ -51972,7 +51972,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install jjui Golang-based command-line TUI for Jujutsu version control tool from package
 APP_NAME=jjui
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.9.5
+APP_VERSION=0.9.10
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/idursun/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
