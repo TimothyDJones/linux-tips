@@ -52781,3 +52781,53 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Puzzle Dungeon Python-based classic puzzle game package from package
+APP_NAME="Puzzle Dungeon"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Python-based classic puzzle game package."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Puzzle;Games;"
+APP_VERSION=0.4.0
+APP_EXT=zip
+FILE_NAME=${_APP_NAME}-${APP_VERSION}
+sudo apt-get install -y python3-pip
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://a.fsdn.com/allura/p/${_APP_NAME}/icon?a980940fd3d06c67340a515e0f314b6ef263311e5df6d79cdeddcb7de0b8a06b
+cd /tmp
+unzip /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p $HOME/.local/bin/${_APP_NAME}
+cd $HOME/.local/bin/${_APP_NAME}
+cp -a -R /tmp/${FILE_NAME}/* $HOME/.local/bin/${_APP_NAME}
+cp -a /tmp/${_APP_NAME}.png $HOME/.local/bin/${_APP_NAME}
+python3 -m venv $HOME/.local/bin/${_APP_NAME}/.venv
+source $HOME/.local/bin/${_APP_NAME}/.venv/bin/activate
+python -m pip install pygame pgzero pyyaml bitarray
+cat > /tmp/${_APP_NAME} << EOF
+#! /bin/sh
+cd \$HOME/.local/bin/${_APP_NAME}
+. \$HOME/.local/bin/${_APP_NAME}/.venv/bin/activate
+\$HOME/.local/bin/${_APP_NAME}/dungeon &
+deactivate
+cd $HOME
+EOF
+sudo mv /tmp/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=$HOME/.local/bin/${_APP_NAME}/${_APP_NAME}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
