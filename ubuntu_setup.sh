@@ -50444,7 +50444,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=PULS
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Rust-based modern terminal process monitor."
-APP_VERSION=0.2.0
+APP_VERSION=0.5.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/word-sys/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
