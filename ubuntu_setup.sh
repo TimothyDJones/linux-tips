@@ -46911,12 +46911,40 @@ sudo apt-get install -y snapd snapd-xdg-open
 sudo snap install snapd
 sudo snap install ${APP_NAME,,}
 
-# Install Cartero Rust-based cross-platform GUI HTTP client with support for REST, SOAP or XML-RPC from Flatpak
+# Install Cartero Rust-based cross-platform GUI HTTP client with support for REST, SOAP or XML-RPC from AppImage
 # https://github.com/danirod/cartero
 APP_NAME=Cartero
-sudo apt-get install -y flatpak
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo flatpak install flathub es.danirod.${APP_NAME}
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Rust-based cross-platform GUI HTTP client with support for REST, SOAP or XML-RPC."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="REST;Web;Services;"
+APP_VERSION=26.0
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+sudo apt install -y fuse
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/danirod/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/danirod/${APP_NAME,,}/155e94271da128ff512c98148c03d5b751255504/data/icons/scalable/apps/es.danirod.${APP_NAME}.svg
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install git-gone Rust-based tool to remove all local branches that no longer have corresponding upstream/remote from package
 APP_NAME=git-gone
