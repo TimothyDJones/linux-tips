@@ -52973,7 +52973,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform React/Tauri-based GUI P2P encrypted file transfer tool."
 APP_GUI_CATEGORIES="Internet;Accessories;Network;System;"
 APP_GUI_KEYWORDS="P2P;File;Transfer;"
-APP_VERSION=0.3.1
+APP_VERSION=0.3.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt install -y fuse
