@@ -53000,3 +53000,17 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install ELS enhanced 'ls' command with built-in paging and other features from source
+APP_NAME=ELS
+APP_VERSION=1.55f2
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://els-software.org/els/release/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
