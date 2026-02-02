@@ -53111,3 +53111,18 @@ sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo cp -a /tmp/${APP_NAME,,}.1 /usr/local/man/man1
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install chess-tui Rust-based, cross-platform command-line chess client compatible with UCI engines from package
+# https://github.com/thomas-mauran/chess-tui
+APP_NAME=chess-tui
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=2.4.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
