@@ -53040,7 +53040,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Kotlin-based GUI Linux command reference with 5000+ entries."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Shell;Reference"
-APP_VERSION=3.5.4
+APP_VERSION=3.5.5
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /}-${APP_VERSION}-linux
 sudo apt install -y fuse
