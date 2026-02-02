@@ -8578,10 +8578,10 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install SmartGit Java-based Git/SVN/Mercurial GUI client from Debian package
 APP_NAME=SmartGit
 APP_GUI_NAME="Java-based Git/SVN/Mercurial GUI client."
-APP_VERSION=23.1.4
+APP_VERSION=25.1.110
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-${APP_VERSION//./_}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.syntevo.com/downloads/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION//./_}-linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.smartgit.dev/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
