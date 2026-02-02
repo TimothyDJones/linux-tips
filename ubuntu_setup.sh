@@ -53095,3 +53095,19 @@ cd /tmp/${FILE_NAME}
 make && sudo make install
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
+
+# Install witr Golang-based, cross-platform command-line tool to show provenance of any process running on system from package
+APP_NAME=witr
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=0.2.6
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/witr.mirror/${FILE_NAME}
+curl -o /tmp/${APP_NAME,,}.1 -J -L https://downloads.sourceforge.net/witr.mirror/${APP_NAME,,}.1
+cd /tmp
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo cp -a /tmp/${APP_NAME,,}.1 /usr/local/man/man1
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
