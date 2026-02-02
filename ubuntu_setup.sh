@@ -28366,14 +28366,9 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Kibi Rust-based command-line text editor in < 1024 lines of code from package
 APP_NAME=Kibi
 APP_GUI_NAME="Rust-based command-line text editor in < 1024 lines of code."
-APP_VERSION=0.3.2
+APP_VERSION=0.3.3
 APP_EXT=tar.gz
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x86_64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=i686
-fi
-FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-${ARCH_TYPE}-unknown-linux-gnu
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ilai-deutel/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
