@@ -53091,3 +53091,17 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install tree command-line tool to display tree view of file system hierarchy from source
+APP_NAME=tree
+APP_VERSION=2.3.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy build-essential
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Old-Man-Programmer/${APP_NAME,,}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
