@@ -48889,7 +48889,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Customized version of Firefox web browser for Linux."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="Browser;"
-APP_VERSION=12.6.0
+APP_VERSION=12.8.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-${APP_EXT,,}-x64
