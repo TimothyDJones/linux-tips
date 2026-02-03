@@ -46695,7 +46695,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Browser-based AI automation platform."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="AI;Automation;"
-APP_VERSION=5.3.5
+APP_VERSION=6.0.10
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}
