@@ -53333,3 +53333,33 @@ sudo chmod a+x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Spruce Python/GTK Linux cache cleaner and system maintenance tool from Flatpak package
+# https://github.com/shonubot/Spruce
+APP_NAME=Spruce
+APP_GUI_NAME="Python/GTK Linux cache cleaner and system maintenance tool."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Flatpak;Maintenance;"
+FLATPAK_DOMAIN=io.github.shonubot
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y ${FLATPAK_DOMAIN}.${APP_NAME}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/shonubot/${APP_NAME}/b8decad5617633f5b589c9243ffff79993537e97/data/icons/hicolor/scalable/apps/${FLATPAK_DOMAIN}.${APP_NAME}.svg
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
