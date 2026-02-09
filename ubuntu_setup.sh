@@ -53363,3 +53363,38 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Mudlet cross-platform MUD (multi-user dungeon) client from AppImage
+APP_NAME=Mudlet
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform MUD (multi-user dungeon) client."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="MUD;RPG;"
+APP_VERSION=4.20.0
+APP_EXT=AppImage
+FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT}.tar -J -L https://www.${APP_NAME,,}.org/wp-content/files/${FILE_NAME}.${APP_EXT}.tar
+curl -o /tmp/${APP_NAME,,}.png -J -L https://www.${APP_NAME,,}.org/wp-content/uploads/2017/08/${APP_NAME,,}-wp-logo.png
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}.tar
+sudo cp /tmp/${APP_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${APP_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
