@@ -4655,9 +4655,9 @@ rm -rf /tmp/${APP_NAME,,}
 # Install Rufas Slider puzzle game from source
 APP_NAME=RufasSlider
 APP_GUI_NAME="Klotsky-style slider puzzle game."
-APP_VERSION=17aug24
+APP_VERSION=9feb26
 APP_EXT=7z
-FILE_NAME=rs${APP_VERSION}
+FILE_NAME=rsl${APP_VERSION}
 sudo apt-get install -y qttools5-dev qttools5-dev-tools cmake
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
