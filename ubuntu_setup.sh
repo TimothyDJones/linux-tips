@@ -53099,7 +53099,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install witr Golang-based, cross-platform command-line tool to show provenance of any process running on system from package
 APP_NAME=witr
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.2.6
+APP_VERSION=0.2.7
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/witr.mirror/${FILE_NAME}
