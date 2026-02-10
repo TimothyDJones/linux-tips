@@ -2801,7 +2801,7 @@ rm -rf /tmp/${APP_NAME}*
 
 # Install Group-Office web-based office suite (manual installation)
 APP_NAME=GroupOffice
-APP_VERSION=6.8.150
+APP_VERSION=6.8.151
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -53432,3 +53432,18 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Tomatillo Python/GTK-based GUI Pomodoro timer from source
+APP_NAME=Tomatillo
+APP_VERSION=1.0.3
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt install -yy meson ninja-build libadwaita-1-dev blueprint-compiler
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/diegopvlk/${APP_NAME}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p build && cd build
+meson setup .. && ninja && sudo ninja install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
