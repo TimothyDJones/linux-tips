@@ -3035,7 +3035,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform GUI to do list manager."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="PDF;"
-APP_VERSION=2.0.1.67
+APP_VERSION=2.0.1.69
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y fuse
