@@ -39075,7 +39075,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # Install cheat Golang-based interactive cheat sheet tool for the command-line from package
 APP_NAME=cheat
 APP_GUI_NAME="Golang-based interactive cheat sheet tool for the command-line."
-APP_VERSION=4.4.0
+APP_VERSION=5.1.0
 APP_EXT=gz
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
