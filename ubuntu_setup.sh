@@ -896,16 +896,6 @@ sudo mv /tmp/wp34s.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/wp-34s-emulator*
 
-# Install YouTube-DL-PyTK GUI front-end for youtube-dl video downloader from Debian package
-APP_NAME=yt-dl-pytk
-APP_VERSION=25.10.22
-APP_EXT=deb
-FILE_NAME=${APP_NAME/-}_${APP_VERSION}_noarch
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/youtube-dl-gtk/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/${APP_NAME,,}*
-
 # Install WCD chdir utility from source
 APP_NAME=wcd
 APP_VERSION=6.0.6
@@ -17873,7 +17863,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install YouTube-DL-PyTK simple Python/Tkinter GUI for downloading videos from YouTube from package
 APP_NAME=YouTube-DL-PyTK
 APP_GUI_NAME="Simple Python/Tkinter GUI for downloading videos from YouTube."
-APP_VERSION=26.2.8
+APP_VERSION=26.2.14
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}_${APP_VERSION}
 sudo apt-get install -y python3-tk menu
