@@ -53319,7 +53319,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform MUD (multi-user dungeon) client."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="MUD;RPG;"
-APP_VERSION=4.20.0
+APP_VERSION=4.20.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT}.tar -J -L https://www.${APP_NAME,,}.org/wp-content/files/${FILE_NAME}.${APP_EXT}.tar
