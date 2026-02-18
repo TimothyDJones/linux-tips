@@ -53657,3 +53657,35 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 sudo cp -a /tmp/${FILE_NAME}/doc/${APP_NAME,,}.1 /usr/local/man/man1
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install AB Download Manager cross-platform Kotlin-based Internet download manager from package
+APP_NAME="AB Download Manager"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+APP_GUI_NAME="Cross-platform Kotlin-based Internet download manager."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Download;"
+APP_VERSION=1.8.6
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME// /}_${APP_VERSION}_linux_x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/amir1376/${_APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo mv ${APP_NAME// /} /opt
+sudo ln -s -f /opt/${APP_NAME// /}/bin/${APP_NAME// /} /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME// /}
+Exec=/opt/${APP_NAME// /}/bin/${APP_NAME// /}
+Icon=/opt/${APP_NAME// /}/lib/${APP_NAME// /}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME// /}*
