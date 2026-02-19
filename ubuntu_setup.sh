@@ -53664,7 +53664,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform Kotlin-based Internet download manager."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Download;"
-APP_VERSION=1.8.6
+APP_VERSION=1.8.7
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME// /}_${APP_VERSION}_linux_x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/amir1376/${_APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
