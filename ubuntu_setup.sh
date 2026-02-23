@@ -53591,7 +53591,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Notetask Pascal-based simple task management tool from Debian package
 APP_NAME=Notetask
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
-APP_VERSION=1.1.1
+APP_VERSION=1.1.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/plaintool/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
