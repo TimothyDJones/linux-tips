@@ -23565,7 +23565,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install LibrePCB cross-platform EDA/PCB design tool from package
 APP_NAME=LibrePCB
 APP_GUI_NAME="Cross-platform EDA/PCB design tool."
-APP_VERSION=1.0.0
+APP_VERSION=2.0.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://download.${APP_NAME,,}.org/releases/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
