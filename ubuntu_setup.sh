@@ -53905,3 +53905,17 @@ echo 'CHESHMAK_SHELL=bash' >> $HOME/.bashrc
 source $HOME/.bashrc
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Tetro TUI Rust-based, cross-platform command-line Tetris-style arcade game from package
+APP_NAME=Tetro-TUI
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=1.1.0
+APP_EXT=zip
+FILE_NAME=$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Strophox/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+unzip /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
