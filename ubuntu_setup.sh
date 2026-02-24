@@ -34469,9 +34469,9 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME="Rabbit Remote Control"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform remote control tool with support for VNC, RDP, SSH, Telnet, etc."
-APP_VERSION=0.0.37
+APP_VERSION=0.1.0-bate7
 APP_EXT=deb
-FILE_NAME=${_APP_NAME}_${APP_VERSION}_amd64
+FILE_NAME=${_APP_NAME}_${APP_VERSION}_ubuntu-24.04_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
