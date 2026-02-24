@@ -53806,7 +53806,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install weathr Rust-based cross-platform terminal weather tool with ASCII animations from package
 APP_NAME=weathr
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=1.3.0
+APP_VERSION=1.4.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/Veirt/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
