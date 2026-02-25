@@ -51270,7 +51270,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, Flutter-based minimalist tool to suspend applications."
 APP_GUI_CATEGORIES="System;"
 APP_GUI_KEYWORDS="Suspend;"
-APP_VERSION=2.25.0
+APP_VERSION=2.26.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-Linux-Portable
 sudo apt install -y libgtk-3-0 libblkid1 liblzma5 wmctrl xdotool
