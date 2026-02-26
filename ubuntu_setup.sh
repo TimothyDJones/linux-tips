@@ -26838,7 +26838,7 @@ rm -rf /tmp/${APP_NAME,,}*
 
 # Install sd (s[earch] & d[isplace]) Rust-based 'sed' replacement from package
 APP_NAME=sd
-APP_VERSION=0.7.6
+APP_VERSION=1.1.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-x86_64-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/chmln/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
