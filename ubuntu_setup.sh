@@ -53821,7 +53821,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install nb Rust-based cross-platform command-line plain text note-taking and bookmarking tool from package
 APP_NAME=nb
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=7.25.0
+APP_VERSION=7.25.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/xwmx/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
