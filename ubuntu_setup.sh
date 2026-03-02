@@ -1783,7 +1783,7 @@ fi
 
 # Install AVFS virtual file system from source
 APP_NAME=AVFS
-APP_VERSION=1.1.5
+APP_VERSION=1.3.0
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libfuse-dev libarchive-dev
@@ -28634,13 +28634,34 @@ APP_NAME=RedDiamond
 APP_GUI_NAME="Programmer's text editor with EDT keypad navigation based on CopperSpice Qt library."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=3.6.4
-APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-U22.04-${APP_VERSION}-${KERNEL_TYPE}
+APP_VERSION=3.6.5
+APP_EXT=AppImage
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+sudo apt install -y fuse libfuse2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://a.fsdn.com/allura/p/${APP_NAME,,}/icon?5f0a97f522b256b5cc5fcfc78fa5d71c45cbc928463d3986f8ac94e925d7b065
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/*${APP_NAME,,}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Oh Golang-based Unix/Linux shell replacement from package
 APP_NAME=Oh
