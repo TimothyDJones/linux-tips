@@ -54073,3 +54073,20 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}*
+
+# Install Qman modern terminal man page view from source
+APP_NAME=Qman
+APP_VERSION=1.5.1
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy meson ninja-build python3-cogapp libncursesw6 libncurses-dev libcunit1-ncurses-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/plp13/${APP_NAME}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+meson setup build/
+cd build/
+meson compile
+sudo meson install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
