@@ -15018,9 +15018,9 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Violet UML Editor Java-based UML modeling tool from package
 APP_NAME=VioletUMLEditor
 APP_GUI_NAME="Java-based UML modeling tool."
-APP_VERSION=3.0.0
+APP_VERSION=2.2.2
 APP_EXT=jar
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-SNAPSHOT
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/violet/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
 sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
