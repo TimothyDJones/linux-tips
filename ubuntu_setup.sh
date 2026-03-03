@@ -339,6 +339,9 @@ sudo cp -a /tmp/dejavu-fonts-ttf-2.37/ttf/* /usr/local/share/fonts
 curl -o /tmp/spleen-2.2.0.tar.gz -J -L https://downloads.sourceforge.net/spleen.mirror/spleen-2.2.0.tar.gz
 mkdir -p /tmp/spleen-2.2.0 && tar -xf /tmp/spleen-2.2.0.tar.gz -C /tmp/spleen-2.2.0
 sudo cp -R -a /tmp/spleen-2.2.0/* /usr/local/share/fonts
+curl -o /tmp/IoskeleyMono-TTF-Hinted.zip -J -L https://github.com/ahatem/IoskeleyMono/releases/download/2025.10.09-6/IoskeleyMono-TTF-Hinted.zip
+mkdir -p /tmp/IoskeleyMono-TTF-Hinted && unzip /tmp/IoskeleyMono-TTF-Hinted.zip -d /tmp/IoskeleyMono-TTF-Hinted
+sudo cp -R /tmp/IoskeleyMono-TTF-Hinted/TTF/* /usr/local/share/fonts
 sudo fc-cache -f -v
 # Enable bitmap fonts
 sudo rm -rf /etc/fonts/conf.d/10* /etc/fonts/conf.d/70-no-bitmaps.conf 
