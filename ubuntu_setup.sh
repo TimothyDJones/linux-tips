@@ -7641,7 +7641,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install usql cross-platform command-line SQL client in Go
 APP_NAME=usql
 APP_GUI_NAME="Cross-platform command-line SQL client in Go."
-APP_VERSION=0.19.26
+APP_VERSION=0.21.0
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/xo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
