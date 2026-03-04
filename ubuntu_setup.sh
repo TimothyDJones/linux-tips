@@ -54144,3 +54144,22 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install RTorrent terminal BitTorrent client from source
+APP_NAME=RTorrent
+APP_VERSION=0.16.7
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy build-essential libssl-dev libcurl4-openssl-dev
+curl -o /tmp/libtorrent-${APP_VERSION}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-bittorrent-cli.mirror/libtorrent-${APP_VERSION}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-bittorrent-cli.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/libtorrent-${APP_VERSION}.${APP_EXT}
+cd /tmp/libtorrent-${APP_VERSION}
+./configure && make -j$(nproc) && sudo make install
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make -j$(nproc) && sudo make install
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
