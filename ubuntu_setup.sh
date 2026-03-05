@@ -3107,18 +3107,12 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install Only Office Desktop Editor from package
-APP_NAME=onlyoffice-desktopeditors
-APP_VERSION=7.0
+# Install Only Office Desktop Editor from Debian package
+APP_NAME=OnlyOffice-DesktopEditors
+APP_VERSION=9.3.1
 APP_EXT=deb
-FILE_NAME=${APP_NAME}_${KERNEL_TYPE}
-source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(ze|ar|bi|co|di|eo|fo|gr|hi)$ ]]; then
-	DISTRIB_RELEASE=16
-elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ ^(vi|wi)$ ]]; then
-	DISTRIB_RELEASE=14
-fi
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://sourceforge.net/projects/desktopeditors/files/v${APP_VERSION}/ubuntu/${DISTRIB_RELEASE:0:2}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/onlyoffice-desktop.mirror/${FILE_NAME}.${APP_EXT}
 cd /tmp
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
