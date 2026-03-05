@@ -54209,3 +54209,37 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install attn cross-platform Rust-based Markdown viewer/editor from package
+APP_NAME=attn
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+APP_GUI_NAME="Cross-platform Rust-based Markdown viewer/editor."
+APP_GUI_CATEGORIES="Office;Accessories;"
+APP_GUI_KEYWORDS="Markdown;Editor;"
+APP_VERSION=0.3.5
+APP_EXT=N/A
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-x64
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/lightsofapollo/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://raw.githubusercontent.com/lightsofapollo/${APP_NAME,,}/refs/heads/main/icons/${APP_NAME,,}.${ICON_EXT}
+sudo mv /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
