@@ -4462,7 +4462,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform REST client."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="REST;Web Services;"
-APP_VERSION=12.3.1
+APP_VERSION=12.4.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}.Core-${APP_VERSION}
 sudo apt install -y libfuse2
