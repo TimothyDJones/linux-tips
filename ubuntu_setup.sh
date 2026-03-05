@@ -29736,11 +29736,14 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install pacstall Arch Linux-style package manager for Ubuntu from package
-APP_NAME=pacstall
-APP_VERSION=N/A
-APP_EXT=N/A
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Henryws/pacstall/master/install.sh)"
+# Install Pacstall Arch Linux-style package manager for Ubuntu from package
+APP_NAME=Pacstall
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_VERSION=6.3.11
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}-${APP_NAME,,}1_all
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
 
