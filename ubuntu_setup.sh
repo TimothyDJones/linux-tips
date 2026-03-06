@@ -43323,7 +43323,7 @@ APP_NAME=UPX
 APP_GUI_NAME="Command-line tool for compressing executable/binary files."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Executable;Compression;"
-APP_VERSION=4.1.0
+APP_VERSION=5.1.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-src
 sudo apt install -y build-essential cmake
