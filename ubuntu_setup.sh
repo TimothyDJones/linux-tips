@@ -54369,3 +54369,14 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/microsoft/${APP_NA
 sudo gdebi -n /tmp/sysinternalsebpf_1.5.0_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT} && sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install APTUI Golang-based TUI tool for managing Debian apt repositories from Debian package
+APP_NAME=APTUI
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]' )
+APP_VERSION=0.1.1
+APP_EXT=deb
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mexirica/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
