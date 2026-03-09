@@ -54357,3 +54357,15 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Sysmon for Linux C-based system monitoring tool from Debian package
+APP_NAME="Sysmon For Linux"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]' )
+APP_VERSION=1.5.1
+APP_EXT=deb
+FILE_NAME=${_APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/sysinternalsebpf_1.5.0_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT} -J -L https://github.com/microsoft/SysinternalsEBPF/releases/download/1.5.0.0/sysinternalsebpf_1.5.0_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/microsoft/${APP_NAME// /}/releases/download/${APP_VERSION}.0/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/sysinternalsebpf_1.5.0_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT} && sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
