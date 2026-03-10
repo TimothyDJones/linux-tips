@@ -52164,7 +52164,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform agentic AI web browser built on a Chromium base."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="AI;"
-APP_VERSION=0.30.0
+APP_VERSION=0.42.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}_v${APP_VERSION}_x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/browseros-ai/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
