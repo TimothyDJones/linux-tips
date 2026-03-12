@@ -42405,7 +42405,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=mise
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Rust-based, run-time package manager."
-APP_VERSION=2026.3.6
+APP_VERSION=2026.3.8
 APP_EXT=tar.xz
 BASE_ARCH=
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux-x64
