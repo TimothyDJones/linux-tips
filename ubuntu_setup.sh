@@ -44840,38 +44840,6 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install WaveTerm cross-platform modern terminal from package
-APP_NAME=WaveTerm
-APP_GUI_NAME="Cross-platform modern terminal."
-APP_GUI_CATEGORIES="Accessories;System;"
-APP_GUI_KEYWORDS="Terminal;"
-APP_VERSION=0.14.1
-APP_EXT=zip
-FILE_NAME=${APP_NAME,,}-linux-x64-v${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/wavetermdev/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-cd /tmp
-unzip -q /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo cp -a -R /tmp/${FILE_NAME}/Wave*/* /opt/${APP_NAME,,}
-sudo ln -s -f /opt/${APP_NAME,,}/Wave /usr/local/bin/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/Wave
-Icon=/opt/${APP_NAME,,}/resources/app/public/logos/wave-logo.png
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=${APP_GUI_CATEGORIES}
-Keywords=${APP_GUI_KEYWORDS}
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-cd $HOME
-rm -rf /tmp/${APP_NAME,,}
-
 # Install Librum Reader cross-platform ebook reader and manager from Flatpak
 # https://librumreader.com/
 sudo apt-get install -y flatpak
@@ -45975,19 +45943,20 @@ sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/nvj*
 
-# Install Wave Terminal cross-platform, terminal with built-in AI support from AppImage
+# Install Wave Terminal cross-platform terminal with built-in AI support from AppImage
 # https://www.waveterm.dev/
-APP_NAME=Wave
+# https://github.com/wavetermdev/waveterm/
+APP_NAME=WaveTerm
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
-APP_GUI_NAME="Cross-platform, terminal with built-in AI support."
+APP_GUI_NAME="Cross-platform terminal with built-in AI support."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Terminal;"
-APP_VERSION=0.7.1
+APP_VERSION=0.14.3
 APP_EXT=AppImage
 sudo apt install -y libfuse2
-FILE_NAME=${APP_NAME}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-terminal/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/wave-terminal/icon?cd273f91976ed7db25a878f7a267baf8f85ecc48782a22ff26b1ed5f852fc818
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-terminal.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/wavetermdev/${APP_NAME,,}/refs/heads/main/build/icons/128x128.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
