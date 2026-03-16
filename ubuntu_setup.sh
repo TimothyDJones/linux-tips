@@ -53398,7 +53398,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based self-hosted music player."
 APP_GUI_CATEGORIES="Audio;Multimedia;Entertainment;"
 APP_GUI_KEYWORDS="Music;Player;"
-APP_VERSION=1.6.0
+APP_VERSION=1.9.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y fuse libfuse2
