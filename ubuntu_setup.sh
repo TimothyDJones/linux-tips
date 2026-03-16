@@ -15380,7 +15380,7 @@ APP_NAME=Syncped
 APP_GUI_NAME="wxWidgets-based text editor."
 APP_GUI_CATEGORIES="Development;Accessories"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=25.10.0
+APP_VERSION=26.4.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-ubuntu-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
