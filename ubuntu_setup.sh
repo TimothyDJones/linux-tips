@@ -46705,7 +46705,7 @@ APP_NAME=dyff
 APP_GUI_NAME="Golang-based command line diff/comparison tool for YAML and JSON files/data."
 APP_GUI_CATEGORIES="Programming;Development;System;"
 APP_GUI_KEYWORDS="Diff;YAML;JSON;"
-APP_VERSION=1.11.2
+APP_VERSION=1.11.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
