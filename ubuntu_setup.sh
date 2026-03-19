@@ -53770,7 +53770,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Tauri-based desktop Getting Things Done (GTD) productivity system."
 APP_GUI_CATEGORIES="Accessories;System;Office;"
 APP_GUI_KEYWORDS="GTD;Productivity;"
-APP_VERSION=0.7.4
+APP_VERSION=0.7.5
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y fuse libfuse2
