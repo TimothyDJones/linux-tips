@@ -53550,7 +53550,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Rust/Tauri-based clock that displays multiple time zones."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Clock;"
-APP_VERSION=0.2.37
+APP_VERSION=0.2.39
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt install -y fuse libfuse2
