@@ -4980,11 +4980,6 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install KiCad electronic design automation suite from PPA
-sudo add-apt-repository -y ppa:js-reynaud/kicad-4
-sudo apt update
-sudo apt install -y kicad
-
 # Install View Your Mind (VYM) Qt mind-mapping tool from source
 APP_NAME=vym
 APP_VERSION=2.9.26
@@ -49828,7 +49823,7 @@ APP_GUI_CATEGORIES="Engineering;Electronics;"
 APP_GUI_KEYWORDS="Electronics;"
 APP_VERSION=9.0.3
 APP_EXT=AppImage
-sudo apt install -y libfuse2
+sudo apt install -y libfuse2 libglu1-mesa
 FILE_NAME=${APP_NAME}-${APP_VERSION}.glibc2.35-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-appimage/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://www.${APP_NAME,,}.org/img/${APP_NAME,,}_logo_small.png
