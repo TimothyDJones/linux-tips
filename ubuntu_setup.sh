@@ -49821,11 +49821,11 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform electronics schematic capture and PCB layout tool."
 APP_GUI_CATEGORIES="Engineering;Electronics;"
 APP_GUI_KEYWORDS="Electronics;"
-APP_VERSION=9.0.3
+APP_VERSION=9.0.8
 APP_EXT=AppImage
 sudo apt install -y libfuse2 libglu1-mesa
-FILE_NAME=${APP_NAME}-${APP_VERSION}.glibc2.35-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-appimage/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME}-${APP_VERSION}-1-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://mirrors.mit.edu/${APP_NAME,,}/appimage/stable/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://www.${APP_NAME,,}.org/img/${APP_NAME,,}_logo_small.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
