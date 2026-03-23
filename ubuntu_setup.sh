@@ -39170,7 +39170,7 @@ sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # Install GitVersion C#/.NET-based tool for calculating semantic version from repository Git history from package
 APP_NAME=GitVersion
 APP_GUI_NAME="C#/.NET-based tool for calculating semantic version from repository Git history."
-APP_VERSION=5.11.1
+APP_VERSION=6.7.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-x64-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
