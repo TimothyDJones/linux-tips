@@ -54660,3 +54660,49 @@ sudo chmod a+x /usr/local/bin/jg
 sudo ln -s -f /usr/local/bin/jg /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install DB Explorer cross-platform Java-based GUI database client from package
+APP_NAME="DB Explorer"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform Java-based GUI database client."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Database;SQL;"
+APP_VERSION=1.1.0
+APP_EXT=zip
+FILE_NAME=${_APP_NAME}-${APP_VERSION}
+if ! [ -x "$(command -v java)" ]; then
+	sudo apt install -y openjdk-25-jre
+fi
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+unzip /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${_APP_NAME}
+sudo chmod -R 755 /opt/${_APP_NAME}
+cat > /tmp/${_APP_NAME} << EOF
+#! /bin/sh
+cd /opt/${_APP_NAME}
+PATH=/opt/${_APP_NAME}:\$PATH; export PATH
+java -jar /opt/${_APP_NAME}/${FILE_NAME}.jar
+cd $HOME
+EOF
+sudo mv /tmp/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/usr/local/bin/${_APP_NAME}
+# Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}*
