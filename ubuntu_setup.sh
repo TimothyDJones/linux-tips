@@ -33361,7 +33361,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Java-based terminal calendar."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Calendar;Shell;"
-APP_VERSION=3.0.3
+APP_VERSION=4.0.4
 APP_EXT=jar
 FILE_NAME=${APP_NAME,,}
 if ! [ -x "$(command -v java)" ]; then
