@@ -11887,36 +11887,38 @@ rm -rf /tmp/*${_APP_NAME}*
 
 # Install Clippy cross-platform, Electron-based clipboard manager with persistent history from AppImage
 APP_NAME=Clippy
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Electron-based clipboard manager with persistent history."
-APP_VERSION=1.5.0
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Clipboard;Productivity;"
+APP_VERSION=1.7.0
 APP_EXT=AppImage
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x86_64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=x86
-fi
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}
+ICON_EXT=png
+FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+sudo apt install -y fuse libfuse2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ikouchiha47/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
-sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo ln -s /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://raw.githubusercontent.com/ikouchiha47/${APP_NAME,,}/refs/heads/master/icon.png
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-#Icon=
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
 Type=Application
 StartupNotify=true
 Terminal=false
-Categories=Accessories;
-Keywords=Clipboard;Productivity;
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install Parlatype GTK+-based audio player for transcription from source
 APP_NAME=Parlatype
