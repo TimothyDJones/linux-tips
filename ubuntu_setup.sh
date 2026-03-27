@@ -12024,7 +12024,7 @@ sudo rm -rf /tmp/${APP_NAME}*
 # https://strlen.com/treesheets/
 APP_NAME=TreeSheets
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
-APP_VERSION=3035
+APP_VERSION=3048
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/aardappel/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
