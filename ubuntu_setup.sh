@@ -39104,13 +39104,12 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Flutter-based password manager with synchronization capability."
 APP_GUI_CATEGORIES="Internet;System;Accessories;"
 APP_GUI_KEYWORDS="Password;Security;"
-APP_VERSION=1.8.0
+APP_VERSION=1.10.1
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME}-v${APP_VERSION}-Linux-${APP_EXT}
-curl -o /tmp/${FILE_NAME}.zip -J -L https://github.com/GlitterWare/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.zip
+FILE_NAME=${APP_NAME}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/GlitterWare/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/GlitterWare/${APP_NAME}/main/assets/images/icon48.png
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.zip
 sudo cp /tmp/${FILE_NAME}/${APP_NAME}-v${APP_VERSION}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${APP_NAME}-v${APP_VERSION}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${APP_NAME}-v${APP_VERSION}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
