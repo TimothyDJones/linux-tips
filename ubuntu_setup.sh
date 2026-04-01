@@ -54983,3 +54983,40 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME// /}*
+
+# Install ImageFan Reloaded cross-platform, C#/.NET-based tab-based image viewer from package
+APP_NAME="ImageFan Reloaded"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_GUI_NAME="Cross-platform, C#/.NET-based tab-based image viewer."
+APP_GUI_CATEGORIES="Accessories;Graphics;"
+APP_GUI_KEYWORDS="Graphics;Image;"
+APP_VERSION=1.2026.03.31
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME// /}_Linux_x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mihnea-radulescu/${_APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://raw.githubusercontent.com/mihnea-radulescu/${_APP_NAME}/refs/heads/main/Flathub/icon128.png
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${_APP_NAME}
+sudo cp /tmp/${_APP_NAME}.${ICON_EXT} /opt/${_APP_NAME}
+sudo chmod -R 755 /opt/${_APP_NAME}
+sudo ln -s -f /opt/${_APP_NAME}/${APP_NAME// /} /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/opt/${_APP_NAME}/${APP_NAME// /}
+Icon=/opt/${_APP_NAME}/${_APP_NAME}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME// /}*
