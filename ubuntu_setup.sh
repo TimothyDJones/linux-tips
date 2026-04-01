@@ -46223,18 +46223,17 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Electron-based desktop REST and GraphQL webservice client."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="REST;API;GraphQL;"
-APP_VERSION=2025.5.6
+APP_VERSION=2026.3.1
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
-curl -o /tmp/${FILE_NAME}.${APP_EXT}.tar.gz -J -L https://releases.yaak.app/${APP_VERSION}/${FILE_NAME}.${APP_EXT}.tar.gz
-curl -o /tmp/${APP_NAME,,}.svg -J -L https://yaak.app/logo.svg
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mountain-loop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/mountain-loop/${APP_NAME,,}/refs/heads/main/crates-tauri/yaak-app/icons/icon.png
 cd /tmp
-tar -xf /tmp/${FILE_NAME}.${APP_EXT}.tar.gz
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
-sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
-sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -46242,7 +46241,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/usr/local/bin
 Exec=/usr/local/bin/${APP_NAME,,}
-Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
 Type=Application
 StartupNotify=true
 Terminal=false
