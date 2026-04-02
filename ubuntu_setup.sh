@@ -52303,7 +52303,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install gojq Golang-based, cross-platform implementation of jq JSON query tool from package
 APP_NAME=gojq
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.12.18
+APP_VERSION=0.12.19
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
