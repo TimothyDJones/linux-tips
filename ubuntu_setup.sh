@@ -52841,7 +52841,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Bluefish cross-platform text editor for web development and programming from source
 APP_NAME=Bluefish
-APP_VERSION=2.4.0
+APP_VERSION=2.4.1
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -yy build-essential libgtk-3-dev libxml2-dev
