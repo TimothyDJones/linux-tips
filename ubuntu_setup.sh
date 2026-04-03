@@ -55058,3 +55058,33 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Pinta cross-platform, open-source C#/.NET-based drawing and image editing tool from Flatpak package
+# https://github.com/PintaProject/Pinta
+APP_NAME=Pinta
+APP_GUI_NAME="Cross-platform, open-source C#/.NET-based drawing and image editing tool."
+APP_GUI_CATEGORIES="Graphics;Accessories;"
+APP_GUI_KEYWORDS="Paint;Editor;"
+FLATPAK_DOMAIN=com.github.PintaProject
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y ${FLATPAK_DOMAIN}.${APP_NAME}
+curl -o /tmp/${APP_NAME,,}.svg -J -L https://raw.githubusercontent.com/PintaProject/${APP_NAME}/7f88639af03ed440416e44f981218777c5dc6d1e/Pinta.Resources/icons/hicolor/scalable/apps/${FLATPAK_DOMAIN}.${APP_NAME}.svg
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.svg /usr/local/share/icons/${APP_NAME,,}.svg
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.svg
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
