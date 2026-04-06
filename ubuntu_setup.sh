@@ -25489,7 +25489,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install FFaudioConverter Qt-based GUI front-end for FFmpeg for audio conversion from source
 APP_NAME=FFaudioConverter
 APP_GUI_NAME="Qt-based GUI front-end for FFmpeg for audio conversion."
-APP_VERSION=0.29
+APP_VERSION=0.32.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}-src
 sudo apt-get install -y qtbase5-dev qt5-qmake qt5-default qttools5-dev-tools
