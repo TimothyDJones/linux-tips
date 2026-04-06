@@ -5203,7 +5203,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install nuBASIC IDE and compiler for BASIC from source
 APP_NAME=nuBASIC
-APP_VERSION=1.60.0
+APP_VERSION=1.62.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y cmake build-essential libgtk2.0-dev
