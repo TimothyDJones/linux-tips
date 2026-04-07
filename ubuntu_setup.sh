@@ -14043,7 +14043,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install SC-IM ncurses spreadsheet program for terminal from source
 APP_NAME=SC-IM
 APP_GUI_NAME="Ncurses spreadsheet program for terminal."
-APP_VERSION=0.7.0
+APP_VERSION=0.8.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y libzip-dev libxml2-dev bison  libncurses5-dev libncursesw5-dev cmake
