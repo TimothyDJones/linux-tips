@@ -42484,7 +42484,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Neovim
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, next-generation Vim text editor."
-APP_VERSION=0.12.0
+APP_VERSION=0.12.1
 APP_EXT=AppImage
 FILE_NAME=nvim-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT,,}
