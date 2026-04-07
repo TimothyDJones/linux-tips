@@ -54112,7 +54112,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install RTorrent terminal BitTorrent client from source
 APP_NAME=RTorrent
-APP_VERSION=0.16.8
+APP_VERSION=0.16.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -yy build-essential libssl-dev libcurl4-openssl-dev
