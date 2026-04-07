@@ -15670,7 +15670,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install php4dvd PHP/MySQL personal movie management tool with IMDB integration from package
 APP_NAME=php4dvd
 APP_GUI_NAME="PHP/MySQL personal movie management tool with IMDB integration."
-APP_VERSION=3.8.0
+APP_VERSION=3.11.5
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
