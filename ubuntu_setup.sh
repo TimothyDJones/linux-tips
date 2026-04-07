@@ -15175,7 +15175,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install FreshRSS web-based (PHP/MySQL), self-hosted RSS news aggregator from package
 APP_NAME=FreshRSS
 APP_GUI_NAME="Web-based (PHP/MySQL), self-hosted RSS news aggregator."
-APP_VERSION=1.16.2
+APP_VERSION=1.28.1
 APP_EXT=tar.gz
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
