@@ -55386,3 +55386,18 @@ sudo chmod a+x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install QMentat C++/Qt6-based, cross-platform GUI mental math learning tool from package
+APP_NAME=QMentat
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=1.1.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME}-${APP_VERSION}-Linux
+sudo apt install -y qt6-base-dev libqt6help6 libqt6texttospeech6
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/RealGrep/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R /tmp/${FILE_NAME}/bin/* /usr/local/bin
+sudo cp -a -R /tmp/${FILE_NAME}/share/* /usr/local/share
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
