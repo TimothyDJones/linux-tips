@@ -816,7 +816,7 @@ add Control = Control_R
 
 # Install JOE (Joe's Own Editor) text editor from source
 APP_NAME=joe
-APP_VERSION=4.6
+APP_VERSION=4.7
 APP_EXT=tar.gz
 curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-editor/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
 cd /tmp
