@@ -53637,7 +53637,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Television Rust-based, cross-platform command-line fuzzy finder tool from package
 APP_NAME=tv
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.15.2
+APP_VERSION=0.15.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/alexpasmantier/television/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
