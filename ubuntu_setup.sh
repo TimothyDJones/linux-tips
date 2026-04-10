@@ -24141,12 +24141,12 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform audio/video encoder/converter."
 APP_GUI_CATEGORIES="Audio;Video;Multimedia;"
 APP_GUI_KEYWORDS="Converter;Encoder;Decoder;"
-APP_VERSION=18.2
+APP_VERSION=19.9
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /%20}%20${APP_VERSION}%20Linux%2064bits
 sudo apt install -y libfuse2
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${_APP_NAME}.png -J -L https://a.fsdn.com/allura/p/${_APP_NAME}/icon?1678339027
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.shutterencoder.com/old%20versions/Linux/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.png -J -L https://www.shutterencoder.com/wp-content/uploads/2024/04/logo.png
 sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
