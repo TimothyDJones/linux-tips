@@ -31503,18 +31503,16 @@ sudo chmod a+x /usr/local/bin/${FILE_NAME}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Kakoune console text editor with Vi keybindings from source
+# Install Kakoune console text editor with Vi keybindings from package
 APP_NAME=Kakoune
 APP_GUI_NAME="Console text editor with Vi keybindings."
 APP_VERSION=2026.04.12
 APP_EXT=tar.bz2
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt install -yy build-essential
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mawww/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}
-make -j$(nproc) && PREFIX=/usr/local sudo make install
+sudo tar -xjf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R /tmp/${FILE_NAME}/* /usr/local
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
