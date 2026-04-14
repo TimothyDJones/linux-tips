@@ -4731,7 +4731,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Crystal Facet UML modeling tool from source
 APP_NAME=crystal-facet-uml
-APP_VERSION=1.68.0
+APP_VERSION=1.70.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}.orig
 sudo apt-get install -y gcc cmake make libgtk-4-dev libsqlite3-dev devscripts debhelper yamllint debsigs dblatex xmlto librsvg2-bin doxygen lcov curl
