@@ -4819,15 +4819,38 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install QtPass GUI for pass, the standard Unix password manager from source
 APP_NAME=QtPass
-APP_VERSION=1.5.1
+APP_GUI_NAME="GUI for pass, the standard Unix password manager."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Password;"
+APP_VERSION=1.6.0
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -k -L https://github.com/IJHack/${APP_NAME}/archive/v${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+sudo apt-get install -y build-essential qtbase5-dev qttools5-dev-tools qt5-qmake
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -k -L https://github.com/IJHack/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://qtpass.org/docs/doc-icon.png
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}
-./release-linux
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}.${APP_EXT}
+mkdir build && cd build
+qtchooser -run-tool=qmake -qt=5 .. && make && sudo make install
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME}*
 
 # Install Mooedit text editor from source
 APP_NAME=medit
