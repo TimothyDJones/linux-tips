@@ -49875,7 +49875,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=gitbasher
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, command-line script to simplify Git usage."
-APP_VERSION=3.3.0
+APP_VERSION=3.10.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/maxbolgarin/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
