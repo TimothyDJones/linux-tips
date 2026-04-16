@@ -52289,11 +52289,11 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based AI-powered RSS news reader."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="RSS;News;"
-APP_VERSION=1.6.0
+APP_VERSION=1.6.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/RSSNext/${APP_NAME}/releases/download/desktop%2Fv${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/RSSNext/Folo/refs/heads/main/apps/desktop/resources/icon.png
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/RSSNext/${APP_NAME}/refs/heads/main/apps/desktop/resources/icon.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
