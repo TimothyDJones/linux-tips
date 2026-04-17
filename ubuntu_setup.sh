@@ -42419,7 +42419,7 @@ sudo useradd --system --home /etc/step-ca --shell /bin/false step
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install mise cross‐platform, Rust-based, polyglot run-time package manager from package
+# Install 			 from package
 APP_NAME=mise
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Rust-based, run-time package manager."
@@ -46737,7 +46737,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://github.com/Linus-Mussmaecher/rucola
 APP_NAME=rucola
 APP_GUI_NAME="Rust-based note manager with ability to launch external editors."
-APP_VERSION=0.8.1
+APP_VERSION=0.9.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-notes-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
