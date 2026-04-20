@@ -2410,7 +2410,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 
-# Install QOwnNotes cross-platform markdown notepad with Nextcloud/ownCloud integration from AppImage
+# Install 	 from AppImage
 APP_NAME=QOwnNotes
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform markdown notepad with Nextcloud/ownCloud integration."
@@ -20425,7 +20425,7 @@ cd $HOME
 # Install Scribus cross-platform desktop publishing tool from AppImage
 APP_NAME=Scribus
 APP_GUI_NAME="Cross-platform desktop publishing tool."
-APP_VERSION=1.6.3
+APP_VERSION=1.6.6
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
