@@ -2410,13 +2410,13 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 
-# Install 	 from AppImage
+# Install QOwnNotes cross-platform markdown notepad with Nextcloud/ownCloud integration from AppImage
 APP_NAME=QOwnNotes
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform markdown notepad with Nextcloud/ownCloud integration."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;"
-APP_VERSION=26.4.15
+APP_VERSION=26.4.16
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y fuse
