@@ -814,14 +814,16 @@ add Lock = Caps_Lock
 add Control = Control_R
 " > $HOME/.xmodmap
 
-# Install JOE (Joe's Own Editor) text editor from source
+# Install JOE (Joe's Own Editor) WordStar-like text editor from source
 APP_NAME=joe
-APP_VERSION=4.7
+APP_VERSION=4.8
 APP_EXT=tar.gz
-curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-editor/${APP_NAME,,}-${APP_VERSION}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -y build-essential
+curl -o /tmp/${APP_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-editor/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME}.${APP_EXT}
-cd /tmp/${APP_NAME}/${APP_NAME}-${APP_VERSION}
+tar -xf /tmp/${APP_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
 ./configure && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
