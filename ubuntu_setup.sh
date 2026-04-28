@@ -43342,7 +43342,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Electron-based advanced front-end for yt-dl YouTube downloader."
 APP_GUI_CATEGORIES="Networking;Internet;Video;"
 APP_GUI_KEYWORDS="Audio;Video;"
-APP_VERSION=2.4.2
+APP_VERSION=3.0.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux
 sudo apt install -y libfuse2
