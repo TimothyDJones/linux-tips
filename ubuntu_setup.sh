@@ -55806,3 +55806,40 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Elfeed2 cross-platform, C++/wxWidgets-based RSS feed reader from source
+APP_NAME=Elfeed2
+APP_GUI_NAME="Cross-platform, C++/wxWidgets-based RSS feed reader."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="RSS;News;"
+APP_VERSION=0.2.3
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy build-essential cmake libcpp-httplib-dev libpugixml-dev libsqlite3-dev libwxgtk3.2-dev libsecret-1-dev libnotify-dev
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/skeeto/${APP_NAME}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir build && cd build
+cmake .. && cmake --build . && sudo make install
+sudo cp /tmp/${FILE_NAME}/build/${APP_NAME,,} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${FILE_NAME}/src/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
