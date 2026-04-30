@@ -2418,7 +2418,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform markdown notepad with Nextcloud/ownCloud integration."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="Notepad;"
-APP_VERSION=26.4.24
+APP_VERSION=26.4.25
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y fuse
