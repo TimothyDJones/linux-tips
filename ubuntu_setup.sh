@@ -53402,7 +53402,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Golang/Dart-based application launcher."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Launcher;"
-APP_VERSION=2.0.2
+APP_VERSION=2.0.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt install -y fuse
