@@ -11271,7 +11271,7 @@ sudo apt-get install -y ${APP_NAME,,}
 # Install OpenTodoList cross-platform, Qt-based "To Do" list and task management from AppImage
 APP_NAME=OpenTodoList
 APP_GUI_NAME="Cross-platform, Qt-based \"To Do\" list and task management."
-APP_VERSION=3.47.0
+APP_VERSION=3.51.0
 APP_EXT=AppImage
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x86_64
@@ -24446,7 +24446,7 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install ugrep ultra fast grep with interactive query UI from source
+# Install c from source
 APP_NAME=ugrep
 APP_VERSION=7.8.1
 APP_EXT=tar.gz
