@@ -52427,7 +52427,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Shellican Golang-based, cross-platform shell script manager from package
 APP_NAME=Shellican
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.3.1
+APP_VERSION=0.4.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/brsyuksel/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
