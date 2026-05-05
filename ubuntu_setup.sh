@@ -51813,7 +51813,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform AI-enabled, notebook-style web browser."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Web;Browser;"
-APP_VERSION=1.1.0-beta.1
+APP_VERSION=1.4.7-beta.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/deta/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
