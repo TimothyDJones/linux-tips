@@ -52398,7 +52398,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Fresh Rust-based, cross-platform command-line text editor with support for TypeScript extensions from package
 APP_NAME=Fresh
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.1.18
+APP_VERSION=0.3.2
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-editor-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sinelaw/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
