@@ -54724,7 +54724,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Java-based GUI database client."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Database;SQL;"
-APP_VERSION=3.0.1
+APP_VERSION=3.2.1
 APP_EXT=zip
 FILE_NAME=${_APP_NAME}-${APP_VERSION}
 if ! [ -x "$(command -v java)" ]; then
