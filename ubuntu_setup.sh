@@ -56180,3 +56180,20 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install sysmon Linux command-line system information tool from package
+APP_NAME=sysmon
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=2.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo cp -a /tmp/${FILE_NAME}/functions.${APP_NAME,,} /usr/local/bin
+sudo cp -a /tmp/${FILE_NAME}/paths.${APP_NAME,,} /usr/local/bin
+sudo mkdir -p /usr/local/man/man1 && sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}.1 /usr/local/man/man1
+sudo chmod a+x /usr/local/bin/*${APP_NAME,,}*
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
