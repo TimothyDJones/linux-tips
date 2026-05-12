@@ -31687,7 +31687,7 @@ APP_NAME=Vieb
 APP_GUI_NAME="Cross-platform, Chromium-based web browser with Vim keybindings."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Vim;Browser;Chromium;Web;"
-APP_VERSION=12.8.0
+APP_VERSION=12.9.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Jelmerro/${APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -56199,6 +56199,7 @@ cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
 
 # Install Bridgex Rust-based, cross-platform GUI tool to convert documents (PDF, HTML, DOCX, etc.) to markdown from package
+# https://github.com/Dev2Forge/bridgex
 APP_NAME=Bridgex
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_VERSION=0.2.0-linux-beta-1
