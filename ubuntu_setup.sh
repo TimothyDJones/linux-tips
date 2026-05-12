@@ -56197,3 +56197,16 @@ sudo mkdir -p /usr/local/man/man1 && sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}.
 sudo chmod a+x /usr/local/bin/*${APP_NAME,,}*
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Bridgex Rust-based, cross-platform GUI tool to convert documents (PDF, HTML, DOCX, etc.) to markdown from package
+APP_NAME=Bridgex
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=0.2.0-linux-beta-1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-v${APP_VERSION}
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
