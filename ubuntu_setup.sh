@@ -53664,7 +53664,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install rovr Python-based, cross-platform command-line minimalist file manager from package
 APP_NAME=rovr
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.7.0
+APP_VERSION=0.8.2.post1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64-nuitka
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/NSPC911/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
