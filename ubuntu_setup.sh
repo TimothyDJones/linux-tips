@@ -53804,7 +53804,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Zerobrew Rust-based cross-platform alternative to Homebrew from package
 APP_NAME=Zerobrew
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.1.2
+APP_VERSION=0.2.1
 APP_EXT=N/A
 FILE_NAME=zbx-linux-x64
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/lucasgelfond/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
