@@ -53680,7 +53680,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Struct Rust-based command-line directory structure viewer from package
 APP_NAME=Struct
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.3.2
+APP_VERSION=0.5.4
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/caffienerd/${APP_NAME,,}-cli/releases/download/v${APP_VERSION}/${FILE_NAME}
