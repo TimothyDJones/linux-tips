@@ -19831,7 +19831,7 @@ rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 # Install muCommander Java-based dual-pane file manager from Debian package
 APP_NAME=muCommander
 APP_GUI_NAME="Java-based dual-pane file manager"
-APP_VERSION=1.6.0
+APP_VERSION=1.6.2
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
