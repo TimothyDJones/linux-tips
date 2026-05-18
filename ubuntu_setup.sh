@@ -56158,7 +56158,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # https://github.com/RivoLink/leaf
 APP_NAME=leaf
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=1.22.0
+APP_VERSION=1.22.2
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-markdown.mirror/${FILE_NAME}
