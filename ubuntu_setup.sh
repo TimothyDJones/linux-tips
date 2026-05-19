@@ -56620,9 +56620,9 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
 
-# Install Toasty cross-platform GTK+-based minimalist web browser from package
+# Install Toasty Linux GTK+-based minimalist web browser based on Basilisk engine from package
 APP_NAME=Toasty
-APP_GUI_NAME="Cross-platform GTK+-based minimalist web browser."
+APP_GUI_NAME="Linux GTK+-based minimalist web browser based on Basilisk engine."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Browser;"
 APP_VERSION=20260510
