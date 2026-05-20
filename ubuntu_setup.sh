@@ -56772,3 +56772,36 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install lsport cross-platform Python command-line tool for inspecting/managing TCP ports from package
+APP_NAME=lsport
+APP_GUI_NAME="Cross-platform Python command-line tool for inspecting/managing TCP ports."
+APP_GUI_CATEGORIES="Accessories;System;Networking;"
+APP_GUI_KEYWORDS="Python;TCP/IP"
+APP_VERSION=0.3.1
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y python3-venv python3-pip
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/0xBroom/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p $HOME/.local/bin/${APP_NAME,,}
+cd $HOME/.local/bin/${APP_NAME,,}
+cp -R /tmp/${FILE_NAME}/* $HOME/.local/bin/${APP_NAME,,}
+python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
+source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python3 -m pip install .
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd $HOME/.local/bin/${APP_NAME,,}
+. $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+lsport "$@"
+deactivate
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
