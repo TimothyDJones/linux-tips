@@ -54601,7 +54601,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install tmpo Golang-based, cross-platform command-line time-tracking tool from package
 APP_NAME=tmpo
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.5.2
+APP_VERSION=0.8.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/DylanDevelops/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
