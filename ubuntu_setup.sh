@@ -56677,3 +56677,51 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${A
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install LaunchDock cross-platform, Rust-based minimalist application launcher with fuzzy search from package
+APP_NAME=LaunchDock
+APP_GUI_NAME="Cross-platform, Rust-based minimalist application launcher with fuzzy search."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Launcher;"
+APP_VERSION=0.5.0
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/qa3-tech/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://raw.githubusercontent.com/qa3-tech/${APP_NAME,,}/refs/heads/main/${APP_NAME}.${ICON_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.service << EOF
+[Unit]
+Description=${APP_NAME} Daemon
+
+[Service]
+ExecStart=/usr/local/bin/${APP_NAME,,} start
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+EOF
+sudo cp /tmp/${APP_NAME,,}.service /etc/systemd/system
+sudo systemctl enable ${APP_NAME,,}
+sudo systemctl start ${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
