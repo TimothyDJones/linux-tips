@@ -31559,7 +31559,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install Kakoune console text editor with Vi keybindings from package
 APP_NAME=Kakoune
 APP_GUI_NAME="Console text editor with Vi keybindings."
-APP_VERSION=2026.04.12
+APP_VERSION=2026.05.21
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-linux
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mawww/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
