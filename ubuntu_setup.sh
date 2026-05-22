@@ -57019,3 +57019,19 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME// /.}* /tmp/${_APP_NAME}*
+
+# Install hwatch Rust-based, cross-platform command-line 'watch' replacement with history from package
+APP_NAME=hwatch
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=0.3.11
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/blacknon/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME}/bin/${APP_NAME,,} /usr/local/bin
+sudo mkdir -p /usr/local/share/man/man1 && sudo cp -a /tmp/${FILE_NAME}/man/${APP_NAME,,}.1 /usr/local/share/man/man1
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
