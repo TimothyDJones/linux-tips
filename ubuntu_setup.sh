@@ -56908,3 +56908,42 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install CloakBrowser cross-platform stealth browser automation platform built with Chromium from package
+APP_NAME=CloakBrowser
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform stealth browser automation platform built with Chromium."
+APP_GUI_CATEGORIES="Development;Programming;Internet;"
+APP_GUI_KEYWORDS="Browser;Automation;"
+APP_VERSION=146.0.7680.177.5
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-linux-x64
+sudo apt install -y fuse libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://raw.githubusercontent.com/CloakHQ/${APP_NAME}/refs/heads/main/images/logo.${ICON_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /opt/${APP_NAME,,}
+sudo chmod -R 755 /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/chrome /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${APP_NAME,,}/chrome
+Icon=//opt/${APP_NAME,,}/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
