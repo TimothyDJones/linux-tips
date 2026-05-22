@@ -9278,7 +9278,7 @@ rm -rf /tmp/${APP_NAME,,}
 # https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
 APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
-APP_VERSION=7.4.15
+APP_VERSION=7.4.16
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1.${APP_EXT}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -49970,7 +49970,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Linutil
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Distro-agnostic toolbox designed to simplify everyday Linux tasks."
-APP_VERSION=2025.05.21
+APP_VERSION=2026.05.21
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/ChrisTitusTech/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
