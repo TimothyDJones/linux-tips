@@ -56982,3 +56982,40 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Universal Video Downloader cross-platform, C#/.NET-based minimalist video download/conversion tool from package
+APP_NAME="Universal Video Downloader"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, C#/.NET-based minimalist video download/conversion tool."
+APP_GUI_CATEGORIES="Video;Multimedia;Internet;"
+APP_GUI_KEYWORDS="Video;Downloader;"
+APP_VERSION=1.6
+APP_EXT=N/A
+ICON_EXT=ico
+FILE_NAME=${APP_NAME// /.}.Linux
+sudo apt install -y yt-dlp ffmpeg
+sudo ln -s -f $(command -v yt-dlp) /usr/local/bin/yt-dlp
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/Dinesh6777/${APP_NAME// /-}-GUI/releases/download/UVDv${APP_VERSION}/${FILE_NAME}
+curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://raw.githubusercontent.com/Dinesh6777/${APP_NAME// /-}-GUI/refs/heads/main/Src/appicon.${ICON_EXT}
+sudo cp -a -R /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${_APP_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/uvd
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.${ICON_EXT} /usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin
+Icon=/usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME// /.}* /tmp/${_APP_NAME}*
