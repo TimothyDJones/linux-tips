@@ -52466,7 +52466,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install tock Golang-based, cross-platform command-line time-tracking tool from package
 APP_NAME=tock
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.6.0
+APP_VERSION=1.9.8
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kriuchkov/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
