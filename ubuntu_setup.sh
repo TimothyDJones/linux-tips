@@ -50352,7 +50352,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Slumber
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, command-line HTTP/REST client."
-APP_VERSION=3.3.0
+APP_VERSION=5.3.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/LucasPickering/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
