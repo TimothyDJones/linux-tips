@@ -49970,7 +49970,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=Linutil
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Distro-agnostic toolbox designed to simplify everyday Linux tasks."
-APP_VERSION=2025.02.13
+APP_VERSION=2025.05.21
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/ChrisTitusTech/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}
