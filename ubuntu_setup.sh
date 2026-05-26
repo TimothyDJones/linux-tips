@@ -57161,3 +57161,34 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install sqlit cross-platform Python command-line SQL database client with support MySQL, SQLite, PostgreSQL, and more from source
+APP_NAME=sqlit
+APP_GUI_NAME="Cross-platform Python command-line SQL database client with support MySQL, SQLite, PostgreSQL, and more."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Database;SQL;"
+APP_VERSION=1.5.0
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y python3-venv python3-pip
+cd /tmp
+mkdir -p $HOME/.local/bin
+cd $HOME/.local/bin
+git clone --branch v${APP_VERSION} https://github.com/Maxteabag/${APP_NAME,,}
+cd $HOME/.local/bin/${APP_NAME,,}
+python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
+source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python3 -m pip install .
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd $HOME/.local/bin/${APP_NAME,,}
+. $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python -m sqlit.cli
+deactivate
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
