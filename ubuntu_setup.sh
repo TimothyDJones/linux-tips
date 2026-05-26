@@ -15940,7 +15940,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Hallo Northern Sky (HNSky) planetarium program from Debian package
 APP_NAME=HNSky
 APP_GUI_NAME="Hallo Northern Sky (HNSky) planetarium program."
-APP_VERSION=N/A
+APP_VERSION=4.3.3
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
