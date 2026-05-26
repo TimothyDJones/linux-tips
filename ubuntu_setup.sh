@@ -19772,14 +19772,16 @@ APP_NAME=xsnow
 APP_GUI_NAME=""
 APP_VERSION=3.9.2
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1_${KERNEL_TYPE}
-sudo apt install -y build-essential libgtk-3-dev libxt-dev libgsl-dev libxpm-dev
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+APP_DEPS="libgsl28 libopencv-core410 libopencv-imgcodecs410"
+DEV_DEPS="build-essential libgtk-3-dev libxt-dev libgsl-dev libxpm-dev libopencv-dev"
+sudo apt install -y ${DEV_DEPS} ${APP_DEPS}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
-./configure && make && sudo make install
-sudo apt remove -y build-essential libgtk-3-dev libxt-dev libgsl-dev libxpm-dev && sudo apt autoremove -f -y
+./configure && make -j$(nproc) && sudo make install
+sudo apt remove -y ${DEV_DEPS} && sudo apt autoremove -f -y
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
