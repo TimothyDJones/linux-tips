@@ -4210,12 +4210,11 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, hierarchical note taking application, featuring rich text and syntax highlighting."
 APP_GUI_CATEGORIES="Office;Accessories;System;"
 APP_GUI_KEYWORDS="Notepad;"
-APP_VERSION=1.1.4
+APP_VERSION=1.7.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://www.giuspen.net/software/${FILE_NAME}.${APP_EXT}
-/CherryTree-1.1.4-x86_64.AppImage
 curl -o /tmp/${APP_NAME,,}.png -J -L https://www.giuspen.com/icons_softw/${APP_NAME,,}.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
