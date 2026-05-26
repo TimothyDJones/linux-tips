@@ -40730,7 +40730,7 @@ sudo rm -rf /tmp/${_APP_NAME}*
 # https://fastestcode.org/xfile.html
 APP_NAME=XFile
 APP_GUI_NAME="Minimalist canonical X11/Motif file manager."
-APP_VERSION=1.1.0
+APP_VERSION=1.2.0
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-src-${APP_VERSION}
 sudo apt-get install -y build-essential libx11-dev libmotif-dev libxpm-dev
