@@ -57295,3 +57295,41 @@ sudo mkdir -p /usr/local/man/man1 && sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,}.
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Gemini-Lite cross-platform, Rust/Tauri-based GUI client for Google Gemini from AppImage
+APP_NAME=Gemini-Lite
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Rust/Tauri-based GUI client for Google Gemini."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="AI;LLM;Gemini;"
+APP_VERSION=1.0.0
+APP_EXT=AppImage
+ICON_EXT=png
+FILE_NAME=${APP_NAME}_Linux
+sudo apt install -y fuse libfuse2
+curl -o /tmp/${FILE_NAME}.zip -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.zip
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://a.fsdn.com/allura/p/gemini-lite/icon?ca23ca25187cb55c94d5496fcc97a2a0e4d3df7728bbfcad1dfb543c6a3d7970
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+unzip /tmp/${FILE_NAME}.zip -d /tmp/${FILE_NAME}
+sudo cp /tmp/${FILE_NAME}/Gemini_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/Gemini_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT}
+sudo ln -s -f /usr/local/bin/Gemini_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME}*
