@@ -13593,16 +13593,19 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Converseen Qt-based bulk image converting/resizing tool from source
 APP_NAME=Converseen
 APP_GUI_NAME="Qt-based bulk image converting/resizing tool."
-APP_VERSION=0.15.2.4
+APP_VERSION=0.15.2.5
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y libmagick++-dev cmake qttools5-dev-tools qttools5-dev
+APP_DEPS="imagemagick libmagick++-7.q16-5"
+DEV_DEPS="build-essential libmagick++-dev cmake qttools5-dev-tools qttools5-dev"
+sudo apt install -y ${DEV_DEPS} ${APP_DEPS}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 mkdir -p build && cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local .. && make && sudo make install
+sudo apt remove -y ${DEV_DEPS} && sudo apt autoremove -f -y
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
