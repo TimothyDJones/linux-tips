@@ -57422,3 +57422,52 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install NMLinux Python-based GUI network management tool from package
+APP_NAME=NMLinux
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Python-based GUI network management tool."
+APP_GUI_CATEGORIES="System;Accessories;"
+APP_GUI_KEYWORDS="Network;Manager;"
+APP_VERSION=1.2.9
+APP_EXT=tar.gz
+ICON_EXT=svg
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt install -yy iproute2 network-manager dnsutils nmap whois snmp mtr-tiny curl
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/thongor77/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p $HOME/.local/bin/${APP_NAME,,}
+cp -a -R /tmp/${FILE_NAME}/* $HOME/.local/bin/${APP_NAME,,}
+cd $HOME/.local/bin/${APP_NAME,,}
+python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
+source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python3 -m pip install pyte
+python3 -m pip install .
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd $HOME/.local/bin/${APP_NAME,,}
+. $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python -m ${APP_NAME,,}.main
+deactivate
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=$HOME/.local/bin/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=$HOME/.local/bin/${APP_NAME,,}/${APP_NAME,,}/assets/icons/network.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
