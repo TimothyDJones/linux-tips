@@ -19084,14 +19084,41 @@ sudo cp basic.cfg /etc/sslh.cfg
 sudo cp scripts/etc.init.d.sslh /etc/init.d/sslh
 sudo update-rc.d sslh defaults
 
-# Install Rats on the Boat P2P BitTorrent search engine desktop client with integrated BitTorrent client from Debian package
+# Install Rats on the Boat P2P BitTorrent search engine desktop client with integrated BitTorrent client from AppImage
 APP_NAME=Rats-Search
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="P2P BitTorrent search engine desktop client with integrated BitTorrent client."
-APP_VERSION=1.11.0
-APP_EXT=deb
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${KERNEL_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/DEgITx/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+APP_GUI_CATEGORIES="Networking;Internet;"
+APP_GUI_KEYWORDS="P2P;BitTorrent;"
+APP_VERSION=2.0.27
+APP_EXT=AppImage
+ICON_EXT=png
+FILE_NAME=${APP_NAME//-/}-Linux-x64-v${APP_VERSION}
+sudo apt install -y fuse libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://raw.githubusercontent.com/librats/${APP_NAME,,}/refs/heads/master/resources/icons/512x512.${ICON_EXT}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
 
 # Install pstoedit PostScript/PDF converter to other vector formats from source
 APP_NAME=pstoedit
