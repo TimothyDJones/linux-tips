@@ -43501,19 +43501,19 @@ sudo chmod +x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install Chatbox cross-platform, Tauri-based desktop application for GPT-3.5/4 from AppImage
-# https://github.com/Bin-Huang/chatbox
+# Install Chatbox cross-platform, Electron-based desktop GUI aggregator for multiple LLMs from AppImage
+# https://github.com/chatboxai/chatbox
 APP_NAME=Chatbox
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
-APP_GUI_NAME="Cross-platform, Tauri-based desktop application for GPT-3.5/4."
+APP_GUI_NAME="Cross-platform, Electron-based desktop GUI aggregator for multiple LLMs."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="ChatGPT;LLM;"
-APP_VERSION=1.2.0
+APP_VERSION=1.20.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y libfuse2
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/Bin-Huang/${APP_NAME,,}/main/src-tauri/icons/128x128.png
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/chatboxai/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/chatboxai/${APP_NAME,,}/refs/heads/main/assets/icons/128x128.png
 sudo cp -a /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
