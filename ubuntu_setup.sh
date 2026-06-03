@@ -52956,7 +52956,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform React/Tauri-based GUI SQL database management tool."
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="SQL;Database;"
-APP_VERSION=0.12.0
+APP_VERSION=0.13.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt install -y fuse
