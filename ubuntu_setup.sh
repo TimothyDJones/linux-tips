@@ -1286,7 +1286,7 @@ fi
 # Install xosview X11 performance meter from source
 APP_NAME=xosview
 APP_GUI_NAME="X11 Performance Meter"
-APP_VERSION=2.3.4
+APP_VERSION=2.3.5
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}2-${APP_VERSION}
 sudo apt-get install -y libxpm-dev libxft-dev libx11-dev libxext-dev
