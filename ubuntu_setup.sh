@@ -6025,13 +6025,14 @@ APP_NAME=PySolFC
 APP_GUI_NAME="Python-based Solitaire card game"
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Solitaire;Cards;Games;"
-APP_VERSION=3.4.1
+APP_VERSION=3.6.0
+CARDSET_VERSION=3.1
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y python3-pip
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 mkdir -p $HOME/.local/bin/${APP_NAME,,}
 cd $HOME/.local/bin/${APP_NAME,,}
@@ -6039,13 +6040,15 @@ cp -R /tmp/${FILE_NAME}/* $HOME/.local/bin/${APP_NAME,,}
 python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
 source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
 python -m pip3 install random2 sgmllib3k
-python3 $HOME/.local/bin/${APP_NAME,,}/setup.py install
+cd $HOME/.local/bin/${APP_NAME,,}
+python3 -m pip install .
 # Install card sets
-curl -o /tmp/${APP_NAME}-Cardsets-2.1PRE.tar.bz2 -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-Cardsets-2.1PRE.tar.bz2
+curl -o /tmp/${APP_NAME}-Cardsets-${CARDSET_VERSION}.tar.bz2 -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-Cardsets-${CARDSET_VERSION}.tar.bz2
 cd /tmp
-dtrx -n /tmp/${APP_NAME}-Cardsets-2.1PRE.tar.bz2
-cd /tmp/${APP_NAME}-Cardsets-2.1PRE
-sudo cp -R /tmp/${APP_NAME}-Cardsets-2.1PRE/* $HOME/.local/bin/${APP_NAME,,}/data
+tar -xf /tmp/${APP_NAME}-Cardsets-${CARDSET_VERSION}.tar.bz2
+cd /tmp/${APP_NAME}-Cardsets-${CARDSET_VERSION}
+sudo cp -R /tmp/${APP_NAME}-Cardsets-${CARDSET_VERSION}/* $HOME/.local/bin/${APP_NAME,,}/data
+sudo chmod -R 755 $HOME/.local/bin/${APP_NAME,,}/data
 cat > /tmp/${APP_NAME,,} << EOF
 #! /bin/sh
 cd \$HOME/.local/bin/${APP_NAME,,}
