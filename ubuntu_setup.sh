@@ -8201,9 +8201,9 @@ APP_NAME=PICSimLab
 APP_GUI_NAME="Cross-platform real-time PIC and Arduino microcontroller simulator laboratory."
 APP_GUI_CATEGORIES="Electronics;Engineering;"
 APP_GUI_KEYWORDS="PIC;Arduino;Microcontroller;Simulation;"
-APP_VERSION=0.9.1_231210
+APP_VERSION=0.9.2_241005
 APP_EXT=AppImage
-FILE_NAME=${APP_NAME}-${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+FILE_NAME=${APP_NAME}-${APP_VERSION}_Ubuntu_20.04.6_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y libfuse2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/picsim/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/picsim/icon?1690651145
