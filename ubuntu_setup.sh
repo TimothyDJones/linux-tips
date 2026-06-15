@@ -54202,17 +54202,20 @@ APP_NAME=RTorrent
 APP_VERSION=0.16.14
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt install -yy build-essential libssl-dev libcurl4-openssl-dev
+APP_DEPS=""
+DEV_DEPS="build-essential libssl-dev libcurl4-openssl-dev libncurses-dev"
+sudo apt install -yy ${DEV_DEPS} ${APP_DEPS}
 curl -o /tmp/libtorrent-${APP_VERSION}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-bittorrent-cli.mirror/libtorrent-${APP_VERSION}.${APP_EXT}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-bittorrent-cli.mirror/${FILE_NAME}.${APP_EXT}
 cd /tmp
 tar -xf /tmp/libtorrent-${APP_VERSION}.${APP_EXT}
 cd /tmp/libtorrent-${APP_VERSION}
-./configure && make -j$(nproc) && sudo make install
+./configure && make -j$(nproc) && sudo make install && sudo ldconfig
 cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
-./configure && make -j$(nproc) && sudo make install
+./configure && make -j$(nproc) && sudo make install && sudo ldconfig
+sudo apt remove -yy ${DEV_DEPS} && sudo autoremove -f -y
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
