@@ -16344,24 +16344,6 @@ sudo mv /tmp/${FILE_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install ProcDump Linux version of Sysinternals ProcDump tool Debian package
-APP_NAME=ProcDump
-APP_GUI_NAME="Linux version of Sysinternals ProcDump tool."
-APP_VERSION=1.0.1
-APP_EXT=deb
-source /etc/lsb-release
-# If Ubuntu version is above 16.04 (Xenial), then we use 16.04.
-if [[ "${DISTRIB_CODENAME:0:2}" =~ ^(xe|ya|ze|ar|bi|co)$ ]]; then
-	DISTRIB_CODENAME=xenial
-else
-    DISTRIB_CODENAME=trusty
-fi
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://packages.microsoft.com/repos/microsoft-ubuntu-${DISTRIB_CODENAME}-prod/pool/main/p/procdump/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/*${APP_NAME}*
-
 # Install SQL Workbench Java-based GUI and console database client from package
 APP_NAME=SQLWorkbench
 APP_GUI_NAME="Java-based GUI and console database client."
@@ -24708,10 +24690,9 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install ProcDump command-line process management and debugging tool from Debian package
 APP_NAME=ProcDump
 APP_GUI_NAME="Command-line process management and debugging tool."
-APP_VERSION=1.1.1
-BUILD_NBR=220
+APP_VERSION=3.5.2
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}-${BUILD_NBR}_${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/microsoft/"ProcDump-for-Linux"/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
