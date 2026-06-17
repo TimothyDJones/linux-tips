@@ -17900,18 +17900,52 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 
 # Install YouTube-DL-PyTK simple Python/Tkinter GUI for downloading videos from YouTube from package
 APP_NAME=YouTube-DL-PyTK
+ALT_APP_NAME=yt-dl-pytk
 APP_GUI_NAME="Simple Python/Tkinter GUI for downloading videos from YouTube."
-APP_VERSION=26.3.25
+APP_GUI_CATEGORIES="Internet;Video;Multimedia;"
+APP_GUI_KEYWORDS="Download;Video;"
+APP_VERSION=26.6.16
 APP_EXT=tar.xz
-FILE_NAME=${APP_NAME}_${APP_VERSION}
+FILE_NAME=${ALT_APP_NAME//-/}-${APP_VERSION}-source
 sudo apt-get install -y python3-tk menu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/youtube-dl-gtk/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}/${APP_NAME}
-sudo /tmp/${FILE_NAME}/${APP_NAME}/install.sh
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p $HOME/.local/bin/${APP_NAME,,}
+cp -a -R /tmp/${APP_NAME}/* $HOME/.local/bin/${APP_NAME,,}
+cd $HOME/.local/bin/${APP_NAME,,}
+python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
+source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python3 -m pip install --upgrade pip easygui colorama tk deno yt-dlp[default]
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd $HOME/.local/bin/${APP_NAME,,}
+. $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python3 ${ALT_APP_NAME}.py --launch | tee -a "$HOME/.config/${ALT_APP_NAME}/log.txt"
+deactivate
 cd $HOME
-sudo -rm -rf /tmp/${APP_NAME}*
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=$HOME/.local/bin/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=$HOME/.local/bin/${APP_NAME,,}/${ALT_APP_NAME}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+
 
 # Install Muse Qt-based digital audio workstation (DAW) and MIDI/sudio sequencer with recording and editing capabilities from source
 APP_NAME=Muse
