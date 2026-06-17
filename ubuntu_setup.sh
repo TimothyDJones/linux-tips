@@ -9282,7 +9282,7 @@ APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
 APP_VERSION=7.4.17
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1.${APP_EXT}_amd64
+FILE_NAME=${APP_NAME,,}-lts_${APP_VERSION}-1.${APP_EXT}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
