@@ -7019,7 +7019,7 @@ APP_NAME=Basilisk
 APP_GUI_NAME="Cross-platform XUL-based modern web browser."
 APP_GUI_CATEGORIES="Internet;Networking;"
 APP_GUI_KEYWORDS="Browser;Web;XUL;"
-APP_VERSION=20260415151706
+APP_VERSION=20260613193747
 APP_EXT=tar.xz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-gtk3
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://dl.basilisk-browser.org/${FILE_NAME}.${APP_EXT}
