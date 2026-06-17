@@ -9280,7 +9280,7 @@ rm -rf /tmp/${APP_NAME,,}
 # https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux?view=powershell-6
 APP_NAME=PowerShell
 APP_GUI_NAME="Cross-platform shell and scripting environment."
-APP_VERSION=7.4.16
+APP_VERSION=7.4.17
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1.${APP_EXT}_amd64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
@@ -57821,6 +57821,41 @@ FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD
 sudo apt install -y fuse libfuse2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/genyleap/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://raw.githubusercontent.com/genyleap/${APP_NAME}/refs/heads/main/${APP_NAME}.iconset/icon_128x128.${ICON_EXT}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
+
+# Install 9jaCoder Python-based cross-platform multi-lingual Python IDE from AppImage
+APP_NAME=9jaCoder
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Python-based cross-platform multi-lingual Python IDE."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="Python;Editor;IDE;"
+APP_VERSION=1.0
+APP_EXT=AppImage
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+sudo apt install -y fuse libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/a${APP_NAME,,}-code-editor-9ce/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://www.9jacoder.org/logo.${ICON_EXT}
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
