@@ -53450,7 +53450,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Golang/Dart-based application launcher."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Launcher;"
-APP_VERSION=2.1.1
+APP_VERSION=2.2.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt install -y fuse
@@ -57899,5 +57899,30 @@ APP_EXT=deb
 FILE_NAME=${_APP_NAME}.${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-' )/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Quarkdown Java-based, cross-platform, command-line Markdown processor and static site generator from package
+APP_NAME=Quarkdown
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=2.3.0
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+unzip -C /opt/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+sudo mkdir -m 0755 -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME}/${APP_NAME,,}/* /opt/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd /opt/${APP_NAME,,}
+PATH=/opt/${APP_NAME,,}:\$PATH; export PATH
+/opt/${APP_NAME,,}/bin/${APP_NAME,,}
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/bin/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
