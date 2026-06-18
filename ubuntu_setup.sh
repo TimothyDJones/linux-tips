@@ -57335,7 +57335,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install RMUX Rust-based, cross-platform terminal multiplexer with AI support from package
 APP_NAME=RMUX
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.4.3
+APP_VERSION=0.6.1
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
