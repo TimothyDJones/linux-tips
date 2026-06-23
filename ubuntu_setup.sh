@@ -11076,16 +11076,19 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Battle for Wesnoth high-fantasy themed adventure game from source
 APP_NAME=Wesnoth
 APP_GUI_NAME="High-fantasy themed adventure game."
-APP_VERSION=1.19.24
+APP_VERSION=1.19.25
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
-sudo apt-get install -y cmake libboost-all-dev libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev
+APP_DEPS="libsdl3-0 libgles1 m4 mpi-default-bin openmpi-bin openmpi-common libamd-comgr2 libamdhip64-5 libharfbuzz-cairo0 libhwloc15 libibumad3 libibmad5 libjs-jquery-ui libjsoncpp26 libze1 libtool libucx0 libwebpdecoder3 librhash1 librdmacm1t64 libpsm2-2 libpng-tools libpmix2t64 libpcre2-32-0 libout123-0t64 libmunge2 girepository-tools ibverbs-providers libsdl3-image0 libsdl3-ttf0"
+DEV_DEPS="cmake libboost-all-dev libsdl3-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev libfontconfig1-dev libcairo2-dev libpango1.0-dev libpangocairo-1.0-0 libvorbis-dev libvorbisfile3 libbz2-dev libssl-dev libreadline-dev libcurl4-openssl-dev libsdl3-image-dev libsdl3-ttf-dev"
+sudo apt install -yy -q ${DEV_DEPS} ${APP_DEPS}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
 mkdir build && cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/bin -DENABLE_NLS=0 && make && sudo make install
+sudo apt remove -y ${DEV_DEPS} && sudo apt autoremove -f -y
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
