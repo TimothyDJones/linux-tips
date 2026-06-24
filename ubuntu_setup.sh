@@ -49928,7 +49928,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform electronics schematic capture and PCB layout tool."
 APP_GUI_CATEGORIES="Engineering;Electronics;"
 APP_GUI_KEYWORDS="Electronics;"
-APP_VERSION=10.0.3
+APP_VERSION=10.0.4
 APP_EXT=AppImage
 sudo apt install -y libfuse2 libglu1-mesa
 FILE_NAME=${APP_NAME}-${APP_VERSION}-1-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
