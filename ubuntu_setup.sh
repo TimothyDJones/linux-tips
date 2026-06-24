@@ -58219,3 +58219,38 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
+
+# Install SQL Joiner cross-platform, Electron-based SQL query visual editor and debugger from AppImage
+APP_NAME="SQL Joiner"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Electron-based SQL query visual editor and debugger."
+APP_GUI_CATEGORIES="Development;Programming;"
+APP_GUI_KEYWORDS="SQL;Database;"
+APP_VERSION=1.85.4
+APP_EXT=AppImage
+ICON_EXT=png
+FILE_NAME=${APP_NAME// /.}-${APP_VERSION}
+sudo apt install -y fuse libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/webofmarius/${APP_NAME// /}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://raw.githubusercontent.com/webofmarius/${APP_NAME// /}/refs/heads/main/app/assets/img/logo.${ICON_EXT}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.${ICON_EXT} /usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME// /.}*
