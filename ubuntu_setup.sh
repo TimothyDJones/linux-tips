@@ -36652,7 +36652,7 @@ curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/liq
 cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 mkdir -p ~/bin/${_APP_NAME}
-cp -R -a /tmp/${_APP_NAME} ~/bin/${_APP_NAME}
+cp -R -a /tmp/${_APP_NAME}/* ~/bin/${_APP_NAME}
 echo 'source $HOME/bin/'${_APP_NAME}'/'${_APP_NAME} >> $HOME/.bashrc
 source $HOME/.bashrc	# Reload Bash configuration
 cd $HOME
