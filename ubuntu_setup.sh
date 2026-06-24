@@ -58254,3 +58254,17 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME// /.}*
+
+# Install Float Rust-based, Linux floating window terminal multiplexer from package
+APP_NAME=Float
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=1.2.1
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-mux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/henktorius/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+cd /tmp
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}-mux
+cd $HOME
+rm -rf /tmp/*${APP_NAME}*
