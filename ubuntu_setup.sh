@@ -13312,21 +13312,19 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
 
-# Install SQLiteStudio Qt-based SQLite database GUI client from package
-APP_NAME=SQLiteStudio
+# Install Letos (formerly SQLiteStudio) Qt-based SQLite database GUI client from package
+APP_NAME=Letos
 APP_GUI_NAME="Qt-based SQLite database GUI client."
-APP_VERSION=3.4.21
+APP_VERSION=4.0.0
 APP_EXT=tar.xz
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/pawelsalawa/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${APP_NAME,,}.png -J -L https://github.com/pawelsalawa/${APP_NAME,,}/raw/master/SQLiteStudio3/docs/${APP_NAME,,}_logo.png
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
-sudo cp -R /tmp/${FILE_NAME}/${APP_NAME}/* /opt/${APP_NAME,,}
-sudo cp /tmp/${APP_NAME,,}.png /opt/${APP_NAME,,}
-sudo ln -f -s /opt/sqlitestudio/sqlitestudio /usr/local/bin/sqlitestudio
-sudo ln -f -s /opt/sqlitestudio/sqlitestudiocli /usr/local/bin/sqlitestudiocli
+sudo cp -R /tmp/${APP_NAME}/* /opt/${APP_NAME,,}
+sudo chmod 0755 /opt/${APP_NAME,,}
+sudo ln -f -s /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
@@ -13334,7 +13332,7 @@ Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
 Path=/opt/${APP_NAME,,}
 Exec=/opt/${APP_NAME,,}/${APP_NAME,,}
-Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.png
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}_48.png
 Type=Application
 StartupNotify=true
 Terminal=false
