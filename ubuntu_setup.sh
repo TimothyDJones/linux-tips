@@ -52558,7 +52558,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install NLarn updated version of classic rogue-like game Larn from package
 APP_NAME=NLarn
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.7.8
+APP_VERSION=0.7.9
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}_Linux.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
