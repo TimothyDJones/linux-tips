@@ -58410,3 +58410,38 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}*
+
+# Install Glean cross-platform, FastAPI/TailwindCSS-based self-hosted RSS reader and personal knowledge management tool from AppImage
+APP_NAME=Glean
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, FastAPI/TailwindCSS-based self-hosted RSS reader and personal knowledge management tool."
+APP_GUI_CATEGORIES="Internet;Accessories;"
+APP_GUI_KEYWORDS="RSS;News;Notepad;"
+APP_VERSION=0.2.7
+APP_EXT=AppImage
+ICON_EXT=png
+FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+sudo apt install -y fuse libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/LeslieLeung/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://raw.githubusercontent.com/LeslieLeung/${APP_NAME,,}/refs/heads/main/asset/${APP_NAME,,}_light.${ICON_EXT}
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
