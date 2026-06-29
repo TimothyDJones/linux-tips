@@ -58459,3 +58459,22 @@ sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install hasher cross-platform, C++-based multi-algorithm command line hash calculator from source
+APP_NAME=hasher
+APP_VERSION=2.0.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+APP_DEPS="openssl"
+DEV_DEPS="build-essential libssl-dev"
+sudo apt install -y ${DEV_DEPS} ${APP_DEPS}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/GavinGe021/hasher/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+make -j$(nproc) linux
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo apt remove -y ${DEV_DEPS} && sudo apt autoremove -f -y
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
