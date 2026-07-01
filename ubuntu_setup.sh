@@ -45958,7 +45958,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=vash
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Visual supershell that runs on top of Bash."
-APP_VERSION=2.0.23b
+APP_VERSION=2.1.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
