@@ -58558,3 +58558,20 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install qalc cross-platform, C++-based command-line version of Qalculate calculator from source
+APP_NAME=qalc
+APP_VERSION=5.11.0
+APP_EXT=tar.gz
+FILE_NAME=libqalculate-${APP_VERSION}
+APP_DEPS="openssl libxml2 libmpfr6 libicu76 libssl3t64"
+DEV_DEPS="build-essential libssl-dev libxml2-dev libicu-dev libcurl4-openssl-dev pkg-config libmpfr-dev libgmp-dev"
+sudo apt install -y ${DEV_DEPS} ${APP_DEPS}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/Qalculate/libqalculate/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+./configure && make -j$(nproc) && sudo make install
+sudo apt remove -y ${DEV_DEPS} && sudo apt autoremove -f -y
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
