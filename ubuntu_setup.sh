@@ -58690,3 +58690,19 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}*
+
+# Install Aria FE Crystal/Tk-based, cross-platform minimalist encrypt/decrypt GUI tool for various encryption algorithms from package
+APP_NAME=Aria
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
+APP_VERSION=3.03
+APP_EXT=zip
+FILE_NAME=${APP_NAME,,}_v${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-fe/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+unzip /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo cp -a /tmp/${FILE_NAME}/ekit /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,} /usr/local/bin/ekit
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
