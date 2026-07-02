@@ -58706,3 +58706,23 @@ sudo cp -a /tmp/${FILE_NAME}/ekit /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,} /usr/local/bin/ekit
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install Dissent cross-platform, Golang/GTK4-based Discord messenging client from package
+# https://github.com/diamondburned/dissent
+APP_NAME=Dissent
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Golang/GTK4-based Discord messenging client."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Discord;Messenger;"
+APP_VERSION=0.0.37
+APP_EXT=tar.zst
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+sudo apt install -y zstd libgtksourceview-5-0 libspelling-1-2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+zstd -d /tmp/${FILE_NAME}.${APP_EXT} && tar -xvf /tmp/${FILE_NAME}.tar -d /tmp/${FILE_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/* /usr/local
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
