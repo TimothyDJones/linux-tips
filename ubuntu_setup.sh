@@ -32426,7 +32426,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Qt-based RSS/ATOM/JSON feed reader."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="RSS;Feed;Reader;"
-APP_VERSION=5.2.0
+APP_VERSION=5.2.2
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-qt5-linux64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/martinrotter/${_APP_NAME}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -41113,7 +41113,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 APP_NAME=Agena
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, interpreted, general-purpose programming language."
-APP_VERSION=7.7.0
+APP_VERSION=7.7.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
