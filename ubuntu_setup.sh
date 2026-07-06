@@ -5028,7 +5028,7 @@ xdg-open http://localhost/${APP_NAME,,}/index.php &
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install View Your Mind (VYM) Qt mind-mapping tool from source
+# Install View Your Mind (VYM) Qt mind-mapping tool from Debian package (converted from RPM package)
 APP_NAME=vym
 APP_VERSION=2.9.26
 APP_EXT=tar.gz
@@ -47062,7 +47062,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '-' '_' )
 APP_GUI_NAME="Cross-platform, custom Chromium-based web browser with advanced support for a variety of online tools."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Browser;Chromium;"
-APP_VERSION=149.2.103-2
+APP_VERSION=150.2.117-2
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
