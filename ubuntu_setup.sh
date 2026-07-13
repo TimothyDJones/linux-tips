@@ -58561,7 +58561,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 
 # Install qalc cross-platform, C++-based command-line version of Qalculate calculator from source
 APP_NAME=qalc
-APP_VERSION=5.11.0
+APP_VERSION=5.12.0
 APP_EXT=tar.gz
 FILE_NAME=libqalculate-${APP_VERSION}
 APP_DEPS="openssl libxml2 libmpfr6 libicu76 libssl3t64"
