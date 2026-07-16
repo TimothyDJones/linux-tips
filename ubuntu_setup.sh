@@ -29371,7 +29371,7 @@ sudo rm -rf /tmp/*${APP_NAME,,}* /tmp/${APP_NAME}
 # Install diff-so-fancy Perl and shell script diff enhancer from package
 APP_NAME=diff-so-fancy
 APP_GUI_NAME="Perl and shell script diff enhancer."
-APP_VERSION=1.4.10
+APP_VERSION=1.4.12
 APP_EXT=tar.gz
 FILE_NAME=v${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
