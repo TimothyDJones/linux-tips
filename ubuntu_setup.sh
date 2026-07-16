@@ -58796,3 +58796,39 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install PDFCraft cross-platform, Typescript/Javascript-based web GUI tool for PDF editing (merge, split, compress, convert, and edit) from AppImage
+# https://github.com/PDFCraftTool/pdfcraft
+APP_NAME=PDFCraft
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform,  Typescript/Javascript-based web GUI tool for PDF editing (merge, split, compress, convert, and edit)."
+APP_GUI_CATEGORIES="Office;"
+APP_GUI_KEYWORDS="PDF;Editor;"
+APP_VERSION=0.1.0
+APP_EXT=AppImage
+ICON_EXT=png
+FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+sudo apt install -y fuse libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://a.fsdn.com/allura/mirror/${APP_NAME,,}/icon?b86c9e13d60dd4b9927233dbf64c8ef6a06dca7f69c5339c6f371d67eb6194bb
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
