@@ -58904,3 +58904,39 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Vikunja cross-platform, Golang/Vue.JS-based desktop "to do" list and personal organization management tool from AppImage
+# https://github.com/go-vikunja/vikunja
+APP_NAME=Vikunja
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Typescript/Tauri-based WYSIWYG GUI AI-enabled Markdown editor."
+APP_GUI_CATEGORIES="Office;Accessories;"
+APP_GUI_KEYWORDS="Markdown;Editor;"
+APP_VERSION=2.4.0
+APP_EXT=AppImage
+ICON_EXT=png
+FILE_NAME=${APP_NAME}.Desktop-v${APP_VERSION}
+sudo apt install -y fuse libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://a.fsdn.com/allura/mirror/${APP_NAME,,}/icon?df2c34049dedbc6abe5eb85942260fdcf5a4af7d6b096bb6066f019fb5a0b315
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
