@@ -5336,7 +5336,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform JavaScript/Electron terminal."
 APP_GUI_CATEGORIES="System;Accessories;"
 APP_GUI_KEYWORDS="Terminal;Shell;"
-APP_VERSION=1.0.234
+APP_VERSION=1.0.235
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-x64
 sudo apt install -y libfuse2
@@ -46954,7 +46954,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # https://zed.dev/docs/linux#downloading-manually
 APP_NAME=Zed
 APP_GUI_NAME="Rust-based, cross-platform, Atom-style GUI text editor."
-APP_VERSION=1.11.3
+APP_VERSION=1.12.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zed-industries/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
@@ -57647,7 +57647,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install PasKnight Pascal-based, UCI-compatible chess engine from package
 APP_NAME=PasKnight
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.9992
+APP_VERSION=1.00rc21
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}_v${APP_VERSION//./}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
