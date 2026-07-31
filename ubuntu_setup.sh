@@ -53032,18 +53032,19 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
 
-# Install AltSendme cross-platform React/Tauri-based GUI P2P encrypted file transfer tool from AppImage
-APP_NAME=AltSendme
+# Install DashBeam (formerly AltSendme) cross-platform React/Tauri-based GUI P2P encrypted file transfer tool from AppImage
+# https://github.com/tonyantony300/dashbeam
+APP_NAME=DashBeam
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform React/Tauri-based GUI P2P encrypted file transfer tool."
 APP_GUI_CATEGORIES="Internet;Accessories;Network;System;"
 APP_GUI_KEYWORDS="P2P;File;Transfer;"
-APP_VERSION=0.4.2
+APP_VERSION=0.6.2
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt install -y fuse
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/tonyantony300/alt-sendme/refs/heads/main/src-tauri/icons/128x128.png
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/altsendme.mirror/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/tonyantony300/dashbeam/refs/heads/main/src-tauri/icons/128x128.png
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
