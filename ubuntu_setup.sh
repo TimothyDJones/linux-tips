@@ -17195,10 +17195,10 @@ rm -rf /tmp/*${APP_NAME// /}*
 # Install Nuclear cross-platform Electron-based desktop music player focused on streaming from free sources from Debian package
 APP_NAME=Nuclear
 APP_GUI_NAME="Cross-platform Electron-based desktop music player focused on streaming from free sources."
-APP_VERSION=fd06a3
+APP_VERSION=1.45.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nukeop/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/nukeop/${APP_NAME,,}/releases/download/player@${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 
 # Install SQLeo Java-based visual SQL query builder tool from package
