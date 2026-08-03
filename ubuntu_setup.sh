@@ -7049,12 +7049,13 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Pipette cross-platform screen color grabber from package
 APP_NAME=Pipette
 APP_GUI_NAME="Cross-platform screen color grabber."
-APP_VERSION=N/A
+APP_VERSION=24.8.12-1
 APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.zip -J -L https://www.sttmedia.com/downloads/PipetteDeb.zip
+FILE_NAME=${APP_NAME}Deb64
+curl -o /tmp/${FILE_NAME}.zip -J -L https://www.sttmedia.com/downloads/${FILE_NAME}.zip
 cd /tmp
-dtrx /tmp/${APP_NAME,,}.zip
-sudo gdebi -n /tmp/${APP_NAME,,}/${APP_NAME,,}*.${APP_EXT}
+unzip /tmp/${FILE_NAME}.zip
+sudo gdebi -n /tmp/${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU).${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
