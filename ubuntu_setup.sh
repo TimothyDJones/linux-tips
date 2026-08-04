@@ -57909,7 +57909,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Quarkdown Java-based, cross-platform, command-line Markdown processor and static site generator from package
 APP_NAME=Quarkdown
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=2.3.1
+APP_VERSION=2.5.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-linux-x64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
