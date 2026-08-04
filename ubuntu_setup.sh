@@ -8487,13 +8487,14 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Scintilla/SciTE GTK text editor from source
 APP_NAME=SciTE
 APP_GUI_NAME="GTK text editor."
-APP_VERSION=5.6.4
+APP_VERSION=5.6.5
 APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}${APP_VERSION//./}
 sudo apt-get install -y pkg-config libglib2.0-dev libgtk2.0-dev
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/scintilla/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+mkdir -p /tmp/${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
 cd /tmp/${FILE_NAME}/scintilla/gtk
 make
 cd /tmp/${FILE_NAME}/lexilla/src
