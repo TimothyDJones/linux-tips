@@ -44733,7 +44733,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform C#-based notepad/text editor."
 APP_GUI_CATEGORIES="Accessories;Development;Programming"
 APP_GUI_KEYWORDS="Notepad;Editor;"
-APP_VERSION=20
+APP_VERSION=22.1
 APP_EXT=tgz
 curl -o /tmp/packages-microsoft-prod.deb -J -L https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb && sudo gdebi -n /tmp/packages-microsoft-prod.deb
 sudo apt-get update && sudo apt-get install -y dotnet-runtime-8.0
