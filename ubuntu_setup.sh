@@ -59044,3 +59044,20 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install Lightnovel Crawler cross-platform, Python-based tool to download web novels from various sources and package into ebook from package
+APP_NAME="Lightnovel Crawler"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Python-based tool to download web novels from various sources and package into ebook."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Books;Scraping;"
+APP_VERSION=4.14.0
+APP_EXT=N/A
+ICON_EXT=png
+FILE_NAME=lncrawl-linux
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${_APP_NAME}
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/${FILE_NAME}*
