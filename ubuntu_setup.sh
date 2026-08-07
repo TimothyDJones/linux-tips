@@ -12638,32 +12638,40 @@ rm -rf /tmp/*${APP_NAME}*
 APP_NAME=Anki
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, spaced repetition flashcard tool."
+APP_GUI_CATEGORIES="Education;Accessories;"
+APP_GUI_KEYWORDS="Flashcards;"
 APP_VERSION=26.08.1
 APP_EXT=tar.zst
+ICON_EXT=png
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
-sudo apt install -y zstd
+sudo apt install -y zstd libdbus-1-3 libfontconfig1 libfreetype6 libgl1 libnss3 \
+  libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 \
+  libxcb-render-util0 libxcb-shape0 libxcb-xinerama0 libxcb-xkb1 \
+  libxcomposite1 libxcursor1 libxi6 libxkbcommon0 libxkbcommon-x11-0 \
+  libxrandr2 libxrender1 libxtst6 libglib2.0-0t64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}.${APP_EXT}
 cd /tmp
 tar --use-compress-program=unzstd -xf /tmp/${FILE_NAME}.${APP_EXT}
-sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
-sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${APP_NAME,,}-linux/* /opt/${APP_NAME,,}
 sudo ln -s -f /usr/local/bin/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
-
-
-APP_NAME=Anki
-APP_GUI_NAME="Flash card utility."
-APP_VERSION=2.0.52
-APP_EXT=tar.bz2
-FILE_NAME=${APP_NAME,,}-${APP_VERSION}-${KERNEL_TYPE}
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://apps.ankiweb.net/downloads/current/${FILE_NAME}.${APP_EXT}
-cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-cd /tmp/${FILE_NAME}/${APP_NAME,,}-${APP_VERSION}
-sudo make install
-cd $HOME
-rm -rf /tmp/*${APP_NAME}*
 
 # Install BWPing network ping utility to measure bandwidth between hosts based on ICMP echo request/echo reply mechanism from source
 APP_NAME=BWPing
