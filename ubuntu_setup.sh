@@ -59202,13 +59202,13 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install Edit.NET cross-platform, C#/.NET-based console text editor from package
+# Install Edit.NET cross-platform, C#/.NET-based console text editor from AppImage
 APP_NAME=Edit.NET
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, C#/.NET-based console text editor."
 APP_GUI_CATEGORIES="Programming;Accessories;System;"
 APP_GUI_KEYWORDS="Editor;"
-APP_VERSION=11.3.12.199
+APP_VERSION=12.0.3.228
 APP_EXT=AppImage
 ICON_EXT=ico
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-x64
