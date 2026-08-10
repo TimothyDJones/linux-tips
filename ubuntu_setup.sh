@@ -7634,7 +7634,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install pcalc command-line programmer's calculator with support for HEX/DEC/OCT/BIN math from source
 APP_NAME=pcalc
 APP_GUI_NAME="Command-line programmer's calculator with support for HEX/DEC/OCT/BIN math."
-APP_VERSION=4
+APP_VERSION=6
 APP_EXT=tar.gz
 sudo apt-get install -y flex bison
 curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://github.com/vapier/${APP_NAME,,}/archive/v${APP_VERSION}.${APP_EXT}
