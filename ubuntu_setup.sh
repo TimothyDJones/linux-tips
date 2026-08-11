@@ -48694,7 +48694,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform LAN file transfer tool."
 APP_GUI_CATEGORIES="Accessories;Networking;System;"
 APP_GUI_KEYWORDS="File;Transfer;LAN;"
-APP_VERSION=1.17.0
+APP_VERSION=1.18.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}-linux-x86-64
