@@ -59365,3 +59365,21 @@ sudo cp -a /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install cliamp cross-platform, Golang-based command-line music/audio player inspired by Winamp from package
+# https://github.com/bjarneo/cliamp
+APP_NAME=cliamp
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Golang-based command-line music/audio player inspired by Winamp."
+APP_GUI_CATEGORIES="Audio;Multimedia;"
+APP_GUI_KEYWORDS="Audio;Player;Streaming;"
+APP_VERSION=1.63.1
+APP_EXT=N/A
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
