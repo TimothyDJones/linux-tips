@@ -44479,7 +44479,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform breaktime reminder application."
 APP_GUI_CATEGORIES="Accessories;"
 APP_GUI_KEYWORDS="Productivity;"
-APP_VERSION=1.15.0
+APP_VERSION=1.22.1
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt install -y libfuse2
