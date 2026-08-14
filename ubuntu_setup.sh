@@ -59525,3 +59525,23 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Zenamp cross-platform, C++/GTK-based minimalist audio player from Debian package
+# https://github.com/jasonbrianhall/zenamp
+APP_NAME=Zenamp
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]' )
+APP_VERSION=1.1.600-1.fc43
+APP_EXT=deb
+APP_DEPS="libsdl2-mixer-2.0-0 libtag-c2 libtag2"
+DEV_DEPS="alien"
+sudo apt install -yy -q ${DEV_DEPS} ${APP_DEPS}
+sudo ln -s -f /usr/lib/x86_64-linux-gnu/libtag_c.so.2 /usr/lib/x86_64-linux-gnu/libtag_c.so.0
+sudo ln -s -f /usr/lib/x86_64-linux-gnu/libtag.so.2 /usr/lib/x86_64-linux-gnu/libtag.so.1
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.rpm -J -L https://downloads.sourceforge.net/midiplayer/${FILE_NAME}.rpm
+cd /tmp
+sudo alien /tmp/${FILE_NAME}.rpm
+sudo gdebi -n /tmp/${APP_NAME,,}*.${APP_EXT}
+sudo apt remove -y ${DEV_DEPS} && sudo apt autoremove -f -y
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
