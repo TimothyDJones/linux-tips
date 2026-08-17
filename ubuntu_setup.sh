@@ -15688,7 +15688,7 @@ docker run hello-world  # Confirm Docker installation.
 # Install Docker Compose command-line utility for multi-container Docker applications from package
 APP_NAME=Docker-Compose
 APP_GUI_NAME="Command-line utility for multi-container Docker applications."
-APP_VERSION=5.4.0
+APP_VERSION=5.5.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
@@ -44574,7 +44574,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Qt-based GUI for the Taskwarrior CLI productivity tool."
 APP_GUI_CATEGORIES="Accessories;Office;"
 APP_GUI_KEYWORDS="To Do;Productivity;"
-APP_VERSION=0.0+137.8e681a77a428-Build22.1.glibc2.14
+APP_VERSION=0.0+141.05339cc46bb5-Build26.2.glibc2.14
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y libfuse2 taskwarrior
