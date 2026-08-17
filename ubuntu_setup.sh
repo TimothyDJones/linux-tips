@@ -13826,7 +13826,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install nnn terminal file manager with desktop integration from package
 APP_NAME=nnn
 APP_GUI_NAME="Terminal file manager with desktop integration."
-APP_VERSION=5.1
+APP_VERSION=5.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-static-${APP_VERSION}.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/nnn-file-browser/${FILE_NAME}.${APP_EXT}
