@@ -12842,21 +12842,44 @@ sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME}*
 
-# Install BOUML Java-based UML modeling and code generation tool from PPA
+# Install BOUML Java-based UML modeling and code generation tool from package
 APP_NAME=BOUML
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Java-based UML modeling and code generation tool."
-APP_VERSION=N/A
-APP_EXT=N/A
-source /etc/lsb-release
-if [[ ! "${DISTRIB_CODENAME:0:2}" =~ (tr|ut|vi|wi)$ ]]; then  # 14.04, 14.10, 15.04, 15.10
-	DISTRIB_CODENAME=trusty
-elif [[ ! "${DISTRIB_CODENAME:0:2}" =~ (pr|qu|ra|sa)$ ]]; then  # 13.10, 13.04, 12.10, 12.04
-	DISTRIB_CODENAME=precise
-fi
-wget -q https://www.bouml.fr/bouml_key.asc -O- | sudo apt-key add -
-echo "deb https://www.bouml.fr/apt/"${DISTRIB_CODENAME}" "${DISTRIB_CODENAME}" free" | sudo tee -a /etc/apt/sources.list
-sudo apt-get update -y
-sudo apt-get install -y bouml
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="UML;Modeling;"
+APP_VERSION=7.11 patch 4
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}_patch4_debian_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L http://bouml.free.fr/files/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://www.bouml.fr/images/bouml_logo.${ICON_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/* /usr/local
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+
+
 
 # Install Cmajor C#-style programming language and IDE from package
 APP_NAME=Cmajor
