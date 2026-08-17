@@ -1667,13 +1667,12 @@ APP_NAME=PuTTY
 APP_GUI_NAME="Cross-platform standard GTK SSH client."
 APP_GUI_CATEGORIES="Internet;System;"
 APP_GUI_KEYWORDS="SSH;Terminal;"
-APP_VERSION=0.78
+APP_VERSION=0.85
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 # Install dependencies
 sudo apt-get install -y libxml2-dev libgtk-3-dev build-essential
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://the.earth.li/~sgtatham/${APP_NAME,,}/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-https://the.earth.li/~sgtatham/putty/0.76/putty-0.76.tar.gz
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
 cd /tmp/${FILE_NAME}
