@@ -59570,3 +59570,22 @@ sudo gdebi -n /tmp/${APP_NAME,,}*.${APP_EXT}
 sudo apt remove -y ${DEV_DEPS} && sudo apt autoremove -f -y
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
+
+# Install creel cross-platform, Golang-based SQL TUI for SQLite, MySQL, and PostgreSQL from package
+# https://github.com/bjarneo/cliamp
+APP_NAME=creel
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Golang-based SQL TUI for SQLite, MySQL, and PostgreSQL."
+APP_GUI_CATEGORIES="Programming;Development;"
+APP_GUI_KEYWORDS="SQL;Database;"
+APP_VERSION=0.2.0
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_Linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/rsiota/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
