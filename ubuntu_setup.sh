@@ -23326,35 +23326,6 @@ cd /tmp/${FILE_NAME}
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
-# Install wxMaxima cross-platform computer algebra system (CAS) from AppImage
-APP_NAME=wxMaxima
-APP_GUI_NAME="Cross-platform computer algebra system (CAS)."
-APP_VERSION=22.09.0-5
-APP_EXT=AppImage
-FILE_NAME=${APP_NAME,,}-x86_64
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}-developers/docker-${APP_NAME,,}/releases/download/${APP_NAME}-${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo mv /tmp/${FILE_NAME}.${APP_EXT} /opt/${APP_NAME,,}
-sudo chmod +x /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo ln -s -f /opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT} /usr/local/bin/${APP_NAME,,}
-cat > /tmp/${APP_NAME,,}.desktop << EOF
-[Desktop Entry]
-Name=${APP_NAME}
-Comment=${APP_GUI_NAME}
-GenericName=${APP_NAME}
-Path=/opt/${APP_NAME,,}
-Exec=/opt/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-#Icon=
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=Math;Education;
-Keywords=Math;
-EOF
-sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
-cd $HOME
-sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
-
 # Install MeowSQL cross-platform, Qt-based HeidiSQL clone with support for MySQL, PostgreSQL, and SQLite from AppImage
 APP_NAME=MeowSQL
 APP_GUI_NAME="Cross-platform, Qt-based HeidiSQL clone with support for MySQL, PostgreSQL, and SQLite."
@@ -59630,5 +59601,24 @@ cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+# Install Maxima cross-platform, Lisp-based computer algebra system (CAS) from package
+APP_NAME=Maxima
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Lisp-based computer algebra system (CAS)."
+APP_GUI_CATEGORIES="Education;Science;Math;"
+APP_GUI_KEYWORDS="Calculator;Visualization;"
+APP_VERSION=5.49.0
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-sbcl-ccl-glibc2.35
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://a.fsdn.com/allura/p/${APP_NAME,,}/icon?1752652618
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/* /usr/local
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
