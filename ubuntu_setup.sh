@@ -45692,7 +45692,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install s-tui Python-based command-line system monitoring and stress testing tool from package
 APP_NAME=s-tui
 APP_GUI_NAME="Python-based command-line system monitoring and stress testing tool."
-APP_VERSION=1.1.6
+APP_VERSION=1.5.0
 APP_EXT=zip
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y python3-pip stress
