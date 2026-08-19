@@ -11093,7 +11093,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Battle for Wesnoth high-fantasy themed adventure game from source
 APP_NAME=Wesnoth
 APP_GUI_NAME="High-fantasy themed adventure game."
-APP_VERSION=1.19.25
+APP_VERSION=1.19.27
 APP_EXT=tar.bz2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 APP_DEPS="libsdl3-0 libgles1 m4 mpi-default-bin openmpi-bin openmpi-common libamd-comgr2 libamdhip64-5 libharfbuzz-cairo0 libhwloc15 libibumad3 libibmad5 libjs-jquery-ui libjsoncpp26 libze1 libtool libucx0 libwebpdecoder3 librhash1 librdmacm1t64 libpsm2-2 libpng-tools libpmix2t64 libpcre2-32-0 libout123-0t64 libmunge2 girepository-tools ibverbs-providers libsdl3-image0 libsdl3-ttf0"
