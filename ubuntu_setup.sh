@@ -44055,7 +44055,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Qt-based minimalist image viewer/editor."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Graphics;Editor;"
-APP_VERSION=4.16.2
+APP_VERSION=4.22.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ksharindam/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
