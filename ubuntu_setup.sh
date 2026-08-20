@@ -14820,7 +14820,7 @@ rm -rf /tmp/*${APP_NAME}*
 # Install Rukovoditel web-based (PHP/MySQL) open-source project management application from package
 APP_NAME=Rukovoditel
 APP_GUI_NAME="Web-based (PHP/MySQL) project management tool."
-APP_VERSION=3.7.2
+APP_VERSION=3.7.3
 APP_EXT=zip
 DB_NAME=${APP_NAME,,}
 DB_USER=${APP_NAME,,}
@@ -53416,7 +53416,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Torrra Python-based cross-platform command-line BitTorrent client with search capability from package
 APP_NAME=Torrra
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=2.0.6
+APP_VERSION=2.1.0
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
