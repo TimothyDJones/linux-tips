@@ -59693,3 +59693,15 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/${FILE_NAME}*
+
+# Install Tank Mariotte cross-platform, Python/Qt/PyGame-based retro tank battle game from Debian package
+# https://github.com/shampuan/Tank-Mariotte
+APP_NAME="Tank Mariotte"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]' )
+APP_VERSION=1.0
+APP_EXT=deb
+FILE_NAME=${APP_NAME// /}.${APP_VERSION}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-' )/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/*${APP_NAME,,}*
