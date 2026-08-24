@@ -4235,7 +4235,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, hierarchical note taking application, featuring rich text and syntax highlighting."
 APP_GUI_CATEGORIES="Office;Accessories;System;"
 APP_GUI_KEYWORDS="Notepad;"
-APP_VERSION=1.7.0
+APP_VERSION=1.7.2
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
