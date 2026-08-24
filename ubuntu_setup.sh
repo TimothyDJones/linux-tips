@@ -7832,44 +7832,36 @@ sudo apt-get install -y zlib1g-dev openssl libxcb1-dev cmake pkg-config libssl-d
 curl https://sh.rustup.rs -sSf | sh
 cargo install --git https://github.com/jmacdonald/${APP_NAME,,}/ --tag ${APP_VERSION}
 
-# Install Fractalscope Qt-based fractal explorer from source
+# Install Fractalscope Qt-based fractal explorer from package
 APP_NAME=Fractalscope
 APP_GUI_NAME="Cross-platform Qt-based fractal explorer."
+APP_GUI_CATEGORIES="Education;Science;"
+APP_GUI_KEYWORDS="Math;Visualization;Fractals;"
 APP_VERSION=1.9.4
 APP_EXT=tar.gz
-sudo apt-get install -y qt5-default yasm
-# Install MPIR (Multiple Precision Integers and Rationals) LGPL C library
-curl -o /tmp/mpir.tar.bz2 -J -L http://mpir.org/mpir-3.0.0.tar.bz2
-cd /tmp && dtrx -n /tmp/mpir.tar.bz2 && cd /tmp/mpir/mpir-3.0.0
-./configure --enable-gmpcompat && make && sudo make install
-# Install GNU MPFR (multiple-precision floating-point computations with correct rounding) C Library
-curl -o /tmp/mpfr.tar.xz -J -L http://www.mpfr.org/mpfr-current/mpfr-4.0.0.tar.xz
-cd /tmp && dtrx -n /tmp/mpfr.tar.xz && cd /tmp/mpfr/mpfr-4.0.0
-./configure --with-gmp-include=/usr/local/include --with-gmp-lib=/usr/local/lib && make && make check && sudo make install
-# Install MPFR C++ library
-curl -o /tmp/mpfrc++.zip -J -L http://www.holoborodko.com/pavel/wp-content/plugins/download-monitor/download.php?id=4
-cd /tmp && dtrx -n /tmp/mpfrc++.zip
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-source.${APP_EXT}
+ICON_EXT=png
+FILE_NAME=${APP_NAME}-${APP_VERSION}-Linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://a.fsdn.com/allura/p/fractalscope/icon?1775839169
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-source/${APP_NAME}
-cp /tmp/mpfrc++/mpreal.h /tmp/${APP_NAME,,}/${APP_NAME}-${APP_VERSION}-source/${APP_NAME}/gmp
-qtchooser -run-tool=qmake -qt=5 CONFIG+=release Fractalscope.pro && make
-sudo cp ./Fractalscope /usr/local/bin
-sudo cp ./resources/icons/48x48/application.png /usr/share/icons/${APP_NAME,,}.png
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${APP_NAME,,}
+sudo cp -a -R /tmp/${FILE_NAME} /opt/${APP_NAME,,}
+sudo cp /tmp/${APP_NAME,,}.${ICON_EXT} /opt/${APP_NAME,,}
+sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME}.sh /usr/local/bin/${APP_NAME,,}
 cat > /tmp/${APP_NAME,,}.desktop << EOF
 [Desktop Entry]
 Name=${APP_NAME}
 Comment=${APP_GUI_NAME}
 GenericName=${APP_NAME}
-Path=/usr/local/bin
-Exec=/usr/local/bin/${APP_NAME}
-Icon=/usr/share/icons/${APP_NAME,,}.png
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/opt/${APP_NAME,,}/${APP_NAME,,}.${ICON_EXT}
 Type=Application
 StartupNotify=true
 Terminal=false
-Categories=Education;Science;
-Keywords=Math;Visualization;Fractals;
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
 EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
