@@ -53408,7 +53408,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install Torrra Python-based cross-platform command-line BitTorrent client with search capability from package
 APP_NAME=Torrra
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=2.1.0
+APP_VERSION=2.3.1
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}_v${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${APP_NAME,,}.mirror/${FILE_NAME}
