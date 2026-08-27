@@ -59893,9 +59893,25 @@ APP_VERSION=1.13.0
 APP_EXT=N/A
 ICON_EXT=png
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
-curl -o /tmp/${FILE_NAME} -J -L https://github.com/heymaikol/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/heymaikol/network-doctor/releases/download/v${APP_VERSION}/${FILE_NAME}
 sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+
+# Install Xfetch cross-platform, Rust-based command-line system information tool from package
+APP_NAME=Xfetch
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_VERSION=0.7.0
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/heymaikol/network-doctor/releases/download/v${APP_VERSION}/${FILE_NAME}
+curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://a.fsdn.com/allura/p/${APP_NAME,,}/icon?1752652618
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/* /usr/local
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
