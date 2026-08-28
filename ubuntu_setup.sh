@@ -59839,7 +59839,7 @@ APP_VERSION=0.3.13
 APP_EXT=tar.gz
 ICON_EXT=png
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-download-manager/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-download-manager/${FILE_NAME}.${APP_EXT}
 cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
@@ -59914,3 +59914,43 @@ tar -xf /tmp/${FILE_NAME}.${APP_EXT} -C /tmp/${FILE_NAME}
 sudo cp -a -R /tmp/${FILE_NAME}/* /usr/local
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+# Install Felix cross-platform, C++-based OpenGL/SDL terminal with SSH/SFTP support from source
+APP_NAME=Felix
+APP_GUI_NAME="Cross-platform, C++-based OpenGL/SDL terminal with SSH/SFTP support."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Terminal;Shell;SSH;SFTP;"
+APP_VERSION=484
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=Release%20v${APP_VERSION}%20source%20code
+APP_DEPS=""
+DEV_DEPS="libsdl2-dev libglew-dev libfreetype-dev libssh2-1-dev libgstreamd-3-dev libavformat-dev"
+sudo apt install -y ${DEV_DEPS} ${APP_DEPS}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}terminal/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/jasonbrianhall-glterminal-*
+make USESSH=1
+sudo cp -a build/linux/flt /usr/local/bin
+sudo cp -a build/linux/FelixTerminalGUI /usr/local/bin
+sudo ln -s -f /usr/local/bin/FelixTerminalGUI /usr/local/bin/${APP_NAME,,}
+sudo mkdir -p /usr/local/share/icons && sudo cp ${APP_NAME,,}.${ICON_EXT} /usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/usr/local/bin/${APP_NAME,,}
+Icon=/usr/local/share/icons/${APP_NAME,,}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+sudo apt remove -y ${DEV_DEPS} && sudo apt autoremove -f -y
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
