@@ -57816,10 +57816,10 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install dbvr Java-based, cross-platform, command-line version of DBeaver SQL/database tool from package
 APP_NAME=dbvr
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=26.1.0
+APP_VERSION=26.2.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-ce-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/dbeaver/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 tar -xf /opt/${FILE_NAME}.${APP_EXT}
 sudo mkdir -m 0755 -p /opt/${APP_NAME,,}
