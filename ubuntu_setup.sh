@@ -31397,7 +31397,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install F2 cross-platform, command-line batch file renamer from package
 APP_NAME=F2
-APP_VERSION=1.9.1
+APP_VERSION=2.2.3
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/ayoisaiah/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
