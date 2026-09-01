@@ -50256,10 +50256,10 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform Python/GTK GUI for browsing comic strips from GoComics.com."
 APP_GUI_CATEGORIES="Entertainment;Accessories;"
 APP_GUI_KEYWORDS="Comics;"
-APP_VERSION=1.1.3
+APP_VERSION=3.0.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
-FILE_NAME=${APP_NAME// /_}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+FILE_NAME=${_APP_NAME}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${_APP_NAME}.png -J -L https://a.fsdn.com/allura/p/${_APP_NAME}/icon?1f460470f373d03cbf0be2c34f19f4d4d4b34ee504d85851cee43d86fe8e6f35
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
