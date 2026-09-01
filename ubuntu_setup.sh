@@ -58843,10 +58843,10 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, C++/Qt-based online/offline Texas Hold 'Em poker game."
 APP_GUI_CATEGORIES="Games;Entertainment;"
 APP_GUI_KEYWORDS="Cards;Poker;"
-APP_VERSION=2.1.6
+APP_VERSION=2.1.8
 APP_EXT=AppImage
 ICON_EXT=png
-FILE_NAME=${APP_NAME}-QML-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+FILE_NAME=${APP_NAME}-${APP_VERSION}-QML-glibc2.43-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y fuse libfuse2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://a.fsdn.com/allura/p/pokerth/icon?1474506558
