@@ -44413,7 +44413,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=yazi
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross‐platform, Rust-based terminal file manager."
-APP_VERSION=26.8.15
+APP_VERSION=26.9.1
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sxyazi/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
