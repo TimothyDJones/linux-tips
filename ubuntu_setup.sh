@@ -51128,7 +51128,7 @@ sudo rm -rf /tmp/${APP_NAME,,}*
 # Install Zaku Rust-based REST API client from Debian package
 APP_NAME=Zaku
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.8.1
+APP_VERSION=26.0-beta.1
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/buildzaku/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
