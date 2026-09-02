@@ -57154,7 +57154,7 @@ rm -rf /tmp/${APP_NAME// /.}* /tmp/${_APP_NAME}*
 # Install hwatch Rust-based, cross-platform command-line 'watch' replacement with history from package
 APP_NAME=hwatch
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=0.3.11
+APP_VERSION=0.4.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/blacknon/${APP_NAME,,}/releases/download/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
