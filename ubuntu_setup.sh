@@ -42865,7 +42865,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-' )
 APP_GUI_NAME="Rust/GTK4-based Linux GUI system monitor."
 APP_GUI_CATEGORIES="System;"
 APP_GUI_KEYWORDS="Monitor;"
-APP_VERSION=1.1.0
+APP_VERSION=1.2.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME// /}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt-get install -y libfuse
