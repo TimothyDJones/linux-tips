@@ -36858,7 +36858,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME//./}*
 # Install lssh Golang-based command-line SSH/SCP/SFTP client from package
 APP_NAME=lssh
 APP_GUI_NAME="Golang-based command-line SSH/SCP/SFTP client."
-APP_VERSION=0.6.7
+APP_VERSION=0.10.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/blacknon/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
