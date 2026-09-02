@@ -36735,13 +36735,13 @@ APP_NAME=TSE
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Legacy text editor."
 APP_VERSION=4.50.23
-APP_EXT=zip
+APP_EXT=tgz
 FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://semware.com/files/tse-pro-install/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 sudo mkdir -p /opt/${APP_NAME,,}
-sudo cp -R -a /tmp/${FILE_NAME}/${APP_NAME,,}/* /opt/${APP_NAME,,}
+sudo cp -R -a /tmp/${APP_NAME,,}/* /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/e /usr/local/bin/${APP_NAME,,}
 cd $HOME
 sudo rm -rf /tmp/${_APP_NAME}*
