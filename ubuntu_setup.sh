@@ -51207,7 +51207,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=saul
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Golang-based command-line HTTP client for better cURL user experience."
-APP_VERSION=0.1.7
+APP_VERSION=0.3.4
 APP_EXT=N/A
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME} -J -L https://github.com/DeprecatedLuar/better-curl-saul/releases/download/v${APP_VERSION}/${FILE_NAME}
