@@ -60074,3 +60074,19 @@ sudo cp -a -R /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+# Install clouds.c cross-platform, C-based command-line volumetric cloud renderer from source
+APP_NAME=clouds.c
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=clouds
+APP_DEPS=""
+DEV_DEPS="build-essential git"
+sudo apt install -y ${DEV_DEPS} ${APP_DEPS}
+cd /tmp
+git clone https://github.com/gbkorr/clouds.c
+cd /tmp/${APP_NAME,,}/${FILE_NAME}
+make && sudo cp /tmp/${APP_NAME,,}/${FILE_NAME}/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
