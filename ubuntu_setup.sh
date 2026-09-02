@@ -60119,3 +60119,17 @@ sudo chmod a+x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+# Install Yetty C-based, GPU-accelerated terminal with support for rich content from package
+APP_NAME=Yetty
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_VERSION=0.3.8
+APP_EXT=tar.gz
+FILE_NAME=${APP_NAME,,}-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/zokrezyl/${APP_NAME,,}/releases/download/${APP_NAME,,}-${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+sudo tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+/tmp/yinstall --verbose --force
+sudo ln -s -f $HOME/.local/bin/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
