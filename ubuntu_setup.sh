@@ -60060,3 +60060,17 @@ sudo cp -a -R /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+# Install edamame Rust-based, command-line Markdown editor with automatic preview while editing from package
+APP_NAME=edamame
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_VERSION=0.1.2
+APP_EXT=tar.xz
+FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-unknown-linux-gnu
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/mijowi/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
