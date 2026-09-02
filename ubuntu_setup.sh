@@ -49044,7 +49044,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform GUI Git client."
 APP_GUI_CATEGORIES="Development;Programming;System;"
 APP_GUI_KEYWORDS="Git;Version Control;"
-APP_VERSION=2025.11
+APP_VERSION=2026.19
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}.linux.$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
