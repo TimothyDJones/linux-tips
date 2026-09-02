@@ -43183,7 +43183,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform REST/web service API mocking tool."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="REST;Web Services;Software Testing;"
-APP_VERSION=4.1.0
+APP_VERSION=9.8.0
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt install -y libfuse2
