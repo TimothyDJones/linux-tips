@@ -41116,7 +41116,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform, PyQt-based desktop bookmark manager."
 APP_GUI_CATEGORIES="Accessories;Internet;"
 APP_GUI_KEYWORDS="Bookmarks;"
-APP_VERSION=0.2.1
+APP_VERSION=0.3.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/sobjornstad/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
