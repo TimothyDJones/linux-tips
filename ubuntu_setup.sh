@@ -21957,7 +21957,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Thorium Reader (Readium) cross-platform EPUB reader from Debian package
 APP_NAME="Thorium Reader"
 APP_GUI_NAME="Cross-platform EPUB reader."
-APP_VERSION=3.5.0
+APP_VERSION=3.5.1
 APP_EXT=deb
 FILE_NAME=EDRLab.${APP_NAME// /}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/edrlab/${APP_NAME// /-}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
