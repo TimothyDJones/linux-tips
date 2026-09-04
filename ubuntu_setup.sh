@@ -30660,7 +30660,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install dxtime cross-platform, WxWidgets-based GUI time-tracking tool from source
 APP_NAME=dxtime
 APP_GUI_NAME="Cross-platform, WxWidgets-based GUI time-tracking tool."
-APP_VERSION=1.2.5
+APP_VERSION=1.2.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y cmake libwxgtk3.2-dev libsqlite3-dev
