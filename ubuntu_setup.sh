@@ -58387,7 +58387,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # https://github.com/nkanaev/yarr
 APP_NAME=yarr
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=2.7
+APP_VERSION=2.9
 APP_EXT=zip
 FILE_NAME=${APP_NAME,,}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-yet-another-rss.mirror/${FILE_NAME}.${APP_EXT}
