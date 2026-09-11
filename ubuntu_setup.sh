@@ -60303,3 +60303,39 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+# Install LinuxHardware Suite GUI Linux hardware details viewer from AppImage
+APP_NAME="LinuxHardware Suite"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="GUI Linux hardware details viewer."
+APP_GUI_CATEGORIES="System;"
+APP_GUI_KEYWORDS="Hardware;"
+APP_VERSION=3.1.0
+APP_EXT=AppImage
+ICON_EXT=png
+FILE_NAME=${APP_NAME// /_}_${APP_VERSION//./}
+sudo apt install -y fuse libfuse2
+curl -o /tmp/${FILE_NAME}.zip -J -L https://downloads.sourceforge.net/linuxhardware-info/${FILE_NAME}.zip
+cd /tmp
+unzip /tmp/${FILE_NAME}.zip
+sudo cp /tmp/${APP_NAME// /_}/${APP_NAME// /}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU).${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${APP_NAME// /}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU).${APP_EXT}
+sudo ln -s -f /usr/local/bin/${APP_NAME// /}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU).${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME// /_}/icon.${ICON_EXT} /usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME// /}*
