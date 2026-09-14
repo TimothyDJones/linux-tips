@@ -49346,7 +49346,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 APP_GUI_NAME="Cross-platform GUI front-end for multiple BitTorrent clients."
 APP_GUI_CATEGORIES="Multimedia;Internet;"
 APP_GUI_KEYWORDS="BitTorrent;"
-APP_VERSION=2.16.1
+APP_VERSION=2.17.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME}-${APP_VERSION}
