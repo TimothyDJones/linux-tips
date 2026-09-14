@@ -60421,3 +60421,38 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/${FILE_NAME}*
+
+# Install KeyCut cross-platform, Electron-based lossless video editor that cuts and joins video without re-encoding from package
+# https://github.com/wdmcourses/KeyCut
+APP_NAME=KeyCut
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Electron-based lossless video editor that cuts and joins video without re-encoding."
+APP_GUI_CATEGORIES="Video;Multimedia;"
+APP_GUI_KEYWORDS="Editor;"
+APP_VERSION=1.0.0
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${_APP_NAME}
+sudo ln -s -f /opt/${_APP_NAME}/${APP_NAME} /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${APP_NAME,,}
+Exec=/opt/${_APP_NAME}/${APP_NAME}
+Icon=/opt/${_APP_NAME}/resources/app/assets/icon.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/${FILE_NAME}*
