@@ -3574,13 +3574,13 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install TexStudio cross-platform, C++/Qt-based LaTeX editor from source
+# Install TexStudio cross-platform, C++/Qt-based LaTeX editor from AppImage
 APP_NAME=TexStudio
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, C++/Qt-based LaTeX editor."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="LaTeX;Editor;"
-APP_VERSION=4.9.7
+APP_VERSION=4.9.8
 APP_EXT=tar.gz
 APP_EXT=AppImage
 ICON_EXT=ico
