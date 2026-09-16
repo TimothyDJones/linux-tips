@@ -60217,7 +60217,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
 # Install BoolPdf cross-platform, C#/.NET-based PDF reader from Debian package
 APP_NAME=BoolPdf
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]' )
-APP_VERSION=1.0.0
+APP_VERSION=1.1.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1mint22.3_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
