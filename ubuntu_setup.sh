@@ -60526,3 +60526,27 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
+
+# Install Ultracopier cross-platform, C++/Qt-based high-performance file copy tool from source
+APP_NAME=Ultracopier
+APP_GUI_NAME="Cross-platform, C++/Qt-based high-performance file copy tool."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="Copy;"
+APP_VERSION=3.1.0.5
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME}-${APP_VERSION}
+APP_DEPS=""
+DEV_DEPS="make gcc build-essential libssl-dev qt6-base-dev qtchooser qmake6 qt6-base-dev-tools qt6-tools-dev-tools"
+sudo apt install -y ${DEV_DEPS} ${APP_DEPS}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/alphaonex86/${APP_NAME}/archive/refs/tags/${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+qtchooser -run-tool=qmake -qt=6	ultracopier.pro
+make
+sudo cp /tmp/${FILE_NAME}/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+sudo apt remove -y ${DEV_DEPS} && sudo apt autoremove -f -y
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
