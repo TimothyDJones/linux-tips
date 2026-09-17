@@ -19923,7 +19923,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install xsnow desktop decoration from source
 APP_NAME=xsnow
 APP_GUI_NAME=""
-APP_VERSION=3.9.5
+APP_VERSION=3.9.6
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 APP_DEPS="libgsl28 libopencv-core410 libopencv-imgcodecs410"
