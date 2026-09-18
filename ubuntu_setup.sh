@@ -60550,3 +60550,19 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 sudo apt remove -y ${DEV_DEPS} && sudo apt autoremove -f -y
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
+
+# Install Calcpad cross-platform, C#/.NET-based mathematical and engineering calculator with graphing capability from Debian package
+APP_NAME=Calcpad
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_VERSION=7.7.3
+APP_EXT=deb
+FILE_NAME=${APP_NAME}.${APP_VERSION}
+curl -o /tmp/packages-microsoft-prod.deb -J -L https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb
+sudo gdebi -n /tmp/packages-microsoft-prod.deb && rm /tmp/packages-microsoft-prod.deb
+sudo apt install -y dotnet-runtime-10.0
+curl -o /tmp/wkhtmltox_0.12.6.1-3.bookworm_amd64.deb -J -L https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.bookworm_amd64.deb
+sudo gdebi -n /tmp/wkhtmltox_0.12.6.1-3.bookworm_amd64.deb
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://calcpad.eu/download/linux/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/${FILE_NAME}*
