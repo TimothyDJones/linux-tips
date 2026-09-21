@@ -60632,7 +60632,7 @@ ICON_EXT=png
 FILE_NAME=${_APP_NAME}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y fuse libfuse2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/riberojuanca/${_APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
-curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://raw.githubusercontent.com/zShaD0w7x/${_APP_NAME}/refs/heads/main/packaging/icons/com.zshadow7x.linuxdoctor.${ICON_EXT}
+curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://raw.githubusercontent.com/riberojuanca/${_APP_NAME}/refs/heads/main/resources/icon.${ICON_EXT}
 sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
 sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
 sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
