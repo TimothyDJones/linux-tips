@@ -4153,26 +4153,23 @@ sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
 
-# Install CodeLite C, C++, PHP and Node.js IDE and wxCrafter from package
-APP_NAME=wxcrafter
-APP_VERSION=2.9-1unofficial
+# Install CodeLite cross-platform C, C++, Rust, PHP and Node.js IDE from Debian package
+APP_NAME=CodeLite
+APP_VERSION=18.5.0
 APP_EXT=deb
 source /etc/lsb-release
-if [ "${DISTRIB_CODENAME}" -eq "bionic" ]; then
-	DISTRIB_CODENAME=artful;   # Use Artful Aardvark (17.10) files for 18.04.
+if [[ "${DISTRIB_ID:0:3}" =~ ^(deb)$ ]]; then
+	DIST="debian-trixie"
+elif [[ "${DISTRIB_ID:0:3}" =~ ^(ubu)$ ]]; then
+	DIST="ubuntu-noble"
+else
+	DIST="debian-trixie"
 fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://repos.codelite.org/ubuntu/pool/universe/w/${APP_NAME}/${APP_NAME}_${APP_VERSION}.${DISTRIB_CODENAME}_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
+FILE_NAME=${APP_NAME}-${APP_VERSION}-gtk3-${DIST}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.${APP_NAME,,}.org/${APP_NAME,,}/${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
-rm -rf /tmp/${APP_NAME,,}
-
-APP_NAME=codelite
-APP_VERSION=12.0-1
-APP_EXT=deb
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://repos.codelite.org/ubuntu/pool/universe/c/${APP_NAME}/${APP_NAME}_${APP_VERSION}unofficial.${DISTRIB_CODENAME}_${KERNEL_TYPE}.${APP_EXT}
-sudo gdebi -n /tmp/${APP_NAME,,}.${APP_EXT}
-cd $HOME
-rm -rf /tmp/${APP_NAME,,}
+rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 
 # Install Tuitter Electron-based, cross-platform minimalist Twitter client from package
 APP_NAME=Tui
