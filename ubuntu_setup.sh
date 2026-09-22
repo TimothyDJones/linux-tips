@@ -11014,16 +11014,37 @@ cd ${FILE_NAME}
 cd $HOME
 rm -rf /tmp/*${APP_NAME,,}*
 
-# Install MindForger notepad and Markdown editor/IDE with built-in preview from Debian package
+# Install MindForger notepad and Markdown editor/IDE with built-in preview from Flatpak package
 APP_NAME=MindForger
 APP_GUI_NAME="Notepad and Markdown editor/IDE with built-in preview."
-APP_VERSION=2.2.0
-APP_EXT=deb
-FILE_NAME=debian-10-buster--${APP_NAME,,}_${APP_VERSION}-1_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+APP_GUI_CATEGORIES="Office;Accessories;"
+APP_GUI_KEYWORDS="Notepad;Markdown;Editor;"
+APP_VERSION=2.4.0
+APP_EXT=flatpak
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
-sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://a.fsdn.com/allura/p/${APP_NAME,,}/icon?1790104429
+sudo flatpak install -y /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run com.mindforger.${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
-rm -rf /tmp/*${APP_NAME,,}*
+rm -rf /tmp/${APP_NAME,,}*
 
 # Install MindRaider cross-platform, Java-based notepad, PIM, and outliner from package
 APP_NAME=MindRaider
