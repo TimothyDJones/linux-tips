@@ -46067,7 +46067,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform Java-based planetarium tool."
 APP_GUI_CATEGORIES="Education;Science;"
 APP_GUI_KEYWORDS="Planetarium;"
-APP_VERSION=5.4
+APP_VERSION=5.5
 APP_EXT=zip
 FILE_NAME=nvj${APP_VERSION//./}
 if ! [ -x "$(command -v java)" ]; then
