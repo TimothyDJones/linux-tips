@@ -60757,3 +60757,34 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+# Install Gravitype cross-platform Python command-line falling text typing game from package
+APP_NAME=Gravitype
+APP_VERSION=1.0.1
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}
+sudo apt-get install -y python3-venv python3-pip
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/kanakOS01/${APP_NAME,,}/archive/refs/tags/v${APP_VERSION}.${APP_EXT}
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+cd /tmp/${FILE_NAME}
+mkdir -p $HOME/.local/bin/${APP_NAME,,}
+cd $HOME/.local/bin/${APP_NAME,,}
+cp -R /tmp/${FILE_NAME}/* $HOME/.local/bin/${APP_NAME,,}
+python3 -m venv $HOME/.local/bin/${APP_NAME,,}/.venv
+source $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python3 -m pip install .
+deactivate
+cat > /tmp/${APP_NAME,,} << EOF
+#! /bin/sh
+cd $HOME/.local/bin/${APP_NAME,,}
+. $HOME/.local/bin/${APP_NAME,,}/.venv/bin/activate
+python -m ${APP_NAME,,}
+deactivate
+cd $HOME
+EOF
+sudo mv /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}
