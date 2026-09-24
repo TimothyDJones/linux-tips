@@ -10803,10 +10803,10 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Requires JRE 11 or later with JavaFX
 APP_NAME=MiluDBViewer
 APP_GUI_NAME="Cross-platform, Java-based multi-database (MySQL/PostgreSQL/Oracle/Cassandra/SQLite/SQLServer/MongoDB) viewer/editor client."
-APP_VERSION=0.3.9
+APP_VERSION=0.4.0
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME}${APP_VERSION}
-sudo apt install -y openjdk-11-jre openjfx
+FILE_NAME=${APP_NAME}${APP_VERSION}_jdk25
+sudo apt install -y openjdk-25-jre openjfx
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
