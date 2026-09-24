@@ -11019,7 +11019,7 @@ APP_NAME=MindForger
 APP_GUI_NAME="Notepad and Markdown editor/IDE with built-in preview."
 APP_GUI_CATEGORIES="Office;Accessories;"
 APP_GUI_KEYWORDS="Notepad;Markdown;Editor;"
-APP_VERSION=2.4.0
+APP_VERSION=2.4.1
 APP_EXT=flatpak
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y flatpak
