@@ -60788,3 +60788,17 @@ sudo mv /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}
+
+# Install Battleship command-line version of classic board game from RPM package
+APP_NAME=Battleship
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_VERSION=0.4.0
+APP_EXT=rpm
+sudo apt-get install -y alien gdebi
+FILE_NAME=${APP_NAME,,}-tui-${APP_VERSION}-1.fc44.noarch
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}-cli/${FILE_NAME}.${APP_EXT}
+cd /tmp
+sudo alien --scripts /tmp/${FILE_NAME}.${APP_EXT}
+sudo gdebi -n /tmp/${APP_NAME,,}*.deb
+cd $HOME
+sudo rm -rf /tmp/${APP_NAME,,}*
