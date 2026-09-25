@@ -4895,7 +4895,7 @@ APP_NAME=QtPass
 APP_GUI_NAME="GUI for pass, the standard Unix password manager."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="Password;"
-APP_VERSION=1.8.1
+APP_VERSION=1.8.2
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME}-${APP_VERSION}
 sudo apt-get install -y build-essential qtbase5-dev qttools5-dev-tools qt5-qmake
