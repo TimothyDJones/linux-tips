@@ -57792,10 +57792,10 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="C/C++/Qt-based cross-platform multi-track audio editor and recorder."
 APP_GUI_CATEGORIES="Audio;Multimedia;"
 APP_GUI_KEYWORDS="Audio;Editor;"
-APP_VERSION=3.7.8
+APP_VERSION=4.0.1
 APP_EXT=AppImage
 ICON_EXT=png
-FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}-x64-20.04
+FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y fuse libfuse2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/${APP_NAME}-${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${APP_NAME,,}.${ICON_EXT} -J -L https://raw.githubusercontent.com/audacity/audacity/refs/heads/release-${APP_VERSION}/images/icons/48x48/${APP_NAME,,}.${ICON_EXT}
