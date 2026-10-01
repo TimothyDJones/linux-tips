@@ -6035,7 +6035,7 @@ rm -rf /tmp/${APP_NAME,,}
 APP_NAME=ProjectLibre
 APP_VERSION=1.9.8
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}-1
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 sudo apt-get install openjdk-11-jre
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
