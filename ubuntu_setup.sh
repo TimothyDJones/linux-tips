@@ -33096,7 +33096,7 @@ rm -rf /tmp/${APP_NAME,,}*
 APP_NAME=QHexEdit2
 APP_GUI_CATEGORIES="Programming;Development;"
 APP_GUI_KEYWORDS="Binary;Editor;"
-APP_VERSION=0.8.9
+APP_VERSION=0.9.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-${APP_VERSION}
 sudo apt-get install -y qttools5-dev qtbase5-dev
