@@ -9030,7 +9030,7 @@ rm -rf /tmp/${APP_NAME,,}
 # Install MarkText Electron-based Markdown editor from package
 APP_NAME=MarkText
 APP_GUI_NAME="Cross-platform, Electron-based Markdown editor."
-APP_VERSION=0.19.0
+APP_VERSION=0.20.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-${APP_VERSION}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
