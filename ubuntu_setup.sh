@@ -29123,7 +29123,7 @@ rm -rf /tmp/*${APP_NAME,,}*
 # Install 7-Zip cross-platform decompression utility from package
 APP_NAME=7z
 APP_GUI_NAME="Cross-platform decompression utility."
-APP_VERSION=26.03
+APP_VERSION=26.04
 APP_EXT=tar.xz
 if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
 	ARCH_TYPE=x64
