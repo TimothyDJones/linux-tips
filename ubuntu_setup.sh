@@ -60953,3 +60953,17 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
+
+# Install zerobrew Rust-based, command-line alternative to Homebrew modeled on uv from package
+APP_NAME=zerobrew
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_VERSION=0.4.0
+APP_EXT=N/A
+FILE_NAME=zb-linux-x64
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/zerobrewhq/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp -a -R /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/zb
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}* /tmp/zb*
