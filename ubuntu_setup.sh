@@ -60919,7 +60919,7 @@ sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
 
-# Install 	
+# Install Rowel cross-platform, Rust/Tauri-based offline-first password manager from AppImage
 APP_NAME=Rowel
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Rust/Tauri-based offline-first password manager."
@@ -60967,3 +60967,39 @@ sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/zb
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}* /tmp/zb*
+
+# Install Floorp cross-platform, Firefox-based web browser with focus on privacy and security from package
+APP_NAME=Floorp
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Firefox-based web browser with focus on privacy and security."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Firefox;Browser;Web;"
+APP_VERSION=12.20.1
+APP_EXT=tar.xz
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME}-Projects/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://a.fsdn.com/allura/mirror/floorp-browser/icon?3f860712a40656de25d22a37c1222fd8388b728ce795dfa980bf1c5820555bc8
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo mkdir -p /opt/${_APP_NAME}
+sudo cp -a -R /tmp/${_APP_NAME}/* /opt/${_APP_NAME}
+sudo cp /tmp/${_APP_NAME}.${ICON_EXT} /opt/${_APP_NAME}
+sudo ln -s -f /opt/${_APP_NAME}/${_APP_NAME} /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/opt/${_APP_NAME}
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/opt/${_APP_NAME}/${_APP_NAME}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/${FILE_NAME}*
