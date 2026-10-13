@@ -46385,7 +46385,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="Cross-platform, Electron-based desktop REST and GraphQL webservice client."
 APP_GUI_CATEGORIES="Development;Programming;"
 APP_GUI_KEYWORDS="REST;API;GraphQL;"
-APP_VERSION=2026.8.0
+APP_VERSION=2026.9.0
 APP_EXT=AppImage
 sudo apt install -y libfuse2
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
