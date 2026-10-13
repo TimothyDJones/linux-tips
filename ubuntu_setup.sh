@@ -61142,3 +61142,15 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
+
+# Install daqy cross-platform C++ command-line tool for manipulation and querying of structured data, including CSV, TSV, JSON, RDF, and XML from package
+APP_NAME=daqy
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_VERSION=N/A
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}
+curl -o /tmp/${FILE_NAME} -J -L https://downloads.sourceforge.net/${_APP_NAME}/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}* /tmp/zb*
