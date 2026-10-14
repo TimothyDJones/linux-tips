@@ -61255,3 +61255,18 @@ sudo chmod a+x /usr/local/bin/${FILE_NAME}
 sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}* /tmp/zb*
+
+# Install tfm (terminal file manager) TypeScript-based terminal file manager from package
+APP_NAME=tfm
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_VERSION=1.0.0
+APP_EXT=gz
+FILE_NAME=${APP_NAME,,}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-linux
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/clarkarch/${APP_NAME,,}-tui/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+gunzip /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
