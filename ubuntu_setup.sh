@@ -19329,15 +19329,14 @@ make && sudo make install
 # Install Dnote cross-platform lightweight encrypted console notebook for developers from package
 APP_NAME=Dnote
 APP_GUI_NAME="Cross-platform lightweight encrypted console notebook for developers."
-APP_VERSION=0.16.0
+APP_VERSION=0.17.0
 APP_EXT=tar.gz
-FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_${KERNEL_TYPE}
+FILE_NAME=${APP_NAME,,}_${APP_VERSION}_linux_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/cli-v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${FILE_NAME}.${APP_EXT}
-sudo mkdir -p /opt/${APP_NAME,,}
-sudo cp /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
-sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,} /usr/local/bin/${APP_NAME,,}
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp /tmp/${APP_NAME,,} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/*${APP_NAME}* /tmp/*${APP_NAME,,}*
 
