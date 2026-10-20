@@ -907,20 +907,6 @@ sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
 
-
-
-
-curl -o /tmp/miniflux.tar.gz -J -L https://github.com/miniflux/miniflux/archive/v1.2.2.tar.gz
-cd /tmp
-dtrx -n /tmp/miniflux.tar.gz
-cd /tmp/miniflux
-sudo mv /tmp/miniflux/miniflux-1.2.2 ${WWW_HOME}/miniflux
-sudo chown -R www-data:www-data ${WWW_HOME}
-sudo chmod -R 777 ${WWW_HOME}/miniflux/data
-xdg-open "http://localhost/miniflux"  # Open main page in default browser
-cd $HOME
-rm -rf /tmp/miniflux*
-
 # Install QGIS (a.k.a. Quantum GIS) from Ubuntu PPA
 # (Used PPA, because unable to install from QGIS official packages.)
 sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable
