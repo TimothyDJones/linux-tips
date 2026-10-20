@@ -842,8 +842,74 @@ qtchooser -run-tool=qmake -qt=5 && make && sudo make install
 cd $HOME
 rm -rf /tmp/${APP_NAME}*
 
-# Install Miniflux browser-based RSS reader
-# Requires PHP and SQLite.
+# Install Miniflux Golang-based browser-based RSS reader from package
+APP_NAME=Miniflux
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Golang-based browser-based RSS reader."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="RSS;News;Aggregator;"
+APP_VERSION=2.3.4
+APP_EXT=N/A
+ICON_EXT=png
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/${APP_NAME,,}/v2/releases/download/${APP_VERSION}/${FILE_NAME}
+curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://raw.githubusercontent.com/miniflux/v2/refs/heads/main/internal/ui/static/bin/icon-120.${ICON_EXT}
+sudo cp -a -R /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.${ICON_EXT} /usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+sudo -u postgres createdb miniflux2	# Create database with default 'postgres' user
+cat > /tmp/${_APP_NAME}.conf << EOF
+RUN_MIGRATIONS=1
+DATABASE_URL=user=postgres password=postgres dbname=miniflux2 sslmode=disable
+CREATE_ADMIN=1
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=admin
+LISTEN_ADDR=127.0.0.1:8888
+EOF
+sudo mv /tmp/${_APP_NAME}.conf /etc
+cat > /tmp/${_APP_NAME}.service << EOF
+[Unit]
+Description=Miniflux RSS News Aggregator
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/usr/local/bin -c /etc/miniflux.conf
+ExecStart=/usr/local/bin/miniflux
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo mv /tmp/${_APP_NAME}.service /usr/lib/systemd/system
+sudo chown root:root /usr/lib/systemd/system/${_APP_NAME}.service
+sudo systemctl daemon-reload
+sudo systemctl enable ${_APP_NAME}.service
+sudo systemctl start ${_APP_NAME}.service
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=xdg-open http://localhost:8888/
+Icon=/usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+
+
+
 curl -o /tmp/miniflux.tar.gz -J -L https://github.com/miniflux/miniflux/archive/v1.2.2.tar.gz
 cd /tmp
 dtrx -n /tmp/miniflux.tar.gz
