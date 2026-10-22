@@ -56828,7 +56828,7 @@ rm -rf /tmp/${APP_NAME,,}*
 # Install PyNotes cross-platform, Python-based Emacs-style editor and IDE from Debian package
 APP_NAME=PyNotes
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]' )
-APP_VERSION=2.2
+APP_VERSION=3.0.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}-${APP_VERSION}-1
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${APP_NAME,,}python/${FILE_NAME}.${APP_EXT}
