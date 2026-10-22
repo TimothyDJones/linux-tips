@@ -61487,3 +61487,38 @@ sudo cp -a /tmp/${APP_NAME,,} /usr/local/bin
 sudo chmod a+x /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+# Install Slate Rust/GTK4-based, cross-platform minimalist text editor with syntax highlighting from package
+APP_NAME=Slate
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Rust/GTK4-based, cross-platform minimalist text editor with syntax highlighting."
+APP_GUI_CATEGORIES="Accessories;Development;Programming;"
+APP_GUI_KEYWORDS="Editor;"
+APP_VERSION=0.12.5
+APP_EXT=tar.gz
+ICON_EXT=png
+FILE_NAME=${_APP_NAME}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}texteditor/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://a.fsdn.com/allura/p/${_APP_NAME}texteditor/icon?1792630087
+cd /tmp
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a /tmp/${_APP_NAME}-${APP_VERSION}*/${_APP_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.${ICON_EXT} /usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
