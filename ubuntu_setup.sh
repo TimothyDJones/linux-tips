@@ -61523,3 +61523,38 @@ sudo cp -a -R /tmp/${FILE_NAME}/* /opt/${APP_NAME,,}
 sudo ln -s -f /opt/${APP_NAME,,}/${APP_NAME,,}.bin /usr/local/bin/${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+# Install Ollama cross-platform, self-hosted open-source LLM platform from package
+APP_NAME=Ollama
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_VERSION=0.40.11
+APP_EXT=tar.zst
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+cd /tmp
+sudo tar --zstd -xvf /tmp/${FILE_NAME}.${APP_EXT} -C /usr/local
+sudo useradd -r -s /bin/false -U -m -d /usr/share/${APP_NAME,,} ${APP_NAME,,}
+sudo usermod -a -G ${APP_NAME,,} $(whoami)
+cat > /tmp/${APP_NAME,,}.service << EOF
+[Unit]
+Description=${APP_NAME} Service
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/${APP_NAME,,} serve
+User=${APP_NAME,,}
+Group=${APP_NAME,,}
+Restart=always
+RestartSec=3
+Environment="PATH=$PATH"
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo mv /tmp/${APP_NAME,,}.service /etc/systemd/system/${APP_NAME,,}.service
+sudo systemctl daemon-reload
+sudo systemctl enable ${APP_NAME,,}
+sudo systemctl start ${APP_NAME,,}
+sudo systemctl status ${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
