@@ -61588,3 +61588,38 @@ EOF
 sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
+
+# Install FormatLinux GTK tool for formatting drives and writing ISO images from AppImage
+APP_NAME=FormatLinux
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="GTK tool for formatting drives and writing ISO images."
+APP_GUI_CATEGORIES="Accessories;System;"
+APP_GUI_KEYWORDS="ISO;Image;Disk;"
+APP_VERSION=2.1
+APP_EXT=AppImage
+ICON_EXT=png
+FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+sudo apt install -y fuse libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/linuxrufus/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://a.fsdn.com/allura/p/linuxrufus/icon?3b7ee1aac73b0e621d938205e1013951d7496ee5712dba71e9933769ee311de0
+sudo cp /tmp/${FILE_NAME}.${APP_EXT} /usr/local/bin
+sudo chmod +x /usr/local/bin/${FILE_NAME}.${APP_EXT}
+sudo ln -s -f /usr/local/bin/${FILE_NAME}.${APP_EXT} /usr/local/bin/${_APP_NAME}
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${_APP_NAME}.${ICON_EXT} /usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/share/icons/${_APP_NAME}.${ICON_EXT}
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
