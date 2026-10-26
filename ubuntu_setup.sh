@@ -37267,9 +37267,9 @@ sudo rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME,,}*
 # Install Muffon Electron/Vue.JS-based desktop music-streaming service player from Debian package
 APP_NAME=Muffon
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
-APP_VERSION=1.5.0
+APP_VERSION=2.5.0
 APP_EXT=deb
-FILE_NAME=${APP_NAME,,}.${APP_VERSION}
+FILE_NAME=${APP_NAME,,}-${APP_VERSION}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/staniel359/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 sudo gdebi -n /tmp/${FILE_NAME}.${APP_EXT}
 cd $HOME
