@@ -61558,3 +61558,33 @@ sudo systemctl start ${APP_NAME,,}
 sudo systemctl status ${APP_NAME,,}
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
+
+# Install SpeedCrunch cross-platform, open-source C++/Qt-based scientific calculator from Flatpak package
+# https://github.com/heldercorreia/speedcrunch
+APP_NAME=SpeedCrunch
+APP_GUI_NAME="Cross-platform, open-source C++/Qt-based scientific calculator."
+APP_GUI_CATEGORIES="Engineering;Math;Office;"
+APP_GUI_KEYWORDS="Calculator;"
+FLATPAK_DOMAIN=org.speedcrunch
+sudo apt-get install -y flatpak
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y ${FLATPAK_DOMAIN}.${APP_NAME}
+curl -o /tmp/${APP_NAME,,}.png -J -L https://raw.githubusercontent.com/heldercorreia/${APP_NAME,,}/refs/heads/main/gfx/icons/128x128/org.${APP_NAME,,}.${APP_NAME}.png
+sudo mkdir -p /usr/local/share/icons && sudo cp /tmp/${APP_NAME,,}.png /usr/local/share/icons/${APP_NAME,,}.png
+cat > /tmp/${APP_NAME,,}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=flatpak run ${FLATPAK_DOMAIN}.${APP_NAME}
+Icon=/usr/local/share/icons/${APP_NAME,,}.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}*
