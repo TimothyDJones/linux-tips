@@ -61589,16 +61589,16 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
-# Install FormatLinux GTK tool for formatting drives and writing ISO images from AppImage
-APP_NAME=FormatLinux
+# Install MODICIA Format Drive GTK tool for formatting drives and writing ISO images from AppImage
+APP_NAME="MODICIA Format Drive"
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
 APP_GUI_NAME="GTK tool for formatting drives and writing ISO images."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="ISO;Image;Disk;"
-APP_VERSION=2.1
+APP_VERSION=1.0.0
 APP_EXT=AppImage
 ICON_EXT=png
-FILE_NAME=${APP_NAME}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+FILE_NAME=${APP_NAME// /-}-${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
 sudo apt install -y fuse libfuse2
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/linuxrufus/${FILE_NAME}.${APP_EXT}
 curl -o /tmp/${_APP_NAME}.${ICON_EXT} -J -L https://a.fsdn.com/allura/p/linuxrufus/icon?3b7ee1aac73b0e621d938205e1013951d7496ee5712dba71e9933769ee311de0
