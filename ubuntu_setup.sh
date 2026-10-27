@@ -53422,7 +53422,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Cross-platform Electron-based decentralized, Onion-routed, private messenger."
 APP_GUI_CATEGORIES="Internet;"
 APP_GUI_KEYWORDS="Messenger;Privacy;"
-APP_VERSION=1.17.8
+APP_VERSION=1.18.3
 APP_EXT=AppImage
 FILE_NAME=${APP_NAME,,}-desktop-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)-${APP_VERSION}
 sudo apt install -y fuse
