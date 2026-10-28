@@ -61527,7 +61527,7 @@ rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}*
 # Install Ollama cross-platform, self-hosted open-source LLM platform from package
 APP_NAME=Ollama
 _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
-APP_VERSION=0.40.11
+APP_VERSION=0.40.12
 APP_EXT=tar.zst
 FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
