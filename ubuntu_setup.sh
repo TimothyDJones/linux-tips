@@ -46418,16 +46418,14 @@ APP_NAME=superfile
 APP_GUI_NAME="Golang-based command line file manager."
 APP_GUI_CATEGORIES="Accessories;System;"
 APP_GUI_KEYWORDS="File;Manager;"
-APP_VERSION=1.1.2
+APP_VERSION=1.6.0
 APP_EXT=tar.gz
 FILE_NAME=${APP_NAME,,}-linux-v${APP_VERSION}-$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
-curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/MHNightCat/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/yorukot/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
 tar -xf /tmp/${FILE_NAME}.${APP_EXT}
 sudo cp -a /tmp/dist/${FILE_NAME}/spf /usr/local/bin/spf
 sudo ln -s -f /usr/local/bin/spf /usr/local/bin/${APP_NAME,,}
-cd $HOME
-rm -rf /tmp/${APP_NAME,,}*
 cd $HOME
 rm -rf /tmp/${APP_NAME,,}*
 
