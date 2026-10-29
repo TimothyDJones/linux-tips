@@ -5675,7 +5675,7 @@ rm -rf /tmp/${APP_NAME,,}
 
 # Install Thonny minimalist Python IDE/editor for beginners from Pip
 APP_NAME=Thonny
-APP_VERSION=5.0.0
+APP_VERSION=5.0.1
 APP_GUI_NAME="Minimalist Python IDE/editor for beginners."
 APP_GUI_CATEGORIES="Development;Programming;IDE;"
 APP_GUI_KEYWORDS="Python;Editor;"
@@ -24434,7 +24434,7 @@ rm -rf /tmp/${APP_NAME}* /tmp/${APP_NAME// /%20}*
 # Install Beekeeper Studio cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server) from Debian package
 APP_NAME=Beekeeper-Studio
 APP_GUI_NAME="Cross-platform SQL editor and database manager (MySQL/PostgreSQL/SQLite/MS SQL Server)."
-APP_VERSION=6.1.6
+APP_VERSION=6.2.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME,,}_${APP_VERSION}_${KERNEL_TYPE}
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/${APP_NAME,,}/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
