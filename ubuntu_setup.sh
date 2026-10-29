@@ -61717,3 +61717,16 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
+
+# Install astroterm cross-platform, C-based command-line planetarium from package
+APP_NAME=astroterm
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_VERSION=1.2.0
+APP_EXT=N/A
+FILE_NAME=${APP_NAME,,}-linux-$(dpkg-architecture --query DEB_BUILD_GNU_CPU)
+curl -o /tmp/${FILE_NAME} -J -L https://github.com/da-luce/${APP_NAME,,}/releases/download/v${APP_VERSION}/${FILE_NAME}
+sudo cp -a /tmp/${FILE_NAME} /usr/local/bin
+sudo chmod a+x /usr/local/bin/${FILE_NAME}
+sudo ln -s -f /usr/local/bin/${FILE_NAME} /usr/local/bin/${APP_NAME,,}
+cd $HOME
+rm -rf /tmp/${APP_NAME,,}* /tmp/${FILE_NAME}* /tmp/zb*
