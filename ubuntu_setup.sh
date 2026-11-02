@@ -61949,3 +61949,38 @@ EOF
 sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
+
+# Install Shattered Pixel Dungeon cross-platform, Java/JavaFX-based roguelike dungeon crawler game from package
+APP_NAME="Shattered Pixel Dungeon"
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Java/JavaFX-based roguelike dungeon crawler game."
+APP_GUI_CATEGORIES="Games;Entertainment;"
+APP_GUI_KEYWORDS="Roguelike;Dungeon;Games;RPG;"
+APP_VERSION=4.0.2
+APP_EXT=zip
+ICON_EXT=png
+FILE_NAME=ShatteredPD-v${APP_VERSION}-Linux
+sudo apt install -y fuse libfuse2
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://downloads.sourceforge.net/${_APP_NAME}.mirror/${FILE_NAME}.${APP_EXT}
+cd /tmp
+mkdir -p /tmp/${FILE_NAME}
+unzip /tmp/${FILE_NAME}.${APP_EXT} -d /tmp/${FILE_NAME}
+sudo cp -a -R /tmp/${FILE_NAME}/* /usr/local
+sudo ln -s -f "/usr/local/bin/${APP_NAME}" /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon="/usr/local/lib/${APP_NAME}.${ICON_EXT}"
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
+cd $HOME
+rm -rf /tmp/${_APP_NAME}* /tmp/${APP_NAME}*
