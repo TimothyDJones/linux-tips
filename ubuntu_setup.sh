@@ -19234,7 +19234,7 @@ sudo rm -rf /tmp/${APP_NAME,,}* /tmp/${APP_NAME}*
 # Install Motrix Electron-based GUI download manager (aria wrapper) from Debian package
 APP_NAME=Motrix
 APP_GUI_NAME="Electron-based GUI download manager (aria wrapper)."
-APP_VERSION=2.1.0
+APP_VERSION=2.2.0
 APP_EXT=deb
 FILE_NAME=${APP_NAME}_${APP_VERSION}_$(dpkg-architecture --query DEB_BUILD_ARCH_CPU)
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/agalwood/${APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
