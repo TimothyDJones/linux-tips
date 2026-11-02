@@ -6237,23 +6237,35 @@ sudo mv /tmp/${APP_NAME,,}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
-# Install Xtreme Download Manager (XDM) download accelerator from package
-APP_NAME=xdm
-APP_VERSION=2018
-APP_EXT=tar.xz
-if $(uname -m | grep '64'); then  # Check for 64-bit Linux kernel
-	ARCH_TYPE=x64
-else    # Otherwise use version for 32-bit kernel
-	ARCH_TYPE=x86
-fi
-curl -o /tmp/${APP_NAME,,}.${APP_EXT} -J -L https://downloads.sourceforge.net/xdman/${APP_NAME,,}-${APP_VERSION}-${ARCH_TYPE}.${APP_EXT}
+# Install Xtreme Download Manager (XDM) cross-platform, Java-based download accelerator from package
+APP_NAME=XDM
+_APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr '[:blank:]' '-')
+APP_GUI_NAME="Cross-platform, Java-based download accelerator."
+APP_GUI_CATEGORIES="Internet;"
+APP_GUI_KEYWORDS="Download;"
+APP_VERSION=9.0.9
+APP_EXT=tar.gz
+FILE_NAME=${_APP_NAME}-app-${APP_VERSION}-linux-x64
+curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://github.com/subhra74/${_APP_NAME}/releases/download/v${APP_VERSION}/${FILE_NAME}.${APP_EXT}
 cd /tmp
-dtrx -n /tmp/${APP_NAME,,}.${APP_EXT}
-sudo sh /tmp/${APP_NAME,,}/install.sh
-# Remove built-in JRE and use system JRE instead.
-sudo rm -rf /opt/xdman/jre
-sudo mkdir -p /opt/xdman/jre/bin
-sudo ln -s /usr/bin/java /opt/xdman/jre/bin/java
+tar -xf /tmp/${FILE_NAME}.${APP_EXT}
+sudo cp -a -R ${_APP_NAME}-app-${APP_VERSION}/* /usr/local
+sudo ln -s -f /usr/local/bin/${_APP_NAME}-app /usr/local/bin/${_APP_NAME}
+cat > /tmp/${_APP_NAME}.desktop << EOF
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_GUI_NAME}
+GenericName=${APP_NAME}
+Path=/usr/local/bin
+Exec=/usr/local/bin/${_APP_NAME}
+Icon=/usr/local/lib/${_APP_NAME}-app.png
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=${APP_GUI_CATEGORIES}
+Keywords=${APP_GUI_KEYWORDS}
+EOF
+sudo mv /tmp/${_APP_NAME}.desktop /usr/share/applications/
 cd $HOME
 sudo rm -rf /tmp/${APP_NAME,,}*
 
