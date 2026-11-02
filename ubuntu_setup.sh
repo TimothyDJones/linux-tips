@@ -32800,7 +32800,7 @@ _APP_NAME=$(echo ${APP_NAME} | tr '[:upper:]' '[:lower:]' | tr -d '[:blank:]')
 APP_GUI_NAME="Real-time, 3D, astronomy visualisation software."
 APP_GUI_CATEGORIES="Education;Science;"
 APP_GUI_KEYWORDS="Astronomy;Space;"
-APP_VERSION=3.1.6.986c7b5ee
+APP_VERSION=3.9.2.95a9305a9
 APP_EXT=AppImage
 FILE_NAME=${_APP_NAME}_${APP_VERSION}_x86_64
 curl -o /tmp/${FILE_NAME}.${APP_EXT} -J -L https://gaia.ari.uni-heidelberg.de/${_APP_NAME}/files/releases/latest/${FILE_NAME}.${APP_EXT,,}
